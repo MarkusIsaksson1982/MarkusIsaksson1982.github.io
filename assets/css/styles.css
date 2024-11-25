@@ -6,16 +6,16 @@ header {
 
 .nav-container {
     display: flex;
-    align-items: center;
+    align-items: flex-end; /* Align elements to the bottom of the nav bar */
     justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
 }
 
 /* Left section (logo) */
 .left-section {
-    display: flex;
-    align-items: center;
+    flex-shrink: 0; /* Prevent logo from shrinking */
 }
 
 .logo img {
@@ -25,20 +25,22 @@ header {
 /* Menu and language icons container */
 .menu-icons-container {
     display: flex;
-    align-items: center;
-    gap: 20px; /* Space between the menu and icons */
+    flex-direction: column;
+    width: 100%;
+    position: relative;
 }
 
-/* Menu styling */
 .menu {
     list-style: none;
     display: flex;
+    justify-content: center; /* Center menu items */
     gap: 20px; /* Space between menu items */
     margin: 0;
     padding: 0;
     align-items: center;
 }
 
+/* Menu item links */
 .menu li a {
     text-decoration: none;
     color: white;
@@ -52,10 +54,14 @@ header {
     background-color: #c12b73;
 }
 
-/* Language icons */
+/* Language icons positioned at the bottom-right */
 .language-icons {
     display: flex;
     gap: 10px; /* Space between icons */
+    position: absolute;
+    bottom: 0;
+    right: 0; /* Place in the bottom-right corner */
+    padding-right: 20px;
     align-items: center;
 }
 
