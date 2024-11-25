@@ -33,8 +33,20 @@ header {
     height: 41px;
     width: 40px;
     cursor: pointer;
+    display: inline-block;
+    background-color: #ffffff; /* Fallback color for placeholder */
+    border: 1px solid #ccc; /* Optional border for placeholder visibility */
+    box-sizing: border-box;
 }
 
+.language-icons .lang-icon img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* Style the menu items */
 nav .menu {
     list-style: none;
     display: flex;
