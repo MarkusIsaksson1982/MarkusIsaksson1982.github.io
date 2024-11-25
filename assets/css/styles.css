@@ -22,6 +22,13 @@ header {
     height: 180px;
 }
 
+/* Menu and language icons container */
+.menu-icons-container {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between the menu and icons */
+}
+
 /* Menu styling */
 .menu {
     list-style: none;
@@ -45,7 +52,7 @@ header {
     background-color: #c12b73;
 }
 
-/* Language icons on the far right */
+/* Language icons */
 .language-icons {
     display: flex;
     gap: 10px; /* Space between icons */
