@@ -31,10 +31,11 @@ header {
     gap: 5px;
 }
 
-.language-icons .lang-icon {
+.language-icons img.lang-icon {
     height: 40px;
     width: 40px;
     cursor: pointer;
+    object-fit: contain;
 }
 
 nav .menu {
