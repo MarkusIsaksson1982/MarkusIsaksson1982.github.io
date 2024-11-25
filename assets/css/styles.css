@@ -23,11 +23,12 @@ header {
 .logo img {
     height: 180px;
 }
-
 .language-icons {
     display: flex;
-    gap: 10px;
+    justify-content: center;
     align-items: center;
+    gap: 20px; /* Spacing between the icons */
+    margin-top: 10px; /* Space between the logo and icons */
 }
 
 .language-icons .lang-icon {
@@ -41,6 +42,7 @@ header {
     object-fit: contain;
     display: block;
 }
+
 
 /* Style the menu items */
 nav .menu {
