@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+header {
+    background-color: #E83E8C;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .logo img {
+    height: 180px;
+}
+
+nav .menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+nav .menu li {
+    display: inline;
+}
+
+nav .menu li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.language-switch {
+    cursor: pointer;
+}
