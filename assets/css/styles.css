@@ -12,26 +12,14 @@ header {
     margin: 0 auto;
 }
 
-/* Left section (logo and icons) */
+/* Left section (logo) */
 .left-section {
     display: flex;
-    align-items: center; /* Align logo and icons horizontally */
-    gap: 20px; /* Space between logo and icons */
+    align-items: center;
 }
 
 .logo img {
     height: 180px;
-}
-
-.language-icons {
-    display: flex;
-    gap: 10px; /* Space between icons */
-}
-
-.language-icons .lang-icon img {
-    height: 41px;
-    width: 40px;
-    object-fit: contain;
 }
 
 /* Menu styling */
@@ -55,4 +43,17 @@ header {
 
 .menu li a:hover {
     background-color: #c12b73;
+}
+
+/* Language icons on the far right */
+.language-icons {
+    display: flex;
+    gap: 10px; /* Space between icons */
+    align-items: center;
+}
+
+.language-icons .lang-icon img {
+    height: 41px;
+    width: 40px;
+    object-fit: contain;
 }
