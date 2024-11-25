@@ -1,51 +1,45 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f9fa;
-    color: #212529;
-}
-
+/* General header and nav container styling */
 header {
     background-color: #E83E8C;
     padding: 10px 20px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 
-.left-section {
+.nav-container {
     display: flex;
     align-items: center;
-    gap: 15px;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Left section (logo and icons) */
+.left-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
 .logo img {
     height: 180px;
 }
+
 .language-icons {
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 20px; /* Spacing between the icons */
-    margin-top: 10px; /* Space between the logo and icons */
-}
-
-.language-icons .lang-icon {
-    display: inline-block;
-    cursor: pointer;
+    gap: 20px; /* Space between icons */
 }
 
 .language-icons .lang-icon img {
     height: 41px;
     width: 40px;
     object-fit: contain;
-    display: block;
 }
 
-
-/* Style the menu items */
-nav .menu {
+/* Menu styling */
+.menu {
     list-style: none;
     display: flex;
     gap: 20px;
@@ -54,11 +48,7 @@ nav .menu {
     align-items: center;
 }
 
-nav .menu li {
-    display: inline;
-}
-
-nav .menu li a {
+.menu li a {
     text-decoration: none;
     color: white;
     font-weight: bold;
@@ -67,6 +57,6 @@ nav .menu li a {
     transition: background-color 0.3s ease;
 }
 
-nav .menu li a:hover {
+.menu li a:hover {
     background-color: #c12b73;
 }
