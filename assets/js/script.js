@@ -1,7 +1,7 @@
 // assets/js/script.js
 function changeLanguage(lang) {
     const path = window.location.pathname;
-    const page = path.split('/').pop();
+    const page = path.split('/').pop() || 'index.html'; // Default to 'index.html' if no filename is present
 
     // Define translations for each page
     const translations = {
