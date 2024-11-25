@@ -1,7 +1,19 @@
-document.querySelectorAll('.lang-icon').forEach(icon => {
-    icon.addEventListener('click', (event) => {
-        const targetLang = event.target.dataset.lang;
-        alert(`Language switched to: ${targetLang}`); // Placeholder for language switching logic
-        // Future implementation to dynamically load language-specific content
-    });
-});
+// assets/js/script.js
+function changeLanguage(lang) {
+    const path = window.location.pathname;
+    const page = path.split('/').pop();
+
+    const translations = {
+        'index.html': 'index_eng.html',
+        'index_eng.html': 'index.html',
+        'certificates.html': 'certificates_eng.html',
+        'certificates_eng.html': 'certificates.html',
+        'showcase.html': 'showcase_eng.html',
+        'showcase_eng.html': 'showcase.html'
+    };
+
+    const newPage = lang === 'sv' ? translations[page] : translations[page];
+    if (newPage) {
+        window.location.href = newPage;
+    }
+}
