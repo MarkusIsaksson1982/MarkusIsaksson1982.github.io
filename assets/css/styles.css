@@ -16,22 +16,22 @@ header {
 
 .left-section {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    gap: 15px;
 }
 
 .logo img {
     height: 180px;
-    margin-bottom: 10px;
 }
 
 .language-icons {
     display: flex;
-    flex-direction: column;
-    gap: 5px;
+    gap: 10px;
 }
 
 .language-icons .lang-icon {
+    height: 41px;
+    width: 40px;
     cursor: pointer;
 }
 
