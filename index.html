@@ -3,56 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Markus Isaksson - Meriter</title>
+    <title>Markus Isaksson - Om mig</title>
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
     <header>
-    <nav>
-        <div class="nav-container">
-            <div class="left-section">
-                <div class="logo">
-                    <img src="assets/img/logo.webp" alt="Logo">
-                </div>
-            </div>
-            <div class="menu-icons-container">
-                <ul class="menu">
-                    <li><a href="#about">Om mig</a></li>
-                    <li><a href="#certificates">Certifikat</a></li>
-                    <li><a href="#showcase">Projekt</a></li>
-                </ul>
-                <div class="language-icons">
-                    <div class="lang-icon">
-                        <img src="assets/img/swedish_icon.png" alt="Svenska" data-lang="sv">
+        <nav>
+            <div class="nav-container">
+                <div class="left-section">
+                    <div class="logo">
+                        <img src="assets/img/logo.webp" alt="Logo">
                     </div>
-                    <div class="lang-icon">
-                        <img src="assets/img/english_icon.png" alt="English" data-lang="en">
+                    <div class="language-icons">
+                        <button class="lang-icon" onclick="changeLanguage('sv')">
+                            <img src="assets/img/swedish_icon.png" alt="Svenska">
+                        </button>
+                        <button class="lang-icon" onclick="changeLanguage('en')">
+                            <img src="assets/img/english_icon.png" alt="English">
+                        </button>
                     </div>
                 </div>
+                <div class="menu-icons-container">
+                    <ul class="menu">
+                        <li><a href="index.html">Om mig</a></li>
+                        <li><a href="certificates.html">Certifikat</a></li>
+                        <li><a href="showcase.html">Projekt</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-</header>
-
+        </nav>
+    </header>
     <main>
-        <section id="about">
+        <section>
             <h1>Om mig</h1>
-            <p>Freelancer inom responsiv webbdesign, JavaScript-algoritmer, Frontend, datavisualisering, relationsdatabaser, och back-end utveckling. Över 250 timmars erfarenhet av betalt arbete inom dessa områden.</p>
-        </section>
-        <section id="certificates">
-            <h2>Certifikat</h2>
-            <ul>
-                <li>Responsiv webbdesign</li>
-                <li>JavaScript och datastrukturer</li>
-                <li>Relational Databases</li>
-            </ul>
-        </section>
-        <section id="showcase">
-            <h2>Projekt</h2>
-            <ul>
-                <li><a href="https://github.com/MarkusIsaksson1982/FCC_-_build-a-world-cup-database">World Cup Database</a></li>
-                <li><a href="https://github.com/MarkusIsaksson1982/FCC_-_timestamp-microservice">Timestamp Microservice</a></li>
-            </ul>
+            <p>Freelancer inom responsiv webbdesign, JavaScript-algoritmer, Frontend, datavisualisering, relationsdatabaser, och back-end utveckling.</p>
         </section>
     </main>
     <footer>
