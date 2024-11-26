@@ -40,7 +40,9 @@ License
 The repository operates under a mixed license to respect different aspects of its content:
 
 Design and Images: The design and visual assets (images) belong to Markus Isaksson and are not for redistribution or reuse without explicit permission.
+
 Database Data: Data from databases may not be shared beyond personal inquiries about services offered.
+
 Codebase: The technical code is shared in the spirit of GitHub's open-source community. You are encouraged to use, modify, and build upon this code while respecting the "free code community spirit."
 
 For more details, you are welcome to contact Markus Isaksson via GitHub or LinkedIn (linked in the footer of the website).
