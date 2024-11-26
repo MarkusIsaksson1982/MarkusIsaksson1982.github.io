@@ -14,6 +14,7 @@ Dynamic Content: Uses JavaScript to manage and display content dynamically.
 
 
 File Structure
+
 The project follows a logical structure for easy navigation:
 
 assets/
@@ -25,14 +26,17 @@ Root HTML Files: index.html, certificates.html, showcase.html, and their English
 
 
 Usage Requirements
+
 A modern browser is required to view the website.
 
 
 Notes on readjson.js
+
 The readjson.js script is included for informational purposes only. It demonstrates a custom JavaScript application for filtering and cleaning JSON data from freeCodeCamp profiles. This script is not functional within the website and serves as an educational example displayed on certain pages.
 
 
 License
+
 The repository operates under a mixed license to respect different aspects of its content:
 
 Design and Images: The design and visual assets (images) belong to Markus Isaksson and are not for redistribution or reuse without explicit permission.
