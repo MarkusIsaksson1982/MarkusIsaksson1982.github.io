@@ -23,10 +23,15 @@ File Structure
 The project follows a logical structure for easy navigation:
 
 assets/
+
 css/ - Stylesheets for the website's layout and design.
+
 data/ - Contains text data such as parsed freeCodeCamp outputs.
+
 img/ - Includes icons, logos, and other visual elements.
+
 js/ - Contains JavaScript files for functionality and dynamic behavior.
+
 Root HTML Files: index.html, certificates.html, showcase.html, and their English equivalents.
 
 ---
