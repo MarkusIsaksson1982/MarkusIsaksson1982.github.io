@@ -1,6 +1,6 @@
 
 Filtered JSON Contents: {
-  "about": "Freelancer (Responsive Web Design, JavaScript Algorithms and Data Structures, Front End Development Libraries, Data Visualization, Relational Database, Back End Development and APIs) - I've performed about 250 hours of paid related work so far",
+  "about": "I've completed the following sections on freeCodeCamp: Responsive Web Design, JavaScript Algorithms and Data Structures, Front End Development Libraries, Data Visualization, Relational Database, Back End Development and APIs",
   "completedChallenges": [
     {
       "id": "(id removed)",
