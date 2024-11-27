@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt - Markus Isaksson</title>
+    <link rel="stylesheet" href="../assets/css/common_styles.css">
+    <style>
+        /* Additional styling for the copy button and textarea */
+        .code-container {
+            width: 100%;
+            max-width: 550px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .code-container textarea {
+            width: 100%;
+            height: 200px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 14px;
+            border: 1px solid #C2C9C9;
+            border-radius: 8px;
+            resize: none;
+            background-color: #F4F6F6;
+            color: #333;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .copy-button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .copy-button:hover {
+            background-color: #45a049;
+        }
+
+        .code-container p {
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+    <script src="../assets/js/header_footer.js" defer></script>
+    <script src="../assets/js/script.js" defer></script>
+    <script>
+        // Function to fetch and display file content
+        function loadFileContent(url, textareaIndex) {
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) throw new Error(`Failed to fetch ${url}`);
+                    return response.text();
+                })
+                .then(data => {
+                    document.querySelectorAll('.code-container textarea')[textareaIndex].value = data;
+                })
+                .catch(error => console.error(`Error loading file: ${url}`, error));
+        }
+
+        // Function to copy content to clipboard
+        function copyToClipboard(index) {
+            const textArea = document.querySelectorAll('.code-container textarea')[index];
+            if (textArea) {
+                navigator.clipboard.writeText(textArea.value)
+                    .then(() => {
+                        const button = document.querySelectorAll('.copy-button')[index];
+                        button.textContent = "Kopierad!";
+                        setTimeout(() => button.textContent = "Kopiera", 2000);
+                    })
+                    .catch(err => console.error('Failed to copy text:', err));
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Load file contents into textareas
+            loadFileContent('../assets/js/readjson.js', 0);
+            loadFileContent('../assets/data/parsed_FCCdump.txt', 1);
+        });
+    </script>
+</head>
+<body>
+    <header></header>
+    <main>
+        <section class="showcase-container">
+            <!-- Image Section -->
+            <div class="image-section">
+                <div>
+                    <p>Mina läroprojekt från freeCodeCamp på CodePen:</p>
+                    <a href="https://codepen.io/collection/bGZKYv" target="_blank">
+                        <img src="../assets/img/common/showcase_codepen.png" alt="CodePen Showcase">
+                    </a>
+                </div>
+                <div>
+                    <p>Mina läroprojekt från freeCodeCamp på GitHub:</p>
+                    <a href="https://github.com/MarkusIsaksson1982/" target="_blank">
+                        <img src="../assets/img/common/showcase_github.png" alt="GitHub Showcase">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Code Section -->
+            <section class="code-section">
+                <div class="code-container">
+                    <p>En egenskriven JavaScript-kod för att ta bort kod från min freeCodeCamp-profildatabas som är irrelevant för offentligt bruk:</p>
+                    <textarea readonly></textarea>
+                    <button class="copy-button" onclick="copyToClipboard(0)">Kopiera</button>
+                </div>
+                <div class="code-container">
+                    <p>Resultatet av att tillämpa denna JavaScript-applikation på min freeCodeCamp-profildatabas:</p>
+                    <textarea readonly></textarea>
+                    <button class="copy-button" onclick="copyToClipboard(1)">Kopiera</button>
+                </div>
+
+            </section>
+        </section>
+    </main>
+    <footer></footer>
+</body>
+</html>

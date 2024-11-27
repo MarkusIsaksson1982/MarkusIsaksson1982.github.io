@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-analys av mina meriter</title>
+    <link rel="stylesheet" href="../assets/css/common_styles.css">
+    <script src="../assets/js/header_footer.js" defer></script>
+    <script src="../assets/js/script.js" defer></script>
+<script src="../assets/js/ai_analysis_sv.js" defer></script>
+    
+</head>
+<body>
+    <header></header> <!-- Dynamically loaded header -->
+    <main>
+        <div class="form-section">
+    <h1>AI-analys av Markus Isakssons IT-meriter</h1>
+    <div class="radio-group">
+        <label><input type="radio" name="role" value="recruiter">Jag är en rekryterare</label>
+        <label><input type="radio" name="role" value="freelancer">Jag söker frilanstjänster</label>
+        <label><input type="radio" name="role" value="general">Jag är intresserad av</label>
+    </div>
+    <div class="input-group">
+        <input type="text" id="dynamic-text" placeholder="Textfält" readonly>
+        <input type="text" id="example-input" placeholder="Exempel">
+</div>
+    <h2>Kopiera detta och klistra in i din föredragna AI-chatbot</h2>
+    <textarea id="output-textarea" readonly></textarea>
+    <button id="copy-button" class="copy-button">Kopiera</button>
+</div>
+    </main>
+    <footer></footer> <!-- Dynamically loaded footer -->
+</body>
+</html>

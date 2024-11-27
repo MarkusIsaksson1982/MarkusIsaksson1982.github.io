@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Analysis of My Credentials</title>
+    <link rel="stylesheet" href="../assets/css/common_styles.css">
+    <script src="../assets/js/header_footer.js" defer></script>
+    <script src="../assets/js/script.js" defer></script>
+    <script src="../assets/js/ai_analysis_en.js" defer></script>
+</head>
+<body>
+    <header></header> <!-- Dynamically loaded header -->
+    <main>
+        <div class="form-section">
+            <h1>AI Analysis of Markus Isaksson's IT Credentials</h1>
+            <div class="radio-group">
+                <label><input type="radio" name="role" value="recruiter">I am a Recruiter</label>
+                <label><input type="radio" name="role" value="freelancer">I am looking for Freelance Services</label>
+                <label><input type="radio" name="role" value="general">I am Interested in</label>
+            </div>
+            <div class="input-group">
+                <input type="text" id="dynamic-text" placeholder="Text Field" readonly>
+                <input type="text" id="example-input" placeholder="Example">
+            </div>
+            <h2>Copy this and paste it into your preferred AI chatbot</h2>
+            <textarea id="output-textarea" readonly></textarea>
+            <button id="copy-button" class="copy-button">Copy</button>
+        </div>
+    </main>
+    <footer></footer> <!-- Dynamically loaded footer -->
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificates - Markus Isaksson</title>
+    <link rel="stylesheet" href="../assets/css/common_styles.css">
+    <script src="../assets/js/header_footer.js" defer></script>
+    <script src="../assets/js/script.js" defer></script>
+    <style>
+        /* Custom layout for certificate grid */
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two columns */
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            max-width: 900px; /* Constrain overall width */
+        }
+
+        .certificates-grid a {
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .certificates-grid img {
+            width: 100%; /* Responsive scaling */
+            max-width: 300px; /* Limit maximum size */
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .certificates-grid img:hover {
+            transform: scale(1.05); /* Hover effect */
+        }
+
+        .certificates-grid p {
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header></header>
+    <main>
+        <section>
+            <h1 style="text-align: center;">My Current Certificates</h1>
+            <p style="text-align: center;">Here are my current certifications in web design and development:</p>
+            <div class="certificates-grid">
+                <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/responsive-web-design" target="_blank">
+                    <img src="../assets/img/common/template_certification_image.png" alt="Responsive Web Design Certification">
+                    <p>Responsive Web Design</p>
+                </a>
+                <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/javascript-algorithms-and-data-structures-v8" target="_blank">
+                    <img src="../assets/img/common/template_certification_image.png" alt="JavaScript Algorithms Certification">
+                    <p>JavaScript Algorithms and Data Structures</p>
+                </a>
+                <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/front-end-development-libraries" target="_blank">
+                    <img src="../assets/img/common/template_certification_image.png" alt="Front End Development Libraries Certification">
+                    <p>Front End Development Libraries</p>
+                </a>
+                <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/data-visualization" target="_blank">
+                    <img src="../assets/img/common/template_certification_image.png" alt="Data Visualization Certification">
+                    <p>Data Visualization</p>
+                </a>
+                <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/relational-database-v8" target="_blank">
+                    <img src="../assets/img/common/template_certification_image.png" alt="Relational Database Certification">
+                    <p>Relational Databases</p>
+                </a>
+                <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/back-end-development-and-apis" target="_blank">
+                    <img src="../assets/img/common/template_certification_image.png" alt="Back End Development and APIs Certification">
+                    <p>Back End Development and APIs</p>
+                </a>
+            </div>
+        </section>
+    </main>
+    <footer></footer>
+</body>
+</html>

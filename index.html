@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Language Selection</title>
+    <link rel="stylesheet" href="assets/css/common_styles.css">
+    <style>
+        /* Ensure a full-page layout */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #F4F6F6; /* Matches the site's general background */
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .main-image {
+            width: 280px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .language-icons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .lang-icon {
+            text-decoration: none;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            color: #333;
+            transition: transform 0.3s ease;
+        }
+
+        .lang-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .lang-icon img {
+            width: auto;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Main image -->
+        <img src="assets/img/common/main_image.png" alt="Main Image" class="main-image">
+
+        <!-- Language selection -->
+        <div class="language-icons">
+            <a href="sv/index.html" class="lang-icon">
+                <img src="assets/img/lang/swedish_icon.png" alt="Svenska">
+                Svenska
+            </a>
+            <a href="en/index.html" class="lang-icon">
+                <img src="assets/img/lang/english_icon.png" alt="English">
+                English
+            </a>
+        </div>
+    </div>
+</body>
+</html>
