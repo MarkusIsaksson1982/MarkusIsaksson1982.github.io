@@ -4,6 +4,412 @@ Filtered JSON Contents: {
   "completedChallenges": [
     {
       "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732827978622
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732826806474
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732826505868
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732826322603
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732826204595
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732825653351
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732824664989
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732824231872
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732824126778
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732824031815
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732823917309
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 23,
+      "challengeFiles": [
+        {
+          "contents": "# Python content from the assignment",
+          "ext": "py",
+          "history": [
+            "main.py"
+          ],
+          "name": "main",
+          "fileKey": "mainpy"
+        }
+      ],
+      "completedDate": 1732820155534
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732819926642
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732819438111
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732819417072
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732819087371
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732816861388
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732816645480
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732816625242
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732816391523
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732816194048
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732816114824
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732816051719
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732815977551
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732815824770
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732815657975
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732815637065
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732815335113
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732813858925
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732813845855
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732813469615
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732813116672
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732813064512
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732813026544
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732813015933
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732812798124
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732811880505
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732811859023
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732811644453
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732811633098
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732811615892
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732811585481
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732811246904
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732811176248
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732811029266
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732810916975
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732810780489
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732810754462
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732810606930
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732810555077
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732810215779
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732810116012
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732810107389
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732809948140
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732809885048
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732809835691
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732809724788
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732809676457
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732809618123
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732809553951
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732809465617
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732809387199
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732809368992
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732809281154
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732809227924
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732809140722
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732809072932
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732808998964
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732808922064
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732808804199
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732808784964
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732808745866
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732808544406
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732808015868
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732807960151
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732807947676
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732807796910
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732807625557
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 20,
+      "completedDate": 1732807574969
+    },
+    {
+      "id": "(id removed)",
       "completedDate": 1727981276444,
       "challengeType": 14,
       "isManuallyApproved": false,
@@ -461,8 +867,8 @@ Filtered JSON Contents: {
   },
   "savedChallenges": [
     {
-      "id": "(id removed)",
       "lastSavedDate": 1728230552200,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!-- HTML content from the assignment -->",
@@ -485,8 +891,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1728230925113,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!-- HTML content from the assignment -->",
@@ -509,8 +915,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1728231416784,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!-- HTML content from the assignment -->",
@@ -533,8 +939,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1728233172664,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!-- HTML content from the assignment -->",
@@ -557,8 +963,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1728233216456,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!-- HTML content from the assignment -->",
@@ -581,8 +987,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1728851277839,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!-- HTML content from the assignment -->",
@@ -614,8 +1020,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1729555500308,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!-- HTML content from the assignment -->",
@@ -647,8 +1053,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1729615648822,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!-- HTML content from the assignment -->",
@@ -680,8 +1086,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1729687393796,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!-- HTML content from the assignment -->",
@@ -713,8 +1119,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1729702105990,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!-- HTML content from the assignment -->",
@@ -746,8 +1152,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1731751781332,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "# Python content from the assignment",
@@ -761,8 +1167,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1732479882602,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "# Python content from the assignment",
@@ -776,8 +1182,23 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1732562834543,
+      "id": "(id removed)",
+      "challengeFiles": [
+        {
+          "contents": "# Python content from the assignment",
+          "ext": "py",
+          "name": "main",
+          "history": [
+            "main.py"
+          ],
+          "fileKey": "mainpy"
+        }
+      ]
+    },
+    {
+      "lastSavedDate": 1732820153929,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "# Python content from the assignment",
@@ -808,14 +1229,15 @@ Filtered JSON Contents: {
   "picture": "(Details removed, see LinkedIn profile for contact info)",
   "joinDate": "2024-10-01T16:39:22.000Z",
   "completedSurveys": [],
-  "sessionUser": true
+  "sessionUser": true,
+  "examResults": null
 }
  ---
 The above text was original data from a freeCodeCamp file dump of a .JSON database.
 
 This is an automatically added comment by a parsing app written in JavaScript by Markus Isaksson. The parser has taken a .JSON database file of a freeCodeCamp profile and removed some data. This is summary of what has been removed:
 
-3245 instances of references to completed shorter step by step programming exercises without type number were removed
+3239 instances of references to completed shorter step by step programming exercises without type number were removed
 
 6 instances of references to completed programming exercises that had a (type 7) were removed
 
@@ -824,5 +1246,5 @@ The original file also contained submitted HTML, CSS, JavaScript, and Python cod
 20 of HTML code pieces were removed
 20 of CSS code pieces were removed
 10 of JavaScript code pieces were removed
-6 of Python code pieces were removed
+8 of Python code pieces were removed
 0 of other code pieces were removed
