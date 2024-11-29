@@ -1,413 +1,7 @@
-
+Do you want to replace embedded code pieces with comments? (yes/no): no
 Filtered JSON Contents: {
-  "about": "I've completed the following sections on freeCodeCamp: Responsive Web Design, JavaScript Algorithms and Data Structures, Front End Development Libraries, Data Visualization, Relational Database, Back End Development and APIs",
+  "about": "I've completed the following sections on freeCodeCamp: Responsive Web Design, JavaScript Algorithms and Data Structures, Front End Development Libraries, Data Visualization, Relational Database, Back End Development and APIs, Scientific Computing with Python",
   "completedChallenges": [
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732827978622
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732826806474
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732826505868
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732826322603
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732826204595
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732825653351
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732824664989
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732824231872
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732824126778
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732824031815
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732823917309
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 23,
-      "challengeFiles": [
-        {
-          "contents": "# Python content from the assignment",
-          "ext": "py",
-          "history": [
-            "main.py"
-          ],
-          "name": "main",
-          "fileKey": "mainpy"
-        }
-      ],
-      "completedDate": 1732820155534
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732819926642
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732819438111
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732819417072
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732819087371
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732816861388
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732816645480
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732816625242
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732816391523
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732816194048
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732816114824
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732816051719
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732815977551
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732815824770
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732815657975
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732815637065
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732815335113
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732813858925
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732813845855
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732813469615
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732813116672
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732813064512
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732813026544
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732813015933
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732812798124
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732811880505
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732811859023
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732811644453
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732811633098
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732811615892
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732811585481
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732811246904
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732811176248
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732811029266
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732810916975
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732810780489
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732810754462
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732810606930
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732810555077
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732810215779
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732810116012
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732810107389
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732809948140
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732809885048
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732809835691
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732809724788
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732809676457
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732809618123
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732809553951
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732809465617
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732809387199
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732809368992
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732809281154
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732809227924
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732809140722
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732809072932
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732808998964
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732808922064
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732808804199
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732808784964
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732808745866
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732808544406
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732808015868
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732807960151
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732807947676
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732807796910
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732807625557
-    },
-    {
-      "id": "(id removed)",
-      "challengeType": 20,
-      "completedDate": 1732807574969
-    },
     {
       "id": "(id removed)",
       "completedDate": 1727981276444,
@@ -415,13 +9,13 @@ Filtered JSON Contents: {
       "isManuallyApproved": false,
       "challengeFiles": [
         {
-          "contents": "<!-- HTML content from the assignment -->",
+          "contents": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <link rel=\"stylesheet\" href=\"styles.css\">\r\n    <title>Freelance Service Inquiry</title>\r\n</head>\r\n<body>\r\n    <h1 id=\"title\">Freelance Service Request</h1>\r\n    <p id=\"description\">Please fill out the form below to inquire about my freelance services. I'll get back to you as soon as possible!</p>\r\n    \r\n    <form id=\"survey-form\">\r\n        <!-- Name Field -->\r\n        <label id=\"name-label\" for=\"name\">Full Name (or Company):</label>\r\n        <input id=\"name\" type=\"text\" placeholder=\"John Doe\" required>\r\n\r\n        <!-- Email Field -->\r\n        <label id=\"email-label\" for=\"email\">Email Address:</label>\r\n        <input id=\"email\" type=\"email\" placeholder=\"example@mail.com\" required>\r\n\r\n        <!-- Phone Number Field -->\r\n        <label id=\"number-label\" for=\"number\">Phone Number:</label>\r\n        <input id=\"number\" type=\"number\" min=\"1000000\" max=\"999999999999\" placeholder=\"Enter your phone number\">\r\n\r\n        <!-- Service Dropdown -->\r\n        <label for=\"dropdown\">Service You Are Interested In:</label>\r\n        <select id=\"dropdown\" required>\r\n            <option value=\"\" disabled selected>Select a service</option>\r\n            <option value=\"web-design\">Web Design</option>\r\n            <option value=\"graphic-design\">Graphic Design</option>\r\n            <option value=\"seo\">SEO & Marketing</option>\r\n            <option value=\"consultation\">Consultation</option>\r\n        </select>\r\n\r\n        <!-- Repeat Customer Radio Buttons -->\r\n        <fieldset>\r\n            <legend>Have you worked with me before?</legend>\r\n            <label><input type=\"radio\" name=\"repeatcustomer\" value=\"yes\"> Yes</label>\r\n            <label><input type=\"radio\" name=\"repeatcustomer\" value=\"no\" checked> No</label>\r\n        </fieldset>\r\n\r\n        <!-- Checkbox Options -->\r\n        <fieldset>\r\n            <legend>What specific service do you need?</legend>\r\n            <label><input type=\"checkbox\" name=\"service\" value=\"webdesign\"> Web Design</label>\r\n            <label><input type=\"checkbox\" name=\"service\" value=\"branding\"> Branding</label>\r\n            <label><input type=\"checkbox\" name=\"service\" value=\"other\"> Other</label>\r\n        </fieldset>\r\n\r\n        <!-- Additional Information Textarea -->\r\n        <label for=\"additional-info\">Additional Details:</label>\r\n        <textarea id=\"additional-info\" rows=\"4\" placeholder=\"Describe your project or ask any questions here...\"></textarea>\r\n\r\n        <!-- Submit Button -->\r\n        <button id=\"submit\" type=\"submit\">Submit Inquiry</button>\r\n    </form>\r\n\r\n</body>\r\n</html>\r\n",
           "ext": "html",
           "name": "index",
           "fileKey": "indexhtml"
         },
         {
-          "contents": "/* CSS content from the assignment */",
+          "contents": "body {\r\n    font-family: 'Arial', sans-serif;\r\n    font-size: 1rem;\r\n    line-height: 1.6;\r\n    color: var(--color-white);\r\n    margin: 0;\r\n    padding: 20px;\r\n    background: var(--color-darkblue);\r\n    background-image: linear-gradient(115deg, rgba(58, 58, 158, 0.8), rgba(136, 136, 206, 0.7)), url('https://i.pinimg.com/736x/dd/bd/ed/ddbded1691784f657359cec9796edbeb--royalty-free-stock-footage-stock-video.jpg');\r\n    background-size: cover;\r\n    background-repeat: no-repeat;\r\n    background-position: center;\r\n    height: 100vh;\r\n}\r\n\r\nh1 {\r\n    text-align: center;\r\n    margin-bottom: 1rem;\r\n    color: var(--color-green);\r\n}\r\n\r\np {\r\n    text-align: center;\r\n    margin-bottom: 1.5rem;\r\n    font-size: 1.1rem;\r\n}\r\n\r\nform {\r\n    max-width: 500px;\r\n    margin: 0 auto;\r\n    background-color: var(--color-darkblue-alpha);\r\n    padding: 20px;\r\n    border-radius: 10px;\r\n    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);\r\n}\r\n\r\nlabel {\r\n    font-size: 1rem;\r\n    margin-bottom: 0.5rem;\r\n    display: block;\r\n}\r\n\r\ninput, select, textarea {\r\n    width: 100%;\r\n    padding: 10px;\r\n    margin-bottom: 1rem;\r\n    border-radius: 5px;\r\n    border: 1px solid #ccc;\r\n}\r\n\r\ninput[type=\"radio\"], input[type=\"checkbox\"] {\r\n    width: auto;\r\n    margin-right: 10px;\r\n}\r\n\r\nfieldset {\r\n    margin-bottom: 1.5rem;\r\n}\r\n\r\nbutton {\r\n    background-color: var(--color-green);\r\n    color: white;\r\n    border: none;\r\n    padding: 10px 20px;\r\n    border-radius: 5px;\r\n    cursor: pointer;\r\n    font-size: 1rem;\r\n}\r\n\r\nbutton:hover {\r\n    background-color: #2e8b57;\r\n}\r\n\r\n:root {\r\n    --color-white: #f3f3f3;\r\n    --color-darkblue: #1b1b32;\r\n    --color-darkblue-alpha: rgba(27, 27, 50, 0.8);\r\n    --color-green: #37af65;\r\n}\r\n",
           "ext": "css",
           "name": "styles",
           "fileKey": "stylescss"
@@ -435,13 +29,13 @@ Filtered JSON Contents: {
       "isManuallyApproved": false,
       "challengeFiles": [
         {
-          "contents": "<!-- HTML content from the assignment -->",
+          "contents": "<main id=\"main\">\r\n  <link rel=\"stylesheet\" href=\"styles.css\">\r\n\r\n  <!-- Title Section -->\r\n  <header id=\"header\">\r\n    <h1 id=\"title\">A Tribute to Greece</h1>\r\n  </header>\r\n\r\n  <!-- Image Section -->\r\n  <figure id=\"img-div\">\r\n<img id=\"image\" src=\"https://images.freeimages.com/images/premium/previews/3897/38974378-greece-athens-the-parthenon.jpg\" alt=\"The Parthenon, Athens, Greece\" />\r\n    <figcaption id=\"img-caption\">The Parthenon - Symbol of Ancient Greece</figcaption>      </figure>\r\n  \r\n  <!-- Tribute Text Section -->\r\n  <section id=\"tribute-text\">\r\n    <p>\r\n      Greece, a land where history and myth intertwine, stands as the birthplace of democracy, philosophy, and the arts. From the towering Parthenon to the serene Aegean Sea, every corner echoes with tales of gods, heroes, and thinkers who shaped the world.\r\n    </p>\r\n    <p>\r\n      Your philosophers—Socrates, Plato, and Aristotle—have given us ideas that endure, and poets like Homer and Sappho captured the human spirit in their timeless verses. The Olympic Games, born here, symbolize both competition and unity, values that continue to inspire.\r\n    </p>\r\n    <p>\r\n      Beyond the history, Greece pulses with a vibrant modern culture. From the lively streets of Athens to the peaceful island villages, your hospitality, rich cuisine, and joyous music remind us of life's beauty and resilience.\r\n    </p>\r\n    <p>\r\n      Greece, you stand tall through the ages, with a legacy that continues to influence and inspire the world. In your timeless essence, you remind us of freedom, wisdom, and the beauty of living fully.\r\n    </p>\r\n  </section>\r\n\r\n  <!-- Visit Greece Section -->\r\n  <section id=\"tribute-info\">\r\n    <a id=\"tribute-link\" href=\"https://www.visitgreece.gr\" target=\"_blank\">Discover More About Greece</a>\r\n  </section>\r\n\r\n</main>\r\n\r\n",
           "ext": "html",
           "name": "index",
           "fileKey": "indexhtml"
         },
         {
-          "contents": "/* CSS content from the assignment */",
+          "contents": "<!-- Styles -->\r\n  /* Global Styles */\r\n  body {\r\n    margin: 0;\r\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;\r\n    background-color: #f4f4f4;\r\n    color: #333;\r\n  }\r\n\r\n  /* Main Styles */\r\n  main {\r\n    max-width: 900px;\r\n    margin: 20px auto;\r\n    padding: 20px;\r\n    background-color: #fff;\r\n    border-radius: 10px;\r\n    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);\r\n    text-align: center;\r\n  }\r\n\r\n  /* Title Styles */\r\n  #title {\r\n    font-size: 2.5rem;\r\n    margin-bottom: 20px;\r\n    color: #2a2a2a;\r\n  }\r\n\r\n  /* Image Styles */\r\n  #img-div {\r\n    margin-bottom: 20px;\r\n  }\r\n\r\n  #image {\r\n    max-width: 100%;\r\n    height: auto;\r\n    border-radius: 8px;\r\n    display: block;\r\n    margin: 0 auto;\r\n  }\r\n\r\n  #img-caption {\r\n    font-size: 1rem;\r\n    margin-top: 8px;\r\n    color: #666;\r\n  }\r\n\r\n  /* Tribute Text Styles */\r\n  #tribute-text {\r\n    font-size: 1.25rem;\r\n    line-height: 1.75;\r\n    margin-bottom: 30px;\r\n    color: #444;\r\n  }\r\n\r\n  /* Link Styles */\r\n  #tribute-link {\r\n    font-size: 1.1rem;\r\n    color: #0056b3;\r\n    text-decoration: none;\r\n    border-bottom: 2px solid #0056b3;\r\n  }\r\n\r\n  #tribute-link:hover {\r\n    color: #00376b;\r\n    border-bottom: 2px solid #00376b;\r\n  }\r\n",
           "ext": "css",
           "name": "styles",
           "fileKey": "stylescss"
@@ -455,13 +49,13 @@ Filtered JSON Contents: {
       "isManuallyApproved": false,
       "challengeFiles": [
         {
-          "contents": "<!-- HTML content from the assignment -->",
+          "contents": "<head>\r\n  <link rel=\"stylesheet\" href=\"styles.css\"> \r\n</head>\r\n\r\n<main id=\"main-doc\">\r\n  <!-- Navigation Menu on the left -->\r\n  <nav id=\"navbar\">\r\n    <header>The 5 Classical Elements</header>\r\n    <ul>\r\n      <li><a class=\"nav-link\" href=\"#Aether\">Aether</a></li>\r\n      <li><a class=\"nav-link\" href=\"#Air\">Air</a></li>\r\n      <li><a class=\"nav-link\" href=\"#Earth\">Earth</a></li>\r\n      <li><a class=\"nav-link\" href=\"#Fire\">Fire</a></li>\r\n      <li><a class=\"nav-link\" href=\"#Water\">Water</a></li>\r\n    </ul>\r\n  </nav>\r\n\r\n  <!-- Section 1: Aether -->\r\n  <section class=\"main-section\" id=\"Aether\">\r\n    <header>Aether</header>\r\n    <p>Aether, also known as the \"quintessence,\" was believed to be the divine, ethereal substance that filled the universe beyond the Earth. </p><p>It was the element of the heavens, distinct from the physical world, representing purity and immortality.</p>\r\n    <ul>\r\n      <li>Divine</li>\r\n      <li>Ethereal</li>\r\n      <li>All-encompassing</li>\r\n      <li>Luminous</li>\r\n      <li>Infinite</li>\r\n    </ul>\r\n    <code>element aether</code><code>infinite potential</code><code>cosmic force</code><code>divine connection</code><code>transcendent essence</code>\r\n  </section>\r\n\r\n  <!-- Section 2: Air -->\r\n  <section class=\"main-section\" id=\"Air\">\r\n    <header>Air</header>\r\n    <p>Air, the element of thought, intellect, and communication, is associated with freedom and mental clarity. </p><p>It symbolizes life force, breath, and the unseen forces that animate all living things. In many traditions, it also serves as the bridge between the divine and the material worlds.</p>\r\n    <ul>\r\n      <li>Light</li>\r\n      <li>Fluid</li>\r\n      <li>Invisible</li>\r\n      <li>Ever-changing</li>\r\n      <li>Vital</li>\r\n    </ul>\r\n    <code>element air</code><code>thoughts in motion</code><code>intellect rising</code><code>communication bridge</code><code>breath of life</code>\r\n  </section>\r\n\r\n  <!-- Section 3: Earth -->\r\n  <section class=\"main-section\" id=\"Earth\">\r\n    <header>Earth</header>\r\n    <p>Earth, the element of stability and foundation, represents the physical world.</p><p> It is the ground beneath our feet, symbolizing strength, fertility, and endurance. Earth is immovable and slow to change, embodying persistence and material existence.</p>\r\n    <ul>\r\n      <li>Solid</li>\r\n      <li>Stable</li>\r\n      <li>Unyielding</li>\r\n      <li>Fertile</li>\r\n      <li>Enduring</li>\r\n    </ul>\r\n    <code>element earth</code><code>foundation of life</code><code>stability and growth</code><code>material strength</code><code>unchanging nature</code>\r\n  </section>\r\n\r\n  <!-- Section 4: Fire -->\r\n  <section class=\"main-section\" id=\"Fire\">\r\n    <header>Fire</header>\r\n    <p>Fire represents energy, transformation, and passion. </p><p>It is both creative and destructive, driving change in nature. Fire’s heat and light are essential for life, but its volatility also signifies danger and uncontrollable forces.</p>\r\n    <ul>\r\n      <li>Hot</li>\r\n      <li>Dynamic</li>\r\n      <li>Energetic</li>\r\n      <li>Creative</li>\r\n      <li>Destructive</li>\r\n    </ul>\r\n    <code>element fire</code><code>transformative force</code><code>passion and energy</code><code>destructive creativity</code><code>vital spark</code>\r\n  </section>\r\n\r\n  <!-- Section 5: Water -->\r\n  <section class=\"main-section\" id=\"Water\">\r\n    <header>Water</header>\r\n    <p>Water, the element of emotion and intuition, represents fluidity and the power to adapt.</p><p> It is essential for life, nurturing growth and purifying the soul. Water is also linked to the subconscious mind and the mysteries of the unknown.</p>\r\n    <ul>\r\n      <li>Fluid</li>\r\n      <li>Cool</li>\r\n      <li>Nurturing</li>\r\n      <li>Purifying</li>\r\n      <li>Mysterious</li>\r\n    </ul>\r\n    <code>element water</code><code>emotion and intuition</code><code>nurturing life</code><code>fluid adaptability</code><code>subconscious power</code>\r\n  </section>\r\n</main>\r\n",
           "ext": "html",
           "name": "index",
           "fileKey": "indexhtml"
         },
         {
-          "contents": "/* CSS content from the assignment */",
+          "contents": "/* General Styles */\r\nhtml, body {\r\n    font-family: 'Open Sans', Arial, sans-serif;\r\n    background-color: #f0f0f0;\r\n    color: #333;\r\n    margin: 0;\r\n    padding: 0;\r\n    line-height: 1.6;\r\n}\r\n\r\n/* Navbar Styling */\r\n#navbar {\r\n    position: fixed;\r\n    left: 0;\r\n    top: 0;\r\n    height: 100%;\r\n    width: 200px;\r\n    background-color: #444;\r\n    padding-top: 20px;\r\n}\r\n\r\n#navbar header {\r\n    color: #fff;\r\n    text-align: center;\r\n    font-size: 1.2em;\r\n    padding-bottom: 10px;\r\n}\r\n\r\n#navbar ul {\r\n    list-style-type: none;\r\n    padding: 0;\r\n}\r\n\r\n#navbar ul li {\r\n    margin: 15px 0;\r\n}\r\n\r\n#navbar ul li a {\r\n    color: #fff;\r\n    text-decoration: none;\r\n    font-size: 1em;\r\n    padding: 10px;\r\n    display: block;\r\n    text-align: center;\r\n}\r\n\r\n#navbar ul li a:hover {\r\n    background-color: #333;\r\n}\r\n\r\n/* Main Section Styling */\r\n#main-doc {\r\n    margin-left: 220px;\r\n    padding: 20px;\r\n}\r\n\r\n.main-section {\r\n    margin-bottom: 40px;\r\n}\r\n\r\n.main-section header {\r\n    font-size: 1.5em;\r\n    color: #444;\r\n}\r\n\r\n.main-section p {\r\n    font-size: 1em;\r\n    color: #555;\r\n}\r\n\r\n.main-section ul {\r\n    padding-left: 20px;\r\n    color: #666;\r\n}\r\n\r\n.main-section li {\r\n    margin-bottom: 5px;\r\n}\r\n\r\n.main-section code {\r\n    display: block;\r\n    background-color: #f4f4f4;\r\n    padding: 5px;\r\n    margin: 10px 0;\r\n    border-left: 4px solid #888;\r\n    color: #444;\r\n}\r\n\r\n/* Responsive Design */\r\n@media (max-width: 768px) {\r\n    #navbar {\r\n        width: 150px;\r\n    }\r\n\r\n    #main-doc {\r\n        margin-left: 170px;\r\n        padding: 10px;\r\n    }\r\n\r\n    .main-section header {\r\n        font-size: 1.2em;\r\n    }\r\n\r\n    .main-section p {\r\n        font-size: 0.9em;\r\n    }\r\n}\r\n",
           "ext": "css",
           "name": "styles",
           "fileKey": "stylescss"
@@ -475,13 +69,13 @@ Filtered JSON Contents: {
       "isManuallyApproved": false,
       "challengeFiles": [
         {
-          "contents": "<!-- HTML content from the assignment -->",
+          "contents": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Services Portfolio</title>\r\n  <link rel=\"stylesheet\" href=\"styles.css\">\r\n</head>\r\n<body>\r\n\r\n<header id=\"header\">\r\n <nav id=\"nav-bar\">\r\n    <a class=\"nav-link\" href=\"#header\">Home</a>\r\n    <a class=\"nav-link\" href=\"#services\">Services</a>\r\n    <a class=\"nav-link\" href=\"#projects\">Projects</a>\r\n</nav>\r\n  <img src=\"https://thumbs.wbm.im/pw/medium/d306a41b6261ef2e49c1cbbeb64083d8.avif\" width=\"100\" height=\"100\" id=\"header-img\" alt=\"Logo\">\r\n</header>\r\n\r\n<section id=\"header\">\r\n  <form id=\"form\" action=\"https://www.freecodecamp.com/email-submit\" method=\"POST\">\r\n    <input\r\n      name=\"email\"\r\n      id=\"email\"\r\n      type=\"email\"\r\n      placeholder=\"Enter your email address\"\r\n      required\r\n    />\r\n    \r\n    <input id=\"submit\" type=\"submit\">Submit</button>\r\n  </form>\r\n</section>\r\n\r\n<section id=\"services\">\r\n  <h2>Our Services</h2>\r\n  <div class=\"grid\">\r\n    <div class=\"desc\">\r\n      <h3>Responsive Web Design</h3>\r\n      <p>We create websites that adapt seamlessly across devices, ensuring the best user experience on mobile, tablet, and desktop.</p>\r\n    </div>\r\n  </div>\r\n  \r\n  <div class=\"grid\">\r\n    <div class=\"desc\">\r\n      <h3>English-Swedish Translation</h3>\r\n      <p>Professional translation services between English and Swedish for businesses and individuals to reach bilingual audiences.</p>\r\n    </div>\r\n  </div>\r\n  \r\n  <div class=\"grid\">\r\n    <div class=\"desc\">\r\n      <h3>Digital Archives</h3>\r\n      <p>We organize and manage your data in digital archives for easy access and secure long-term storage.</p>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"grid\">\r\n    <div class=\"desc\">\r\n      <h3>Freelance AI Content Creation</h3>\r\n      <p>Leverage AI to generate high-quality content for blogs, articles, and more—efficient and tailored to your audience.</p>\r\n    </div>\r\n  </div>\r\n</section>\r\n\r\n<section id=\"projects\">\r\n  <h2>Featured Project: Responsive Web Design</h2>\r\n  <p>We specialize in creating adaptable websites using HTML and CSS to ensure smooth functionality and design across devices.</p>\r\n  <iframe id=\"video\" width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/Jpvq93gKTxo?si=vo_uuz1ygGoD0ZWg\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>\r\n</section>\r\n\r\n<section id=\"footer\">\r\n  <p>&copy; 2024 Markus Isaksson. All rights reserved.</p>\r\n</section>\r\n\r\n</body>\r\n</html>\r\n",
           "ext": "html",
           "name": "index",
           "fileKey": "indexhtml"
         },
         {
-          "contents": "/* CSS content from the assignment */",
+          "contents": "@import 'https://fonts.googleapis.com/css?family=Lato:400,700';\r\n\r\n/* General Styles */\r\n* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  font-family: 'Lato', sans-serif;\r\n  background-color: #f4f4f4;\r\n  color: #333;\r\n  line-height: 1.6;\r\n}\r\n\r\nheader {\r\n  background-color: #007bff;\r\n  padding: 20px;\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  color: white;\r\n  position: fixed;\r\n  width:100%;\r\n}\r\n\r\n#header-img {\r\n  border-radius: 50%;\r\n}\r\n\r\n/* Navigation Bar */\r\n#nav-bar {\r\n  display: flex;\r\n  flex-direction: column;\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n  background-color: #333;\r\n  height: 100%;\r\n  padding-top: 50px;\r\n  width: 200px;\r\n}\r\n\r\n.nav-link {\r\n  color: white;\r\n  text-decoration: none;\r\n  margin: 10px 0;\r\n  font-size: 18px;\r\n  padding: 10px 20px;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.nav-link:hover {\r\n  background-color: #555;\r\n}\r\n\r\n/* Form Section */\r\n#form {\r\n  margin-left: 220px;\r\n  padding: 20px;\r\n  display: flex;\r\n  justify-content: center;\r\n}\r\n\r\n#email {\r\n  padding: 10px;\r\n  font-size: 16px;\r\n  border: 1px solid #ccc;\r\n  border-radius: 4px;\r\n  width: 300px;\r\n}\r\n\r\nbutton {\r\n  padding: 10px 20px;\r\n  font-size: 16px;\r\n  background-color: #007bff;\r\n  color: white;\r\n  border: none;\r\n  border-radius: 4px;\r\n  margin-left: 10px;\r\n  cursor: pointer;\r\n}\r\n\r\nbutton:hover {\r\n  background-color: #0056b3;\r\n}\r\n\r\n/* Services Section */\r\n#services {\r\n  margin-left: 220px;\r\n  padding: 20px;\r\n}\r\n\r\n.grid {\r\n  margin-bottom: 20px;\r\n  background-color: #fff;\r\n  padding: 20px;\r\n  border-radius: 8px;\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.desc {\r\n  margin-left: 20px;\r\n}\r\n\r\n#projects {\r\n  margin-left: 220px;\r\n  padding: 20px;\r\n}\r\n\r\n#footer {\r\n  margin-left: 220px;\r\n  padding: 20px;\r\n  text-align: center;\r\n  background-color: #f8f9fa;\r\n}\r\n\r\niframe {\r\n  max-width: 100%;\r\n  border-radius: 8px;\r\n  margin-top: 20px;\r\n}\r\n\r\n/* Media Queries */\r\n@media (max-width: 768px) {\r\n  #nav-bar {\r\n    position: static;\r\n    width: 100%;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    height: auto;\r\n  }\r\n\r\n  .nav-link {\r\n    margin: 0;\r\n  }\r\n\r\n  #form, #services, #projects, #footer {\r\n    margin-left: 0;\r\n    padding: 20px;\r\n  }\r\n\r\n  #email {\r\n    width: 100%;\r\n  }\r\n}\r\n",
           "ext": "css",
           "name": "styles",
           "fileKey": "stylescss"
@@ -495,13 +89,13 @@ Filtered JSON Contents: {
       "isManuallyApproved": false,
       "challengeFiles": [
         {
-          "contents": "<!-- HTML content from the assignment -->",
+          "contents": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>My Portfolio</title>\r\n  <link rel=\"stylesheet\" href=\"styles.css\">\r\n  <style>\r\n    /* Simple CSS for styling */\r\n    body {\r\n      font-family: Arial, sans-serif;\r\n      margin: 0;\r\n      padding: 0;\r\n    }\r\n\r\n    #navbar {\r\n      background-color: #333;\r\n      padding: 10px;\r\n    }\r\n\r\n    #navbar ul {\r\n      list-style: none;\r\n      padding: 0;\r\n      display: flex;\r\n      justify-content: space-around;\r\n    }\r\n\r\n    #navbar li {\r\n      display: inline;\r\n    }\r\n\r\n    #navbar a {\r\n      color: white;\r\n      text-decoration: none;\r\n      padding: 10px;\r\n      transition: background-color 0.3s ease;\r\n    }\r\n\r\n    #navbar a:hover {\r\n      background-color: #575757;\r\n      border-radius: 5px;\r\n    }\r\n\r\n    /* Project section styling */\r\n    #projects {\r\n      padding: 20px;\r\n      background-color: #f4f4f4;\r\n    }\r\n\r\n    #projects h2 {\r\n      text-align: center;\r\n      margin-bottom: 30px;\r\n    }\r\n\r\n    .project-tile {\r\n      background-color: white;\r\n      padding: 20px;\r\n      margin: 10px 0;\r\n      border-radius: 10px;\r\n      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\r\n    }\r\n\r\n    .project-tile h3 {\r\n      margin-top: 0;\r\n    }\r\n\r\n    /* LinkedIn button styling */\r\n    .linkedin-link {\r\n      display: block;\r\n      margin: 30px auto;\r\n      padding: 10px 20px;\r\n      background-color: #0077B5;\r\n      color: white;\r\n      text-align: center;\r\n      font-size: 16px;\r\n      border-radius: 5px;\r\n      text-decoration: none;\r\n      transition: background-color 0.3s ease;\r\n      width: fit-content;\r\n    }\r\n\r\n    .linkedin-link:hover {\r\n      background-color: #005582;\r\n    }\r\n\r\n  </style>\r\n</head>\r\n<body>\r\n\r\n  <!-- Navbar -->\r\n  <nav id=\"navbar\">\r\n    <ul>\r\n      <li><a href=\"#welcome-section\">Welcome</a></li>\r\n      <li><a href=\"#projects\">Projects</a></li>\r\n      <li><a id=\"profile-link\" href=\"https://github.com/your-profile\" target=\"_blank\">GitHub Profile</a></li>\r\n    </ul>\r\n  </nav>\r\n\r\n  <!-- Welcome Section -->\r\n  <section id=\"welcome-section\">\r\n    <h1>Welcome to My Portfolio</h1>\r\n  </section>\r\n\r\n  <!-- Projects Section -->\r\n  <section id=\"projects\">\r\n    <h2>My Projects</h2>\r\n    \r\n    <div class=\"project-tile\">\r\n      <h3>Project 1: Responsive Web Design</h3>\r\n      <p>I work with Responsive Web Design using HTML and CSS to create adaptable websites that provide a seamless experience across devices.</p>\r\n    </div>\r\n\r\n    <div class=\"project-tile\">\r\n      <h3>Project 2: FreeCodeCamp Certifications</h3>\r\n      <p>I am working towards completing all certifications from FreeCodeCamp to enhance my programming skills and knowledge.</p>\r\n    </div>\r\n\r\n    <div class=\"project-tile\">\r\n      <h3>Project 3: English-Swedish Translation</h3>\r\n      <p>I translate between English and Swedish, helping businesses and individuals with bilingual content for different markets.</p>\r\n    </div>\r\n\r\n    <div class=\"project-tile\">\r\n      <h3>Project 4: Digital Archives</h3>\r\n      <p>I create and manage digital archives on cloud-based services, organizing data for easy access and long-term storage.</p>\r\n    </div>\r\n\r\n    <div class=\"project-tile\">\r\n      <h3>Project 5: Freelance AI Content Creation</h3>\r\n      <p>I work as a freelancer creating AI-based content for websites in both English and Swedish, ensuring high-quality, engaging material.</p>\r\n    </div>\r\n\r\n    <!-- LinkedIn Profile Link -->\r\n    <a href=\"https://www.linkedin.com/in/markus-isaksson-08273a127/\" class=\"linkedin-link\" target=\"_blank\">My LinkedIn Profile</a>\r\n\r\n  </section>\r\n\r\n</body>\r\n</html>\r\n",
           "ext": "html",
           "name": "index",
           "fileKey": "indexhtml"
         },
         {
-          "contents": "/* CSS content from the assignment */",
+          "contents": "/* Basic Reset */\r\n* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\n/* Body Styling */\r\nbody {\r\n  font-family: Arial, sans-serif;\r\n  line-height: 1.6;\r\n  background-color: #f4f4f4;\r\n  color: #333;\r\n}\r\n\r\n/* Navbar Styling */\r\n#navbar {\r\n  position: fixed;\r\n  top: 0;\r\n  width: 100%;\r\n  background-color: #333;\r\n  padding: 10px 0;\r\n  text-align: center;\r\n}\r\n\r\n#navbar ul {\r\n  list-style-type: none;\r\n}\r\n\r\n#navbar ul li {\r\n  display: inline;\r\n  margin: 0 15px;\r\n}\r\n\r\n#navbar ul li a {\r\n  color: #fff;\r\n  text-decoration: none;\r\n  font-size: 1.2em;\r\n}\r\n\r\n#navbar ul li a:hover {\r\n  text-decoration: underline;\r\n}\r\n\r\n/* Welcome Section Styling */\r\n#welcome-section {\r\n  height: 100vh;\r\n  background-color: #282c34;\r\n  color: white;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n#welcome-section h1 {\r\n  font-size: 3em;\r\n}\r\n\r\n/* Projects Section Styling */\r\n#projects {\r\n  padding: 50px;\r\n  background-color: #fff;\r\n}\r\n\r\n#projects h2 {\r\n  text-align: center;\r\n  margin-bottom: 30px;\r\n}\r\n\r\n.project-tile {\r\n  background-color: #f9f9f9;\r\n  padding: 20px;\r\n  margin: 20px 0;\r\n  border-radius: 8px;\r\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.project-tile h3 {\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.project-tile a {\r\n  display: inline-block;\r\n  margin-top: 10px;\r\n  color: #333;\r\n  text-decoration: none;\r\n  font-weight: bold;\r\n}\r\n\r\n.project-tile a:hover {\r\n  color: #007BFF;\r\n}\r\n\r\n/* Media Query for Mobile */\r\n@media (max-width: 768px) {\r\n  #navbar ul li {\r\n    display: block;\r\n    margin: 10px 0;\r\n  }\r\n\r\n  #navbar ul li a {\r\n    font-size: 1em;\r\n  }\r\n\r\n  #welcome-section h1 {\r\n    font-size: 2em;\r\n  }\r\n}\r\n",
           "ext": "css",
           "name": "styles",
           "fileKey": "stylescss"
@@ -515,19 +109,19 @@ Filtered JSON Contents: {
       "isManuallyApproved": false,
       "challengeFiles": [
         {
-          "contents": "<!-- HTML content from the assignment -->",
+          "contents": "<!-- I have used Chat-GPT for a lot of this, and this is based on that I expect a lot of modern day programmers to use AI, and the prompting is completely my own, I didn't look up that at all (even though I have learned about the use of Chat-GPT for programming through trial and error and experiences from using it in other fields  -->\r\n\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Palindrome Checker</title>\r\n  <link rel=\"stylesheet\" href=\"styles.css\"> <!-- Placeholder for CSS -->\r\n</head>\r\n<body>\r\n  <div class=\"container\">\r\n    <h1>Palindrome Checker</h1>\r\n    <input type=\"text\" id=\"text-input\" placeholder=\"Enter text here\">\r\n    <button id=\"check-btn\">Check</button>\r\n    <p id=\"result\"></p>\r\n  </div>\r\n\r\n  <script src=\"script.js\"></script>\r\n</body>\r\n</html>\r\n",
           "ext": "html",
           "name": "index",
           "fileKey": "indexhtml"
         },
         {
-          "contents": "/* CSS content from the assignment */",
+          "contents": "/* I have used Chat-GPT for a lot of this, and this is based on that I expect a lot of modern day programmers to use AI, and the prompting is completely my own, I didn't look up that at all (even though I have learned about the use of Chat-GPT for programming through trial and error and experiences from using it in other fields */\r\n\r\n\r\n/* Reset styles */\r\n* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\n/* Body styling */\r\nbody {\r\n  font-family: 'Poppins', Arial, sans-serif;\r\n  background-color: #1e1e2f;\r\n  color: #e4e4e4;\r\n  line-height: 1.6;\r\n}\r\n\r\n/* Centered container */\r\n.container {\r\n  width: 100%;\r\n  min-height: 100vh;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n  gap: 20px;\r\n  padding: 20px;\r\n}\r\n\r\n/* Title styling */\r\nh1 {\r\n  font-size: 3rem;\r\n  color: #7bdaff;\r\n  text-align: center;\r\n  margin-bottom: 15px;\r\n}\r\n\r\n/* Input field styling */\r\n#text-input {\r\n  width: 300px;\r\n  padding: 12px;\r\n  font-size: 1.1rem;\r\n  border: 2px solid #7bdaff;\r\n  border-radius: 8px;\r\n  background-color: #292942;\r\n  color: #fff;\r\n  text-align: center;\r\n  transition: border-color 0.3s ease;\r\n}\r\n\r\n#text-input:focus {\r\n  border-color: #50c878;\r\n  outline: none;\r\n}\r\n\r\n/* Placeholder styling */\r\n#text-input::placeholder {\r\n  color: #b0b0b0;\r\n  font-style: italic;\r\n}\r\n\r\n/* Button styling */\r\n#check-btn {\r\n  padding: 12px 25px;\r\n  font-size: 1rem;\r\n  font-weight: bold;\r\n  color: #fff;\r\n  background-color: #50c878;\r\n  border: none;\r\n  border-radius: 12px;\r\n  cursor: pointer;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n#check-btn:hover {\r\n  background-color: #3a9f67;\r\n}\r\n\r\n/* Result display styling */\r\n#result {\r\n  margin-top: 15px;\r\n  padding: 15px;\r\n  width: 320px;\r\n  min-height: 60px;\r\n  background-color: #fff;\r\n  color: #1e1e2f;\r\n  text-align: center;\r\n  font-size: 1.2rem;\r\n  border-radius: 12px;\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);\r\n  word-wrap: break-word;\r\n}\r\n\r\n/* Add space between input and button */\r\ninput + button {\r\n  margin-top: 10px;\r\n}\r\n\r\n/* Smooth animation for input and button hover */\r\nbutton,\r\ninput {\r\n  transition: all 0.2s ease-in-out;\r\n}\r\n\r\n/* Optional additional content area */\r\n.definition-div {\r\n  width: 90%;\r\n  max-width: 400px;\r\n  padding: 20px;\r\n  background-color: #2e3440;\r\n  border-radius: 15px;\r\n  text-align: center;\r\n  color: #fff;\r\n  font-size: 1rem;\r\n  margin-top: 20px;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);\r\n}\r\n",
           "ext": "css",
           "name": "styles",
           "fileKey": "stylescss"
         },
         {
-          "contents": "/* Javascript content from the assignment */",
+          "contents": "// I have used Chat-GPT for a lot of this, and this is based on that I expect a lot of modern day programmers to use AI, and the prompting is completely my own, I didn't look up that at all (even though I have learned about the use of Chat-GPT for programming through trial and error and experiences from using it in other fields //\r\n\r\n// Function to clean the input by removing non-alphanumeric characters and normalizing case\r\nfunction cleanInput(text) {\r\n  return text.replace(/[^a-z0-9]/gi, '').toLowerCase();\r\n}\r\n\r\n// Function to check if the text is a palindrome\r\nfunction isPalindrome(text) {\r\n  const cleaned = cleanInput(text);\r\n  return cleaned === cleaned.split('').reverse().join('');\r\n}\r\n\r\n// Event listener for the \"Check\" button\r\ndocument.getElementById('check-btn').addEventListener('click', () => {\r\n  const input = document.getElementById('text-input').value.trim();\r\n  const resultElement = document.getElementById('result');\r\n\r\n  if (!input) {\r\n    alert('Please input a value');\r\n    return;\r\n  }\r\n\r\n  const message = isPalindrome(input) \r\n    ? `${input} is a palindrome` \r\n    : `${input} is not a palindrome`;\r\n\r\n  resultElement.textContent = message;\r\n});\r\n",
           "ext": "js",
           "name": "script",
           "fileKey": "scriptjs"
@@ -541,19 +135,19 @@ Filtered JSON Contents: {
       "isManuallyApproved": false,
       "challengeFiles": [
         {
-          "contents": "<!-- HTML content from the assignment -->",
+          "contents": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>Roman Numeral Converter</title>\r\n    <link rel=\"stylesheet\" href=\"styles.css\">\r\n</head>\r\n<body>\r\n    <div class=\"container\">\r\n        <h1>Roman Numeral Converter</h1>\r\n        <label for=\"number\">Enter a number (1-3999):</label>\r\n        <input type=\"number\" id=\"number\" placeholder=\"Enter a number\">\r\n        <button id=\"convert-btn\">Convert</button>\r\n        <p id=\"output\"></p>\r\n    </div>\r\n    <script src=\"script.js\"></script>\r\n</body>\r\n</html>\r\n",
           "ext": "html",
           "name": "index",
           "fileKey": "indexhtml"
         },
         {
-          "contents": "/* CSS content from the assignment */",
+          "contents": "body {\r\n    font-family: Arial, sans-serif;\r\n    background-color: #f4f4f9;\r\n    text-align: center;\r\n    padding: 50px;\r\n}\r\n\r\n.container {\r\n    background-color: white;\r\n    padding: 20px;\r\n    border-radius: 8px;\r\n    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);\r\n    max-width: 400px;\r\n    margin: 0 auto;\r\n}\r\n\r\nh1 {\r\n    color: #333;\r\n}\r\n\r\ninput {\r\n    width: 100%;\r\n    padding: 10px;\r\n    margin: 10px 0;\r\n    border: 1px solid #ccc;\r\n    border-radius: 4px;\r\n}\r\n\r\nbutton {\r\n    padding: 10px 20px;\r\n    background-color: #4CAF50;\r\n    color: white;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n    font-size: 16px;\r\n}\r\n\r\nbutton:hover {\r\n    background-color: #45a049;\r\n}\r\n\r\n#output {\r\n    margin-top: 20px;\r\n    font-size: 18px;\r\n    color: #555;\r\n}\r\n",
           "ext": "css",
           "name": "styles",
           "fileKey": "stylescss"
         },
         {
-          "contents": "/* Javascript content from the assignment */",
+          "contents": "document.getElementById('convert-btn').addEventListener('click', function() {\r\n    const number = document.getElementById('number').value;\r\n    const output = document.getElementById('output');\r\n\r\n    if (number === \"\") {\r\n        output.textContent = \"Please enter a valid number\";\r\n        return;\r\n    }\r\n\r\n    const num = parseInt(number);\r\n\r\n    if (num < 1) {\r\n        output.textContent = \"Please enter a number greater than or equal to 1\";\r\n        return;\r\n    }\r\n\r\n    if (num >= 4000) {\r\n        output.textContent = \"Please enter a number less than or equal to 3999\";\r\n        return;\r\n    }\r\n\r\n    output.textContent = convertToRoman(num);\r\n});\r\n\r\nfunction convertToRoman(num) {\r\n    const romanNumerals = [\r\n        { value: 1000, numeral: 'M' },\r\n        { value: 900, numeral: 'CM' },\r\n        { value: 500, numeral: 'D' },\r\n        { value: 400, numeral: 'CD' },\r\n        { value: 100, numeral: 'C' },\r\n        { value: 90, numeral: 'XC' },\r\n        { value: 50, numeral: 'L' },\r\n        { value: 40, numeral: 'XL' },\r\n        { value: 10, numeral: 'X' },\r\n        { value: 9, numeral: 'IX' },\r\n        { value: 5, numeral: 'V' },\r\n        { value: 4, numeral: 'IV' },\r\n        { value: 1, numeral: 'I' }\r\n    ];\r\n\r\n    let result = '';\r\n\r\n    for (const { value, numeral } of romanNumerals) {\r\n        while (num >= value) {\r\n            result += numeral;\r\n            num -= value;\r\n        }\r\n    }\r\n\r\n    return result;\r\n}\r\n",
           "ext": "js",
           "name": "script",
           "fileKey": "scriptjs"
@@ -567,19 +161,19 @@ Filtered JSON Contents: {
       "isManuallyApproved": false,
       "challengeFiles": [
         {
-          "contents": "<!-- HTML content from the assignment -->",
+          "contents": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Telephone Number Validator</title>\r\n  <link rel=\"stylesheet\" href=\"styles.css\">\r\n</head>\r\n<body>\r\n  <div class=\"container\">\r\n    <h1>US Telephone Number Validator</h1>\r\n    <input type=\"text\" id=\"user-input\" placeholder=\"Enter US phone number\">\r\n    <div class=\"buttons\">\r\n      <button id=\"check-btn\">Check</button>\r\n      <button id=\"clear-btn\">Clear</button>\r\n    </div>\r\n    <div id=\"results-div\"></div>\r\n  </div>\r\n  \r\n  <script src=\"script.js\"></script>\r\n</body>\r\n</html>\r\n",
           "ext": "html",
           "name": "index",
           "fileKey": "indexhtml"
         },
         {
-          "contents": "/* CSS content from the assignment */",
+          "contents": "body {\r\n  font-family: Arial, sans-serif;\r\n  background-color: #f7f7f7;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  height: 100vh;\r\n  margin: 0;\r\n}\r\n\r\n.container {\r\n  text-align: center;\r\n  background-color: white;\r\n  padding: 30px;\r\n  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);\r\n  border-radius: 10px;\r\n  max-width: 400px;\r\n}\r\n\r\nh1 {\r\n  color: #333;\r\n}\r\n\r\ninput {\r\n  padding: 10px;\r\n  font-size: 16px;\r\n  width: 100%;\r\n  margin-bottom: 15px;\r\n  border: 1px solid #ccc;\r\n  border-radius: 5px;\r\n}\r\n\r\n.buttons {\r\n  display: flex;\r\n  justify-content: space-between;\r\n}\r\n\r\nbutton {\r\n  padding: 10px;\r\n  font-size: 16px;\r\n  width: 45%;\r\n  background-color: #007BFF;\r\n  color: white;\r\n  border: none;\r\n  border-radius: 5px;\r\n  cursor: pointer;\r\n}\r\n\r\nbutton#clear-btn {\r\n  background-color: #dc3545;\r\n}\r\n\r\nbutton:hover {\r\n  opacity: 0.9;\r\n}\r\n\r\n#results-div {\r\n  margin-top: 20px;\r\n  font-size: 18px;\r\n}\r\n",
           "ext": "css",
           "name": "styles",
           "fileKey": "stylescss"
         },
         {
-          "contents": "/* Javascript content from the assignment */",
+          "contents": "document.getElementById('check-btn').addEventListener('click', function() {\r\n  const input = document.getElementById('user-input').value.trim();\r\n  const resultDiv = document.getElementById('results-div');\r\n\r\n  // Regular expression for validating US phone numbers\r\n  const validPhoneNumber = /^(1\\s?)?(\\(\\d{3}\\)|\\d{3})([\\s-]?)\\d{3}([\\s-]?)\\d{4}$/;\r\n\r\n  // Clear previous results\r\n  resultDiv.textContent = '';\r\n\r\n  if (input === '') {\r\n    alert('Please provide a phone number');\r\n    return;\r\n  }\r\n\r\n  if (validPhoneNumber.test(input)) {\r\n    resultDiv.textContent = `Valid US number: ${input}`;\r\n    resultDiv.style.color = 'green';\r\n  } else {\r\n    resultDiv.textContent = `Invalid US number: ${input}`;\r\n    resultDiv.style.color = 'red';\r\n  }\r\n});\r\n\r\ndocument.getElementById('clear-btn').addEventListener('click', function() {\r\n  document.getElementById('user-input').value = '';\r\n  document.getElementById('results-div').textContent = '';\r\n});\r\n",
           "ext": "js",
           "name": "script",
           "fileKey": "scriptjs"
@@ -593,19 +187,19 @@ Filtered JSON Contents: {
       "isManuallyApproved": false,
       "challengeFiles": [
         {
-          "contents": "<!-- HTML content from the assignment -->",
+          "contents": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n  <head>\r\n    <meta charset=\"UTF-8\" />\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\r\n    \r\n    <title>Cash Register</title>\r\n    <link rel=\"stylesheet\" href=\"./styles.css\" />\r\n  </head>\r\n  <body>\r\n    <main>\r\n      \r\n      <h1>Cash Register Project</h1>\r\n      <div id=\"change-due\"></div>\r\n      <div class=\"input-div\">\r\n        <label for=\"cash\">Enter cash from customer:</label>\r\n        <input type=\"number\" id=\"cash\" class=\"user-input\" value=\"\" />\r\n        <button class=\"check-btn-styles\" id=\"purchase-btn\">Purchase</button>\r\n      </div>\r\n      <div class=\"container\">\r\n        <div class=\"top-display-screen-container\">\r\n          <p id=\"price-screen\" class=\"price-screen\"></p>\r\n          <div class=\"connector\"></div>\r\n        </div>\r\n        <div class=\"top-register\">\r\n          <div class=\"btns-container\">\r\n            <button class=\"btn\"></button>\r\n            <button class=\"btn\"></button>\r\n            <button class=\"btn\"></button>\r\n            <button class=\"btn\"></button>\r\n            <button class=\"btn\"></button>\r\n            <button class=\"btn\"></button>\r\n            <button class=\"btn\"></button>\r\n            <button class=\"btn\"></button>\r\n            <button class=\"btn\"></button>\r\n          </div>\r\n          <div id=\"cash-drawer-display\" class=\"cash-drawer-display\"></div>\r\n        </div>\r\n        <div class=\"bottom-register\">\r\n          <div class=\"circle\"></div>\r\n        </div>\r\n      </div>\r\n    </main>\r\n    <script src=\"./script.js\"></script>\r\n  </body>\r\n</html>",
           "ext": "html",
           "name": "index",
           "fileKey": "indexhtml"
         },
         {
-          "contents": "/* Javascript content from the assignment */",
+          "contents": "let price = 3.26;\nlet cid = [\n  ['PENNY', 1.01],\n  ['NICKEL', 2.05],\n  ['DIME', 3.1],\n  ['QUARTER', 4.25],\n  ['ONE', 90],\n  ['FIVE', 55],\n  ['TEN', 20],\n  ['TWENTY', 60],\n  ['ONE HUNDRED', 100]\n];\n\nconst displayChangeDue = document.getElementById('change-due');\nconst cash = document.getElementById('cash');\nconst purchaseBtn = document.getElementById('purchase-btn');\nconst priceScreen = document.getElementById('price-screen');\nconst cashDrawerDisplay = document.getElementById('cash-drawer-display');\n\nconst formatResults = (status, change) => {\n  displayChangeDue.innerHTML = `<p>Status: ${status}</p>`;\n  displayChangeDue.innerHTML += change\n    .map(\n      ([denominationName, amount]) => `<p>${denominationName}: $${amount.toFixed(2)}</p>`\n    )\n    .join('');\n};\n\nconst updateUI = change => {\n  const currencyNameMap = {\n    PENNY: 'Pennies',\n    NICKEL: 'Nickels',\n    DIME: 'Dimes',\n    QUARTER: 'Quarters',\n    ONE: 'Ones',\n    FIVE: 'Fives',\n    TEN: 'Tens',\n    TWENTY: 'Twenties',\n    'ONE HUNDRED': 'Hundreds'\n  };\n  if (change) {\n    change.forEach(([changeDenomination, changeAmount]) => {\n      const targetArr = cid.find(\n        ([denominationName, _]) => denominationName === changeDenomination\n      );\n      targetArr[1] =\n        (Math.round(targetArr[1] * 100) - Math.round(changeAmount * 100)) / 100;\n    });\n  }\n\n  cash.value = '';\n  priceScreen.textContent = `Total: $${price}`;\n  cashDrawerDisplay.innerHTML = `<p><strong>Change in drawer:</strong></p>\n    ${cid\n      .map(\n        ([denominationName, amount]) =>\n          `<p>${currencyNameMap[denominationName]}: $${amount.toFixed(2)}</p>`\n      )\n      .join('')}\n  `;\n};\n\nconst checkCashRegister = () => {\n  const cashInCents = Math.round(Number(cash.value) * 100);\n  const priceInCents = Math.round(price * 100);\n  if (cashInCents < priceInCents) {\n    alert('Customer does not have enough money to purchase the item');\n    cash.value = '';\n    return;\n  }\n\n  if (cashInCents === priceInCents) {\n    displayChangeDue.innerHTML =\n      '<p>No change due - customer paid with exact cash</p>';\n    cash.value = '';\n    return;\n  }\n\n  let changeDue = cashInCents - priceInCents;\n  const reversedCid = [...cid]\n    .reverse()\n    .map(([denominationName, amount]) => [\n      denominationName,\n      Math.round(amount * 100)\n    ]);\n  const denominations = [10000, 2000, 1000, 500, 100, 25, 10, 5, 1];\n  const result = { status: 'OPEN', change: [] };\n  const totalCID = reversedCid.reduce((prev, [_, amount]) => prev + amount, 0);\n\n  if (totalCID < changeDue) {\n    displayChangeDue.innerHTML = '<p>Status: INSUFFICIENT_FUNDS</p>';\n    return;\n  }\n\n  if (totalCID === changeDue) {\n    result.status = 'CLOSED';\n  }\n\n  for (let i = 0; i <= reversedCid.length; i++) {\n    if (changeDue >= denominations[i] && changeDue > 0) {\n      const [denominationName, total] = reversedCid[i];\n      const possibleChange = Math.min(total, changeDue);\n      const count = Math.floor(possibleChange / denominations[i]);\n      const amountInChange = count * denominations[i];\n      changeDue -= amountInChange;\n\n      if (count > 0) {\n        result.change.push([denominationName, amountInChange / 100]);\n      }\n    }\n  }\n  if (changeDue > 0) {\n    displayChangeDue.innerHTML = '<p>Status: INSUFFICIENT_FUNDS</p>';\n    return;\n  }\n\n  formatResults(result.status, result.change);\n  updateUI(result.change);\n};\n\nconst checkResults = () => {\n  if (!cash.value) {\n    return;\n  }\n  checkCashRegister();\n};\n\npurchaseBtn.addEventListener('click', checkResults);\n\ncash.addEventListener('keydown', e => {\n  if (e.key === 'Enter') {\n    checkResults();\n  }\n});\n\nupdateUI();",
           "ext": "js",
           "name": "script",
           "fileKey": "scriptjs"
         },
         {
-          "contents": "/* CSS content from the assignment */",
+          "contents": "* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\n:root {\r\n  --light-gray: #f0f0f0;\r\n  --dark-blue: #2c3e50;\r\n  --primary-color: #e74c3c;\r\n  --secondary-color: #3498db;\r\n}\r\n\r\nbody {\r\n  background-color: var(--light-gray);\r\n  color: var(--dark-blue);\r\n  font-family: 'Arial', sans-serif;\r\n}\r\n\r\nmain {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  align-items: center;\r\n  justify-content: center;\r\n  flex-direction: column;\r\n  padding: 40px 10px;\r\n}\r\n\r\nh1 {\r\n  font-size: 2.5rem;\r\n  margin: 20px 0;\r\n  text-align: center;\r\n  color: var(--primary-color);\r\n}\r\n\r\n#change-due {\r\n  text-align: left;\r\n  font-size: 1.2rem;\r\n}\r\n\r\n.container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.input-div {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n  flex-wrap: wrap;\r\n  margin: 10px 0 20px;\r\n}\r\n\r\nlabel {\r\n  font-size: 18px;\r\n}\r\n\r\n.user-input {\r\n  height: 30px;\r\n  padding: 10px;\r\n  margin: 10px;\r\n  font-size: 15px;\r\n  border: 1px solid var(--dark-blue);\r\n}\r\n\r\n.price-screen {\r\n  border: 5px solid var(--secondary-color);\r\n  background-color: var(--primary-color);\r\n  height: 50px;\r\n  width: 200px;\r\n  margin-left: -40px;\r\n  color: white;\r\n  font-size: 1.2rem;\r\n  text-align: center;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n\r\n.connector {\r\n  margin-left: -20px;\r\n  background-color: var(--secondary-color);\r\n  height: 30px;\r\n  width: 40px;\r\n}\r\n\r\n.top-register {\r\n  display: flex;\r\n  justify-content: space-around;\r\n  border-radius: 35px 35px 0 0;\r\n  padding-top: 20px;\r\n  background-color: var(--secondary-color);\r\n  height: 250px;\r\n  width: 325px;\r\n}\r\n\r\n.btns-container {\r\n  width: 25%;\r\n}\r\n\r\n.btn {\r\n  border-radius: 10%;\r\n  border: none;\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: var(--primary-color);\r\n}\r\n\r\n.check-btn-styles {\r\n  cursor: pointer;\r\n  width: 100px;\r\n  height: 30px;\r\n  margin: 10px;\r\n  color: var(--light-gray);\r\n  font-size: 18px;\r\n  font-weight: bold;\r\n  background-color: var(--dark-blue);\r\n  border: 2px solid var(--primary-color);\r\n}\r\n\r\n.cash-drawer-display {\r\n  font-size: 1.1rem;\r\n  background-color: white;\r\n  width: 55%;\r\n  height: 95%;\r\n  color: black;\r\n  padding: 10px;\r\n}\r\n\r\n.bottom-register {\r\n  background-color: var(--secondary-color);\r\n  height: 50px;\r\n  width: 325px;\r\n  margin-top: 10px;\r\n}\r\n\r\n.circle {\r\n  margin: 15px auto;\r\n  border-radius: 50%;\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: var(--primary-color);\r\n}",
           "ext": "css",
           "name": "styles",
           "fileKey": "stylescss"
@@ -619,19 +213,19 @@ Filtered JSON Contents: {
       "isManuallyApproved": false,
       "challengeFiles": [
         {
-          "contents": "<!-- HTML content from the assignment -->",
+          "contents": "<!-- I have utilized ChatGPT and Github's Copilot as resources for guidance and learning throughout this project. My approach reflects the growing trend of modern developers using AI tools to enhance their coding processes. However, all the final code presented here is my own work, based on own independently thought out  prompts and without copying  prompts or code from others other than than snippets. I believe this practice aligns with the principles of academic honesty, as it emphasizes learning and using technology responsibly. \r\n-->\r\n\r\n\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n  <head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>My Pokémon Search App</title>\r\n    <link rel=\"stylesheet\" href=\"styles.css\">\r\n  </head>\r\n  <body>\r\n    <main>\r\n      <h1>My Pokémon Search App</h1>\r\n      <div class=\"custom-container\">\r\n        <form role=\"search\" id=\"custom-search-form\">\r\n          <label for=\"search-input\">Search for Pokémon Name or ID:</label>\r\n          <input type=\"text\" id=\"search-input\" required>\r\n          <button type=\"submit\" id=\"search-button\">Search</button>\r\n        </form>\r\n        <div class=\"custom-output\">\r\n          <div class=\"custom-top-container\">\r\n            <div class=\"custom-name-and-id\">\r\n              <span id=\"pokemon-name\"></span>\r\n              <span id=\"pokemon-id\"></span>\r\n            </div>\r\n            <div class=\"custom-size\">\r\n              <span id=\"weight\"></span>\r\n              <span id=\"height\"></span>\r\n            </div>\r\n            <div id=\"sprite-container\" class=\"custom-sprite-container\"></div>\r\n            <div id=\"types\"></div>\r\n          </div>\r\n          <div class=\"custom-bottom-container\">\r\n            <table>\r\n              <tr>\r\n                <th>Base</th>\r\n                <th>Stats</th>\r\n              </tr>\r\n              <tr>\r\n                <td>HP:</td>\r\n                <td id=\"hp\"></td>\r\n              </tr>\r\n              <tr>\r\n                <td>Attack:</td>\r\n                <td id=\"attack\"></td>\r\n              </tr>\r\n              <tr>\r\n                <td>Defense:</td>\r\n                <td id=\"defense\"></td>\r\n              </tr>\r\n              <tr>\r\n                <td>Sp. Attack:</td>\r\n                <td id=\"special-attack\"></td>\r\n              </tr>\r\n              <tr>\r\n                <td>Sp. Defense:</td>\r\n                <td id=\"special-defense\"></td>\r\n              </tr>\r\n              <tr>\r\n                <td>Speed:</td>\r\n                <td id=\"speed\"></td>\r\n              </tr>\r\n            </table>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <script src=\"script.js\"></script>\r\n    </main>\r\n  </body>\r\n</html>\r\n",
           "ext": "html",
           "name": "index",
           "fileKey": "indexhtml"
         },
         {
-          "contents": "/* CSS content from the assignment */",
+          "contents": "/* I have utilized ChatGPT and Github's Copilot as resources for guidance and learning throughout this project. My approach reflects the growing trend of modern developers using AI tools to enhance their coding processes. However, all the final code presented here is my own work, based on own independently thought out  prompts and without copying  prompts or code from others other than than snippets. I believe this practice aligns with the principles of academic honesty, as it emphasizes learning and using technology responsibly. \r\n*/\r\n\r\n\r\n*, *::before, *::after {\r\n  box-sizing: border-box;\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n\r\nbody {\r\n  font-family: 'Arial', sans-serif;\r\n  background-color: #282c34;\r\n  color: #ffffff;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  height: 100vh;\r\n  margin: 0;\r\n}\r\n\r\nmain {\r\n  text-align: center;\r\n}\r\n\r\n.logo {\r\n  height: 40px;\r\n  margin: 20px 0;\r\n}\r\n\r\nh1 {\r\n  font-size: 2.5em;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.search-container {\r\n  background-color: #20232a;\r\n  padding: 20px;\r\n  border-radius: 10px;\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n#search-form {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n#search-input {\r\n  padding: 10px;\r\n  width: 80%;\r\n  border: none;\r\n  border-radius: 5px;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n#search-button {\r\n  padding: 10px 20px;\r\n  border: none;\r\n  border-radius: 5px;\r\n  background-color: #61dafb;\r\n  color: #282c34;\r\n  cursor: pointer;\r\n}\r\n\r\n.results {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n}\r\n\r\n.info {\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.sprite {\r\n  width: 150px;\r\n  height: 150px;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.types {\r\n  display: flex;\r\n  gap: 10px;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.stats {\r\n  width: 100%;\r\n  border-collapse: collapse;\r\n}\r\n\r\n.stats th, .stats td {\r\n  padding: 10px;\r\n  border: 1px solid #ffffff;\r\n}\r\n\r\n.stats th {\r\n  background-color: #61dafb;\r\n  color: #20232a;\r\n}\r\n\r\n.stats td {\r\n  background-color: #20232a;\r\n}",
           "ext": "css",
           "name": "styles",
           "fileKey": "stylescss"
         },
         {
-          "contents": "/* Javascript content from the assignment */",
+          "contents": "/* I have utilized ChatGPT and Github's Copilot as resources for guidance and learning throughout this project. My approach reflects the growing trend of modern developers using AI tools to enhance their coding processes. However, all the final code presented here is my own work, based on own independently thought out  prompts and without copying  prompts or code from others other than than snippets. I believe this practice aligns with the principles of academic honesty, as it emphasizes learning and using technology responsibly. \r\n*/\r\n\r\ndocument.getElementById('search-button').addEventListener('click', async function(event) {\r\n    event.preventDefault();\r\n    \r\n    const searchInput = document.getElementById('search-input').value.toLowerCase().trim();\r\n    \r\n    const pokemonNameElement = document.getElementById('pokemon-name');\r\n    const pokemonIdElement = document.getElementById('pokemon-id');\r\n    const weightElement = document.getElementById('weight');\r\n    const heightElement = document.getElementById('height');\r\n    const typesElement = document.getElementById('types');\r\n    const hpElement = document.getElementById('hp');\r\n    const attackElement = document.getElementById('attack');\r\n    const defenseElement = document.getElementById('defense');\r\n    const specialAttackElement = document.getElementById('special-attack');\r\n    const specialDefenseElement = document.getElementById('special-defense');\r\n    const speedElement = document.getElementById('speed');\r\n    const spriteContainer = document.getElementById('sprite-container');\r\n    \r\n    const resetDisplay = () => {\r\n        pokemonNameElement.textContent = '';\r\n        pokemonIdElement.textContent = '';\r\n        weightElement.textContent = '';\r\n        heightElement.textContent = '';\r\n        typesElement.innerHTML = '';\r\n        hpElement.textContent = '';\r\n        attackElement.textContent = '';\r\n        defenseElement.textContent = '';\r\n        specialAttackElement.textContent = '';\r\n        specialDefenseElement.textContent = '';\r\n        speedElement.textContent = '';\r\n        spriteContainer.innerHTML = '';\r\n    };\r\n\r\n    if (searchInput === 'red') {\r\n        alert('Pokémon not found');\r\n        return;\r\n    }\r\n\r\n    const url = `https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/${searchInput}`;\r\n    try {\r\n        const response = await fetch(url);\r\n        if (!response.ok) throw new Error('Pokémon not found');\r\n        const data = await response.json();\r\n\r\n        pokemonNameElement.textContent = data.name.toUpperCase();\r\n        pokemonIdElement.textContent = `#${data.id}`;\r\n        weightElement.textContent = `Weight: ${data.weight}`;\r\n        heightElement.textContent = `Height: ${data.height}`;\r\n        \r\n        \r\n        typesElement.innerHTML = '';\r\n        data.types.forEach(typeInfo => {\r\n            const typeElement = document.createElement('div');\r\n            typeElement.textContent = typeInfo.type.name.toUpperCase();\r\n            typesElement.appendChild(typeElement);\r\n        });\r\n\r\n        hpElement.textContent = data.stats[0].base_stat;\r\n        attackElement.textContent = data.stats[1].base_stat;\r\n        defenseElement.textContent = data.stats[2].base_stat;\r\n        specialAttackElement.textContent = data.stats[3].base_stat;\r\n        specialDefenseElement.textContent = data.stats[4].base_stat;\r\n        speedElement.textContent = data.stats[5].base_stat;\r\n\r\n        spriteContainer.innerHTML = '';\r\n        const spriteElement = document.createElement('img');\r\n        spriteElement.src = data.sprites.front_default;\r\n        spriteElement.id = 'sprite';\r\n        spriteContainer.appendChild(spriteElement);\r\n\r\n    } catch (error) {\r\n        resetDisplay();\r\n        alert('Pokémon not found');\r\n    }\r\n});\r\n",
           "ext": "js",
           "name": "script",
           "fileKey": "scriptjs"
@@ -789,7 +383,7 @@ Filtered JSON Contents: {
       "challengeType": 23,
       "challengeFiles": [
         {
-          "contents": "# Python content from the assignment",
+          "contents": "#I have utilized ChatGPT and to a smaller extent Perplexity as resources for guidance and learning throughout this project. My approach reflects the growing trend of modern developers using AI tools to enhance their coding processes. However, all the final code presented here is my own work, based on own independently thought out prompts and without copying prompts or code from others other than snippets. I believe this practice aligns with the principles of academic honesty, as it emphasizes learning and using technology responsibly.\n\ndef arithmetic_arranger(problems, show_answers=False):\n    if len(problems) > 5:\n        return \"Error: Too many problems.\"\n    \n    first_line = []\n    second_line = []\n    dash_line = []\n    answer_line = []\n\n    for problem in problems:\n        parts = problem.split()\n        if len(parts) != 3:\n            return \"Error: Invalid problem format.\"\n        \n        operand1, operator, operand2 = parts\n\n        if operator not in ['+', '-']:\n            return \"Error: Operator must be '+' or '-'.\"\n        \n        if not (operand1.isdigit() and operand2.isdigit()):\n            return \"Error: Numbers must only contain digits.\"\n        \n        if len(operand1) > 4 or len(operand2) > 4:\n            return \"Error: Numbers cannot be more than four digits.\"\n        \n        length = max(len(operand1), len(operand2)) + 2\n        first_line.append(operand1.rjust(length))\n        second_line.append(operator + \" \" + operand2.rjust(length - 2))\n        dash_line.append(\"-\" * length)\n\n        if show_answers:\n            result = str(eval(problem))\n            answer_line.append(result.rjust(length))\n    \n    arranged_problems = (\n        \"    \".join(first_line) + \"\\n\" +\n        \"    \".join(second_line) + \"\\n\" +\n        \"    \".join(dash_line)\n    )\n    if show_answers:\n        arranged_problems += \"\\n\" + \"    \".join(answer_line)\n    \n    return arranged_problems\n\nprint(arithmetic_arranger([\"32 + 698\", \"3801 - 2\", \"45 + 43\", \"123 + 49\"]))\nprint(arithmetic_arranger([\"32 + 8\", \"1 - 3801\", \"9999 + 9999\", \"523 - 49\"], True))\n",
           "ext": "py",
           "name": "main",
           "fileKey": "mainpy"
@@ -802,7 +396,7 @@ Filtered JSON Contents: {
       "challengeType": 23,
       "challengeFiles": [
         {
-          "contents": "# Python content from the assignment",
+          "contents": "#I have utilized ChatGPT and to a smaller extent Perplexity as resources for guidance and learning throughout this project. My approach reflects the growing trend of modern developers using AI tools to enhance their coding processes. However, all the final code presented here is my own work, based on own independently thought out prompts and without copying prompts or code from others other than snippets. I believe this practice aligns with the principles of academic honesty, as it emphasizes learning and using technology responsibly.\n\ndef add_time(start, duration, start_day=None):\n    def get_day_index(day):\n        days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']\n        return days.index(day.capitalize())\n    \n    def get_day_name(index):\n        days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']\n        return days[index % 7]\n\n    time, period = start.split()\n    start_hour, start_minute = map(int, time.split(':'))\n\n    if period == 'PM':\n        start_hour += 12\n\n    dur_hours, dur_minutes = map(int, duration.split(':'))\n\n    total_minutes = start_minute + dur_minutes\n    extra_hours = total_minutes // 60\n    new_minute = total_minutes % 60\n\n    total_hours = start_hour + dur_hours + extra_hours\n    days_later = total_hours // 24\n    new_hour = total_hours % 24\n\n    new_period = 'AM' if new_hour < 12 else 'PM'\n    if new_hour == 0:\n        new_hour = 12\n    elif new_hour > 12:\n        new_hour -= 12\n\n    new_time = f\"{new_hour}:{new_minute:02d} {new_period}\"\n\n    if start_day:\n        start_day_index = get_day_index(start_day)\n        new_day = get_day_name(start_day_index + days_later)\n        new_time += f\", {new_day}\"\n\n    if days_later == 1:\n        new_time += \" (next day)\"\n    elif days_later > 1:\n        new_time += f\" ({days_later} days later)\"\n\n    return new_time\n",
           "ext": "py",
           "name": "main",
           "fileKey": "mainpy"
@@ -815,7 +409,33 @@ Filtered JSON Contents: {
       "challengeType": 23,
       "challengeFiles": [
         {
-          "contents": "# Python content from the assignment",
+          "contents": "#I have utilized ChatGPT and to a smaller extent Perplexity as resources for guidance and learning throughout this project. My approach reflects the growing trend of modern developers using AI tools to enhance their coding processes. However, all the final code presented here is my own work, based on own independently thought out prompts and without copying prompts or code from others other than snippets. I believe this practice aligns with the principles of academic honesty, as it emphasizes learning and using technology responsibly.\n\nclass Category:\n    def __init__(self, name):\n        self.name = name\n        self.ledger = []\n    \n    def deposit(self, amount, description=\"\"):\n        self.ledger.append({\"amount\": amount, \"description\": description})\n    \n    def withdraw(self, amount, description=\"\"):\n        if self.check_funds(amount):\n            self.ledger.append({\"amount\": -amount, \"description\": description})\n            return True\n        return False\n    \n    def get_balance(self):\n        return sum(item[\"amount\"] for item in self.ledger)\n    \n    def transfer(self, amount, category):\n        if self.check_funds(amount):\n            self.withdraw(amount, f\"Transfer to {category.name}\")\n            category.deposit(amount, f\"Transfer from {self.name}\")\n            return True\n        return False\n    \n    def check_funds(self, amount):\n        return amount <= self.get_balance()\n    \n    def __str__(self):\n        title = f\"{self.name:*^30}\\n\"\n        items = \"\"\n        for item in self.ledger:\n            description = f\"{item['description'][:23]:<23}\"\n            amount = f\"{item['amount']:.2f}\"\n            items += f\"{description}{amount:>7}\\n\"\n        total = f\"Total: {self.get_balance():.2f}\"\n        return title + items + total\n\n\ndef create_spend_chart(categories):\n    spending = {category.name: 0 for category in categories}\n    for category in categories:\n        for item in category.ledger:\n            if item[\"amount\"] < 0:\n                spending[category.name] += -item[\"amount\"]\n\n    total_spent = sum(spending.values())\n    percentages = {name: (spent / total_spent) * 100 for name, spent in spending.items()}\n\n    chart = \"Percentage spent by category\\n\"\n    for i in range(100, -1, -10):\n        chart += f\"{i:>3}| \"\n        for name in categories:\n            chart += \"o  \" if percentages[name.name] >= i else \"   \"\n        chart += \"\\n\"\n\n    chart += \"    \" + \"-\" * (len(categories) * 3 + 1) + \"\\n\"\n\n    max_length = max(len(category.name) for category in categories)\n    names = [category.name.ljust(max_length) for category in categories]\n    for i in range(max_length):\n        chart += \"     \" + \"  \".join(name[i] for name in names) + \"  \\n\"\n\n    return chart.rstrip(\"\\n\")\n",
+          "ext": "py",
+          "name": "main",
+          "fileKey": "mainpy"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1732820153929,
+      "challengeType": 23,
+      "challengeFiles": [
+        {
+          "contents": "#I have utilized ChatGPT and to a smaller extent Perplexity as resources for guidance and learning throughout this project. My approach reflects the growing trend of modern developers using AI tools to enhance their coding processes. However, all the final code presented here is my own work, based on own independently thought out prompts and without copying prompts or code from others other than snippets. I believe this practice aligns with the principles of academic honesty, as it emphasizes learning and using technology responsibly.\n\nclass Rectangle:\n    def __init__(self, width, height):\n        self.width = width\n        self.height = height\n\n    def set_width(self, width):\n        self.width = width\n\n    def set_height(self, height):\n        self.height = height\n\n    def get_area(self):\n        return self.width * self.height\n\n    def get_perimeter(self):\n        return 2 * self.width + 2 * self.height\n\n    def get_diagonal(self):\n        return (self.width ** 2 + self.height ** 2) ** 0.5\n\n    def get_picture(self):\n        if self.width > 50 or self.height > 50:\n            return \"Too big for picture.\"\n        return (\"*\" * self.width + \"\\n\") * self.height\n\n    def get_amount_inside(self, shape):\n        return (self.width // shape.width) * (self.height // shape.height)\n\n    def __str__(self):\n        return f\"Rectangle(width={self.width}, height={self.height})\"\n\n\nclass Square(Rectangle):\n    def __init__(self, side):\n        super().__init__(side, side)\n\n    def set_side(self, side):\n        self.width = side\n        self.height = side\n\n    def set_width(self, width):\n        self.set_side(width)\n\n    def set_height(self, height):\n        self.set_side(height)\n\n    def __str__(self):\n        return f\"Square(side={self.width})\"\n",
+          "ext": "py",
+          "name": "main",
+          "fileKey": "mainpy"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1732885746686,
+      "challengeType": 23,
+      "challengeFiles": [
+        {
+          "contents": "#I have utilized ChatGPT a resource for guidance and learning throughout this project. My approach reflects the growing trend of modern developers using AI tools to enhance their coding processes. However, all the final code presented here is my own work, based on own independently thought out prompts and without copying prompts or code from others other than snippets. I believe this practice aligns with the principles of academic honesty, as it emphasizes learning and using technology responsibly.\n\nimport copy\nimport random\n\nclass Hat:\n    def __init__(self, **kwargs):\n        self.contents = []\n        for color, count in kwargs.items():\n            self.contents.extend([color] * count)\n\n    def draw(self, num_balls):\n        if num_balls >= len(self.contents):\n            all_balls = self.contents[:]\n            self.contents.clear()  # Clear the hat after removing all balls\n            return all_balls\n        return [self.contents.pop(random.randrange(len(self.contents))) for _ in range(num_balls)]\n\n\ndef experiment(hat, expected_balls, num_balls_drawn, num_experiments):\n    success_count = 0\n\n    for _ in range(num_experiments):\n        hat_copy = copy.deepcopy(hat)\n        drawn_balls = hat_copy.draw(num_balls_drawn)\n\n        drawn_counts = {color: drawn_balls.count(color) for color in expected_balls}\n\n        success = all(drawn_counts.get(color, 0) >= count for color, count in expected_balls.items())\n        if success:\n            success_count += 1\n\n    return success_count / num_experiments\n\n\nhat = Hat(blue=5, red=4, green=2)\nprobability = experiment(hat=hat, expected_balls={\"red\": 1, \"green\": 2}, num_balls_drawn=4, num_experiments=2000)\nprint(f\"Probability: {probability}\")\n",
           "ext": "py",
           "name": "main",
           "fileKey": "mainpy"
@@ -841,7 +461,7 @@ Filtered JSON Contents: {
   "isJsAlgoDataStructCert": false,
   "isRelationalDatabaseCertV8": true,
   "isRespWebDesignCert": true,
-  "isSciCompPyCertV7": false,
+  "isSciCompPyCertV7": true,
   "isDataAnalysisPyCertV7": false,
   "isMachineLearningPyCertV7": false,
   "isCollegeAlgebraPyCertV8": false,
@@ -851,7 +471,7 @@ Filtered JSON Contents: {
   "location": "Uppsala, Sweden",
   "name": "Markus Isaksson",
   "partiallyCompletedChallenges": [],
-  "points": 3279,
+  "points": 3372,
   "portfolio": [],
   "profileUI": {
     "isLocked": false,
@@ -867,11 +487,11 @@ Filtered JSON Contents: {
   },
   "savedChallenges": [
     {
+      "id": "(id removed)",
       "lastSavedDate": 1728230552200,
-      "id": "(id removed)",
       "challengeFiles": [
         {
-          "contents": "<!-- HTML content from the assignment -->",
+          "contents": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <link rel=\"stylesheet\" href=\"styles.css\">\r\n    <title>Freelance Service Inquiry</title>\r\n</head>\r\n<body>\r\n    <h1 id=\"title\">Freelance Service Request</h1>\r\n    <p id=\"description\">Please fill out the form below to inquire about my freelance services. I'll get back to you as soon as possible!</p>\r\n    \r\n    <form id=\"survey-form\">\r\n        <!-- Name Field -->\r\n        <label id=\"name-label\" for=\"name\">Full Name (or Company):</label>\r\n        <input id=\"name\" type=\"text\" placeholder=\"John Doe\" required>\r\n\r\n        <!-- Email Field -->\r\n        <label id=\"email-label\" for=\"email\">Email Address:</label>\r\n        <input id=\"email\" type=\"email\" placeholder=\"example@mail.com\" required>\r\n\r\n        <!-- Phone Number Field -->\r\n        <label id=\"number-label\" for=\"number\">Phone Number:</label>\r\n        <input id=\"number\" type=\"number\" min=\"1000000\" max=\"999999999999\" placeholder=\"Enter your phone number\">\r\n\r\n        <!-- Service Dropdown -->\r\n        <label for=\"dropdown\">Service You Are Interested In:</label>\r\n        <select id=\"dropdown\" required>\r\n            <option value=\"\" disabled selected>Select a service</option>\r\n            <option value=\"web-design\">Web Design</option>\r\n            <option value=\"graphic-design\">Graphic Design</option>\r\n            <option value=\"seo\">SEO & Marketing</option>\r\n            <option value=\"consultation\">Consultation</option>\r\n        </select>\r\n\r\n        <!-- Repeat Customer Radio Buttons -->\r\n        <fieldset>\r\n            <legend>Have you worked with me before?</legend>\r\n            <label><input type=\"radio\" name=\"repeatcustomer\" value=\"yes\"> Yes</label>\r\n            <label><input type=\"radio\" name=\"repeatcustomer\" value=\"no\" checked> No</label>\r\n        </fieldset>\r\n\r\n        <!-- Checkbox Options -->\r\n        <fieldset>\r\n            <legend>What specific service do you need?</legend>\r\n            <label><input type=\"checkbox\" name=\"service\" value=\"webdesign\"> Web Design</label>\r\n            <label><input type=\"checkbox\" name=\"service\" value=\"branding\"> Branding</label>\r\n            <label><input type=\"checkbox\" name=\"service\" value=\"other\"> Other</label>\r\n        </fieldset>\r\n\r\n        <!-- Additional Information Textarea -->\r\n        <label for=\"additional-info\">Additional Details:</label>\r\n        <textarea id=\"additional-info\" rows=\"4\" placeholder=\"Describe your project or ask any questions here...\"></textarea>\r\n\r\n        <!-- Submit Button -->\r\n        <button id=\"submit\" type=\"submit\">Submit Inquiry</button>\r\n    </form>\r\n\r\n</body>\r\n</html>\r\n",
           "ext": "html",
           "name": "index",
           "history": [
@@ -880,7 +500,7 @@ Filtered JSON Contents: {
           "fileKey": "indexhtml"
         },
         {
-          "contents": "/* CSS content from the assignment */",
+          "contents": "body {\r\n    font-family: 'Arial', sans-serif;\r\n    font-size: 1rem;\r\n    line-height: 1.6;\r\n    color: var(--color-white);\r\n    margin: 0;\r\n    padding: 20px;\r\n    background: var(--color-darkblue);\r\n    background-image: linear-gradient(115deg, rgba(58, 58, 158, 0.8), rgba(136, 136, 206, 0.7)), url('https://i.pinimg.com/736x/dd/bd/ed/ddbded1691784f657359cec9796edbeb--royalty-free-stock-footage-stock-video.jpg');\r\n    background-size: cover;\r\n    background-repeat: no-repeat;\r\n    background-position: center;\r\n    height: 100vh;\r\n}\r\n\r\nh1 {\r\n    text-align: center;\r\n    margin-bottom: 1rem;\r\n    color: var(--color-green);\r\n}\r\n\r\np {\r\n    text-align: center;\r\n    margin-bottom: 1.5rem;\r\n    font-size: 1.1rem;\r\n}\r\n\r\nform {\r\n    max-width: 500px;\r\n    margin: 0 auto;\r\n    background-color: var(--color-darkblue-alpha);\r\n    padding: 20px;\r\n    border-radius: 10px;\r\n    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);\r\n}\r\n\r\nlabel {\r\n    font-size: 1rem;\r\n    margin-bottom: 0.5rem;\r\n    display: block;\r\n}\r\n\r\ninput, select, textarea {\r\n    width: 100%;\r\n    padding: 10px;\r\n    margin-bottom: 1rem;\r\n    border-radius: 5px;\r\n    border: 1px solid #ccc;\r\n}\r\n\r\ninput[type=\"radio\"], input[type=\"checkbox\"] {\r\n    width: auto;\r\n    margin-right: 10px;\r\n}\r\n\r\nfieldset {\r\n    margin-bottom: 1.5rem;\r\n}\r\n\r\nbutton {\r\n    background-color: var(--color-green);\r\n    color: white;\r\n    border: none;\r\n    padding: 10px 20px;\r\n    border-radius: 5px;\r\n    cursor: pointer;\r\n    font-size: 1rem;\r\n}\r\n\r\nbutton:hover {\r\n    background-color: #2e8b57;\r\n}\r\n\r\n:root {\r\n    --color-white: #f3f3f3;\r\n    --color-darkblue: #1b1b32;\r\n    --color-darkblue-alpha: rgba(27, 27, 50, 0.8);\r\n    --color-green: #37af65;\r\n}\r\n",
           "ext": "css",
           "name": "styles",
           "history": [
@@ -891,11 +511,11 @@ Filtered JSON Contents: {
       ]
     },
     {
+      "id": "(id removed)",
       "lastSavedDate": 1728230925113,
-      "id": "(id removed)",
       "challengeFiles": [
         {
-          "contents": "<!-- HTML content from the assignment -->",
+          "contents": "<main id=\"main\">\r\n  <link rel=\"stylesheet\" href=\"styles.css\">\r\n\r\n  <!-- Title Section -->\r\n  <header id=\"header\">\r\n    <h1 id=\"title\">A Tribute to Greece</h1>\r\n  </header>\r\n\r\n  <!-- Image Section -->\r\n  <figure id=\"img-div\">\r\n<img id=\"image\" src=\"https://images.freeimages.com/images/premium/previews/3897/38974378-greece-athens-the-parthenon.jpg\" alt=\"The Parthenon, Athens, Greece\" />\r\n    <figcaption id=\"img-caption\">The Parthenon - Symbol of Ancient Greece</figcaption>      </figure>\r\n  \r\n  <!-- Tribute Text Section -->\r\n  <section id=\"tribute-text\">\r\n    <p>\r\n      Greece, a land where history and myth intertwine, stands as the birthplace of democracy, philosophy, and the arts. From the towering Parthenon to the serene Aegean Sea, every corner echoes with tales of gods, heroes, and thinkers who shaped the world.\r\n    </p>\r\n    <p>\r\n      Your philosophers—Socrates, Plato, and Aristotle—have given us ideas that endure, and poets like Homer and Sappho captured the human spirit in their timeless verses. The Olympic Games, born here, symbolize both competition and unity, values that continue to inspire.\r\n    </p>\r\n    <p>\r\n      Beyond the history, Greece pulses with a vibrant modern culture. From the lively streets of Athens to the peaceful island villages, your hospitality, rich cuisine, and joyous music remind us of life's beauty and resilience.\r\n    </p>\r\n    <p>\r\n      Greece, you stand tall through the ages, with a legacy that continues to influence and inspire the world. In your timeless essence, you remind us of freedom, wisdom, and the beauty of living fully.\r\n    </p>\r\n  </section>\r\n\r\n  <!-- Visit Greece Section -->\r\n  <section id=\"tribute-info\">\r\n    <a id=\"tribute-link\" href=\"https://www.visitgreece.gr\" target=\"_blank\">Discover More About Greece</a>\r\n  </section>\r\n\r\n</main>\r\n\r\n",
           "ext": "html",
           "name": "index",
           "history": [
@@ -904,7 +524,7 @@ Filtered JSON Contents: {
           "fileKey": "indexhtml"
         },
         {
-          "contents": "/* CSS content from the assignment */",
+          "contents": "<!-- Styles -->\r\n  /* Global Styles */\r\n  body {\r\n    margin: 0;\r\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;\r\n    background-color: #f4f4f4;\r\n    color: #333;\r\n  }\r\n\r\n  /* Main Styles */\r\n  main {\r\n    max-width: 900px;\r\n    margin: 20px auto;\r\n    padding: 20px;\r\n    background-color: #fff;\r\n    border-radius: 10px;\r\n    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);\r\n    text-align: center;\r\n  }\r\n\r\n  /* Title Styles */\r\n  #title {\r\n    font-size: 2.5rem;\r\n    margin-bottom: 20px;\r\n    color: #2a2a2a;\r\n  }\r\n\r\n  /* Image Styles */\r\n  #img-div {\r\n    margin-bottom: 20px;\r\n  }\r\n\r\n  #image {\r\n    max-width: 100%;\r\n    height: auto;\r\n    border-radius: 8px;\r\n    display: block;\r\n    margin: 0 auto;\r\n  }\r\n\r\n  #img-caption {\r\n    font-size: 1rem;\r\n    margin-top: 8px;\r\n    color: #666;\r\n  }\r\n\r\n  /* Tribute Text Styles */\r\n  #tribute-text {\r\n    font-size: 1.25rem;\r\n    line-height: 1.75;\r\n    margin-bottom: 30px;\r\n    color: #444;\r\n  }\r\n\r\n  /* Link Styles */\r\n  #tribute-link {\r\n    font-size: 1.1rem;\r\n    color: #0056b3;\r\n    text-decoration: none;\r\n    border-bottom: 2px solid #0056b3;\r\n  }\r\n\r\n  #tribute-link:hover {\r\n    color: #00376b;\r\n    border-bottom: 2px solid #00376b;\r\n  }\r\n",
           "ext": "css",
           "name": "styles",
           "history": [
@@ -915,11 +535,11 @@ Filtered JSON Contents: {
       ]
     },
     {
+      "id": "(id removed)",
       "lastSavedDate": 1728231416784,
-      "id": "(id removed)",
       "challengeFiles": [
         {
-          "contents": "<!-- HTML content from the assignment -->",
+          "contents": "<head>\r\n  <link rel=\"stylesheet\" href=\"styles.css\"> \r\n</head>\r\n\r\n<main id=\"main-doc\">\r\n  <!-- Navigation Menu on the left -->\r\n  <nav id=\"navbar\">\r\n    <header>The 5 Classical Elements</header>\r\n    <ul>\r\n      <li><a class=\"nav-link\" href=\"#Aether\">Aether</a></li>\r\n      <li><a class=\"nav-link\" href=\"#Air\">Air</a></li>\r\n      <li><a class=\"nav-link\" href=\"#Earth\">Earth</a></li>\r\n      <li><a class=\"nav-link\" href=\"#Fire\">Fire</a></li>\r\n      <li><a class=\"nav-link\" href=\"#Water\">Water</a></li>\r\n    </ul>\r\n  </nav>\r\n\r\n  <!-- Section 1: Aether -->\r\n  <section class=\"main-section\" id=\"Aether\">\r\n    <header>Aether</header>\r\n    <p>Aether, also known as the \"quintessence,\" was believed to be the divine, ethereal substance that filled the universe beyond the Earth. </p><p>It was the element of the heavens, distinct from the physical world, representing purity and immortality.</p>\r\n    <ul>\r\n      <li>Divine</li>\r\n      <li>Ethereal</li>\r\n      <li>All-encompassing</li>\r\n      <li>Luminous</li>\r\n      <li>Infinite</li>\r\n    </ul>\r\n    <code>element aether</code><code>infinite potential</code><code>cosmic force</code><code>divine connection</code><code>transcendent essence</code>\r\n  </section>\r\n\r\n  <!-- Section 2: Air -->\r\n  <section class=\"main-section\" id=\"Air\">\r\n    <header>Air</header>\r\n    <p>Air, the element of thought, intellect, and communication, is associated with freedom and mental clarity. </p><p>It symbolizes life force, breath, and the unseen forces that animate all living things. In many traditions, it also serves as the bridge between the divine and the material worlds.</p>\r\n    <ul>\r\n      <li>Light</li>\r\n      <li>Fluid</li>\r\n      <li>Invisible</li>\r\n      <li>Ever-changing</li>\r\n      <li>Vital</li>\r\n    </ul>\r\n    <code>element air</code><code>thoughts in motion</code><code>intellect rising</code><code>communication bridge</code><code>breath of life</code>\r\n  </section>\r\n\r\n  <!-- Section 3: Earth -->\r\n  <section class=\"main-section\" id=\"Earth\">\r\n    <header>Earth</header>\r\n    <p>Earth, the element of stability and foundation, represents the physical world.</p><p> It is the ground beneath our feet, symbolizing strength, fertility, and endurance. Earth is immovable and slow to change, embodying persistence and material existence.</p>\r\n    <ul>\r\n      <li>Solid</li>\r\n      <li>Stable</li>\r\n      <li>Unyielding</li>\r\n      <li>Fertile</li>\r\n      <li>Enduring</li>\r\n    </ul>\r\n    <code>element earth</code><code>foundation of life</code><code>stability and growth</code><code>material strength</code><code>unchanging nature</code>\r\n  </section>\r\n\r\n  <!-- Section 4: Fire -->\r\n  <section class=\"main-section\" id=\"Fire\">\r\n    <header>Fire</header>\r\n    <p>Fire represents energy, transformation, and passion. </p><p>It is both creative and destructive, driving change in nature. Fire’s heat and light are essential for life, but its volatility also signifies danger and uncontrollable forces.</p>\r\n    <ul>\r\n      <li>Hot</li>\r\n      <li>Dynamic</li>\r\n      <li>Energetic</li>\r\n      <li>Creative</li>\r\n      <li>Destructive</li>\r\n    </ul>\r\n    <code>element fire</code><code>transformative force</code><code>passion and energy</code><code>destructive creativity</code><code>vital spark</code>\r\n  </section>\r\n\r\n  <!-- Section 5: Water -->\r\n  <section class=\"main-section\" id=\"Water\">\r\n    <header>Water</header>\r\n    <p>Water, the element of emotion and intuition, represents fluidity and the power to adapt.</p><p> It is essential for life, nurturing growth and purifying the soul. Water is also linked to the subconscious mind and the mysteries of the unknown.</p>\r\n    <ul>\r\n      <li>Fluid</li>\r\n      <li>Cool</li>\r\n      <li>Nurturing</li>\r\n      <li>Purifying</li>\r\n      <li>Mysterious</li>\r\n    </ul>\r\n    <code>element water</code><code>emotion and intuition</code><code>nurturing life</code><code>fluid adaptability</code><code>subconscious power</code>\r\n  </section>\r\n</main>\r\n",
           "ext": "html",
           "name": "index",
           "history": [
@@ -928,7 +548,7 @@ Filtered JSON Contents: {
           "fileKey": "indexhtml"
         },
         {
-          "contents": "/* CSS content from the assignment */",
+          "contents": "/* General Styles */\r\nhtml, body {\r\n    font-family: 'Open Sans', Arial, sans-serif;\r\n    background-color: #f0f0f0;\r\n    color: #333;\r\n    margin: 0;\r\n    padding: 0;\r\n    line-height: 1.6;\r\n}\r\n\r\n/* Navbar Styling */\r\n#navbar {\r\n    position: fixed;\r\n    left: 0;\r\n    top: 0;\r\n    height: 100%;\r\n    width: 200px;\r\n    background-color: #444;\r\n    padding-top: 20px;\r\n}\r\n\r\n#navbar header {\r\n    color: #fff;\r\n    text-align: center;\r\n    font-size: 1.2em;\r\n    padding-bottom: 10px;\r\n}\r\n\r\n#navbar ul {\r\n    list-style-type: none;\r\n    padding: 0;\r\n}\r\n\r\n#navbar ul li {\r\n    margin: 15px 0;\r\n}\r\n\r\n#navbar ul li a {\r\n    color: #fff;\r\n    text-decoration: none;\r\n    font-size: 1em;\r\n    padding: 10px;\r\n    display: block;\r\n    text-align: center;\r\n}\r\n\r\n#navbar ul li a:hover {\r\n    background-color: #333;\r\n}\r\n\r\n/* Main Section Styling */\r\n#main-doc {\r\n    margin-left: 220px;\r\n    padding: 20px;\r\n}\r\n\r\n.main-section {\r\n    margin-bottom: 40px;\r\n}\r\n\r\n.main-section header {\r\n    font-size: 1.5em;\r\n    color: #444;\r\n}\r\n\r\n.main-section p {\r\n    font-size: 1em;\r\n    color: #555;\r\n}\r\n\r\n.main-section ul {\r\n    padding-left: 20px;\r\n    color: #666;\r\n}\r\n\r\n.main-section li {\r\n    margin-bottom: 5px;\r\n}\r\n\r\n.main-section code {\r\n    display: block;\r\n    background-color: #f4f4f4;\r\n    padding: 5px;\r\n    margin: 10px 0;\r\n    border-left: 4px solid #888;\r\n    color: #444;\r\n}\r\n\r\n/* Responsive Design */\r\n@media (max-width: 768px) {\r\n    #navbar {\r\n        width: 150px;\r\n    }\r\n\r\n    #main-doc {\r\n        margin-left: 170px;\r\n        padding: 10px;\r\n    }\r\n\r\n    .main-section header {\r\n        font-size: 1.2em;\r\n    }\r\n\r\n    .main-section p {\r\n        font-size: 0.9em;\r\n    }\r\n}\r\n",
           "ext": "css",
           "name": "styles",
           "history": [
@@ -939,11 +559,11 @@ Filtered JSON Contents: {
       ]
     },
     {
+      "id": "(id removed)",
       "lastSavedDate": 1728233172664,
-      "id": "(id removed)",
       "challengeFiles": [
         {
-          "contents": "<!-- HTML content from the assignment -->",
+          "contents": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Services Portfolio</title>\r\n  <link rel=\"stylesheet\" href=\"styles.css\">\r\n</head>\r\n<body>\r\n\r\n<header id=\"header\">\r\n <nav id=\"nav-bar\">\r\n    <a class=\"nav-link\" href=\"#header\">Home</a>\r\n    <a class=\"nav-link\" href=\"#services\">Services</a>\r\n    <a class=\"nav-link\" href=\"#projects\">Projects</a>\r\n</nav>\r\n  <img src=\"https://thumbs.wbm.im/pw/medium/d306a41b6261ef2e49c1cbbeb64083d8.avif\" width=\"100\" height=\"100\" id=\"header-img\" alt=\"Logo\">\r\n</header>\r\n\r\n<section id=\"header\">\r\n  <form id=\"form\" action=\"https://www.freecodecamp.com/email-submit\" method=\"POST\">\r\n    <input\r\n      name=\"email\"\r\n      id=\"email\"\r\n      type=\"email\"\r\n      placeholder=\"Enter your email address\"\r\n      required\r\n    />\r\n    \r\n    <input id=\"submit\" type=\"submit\">Submit</button>\r\n  </form>\r\n</section>\r\n\r\n<section id=\"services\">\r\n  <h2>Our Services</h2>\r\n  <div class=\"grid\">\r\n    <div class=\"desc\">\r\n      <h3>Responsive Web Design</h3>\r\n      <p>We create websites that adapt seamlessly across devices, ensuring the best user experience on mobile, tablet, and desktop.</p>\r\n    </div>\r\n  </div>\r\n  \r\n  <div class=\"grid\">\r\n    <div class=\"desc\">\r\n      <h3>English-Swedish Translation</h3>\r\n      <p>Professional translation services between English and Swedish for businesses and individuals to reach bilingual audiences.</p>\r\n    </div>\r\n  </div>\r\n  \r\n  <div class=\"grid\">\r\n    <div class=\"desc\">\r\n      <h3>Digital Archives</h3>\r\n      <p>We organize and manage your data in digital archives for easy access and secure long-term storage.</p>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"grid\">\r\n    <div class=\"desc\">\r\n      <h3>Freelance AI Content Creation</h3>\r\n      <p>Leverage AI to generate high-quality content for blogs, articles, and more—efficient and tailored to your audience.</p>\r\n    </div>\r\n  </div>\r\n</section>\r\n\r\n<section id=\"projects\">\r\n  <h2>Featured Project: Responsive Web Design</h2>\r\n  <p>We specialize in creating adaptable websites using HTML and CSS to ensure smooth functionality and design across devices.</p>\r\n  <iframe id=\"video\" width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/Jpvq93gKTxo?si=vo_uuz1ygGoD0ZWg\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>\r\n</section>\r\n\r\n<section id=\"footer\">\r\n  <p>&copy; 2024 Markus Isaksson. All rights reserved.</p>\r\n</section>\r\n\r\n</body>\r\n</html>\r\n",
           "ext": "html",
           "name": "index",
           "history": [
@@ -952,7 +572,7 @@ Filtered JSON Contents: {
           "fileKey": "indexhtml"
         },
         {
-          "contents": "/* CSS content from the assignment */",
+          "contents": "@import 'https://fonts.googleapis.com/css?family=Lato:400,700';\r\n\r\n/* General Styles */\r\n* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  font-family: 'Lato', sans-serif;\r\n  background-color: #f4f4f4;\r\n  color: #333;\r\n  line-height: 1.6;\r\n}\r\n\r\nheader {\r\n  background-color: #007bff;\r\n  padding: 20px;\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  color: white;\r\n  position: fixed;\r\n  width:100%;\r\n}\r\n\r\n#header-img {\r\n  border-radius: 50%;\r\n}\r\n\r\n/* Navigation Bar */\r\n#nav-bar {\r\n  display: flex;\r\n  flex-direction: column;\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n  background-color: #333;\r\n  height: 100%;\r\n  padding-top: 50px;\r\n  width: 200px;\r\n}\r\n\r\n.nav-link {\r\n  color: white;\r\n  text-decoration: none;\r\n  margin: 10px 0;\r\n  font-size: 18px;\r\n  padding: 10px 20px;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.nav-link:hover {\r\n  background-color: #555;\r\n}\r\n\r\n/* Form Section */\r\n#form {\r\n  margin-left: 220px;\r\n  padding: 20px;\r\n  display: flex;\r\n  justify-content: center;\r\n}\r\n\r\n#email {\r\n  padding: 10px;\r\n  font-size: 16px;\r\n  border: 1px solid #ccc;\r\n  border-radius: 4px;\r\n  width: 300px;\r\n}\r\n\r\nbutton {\r\n  padding: 10px 20px;\r\n  font-size: 16px;\r\n  background-color: #007bff;\r\n  color: white;\r\n  border: none;\r\n  border-radius: 4px;\r\n  margin-left: 10px;\r\n  cursor: pointer;\r\n}\r\n\r\nbutton:hover {\r\n  background-color: #0056b3;\r\n}\r\n\r\n/* Services Section */\r\n#services {\r\n  margin-left: 220px;\r\n  padding: 20px;\r\n}\r\n\r\n.grid {\r\n  margin-bottom: 20px;\r\n  background-color: #fff;\r\n  padding: 20px;\r\n  border-radius: 8px;\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.desc {\r\n  margin-left: 20px;\r\n}\r\n\r\n#projects {\r\n  margin-left: 220px;\r\n  padding: 20px;\r\n}\r\n\r\n#footer {\r\n  margin-left: 220px;\r\n  padding: 20px;\r\n  text-align: center;\r\n  background-color: #f8f9fa;\r\n}\r\n\r\niframe {\r\n  max-width: 100%;\r\n  border-radius: 8px;\r\n  margin-top: 20px;\r\n}\r\n\r\n/* Media Queries */\r\n@media (max-width: 768px) {\r\n  #nav-bar {\r\n    position: static;\r\n    width: 100%;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    height: auto;\r\n  }\r\n\r\n  .nav-link {\r\n    margin: 0;\r\n  }\r\n\r\n  #form, #services, #projects, #footer {\r\n    margin-left: 0;\r\n    padding: 20px;\r\n  }\r\n\r\n  #email {\r\n    width: 100%;\r\n  }\r\n}\r\n",
           "ext": "css",
           "name": "styles",
           "history": [
@@ -963,11 +583,11 @@ Filtered JSON Contents: {
       ]
     },
     {
+      "id": "(id removed)",
       "lastSavedDate": 1728233216456,
-      "id": "(id removed)",
       "challengeFiles": [
         {
-          "contents": "<!-- HTML content from the assignment -->",
+          "contents": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>My Portfolio</title>\r\n  <link rel=\"stylesheet\" href=\"styles.css\">\r\n  <style>\r\n    /* Simple CSS for styling */\r\n    body {\r\n      font-family: Arial, sans-serif;\r\n      margin: 0;\r\n      padding: 0;\r\n    }\r\n\r\n    #navbar {\r\n      background-color: #333;\r\n      padding: 10px;\r\n    }\r\n\r\n    #navbar ul {\r\n      list-style: none;\r\n      padding: 0;\r\n      display: flex;\r\n      justify-content: space-around;\r\n    }\r\n\r\n    #navbar li {\r\n      display: inline;\r\n    }\r\n\r\n    #navbar a {\r\n      color: white;\r\n      text-decoration: none;\r\n      padding: 10px;\r\n      transition: background-color 0.3s ease;\r\n    }\r\n\r\n    #navbar a:hover {\r\n      background-color: #575757;\r\n      border-radius: 5px;\r\n    }\r\n\r\n    /* Project section styling */\r\n    #projects {\r\n      padding: 20px;\r\n      background-color: #f4f4f4;\r\n    }\r\n\r\n    #projects h2 {\r\n      text-align: center;\r\n      margin-bottom: 30px;\r\n    }\r\n\r\n    .project-tile {\r\n      background-color: white;\r\n      padding: 20px;\r\n      margin: 10px 0;\r\n      border-radius: 10px;\r\n      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\r\n    }\r\n\r\n    .project-tile h3 {\r\n      margin-top: 0;\r\n    }\r\n\r\n    /* LinkedIn button styling */\r\n    .linkedin-link {\r\n      display: block;\r\n      margin: 30px auto;\r\n      padding: 10px 20px;\r\n      background-color: #0077B5;\r\n      color: white;\r\n      text-align: center;\r\n      font-size: 16px;\r\n      border-radius: 5px;\r\n      text-decoration: none;\r\n      transition: background-color 0.3s ease;\r\n      width: fit-content;\r\n    }\r\n\r\n    .linkedin-link:hover {\r\n      background-color: #005582;\r\n    }\r\n\r\n  </style>\r\n</head>\r\n<body>\r\n\r\n  <!-- Navbar -->\r\n  <nav id=\"navbar\">\r\n    <ul>\r\n      <li><a href=\"#welcome-section\">Welcome</a></li>\r\n      <li><a href=\"#projects\">Projects</a></li>\r\n      <li><a id=\"profile-link\" href=\"https://github.com/your-profile\" target=\"_blank\">GitHub Profile</a></li>\r\n    </ul>\r\n  </nav>\r\n\r\n  <!-- Welcome Section -->\r\n  <section id=\"welcome-section\">\r\n    <h1>Welcome to My Portfolio</h1>\r\n  </section>\r\n\r\n  <!-- Projects Section -->\r\n  <section id=\"projects\">\r\n    <h2>My Projects</h2>\r\n    \r\n    <div class=\"project-tile\">\r\n      <h3>Project 1: Responsive Web Design</h3>\r\n      <p>I work with Responsive Web Design using HTML and CSS to create adaptable websites that provide a seamless experience across devices.</p>\r\n    </div>\r\n\r\n    <div class=\"project-tile\">\r\n      <h3>Project 2: FreeCodeCamp Certifications</h3>\r\n      <p>I am working towards completing all certifications from FreeCodeCamp to enhance my programming skills and knowledge.</p>\r\n    </div>\r\n\r\n    <div class=\"project-tile\">\r\n      <h3>Project 3: English-Swedish Translation</h3>\r\n      <p>I translate between English and Swedish, helping businesses and individuals with bilingual content for different markets.</p>\r\n    </div>\r\n\r\n    <div class=\"project-tile\">\r\n      <h3>Project 4: Digital Archives</h3>\r\n      <p>I create and manage digital archives on cloud-based services, organizing data for easy access and long-term storage.</p>\r\n    </div>\r\n\r\n    <div class=\"project-tile\">\r\n      <h3>Project 5: Freelance AI Content Creation</h3>\r\n      <p>I work as a freelancer creating AI-based content for websites in both English and Swedish, ensuring high-quality, engaging material.</p>\r\n    </div>\r\n\r\n    <!-- LinkedIn Profile Link -->\r\n    <a href=\"https://www.linkedin.com/in/markus-isaksson-08273a127/\" class=\"linkedin-link\" target=\"_blank\">My LinkedIn Profile</a>\r\n\r\n  </section>\r\n\r\n</body>\r\n</html>\r\n",
           "ext": "html",
           "name": "index",
           "history": [
@@ -976,7 +596,7 @@ Filtered JSON Contents: {
           "fileKey": "indexhtml"
         },
         {
-          "contents": "/* CSS content from the assignment */",
+          "contents": "/* Basic Reset */\r\n* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\n/* Body Styling */\r\nbody {\r\n  font-family: Arial, sans-serif;\r\n  line-height: 1.6;\r\n  background-color: #f4f4f4;\r\n  color: #333;\r\n}\r\n\r\n/* Navbar Styling */\r\n#navbar {\r\n  position: fixed;\r\n  top: 0;\r\n  width: 100%;\r\n  background-color: #333;\r\n  padding: 10px 0;\r\n  text-align: center;\r\n}\r\n\r\n#navbar ul {\r\n  list-style-type: none;\r\n}\r\n\r\n#navbar ul li {\r\n  display: inline;\r\n  margin: 0 15px;\r\n}\r\n\r\n#navbar ul li a {\r\n  color: #fff;\r\n  text-decoration: none;\r\n  font-size: 1.2em;\r\n}\r\n\r\n#navbar ul li a:hover {\r\n  text-decoration: underline;\r\n}\r\n\r\n/* Welcome Section Styling */\r\n#welcome-section {\r\n  height: 100vh;\r\n  background-color: #282c34;\r\n  color: white;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n#welcome-section h1 {\r\n  font-size: 3em;\r\n}\r\n\r\n/* Projects Section Styling */\r\n#projects {\r\n  padding: 50px;\r\n  background-color: #fff;\r\n}\r\n\r\n#projects h2 {\r\n  text-align: center;\r\n  margin-bottom: 30px;\r\n}\r\n\r\n.project-tile {\r\n  background-color: #f9f9f9;\r\n  padding: 20px;\r\n  margin: 20px 0;\r\n  border-radius: 8px;\r\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.project-tile h3 {\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.project-tile a {\r\n  display: inline-block;\r\n  margin-top: 10px;\r\n  color: #333;\r\n  text-decoration: none;\r\n  font-weight: bold;\r\n}\r\n\r\n.project-tile a:hover {\r\n  color: #007BFF;\r\n}\r\n\r\n/* Media Query for Mobile */\r\n@media (max-width: 768px) {\r\n  #navbar ul li {\r\n    display: block;\r\n    margin: 10px 0;\r\n  }\r\n\r\n  #navbar ul li a {\r\n    font-size: 1em;\r\n  }\r\n\r\n  #welcome-section h1 {\r\n    font-size: 2em;\r\n  }\r\n}\r\n",
           "ext": "css",
           "name": "styles",
           "history": [
@@ -987,11 +607,11 @@ Filtered JSON Contents: {
       ]
     },
     {
+      "id": "(id removed)",
       "lastSavedDate": 1728851277839,
-      "id": "(id removed)",
       "challengeFiles": [
         {
-          "contents": "<!-- HTML content from the assignment -->",
+          "contents": "<!-- I have used Chat-GPT for a lot of this, and this is based on that I expect a lot of modern day programmers to use AI, and the prompting is completely my own, I didn't look up that at all (even though I have learned about the use of Chat-GPT for programming through trial and error and experiences from using it in other fields  -->\r\n\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Palindrome Checker</title>\r\n  <link rel=\"stylesheet\" href=\"styles.css\"> <!-- Placeholder for CSS -->\r\n</head>\r\n<body>\r\n  <div class=\"container\">\r\n    <h1>Palindrome Checker</h1>\r\n    <input type=\"text\" id=\"text-input\" placeholder=\"Enter text here\">\r\n    <button id=\"check-btn\">Check</button>\r\n    <p id=\"result\"></p>\r\n  </div>\r\n\r\n  <script src=\"script.js\"></script>\r\n</body>\r\n</html>\r\n",
           "ext": "html",
           "name": "index",
           "history": [
@@ -1000,7 +620,7 @@ Filtered JSON Contents: {
           "fileKey": "indexhtml"
         },
         {
-          "contents": "/* CSS content from the assignment */",
+          "contents": "/* I have used Chat-GPT for a lot of this, and this is based on that I expect a lot of modern day programmers to use AI, and the prompting is completely my own, I didn't look up that at all (even though I have learned about the use of Chat-GPT for programming through trial and error and experiences from using it in other fields */\r\n\r\n\r\n/* Reset styles */\r\n* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\n/* Body styling */\r\nbody {\r\n  font-family: 'Poppins', Arial, sans-serif;\r\n  background-color: #1e1e2f;\r\n  color: #e4e4e4;\r\n  line-height: 1.6;\r\n}\r\n\r\n/* Centered container */\r\n.container {\r\n  width: 100%;\r\n  min-height: 100vh;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n  gap: 20px;\r\n  padding: 20px;\r\n}\r\n\r\n/* Title styling */\r\nh1 {\r\n  font-size: 3rem;\r\n  color: #7bdaff;\r\n  text-align: center;\r\n  margin-bottom: 15px;\r\n}\r\n\r\n/* Input field styling */\r\n#text-input {\r\n  width: 300px;\r\n  padding: 12px;\r\n  font-size: 1.1rem;\r\n  border: 2px solid #7bdaff;\r\n  border-radius: 8px;\r\n  background-color: #292942;\r\n  color: #fff;\r\n  text-align: center;\r\n  transition: border-color 0.3s ease;\r\n}\r\n\r\n#text-input:focus {\r\n  border-color: #50c878;\r\n  outline: none;\r\n}\r\n\r\n/* Placeholder styling */\r\n#text-input::placeholder {\r\n  color: #b0b0b0;\r\n  font-style: italic;\r\n}\r\n\r\n/* Button styling */\r\n#check-btn {\r\n  padding: 12px 25px;\r\n  font-size: 1rem;\r\n  font-weight: bold;\r\n  color: #fff;\r\n  background-color: #50c878;\r\n  border: none;\r\n  border-radius: 12px;\r\n  cursor: pointer;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n#check-btn:hover {\r\n  background-color: #3a9f67;\r\n}\r\n\r\n/* Result display styling */\r\n#result {\r\n  margin-top: 15px;\r\n  padding: 15px;\r\n  width: 320px;\r\n  min-height: 60px;\r\n  background-color: #fff;\r\n  color: #1e1e2f;\r\n  text-align: center;\r\n  font-size: 1.2rem;\r\n  border-radius: 12px;\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);\r\n  word-wrap: break-word;\r\n}\r\n\r\n/* Add space between input and button */\r\ninput + button {\r\n  margin-top: 10px;\r\n}\r\n\r\n/* Smooth animation for input and button hover */\r\nbutton,\r\ninput {\r\n  transition: all 0.2s ease-in-out;\r\n}\r\n\r\n/* Optional additional content area */\r\n.definition-div {\r\n  width: 90%;\r\n  max-width: 400px;\r\n  padding: 20px;\r\n  background-color: #2e3440;\r\n  border-radius: 15px;\r\n  text-align: center;\r\n  color: #fff;\r\n  font-size: 1rem;\r\n  margin-top: 20px;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);\r\n}\r\n",
           "ext": "css",
           "name": "styles",
           "history": [
@@ -1009,7 +629,7 @@ Filtered JSON Contents: {
           "fileKey": "stylescss"
         },
         {
-          "contents": "/* Javascript content from the assignment */",
+          "contents": "// I have used Chat-GPT for a lot of this, and this is based on that I expect a lot of modern day programmers to use AI, and the prompting is completely my own, I didn't look up that at all (even though I have learned about the use of Chat-GPT for programming through trial and error and experiences from using it in other fields //\r\n\r\n// Function to clean the input by removing non-alphanumeric characters and normalizing case\r\nfunction cleanInput(text) {\r\n  return text.replace(/[^a-z0-9]/gi, '').toLowerCase();\r\n}\r\n\r\n// Function to check if the text is a palindrome\r\nfunction isPalindrome(text) {\r\n  const cleaned = cleanInput(text);\r\n  return cleaned === cleaned.split('').reverse().join('');\r\n}\r\n\r\n// Event listener for the \"Check\" button\r\ndocument.getElementById('check-btn').addEventListener('click', () => {\r\n  const input = document.getElementById('text-input').value.trim();\r\n  const resultElement = document.getElementById('result');\r\n\r\n  if (!input) {\r\n    alert('Please input a value');\r\n    return;\r\n  }\r\n\r\n  const message = isPalindrome(input) \r\n    ? `${input} is a palindrome` \r\n    : `${input} is not a palindrome`;\r\n\r\n  resultElement.textContent = message;\r\n});\r\n",
           "ext": "js",
           "name": "script",
           "history": [
@@ -1020,11 +640,11 @@ Filtered JSON Contents: {
       ]
     },
     {
+      "id": "(id removed)",
       "lastSavedDate": 1729555500308,
-      "id": "(id removed)",
       "challengeFiles": [
         {
-          "contents": "<!-- HTML content from the assignment -->",
+          "contents": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>Roman Numeral Converter</title>\r\n    <link rel=\"stylesheet\" href=\"styles.css\">\r\n</head>\r\n<body>\r\n    <div class=\"container\">\r\n        <h1>Roman Numeral Converter</h1>\r\n        <label for=\"number\">Enter a number (1-3999):</label>\r\n        <input type=\"number\" id=\"number\" placeholder=\"Enter a number\">\r\n        <button id=\"convert-btn\">Convert</button>\r\n        <p id=\"output\"></p>\r\n    </div>\r\n    <script src=\"script.js\"></script>\r\n</body>\r\n</html>\r\n",
           "ext": "html",
           "name": "index",
           "history": [
@@ -1033,7 +653,7 @@ Filtered JSON Contents: {
           "fileKey": "indexhtml"
         },
         {
-          "contents": "/* CSS content from the assignment */",
+          "contents": "body {\r\n    font-family: Arial, sans-serif;\r\n    background-color: #f4f4f9;\r\n    text-align: center;\r\n    padding: 50px;\r\n}\r\n\r\n.container {\r\n    background-color: white;\r\n    padding: 20px;\r\n    border-radius: 8px;\r\n    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);\r\n    max-width: 400px;\r\n    margin: 0 auto;\r\n}\r\n\r\nh1 {\r\n    color: #333;\r\n}\r\n\r\ninput {\r\n    width: 100%;\r\n    padding: 10px;\r\n    margin: 10px 0;\r\n    border: 1px solid #ccc;\r\n    border-radius: 4px;\r\n}\r\n\r\nbutton {\r\n    padding: 10px 20px;\r\n    background-color: #4CAF50;\r\n    color: white;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n    font-size: 16px;\r\n}\r\n\r\nbutton:hover {\r\n    background-color: #45a049;\r\n}\r\n\r\n#output {\r\n    margin-top: 20px;\r\n    font-size: 18px;\r\n    color: #555;\r\n}\r\n",
           "ext": "css",
           "name": "styles",
           "history": [
@@ -1042,7 +662,7 @@ Filtered JSON Contents: {
           "fileKey": "stylescss"
         },
         {
-          "contents": "/* Javascript content from the assignment */",
+          "contents": "document.getElementById('convert-btn').addEventListener('click', function() {\r\n    const number = document.getElementById('number').value;\r\n    const output = document.getElementById('output');\r\n\r\n    if (number === \"\") {\r\n        output.textContent = \"Please enter a valid number\";\r\n        return;\r\n    }\r\n\r\n    const num = parseInt(number);\r\n\r\n    if (num < 1) {\r\n        output.textContent = \"Please enter a number greater than or equal to 1\";\r\n        return;\r\n    }\r\n\r\n    if (num >= 4000) {\r\n        output.textContent = \"Please enter a number less than or equal to 3999\";\r\n        return;\r\n    }\r\n\r\n    output.textContent = convertToRoman(num);\r\n});\r\n\r\nfunction convertToRoman(num) {\r\n    const romanNumerals = [\r\n        { value: 1000, numeral: 'M' },\r\n        { value: 900, numeral: 'CM' },\r\n        { value: 500, numeral: 'D' },\r\n        { value: 400, numeral: 'CD' },\r\n        { value: 100, numeral: 'C' },\r\n        { value: 90, numeral: 'XC' },\r\n        { value: 50, numeral: 'L' },\r\n        { value: 40, numeral: 'XL' },\r\n        { value: 10, numeral: 'X' },\r\n        { value: 9, numeral: 'IX' },\r\n        { value: 5, numeral: 'V' },\r\n        { value: 4, numeral: 'IV' },\r\n        { value: 1, numeral: 'I' }\r\n    ];\r\n\r\n    let result = '';\r\n\r\n    for (const { value, numeral } of romanNumerals) {\r\n        while (num >= value) {\r\n            result += numeral;\r\n            num -= value;\r\n        }\r\n    }\r\n\r\n    return result;\r\n}\r\n",
           "ext": "js",
           "name": "script",
           "history": [
@@ -1053,11 +673,11 @@ Filtered JSON Contents: {
       ]
     },
     {
+      "id": "(id removed)",
       "lastSavedDate": 1729615648822,
-      "id": "(id removed)",
       "challengeFiles": [
         {
-          "contents": "<!-- HTML content from the assignment -->",
+          "contents": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Telephone Number Validator</title>\r\n  <link rel=\"stylesheet\" href=\"styles.css\">\r\n</head>\r\n<body>\r\n  <div class=\"container\">\r\n    <h1>US Telephone Number Validator</h1>\r\n    <input type=\"text\" id=\"user-input\" placeholder=\"Enter US phone number\">\r\n    <div class=\"buttons\">\r\n      <button id=\"check-btn\">Check</button>\r\n      <button id=\"clear-btn\">Clear</button>\r\n    </div>\r\n    <div id=\"results-div\"></div>\r\n  </div>\r\n  \r\n  <script src=\"script.js\"></script>\r\n</body>\r\n</html>\r\n",
           "ext": "html",
           "name": "index",
           "history": [
@@ -1066,7 +686,7 @@ Filtered JSON Contents: {
           "fileKey": "indexhtml"
         },
         {
-          "contents": "/* CSS content from the assignment */",
+          "contents": "body {\r\n  font-family: Arial, sans-serif;\r\n  background-color: #f7f7f7;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  height: 100vh;\r\n  margin: 0;\r\n}\r\n\r\n.container {\r\n  text-align: center;\r\n  background-color: white;\r\n  padding: 30px;\r\n  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);\r\n  border-radius: 10px;\r\n  max-width: 400px;\r\n}\r\n\r\nh1 {\r\n  color: #333;\r\n}\r\n\r\ninput {\r\n  padding: 10px;\r\n  font-size: 16px;\r\n  width: 100%;\r\n  margin-bottom: 15px;\r\n  border: 1px solid #ccc;\r\n  border-radius: 5px;\r\n}\r\n\r\n.buttons {\r\n  display: flex;\r\n  justify-content: space-between;\r\n}\r\n\r\nbutton {\r\n  padding: 10px;\r\n  font-size: 16px;\r\n  width: 45%;\r\n  background-color: #007BFF;\r\n  color: white;\r\n  border: none;\r\n  border-radius: 5px;\r\n  cursor: pointer;\r\n}\r\n\r\nbutton#clear-btn {\r\n  background-color: #dc3545;\r\n}\r\n\r\nbutton:hover {\r\n  opacity: 0.9;\r\n}\r\n\r\n#results-div {\r\n  margin-top: 20px;\r\n  font-size: 18px;\r\n}\r\n",
           "ext": "css",
           "name": "styles",
           "history": [
@@ -1075,7 +695,7 @@ Filtered JSON Contents: {
           "fileKey": "stylescss"
         },
         {
-          "contents": "/* Javascript content from the assignment */",
+          "contents": "document.getElementById('check-btn').addEventListener('click', function() {\r\n  const input = document.getElementById('user-input').value.trim();\r\n  const resultDiv = document.getElementById('results-div');\r\n\r\n  // Regular expression for validating US phone numbers\r\n  const validPhoneNumber = /^(1\\s?)?(\\(\\d{3}\\)|\\d{3})([\\s-]?)\\d{3}([\\s-]?)\\d{4}$/;\r\n\r\n  // Clear previous results\r\n  resultDiv.textContent = '';\r\n\r\n  if (input === '') {\r\n    alert('Please provide a phone number');\r\n    return;\r\n  }\r\n\r\n  if (validPhoneNumber.test(input)) {\r\n    resultDiv.textContent = `Valid US number: ${input}`;\r\n    resultDiv.style.color = 'green';\r\n  } else {\r\n    resultDiv.textContent = `Invalid US number: ${input}`;\r\n    resultDiv.style.color = 'red';\r\n  }\r\n});\r\n\r\ndocument.getElementById('clear-btn').addEventListener('click', function() {\r\n  document.getElementById('user-input').value = '';\r\n  document.getElementById('results-div').textContent = '';\r\n});\r\n",
           "ext": "js",
           "name": "script",
           "history": [
@@ -1086,11 +706,11 @@ Filtered JSON Contents: {
       ]
     },
     {
+      "id": "(id removed)",
       "lastSavedDate": 1729687393796,
-      "id": "(id removed)",
       "challengeFiles": [
         {
-          "contents": "<!-- HTML content from the assignment -->",
+          "contents": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n  <head>\r\n    <meta charset=\"UTF-8\" />\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\r\n    \r\n    <title>Cash Register</title>\r\n    <link rel=\"stylesheet\" href=\"./styles.css\" />\r\n  </head>\r\n  <body>\r\n    <main>\r\n      \r\n      <h1>Cash Register Project</h1>\r\n      <div id=\"change-due\"></div>\r\n      <div class=\"input-div\">\r\n        <label for=\"cash\">Enter cash from customer:</label>\r\n        <input type=\"number\" id=\"cash\" class=\"user-input\" value=\"\" />\r\n        <button class=\"check-btn-styles\" id=\"purchase-btn\">Purchase</button>\r\n      </div>\r\n      <div class=\"container\">\r\n        <div class=\"top-display-screen-container\">\r\n          <p id=\"price-screen\" class=\"price-screen\"></p>\r\n          <div class=\"connector\"></div>\r\n        </div>\r\n        <div class=\"top-register\">\r\n          <div class=\"btns-container\">\r\n            <button class=\"btn\"></button>\r\n            <button class=\"btn\"></button>\r\n            <button class=\"btn\"></button>\r\n            <button class=\"btn\"></button>\r\n            <button class=\"btn\"></button>\r\n            <button class=\"btn\"></button>\r\n            <button class=\"btn\"></button>\r\n            <button class=\"btn\"></button>\r\n            <button class=\"btn\"></button>\r\n          </div>\r\n          <div id=\"cash-drawer-display\" class=\"cash-drawer-display\"></div>\r\n        </div>\r\n        <div class=\"bottom-register\">\r\n          <div class=\"circle\"></div>\r\n        </div>\r\n      </div>\r\n    </main>\r\n    <script src=\"./script.js\"></script>\r\n  </body>\r\n</html>",
           "ext": "html",
           "name": "index",
           "history": [
@@ -1099,7 +719,7 @@ Filtered JSON Contents: {
           "fileKey": "indexhtml"
         },
         {
-          "contents": "/* Javascript content from the assignment */",
+          "contents": "let price = 3.26;\nlet cid = [\n  ['PENNY', 1.01],\n  ['NICKEL', 2.05],\n  ['DIME', 3.1],\n  ['QUARTER', 4.25],\n  ['ONE', 90],\n  ['FIVE', 55],\n  ['TEN', 20],\n  ['TWENTY', 60],\n  ['ONE HUNDRED', 100]\n];\n\nconst displayChangeDue = document.getElementById('change-due');\nconst cash = document.getElementById('cash');\nconst purchaseBtn = document.getElementById('purchase-btn');\nconst priceScreen = document.getElementById('price-screen');\nconst cashDrawerDisplay = document.getElementById('cash-drawer-display');\n\nconst formatResults = (status, change) => {\n  displayChangeDue.innerHTML = `<p>Status: ${status}</p>`;\n  displayChangeDue.innerHTML += change\n    .map(\n      ([denominationName, amount]) => `<p>${denominationName}: $${amount.toFixed(2)}</p>`\n    )\n    .join('');\n};\n\nconst updateUI = change => {\n  const currencyNameMap = {\n    PENNY: 'Pennies',\n    NICKEL: 'Nickels',\n    DIME: 'Dimes',\n    QUARTER: 'Quarters',\n    ONE: 'Ones',\n    FIVE: 'Fives',\n    TEN: 'Tens',\n    TWENTY: 'Twenties',\n    'ONE HUNDRED': 'Hundreds'\n  };\n  if (change) {\n    change.forEach(([changeDenomination, changeAmount]) => {\n      const targetArr = cid.find(\n        ([denominationName, _]) => denominationName === changeDenomination\n      );\n      targetArr[1] =\n        (Math.round(targetArr[1] * 100) - Math.round(changeAmount * 100)) / 100;\n    });\n  }\n\n  cash.value = '';\n  priceScreen.textContent = `Total: $${price}`;\n  cashDrawerDisplay.innerHTML = `<p><strong>Change in drawer:</strong></p>\n    ${cid\n      .map(\n        ([denominationName, amount]) =>\n          `<p>${currencyNameMap[denominationName]}: $${amount.toFixed(2)}</p>`\n      )\n      .join('')}\n  `;\n};\n\nconst checkCashRegister = () => {\n  const cashInCents = Math.round(Number(cash.value) * 100);\n  const priceInCents = Math.round(price * 100);\n  if (cashInCents < priceInCents) {\n    alert('Customer does not have enough money to purchase the item');\n    cash.value = '';\n    return;\n  }\n\n  if (cashInCents === priceInCents) {\n    displayChangeDue.innerHTML =\n      '<p>No change due - customer paid with exact cash</p>';\n    cash.value = '';\n    return;\n  }\n\n  let changeDue = cashInCents - priceInCents;\n  const reversedCid = [...cid]\n    .reverse()\n    .map(([denominationName, amount]) => [\n      denominationName,\n      Math.round(amount * 100)\n    ]);\n  const denominations = [10000, 2000, 1000, 500, 100, 25, 10, 5, 1];\n  const result = { status: 'OPEN', change: [] };\n  const totalCID = reversedCid.reduce((prev, [_, amount]) => prev + amount, 0);\n\n  if (totalCID < changeDue) {\n    displayChangeDue.innerHTML = '<p>Status: INSUFFICIENT_FUNDS</p>';\n    return;\n  }\n\n  if (totalCID === changeDue) {\n    result.status = 'CLOSED';\n  }\n\n  for (let i = 0; i <= reversedCid.length; i++) {\n    if (changeDue >= denominations[i] && changeDue > 0) {\n      const [denominationName, total] = reversedCid[i];\n      const possibleChange = Math.min(total, changeDue);\n      const count = Math.floor(possibleChange / denominations[i]);\n      const amountInChange = count * denominations[i];\n      changeDue -= amountInChange;\n\n      if (count > 0) {\n        result.change.push([denominationName, amountInChange / 100]);\n      }\n    }\n  }\n  if (changeDue > 0) {\n    displayChangeDue.innerHTML = '<p>Status: INSUFFICIENT_FUNDS</p>';\n    return;\n  }\n\n  formatResults(result.status, result.change);\n  updateUI(result.change);\n};\n\nconst checkResults = () => {\n  if (!cash.value) {\n    return;\n  }\n  checkCashRegister();\n};\n\npurchaseBtn.addEventListener('click', checkResults);\n\ncash.addEventListener('keydown', e => {\n  if (e.key === 'Enter') {\n    checkResults();\n  }\n});\n\nupdateUI();",
           "ext": "js",
           "name": "script",
           "history": [
@@ -1108,7 +728,7 @@ Filtered JSON Contents: {
           "fileKey": "scriptjs"
         },
         {
-          "contents": "/* CSS content from the assignment */",
+          "contents": "* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\n:root {\r\n  --light-gray: #f0f0f0;\r\n  --dark-blue: #2c3e50;\r\n  --primary-color: #e74c3c;\r\n  --secondary-color: #3498db;\r\n}\r\n\r\nbody {\r\n  background-color: var(--light-gray);\r\n  color: var(--dark-blue);\r\n  font-family: 'Arial', sans-serif;\r\n}\r\n\r\nmain {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  align-items: center;\r\n  justify-content: center;\r\n  flex-direction: column;\r\n  padding: 40px 10px;\r\n}\r\n\r\nh1 {\r\n  font-size: 2.5rem;\r\n  margin: 20px 0;\r\n  text-align: center;\r\n  color: var(--primary-color);\r\n}\r\n\r\n#change-due {\r\n  text-align: left;\r\n  font-size: 1.2rem;\r\n}\r\n\r\n.container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.input-div {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n  flex-wrap: wrap;\r\n  margin: 10px 0 20px;\r\n}\r\n\r\nlabel {\r\n  font-size: 18px;\r\n}\r\n\r\n.user-input {\r\n  height: 30px;\r\n  padding: 10px;\r\n  margin: 10px;\r\n  font-size: 15px;\r\n  border: 1px solid var(--dark-blue);\r\n}\r\n\r\n.price-screen {\r\n  border: 5px solid var(--secondary-color);\r\n  background-color: var(--primary-color);\r\n  height: 50px;\r\n  width: 200px;\r\n  margin-left: -40px;\r\n  color: white;\r\n  font-size: 1.2rem;\r\n  text-align: center;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n\r\n.connector {\r\n  margin-left: -20px;\r\n  background-color: var(--secondary-color);\r\n  height: 30px;\r\n  width: 40px;\r\n}\r\n\r\n.top-register {\r\n  display: flex;\r\n  justify-content: space-around;\r\n  border-radius: 35px 35px 0 0;\r\n  padding-top: 20px;\r\n  background-color: var(--secondary-color);\r\n  height: 250px;\r\n  width: 325px;\r\n}\r\n\r\n.btns-container {\r\n  width: 25%;\r\n}\r\n\r\n.btn {\r\n  border-radius: 10%;\r\n  border: none;\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: var(--primary-color);\r\n}\r\n\r\n.check-btn-styles {\r\n  cursor: pointer;\r\n  width: 100px;\r\n  height: 30px;\r\n  margin: 10px;\r\n  color: var(--light-gray);\r\n  font-size: 18px;\r\n  font-weight: bold;\r\n  background-color: var(--dark-blue);\r\n  border: 2px solid var(--primary-color);\r\n}\r\n\r\n.cash-drawer-display {\r\n  font-size: 1.1rem;\r\n  background-color: white;\r\n  width: 55%;\r\n  height: 95%;\r\n  color: black;\r\n  padding: 10px;\r\n}\r\n\r\n.bottom-register {\r\n  background-color: var(--secondary-color);\r\n  height: 50px;\r\n  width: 325px;\r\n  margin-top: 10px;\r\n}\r\n\r\n.circle {\r\n  margin: 15px auto;\r\n  border-radius: 50%;\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: var(--primary-color);\r\n}",
           "ext": "css",
           "name": "styles",
           "history": [
@@ -1119,11 +739,11 @@ Filtered JSON Contents: {
       ]
     },
     {
+      "id": "(id removed)",
       "lastSavedDate": 1729702105990,
-      "id": "(id removed)",
       "challengeFiles": [
         {
-          "contents": "<!-- HTML content from the assignment -->",
+          "contents": "<!-- I have utilized ChatGPT and Github's Copilot as resources for guidance and learning throughout this project. My approach reflects the growing trend of modern developers using AI tools to enhance their coding processes. However, all the final code presented here is my own work, based on own independently thought out  prompts and without copying  prompts or code from others other than than snippets. I believe this practice aligns with the principles of academic honesty, as it emphasizes learning and using technology responsibly. \r\n-->\r\n\r\n\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n  <head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>My Pokémon Search App</title>\r\n    <link rel=\"stylesheet\" href=\"styles.css\">\r\n  </head>\r\n  <body>\r\n    <main>\r\n      <h1>My Pokémon Search App</h1>\r\n      <div class=\"custom-container\">\r\n        <form role=\"search\" id=\"custom-search-form\">\r\n          <label for=\"search-input\">Search for Pokémon Name or ID:</label>\r\n          <input type=\"text\" id=\"search-input\" required>\r\n          <button type=\"submit\" id=\"search-button\">Search</button>\r\n        </form>\r\n        <div class=\"custom-output\">\r\n          <div class=\"custom-top-container\">\r\n            <div class=\"custom-name-and-id\">\r\n              <span id=\"pokemon-name\"></span>\r\n              <span id=\"pokemon-id\"></span>\r\n            </div>\r\n            <div class=\"custom-size\">\r\n              <span id=\"weight\"></span>\r\n              <span id=\"height\"></span>\r\n            </div>\r\n            <div id=\"sprite-container\" class=\"custom-sprite-container\"></div>\r\n            <div id=\"types\"></div>\r\n          </div>\r\n          <div class=\"custom-bottom-container\">\r\n            <table>\r\n              <tr>\r\n                <th>Base</th>\r\n                <th>Stats</th>\r\n              </tr>\r\n              <tr>\r\n                <td>HP:</td>\r\n                <td id=\"hp\"></td>\r\n              </tr>\r\n              <tr>\r\n                <td>Attack:</td>\r\n                <td id=\"attack\"></td>\r\n              </tr>\r\n              <tr>\r\n                <td>Defense:</td>\r\n                <td id=\"defense\"></td>\r\n              </tr>\r\n              <tr>\r\n                <td>Sp. Attack:</td>\r\n                <td id=\"special-attack\"></td>\r\n              </tr>\r\n              <tr>\r\n                <td>Sp. Defense:</td>\r\n                <td id=\"special-defense\"></td>\r\n              </tr>\r\n              <tr>\r\n                <td>Speed:</td>\r\n                <td id=\"speed\"></td>\r\n              </tr>\r\n            </table>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <script src=\"script.js\"></script>\r\n    </main>\r\n  </body>\r\n</html>\r\n",
           "ext": "html",
           "name": "index",
           "history": [
@@ -1132,7 +752,7 @@ Filtered JSON Contents: {
           "fileKey": "indexhtml"
         },
         {
-          "contents": "/* CSS content from the assignment */",
+          "contents": "/* I have utilized ChatGPT and Github's Copilot as resources for guidance and learning throughout this project. My approach reflects the growing trend of modern developers using AI tools to enhance their coding processes. However, all the final code presented here is my own work, based on own independently thought out  prompts and without copying  prompts or code from others other than than snippets. I believe this practice aligns with the principles of academic honesty, as it emphasizes learning and using technology responsibly. \r\n*/\r\n\r\n\r\n*, *::before, *::after {\r\n  box-sizing: border-box;\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n\r\nbody {\r\n  font-family: 'Arial', sans-serif;\r\n  background-color: #282c34;\r\n  color: #ffffff;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  height: 100vh;\r\n  margin: 0;\r\n}\r\n\r\nmain {\r\n  text-align: center;\r\n}\r\n\r\n.logo {\r\n  height: 40px;\r\n  margin: 20px 0;\r\n}\r\n\r\nh1 {\r\n  font-size: 2.5em;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.search-container {\r\n  background-color: #20232a;\r\n  padding: 20px;\r\n  border-radius: 10px;\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n#search-form {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n#search-input {\r\n  padding: 10px;\r\n  width: 80%;\r\n  border: none;\r\n  border-radius: 5px;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n#search-button {\r\n  padding: 10px 20px;\r\n  border: none;\r\n  border-radius: 5px;\r\n  background-color: #61dafb;\r\n  color: #282c34;\r\n  cursor: pointer;\r\n}\r\n\r\n.results {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n}\r\n\r\n.info {\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.sprite {\r\n  width: 150px;\r\n  height: 150px;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.types {\r\n  display: flex;\r\n  gap: 10px;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.stats {\r\n  width: 100%;\r\n  border-collapse: collapse;\r\n}\r\n\r\n.stats th, .stats td {\r\n  padding: 10px;\r\n  border: 1px solid #ffffff;\r\n}\r\n\r\n.stats th {\r\n  background-color: #61dafb;\r\n  color: #20232a;\r\n}\r\n\r\n.stats td {\r\n  background-color: #20232a;\r\n}",
           "ext": "css",
           "name": "styles",
           "history": [
@@ -1141,7 +761,7 @@ Filtered JSON Contents: {
           "fileKey": "stylescss"
         },
         {
-          "contents": "/* Javascript content from the assignment */",
+          "contents": "/* I have utilized ChatGPT and Github's Copilot as resources for guidance and learning throughout this project. My approach reflects the growing trend of modern developers using AI tools to enhance their coding processes. However, all the final code presented here is my own work, based on own independently thought out  prompts and without copying  prompts or code from others other than than snippets. I believe this practice aligns with the principles of academic honesty, as it emphasizes learning and using technology responsibly. \r\n*/\r\n\r\ndocument.getElementById('search-button').addEventListener('click', async function(event) {\r\n    event.preventDefault();\r\n    \r\n    const searchInput = document.getElementById('search-input').value.toLowerCase().trim();\r\n    \r\n    const pokemonNameElement = document.getElementById('pokemon-name');\r\n    const pokemonIdElement = document.getElementById('pokemon-id');\r\n    const weightElement = document.getElementById('weight');\r\n    const heightElement = document.getElementById('height');\r\n    const typesElement = document.getElementById('types');\r\n    const hpElement = document.getElementById('hp');\r\n    const attackElement = document.getElementById('attack');\r\n    const defenseElement = document.getElementById('defense');\r\n    const specialAttackElement = document.getElementById('special-attack');\r\n    const specialDefenseElement = document.getElementById('special-defense');\r\n    const speedElement = document.getElementById('speed');\r\n    const spriteContainer = document.getElementById('sprite-container');\r\n    \r\n    const resetDisplay = () => {\r\n        pokemonNameElement.textContent = '';\r\n        pokemonIdElement.textContent = '';\r\n        weightElement.textContent = '';\r\n        heightElement.textContent = '';\r\n        typesElement.innerHTML = '';\r\n        hpElement.textContent = '';\r\n        attackElement.textContent = '';\r\n        defenseElement.textContent = '';\r\n        specialAttackElement.textContent = '';\r\n        specialDefenseElement.textContent = '';\r\n        speedElement.textContent = '';\r\n        spriteContainer.innerHTML = '';\r\n    };\r\n\r\n    if (searchInput === 'red') {\r\n        alert('Pokémon not found');\r\n        return;\r\n    }\r\n\r\n    const url = `https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/${searchInput}`;\r\n    try {\r\n        const response = await fetch(url);\r\n        if (!response.ok) throw new Error('Pokémon not found');\r\n        const data = await response.json();\r\n\r\n        pokemonNameElement.textContent = data.name.toUpperCase();\r\n        pokemonIdElement.textContent = `#${data.id}`;\r\n        weightElement.textContent = `Weight: ${data.weight}`;\r\n        heightElement.textContent = `Height: ${data.height}`;\r\n        \r\n        \r\n        typesElement.innerHTML = '';\r\n        data.types.forEach(typeInfo => {\r\n            const typeElement = document.createElement('div');\r\n            typeElement.textContent = typeInfo.type.name.toUpperCase();\r\n            typesElement.appendChild(typeElement);\r\n        });\r\n\r\n        hpElement.textContent = data.stats[0].base_stat;\r\n        attackElement.textContent = data.stats[1].base_stat;\r\n        defenseElement.textContent = data.stats[2].base_stat;\r\n        specialAttackElement.textContent = data.stats[3].base_stat;\r\n        specialDefenseElement.textContent = data.stats[4].base_stat;\r\n        speedElement.textContent = data.stats[5].base_stat;\r\n\r\n        spriteContainer.innerHTML = '';\r\n        const spriteElement = document.createElement('img');\r\n        spriteElement.src = data.sprites.front_default;\r\n        spriteElement.id = 'sprite';\r\n        spriteContainer.appendChild(spriteElement);\r\n\r\n    } catch (error) {\r\n        resetDisplay();\r\n        alert('Pokémon not found');\r\n    }\r\n});\r\n",
           "ext": "js",
           "name": "script",
           "history": [
@@ -1152,11 +772,11 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "lastSavedDate": 1731751781332,
       "id": "(id removed)",
+      "lastSavedDate": 1732886099304,
       "challengeFiles": [
         {
-          "contents": "# Python content from the assignment",
+          "contents": "#I have utilized ChatGPT and to a smaller extent Perplexity as resources for guidance and learning throughout this project. My approach reflects the growing trend of modern developers using AI tools to enhance their coding processes. However, all the final code presented here is my own work, based on own independently thought out prompts and without copying prompts or code from others other than snippets. I believe this practice aligns with the principles of academic honesty, as it emphasizes learning and using technology responsibly.\n\ndef arithmetic_arranger(problems, show_answers=False):\n    if len(problems) > 5:\n        return \"Error: Too many problems.\"\n    \n    first_line = []\n    second_line = []\n    dash_line = []\n    answer_line = []\n\n    for problem in problems:\n        parts = problem.split()\n        if len(parts) != 3:\n            return \"Error: Invalid problem format.\"\n        \n        operand1, operator, operand2 = parts\n\n        if operator not in ['+', '-']:\n            return \"Error: Operator must be '+' or '-'.\"\n        \n        if not (operand1.isdigit() and operand2.isdigit()):\n            return \"Error: Numbers must only contain digits.\"\n        \n        if len(operand1) > 4 or len(operand2) > 4:\n            return \"Error: Numbers cannot be more than four digits.\"\n        \n        length = max(len(operand1), len(operand2)) + 2\n        first_line.append(operand1.rjust(length))\n        second_line.append(operator + \" \" + operand2.rjust(length - 2))\n        dash_line.append(\"-\" * length)\n\n        if show_answers:\n            result = str(eval(problem))\n            answer_line.append(result.rjust(length))\n    \n    arranged_problems = (\n        \"    \".join(first_line) + \"\\n\" +\n        \"    \".join(second_line) + \"\\n\" +\n        \"    \".join(dash_line)\n    )\n    if show_answers:\n        arranged_problems += \"\\n\" + \"    \".join(answer_line)\n    \n    return arranged_problems\n\nprint(arithmetic_arranger([\"32 + 698\", \"3801 - 2\", \"45 + 43\", \"123 + 49\"]))\nprint(arithmetic_arranger([\"32 + 8\", \"1 - 3801\", \"9999 + 9999\", \"523 - 49\"], True))\n",
           "ext": "py",
           "name": "main",
           "history": [
@@ -1167,11 +787,11 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "lastSavedDate": 1732479882602,
       "id": "(id removed)",
+      "lastSavedDate": 1732886057801,
       "challengeFiles": [
         {
-          "contents": "# Python content from the assignment",
+          "contents": "#I have utilized ChatGPT and to a smaller extent Perplexity as resources for guidance and learning throughout this project. My approach reflects the growing trend of modern developers using AI tools to enhance their coding processes. However, all the final code presented here is my own work, based on own independently thought out prompts and without copying prompts or code from others other than snippets. I believe this practice aligns with the principles of academic honesty, as it emphasizes learning and using technology responsibly.\n\ndef add_time(start, duration, start_day=None):\n    def get_day_index(day):\n        days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']\n        return days.index(day.capitalize())\n    \n    def get_day_name(index):\n        days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']\n        return days[index % 7]\n\n    time, period = start.split()\n    start_hour, start_minute = map(int, time.split(':'))\n\n    if period == 'PM':\n        start_hour += 12\n\n    dur_hours, dur_minutes = map(int, duration.split(':'))\n\n    total_minutes = start_minute + dur_minutes\n    extra_hours = total_minutes // 60\n    new_minute = total_minutes % 60\n\n    total_hours = start_hour + dur_hours + extra_hours\n    days_later = total_hours // 24\n    new_hour = total_hours % 24\n\n    new_period = 'AM' if new_hour < 12 else 'PM'\n    if new_hour == 0:\n        new_hour = 12\n    elif new_hour > 12:\n        new_hour -= 12\n\n    new_time = f\"{new_hour}:{new_minute:02d} {new_period}\"\n\n    if start_day:\n        start_day_index = get_day_index(start_day)\n        new_day = get_day_name(start_day_index + days_later)\n        new_time += f\", {new_day}\"\n\n    if days_later == 1:\n        new_time += \" (next day)\"\n    elif days_later > 1:\n        new_time += f\" ({days_later} days later)\"\n\n    return new_time\n",
           "ext": "py",
           "name": "main",
           "history": [
@@ -1182,11 +802,11 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "lastSavedDate": 1732562834543,
       "id": "(id removed)",
+      "lastSavedDate": 1732886014643,
       "challengeFiles": [
         {
-          "contents": "# Python content from the assignment",
+          "contents": "#I have utilized ChatGPT and to a smaller extent Perplexity as resources for guidance and learning throughout this project. My approach reflects the growing trend of modern developers using AI tools to enhance their coding processes. However, all the final code presented here is my own work, based on own independently thought out prompts and without copying prompts or code from others other than snippets. I believe this practice aligns with the principles of academic honesty, as it emphasizes learning and using technology responsibly.\n\nclass Category:\n    def __init__(self, name):\n        self.name = name\n        self.ledger = []\n    \n    def deposit(self, amount, description=\"\"):\n        self.ledger.append({\"amount\": amount, \"description\": description})\n    \n    def withdraw(self, amount, description=\"\"):\n        if self.check_funds(amount):\n            self.ledger.append({\"amount\": -amount, \"description\": description})\n            return True\n        return False\n    \n    def get_balance(self):\n        return sum(item[\"amount\"] for item in self.ledger)\n    \n    def transfer(self, amount, category):\n        if self.check_funds(amount):\n            self.withdraw(amount, f\"Transfer to {category.name}\")\n            category.deposit(amount, f\"Transfer from {self.name}\")\n            return True\n        return False\n    \n    def check_funds(self, amount):\n        return amount <= self.get_balance()\n    \n    def __str__(self):\n        title = f\"{self.name:*^30}\\n\"\n        items = \"\"\n        for item in self.ledger:\n            description = f\"{item['description'][:23]:<23}\"\n            amount = f\"{item['amount']:.2f}\"\n            items += f\"{description}{amount:>7}\\n\"\n        total = f\"Total: {self.get_balance():.2f}\"\n        return title + items + total\n\n\ndef create_spend_chart(categories):\n    spending = {category.name: 0 for category in categories}\n    for category in categories:\n        for item in category.ledger:\n            if item[\"amount\"] < 0:\n                spending[category.name] += -item[\"amount\"]\n\n    total_spent = sum(spending.values())\n    percentages = {name: (spent / total_spent) * 100 for name, spent in spending.items()}\n\n    chart = \"Percentage spent by category\\n\"\n    for i in range(100, -1, -10):\n        chart += f\"{i:>3}| \"\n        for name in categories:\n            chart += \"o  \" if percentages[name.name] >= i else \"   \"\n        chart += \"\\n\"\n\n    chart += \"    \" + \"-\" * (len(categories) * 3 + 1) + \"\\n\"\n\n    max_length = max(len(category.name) for category in categories)\n    names = [category.name.ljust(max_length) for category in categories]\n    for i in range(max_length):\n        chart += \"     \" + \"  \".join(name[i] for name in names) + \"  \\n\"\n\n    return chart.rstrip(\"\\n\")\n",
           "ext": "py",
           "name": "main",
           "history": [
@@ -1197,11 +817,26 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "lastSavedDate": 1732820153929,
       "id": "(id removed)",
+      "lastSavedDate": 1732885975012,
       "challengeFiles": [
         {
-          "contents": "# Python content from the assignment",
+          "contents": "#I have utilized ChatGPT and to a smaller extent Perplexity as resources for guidance and learning throughout this project. My approach reflects the growing trend of modern developers using AI tools to enhance their coding processes. However, all the final code presented here is my own work, based on own independently thought out prompts and without copying prompts or code from others other than snippets. I believe this practice aligns with the principles of academic honesty, as it emphasizes learning and using technology responsibly.\n\nclass Rectangle:\n    def __init__(self, width, height):\n        self.width = width\n        self.height = height\n\n    def set_width(self, width):\n        self.width = width\n\n    def set_height(self, height):\n        self.height = height\n\n    def get_area(self):\n        return self.width * self.height\n\n    def get_perimeter(self):\n        return 2 * self.width + 2 * self.height\n\n    def get_diagonal(self):\n        return (self.width ** 2 + self.height ** 2) ** 0.5\n\n    def get_picture(self):\n        if self.width > 50 or self.height > 50:\n            return \"Too big for picture.\"\n        return (\"*\" * self.width + \"\\n\") * self.height\n\n    def get_amount_inside(self, shape):\n        return (self.width // shape.width) * (self.height // shape.height)\n\n    def __str__(self):\n        return f\"Rectangle(width={self.width}, height={self.height})\"\n\n\nclass Square(Rectangle):\n    def __init__(self, side):\n        super().__init__(side, side)\n\n    def set_side(self, side):\n        self.width = side\n        self.height = side\n\n    def set_width(self, width):\n        self.set_side(width)\n\n    def set_height(self, height):\n        self.set_side(height)\n\n    def __str__(self):\n        return f\"Square(side={self.width})\"\n",
+          "ext": "py",
+          "name": "main",
+          "history": [
+            "main.py"
+          ],
+          "fileKey": "mainpy"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "lastSavedDate": 1732885939401,
+      "challengeFiles": [
+        {
+          "contents": "#I have utilized ChatGPT a resource for guidance and learning throughout this project. My approach reflects the growing trend of modern developers using AI tools to enhance their coding processes. However, all the final code presented here is my own work, based on own independently thought out prompts and without copying prompts or code from others other than snippets. I believe this practice aligns with the principles of academic honesty, as it emphasizes learning and using technology responsibly.\n\nimport copy\nimport random\n\nclass Hat:\n    def __init__(self, **kwargs):\n        self.contents = []\n        for color, count in kwargs.items():\n            self.contents.extend([color] * count)\n\n    def draw(self, num_balls):\n        if num_balls >= len(self.contents):\n            all_balls = self.contents[:]\n            self.contents.clear()  # Clear the hat after removing all balls\n            return all_balls\n        return [self.contents.pop(random.randrange(len(self.contents))) for _ in range(num_balls)]\n\n\ndef experiment(hat, expected_balls, num_balls_drawn, num_experiments):\n    success_count = 0\n\n    for _ in range(num_experiments):\n        hat_copy = copy.deepcopy(hat)\n        drawn_balls = hat_copy.draw(num_balls_drawn)\n\n        drawn_counts = {color: drawn_balls.count(color) for color in expected_balls}\n\n        success = all(drawn_counts.get(color, 0) >= count for color, count in expected_balls.items())\n        if success:\n            success_count += 1\n\n    return success_count / num_experiments\n\n\nhat = Hat(blue=5, red=4, green=2)\nprobability = experiment(hat=hat, expected_balls={\"red\": 1, \"green\": 2}, num_balls_drawn=4, num_experiments=2000)\nprint(f\"Probability: {probability}\")\n",
           "ext": "py",
           "name": "main",
           "history": [
@@ -1218,33 +853,30 @@ Filtered JSON Contents: {
   "yearsTopContributor": [],
   "currentChallengeId": "",
   "email": "(Details removed, see LinkedIn profile for contact info)",
-  "emailVerified": false,
+  "emailVerified": true,
   "id": "(id removed)",
   "sendQuincyEmail": true,
   "theme": "default",
   "keyboardShortcuts": false,
-  "completedChallengeCount": 3284,
+  "completedChallengeCount": 3378,
   "acceptedPrivacyTerms": true,
-  "isEmailVerified": false,
+  "isEmailVerified": true,
   "picture": "(Details removed, see LinkedIn profile for contact info)",
   "joinDate": "2024-10-01T16:39:22.000Z",
   "completedSurveys": [],
-  "sessionUser": true,
-  "examResults": null
+  "sessionUser": true
 }
- ---
-The above text was original data from a freeCodeCamp file dump of a .JSON database.
+---
+The text above is original data from a freeCodeCamp file dump of a .JSON database.
 
-This is an automatically added comment by a parsing app written in JavaScript by Markus Isaksson. The parser has taken a .JSON database file of a freeCodeCamp profile and removed some data. This is summary of what has been removed:
+This is an automatically added comment by a parsing app written in JavaScript by Markus Isaksson. The parser has taken a .JSON database file of a freeCodeCamp profile and removed some data. This is a summary of what has been removed:
 
-3239 instances of references to completed shorter step by step programming exercises without type number were removed
+3336 instances of references to completed shorter step-by-step programming exercises were removed.
 
-6 instances of references to completed programming exercises that had a (type 7) were removed
+The original file also contained submitted code, which has been kept intact.
 
-The original file also contained submitted HTML, CSS, JavaScript, and Python code which has been removed and replaced with comments. Such code is viewable through the links on the person's official digital certificates.
-
-20 of HTML code pieces were removed
-20 of CSS code pieces were removed
-10 of JavaScript code pieces were removed
-8 of Python code pieces were removed
-0 of other code pieces were removed
+20 instances of HTML code were processed.
+20 instances of CSS code were processed.
+10 instances of JavaScript code were processed.
+10 instances of Python code were processed. Python code is inserted twice in the original database, so this represents 5 unique occurrences as long as the same structure of the original database files is used.
+0 instances of other types of code were processed.
