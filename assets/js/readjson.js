@@ -1,25 +1,41 @@
 const fs = require('fs');
+const readline = require('readline');
 
 function readJsonFile(filename) {
-  fs.readFile(filename, 'utf8', (err, data) => {
-    if (err) {
-      console.error(`Error reading file: ${err}`);
-      return;
-    }
-
-    try {
-      const jsonData = JSON.parse(data);
-      const filteredData = filterData(jsonData);
-      console.log("\nFiltered JSON Contents:", JSON.stringify(filteredData, null, 2));
-      const summary = summarizeRemovedData(jsonData, filteredData);
-      console.log(generateSummaryText(summary));
-    } catch (parseErr) {
-      console.error(`Error parsing JSON: ${parseErr}`);
-    }
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
   });
+
+  rl.question(
+    "Do you want to replace embedded code pieces with comments? (yes/no): ",
+    (answer) => {
+      const replaceCodeWithComments = answer.trim().toLowerCase() === 'yes';
+
+      fs.readFile(filename, 'utf8', (err, data) => {
+        if (err) {
+          console.error(`Error reading file: ${err}`);
+          rl.close();
+          return;
+        }
+
+        try {
+          const jsonData = JSON.parse(data);
+          const filteredData = filterData(jsonData, replaceCodeWithComments);
+          console.log("\nFiltered JSON Contents:", JSON.stringify(filteredData, null, 2));
+          const summary = summarizeRemovedData(jsonData, filteredData);
+          console.log(generateSummaryText(summary, replaceCodeWithComments));
+        } catch (parseErr) {
+          console.error(`Error parsing JSON: ${parseErr}`);
+        }
+
+        rl.close();
+      });
+    }
+  );
 }
 
-function filterData(data) {
+function filterData(data, replaceCodeWithComments) {
   const filteredData = {};
   for (const [key, value] of Object.entries(data)) {
     if (key === 'userToken') {
@@ -31,7 +47,9 @@ function filterData(data) {
     } else if (typeof value === 'object' && value !== null) {
       if (Array.isArray(value)) {
         if (key === 'completedChallenges' || key === 'savedChallenges') {
-          filteredData[key] = value.filter(item => !isRedundantItem(item)).map(item => processChallengeItem(item, key === 'completedChallenges' ? 'completed' : 'saved'));
+          filteredData[key] = value
+            .filter(item => !isRedundantItem(item))
+            .map(item => processChallengeItem(item, key === 'completedChallenges' ? 'completed' : 'saved', replaceCodeWithComments));
         } else {
           filteredData[key] = value.filter(item => !isRedundantItem(item)).map(item => removeIdFromItem(item));
         }
@@ -46,49 +64,6 @@ function filterData(data) {
     }
   }
   return filteredData;
-}
-
-function removeIdFromItem(item) {
-  if (item && typeof item === 'object' && 'id' in item) {
-    return { ...item, id: '(id removed)' };
-  }
-  return item;
-}
-
-function processChallengeItem(item, challengeType) {
-  let processedItem = { ...item };
-  processedItem = removeIdFromItem(processedItem);
-  if (processedItem.challengeFiles) {
-    processedItem.challengeFiles = processedItem.challengeFiles.map(file => replaceContents(file, challengeType));
-  }
-  if (challengeType === 'saved') {
-    delete processedItem.history;
-  }
-  return processedItem;
-}
-
-function replaceContents(file, challengeType) {
-  const newFile = { ...file };
-  const keyField = challengeType === 'completed' ? 'key' : 'fileKey';
-  if (newFile.contents) {
-    switch (newFile.ext) {
-      case 'html':
-        newFile.contents = '<!-- HTML content from the assignment -->';
-        break;
-      case 'css':
-        newFile.contents = '/* CSS content from the assignment */';
-        break;
-      case 'js':
-        newFile.contents = '/* Javascript content from the assignment */';
-        break;
-      case 'py':
-        newFile.contents = '# Python content from the assignment';
-        break;
-      default:
-        newFile.contents = '/* Content from the assignment */';
-    }
-  }
-  return newFile;
 }
 
 function filterObject(obj) {
@@ -121,6 +96,49 @@ function isRedundantItem(item) {
   );
 }
 
+function removeIdFromItem(item) {
+  if (item && typeof item === 'object' && 'id' in item) {
+    return { ...item, id: '(id removed)' };
+  }
+  return item;
+}
+
+function processChallengeItem(item, challengeType, replaceCodeWithComments) {
+  let processedItem = { ...item };
+  processedItem = removeIdFromItem(processedItem);
+  if (processedItem.challengeFiles) {
+    processedItem.challengeFiles = processedItem.challengeFiles.map(file => 
+      replaceContents(file, challengeType, replaceCodeWithComments)
+    );
+  }
+  if (challengeType === 'saved') {
+    delete processedItem.history;
+  }
+  return processedItem;
+}
+
+function replaceContents(file, challengeType, replaceCodeWithComments) {
+  if (replaceCodeWithComments && file.contents) {
+    switch (file.ext) {
+      case 'html':
+        file.contents = '<!-- HTML content from the assignment -->';
+        break;
+      case 'css':
+        file.contents = '/* CSS content from the assignment */';
+        break;
+      case 'js':
+        file.contents = '/* Javascript content from the assignment */';
+        break;
+      case 'py':
+        file.contents = '# Python content from the assignment';
+        break;
+      default:
+        file.contents = '/* Content from the assignment */';
+    }
+  }
+  return file;
+}
+
 function summarizeRemovedData(originalData, filteredData) {
   const summary = {
     shortExercisesRemoved: 0,
@@ -131,15 +149,7 @@ function summarizeRemovedData(originalData, filteredData) {
     pythonCodeRemoved: 0,
     otherCodeRemoved: 0
   };
-  originalData.completedChallenges.forEach(challenge => {
-    if (isRedundantItem(challenge)) {
-      if (challenge.hasOwnProperty('challengeType')) {
-        summary.typedExercisesRemoved[challenge.challengeType] = (summary.typedExercisesRemoved[challenge.challengeType] || 0) + 1;
-      } else {
-        summary.shortExercisesRemoved++;
-      }
-    }
-  });
+
   const countRemovedCode = (challenge) => {
     challenge.challengeFiles?.forEach(file => {
       if (file.contents) {
@@ -162,32 +172,51 @@ function summarizeRemovedData(originalData, filteredData) {
       }
     });
   };
-  originalData.completedChallenges.forEach(countRemovedCode);
-  originalData.savedChallenges?.forEach(countRemovedCode);
+
+  // Process completed challenges
+  if (originalData.completedChallenges) {
+    originalData.completedChallenges.forEach(challenge => {
+      if (isRedundantItem(challenge)) {
+        if (challenge.hasOwnProperty('challengeType')) {
+          summary.typedExercisesRemoved[challenge.challengeType] = 
+            (summary.typedExercisesRemoved[challenge.challengeType] || 0) + 1;
+        } else {
+          summary.shortExercisesRemoved++;
+        }
+      }
+    });
+    originalData.completedChallenges.forEach(countRemovedCode);
+  }
+
+  // Process saved challenges
+  if (originalData.savedChallenges) {
+    originalData.savedChallenges.forEach(countRemovedCode);
+  }
+
   return summary;
 }
 
-function generateSummaryText(summary) {
-  let typedExercisesText = Object.entries(summary.typedExercisesRemoved)
-    .map(([type, count]) => `${count} instances of references to completed programming exercises that had a (type ${type}) were removed`)
-    .join('\n');
+function generateSummaryText(summary, replaceCodeWithComments) {
+  const replacementNote = replaceCodeWithComments
+    ? "The original file also contained submitted code, which has been removed and replaced with comments."
+    : "The original file also contained submitted code, which has been kept intact.";
 
-  return ` ---
-The above text was original data from a freeCodeCamp file dump of a .JSON database.
+  const pythonOccurrencesNote = `Python code is inserted twice in the original database, so this represents ${summary.pythonCodeRemoved / 2} unique occurrences as long as the same structure of the original database files is used.`;
 
-This is an automatically added comment by a parsing app written in JavaScript by Markus Isaksson. The parser has taken a .JSON database file of a freeCodeCamp profile and removed some data. This is summary of what has been removed:
+  return `---
+The text above is original data from a freeCodeCamp file dump of a .JSON database.
 
-${summary.shortExercisesRemoved} instances of references to completed shorter step by step programming exercises without type number were removed
+This is an automatically added comment by a parsing app written in JavaScript by Markus Isaksson. The parser has taken a .JSON database file of a freeCodeCamp profile and removed some data. This is a summary of what has been removed:
 
-${typedExercisesText}
+${summary.shortExercisesRemoved} instances of references to completed shorter step-by-step programming exercises were removed.
 
-The original file also contained submitted HTML, CSS, JavaScript, and Python code which has been removed and replaced with comments. Such code is viewable through the links on the person's official digital certificates.
+${replacementNote}
 
-${summary.htmlCodeRemoved} of HTML code pieces were removed
-${summary.cssCodeRemoved} of CSS code pieces were removed
-${summary.jsCodeRemoved} of JavaScript code pieces were removed
-${summary.pythonCodeRemoved} of Python code pieces were removed
-${summary.otherCodeRemoved} of other code pieces were removed`;
+${summary.htmlCodeRemoved} instances of HTML code were processed.
+${summary.cssCodeRemoved} instances of CSS code were processed.
+${summary.jsCodeRemoved} instances of JavaScript code were processed.
+${summary.pythonCodeRemoved} instances of Python code were processed. ${pythonOccurrencesNote}
+${summary.otherCodeRemoved} instances of other types of code were processed.`;
 }
 
 const filename = process.argv[2] || 'sample.json';
