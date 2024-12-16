@@ -8,9 +8,15 @@ function readJsonFile(filename) {
   });
 
   rl.question(
-    "Do you want to replace embedded code pieces with comments? (yes/no): ",
+    "Choose output format (compact/verbose/metadata only): ",
     (answer) => {
-      const replaceCodeWithComments = answer.trim().toLowerCase() === 'yes';
+      const format = answer.trim().toLowerCase();
+
+      if (!['compact', 'verbose', 'metadata only'].includes(format)) {
+        console.error("Invalid choice. Please select 'compact', 'verbose', or 'metadata only'.");
+        rl.close();
+        return;
+      }
 
       fs.readFile(filename, 'utf8', (err, data) => {
         if (err) {
@@ -21,10 +27,26 @@ function readJsonFile(filename) {
 
         try {
           const jsonData = JSON.parse(data);
-          const filteredData = filterData(jsonData, replaceCodeWithComments);
-          console.log("\nFiltered JSON Contents:", JSON.stringify(filteredData, null, 2));
-          const summary = summarizeRemovedData(jsonData, filteredData);
-          console.log(generateSummaryText(summary, replaceCodeWithComments));
+          let output;
+          if (format === 'compact') {
+            output = filterData(jsonData, true);
+          } else if (format === 'verbose') {
+            output = filterData(jsonData, false);
+          } else if (format === 'metadata only') {
+            output = filterMetadata(jsonData);
+            console.log("\nFiltered JSON Contents:", JSON.stringify(output, null, 2));
+            const summary = summarizeRemovedData(jsonData, output);
+            console.log(generateSummaryText(summary, false));
+            rl.close();
+            return;
+          }
+
+          console.log("\nFiltered JSON Contents:", JSON.stringify(output, null, 2));
+
+          if (format !== 'metadata only') {
+            const summary = summarizeRemovedData(jsonData, output);
+            console.log(generateSummaryText(summary, format === 'compact'));
+          }
         } catch (parseErr) {
           console.error(`Error parsing JSON: ${parseErr}`);
         }
@@ -35,7 +57,7 @@ function readJsonFile(filename) {
   );
 }
 
-function filterData(data, replaceCodeWithComments) {
+function filterData(data, isCompact) {
   const filteredData = {};
   for (const [key, value] of Object.entries(data)) {
     if (key === 'userToken') {
@@ -49,7 +71,7 @@ function filterData(data, replaceCodeWithComments) {
         if (key === 'completedChallenges' || key === 'savedChallenges') {
           filteredData[key] = value
             .filter(item => !isRedundantItem(item))
-            .map(item => processChallengeItem(item, key === 'completedChallenges' ? 'completed' : 'saved', replaceCodeWithComments));
+            .map(item => processChallengeItem(item, key === 'completedChallenges' ? 'completed' : 'saved', isCompact));
         } else {
           filteredData[key] = value.filter(item => !isRedundantItem(item)).map(item => removeIdFromItem(item));
         }
@@ -64,6 +86,69 @@ function filterData(data, replaceCodeWithComments) {
     }
   }
   return filteredData;
+}
+
+function filterMetadata(data) {
+  const metadataKeys = [
+    'about',
+    'completedExams',
+    'githubProfile',
+    'isApisMicroservicesCert',
+    'isBackEndCert',
+    'isCheater',
+    'isDonating',
+    'is2018DataVisCert',
+    'isDataVisCert',
+    'isFrontEndCert',
+    'isFullStackCert',
+    'isFrontEndLibsCert',
+    'isHonest',
+    'isInfosecQaCert',
+    'isQaCertV7',
+    'isInfosecCertV7',
+    'isJsAlgoDataStructCert',
+    'isRelationalDatabaseCertV8',
+    'isRespWebDesignCert',
+    'isSciCompPyCertV7',
+    'isDataAnalysisPyCertV7',
+    'isMachineLearningPyCertV7',
+    'isCollegeAlgebraPyCertV8',
+    'isFoundationalCSharpCertV8',
+    'isJsAlgoDataStructCertV8',
+    'linkedin',
+    'location',
+    'name',
+    'partiallyCompletedChallenges',
+    'points',
+    'portfolio',
+    'profileUI',
+    'twitter',
+    'username',
+    'website',
+    'yearsTopContributor',
+    'currentChallengeId',
+    'email',
+    'emailVerified',
+    'id',
+    'sendQuincyEmail',
+    'theme',
+    'keyboardShortcuts',
+    'completedChallengeCount',
+    'acceptedPrivacyTerms',
+    'isEmailVerified',
+    'picture',
+    'joinDate',
+    'completedSurveys',
+    'sessionUser'
+  ];
+  const metadata = {};
+
+  for (const key of metadataKeys) {
+    if (key in data) {
+      metadata[key] = data[key];
+    }
+  }
+  return metadata;
 }
 
 function filterObject(obj) {
@@ -103,12 +188,12 @@ function removeIdFromItem(item) {
   return item;
 }
 
-function processChallengeItem(item, challengeType, replaceCodeWithComments) {
+function processChallengeItem(item, challengeType, isCompact) {
   let processedItem = { ...item };
   processedItem = removeIdFromItem(processedItem);
   if (processedItem.challengeFiles) {
     processedItem.challengeFiles = processedItem.challengeFiles.map(file => 
-      replaceContents(file, challengeType, replaceCodeWithComments)
+      replaceContents(file, challengeType, isCompact)
     );
   }
   if (challengeType === 'saved') {
@@ -117,8 +202,8 @@ function processChallengeItem(item, challengeType, replaceCodeWithComments) {
   return processedItem;
 }
 
-function replaceContents(file, challengeType, replaceCodeWithComments) {
-  if (replaceCodeWithComments && file.contents) {
+function replaceContents(file, challengeType, isCompact) {
+  if (isCompact && file.contents) {
     switch (file.ext) {
       case 'html':
         file.contents = '<!-- HTML content from the assignment -->';
@@ -196,8 +281,8 @@ function summarizeRemovedData(originalData, filteredData) {
   return summary;
 }
 
-function generateSummaryText(summary, replaceCodeWithComments) {
-  const replacementNote = replaceCodeWithComments
+function generateSummaryText(summary, isCompact) {
+  const replacementNote = isCompact
     ? "The original file also contained submitted code, which has been removed and replaced with comments."
     : "The original file also contained submitted code, which has been kept intact.";
 
