@@ -1,76 +1,33 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const roleRadios = document.querySelectorAll('input[name="role"]');
-    const dynamicText = document.getElementById('dynamic-text');
-    const exampleInput = document.getElementById('example-input');
-    const outputTextarea = document.getElementById('output-textarea');
-    const copyButton = document.getElementById('copy-button');
+document.addEventListener("DOMContentLoaded", () => {
+    const fileUrls = [
+        '../assets/data/parsed_FCCdump_metadata_only.txt',
+        '../assets/data/parsed_FCCdump_compact.txt',
+        '../assets/data/parsed_FCCdump_verbose.txt',
+    ];
 
-    roleRadios.forEach(radio => {
-        radio.addEventListener('change', updateDynamicContent);
-    });
+    const textAreas = document.querySelectorAll('.code-container textarea');
+    const copyButtons = document.querySelectorAll('.copy-button');
 
-    function updateDynamicContent() {
-        const selectedRole = document.querySelector('input[name="role"]:checked').value;
-        let dynamicTextContent = '';
-        let examplePlaceholder = '';
-
-        switch (selectedRole) {
-            case 'recruiter':
-                dynamicTextContent = 'Jag är rekryterare för';
-                examplePlaceholder = 'Namn på ditt företag';
-                break;
-            case 'freelancer':
-                dynamicTextContent = 'Jag söker en frilansare för';
-                examplePlaceholder = 'att skapa en enkel hemsida';
-                break;
-            case 'general':
-                dynamicTextContent = 'Jag är intresserad av';
-                examplePlaceholder = 'intresseområde';
-                break;
-        }
-
-        dynamicText.value = dynamicTextContent;
-        exampleInput.placeholder = examplePlaceholder;
-        exampleInput.value = ''; // Rensa input-fältet
-        updateOutputTextarea();
-    }
-
-    exampleInput.addEventListener('input', updateOutputTextarea);
-
-    function updateOutputTextarea() {
-        const selectedRole = document.querySelector('input[name="role"]:checked').value;
-        const inputValue = exampleInput.value.trim() || exampleInput.placeholder;
-        let outputContent = '';
-
-        switch (selectedRole) {
-            case 'recruiter':
-                outputContent = `Jag är rekryterare för ${inputValue}. Analysera Markus Isakssons IT-meriter och ge en bedömning av hans lämplighet för en IT-relaterad roll hos oss.`;
-                break;
-            case 'freelancer':
-                outputContent = `Jag söker en frilansare för ${inputValue}. Bedöm Markus Isakssons lämplighet baserat på hans IT-meriter.`;
-                break;
-            case 'general':
-                outputContent = `Jag är intresserad av ${inputValue}. Analysera Markus Isakssons IT-meriter med fokus på detta område och ge en sammanfattning av hans kompetenser.`;
-                break;
-        }
-
-        fetch('../assets/data/parsed_FCCdump.txt')
-            .then(response => response.text())
-            .then(data => {
-                outputTextarea.value = outputContent + '\n\n---\n\n' + data;
+    // Load file content
+    fileUrls.forEach((url, index) => {
+        fetch(url)
+            .then(response => {
+                if (!response.ok) throw new Error(`Failed to fetch ${url}`);
+                return response.text();
             })
-            .catch(error => console.error('Error loading FCCdump:', error));
-    }
-
-    copyButton.addEventListener('click', () => {
-        outputTextarea.select();
-        document.execCommand('copy');
-        copyButton.textContent = 'Kopierad!';
-        setTimeout(() => {
-            copyButton.textContent = 'Kopiera';
-        }, 2000);
+            .then(data => {
+                textAreas[index].value = data;
+            })
+            .catch(error => console.error(`Error loading file: ${url}`, error));
     });
 
-    // Initiera innehållet när sidan laddas
-    document.querySelector('input[name="role"]:checked').dispatchEvent(new Event('change'));
+    // Copy to clipboard
+    copyButtons.forEach((button, index) => {
+        button.addEventListener("click", () => {
+            textAreas[index].select();
+            document.execCommand("copy");
+            button.textContent = "Kopierad!";
+            setTimeout(() => (button.textContent = "Kopiera"), 2000);
+        });
+    });
 });
