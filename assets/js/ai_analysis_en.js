@@ -1,76 +1,52 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const roleRadios = document.querySelectorAll('input[name="role"]');
-    const dynamicText = document.getElementById('dynamic-text');
-    const exampleInput = document.getElementById('example-input');
-    const outputTextarea = document.getElementById('output-textarea');
-    const copyButton = document.getElementById('copy-button');
+    const fileUrls = [
+        '../assets/data/parsed_FCCdump_metadata_only.txt',
+        '../assets/data/parsed_FCCdump_compact.txt',
+        '../assets/data/parsed_FCCdump_verbose.txt',
+    ];
 
-    roleRadios.forEach(radio => {
-        radio.addEventListener('change', updateDynamicContent);
-    });
+    const textAreas = document.querySelectorAll('.code-container textarea');
+    const copyButtons = document.querySelectorAll('.copy-button');
+    const introTextArea = document.getElementById('intro-text');
 
-    function updateDynamicContent() {
-        const selectedRole = document.querySelector('input[name="role"]:checked').value;
-        let dynamicTextContent = '';
-        let examplePlaceholder = '';
-
-        switch (selectedRole) {
-            case 'recruiter':
-                dynamicTextContent = 'I am a recruiter for';
-                examplePlaceholder = 'Your company name';
-                break;
-            case 'freelancer':
-                dynamicTextContent = 'I am looking for a freelancer to';
-                examplePlaceholder = 'create a simple website';
-                break;
-            case 'general':
-                dynamicTextContent = 'I am interested in';
-                examplePlaceholder = 'your area of interest';
-                break;
-        }
-
-        dynamicText.value = dynamicTextContent;
-        exampleInput.placeholder = examplePlaceholder;
-        exampleInput.value = ''; // Clear the input field
-        updateOutputTextarea();
-    }
-
-    exampleInput.addEventListener('input', updateOutputTextarea);
-
-    function updateOutputTextarea() {
-        const selectedRole = document.querySelector('input[name="role"]:checked').value;
-        const inputValue = exampleInput.value.trim() || exampleInput.placeholder;
-        let outputContent = '';
-
-        switch (selectedRole) {
-            case 'recruiter':
-                outputContent = `I am a recruiter for ${inputValue}. Analyze Markus Isaksson's IT credentials and evaluate his suitability for an IT-related role at our company.`;
-                break;
-            case 'freelancer':
-                outputContent = `I am looking for a freelancer to ${inputValue}. Assess Markus Isaksson's suitability based on his IT credentials.`;
-                break;
-            case 'general':
-                outputContent = `I am interested in ${inputValue}. Analyze Markus Isaksson's IT credentials with a focus on this area and provide a summary of his competencies.`;
-                break;
-        }
-
-        fetch('../assets/data/parsed_FCCdump.txt')
-            .then(response => response.text())
-            .then(data => {
-                outputTextarea.value = outputContent + '\n\n---\n\n' + data;
+    // Load file content with prefilled intro text
+    fileUrls.forEach((url, index) => {
+        fetch(url)
+            .then(response => {
+                if (!response.ok) throw new Error(`Failed to fetch ${url}`);
+                return response.text();
             })
-            .catch(error => console.error('Error loading FCCdump:', error));
-    }
-
-    copyButton.addEventListener('click', () => {
-        outputTextarea.select();
-        document.execCommand('copy');
-        copyButton.textContent = 'Copied!';
-        setTimeout(() => {
-            copyButton.textContent = 'Copy';
-        }, 2000);
+            .then(data => {
+                textAreas[index].value = `${introTextArea.value.trim()}\n\n${data}`; // Combine intro text and fetched content
+            })
+            .catch(error => console.error(`Error loading file: ${url}`, error));
     });
 
-    // Initialize the content when the page loads
-    document.querySelector('input[name="role"]:checked').dispatchEvent(new Event('change'));
+    // Update text areas when the intro text is modified
+    introTextArea.addEventListener('input', () => {
+        fileUrls.forEach((url, index) => {
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) throw new Error(`Failed to fetch ${url}`);
+                    return response.text();
+                })
+                .then(data => {
+                    textAreas[index].value = `${introTextArea.value.trim()}\n\n${data}`;
+                })
+                .catch(error => console.error(`Error updating file: ${url}`, error));
+        });
+    });
+
+    // Copy to clipboard functionality
+    copyButtons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            textAreas[index].select();
+            navigator.clipboard.writeText(textAreas[index].value)
+                .then(() => {
+                    button.textContent = 'Copied!';
+                    setTimeout(() => (button.textContent = 'Copy'), 2000);
+                })
+                .catch(err => console.error('Error copying text:', err));
+        });
+    });
 });
