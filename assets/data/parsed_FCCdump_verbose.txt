@@ -1,4 +1,4 @@
-Choose output format (compact/verbose/metadata only): 
+Choose output format (compact/verbose/metadata only): verbose
 Filtered JSON Contents: {
   "about": "I've completed the following sections on freeCodeCamp: Responsive Web Design, JavaScript Algorithms and Data Structures, Front End Development Libraries, Data Visualization, Relational Database, Back End Development and APIs, Scientific Computing with Python",
   "completedChallenges": [
