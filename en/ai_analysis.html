@@ -6,17 +6,37 @@
     <title>AI Analysis of My Credentials</title>
     <link rel="stylesheet" href="../assets/css/common_styles.css">
     <script src="../assets/js/header_footer.js" defer></script>
-    <script src="../assets/js/script.js" defer></script>
+    <script src="../assets/js/ai_analysis_en.js" defer></script>
 </head>
 <body>
     <header></header> <!-- Dynamically loaded header -->
     <main>
-        <section style="text-align: center; margin: 40px auto; max-width: 800px; padding: 20px;">
-            <h1>This Page is Under Reconstruction</h1>
-            <p>
-                I received a flag from Google recommending improvements to my website.
-                I plan to re-add the content on this page after reconstructing it.
-            </p>
+        <!-- Introductory Section -->
+        <section style="padding: 20px;">
+            <center><h2>Generate an AI Prompt to Analyze My Credentials</h2>
+            <p>Customize the introduction below to fit your specific context:</p>
+            <textarea id="intro-text" style="width: 100%; height: 100px; margin-bottom: 20px;">
+Example: Analyze the relevance of the following content for a position as ... in the context of ...:
+            </textarea></center>
+        </section>
+
+        <!-- Text Fields Section -->
+        <section style="display: flex; justify-content: space-between; align-items: flex-start; padding: 20px; gap: 20px;">
+            <div class="code-container">
+                <p>Short AI prompt with only metadata:</p>
+                <textarea readonly></textarea>
+                <button class="copy-button" onclick="copyToClipboard(0)">Copy</button>
+            </div>
+            <div class="code-container">
+                <p>Medium-length AI prompt (recommended if it fits):</p>
+                <textarea readonly></textarea>
+                <button class="copy-button" onclick="copyToClipboard(1)">Copy</button>
+            </div>
+            <div class="code-container">
+                <p>Detailed AI prompt (you should possibly save this as a text file and attach it for AIs capable of handling it):</p>
+                <textarea readonly></textarea>
+                <button class="copy-button" onclick="copyToClipboard(2)">Copy</button>
+            </div>
         </section>
     </main>
     <footer></footer> <!-- Dynamically loaded footer -->
