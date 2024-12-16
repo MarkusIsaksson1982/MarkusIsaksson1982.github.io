@@ -1,0 +1,78 @@
+Choose output format (compact/verbose/metadata only): 
+Filtered JSON Contents: {
+  "about": "I've completed the following sections on freeCodeCamp: Responsive Web Design, JavaScript Algorithms and Data Structures, Front End Development Libraries, Data Visualization, Relational Database, Back End Development and APIs, Scientific Computing with Python",
+  "completedExams": [],
+  "githubProfile": "https://github.com/MarkusIsaksson1982",
+  "isApisMicroservicesCert": true,
+  "isBackEndCert": false,
+  "isCheater": false,
+  "isDonating": false,
+  "is2018DataVisCert": true,
+  "isDataVisCert": false,
+  "isFrontEndCert": false,
+  "isFullStackCert": false,
+  "isFrontEndLibsCert": true,
+  "isHonest": true,
+  "isInfosecQaCert": false,
+  "isQaCertV7": false,
+  "isInfosecCertV7": false,
+  "isJsAlgoDataStructCert": false,
+  "isRelationalDatabaseCertV8": true,
+  "isRespWebDesignCert": true,
+  "isSciCompPyCertV7": true,
+  "isDataAnalysisPyCertV7": false,
+  "isMachineLearningPyCertV7": false,
+  "isCollegeAlgebraPyCertV8": false,
+  "isFoundationalCSharpCertV8": false,
+  "isJsAlgoDataStructCertV8": true,
+  "linkedin": "https://www.linkedin.com/in/markus-isaksson-08273a127/",
+  "location": "Uppsala, Sweden",
+  "name": "Markus Isaksson",
+  "partiallyCompletedChallenges": [],
+  "points": 3428,
+  "portfolio": [],
+  "profileUI": {
+    "isLocked": false,
+    "showAbout": true,
+    "showCerts": true,
+    "showDonation": false,
+    "showHeatMap": true,
+    "showLocation": true,
+    "showName": true,
+    "showPoints": true,
+    "showPortfolio": true,
+    "showTimeLine": true
+  },
+  "twitter": "",
+  "username": "(Details removed, see LinkedIn profile for contact info)",
+  "website": "(Details removed, see LinkedIn profile for contact info)",
+  "yearsTopContributor": [],
+  "currentChallengeId": "",
+  "email": "(Details removed, see LinkedIn profile for contact info)",
+  "emailVerified": true,
+  "id": "(Details removed, see LinkedIn profile for contact info)",
+  "sendQuincyEmail": true,
+  "theme": "default",
+  "keyboardShortcuts": false,
+  "completedChallengeCount": 3434,
+  "acceptedPrivacyTerms": true,
+  "isEmailVerified": true,
+  "picture": "(Details removed, see LinkedIn profile for contact info)",
+  "joinDate": "2024-10-01T16:39:22.000Z",
+  "completedSurveys": [],
+  "sessionUser": true
+}
+---
+The text above is original data from a freeCodeCamp file dump of a .JSON database.
+
+This is an automatically added comment by a parsing app written in JavaScript by Markus Isaksson. The parser has taken a .JSON database file of a freeCodeCamp profile and removed some data. This is a summary of what has been removed:
+
+3388 instances of references to completed shorter step-by-step programming exercises were removed.
+
+The original file also contained submitted code, which has been kept intact.
+
+20 instances of HTML code were processed.
+20 instances of CSS code were processed.
+10 instances of JavaScript code were processed.
+10 instances of Python code were processed. Python code is inserted twice in the original database, so this represents 5 unique occurrences as long as the same structure of the original database files is used.
+0 instances of other types of code were processed.

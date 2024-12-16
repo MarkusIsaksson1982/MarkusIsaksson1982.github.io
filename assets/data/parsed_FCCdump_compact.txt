@@ -1,0 +1,914 @@
+Choose output format (compact/verbose/metadata only): 
+Filtered JSON Contents: {
+  "about": "I've completed the following sections on freeCodeCamp: Responsive Web Design, JavaScript Algorithms and Data Structures, Front End Development Libraries, Data Visualization, Relational Database, Back End Development and APIs, Scientific Computing with Python",
+  "completedChallenges": [
+    {
+      "id": "(id removed)",
+      "completedDate": 1727981276444,
+      "challengeType": 14,
+      "isManuallyApproved": false,
+      "challengeFiles": [
+        {
+          "contents": "<!-- HTML content from the assignment -->",
+          "ext": "html",
+          "name": "index",
+          "fileKey": "indexhtml"
+        },
+        {
+          "contents": "/* CSS content from the assignment */",
+          "ext": "css",
+          "name": "styles",
+          "fileKey": "stylescss"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1728057183480,
+      "challengeType": 14,
+      "isManuallyApproved": false,
+      "challengeFiles": [
+        {
+          "contents": "<!-- HTML content from the assignment -->",
+          "ext": "html",
+          "name": "index",
+          "fileKey": "indexhtml"
+        },
+        {
+          "contents": "/* CSS content from the assignment */",
+          "ext": "css",
+          "name": "styles",
+          "fileKey": "stylescss"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1728146087193,
+      "challengeType": 14,
+      "isManuallyApproved": false,
+      "challengeFiles": [
+        {
+          "contents": "<!-- HTML content from the assignment -->",
+          "ext": "html",
+          "name": "index",
+          "fileKey": "indexhtml"
+        },
+        {
+          "contents": "/* CSS content from the assignment */",
+          "ext": "css",
+          "name": "styles",
+          "fileKey": "stylescss"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1728222822916,
+      "challengeType": 14,
+      "isManuallyApproved": false,
+      "challengeFiles": [
+        {
+          "contents": "<!-- HTML content from the assignment -->",
+          "ext": "html",
+          "name": "index",
+          "fileKey": "indexhtml"
+        },
+        {
+          "contents": "/* CSS content from the assignment */",
+          "ext": "css",
+          "name": "styles",
+          "fileKey": "stylescss"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1728230233101,
+      "challengeType": 14,
+      "isManuallyApproved": false,
+      "challengeFiles": [
+        {
+          "contents": "<!-- HTML content from the assignment -->",
+          "ext": "html",
+          "name": "index",
+          "fileKey": "indexhtml"
+        },
+        {
+          "contents": "/* CSS content from the assignment */",
+          "ext": "css",
+          "name": "styles",
+          "fileKey": "stylescss"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1728851277839,
+      "challengeType": 14,
+      "isManuallyApproved": false,
+      "challengeFiles": [
+        {
+          "contents": "<!-- HTML content from the assignment -->",
+          "ext": "html",
+          "name": "index",
+          "fileKey": "indexhtml"
+        },
+        {
+          "contents": "/* CSS content from the assignment */",
+          "ext": "css",
+          "name": "styles",
+          "fileKey": "stylescss"
+        },
+        {
+          "contents": "/* Javascript content from the assignment */",
+          "ext": "js",
+          "name": "script",
+          "fileKey": "scriptjs"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1729555500308,
+      "challengeType": 14,
+      "isManuallyApproved": false,
+      "challengeFiles": [
+        {
+          "contents": "<!-- HTML content from the assignment -->",
+          "ext": "html",
+          "name": "index",
+          "fileKey": "indexhtml"
+        },
+        {
+          "contents": "/* CSS content from the assignment */",
+          "ext": "css",
+          "name": "styles",
+          "fileKey": "stylescss"
+        },
+        {
+          "contents": "/* Javascript content from the assignment */",
+          "ext": "js",
+          "name": "script",
+          "fileKey": "scriptjs"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1729615648822,
+      "challengeType": 14,
+      "isManuallyApproved": false,
+      "challengeFiles": [
+        {
+          "contents": "<!-- HTML content from the assignment -->",
+          "ext": "html",
+          "name": "index",
+          "fileKey": "indexhtml"
+        },
+        {
+          "contents": "/* CSS content from the assignment */",
+          "ext": "css",
+          "name": "styles",
+          "fileKey": "stylescss"
+        },
+        {
+          "contents": "/* Javascript content from the assignment */",
+          "ext": "js",
+          "name": "script",
+          "fileKey": "scriptjs"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1729687393796,
+      "challengeType": 14,
+      "isManuallyApproved": false,
+      "challengeFiles": [
+        {
+          "contents": "<!-- HTML content from the assignment -->",
+          "ext": "html",
+          "name": "index",
+          "fileKey": "indexhtml"
+        },
+        {
+          "contents": "/* Javascript content from the assignment */",
+          "ext": "js",
+          "name": "script",
+          "fileKey": "scriptjs"
+        },
+        {
+          "contents": "/* CSS content from the assignment */",
+          "ext": "css",
+          "name": "styles",
+          "fileKey": "stylescss"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1729702105990,
+      "challengeType": 14,
+      "isManuallyApproved": false,
+      "challengeFiles": [
+        {
+          "contents": "<!-- HTML content from the assignment -->",
+          "ext": "html",
+          "name": "index",
+          "fileKey": "indexhtml"
+        },
+        {
+          "contents": "/* CSS content from the assignment */",
+          "ext": "css",
+          "name": "styles",
+          "fileKey": "stylescss"
+        },
+        {
+          "contents": "/* Javascript content from the assignment */",
+          "ext": "js",
+          "name": "script",
+          "fileKey": "scriptjs"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1730686355728,
+      "solution": "https://codepen.io/MarkusIsaksson/pen/eYqjgNO",
+      "challengeType": 3,
+      "challengeFiles": []
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1730724385724,
+      "solution": "https://codepen.io/MarkusIsaksson/pen/poMZRKv",
+      "challengeType": 3,
+      "challengeFiles": []
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1730735823339,
+      "solution": "https://codepen.io/MarkusIsaksson/pen/xxvJjKX",
+      "challengeType": 3,
+      "challengeFiles": []
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1730755789394,
+      "solution": "https://codepen.io/MarkusIsaksson/pen/dyxjgyB",
+      "challengeType": 3,
+      "challengeFiles": []
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1730760761439,
+      "solution": "https://codepen.io/MarkusIsaksson/pen/VwoBOgj",
+      "challengeType": 3,
+      "challengeFiles": []
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1730814991199,
+      "solution": "https://codepen.io/MarkusIsaksson/pen/GRVXWBb",
+      "challengeType": 3,
+      "challengeFiles": []
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1730820158367,
+      "solution": "https://codepen.io/MarkusIsaksson/pen/dyxqReR",
+      "challengeType": 3,
+      "challengeFiles": []
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1730823431621,
+      "solution": "https://codepen.io/MarkusIsaksson/pen/RwXYZBO",
+      "challengeType": 3,
+      "challengeFiles": []
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1730828761096,
+      "solution": "https://codepen.io/MarkusIsaksson/pen/vYozWXm",
+      "challengeType": 3,
+      "challengeFiles": []
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1730835292872,
+      "solution": "https://codepen.io/MarkusIsaksson/pen/NWQLwVm",
+      "challengeType": 3,
+      "challengeFiles": []
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1730901332693,
+      "solution": "https://github.com/MarkusIsaksson1982/FCC_-_build-a-celestial-bodies-database/blob/main/universe.sql",
+      "challengeType": 13,
+      "challengeFiles": []
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1731002069733,
+      "solution": "https://github.com/MarkusIsaksson1982/FCC_-_build-a-world-cup-database",
+      "challengeType": 13,
+      "challengeFiles": []
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1731068377885,
+      "solution": "https://github.com/MarkusIsaksson1982/FCC_-_build-a-salon-appointment-scheduler",
+      "challengeType": 13,
+      "challengeFiles": []
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1731100618815,
+      "solution": "https://github.com/MarkusIsaksson1982/FCC_-_build-a-periodic-table-database",
+      "challengeType": 13,
+      "challengeFiles": []
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1731102006024,
+      "solution": "https://github.com/MarkusIsaksson1982/FCC_-_build-a-number-guessing-game",
+      "challengeType": 13,
+      "challengeFiles": []
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1731185626772,
+      "solution": "https://3000-freecodecam-boilerplate-o58q6cnckaw.ws-eu116.gitpod.io",
+      "githubLink": "https://github.com/MarkusIsaksson1982/FCC_-_timestamp-microservice",
+      "challengeType": 4,
+      "challengeFiles": []
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1731187283466,
+      "solution": "https://3000-freecodecam-boilerplate-y4c18rcjs6s.ws-eu116.gitpod.io",
+      "githubLink": "https://github.com/MarkusIsaksson1982/FCC_-_request-header-parser-microservice",
+      "challengeType": 4,
+      "challengeFiles": []
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1731192714921,
+      "solution": "https://3000-freecodecam-boilerplate-tssv31zmzgd.ws-eu116.gitpod.io",
+      "githubLink": "https://github.com/MarkusIsaksson1982/FCC_-_URL-shortener",
+      "challengeType": 4,
+      "challengeFiles": []
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1731255897695,
+      "solution": "https://3000-freecodecam-boilerplate-31078imf0b3.ws-eu116.gitpod.io",
+      "githubLink": "https://github.com/MarkusIsaksson1982/FCC_-_exercise-tracker",
+      "challengeType": 4,
+      "challengeFiles": []
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1731256805858,
+      "solution": "https://3000-freecodecam-boilerplate-4il56litqwy.ws-eu116.gitpod.io",
+      "githubLink": "https://github.com/MarkusIsaksson1982/FCC_-_file-metadata-microservice",
+      "challengeType": 4,
+      "challengeFiles": []
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1731751781332,
+      "challengeType": 23,
+      "challengeFiles": [
+        {
+          "contents": "# Python content from the assignment",
+          "ext": "py",
+          "name": "main",
+          "fileKey": "mainpy"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1732479882602,
+      "challengeType": 23,
+      "challengeFiles": [
+        {
+          "contents": "# Python content from the assignment",
+          "ext": "py",
+          "name": "main",
+          "fileKey": "mainpy"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1732562834543,
+      "challengeType": 23,
+      "challengeFiles": [
+        {
+          "contents": "# Python content from the assignment",
+          "ext": "py",
+          "name": "main",
+          "fileKey": "mainpy"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1732820153929,
+      "challengeType": 23,
+      "challengeFiles": [
+        {
+          "contents": "# Python content from the assignment",
+          "ext": "py",
+          "name": "main",
+          "fileKey": "mainpy"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1732885746686,
+      "challengeType": 23,
+      "challengeFiles": [
+        {
+          "contents": "# Python content from the assignment",
+          "ext": "py",
+          "name": "main",
+          "fileKey": "mainpy"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1733850614889,
+      "solution": "https://3000-freecodecam-boilerplate-01e5z4mzgkc.ws-eu117.gitpod.io",
+      "githubLink": "https://github.com/MarkusIsaksson1982/FCC_-_metric-imperial-converter",
+      "challengeType": 4,
+      "challengeFiles": []
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1733853800550,
+      "solution": "https://3000-freecodecam-boilerplate-a0112zuqf1h.ws-eu117.gitpod.io",
+      "githubLink": "https://github.com/MarkusIsaksson1982/FCC-_-issue-tracker",
+      "challengeType": 4,
+      "challengeFiles": []
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1733858858221,
+      "solution": "https://3000-freecodecam-boilerplate-1ov5x341bay.ws-eu117.gitpod.io",
+      "githubLink": "https://github.com/MarkusIsaksson1982/FCC_-_personal-library",
+      "challengeType": 4,
+      "challengeFiles": []
+    },
+    {
+      "id": "(id removed)",
+      "completedDate": 1733918231403,
+      "solution": "https://3000-freecodecam-boilerplate-dmkooxs4tnr.ws-eu117.gitpod.io",
+      "githubLink": "https://github.com/MarkusIsaksson1982/FCC_-_sudoku-solver",
+      "challengeType": 4,
+      "challengeFiles": []
+    }
+  ],
+  "completedExams": [],
+  "githubProfile": "https://github.com/MarkusIsaksson1982",
+  "isApisMicroservicesCert": true,
+  "isBackEndCert": false,
+  "isCheater": false,
+  "isDonating": false,
+  "is2018DataVisCert": true,
+  "isDataVisCert": false,
+  "isFrontEndCert": false,
+  "isFullStackCert": false,
+  "isFrontEndLibsCert": true,
+  "isHonest": true,
+  "isInfosecQaCert": false,
+  "isQaCertV7": false,
+  "isInfosecCertV7": false,
+  "isJsAlgoDataStructCert": false,
+  "isRelationalDatabaseCertV8": true,
+  "isRespWebDesignCert": true,
+  "isSciCompPyCertV7": true,
+  "isDataAnalysisPyCertV7": false,
+  "isMachineLearningPyCertV7": false,
+  "isCollegeAlgebraPyCertV8": false,
+  "isFoundationalCSharpCertV8": false,
+  "isJsAlgoDataStructCertV8": true,
+  "linkedin": "https://www.linkedin.com/in/markus-isaksson-08273a127/",
+  "location": "Uppsala, Sweden",
+  "name": "Markus Isaksson",
+  "partiallyCompletedChallenges": [],
+  "points": 3428,
+  "portfolio": [],
+  "profileUI": {
+    "isLocked": false,
+    "showAbout": true,
+    "showCerts": true,
+    "showDonation": false,
+    "showHeatMap": true,
+    "showLocation": true,
+    "showName": true,
+    "showPoints": true,
+    "showPortfolio": true,
+    "showTimeLine": true
+  },
+  "savedChallenges": [
+    {
+      "id": "(id removed)",
+      "lastSavedDate": 1728230552200,
+      "challengeFiles": [
+        {
+          "contents": "<!-- HTML content from the assignment -->",
+          "ext": "html",
+          "name": "index",
+          "history": [
+            "index.html"
+          ],
+          "fileKey": "indexhtml"
+        },
+        {
+          "contents": "/* CSS content from the assignment */",
+          "ext": "css",
+          "name": "styles",
+          "history": [
+            "styles.css"
+          ],
+          "fileKey": "stylescss"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "lastSavedDate": 1728230925113,
+      "challengeFiles": [
+        {
+          "contents": "<!-- HTML content from the assignment -->",
+          "ext": "html",
+          "name": "index",
+          "history": [
+            "index.html"
+          ],
+          "fileKey": "indexhtml"
+        },
+        {
+          "contents": "/* CSS content from the assignment */",
+          "ext": "css",
+          "name": "styles",
+          "history": [
+            "styles.css"
+          ],
+          "fileKey": "stylescss"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "lastSavedDate": 1728231416784,
+      "challengeFiles": [
+        {
+          "contents": "<!-- HTML content from the assignment -->",
+          "ext": "html",
+          "name": "index",
+          "history": [
+            "index.html"
+          ],
+          "fileKey": "indexhtml"
+        },
+        {
+          "contents": "/* CSS content from the assignment */",
+          "ext": "css",
+          "name": "styles",
+          "history": [
+            "styles.css"
+          ],
+          "fileKey": "stylescss"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "lastSavedDate": 1728233172664,
+      "challengeFiles": [
+        {
+          "contents": "<!-- HTML content from the assignment -->",
+          "ext": "html",
+          "name": "index",
+          "history": [
+            "index.html"
+          ],
+          "fileKey": "indexhtml"
+        },
+        {
+          "contents": "/* CSS content from the assignment */",
+          "ext": "css",
+          "name": "styles",
+          "history": [
+            "styles.css"
+          ],
+          "fileKey": "stylescss"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "lastSavedDate": 1728233216456,
+      "challengeFiles": [
+        {
+          "contents": "<!-- HTML content from the assignment -->",
+          "ext": "html",
+          "name": "index",
+          "history": [
+            "index.html"
+          ],
+          "fileKey": "indexhtml"
+        },
+        {
+          "contents": "/* CSS content from the assignment */",
+          "ext": "css",
+          "name": "styles",
+          "history": [
+            "styles.css"
+          ],
+          "fileKey": "stylescss"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "lastSavedDate": 1728851277839,
+      "challengeFiles": [
+        {
+          "contents": "<!-- HTML content from the assignment -->",
+          "ext": "html",
+          "name": "index",
+          "history": [
+            "index.html"
+          ],
+          "fileKey": "indexhtml"
+        },
+        {
+          "contents": "/* CSS content from the assignment */",
+          "ext": "css",
+          "name": "styles",
+          "history": [
+            "styles.css"
+          ],
+          "fileKey": "stylescss"
+        },
+        {
+          "contents": "/* Javascript content from the assignment */",
+          "ext": "js",
+          "name": "script",
+          "history": [
+            "script.js"
+          ],
+          "fileKey": "scriptjs"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "lastSavedDate": 1729555500308,
+      "challengeFiles": [
+        {
+          "contents": "<!-- HTML content from the assignment -->",
+          "ext": "html",
+          "name": "index",
+          "history": [
+            "index.html"
+          ],
+          "fileKey": "indexhtml"
+        },
+        {
+          "contents": "/* CSS content from the assignment */",
+          "ext": "css",
+          "name": "styles",
+          "history": [
+            "styles.css"
+          ],
+          "fileKey": "stylescss"
+        },
+        {
+          "contents": "/* Javascript content from the assignment */",
+          "ext": "js",
+          "name": "script",
+          "history": [
+            "script.js"
+          ],
+          "fileKey": "scriptjs"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "lastSavedDate": 1729615648822,
+      "challengeFiles": [
+        {
+          "contents": "<!-- HTML content from the assignment -->",
+          "ext": "html",
+          "name": "index",
+          "history": [
+            "index.html"
+          ],
+          "fileKey": "indexhtml"
+        },
+        {
+          "contents": "/* CSS content from the assignment */",
+          "ext": "css",
+          "name": "styles",
+          "history": [
+            "styles.css"
+          ],
+          "fileKey": "stylescss"
+        },
+        {
+          "contents": "/* Javascript content from the assignment */",
+          "ext": "js",
+          "name": "script",
+          "history": [
+            "script.js"
+          ],
+          "fileKey": "scriptjs"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "lastSavedDate": 1729687393796,
+      "challengeFiles": [
+        {
+          "contents": "<!-- HTML content from the assignment -->",
+          "ext": "html",
+          "name": "index",
+          "history": [
+            "index.html"
+          ],
+          "fileKey": "indexhtml"
+        },
+        {
+          "contents": "/* Javascript content from the assignment */",
+          "ext": "js",
+          "name": "script",
+          "history": [
+            "script.js"
+          ],
+          "fileKey": "scriptjs"
+        },
+        {
+          "contents": "/* CSS content from the assignment */",
+          "ext": "css",
+          "name": "styles",
+          "history": [
+            "styles.css"
+          ],
+          "fileKey": "stylescss"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "lastSavedDate": 1729702105990,
+      "challengeFiles": [
+        {
+          "contents": "<!-- HTML content from the assignment -->",
+          "ext": "html",
+          "name": "index",
+          "history": [
+            "index.html"
+          ],
+          "fileKey": "indexhtml"
+        },
+        {
+          "contents": "/* CSS content from the assignment */",
+          "ext": "css",
+          "name": "styles",
+          "history": [
+            "styles.css"
+          ],
+          "fileKey": "stylescss"
+        },
+        {
+          "contents": "/* Javascript content from the assignment */",
+          "ext": "js",
+          "name": "script",
+          "history": [
+            "script.js"
+          ],
+          "fileKey": "scriptjs"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "lastSavedDate": 1732886099304,
+      "challengeFiles": [
+        {
+          "contents": "# Python content from the assignment",
+          "ext": "py",
+          "name": "main",
+          "history": [
+            "main.py"
+          ],
+          "fileKey": "mainpy"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "lastSavedDate": 1732886057801,
+      "challengeFiles": [
+        {
+          "contents": "# Python content from the assignment",
+          "ext": "py",
+          "name": "main",
+          "history": [
+            "main.py"
+          ],
+          "fileKey": "mainpy"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "lastSavedDate": 1732886014643,
+      "challengeFiles": [
+        {
+          "contents": "# Python content from the assignment",
+          "ext": "py",
+          "name": "main",
+          "history": [
+            "main.py"
+          ],
+          "fileKey": "mainpy"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "lastSavedDate": 1732885975012,
+      "challengeFiles": [
+        {
+          "contents": "# Python content from the assignment",
+          "ext": "py",
+          "name": "main",
+          "history": [
+            "main.py"
+          ],
+          "fileKey": "mainpy"
+        }
+      ]
+    },
+    {
+      "id": "(id removed)",
+      "lastSavedDate": 1732885939401,
+      "challengeFiles": [
+        {
+          "contents": "# Python content from the assignment",
+          "ext": "py",
+          "name": "main",
+          "history": [
+            "main.py"
+          ],
+          "fileKey": "mainpy"
+        }
+      ]
+    }
+  ],
+  "twitter": "",
+  "username": "fccfb1888e4-715c-408f-9fcb-887123f4d08b",
+  "website": "(Details removed, see LinkedIn profile for contact info)",
+  "yearsTopContributor": [],
+  "currentChallengeId": "",
+  "email": "(Details removed, see LinkedIn profile for contact info)",
+  "emailVerified": true,
+  "id": "(id removed)",
+  "sendQuincyEmail": true,
+  "theme": "default",
+  "keyboardShortcuts": false,
+  "completedChallengeCount": 3434,
+  "acceptedPrivacyTerms": true,
+  "isEmailVerified": true,
+  "picture": "(Details removed, see LinkedIn profile for contact info)",
+  "joinDate": "2024-10-01T16:39:22.000Z",
+  "completedSurveys": [],
+  "sessionUser": true
+}
+---
+The text above is original data from a freeCodeCamp file dump of a .JSON database.
+
+This is an automatically added comment by a parsing app written in JavaScript by Markus Isaksson. The parser has taken a .JSON database file of a freeCodeCamp profile and removed some data. This is a summary of what has been removed:
+
+3388 instances of references to completed shorter step-by-step programming exercises were removed.
+
+The original file also contained submitted code, which has been removed and replaced with comments.
+
+20 instances of HTML code were processed.
+20 instances of CSS code were processed.
+10 instances of JavaScript code were processed.
+10 instances of Python code were processed. Python code is inserted twice in the original database, so this represents 5 unique occurrences as long as the same structure of the original database files is used.
+0 instances of other types of code were processed.
