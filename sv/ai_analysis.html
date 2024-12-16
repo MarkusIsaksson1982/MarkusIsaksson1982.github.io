@@ -5,20 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI-analys av mina meriter</title>
     <link rel="stylesheet" href="../assets/css/common_styles.css">
-    <script src="../assets/js/header_footer.js" defer></script>
-    <script src="../assets/js/script.js" defer></script>
+    <script src="../assets/js/ai_analysis_sv.js" defer></script>
 </head>
 <body>
-    <header></header> <!-- Dynamically loaded header -->
+    <header></header>
     <main>
-        <section style="text-align: center; margin: 40px auto; max-width: 800px; padding: 20px;">
-            <h1>Sidan är under ombyggnad</h1>
-            <p>
-                Jag har fått en flaggning från Google som rekommenderar förbättringar av min webbplats.
-                Jag avser att lägga tillbaka innehållet på denna sida efter att ha rekonstruerat den.
-            </p>
+        <section style="display: flex; justify-content: space-between; align-items: flex-start; padding: 20px; gap: 20px;">
+            <div class="code-container">
+                <p>Parsed FCCdump Metadata Only:</p>
+                <textarea readonly></textarea>
+                <button class="copy-button" onclick="copyToClipboard(0)">Kopiera</button>
+            </div>
+            <div class="code-container">
+                <p>Parsed FCCdump Compact:</p>
+                <textarea readonly></textarea>
+                <button class="copy-button" onclick="copyToClipboard(1)">Kopiera</button>
+            </div>
+            <div class="code-container">
+                <p>Parsed FCCdump Verbose:</p>
+                <textarea readonly></textarea>
+                <button class="copy-button" onclick="copyToClipboard(2)">Kopiera</button>
+            </div>
         </section>
     </main>
-    <footer></footer> <!-- Dynamically loaded footer -->
+    <footer></footer>
 </body>
 </html>
