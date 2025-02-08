@@ -19,17 +19,47 @@
             max-width: 800px;
             margin: auto;
             background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
+            padding: 40px;
             border-radius: 10px;
+        }
+        .bible-quote {
+            font-size: 1.6em;
+            font-style: italic;
+            color: #ffd700;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 50px 0;
         }
         .video {
             margin: 20px 0;
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const quotes = [
+                "Herren är god mot alla och förbarmar sig över alla sina verk. (Psaltaren 145:9)",
+                "Herrens barmhärtighet har ingen ände. Den är ny varje morgon, stor är hans trofasthet.",
+                "Herren väntar på att få visa er nåd, därför står han upp för att förbarma sig över er. Ty Herren är en rättens Gud. Saliga är alla som hoppas på honom!",
+                "Jag vet vilka tankar jag har för er, säger Herren, nämligen fridens tankar och inte ofärdens, för att ge er en framtid och ett hopp. (Jeremia 29:11)",
+                "Ty du, Herre, är god och förlåter, rik på nåd till alla som åkallar dig. (Psaltaren 86:5)",
+                "Herren går själv framför dig. Han skall vara med dig, han skall inte lämna dig eller överge dig. Var inte rädd eller förfärad. (5 Moseboken 31:8)",
+                "Herren är nära dem som har ett förkrossat hjärta och frälser dem som har en bedrövad ande. (Psaltaren 34:19)",
+                "Frukta inte, för jag är med dig. Se dig inte ängsligt om, för jag är din Gud. Jag styrker dig, jag hjälper dig, jag uppehåller dig med min rättfärdighets högra hand. (Jesaja 41:10)",
+                "Ty jag är viss om att varken död eller liv, varken änglar eller furstar, varken något som nu är eller något som skall komma, varken makter, höjd eller djup eller något annat skapat skall kunna skilja oss från Guds kärlek i Kristus Jesus, vår Herre. (Romarbrevet 8:38-39)",
+                "Om jag än vandrar i dödsskuggans dal, fruktar jag inget ont, ty du är med mig; din käpp och din stav, de tröstar mig. (Psaltaren 23:4)"
+            ];
+            
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            document.getElementById("bible-quote").innerText = randomQuote;
+        });
+    </script>
 </head>
 <body>
     <h1>Den Nåderike och Barmhärtige</h1>
     <div class="container">
+        <div class="bible-quote" id="bible-quote"></div>
+        
         <p>En plats för stillhet och andakt, med psalmer som bär hopp och tröst.</p>
         
         <div class="video">
