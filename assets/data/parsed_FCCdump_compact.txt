@@ -1,10 +1,10 @@
 Choose output format (compact/verbose/metadata only): compact
 Filtered JSON Contents: {
-  "about": "I've completed the following sections on freeCodeCamp: Responsive Web Design, JavaScript Algorithms and Data Structures, Front End Development Libraries, Data Visualization, Relational Database, Back End Development and APIs, Scientific Computing with Python",
+  "about": "I've completed the following sections on freeCodeCamp (each with a certificate that states that the section approximates 300 hours of learning): Responsive Web Design, JavaScript Algorithms and Data Structures, Front End Development Libraries, Data Visualization, Relational Database, Back End Development and APIs, Quality Assurance, Scientific Computing with Python, Data Analysis with Python, Information Security, Machine Learning with Python, and College Algebra with Python",
   "completedChallenges": [
     {
-      "id": "(id removed)",
       "completedDate": 1727981276444,
+      "id": "(id removed)",
       "challengeType": 14,
       "isManuallyApproved": false,
       "challengeFiles": [
@@ -12,19 +12,19 @@ Filtered JSON Contents: {
           "contents": "<!-- HTML content from the assignment -->",
           "ext": "html",
           "name": "index",
-          "fileKey": "indexhtml"
+          "key": "indexhtml"
         },
         {
           "contents": "/* CSS content from the assignment */",
           "ext": "css",
           "name": "styles",
-          "fileKey": "stylescss"
+          "key": "stylescss"
         }
       ]
     },
     {
-      "id": "(id removed)",
       "completedDate": 1728057183480,
+      "id": "(id removed)",
       "challengeType": 14,
       "isManuallyApproved": false,
       "challengeFiles": [
@@ -32,19 +32,19 @@ Filtered JSON Contents: {
           "contents": "<!-- HTML content from the assignment -->",
           "ext": "html",
           "name": "index",
-          "fileKey": "indexhtml"
+          "key": "indexhtml"
         },
         {
           "contents": "/* CSS content from the assignment */",
           "ext": "css",
           "name": "styles",
-          "fileKey": "stylescss"
+          "key": "stylescss"
         }
       ]
     },
     {
-      "id": "(id removed)",
       "completedDate": 1728146087193,
+      "id": "(id removed)",
       "challengeType": 14,
       "isManuallyApproved": false,
       "challengeFiles": [
@@ -52,19 +52,19 @@ Filtered JSON Contents: {
           "contents": "<!-- HTML content from the assignment -->",
           "ext": "html",
           "name": "index",
-          "fileKey": "indexhtml"
+          "key": "indexhtml"
         },
         {
           "contents": "/* CSS content from the assignment */",
           "ext": "css",
           "name": "styles",
-          "fileKey": "stylescss"
+          "key": "stylescss"
         }
       ]
     },
     {
-      "id": "(id removed)",
       "completedDate": 1728222822916,
+      "id": "(id removed)",
       "challengeType": 14,
       "isManuallyApproved": false,
       "challengeFiles": [
@@ -72,19 +72,19 @@ Filtered JSON Contents: {
           "contents": "<!-- HTML content from the assignment -->",
           "ext": "html",
           "name": "index",
-          "fileKey": "indexhtml"
+          "key": "indexhtml"
         },
         {
           "contents": "/* CSS content from the assignment */",
           "ext": "css",
           "name": "styles",
-          "fileKey": "stylescss"
+          "key": "stylescss"
         }
       ]
     },
     {
-      "id": "(id removed)",
       "completedDate": 1728230233101,
+      "id": "(id removed)",
       "challengeType": 14,
       "isManuallyApproved": false,
       "challengeFiles": [
@@ -92,19 +92,19 @@ Filtered JSON Contents: {
           "contents": "<!-- HTML content from the assignment -->",
           "ext": "html",
           "name": "index",
-          "fileKey": "indexhtml"
+          "key": "indexhtml"
         },
         {
           "contents": "/* CSS content from the assignment */",
           "ext": "css",
           "name": "styles",
-          "fileKey": "stylescss"
+          "key": "stylescss"
         }
       ]
     },
     {
-      "id": "(id removed)",
       "completedDate": 1728851277839,
+      "id": "(id removed)",
       "challengeType": 14,
       "isManuallyApproved": false,
       "challengeFiles": [
@@ -112,25 +112,25 @@ Filtered JSON Contents: {
           "contents": "<!-- HTML content from the assignment -->",
           "ext": "html",
           "name": "index",
-          "fileKey": "indexhtml"
+          "key": "indexhtml"
         },
         {
           "contents": "/* CSS content from the assignment */",
           "ext": "css",
           "name": "styles",
-          "fileKey": "stylescss"
+          "key": "stylescss"
         },
         {
           "contents": "/* Javascript content from the assignment */",
           "ext": "js",
           "name": "script",
-          "fileKey": "scriptjs"
+          "key": "scriptjs"
         }
       ]
     },
     {
-      "id": "(id removed)",
       "completedDate": 1729555500308,
+      "id": "(id removed)",
       "challengeType": 14,
       "isManuallyApproved": false,
       "challengeFiles": [
@@ -138,25 +138,25 @@ Filtered JSON Contents: {
           "contents": "<!-- HTML content from the assignment -->",
           "ext": "html",
           "name": "index",
-          "fileKey": "indexhtml"
+          "key": "indexhtml"
         },
         {
           "contents": "/* CSS content from the assignment */",
           "ext": "css",
           "name": "styles",
-          "fileKey": "stylescss"
+          "key": "stylescss"
         },
         {
           "contents": "/* Javascript content from the assignment */",
           "ext": "js",
           "name": "script",
-          "fileKey": "scriptjs"
+          "key": "scriptjs"
         }
       ]
     },
     {
-      "id": "(id removed)",
       "completedDate": 1729615648822,
+      "id": "(id removed)",
       "challengeType": 14,
       "isManuallyApproved": false,
       "challengeFiles": [
@@ -164,25 +164,25 @@ Filtered JSON Contents: {
           "contents": "<!-- HTML content from the assignment -->",
           "ext": "html",
           "name": "index",
-          "fileKey": "indexhtml"
+          "key": "indexhtml"
         },
         {
           "contents": "/* CSS content from the assignment */",
           "ext": "css",
           "name": "styles",
-          "fileKey": "stylescss"
+          "key": "stylescss"
         },
         {
           "contents": "/* Javascript content from the assignment */",
           "ext": "js",
           "name": "script",
-          "fileKey": "scriptjs"
+          "key": "scriptjs"
         }
       ]
     },
     {
-      "id": "(id removed)",
       "completedDate": 1729687393796,
+      "id": "(id removed)",
       "challengeType": 14,
       "isManuallyApproved": false,
       "challengeFiles": [
@@ -190,25 +190,25 @@ Filtered JSON Contents: {
           "contents": "<!-- HTML content from the assignment -->",
           "ext": "html",
           "name": "index",
-          "fileKey": "indexhtml"
+          "key": "indexhtml"
         },
         {
           "contents": "/* Javascript content from the assignment */",
           "ext": "js",
           "name": "script",
-          "fileKey": "scriptjs"
+          "key": "scriptjs"
         },
         {
           "contents": "/* CSS content from the assignment */",
           "ext": "css",
           "name": "styles",
-          "fileKey": "stylescss"
+          "key": "stylescss"
         }
       ]
     },
     {
-      "id": "(id removed)",
       "completedDate": 1729702105990,
+      "id": "(id removed)",
       "challengeType": 14,
       "isManuallyApproved": false,
       "challengeFiles": [
@@ -216,262 +216,413 @@ Filtered JSON Contents: {
           "contents": "<!-- HTML content from the assignment -->",
           "ext": "html",
           "name": "index",
-          "fileKey": "indexhtml"
+          "key": "indexhtml"
         },
         {
           "contents": "/* CSS content from the assignment */",
           "ext": "css",
           "name": "styles",
-          "fileKey": "stylescss"
+          "key": "stylescss"
         },
         {
           "contents": "/* Javascript content from the assignment */",
           "ext": "js",
           "name": "script",
-          "fileKey": "scriptjs"
+          "key": "scriptjs"
         }
       ]
     },
     {
-      "id": "(id removed)",
       "completedDate": 1730686355728,
+      "id": "(id removed)",
       "solution": "https://codepen.io/MarkusIsaksson/pen/eYqjgNO",
       "challengeType": 3,
       "challengeFiles": []
     },
     {
-      "id": "(id removed)",
       "completedDate": 1730724385724,
+      "id": "(id removed)",
       "solution": "https://codepen.io/MarkusIsaksson/pen/poMZRKv",
       "challengeType": 3,
       "challengeFiles": []
     },
     {
-      "id": "(id removed)",
       "completedDate": 1730735823339,
+      "id": "(id removed)",
       "solution": "https://codepen.io/MarkusIsaksson/pen/xxvJjKX",
       "challengeType": 3,
       "challengeFiles": []
     },
     {
-      "id": "(id removed)",
       "completedDate": 1730755789394,
+      "id": "(id removed)",
       "solution": "https://codepen.io/MarkusIsaksson/pen/dyxjgyB",
       "challengeType": 3,
       "challengeFiles": []
     },
     {
-      "id": "(id removed)",
       "completedDate": 1730760761439,
+      "id": "(id removed)",
       "solution": "https://codepen.io/MarkusIsaksson/pen/VwoBOgj",
       "challengeType": 3,
       "challengeFiles": []
     },
     {
-      "id": "(id removed)",
       "completedDate": 1730814991199,
+      "id": "(id removed)",
       "solution": "https://codepen.io/MarkusIsaksson/pen/GRVXWBb",
       "challengeType": 3,
       "challengeFiles": []
     },
     {
-      "id": "(id removed)",
       "completedDate": 1730820158367,
+      "id": "(id removed)",
       "solution": "https://codepen.io/MarkusIsaksson/pen/dyxqReR",
       "challengeType": 3,
       "challengeFiles": []
     },
     {
-      "id": "(id removed)",
       "completedDate": 1730823431621,
+      "id": "(id removed)",
       "solution": "https://codepen.io/MarkusIsaksson/pen/RwXYZBO",
       "challengeType": 3,
       "challengeFiles": []
     },
     {
-      "id": "(id removed)",
       "completedDate": 1730828761096,
+      "id": "(id removed)",
       "solution": "https://codepen.io/MarkusIsaksson/pen/vYozWXm",
       "challengeType": 3,
       "challengeFiles": []
     },
     {
-      "id": "(id removed)",
       "completedDate": 1730835292872,
+      "id": "(id removed)",
       "solution": "https://codepen.io/MarkusIsaksson/pen/NWQLwVm",
       "challengeType": 3,
       "challengeFiles": []
     },
     {
-      "id": "(id removed)",
       "completedDate": 1730901332693,
+      "id": "(id removed)",
       "solution": "https://github.com/MarkusIsaksson1982/FCC_-_build-a-celestial-bodies-database/blob/main/universe.sql",
       "challengeType": 13,
       "challengeFiles": []
     },
     {
-      "id": "(id removed)",
       "completedDate": 1731002069733,
+      "id": "(id removed)",
       "solution": "https://github.com/MarkusIsaksson1982/FCC_-_build-a-world-cup-database",
       "challengeType": 13,
       "challengeFiles": []
     },
     {
-      "id": "(id removed)",
       "completedDate": 1731068377885,
+      "id": "(id removed)",
       "solution": "https://github.com/MarkusIsaksson1982/FCC_-_build-a-salon-appointment-scheduler",
       "challengeType": 13,
       "challengeFiles": []
     },
     {
-      "id": "(id removed)",
       "completedDate": 1731100618815,
+      "id": "(id removed)",
       "solution": "https://github.com/MarkusIsaksson1982/FCC_-_build-a-periodic-table-database",
       "challengeType": 13,
       "challengeFiles": []
     },
     {
-      "id": "(id removed)",
       "completedDate": 1731102006024,
+      "id": "(id removed)",
       "solution": "https://github.com/MarkusIsaksson1982/FCC_-_build-a-number-guessing-game",
       "challengeType": 13,
       "challengeFiles": []
     },
     {
-      "id": "(id removed)",
       "completedDate": 1731185626772,
+      "id": "(id removed)",
       "solution": "https://3000-freecodecam-boilerplate-o58q6cnckaw.ws-eu116.gitpod.io",
       "githubLink": "https://github.com/MarkusIsaksson1982/FCC_-_timestamp-microservice",
       "challengeType": 4,
       "challengeFiles": []
     },
     {
-      "id": "(id removed)",
       "completedDate": 1731187283466,
+      "id": "(id removed)",
       "solution": "https://3000-freecodecam-boilerplate-y4c18rcjs6s.ws-eu116.gitpod.io",
       "githubLink": "https://github.com/MarkusIsaksson1982/FCC_-_request-header-parser-microservice",
       "challengeType": 4,
       "challengeFiles": []
     },
     {
-      "id": "(id removed)",
       "completedDate": 1731192714921,
+      "id": "(id removed)",
       "solution": "https://3000-freecodecam-boilerplate-tssv31zmzgd.ws-eu116.gitpod.io",
       "githubLink": "https://github.com/MarkusIsaksson1982/FCC_-_URL-shortener",
       "challengeType": 4,
       "challengeFiles": []
     },
     {
-      "id": "(id removed)",
       "completedDate": 1731255897695,
+      "id": "(id removed)",
       "solution": "https://3000-freecodecam-boilerplate-31078imf0b3.ws-eu116.gitpod.io",
       "githubLink": "https://github.com/MarkusIsaksson1982/FCC_-_exercise-tracker",
       "challengeType": 4,
       "challengeFiles": []
     },
     {
-      "id": "(id removed)",
       "completedDate": 1731256805858,
+      "id": "(id removed)",
       "solution": "https://3000-freecodecam-boilerplate-4il56litqwy.ws-eu116.gitpod.io",
       "githubLink": "https://github.com/MarkusIsaksson1982/FCC_-_file-metadata-microservice",
       "challengeType": 4,
       "challengeFiles": []
     },
     {
-      "id": "(id removed)",
       "completedDate": 1731751781332,
+      "id": "(id removed)",
       "challengeType": 23,
       "challengeFiles": [
         {
           "contents": "# Python content from the assignment",
           "ext": "py",
           "name": "main",
-          "fileKey": "mainpy"
+          "key": "mainpy"
         }
       ]
     },
     {
-      "id": "(id removed)",
       "completedDate": 1732479882602,
+      "id": "(id removed)",
       "challengeType": 23,
       "challengeFiles": [
         {
           "contents": "# Python content from the assignment",
           "ext": "py",
           "name": "main",
-          "fileKey": "mainpy"
+          "key": "mainpy"
         }
       ]
     },
     {
-      "id": "(id removed)",
       "completedDate": 1732562834543,
+      "id": "(id removed)",
       "challengeType": 23,
       "challengeFiles": [
         {
           "contents": "# Python content from the assignment",
           "ext": "py",
           "name": "main",
-          "fileKey": "mainpy"
+          "key": "mainpy"
         }
       ]
     },
     {
-      "id": "(id removed)",
       "completedDate": 1732820153929,
+      "id": "(id removed)",
       "challengeType": 23,
       "challengeFiles": [
         {
           "contents": "# Python content from the assignment",
           "ext": "py",
           "name": "main",
-          "fileKey": "mainpy"
+          "key": "mainpy"
         }
       ]
     },
     {
-      "id": "(id removed)",
       "completedDate": 1732885746686,
+      "id": "(id removed)",
       "challengeType": 23,
       "challengeFiles": [
         {
           "contents": "# Python content from the assignment",
           "ext": "py",
           "name": "main",
-          "fileKey": "mainpy"
+          "key": "mainpy"
         }
       ]
     },
     {
-      "id": "(id removed)",
       "completedDate": 1733850614889,
+      "id": "(id removed)",
       "solution": "https://3000-freecodecam-boilerplate-01e5z4mzgkc.ws-eu117.gitpod.io",
       "githubLink": "https://github.com/MarkusIsaksson1982/FCC_-_metric-imperial-converter",
       "challengeType": 4,
       "challengeFiles": []
     },
     {
-      "id": "(id removed)",
       "completedDate": 1733853800550,
+      "id": "(id removed)",
       "solution": "https://3000-freecodecam-boilerplate-a0112zuqf1h.ws-eu117.gitpod.io",
       "githubLink": "https://github.com/MarkusIsaksson1982/FCC-_-issue-tracker",
       "challengeType": 4,
       "challengeFiles": []
     },
     {
-      "id": "(id removed)",
       "completedDate": 1733858858221,
+      "id": "(id removed)",
       "solution": "https://3000-freecodecam-boilerplate-1ov5x341bay.ws-eu117.gitpod.io",
       "githubLink": "https://github.com/MarkusIsaksson1982/FCC_-_personal-library",
       "challengeType": 4,
       "challengeFiles": []
     },
     {
-      "id": "(id removed)",
       "completedDate": 1733918231403,
+      "id": "(id removed)",
       "solution": "https://3000-freecodecam-boilerplate-dmkooxs4tnr.ws-eu117.gitpod.io",
       "githubLink": "https://github.com/MarkusIsaksson1982/FCC_-_sudoku-solver",
       "challengeType": 4,
+      "challengeFiles": []
+    },
+    {
+      "completedDate": 1738761635559,
+      "id": "(id removed)",
+      "solution": "https://3000-freecodecam-boilerplate-qcmhoihgfkk.ws-eu117.gitpod.io",
+      "githubLink": "https://github.com/MarkusIsaksson1982/quality-assurance_-_american-british-translator",
+      "challengeType": 4,
+      "challengeFiles": []
+    },
+    {
+      "completedDate": 1738768319992,
+      "id": "(id removed)",
+      "solution": "https://replit.com/@mjisaksson/mean-variance-standard-deviation-calculator",
+      "challengeType": 10,
+      "challengeFiles": []
+    },
+    {
+      "completedDate": 1738769310017,
+      "id": "(id removed)",
+      "solution": "https://replit.com/@mjisaksson/demographic-data-analyzer",
+      "challengeType": 10,
+      "challengeFiles": []
+    },
+    {
+      "completedDate": 1738773439117,
+      "id": "(id removed)",
+      "solution": "https://replit.com/@mjisaksson/page-view-time-series-visualizer",
+      "challengeType": 10,
+      "challengeFiles": []
+    },
+    {
+      "completedDate": 1738775417911,
+      "id": "(id removed)",
+      "solution": "https://replit.com/@majois1982/sea-level-predictor",
+      "challengeType": 10,
+      "challengeFiles": []
+    },
+    {
+      "completedDate": 1738861183544,
+      "id": "(id removed)",
+      "solution": "https://replit.com/@majois1982/medical-data-visualizer",
+      "challengeType": 10,
+      "challengeFiles": []
+    },
+    {
+      "completedDate": 1738932218050,
+      "id": "(id removed)",
+      "solution": "https://3000-freecodecam-boilerplate-2x66ampydub.ws-eu117.gitpod.io",
+      "githubLink": "https://github.com/MarkusIsaksson1982/stock-price-checker",
+      "challengeType": 4,
+      "challengeFiles": []
+    },
+    {
+      "completedDate": 1738942593003,
+      "id": "(id removed)",
+      "solution": "https://3000-freecodecam-boilerplate-smf88tuarl3.ws-eu117.gitpod.io",
+      "githubLink": "https://github.com/MarkusIsaksson1982/anonymous-message-board",
+      "challengeType": 4,
+      "challengeFiles": []
+    },
+    {
+      "completedDate": 1739018367747,
+      "id": "(id removed)",
+      "solution": "https://replit.com/@majois1982/port-scanner",
+      "challengeType": 10,
+      "challengeFiles": []
+    },
+    {
+      "completedDate": 1739116868631,
+      "id": "(id removed)",
+      "solution": "https://replit.com/@markusisakssonc/SHA-1-password-cracker",
+      "challengeType": 10,
+      "challengeFiles": []
+    },
+    {
+      "completedDate": 1739120183957,
+      "id": "(id removed)",
+      "solution": "https://3000-freecodecam-boilerplate-ho63wft47mm.ws-eu117.gitpod.io",
+      "githubLink": "https://github.com/MarkusIsaksson1982/secure-real-time-multiplayer-game",
+      "challengeType": 4,
+      "challengeFiles": []
+    },
+    {
+      "completedDate": 1739217763852,
+      "id": "(id removed)",
+      "solution": "https://colab.research.google.com/drive/1tr_OoH8iXZbwxLXbIt9TTfdmH4joXQYr?usp=sharing",
+      "challengeType": 10,
+      "challengeFiles": []
+    },
+    {
+      "completedDate": 1739273827358,
+      "id": "(id removed)",
+      "solution": "https://colab.research.google.com/drive/1GQ7r7HBNV4Pu5B91w0YkPZtmJCqy4Iak",
+      "challengeType": 10,
+      "challengeFiles": []
+    },
+    {
+      "completedDate": 1739275953500,
+      "id": "(id removed)",
+      "solution": "https://drive.google.com/file/d/1j4ODPLeJeWniIDPT3eQboPkBcrrngBT4/view?usp=sharing",
+      "challengeType": 10,
+      "challengeFiles": []
+    },
+    {
+      "completedDate": 1739278638650,
+      "id": "(id removed)",
+      "solution": "https://drive.google.com/file/d/1vuRymv4qb5Z_gbCJ79Peqlbw1opiJx_p/view?usp=sharing",
+      "challengeType": 10,
+      "challengeFiles": []
+    },
+    {
+      "completedDate": 1739486855735,
+      "id": "(id removed)",
+      "solution": "https://replit.com/@markusisakssonc/rock-paper-scissors",
+      "challengeType": 10,
+      "challengeFiles": []
+    },
+    {
+      "completedDate": 1739725885200,
+      "id": "(id removed)",
+      "solution": "https://colab.research.google.com/drive/1A7dil2C3IzDPounZC8nL1ZDvG84WCqib?usp=sharing",
+      "challengeType": 10,
+      "challengeFiles": []
+    },
+    {
+      "completedDate": 1739995919118,
+      "id": "(id removed)",
+      "solution": "https://colab.research.google.com/drive/1QHt4OXSs00MyXMgjGpMfgxhUiOzV4N06?usp=sharing",
+      "challengeType": 10,
+      "challengeFiles": []
+    },
+    {
+      "completedDate": 1740000824358,
+      "id": "(id removed)",
+      "solution": "https://colab.research.google.com/drive/1UK9oi4s2xLm5oMANL9ypuqBYZzBKiSfJ?usp=sharing",
+      "challengeType": 10,
+      "challengeFiles": []
+    },
+    {
+      "completedDate": 1740006338035,
+      "id": "(id removed)",
+      "solution": "https://colab.research.google.com/drive/1Jq0CVMUNOZN_dHDzEJt6WtQghqhkRRKz?usp=sharing",
+      "challengeType": 10,
+      "challengeFiles": []
+    },
+    {
+      "completedDate": 1740006437624,
+      "id": "(id removed)",
+      "solution": "https://colab.research.google.com/drive/1wbHiriGWq16PtJ5IN_b1WlPG1bpT5u0U#scrollTo=k9XyfTMVL8cZ",
+      "challengeType": 10,
       "challengeFiles": []
     }
   ],
@@ -488,22 +639,22 @@ Filtered JSON Contents: {
   "isFrontEndLibsCert": true,
   "isHonest": true,
   "isInfosecQaCert": false,
-  "isQaCertV7": false,
-  "isInfosecCertV7": false,
+  "isQaCertV7": true,
+  "isInfosecCertV7": true,
   "isJsAlgoDataStructCert": false,
   "isRelationalDatabaseCertV8": true,
   "isRespWebDesignCert": true,
   "isSciCompPyCertV7": true,
-  "isDataAnalysisPyCertV7": false,
-  "isMachineLearningPyCertV7": false,
-  "isCollegeAlgebraPyCertV8": false,
+  "isDataAnalysisPyCertV7": true,
+  "isMachineLearningPyCertV7": true,
+  "isCollegeAlgebraPyCertV8": true,
   "isFoundationalCSharpCertV8": false,
   "isJsAlgoDataStructCertV8": true,
   "linkedin": "https://www.linkedin.com/in/markus-isaksson-08273a127/",
   "location": "Uppsala, Sweden",
   "name": "Markus Isaksson",
   "partiallyCompletedChallenges": [],
-  "points": 3428,
+  "points": 3564,
   "portfolio": [],
   "profileUI": {
     "isLocked": false,
@@ -890,7 +1041,7 @@ Filtered JSON Contents: {
   "sendQuincyEmail": true,
   "theme": "default",
   "keyboardShortcuts": false,
-  "completedChallengeCount": 3434,
+  "completedChallengeCount": 3574,
   "acceptedPrivacyTerms": true,
   "isEmailVerified": true,
   "picture": "(Details removed, see LinkedIn profile for contact info)",
@@ -903,12 +1054,14 @@ The text above is original data from a freeCodeCamp file dump of a .JSON databas
 
 This is an automatically added comment by a parsing app written in JavaScript by Markus Isaksson. The parser has taken a .JSON database file of a freeCodeCamp profile and removed some data. This is a summary of what has been removed:
 
-3388 instances of references to completed shorter step-by-step programming exercises were removed.
+3503 instances of references to completed shorter step-by-step programming exercises were removed.
 
 The original file also contained submitted code, which has been removed and replaced with comments.
 
-20 instances of HTML code were processed.
-20 instances of CSS code were processed.
-10 instances of JavaScript code were processed.
-10 instances of Python code were processed. Python code is inserted twice in the original database, so this represents 5 unique occurrences as long as the same structure of the original database files is used.
+10 instances of HTML code were processed.
+10 instances of CSS code were processed.
+5 instances of JavaScript code were processed.
+5 instances of Python code were processed. 
 0 instances of other types of code were processed.
+
+Some personal data has also been removed
