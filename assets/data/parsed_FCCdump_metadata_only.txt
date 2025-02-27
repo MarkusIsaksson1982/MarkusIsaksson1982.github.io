@@ -1,6 +1,6 @@
 Choose output format (compact/verbose/metadata only): metadata only
 Filtered JSON Contents: {
-  "about": "I've completed the following sections on freeCodeCamp: Responsive Web Design, JavaScript Algorithms and Data Structures, Front End Development Libraries, Data Visualization, Relational Database, Back End Development and APIs, Scientific Computing with Python",
+  "about": "I've completed the following sections on freeCodeCamp (each with a certificate that states that the section approximates 300 hours of learning): Responsive Web Design, JavaScript Algorithms and Data Structures, Front End Development Libraries, Data Visualization, Relational Database, Back End Development and APIs, Quality Assurance, Scientific Computing with Python, Data Analysis with Python, Information Security, Machine Learning with Python, and College Algebra with Python",
   "completedExams": [],
   "githubProfile": "https://github.com/MarkusIsaksson1982",
   "isApisMicroservicesCert": true,
@@ -14,22 +14,22 @@ Filtered JSON Contents: {
   "isFrontEndLibsCert": true,
   "isHonest": true,
   "isInfosecQaCert": false,
-  "isQaCertV7": false,
-  "isInfosecCertV7": false,
+  "isQaCertV7": true,
+  "isInfosecCertV7": true,
   "isJsAlgoDataStructCert": false,
   "isRelationalDatabaseCertV8": true,
   "isRespWebDesignCert": true,
   "isSciCompPyCertV7": true,
-  "isDataAnalysisPyCertV7": false,
-  "isMachineLearningPyCertV7": false,
-  "isCollegeAlgebraPyCertV8": false,
+  "isDataAnalysisPyCertV7": true,
+  "isMachineLearningPyCertV7": true,
+  "isCollegeAlgebraPyCertV8": true,
   "isFoundationalCSharpCertV8": false,
   "isJsAlgoDataStructCertV8": true,
   "linkedin": "https://www.linkedin.com/in/markus-isaksson-08273a127/",
   "location": "Uppsala, Sweden",
   "name": "Markus Isaksson",
   "partiallyCompletedChallenges": [],
-  "points": 3428,
+  "points": 3564,
   "portfolio": [],
   "profileUI": {
     "isLocked": false,
@@ -44,20 +44,20 @@ Filtered JSON Contents: {
     "showTimeLine": true
   },
   "twitter": "",
-  "username": "(Details removed, see LinkedIn profile for contact info)",
-  "website": "(Details removed, see LinkedIn profile for contact info)",
+  "username": "fccfb1888e4-715c-408f-9fcb-887123f4d08b",
+  "website": "https://www.markusisaksson.com",
   "yearsTopContributor": [],
   "currentChallengeId": "",
-  "email": "(Details removed, see LinkedIn profile for contact info)",
+  "email": "mjisaksson@gmail.com",
   "emailVerified": true,
-  "id": "(Details removed, see LinkedIn profile for contact info)",
+  "id": "66fc25bac7a42403ddff66d8",
   "sendQuincyEmail": true,
   "theme": "default",
   "keyboardShortcuts": false,
-  "completedChallengeCount": 3434,
+  "completedChallengeCount": 3574,
   "acceptedPrivacyTerms": true,
   "isEmailVerified": true,
-  "picture": "(Details removed, see LinkedIn profile for contact info)",
+  "picture": "https://markusisaksson.com/wp-content/uploads/go-x/u/1c33472f-bab2-43cb-8308-fa628344220e/l0,t0,w670,h670/image.jpg",
   "joinDate": "2024-10-01T16:39:22.000Z",
   "completedSurveys": [],
   "sessionUser": true
@@ -67,12 +67,14 @@ The text above is original data from a freeCodeCamp file dump of a .JSON databas
 
 This is an automatically added comment by a parsing app written in JavaScript by Markus Isaksson. The parser has taken a .JSON database file of a freeCodeCamp profile and removed some data. This is a summary of what has been removed:
 
-3388 instances of references to completed shorter step-by-step programming exercises were removed.
+3503 instances of references to completed shorter step-by-step programming exercises were removed.
 
-The original file also contained submitted code, which has been kept intact.
+The original file also contained submitted code, which has been removed and replaced with comments.
 
-20 instances of HTML code were processed.
-20 instances of CSS code were processed.
-10 instances of JavaScript code were processed.
-10 instances of Python code were processed. Python code is inserted twice in the original database, so this represents 5 unique occurrences as long as the same structure of the original database files is used.
+10 instances of HTML code were processed.
+10 instances of CSS code were processed.
+5 instances of JavaScript code were processed.
+5 instances of Python code were processed. 
 0 instances of other types of code were processed.
+
+Some personal data has also been removed
