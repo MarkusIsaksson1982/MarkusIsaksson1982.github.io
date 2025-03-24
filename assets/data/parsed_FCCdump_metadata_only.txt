@@ -97,7 +97,7 @@ This is an automatically added comment by a parsing app written in JavaScript by
 
 4478 instances of references to completed shorter step-by-step programming exercises were removed.
 
-The original file also contained submitted code, which has been removed. (This content gets removed with the "compact" and "metadata only" settings)
+The original file also contained submitted code, which has been removed and replaced with comments. (This content gets removed with the "compact" and "metadata only" settings)
 
 10 instances of HTML code were processed.
 10 instances of CSS code were processed.
