@@ -1,7 +1,21 @@
 Choose output format (compact/verbose/metadata only): metadata only
 Filtered JSON Contents: {
-  "about": "I've completed the following sections on freeCodeCamp (each with a certificate that states that the section approximates 300 hours of learning): Responsive Web Design, JavaScript Algorithms and Data Structures, Front End Development Libraries, Data Visualization, Relational Database, Back End Development and APIs, Quality Assurance, Scientific Computing with Python, Data Analysis with Python, Information Security, Machine Learning with Python, and College Algebra with Python",
-  "completedExams": [],
+  "about": "I've completed the following sections on freeCodeCamp (each with a certificate that states that the section approximates 300 hours of learning): Responsive Web Design, JavaScript Algorithms and Data Structures, Front End Development Libraries, Data Visualization, Relational Database, Back End Development and APIs, Quality Assurance, Scientific Computing with Python, Data Analysis with Python, Information Security, Machine Learning with Python, and College Algebra with Python.\n\nI also completed the Foundational C# with Microsoft section with a certificate that doesn't specify estimated learning time, but that included 38 sections of theory that could take up to at least an hour each to complete (a few sections were a bit shorter though), coding assignments where one valided the results of the assignments oneself, re-occuring multi-choice knowledge tests of up to 4 questions at the same time and a final exam with unlimited time consisting of 80 questions with 5 multiple choices on each question, where one had to get 70% correct answers to pass the test.) ",
+  "completedExams": [
+    {
+      "id": "647e22d18acb466c97ccbef8",
+      "completedDate": 1742662027513,
+      "challengeType": 17,
+      "examResults": {
+        "numberOfCorrectAnswers": 63,
+        "numberOfQuestionsInExam": 80,
+        "percentCorrect": 78.8,
+        "passingPercent": 70,
+        "passed": true,
+        "examTimeInSeconds": 1587
+      }
+    }
+  ],
   "githubProfile": "https://github.com/MarkusIsaksson1982",
   "isApisMicroservicesCert": true,
   "isBackEndCert": false,
@@ -23,13 +37,13 @@ Filtered JSON Contents: {
   "isDataAnalysisPyCertV7": true,
   "isMachineLearningPyCertV7": true,
   "isCollegeAlgebraPyCertV8": true,
-  "isFoundationalCSharpCertV8": false,
+  "isFoundationalCSharpCertV8": true,
   "isJsAlgoDataStructCertV8": true,
   "linkedin": "https://www.linkedin.com/in/markus-isaksson-08273a127/",
   "location": "Uppsala, Sweden",
   "name": "Markus Isaksson",
   "partiallyCompletedChallenges": [],
-  "points": 3564,
+  "points": 4551,
   "portfolio": [],
   "profileUI": {
     "isLocked": false,
@@ -54,12 +68,26 @@ Filtered JSON Contents: {
   "sendQuincyEmail": true,
   "theme": "default",
   "keyboardShortcuts": false,
-  "completedChallengeCount": 3574,
+  "completedChallengeCount": 4564,
   "acceptedPrivacyTerms": true,
   "isEmailVerified": true,
   "picture": "https://markusisaksson.com/wp-content/uploads/go-x/u/1c33472f-bab2-43cb-8308-fa628344220e/l0,t0,w670,h670/image.jpg",
   "joinDate": "2024-10-01T16:39:22.000Z",
-  "completedSurveys": [],
+  "completedSurveys": [
+    {
+      "title": "Foundational C# with Microsoft Survey",
+      "responses": [
+        {
+          "question": "Please describe your role:",
+          "response": "Student developer"
+        },
+        {
+          "question": "Prior to this course, how experienced were you with .NET and C#?",
+          "response": "Novice (no prior experience)"
+        }
+      ]
+    }
+  ],
   "sessionUser": true
 }
 ---
@@ -67,9 +95,9 @@ The text above is original data from a freeCodeCamp file dump of a .JSON databas
 
 This is an automatically added comment by a parsing app written in JavaScript by Markus Isaksson. The parser has taken a .JSON database file of a freeCodeCamp profile and removed some data. This is a summary of what has been removed:
 
-3503 instances of references to completed shorter step-by-step programming exercises were removed.
+4478 instances of references to completed shorter step-by-step programming exercises were removed.
 
-The original file also contained submitted code, which has been removed and replaced with comments.
+The original file also contained submitted code, which has been kept intact. (This content gets removed with the "compact" and "metadata only" settings)
 
 10 instances of HTML code were processed.
 10 instances of CSS code were processed.
