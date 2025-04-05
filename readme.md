@@ -31,6 +31,7 @@ Here are my verified certifications through freeCodeCamp:
 [![Data Analysis with Python](https://img.shields.io/badge/Data_Analysis_Python-Completed-brightgreen)](#)
 [![Information Security](https://img.shields.io/badge/Information_Security-Completed-brightgreen)](#)
 [![Machine Learning](https://img.shields.io/badge/Machine_Learning_Python-Completed-brightgreen)](#)
+[![College Algebra with Python](https://img.shields.io/badge/College_Algebra_with_Python-Completed-brightgreen)](#)
 [![Foundational C#](https://img.shields.io/badge/Foundational_C_Sharp-Completed-brightgreen)](#)
 
 🔗 [Full certificate list here](https://markusisaksson1982.github.io/en/certificates.html)
