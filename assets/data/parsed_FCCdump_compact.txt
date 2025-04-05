@@ -1,7 +1,157 @@
 Choose output format (compact/verbose/metadata only): compact
 Filtered JSON Contents: {
-  "about": "I've completed the following sections on freeCodeCamp (each with a certificate that states that the section approximates 300 hours of learning): Responsive Web Design, JavaScript Algorithms and Data Structures, Front End Development Libraries, Data Visualization, Relational Database, Back End Development and APIs, Quality Assurance, Scientific Computing with Python, Data Analysis with Python, Information Security, Machine Learning with Python, and College Algebra with Python.\n\nI also completed the Foundational C# with Microsoft section with a certificate that doesn't specify estimated learning time, but that included 38 sections of theory that could take up to at least an hour each to complete (a few sections were a bit shorter though), coding assignments where one valided the results of the assignments oneself, re-occuring multi-choice knowledge tests of up to 4 questions at the same time and a final exam with unlimited time consisting of 80 questions with 5 multiple choices on each question, where one had to get 70% correct answers to pass the test.) ",
+  "about": "I've completed the following sections on freeCodeCamp (each with a certificate that states that the section approximates 300 hours of learning): Responsive Web Design, JavaScript Algorithms and Data Structures, Front End Development Libraries, Data Visualization, Relational Database, Back End Development and APIs, Quality Assurance, Scientific Computing with Python, Data Analysis with Python, Information Security, Machine Learning with Python, and College Algebra with Python.\n\nI also completed the Foundational C# with Microsoft section with a certificate that doesn't specify estimated learning time, but that included 38 sections of theory that could take up to at least an hour each to complete (a few sections were a bit shorter though), coding assignments where one valided the results of the assignments oneself, re-occuring multi-choice knowledge tests of up to 4 questions at the same time and a final exam with unlimited time consisting of 80 questions with 5 multiple choices on each question, where one had to get 70% correct answers to pass the test.) \n\nFurther I have also completed the currently available sections of these courses (at least the Certified Full Stack Developer Curriculum  is going to get more content added later, and the B1 English for Developers is quite possibly going to get more content too - this current state of the courses is commented upon on 5 April 2025): \n\nCertified Full Stack Developer Curriculum (Beta)\nA2 English for Developers (Beta) Certification\nB1 English for Developers (Beta) Certification\n",
   "completedChallenges": [
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743812075720
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811858332
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743811851061
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811839952
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743811832577
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811818279
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743811810488
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743811790636
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811776299
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811762563
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743811754768
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811734043
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811720197
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 21,
+      "completedDate": 1743811704574
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743811657195
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743811523104
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811509606
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811500467
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743811488966
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811453606
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743811445027
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743811434651
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811427215
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743811419171
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811407533
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811398246
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811389430
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743811381011
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 21,
+      "completedDate": 1743811367610
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743811324898
+    },
     {
       "id": "(id removed)",
       "completedDate": 1727981276444,
@@ -760,7 +910,7 @@ Filtered JSON Contents: {
   "location": "Uppsala, Sweden",
   "name": "Markus Isaksson",
   "partiallyCompletedChallenges": [],
-  "points": 4551,
+  "points": 8306,
   "portfolio": [],
   "profileUI": {
     "isLocked": false,
@@ -776,8 +926,8 @@ Filtered JSON Contents: {
   },
   "savedChallenges": [
     {
-      "id": "(id removed)",
       "lastSavedDate": 1728230552200,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!-- HTML content from the assignment -->",
@@ -800,8 +950,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1728230925113,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!-- HTML content from the assignment -->",
@@ -824,8 +974,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1728231416784,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!-- HTML content from the assignment -->",
@@ -848,8 +998,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1728233172664,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!-- HTML content from the assignment -->",
@@ -872,8 +1022,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1728233216456,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!-- HTML content from the assignment -->",
@@ -896,8 +1046,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1728851277839,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!-- HTML content from the assignment -->",
@@ -929,8 +1079,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1729555500308,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!-- HTML content from the assignment -->",
@@ -962,8 +1112,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1729615648822,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!-- HTML content from the assignment -->",
@@ -995,8 +1145,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1729687393796,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!-- HTML content from the assignment -->",
@@ -1028,8 +1178,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1729702105990,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!-- HTML content from the assignment -->",
@@ -1061,8 +1211,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1732886099304,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "# Python content from the assignment",
@@ -1076,8 +1226,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1732886057801,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "# Python content from the assignment",
@@ -1091,8 +1241,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1732886014643,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "# Python content from the assignment",
@@ -1106,8 +1256,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1732885975012,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "# Python content from the assignment",
@@ -1121,8 +1271,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1732885939401,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "# Python content from the assignment",
@@ -1147,7 +1297,7 @@ Filtered JSON Contents: {
   "sendQuincyEmail": true,
   "theme": "default",
   "keyboardShortcuts": false,
-  "completedChallengeCount": 4564,
+  "completedChallengeCount": 8319,
   "acceptedPrivacyTerms": true,
   "isEmailVerified": true,
   "picture": "(Details removed, see LinkedIn profile for contact info)",
@@ -1168,14 +1318,15 @@ Filtered JSON Contents: {
       ]
     }
   ],
-  "sessionUser": true
+  "sessionUser": true,
+  "examResults": null
 }
 ---
 The text above is original data from a freeCodeCamp file dump of a .JSON database.
 
 This is an automatically added comment by a parsing app written in JavaScript by Markus Isaksson. The parser has taken a .JSON database file of a freeCodeCamp profile and removed some data. This is a summary of what has been removed:
 
-4478 instances of references to completed shorter step-by-step programming exercises were removed.
+8208 instances of references to completed shorter step-by-step programming exercises were removed.
 
 The original file also contained submitted code, which has been removed and replaced with comments.
 
