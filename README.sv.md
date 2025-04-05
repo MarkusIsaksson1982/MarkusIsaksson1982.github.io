@@ -31,7 +31,7 @@ Jag har följande certifikat från freeCodeCamp:
 [![College Algebra with Python](https://img.shields.io/badge/College_Algebra_with_Python-Completed-brightgreen)](#)
 [![Foundational C#](https://img.shields.io/badge/Foundational_C_Sharp-Completed-brightgreen)](#)
 
-👉 [Se certifikatlistan här](https://markusisaksson1982.github.io/en/certificates.html)
+👉 [Se certifikatlistan här](https://markusisaksson1982.github.io/sv/certificates.html)
 
 ---
 
