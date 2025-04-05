@@ -1,7 +1,157 @@
 Choose output format (compact/verbose/metadata only): verbose
 Filtered JSON Contents: {
-  "about": "I've completed the following sections on freeCodeCamp (each with a certificate that states that the section approximates 300 hours of learning): Responsive Web Design, JavaScript Algorithms and Data Structures, Front End Development Libraries, Data Visualization, Relational Database, Back End Development and APIs, Quality Assurance, Scientific Computing with Python, Data Analysis with Python, Information Security, Machine Learning with Python, and College Algebra with Python.\n\nI also completed the Foundational C# with Microsoft section with a certificate that doesn't specify estimated learning time, but that included 38 sections of theory that could take up to at least an hour each to complete (a few sections were a bit shorter though), coding assignments where one valided the results of the assignments oneself, re-occuring multi-choice knowledge tests of up to 4 questions at the same time and a final exam with unlimited time consisting of 80 questions with 5 multiple choices on each question, where one had to get 70% correct answers to pass the test.) ",
+  "about": "I've completed the following sections on freeCodeCamp (each with a certificate that states that the section approximates 300 hours of learning): Responsive Web Design, JavaScript Algorithms and Data Structures, Front End Development Libraries, Data Visualization, Relational Database, Back End Development and APIs, Quality Assurance, Scientific Computing with Python, Data Analysis with Python, Information Security, Machine Learning with Python, and College Algebra with Python.\n\nI also completed the Foundational C# with Microsoft section with a certificate that doesn't specify estimated learning time, but that included 38 sections of theory that could take up to at least an hour each to complete (a few sections were a bit shorter though), coding assignments where one valided the results of the assignments oneself, re-occuring multi-choice knowledge tests of up to 4 questions at the same time and a final exam with unlimited time consisting of 80 questions with 5 multiple choices on each question, where one had to get 70% correct answers to pass the test.) \n\nFurther I have also completed the currently available sections of these courses (at least the Certified Full Stack Developer Curriculum  is going to get more content added later, and the B1 English for Developers is quite possibly going to get more content too - this current state of the courses is commented upon on 5 April 2025): \n\nCertified Full Stack Developer Curriculum (Beta)\nA2 English for Developers (Beta) Certification\nB1 English for Developers (Beta) Certification\n",
   "completedChallenges": [
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743812075720
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811858332
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743811851061
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811839952
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743811832577
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811818279
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743811810488
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743811790636
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811776299
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811762563
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743811754768
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811734043
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811720197
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 21,
+      "completedDate": 1743811704574
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743811657195
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743811523104
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811509606
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811500467
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743811488966
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811453606
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743811445027
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743811434651
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811427215
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743811419171
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811407533
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811398246
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 19,
+      "completedDate": 1743811389430
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743811381011
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 21,
+      "completedDate": 1743811367610
+    },
+    {
+      "id": "(id removed)",
+      "challengeType": 22,
+      "completedDate": 1743811324898
+    },
     {
       "id": "(id removed)",
       "completedDate": 1727981276444,
@@ -760,7 +910,7 @@ Filtered JSON Contents: {
   "location": "Uppsala, Sweden",
   "name": "Markus Isaksson",
   "partiallyCompletedChallenges": [],
-  "points": 4551,
+  "points": 8306,
   "portfolio": [],
   "profileUI": {
     "isLocked": false,
@@ -776,8 +926,8 @@ Filtered JSON Contents: {
   },
   "savedChallenges": [
     {
-      "id": "(id removed)",
       "lastSavedDate": 1728230552200,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <link rel=\"stylesheet\" href=\"styles.css\">\r\n    <title>Freelance Service Inquiry</title>\r\n</head>\r\n<body>\r\n    <h1 id=\"title\">Freelance Service Request</h1>\r\n    <p id=\"description\">Please fill out the form below to inquire about my freelance services. I'll get back to you as soon as possible!</p>\r\n    \r\n    <form id=\"survey-form\">\r\n        <!-- Name Field -->\r\n        <label id=\"name-label\" for=\"name\">Full Name (or Company):</label>\r\n        <input id=\"name\" type=\"text\" placeholder=\"John Doe\" required>\r\n\r\n        <!-- Email Field -->\r\n        <label id=\"email-label\" for=\"email\">Email Address:</label>\r\n        <input id=\"email\" type=\"email\" placeholder=\"example@mail.com\" required>\r\n\r\n        <!-- Phone Number Field -->\r\n        <label id=\"number-label\" for=\"number\">Phone Number:</label>\r\n        <input id=\"number\" type=\"number\" min=\"1000000\" max=\"999999999999\" placeholder=\"Enter your phone number\">\r\n\r\n        <!-- Service Dropdown -->\r\n        <label for=\"dropdown\">Service You Are Interested In:</label>\r\n        <select id=\"dropdown\" required>\r\n            <option value=\"\" disabled selected>Select a service</option>\r\n            <option value=\"web-design\">Web Design</option>\r\n            <option value=\"graphic-design\">Graphic Design</option>\r\n            <option value=\"seo\">SEO & Marketing</option>\r\n            <option value=\"consultation\">Consultation</option>\r\n        </select>\r\n\r\n        <!-- Repeat Customer Radio Buttons -->\r\n        <fieldset>\r\n            <legend>Have you worked with me before?</legend>\r\n            <label><input type=\"radio\" name=\"repeatcustomer\" value=\"yes\"> Yes</label>\r\n            <label><input type=\"radio\" name=\"repeatcustomer\" value=\"no\" checked> No</label>\r\n        </fieldset>\r\n\r\n        <!-- Checkbox Options -->\r\n        <fieldset>\r\n            <legend>What specific service do you need?</legend>\r\n            <label><input type=\"checkbox\" name=\"service\" value=\"webdesign\"> Web Design</label>\r\n            <label><input type=\"checkbox\" name=\"service\" value=\"branding\"> Branding</label>\r\n            <label><input type=\"checkbox\" name=\"service\" value=\"other\"> Other</label>\r\n        </fieldset>\r\n\r\n        <!-- Additional Information Textarea -->\r\n        <label for=\"additional-info\">Additional Details:</label>\r\n        <textarea id=\"additional-info\" rows=\"4\" placeholder=\"Describe your project or ask any questions here...\"></textarea>\r\n\r\n        <!-- Submit Button -->\r\n        <button id=\"submit\" type=\"submit\">Submit Inquiry</button>\r\n    </form>\r\n\r\n</body>\r\n</html>\r\n",
@@ -800,8 +950,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1728230925113,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<main id=\"main\">\r\n  <link rel=\"stylesheet\" href=\"styles.css\">\r\n\r\n  <!-- Title Section -->\r\n  <header id=\"header\">\r\n    <h1 id=\"title\">A Tribute to Greece</h1>\r\n  </header>\r\n\r\n  <!-- Image Section -->\r\n  <figure id=\"img-div\">\r\n<img id=\"image\" src=\"https://images.freeimages.com/images/premium/previews/3897/38974378-greece-athens-the-parthenon.jpg\" alt=\"The Parthenon, Athens, Greece\" />\r\n    <figcaption id=\"img-caption\">The Parthenon - Symbol of Ancient Greece</figcaption>      </figure>\r\n  \r\n  <!-- Tribute Text Section -->\r\n  <section id=\"tribute-text\">\r\n    <p>\r\n      Greece, a land where history and myth intertwine, stands as the birthplace of democracy, philosophy, and the arts. From the towering Parthenon to the serene Aegean Sea, every corner echoes with tales of gods, heroes, and thinkers who shaped the world.\r\n    </p>\r\n    <p>\r\n      Your philosophers—Socrates, Plato, and Aristotle—have given us ideas that endure, and poets like Homer and Sappho captured the human spirit in their timeless verses. The Olympic Games, born here, symbolize both competition and unity, values that continue to inspire.\r\n    </p>\r\n    <p>\r\n      Beyond the history, Greece pulses with a vibrant modern culture. From the lively streets of Athens to the peaceful island villages, your hospitality, rich cuisine, and joyous music remind us of life's beauty and resilience.\r\n    </p>\r\n    <p>\r\n      Greece, you stand tall through the ages, with a legacy that continues to influence and inspire the world. In your timeless essence, you remind us of freedom, wisdom, and the beauty of living fully.\r\n    </p>\r\n  </section>\r\n\r\n  <!-- Visit Greece Section -->\r\n  <section id=\"tribute-info\">\r\n    <a id=\"tribute-link\" href=\"https://www.visitgreece.gr\" target=\"_blank\">Discover More About Greece</a>\r\n  </section>\r\n\r\n</main>\r\n\r\n",
@@ -824,8 +974,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1728231416784,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<head>\r\n  <link rel=\"stylesheet\" href=\"styles.css\"> \r\n</head>\r\n\r\n<main id=\"main-doc\">\r\n  <!-- Navigation Menu on the left -->\r\n  <nav id=\"navbar\">\r\n    <header>The 5 Classical Elements</header>\r\n    <ul>\r\n      <li><a class=\"nav-link\" href=\"#Aether\">Aether</a></li>\r\n      <li><a class=\"nav-link\" href=\"#Air\">Air</a></li>\r\n      <li><a class=\"nav-link\" href=\"#Earth\">Earth</a></li>\r\n      <li><a class=\"nav-link\" href=\"#Fire\">Fire</a></li>\r\n      <li><a class=\"nav-link\" href=\"#Water\">Water</a></li>\r\n    </ul>\r\n  </nav>\r\n\r\n  <!-- Section 1: Aether -->\r\n  <section class=\"main-section\" id=\"Aether\">\r\n    <header>Aether</header>\r\n    <p>Aether, also known as the \"quintessence,\" was believed to be the divine, ethereal substance that filled the universe beyond the Earth. </p><p>It was the element of the heavens, distinct from the physical world, representing purity and immortality.</p>\r\n    <ul>\r\n      <li>Divine</li>\r\n      <li>Ethereal</li>\r\n      <li>All-encompassing</li>\r\n      <li>Luminous</li>\r\n      <li>Infinite</li>\r\n    </ul>\r\n    <code>element aether</code><code>infinite potential</code><code>cosmic force</code><code>divine connection</code><code>transcendent essence</code>\r\n  </section>\r\n\r\n  <!-- Section 2: Air -->\r\n  <section class=\"main-section\" id=\"Air\">\r\n    <header>Air</header>\r\n    <p>Air, the element of thought, intellect, and communication, is associated with freedom and mental clarity. </p><p>It symbolizes life force, breath, and the unseen forces that animate all living things. In many traditions, it also serves as the bridge between the divine and the material worlds.</p>\r\n    <ul>\r\n      <li>Light</li>\r\n      <li>Fluid</li>\r\n      <li>Invisible</li>\r\n      <li>Ever-changing</li>\r\n      <li>Vital</li>\r\n    </ul>\r\n    <code>element air</code><code>thoughts in motion</code><code>intellect rising</code><code>communication bridge</code><code>breath of life</code>\r\n  </section>\r\n\r\n  <!-- Section 3: Earth -->\r\n  <section class=\"main-section\" id=\"Earth\">\r\n    <header>Earth</header>\r\n    <p>Earth, the element of stability and foundation, represents the physical world.</p><p> It is the ground beneath our feet, symbolizing strength, fertility, and endurance. Earth is immovable and slow to change, embodying persistence and material existence.</p>\r\n    <ul>\r\n      <li>Solid</li>\r\n      <li>Stable</li>\r\n      <li>Unyielding</li>\r\n      <li>Fertile</li>\r\n      <li>Enduring</li>\r\n    </ul>\r\n    <code>element earth</code><code>foundation of life</code><code>stability and growth</code><code>material strength</code><code>unchanging nature</code>\r\n  </section>\r\n\r\n  <!-- Section 4: Fire -->\r\n  <section class=\"main-section\" id=\"Fire\">\r\n    <header>Fire</header>\r\n    <p>Fire represents energy, transformation, and passion. </p><p>It is both creative and destructive, driving change in nature. Fire’s heat and light are essential for life, but its volatility also signifies danger and uncontrollable forces.</p>\r\n    <ul>\r\n      <li>Hot</li>\r\n      <li>Dynamic</li>\r\n      <li>Energetic</li>\r\n      <li>Creative</li>\r\n      <li>Destructive</li>\r\n    </ul>\r\n    <code>element fire</code><code>transformative force</code><code>passion and energy</code><code>destructive creativity</code><code>vital spark</code>\r\n  </section>\r\n\r\n  <!-- Section 5: Water -->\r\n  <section class=\"main-section\" id=\"Water\">\r\n    <header>Water</header>\r\n    <p>Water, the element of emotion and intuition, represents fluidity and the power to adapt.</p><p> It is essential for life, nurturing growth and purifying the soul. Water is also linked to the subconscious mind and the mysteries of the unknown.</p>\r\n    <ul>\r\n      <li>Fluid</li>\r\n      <li>Cool</li>\r\n      <li>Nurturing</li>\r\n      <li>Purifying</li>\r\n      <li>Mysterious</li>\r\n    </ul>\r\n    <code>element water</code><code>emotion and intuition</code><code>nurturing life</code><code>fluid adaptability</code><code>subconscious power</code>\r\n  </section>\r\n</main>\r\n",
@@ -848,8 +998,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1728233172664,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Services Portfolio</title>\r\n  <link rel=\"stylesheet\" href=\"styles.css\">\r\n</head>\r\n<body>\r\n\r\n<header id=\"header\">\r\n <nav id=\"nav-bar\">\r\n    <a class=\"nav-link\" href=\"#header\">Home</a>\r\n    <a class=\"nav-link\" href=\"#services\">Services</a>\r\n    <a class=\"nav-link\" href=\"#projects\">Projects</a>\r\n</nav>\r\n  <img src=\"https://thumbs.wbm.im/pw/medium/d306a41b6261ef2e49c1cbbeb64083d8.avif\" width=\"100\" height=\"100\" id=\"header-img\" alt=\"Logo\">\r\n</header>\r\n\r\n<section id=\"header\">\r\n  <form id=\"form\" action=\"https://www.freecodecamp.com/email-submit\" method=\"POST\">\r\n    <input\r\n      name=\"email\"\r\n      id=\"email\"\r\n      type=\"email\"\r\n      placeholder=\"Enter your email address\"\r\n      required\r\n    />\r\n    \r\n    <input id=\"submit\" type=\"submit\">Submit</button>\r\n  </form>\r\n</section>\r\n\r\n<section id=\"services\">\r\n  <h2>Our Services</h2>\r\n  <div class=\"grid\">\r\n    <div class=\"desc\">\r\n      <h3>Responsive Web Design</h3>\r\n      <p>We create websites that adapt seamlessly across devices, ensuring the best user experience on mobile, tablet, and desktop.</p>\r\n    </div>\r\n  </div>\r\n  \r\n  <div class=\"grid\">\r\n    <div class=\"desc\">\r\n      <h3>English-Swedish Translation</h3>\r\n      <p>Professional translation services between English and Swedish for businesses and individuals to reach bilingual audiences.</p>\r\n    </div>\r\n  </div>\r\n  \r\n  <div class=\"grid\">\r\n    <div class=\"desc\">\r\n      <h3>Digital Archives</h3>\r\n      <p>We organize and manage your data in digital archives for easy access and secure long-term storage.</p>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"grid\">\r\n    <div class=\"desc\">\r\n      <h3>Freelance AI Content Creation</h3>\r\n      <p>Leverage AI to generate high-quality content for blogs, articles, and more—efficient and tailored to your audience.</p>\r\n    </div>\r\n  </div>\r\n</section>\r\n\r\n<section id=\"projects\">\r\n  <h2>Featured Project: Responsive Web Design</h2>\r\n  <p>We specialize in creating adaptable websites using HTML and CSS to ensure smooth functionality and design across devices.</p>\r\n  <iframe id=\"video\" width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/Jpvq93gKTxo?si=vo_uuz1ygGoD0ZWg\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>\r\n</section>\r\n\r\n<section id=\"footer\">\r\n  <p>&copy; 2024 Markus Isaksson. All rights reserved.</p>\r\n</section>\r\n\r\n</body>\r\n</html>\r\n",
@@ -872,8 +1022,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1728233216456,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>My Portfolio</title>\r\n  <link rel=\"stylesheet\" href=\"styles.css\">\r\n  <style>\r\n    /* Simple CSS for styling */\r\n    body {\r\n      font-family: Arial, sans-serif;\r\n      margin: 0;\r\n      padding: 0;\r\n    }\r\n\r\n    #navbar {\r\n      background-color: #333;\r\n      padding: 10px;\r\n    }\r\n\r\n    #navbar ul {\r\n      list-style: none;\r\n      padding: 0;\r\n      display: flex;\r\n      justify-content: space-around;\r\n    }\r\n\r\n    #navbar li {\r\n      display: inline;\r\n    }\r\n\r\n    #navbar a {\r\n      color: white;\r\n      text-decoration: none;\r\n      padding: 10px;\r\n      transition: background-color 0.3s ease;\r\n    }\r\n\r\n    #navbar a:hover {\r\n      background-color: #575757;\r\n      border-radius: 5px;\r\n    }\r\n\r\n    /* Project section styling */\r\n    #projects {\r\n      padding: 20px;\r\n      background-color: #f4f4f4;\r\n    }\r\n\r\n    #projects h2 {\r\n      text-align: center;\r\n      margin-bottom: 30px;\r\n    }\r\n\r\n    .project-tile {\r\n      background-color: white;\r\n      padding: 20px;\r\n      margin: 10px 0;\r\n      border-radius: 10px;\r\n      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\r\n    }\r\n\r\n    .project-tile h3 {\r\n      margin-top: 0;\r\n    }\r\n\r\n    /* LinkedIn button styling */\r\n    .linkedin-link {\r\n      display: block;\r\n      margin: 30px auto;\r\n      padding: 10px 20px;\r\n      background-color: #0077B5;\r\n      color: white;\r\n      text-align: center;\r\n      font-size: 16px;\r\n      border-radius: 5px;\r\n      text-decoration: none;\r\n      transition: background-color 0.3s ease;\r\n      width: fit-content;\r\n    }\r\n\r\n    .linkedin-link:hover {\r\n      background-color: #005582;\r\n    }\r\n\r\n  </style>\r\n</head>\r\n<body>\r\n\r\n  <!-- Navbar -->\r\n  <nav id=\"navbar\">\r\n    <ul>\r\n      <li><a href=\"#welcome-section\">Welcome</a></li>\r\n      <li><a href=\"#projects\">Projects</a></li>\r\n      <li><a id=\"profile-link\" href=\"https://github.com/your-profile\" target=\"_blank\">GitHub Profile</a></li>\r\n    </ul>\r\n  </nav>\r\n\r\n  <!-- Welcome Section -->\r\n  <section id=\"welcome-section\">\r\n    <h1>Welcome to My Portfolio</h1>\r\n  </section>\r\n\r\n  <!-- Projects Section -->\r\n  <section id=\"projects\">\r\n    <h2>My Projects</h2>\r\n    \r\n    <div class=\"project-tile\">\r\n      <h3>Project 1: Responsive Web Design</h3>\r\n      <p>I work with Responsive Web Design using HTML and CSS to create adaptable websites that provide a seamless experience across devices.</p>\r\n    </div>\r\n\r\n    <div class=\"project-tile\">\r\n      <h3>Project 2: FreeCodeCamp Certifications</h3>\r\n      <p>I am working towards completing all certifications from FreeCodeCamp to enhance my programming skills and knowledge.</p>\r\n    </div>\r\n\r\n    <div class=\"project-tile\">\r\n      <h3>Project 3: English-Swedish Translation</h3>\r\n      <p>I translate between English and Swedish, helping businesses and individuals with bilingual content for different markets.</p>\r\n    </div>\r\n\r\n    <div class=\"project-tile\">\r\n      <h3>Project 4: Digital Archives</h3>\r\n      <p>I create and manage digital archives on cloud-based services, organizing data for easy access and long-term storage.</p>\r\n    </div>\r\n\r\n    <div class=\"project-tile\">\r\n      <h3>Project 5: Freelance AI Content Creation</h3>\r\n      <p>I work as a freelancer creating AI-based content for websites in both English and Swedish, ensuring high-quality, engaging material.</p>\r\n    </div>\r\n\r\n    <!-- LinkedIn Profile Link -->\r\n    <a href=\"https://www.linkedin.com/in/markus-isaksson-08273a127/\" class=\"linkedin-link\" target=\"_blank\">My LinkedIn Profile</a>\r\n\r\n  </section>\r\n\r\n</body>\r\n</html>\r\n",
@@ -896,8 +1046,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1728851277839,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!-- I have used Chat-GPT for a lot of this, and this is based on that I expect a lot of modern day programmers to use AI, and the prompting is completely my own, I didn't look up that at all (even though I have learned about the use of Chat-GPT for programming through trial and error and experiences from using it in other fields  -->\r\n\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Palindrome Checker</title>\r\n  <link rel=\"stylesheet\" href=\"styles.css\"> <!-- Placeholder for CSS -->\r\n</head>\r\n<body>\r\n  <div class=\"container\">\r\n    <h1>Palindrome Checker</h1>\r\n    <input type=\"text\" id=\"text-input\" placeholder=\"Enter text here\">\r\n    <button id=\"check-btn\">Check</button>\r\n    <p id=\"result\"></p>\r\n  </div>\r\n\r\n  <script src=\"script.js\"></script>\r\n</body>\r\n</html>\r\n",
@@ -929,8 +1079,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1729555500308,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>Roman Numeral Converter</title>\r\n    <link rel=\"stylesheet\" href=\"styles.css\">\r\n</head>\r\n<body>\r\n    <div class=\"container\">\r\n        <h1>Roman Numeral Converter</h1>\r\n        <label for=\"number\">Enter a number (1-3999):</label>\r\n        <input type=\"number\" id=\"number\" placeholder=\"Enter a number\">\r\n        <button id=\"convert-btn\">Convert</button>\r\n        <p id=\"output\"></p>\r\n    </div>\r\n    <script src=\"script.js\"></script>\r\n</body>\r\n</html>\r\n",
@@ -962,8 +1112,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1729615648822,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Telephone Number Validator</title>\r\n  <link rel=\"stylesheet\" href=\"styles.css\">\r\n</head>\r\n<body>\r\n  <div class=\"container\">\r\n    <h1>US Telephone Number Validator</h1>\r\n    <input type=\"text\" id=\"user-input\" placeholder=\"Enter US phone number\">\r\n    <div class=\"buttons\">\r\n      <button id=\"check-btn\">Check</button>\r\n      <button id=\"clear-btn\">Clear</button>\r\n    </div>\r\n    <div id=\"results-div\"></div>\r\n  </div>\r\n  \r\n  <script src=\"script.js\"></script>\r\n</body>\r\n</html>\r\n",
@@ -995,8 +1145,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1729687393796,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n  <head>\r\n    <meta charset=\"UTF-8\" />\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\r\n    \r\n    <title>Cash Register</title>\r\n    <link rel=\"stylesheet\" href=\"./styles.css\" />\r\n  </head>\r\n  <body>\r\n    <main>\r\n      \r\n      <h1>Cash Register Project</h1>\r\n      <div id=\"change-due\"></div>\r\n      <div class=\"input-div\">\r\n        <label for=\"cash\">Enter cash from customer:</label>\r\n        <input type=\"number\" id=\"cash\" class=\"user-input\" value=\"\" />\r\n        <button class=\"check-btn-styles\" id=\"purchase-btn\">Purchase</button>\r\n      </div>\r\n      <div class=\"container\">\r\n        <div class=\"top-display-screen-container\">\r\n          <p id=\"price-screen\" class=\"price-screen\"></p>\r\n          <div class=\"connector\"></div>\r\n        </div>\r\n        <div class=\"top-register\">\r\n          <div class=\"btns-container\">\r\n            <button class=\"btn\"></button>\r\n            <button class=\"btn\"></button>\r\n            <button class=\"btn\"></button>\r\n            <button class=\"btn\"></button>\r\n            <button class=\"btn\"></button>\r\n            <button class=\"btn\"></button>\r\n            <button class=\"btn\"></button>\r\n            <button class=\"btn\"></button>\r\n            <button class=\"btn\"></button>\r\n          </div>\r\n          <div id=\"cash-drawer-display\" class=\"cash-drawer-display\"></div>\r\n        </div>\r\n        <div class=\"bottom-register\">\r\n          <div class=\"circle\"></div>\r\n        </div>\r\n      </div>\r\n    </main>\r\n    <script src=\"./script.js\"></script>\r\n  </body>\r\n</html>",
@@ -1028,8 +1178,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1729702105990,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "<!-- I have utilized ChatGPT and Github's Copilot as resources for guidance and learning throughout this project. My approach reflects the growing trend of modern developers using AI tools to enhance their coding processes. However, all the final code presented here is my own work, based on own independently thought out  prompts and without copying  prompts or code from others other than than snippets. I believe this practice aligns with the principles of academic honesty, as it emphasizes learning and using technology responsibly. \r\n-->\r\n\r\n\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n  <head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>My Pokémon Search App</title>\r\n    <link rel=\"stylesheet\" href=\"styles.css\">\r\n  </head>\r\n  <body>\r\n    <main>\r\n      <h1>My Pokémon Search App</h1>\r\n      <div class=\"custom-container\">\r\n        <form role=\"search\" id=\"custom-search-form\">\r\n          <label for=\"search-input\">Search for Pokémon Name or ID:</label>\r\n          <input type=\"text\" id=\"search-input\" required>\r\n          <button type=\"submit\" id=\"search-button\">Search</button>\r\n        </form>\r\n        <div class=\"custom-output\">\r\n          <div class=\"custom-top-container\">\r\n            <div class=\"custom-name-and-id\">\r\n              <span id=\"pokemon-name\"></span>\r\n              <span id=\"pokemon-id\"></span>\r\n            </div>\r\n            <div class=\"custom-size\">\r\n              <span id=\"weight\"></span>\r\n              <span id=\"height\"></span>\r\n            </div>\r\n            <div id=\"sprite-container\" class=\"custom-sprite-container\"></div>\r\n            <div id=\"types\"></div>\r\n          </div>\r\n          <div class=\"custom-bottom-container\">\r\n            <table>\r\n              <tr>\r\n                <th>Base</th>\r\n                <th>Stats</th>\r\n              </tr>\r\n              <tr>\r\n                <td>HP:</td>\r\n                <td id=\"hp\"></td>\r\n              </tr>\r\n              <tr>\r\n                <td>Attack:</td>\r\n                <td id=\"attack\"></td>\r\n              </tr>\r\n              <tr>\r\n                <td>Defense:</td>\r\n                <td id=\"defense\"></td>\r\n              </tr>\r\n              <tr>\r\n                <td>Sp. Attack:</td>\r\n                <td id=\"special-attack\"></td>\r\n              </tr>\r\n              <tr>\r\n                <td>Sp. Defense:</td>\r\n                <td id=\"special-defense\"></td>\r\n              </tr>\r\n              <tr>\r\n                <td>Speed:</td>\r\n                <td id=\"speed\"></td>\r\n              </tr>\r\n            </table>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <script src=\"script.js\"></script>\r\n    </main>\r\n  </body>\r\n</html>\r\n",
@@ -1061,8 +1211,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1732886099304,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "#I have utilized ChatGPT and to a smaller extent Perplexity as resources for guidance and learning throughout this project. My approach reflects the growing trend of modern developers using AI tools to enhance their coding processes. However, all the final code presented here is my own work, based on own independently thought out prompts and without copying prompts or code from others other than snippets. I believe this practice aligns with the principles of academic honesty, as it emphasizes learning and using technology responsibly.\n\ndef arithmetic_arranger(problems, show_answers=False):\n    if len(problems) > 5:\n        return \"Error: Too many problems.\"\n    \n    first_line = []\n    second_line = []\n    dash_line = []\n    answer_line = []\n\n    for problem in problems:\n        parts = problem.split()\n        if len(parts) != 3:\n            return \"Error: Invalid problem format.\"\n        \n        operand1, operator, operand2 = parts\n\n        if operator not in ['+', '-']:\n            return \"Error: Operator must be '+' or '-'.\"\n        \n        if not (operand1.isdigit() and operand2.isdigit()):\n            return \"Error: Numbers must only contain digits.\"\n        \n        if len(operand1) > 4 or len(operand2) > 4:\n            return \"Error: Numbers cannot be more than four digits.\"\n        \n        length = max(len(operand1), len(operand2)) + 2\n        first_line.append(operand1.rjust(length))\n        second_line.append(operator + \" \" + operand2.rjust(length - 2))\n        dash_line.append(\"-\" * length)\n\n        if show_answers:\n            result = str(eval(problem))\n            answer_line.append(result.rjust(length))\n    \n    arranged_problems = (\n        \"    \".join(first_line) + \"\\n\" +\n        \"    \".join(second_line) + \"\\n\" +\n        \"    \".join(dash_line)\n    )\n    if show_answers:\n        arranged_problems += \"\\n\" + \"    \".join(answer_line)\n    \n    return arranged_problems\n\nprint(arithmetic_arranger([\"32 + 698\", \"3801 - 2\", \"45 + 43\", \"123 + 49\"]))\nprint(arithmetic_arranger([\"32 + 8\", \"1 - 3801\", \"9999 + 9999\", \"523 - 49\"], True))\n",
@@ -1076,8 +1226,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1732886057801,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "#I have utilized ChatGPT and to a smaller extent Perplexity as resources for guidance and learning throughout this project. My approach reflects the growing trend of modern developers using AI tools to enhance their coding processes. However, all the final code presented here is my own work, based on own independently thought out prompts and without copying prompts or code from others other than snippets. I believe this practice aligns with the principles of academic honesty, as it emphasizes learning and using technology responsibly.\n\ndef add_time(start, duration, start_day=None):\n    def get_day_index(day):\n        days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']\n        return days.index(day.capitalize())\n    \n    def get_day_name(index):\n        days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']\n        return days[index % 7]\n\n    time, period = start.split()\n    start_hour, start_minute = map(int, time.split(':'))\n\n    if period == 'PM':\n        start_hour += 12\n\n    dur_hours, dur_minutes = map(int, duration.split(':'))\n\n    total_minutes = start_minute + dur_minutes\n    extra_hours = total_minutes // 60\n    new_minute = total_minutes % 60\n\n    total_hours = start_hour + dur_hours + extra_hours\n    days_later = total_hours // 24\n    new_hour = total_hours % 24\n\n    new_period = 'AM' if new_hour < 12 else 'PM'\n    if new_hour == 0:\n        new_hour = 12\n    elif new_hour > 12:\n        new_hour -= 12\n\n    new_time = f\"{new_hour}:{new_minute:02d} {new_period}\"\n\n    if start_day:\n        start_day_index = get_day_index(start_day)\n        new_day = get_day_name(start_day_index + days_later)\n        new_time += f\", {new_day}\"\n\n    if days_later == 1:\n        new_time += \" (next day)\"\n    elif days_later > 1:\n        new_time += f\" ({days_later} days later)\"\n\n    return new_time\n",
@@ -1091,8 +1241,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1732886014643,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "#I have utilized ChatGPT and to a smaller extent Perplexity as resources for guidance and learning throughout this project. My approach reflects the growing trend of modern developers using AI tools to enhance their coding processes. However, all the final code presented here is my own work, based on own independently thought out prompts and without copying prompts or code from others other than snippets. I believe this practice aligns with the principles of academic honesty, as it emphasizes learning and using technology responsibly.\n\nclass Category:\n    def __init__(self, name):\n        self.name = name\n        self.ledger = []\n    \n    def deposit(self, amount, description=\"\"):\n        self.ledger.append({\"amount\": amount, \"description\": description})\n    \n    def withdraw(self, amount, description=\"\"):\n        if self.check_funds(amount):\n            self.ledger.append({\"amount\": -amount, \"description\": description})\n            return True\n        return False\n    \n    def get_balance(self):\n        return sum(item[\"amount\"] for item in self.ledger)\n    \n    def transfer(self, amount, category):\n        if self.check_funds(amount):\n            self.withdraw(amount, f\"Transfer to {category.name}\")\n            category.deposit(amount, f\"Transfer from {self.name}\")\n            return True\n        return False\n    \n    def check_funds(self, amount):\n        return amount <= self.get_balance()\n    \n    def __str__(self):\n        title = f\"{self.name:*^30}\\n\"\n        items = \"\"\n        for item in self.ledger:\n            description = f\"{item['description'][:23]:<23}\"\n            amount = f\"{item['amount']:.2f}\"\n            items += f\"{description}{amount:>7}\\n\"\n        total = f\"Total: {self.get_balance():.2f}\"\n        return title + items + total\n\n\ndef create_spend_chart(categories):\n    spending = {category.name: 0 for category in categories}\n    for category in categories:\n        for item in category.ledger:\n            if item[\"amount\"] < 0:\n                spending[category.name] += -item[\"amount\"]\n\n    total_spent = sum(spending.values())\n    percentages = {name: (spent / total_spent) * 100 for name, spent in spending.items()}\n\n    chart = \"Percentage spent by category\\n\"\n    for i in range(100, -1, -10):\n        chart += f\"{i:>3}| \"\n        for name in categories:\n            chart += \"o  \" if percentages[name.name] >= i else \"   \"\n        chart += \"\\n\"\n\n    chart += \"    \" + \"-\" * (len(categories) * 3 + 1) + \"\\n\"\n\n    max_length = max(len(category.name) for category in categories)\n    names = [category.name.ljust(max_length) for category in categories]\n    for i in range(max_length):\n        chart += \"     \" + \"  \".join(name[i] for name in names) + \"  \\n\"\n\n    return chart.rstrip(\"\\n\")\n",
@@ -1106,8 +1256,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1732885975012,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "#I have utilized ChatGPT and to a smaller extent Perplexity as resources for guidance and learning throughout this project. My approach reflects the growing trend of modern developers using AI tools to enhance their coding processes. However, all the final code presented here is my own work, based on own independently thought out prompts and without copying prompts or code from others other than snippets. I believe this practice aligns with the principles of academic honesty, as it emphasizes learning and using technology responsibly.\n\nclass Rectangle:\n    def __init__(self, width, height):\n        self.width = width\n        self.height = height\n\n    def set_width(self, width):\n        self.width = width\n\n    def set_height(self, height):\n        self.height = height\n\n    def get_area(self):\n        return self.width * self.height\n\n    def get_perimeter(self):\n        return 2 * self.width + 2 * self.height\n\n    def get_diagonal(self):\n        return (self.width ** 2 + self.height ** 2) ** 0.5\n\n    def get_picture(self):\n        if self.width > 50 or self.height > 50:\n            return \"Too big for picture.\"\n        return (\"*\" * self.width + \"\\n\") * self.height\n\n    def get_amount_inside(self, shape):\n        return (self.width // shape.width) * (self.height // shape.height)\n\n    def __str__(self):\n        return f\"Rectangle(width={self.width}, height={self.height})\"\n\n\nclass Square(Rectangle):\n    def __init__(self, side):\n        super().__init__(side, side)\n\n    def set_side(self, side):\n        self.width = side\n        self.height = side\n\n    def set_width(self, width):\n        self.set_side(width)\n\n    def set_height(self, height):\n        self.set_side(height)\n\n    def __str__(self):\n        return f\"Square(side={self.width})\"\n",
@@ -1121,8 +1271,8 @@ Filtered JSON Contents: {
       ]
     },
     {
-      "id": "(id removed)",
       "lastSavedDate": 1732885939401,
+      "id": "(id removed)",
       "challengeFiles": [
         {
           "contents": "#I have utilized ChatGPT a resource for guidance and learning throughout this project. My approach reflects the growing trend of modern developers using AI tools to enhance their coding processes. However, all the final code presented here is my own work, based on own independently thought out prompts and without copying prompts or code from others other than snippets. I believe this practice aligns with the principles of academic honesty, as it emphasizes learning and using technology responsibly.\n\nimport copy\nimport random\n\nclass Hat:\n    def __init__(self, **kwargs):\n        self.contents = []\n        for color, count in kwargs.items():\n            self.contents.extend([color] * count)\n\n    def draw(self, num_balls):\n        if num_balls >= len(self.contents):\n            all_balls = self.contents[:]\n            self.contents.clear()  # Clear the hat after removing all balls\n            return all_balls\n        return [self.contents.pop(random.randrange(len(self.contents))) for _ in range(num_balls)]\n\n\ndef experiment(hat, expected_balls, num_balls_drawn, num_experiments):\n    success_count = 0\n\n    for _ in range(num_experiments):\n        hat_copy = copy.deepcopy(hat)\n        drawn_balls = hat_copy.draw(num_balls_drawn)\n\n        drawn_counts = {color: drawn_balls.count(color) for color in expected_balls}\n\n        success = all(drawn_counts.get(color, 0) >= count for color, count in expected_balls.items())\n        if success:\n            success_count += 1\n\n    return success_count / num_experiments\n\n\nhat = Hat(blue=5, red=4, green=2)\nprobability = experiment(hat=hat, expected_balls={\"red\": 1, \"green\": 2}, num_balls_drawn=4, num_experiments=2000)\nprint(f\"Probability: {probability}\")\n",
@@ -1147,7 +1297,7 @@ Filtered JSON Contents: {
   "sendQuincyEmail": true,
   "theme": "default",
   "keyboardShortcuts": false,
-  "completedChallengeCount": 4564,
+  "completedChallengeCount": 8319,
   "acceptedPrivacyTerms": true,
   "isEmailVerified": true,
   "picture": "(Details removed, see LinkedIn profile for contact info)",
@@ -1168,14 +1318,15 @@ Filtered JSON Contents: {
       ]
     }
   ],
-  "sessionUser": true
+  "sessionUser": true,
+  "examResults": null
 }
 ---
 The text above is original data from a freeCodeCamp file dump of a .JSON database.
 
 This is an automatically added comment by a parsing app written in JavaScript by Markus Isaksson. The parser has taken a .JSON database file of a freeCodeCamp profile and removed some data. This is a summary of what has been removed:
 
-4478 instances of references to completed shorter step-by-step programming exercises were removed.
+8208 instances of references to completed shorter step-by-step programming exercises were removed.
 
 The original file also contained submitted code, which has been kept intact. (This content gets removed with the "compact" and "metadata only" settings)
 
