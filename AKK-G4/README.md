@@ -4,36 +4,36 @@ This directory hosts raw transcripts from Apostle Kathryn Krick's YouTube teachi
 
 ## Directory Structure
 - [new-believer](./new-believer/): Transcripts from "New Believer" playlist (23 videos complete).
-  - [1-23-full-gospel-episode.txt](./new-believer/1-23-full-gospel-episode.txt) - "The Full Gospel" episode.
-  - [2-23-right-way-to-pray-episode.txt](./new-believer/2-23-right-way-to-pray-episode.txt) - "The Right Way to Pray".
-  - [3-23-hear-Gods-voice-episode.txt](./new-believer/3-23-hear-Gods-voice-episode.txt) - "How to Hear God's Voice".
-  - [4-23-experience-Gods-presence-part-1-episode.txt](./new-believer/4-23-experience-Gods-presence-part-1-episode.txt) - "How to Experience God's Presence Part 1".
-  - [5-23-authority-in-Christ-episode.txt](./new-believer/5-23-authority-in-Christ-episode.txt) - "Your Authority in Christ".
-  - [6-23-defeat-the-enemy-for-good-episode.txt](./new-believer/6-23-defeat-the-enemy-for-good-episode.txt) - "How to Defeat the Enemy for Good".
-  - [7-23-power-of-your-words-episode.txt](./new-believer/7-23-power-of-your-words-episode.txt) - "The Power of Your Words".
-  - [8-23-free-of-condemnation-episode.txt](./new-believer/8-23-free-of-condemnation-episode.txt) - "Free of Condemnation".
-  - [9-23-christians-and-demonic-oppression-episode.txt](./new-believer/9-23-christians-and-demonic-oppression-episode.txt) - "Christians and Demonic Oppression".
-  - [10-23-open-doors-to-enemy-episode.txt](./new-believer/10-23-open-doors-to-enemy-episode.txt) - "Open Doors to the Enemy".
-  - [11-23-the-anointing-episode.txt](./new-believer/11-23-the-anointing-episode.txt) - "The Anointing".
-  - [12-23-why-anointing-is-vital-part-1-episode.txt](./new-believer/12-23-why-anointing-is-vital-part-1-episode.txt) - "Why the Anointing is Vital Part 1".
-  - [13-23-why-anointing-is-vital-part-2-episode.txt](./new-believer/13-23-why-anointing-is-vital-part-2-episode.txt) - "Why the Anointing is Vital Part 2".
-  - [14-23-your-true-identity-episode.txt](./new-believer/14-23-your-true-identity-episode.txt) - "Your True Identity".
-  - [15-23-freedom-from-word-curses-episode.txt](./new-believer/15-23-freedom-from-word-curses-episode.txt) - "Freedom from Word Curses".
-  - [16-23-kingdom-government-episode.txt](./new-believer/16-23-kingdom-government-episode.txt) - "Kingdom Government".
-  - [17-23-sowing-and-reaping-principle-part-1-episode.txt](./new-believer/17-23-sowing-and-reaping-principle-part-1-episode.txt) - "The Sowing and Reaping Principle Part 1".
-  - [18-23-sowing-and-reaping-principle-part-2-episode.txt](./new-believer/18-23-sowing-and-reaping-principle-part-2-episode.txt) - "The Sowing and Reaping Principle Part 2".
-  - [19-23-spiritual-mothers-and-fathers-episode.txt](./new-believer/19-23-spiritual-mothers-and-fathers-episode.txt) - "Spiritual Mothers and Fathers".
-  - [20-23-praying-the-Jesus-way-part-1-episode.txt](./new-believer/20-23-praying-the-Jesus-way-part-1-episode.txt) - "Praying the Jesus Way Part 1".
-  - [21-23-praying-the-Jesus-way-part-2-episode.txt](./new-believer/21-23-praying-the-Jesus-way-part-2-episode.txt) - "Praying the Jesus Way Part 2".
-  - [22-23-praying-the-Jesus-way-part-3-episode.txt](./new-believer/22-23-praying-the-Jesus-way-part-3-episode.txt) - "Praying the Jesus Way Part 3".
-  - [23-23-praying-the-Jesus-way-part-4-episode.txt](./new-believer/23-23-praying-the-Jesus-way-part-4-episode.txt) - "Praying the Jesus Way Part 4".
+  - [The Full Gospel](./new-believer/1-23-full-gospel-episode.txt) (1-23-full-gospel-episode.txt)
+  - [The Right Way to Pray](./new-believer/2-23-right-way-to-pray-episode.txt) (2-23-right-way-to-pray-episode.txt)
+  - [How to Hear God's Voice](./new-believer/3-23-hear-Gods-voice-episode.txt) (3-23-hear-Gods-voice-episode.txt)
+  - [How to Experience God's Presence Part 1](./new-believer/4-23-experience-Gods-presence-part-1-episode.txt) (4-23-experience-Gods-presence-part-1-episode.txt)
+  - [Your Authority in Christ](./new-believer/5-23-authority-in-Christ-episode.txt) (5-23-authority-in-Christ-episode.txt)
+  - [How to Defeat the Enemy for Good](./new-believer/6-23-defeat-the-enemy-for-good-episode.txt) (6-23-defeat-the-enemy-for-good-episode.txt)
+  - [The Power of Your Words](./new-believer/7-23-power-of-your-words-episode.txt) (7-23-power-of-your-words-episode.txt)
+  - [Free of Condemnation](./new-believer/8-23-free-of-condemnation-episode.txt) (8-23-free-of-condemnation-episode.txt)
+  - [Christians and Demonic Oppression](./new-believer/9-23-christians-and-demonic-oppression-episode.txt) (9-23-christians-and-demonic-oppression-episode.txt)
+  - [Open Doors to the Enemy](./new-believer/10-23-open-doors-to-enemy-episode.txt) (10-23-open-doors-to-enemy-episode.txt)
+  - [The Anointing](./new-believer/11-23-the-anointing-episode.txt) (11-23-the-anointing-episode.txt)
+  - [Why the Anointing is Vital Part 1](./new-believer/12-23-why-anointing-is-vital-part-1-episode.txt) (12-23-why-anointing-is-vital-part-1-episode.txt)
+  - [Why the Anointing is Vital Part 2](./new-believer/13-23-why-anointing-is-vital-part-2-episode.txt) (13-23-why-anointing-is-vital-part-2-episode.txt)
+  - [Your True Identity](./new-believer/14-23-your-true-identity-episode.txt) (14-23-your-true-identity-episode.txt)
+  - [Freedom from Word Curses](./new-believer/15-23-freedom-from-word-curses-episode.txt) (15-23-freedom-from-word-curses-episode.txt)
+  - [Kingdom Government](./new-believer/16-23-kingdom-government-episode.txt) (16-23-kingdom-government-episode.txt)
+  - [The Sowing and Reaping Principle Part 1](./new-believer/17-23-sowing-and-reaping-principle-part-1-episode.txt) (17-23-sowing-and-reaping-principle-part-1-episode.txt)
+  - [The Sowing and Reaping Principle Part 2](./new-believer/18-23-sowing-and-reaping-principle-part-2-episode.txt) (18-23-sowing-and-reaping-principle-part-2-episode.txt)
+  - [Spiritual Mothers and Fathers](./new-believer/19-23-spiritual-mothers-and-fathers-episode.txt) (19-23-spiritual-mothers-and-fathers-episode.txt)
+  - [Praying the Jesus Way Part 1](./new-believer/20-23-praying-the-Jesus-way-part-1-episode.txt) (20-23-praying-the-Jesus-way-part-1-episode.txt)
+  - [Praying the Jesus Way Part 2](./new-believer/21-23-praying-the-Jesus-way-part-2-episode.txt) (21-23-praying-the-Jesus-way-part-2-episode.txt)
+  - [Praying the Jesus Way Part 3](./new-believer/22-23-praying-the-Jesus-way-part-3-episode.txt) (22-23-praying-the-Jesus-way-part-3-episode.txt)
+  - [Praying the Jesus Way Part 4](./new-believer/23-23-praying-the-Jesus-way-part-4-episode.txt) (23-23-praying-the-Jesus-way-part-4-episode.txt)
 - [receiving-and-maintaining-your-deliverance](./receiving-and-maintaining-your-deliverance/): Transcripts from "Receiving & Maintaining Your Deliverance" playlist (6 videos complete).
-  - [1-6-receiving-complete-deliverance-episode.txt](./receiving-and-maintaining-your-deliverance/1-6-receiving-complete-deliverance-episode.txt) - "How to Receive Complete Deliverance".
-  - [2-6-maintaining-deliverance-part-1-episode.txt](./receiving-and-maintaining-your-deliverance/2-6-maintaining-deliverance-part-1-episode.txt) - "Maintaining Your Deliverance Part 1".
-  - [3-6-maintaining-deliverance-part-2-episode.txt](./receiving-and-maintaining-your-deliverance/3-6-maintaining-deliverance-part-2-episode.txt) - "Maintaining Your Deliverance Part 2".
-  - [4-6-maintaining-deliverance-part-3-episode.txt](./receiving-and-maintaining-your-deliverance/4-6-maintaining-deliverance-part-3-episode.txt) - "Maintaining Your Deliverance Part 3".
-  - [5-6-maintaining-deliverance-part-4-episode.txt](./receiving-and-maintaining-your-deliverance/5-6-maintaining-deliverance-part-4-episode.txt) - "Maintaining Your Deliverance Part 4".
-  - [6-6-connection-sowing-deliverance-episode.txt](./receiving-and-maintaining-your-deliverance/6-6-connection-sowing-deliverance-episode.txt) - "The Connection Between Sowing and Deliverance".
+  - [How to Receive Complete Deliverance](./receiving-and-maintaining-your-deliverance/1-6-receiving-complete-deliverance-episode.txt) (1-6-receiving-complete-deliverance-episode.txt)
+  - [Maintaining Your Deliverance Part 1](./receiving-and-maintaining-your-deliverance/2-6-maintaining-deliverance-part-1-episode.txt) (2-6-maintaining-deliverance-part-1-episode.txt)
+  - [Maintaining Your Deliverance Part 2](./receiving-and-maintaining-your-deliverance/3-6-maintaining-deliverance-part-2-episode.txt) (3-6-maintaining-deliverance-part-2-episode.txt)
+  - [Maintaining Your Deliverance Part 3](./receiving-and-maintaining-your-deliverance/4-6-maintaining-deliverance-part-3-episode.txt) (4-6-maintaining-deliverance-part-3-episode.txt)
+  - [Maintaining Your Deliverance Part 4](./receiving-and-maintaining-your-deliverance/5-6-maintaining-deliverance-part-4-episode.txt) (5-6-maintaining-deliverance-part-4-episode.txt)
+  - [The Connection Between Sowing and Deliverance](./receiving-and-maintaining-your-deliverance/6-6-connection-sowing-deliverance-episode.txt) (6-6-connection-sowing-deliverance-episode.txt)
 
 ## Metadata Notes
 Each .txt file includes metadata at the top: Type, Playlist, Author, Position/Total, YouTube URL, Title, Date (if available), Keywords (e.g., for theological tagging like "deliverance, spiritual maintenance").
