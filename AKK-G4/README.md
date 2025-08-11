@@ -34,6 +34,18 @@ This directory hosts raw transcripts from Apostle Kathryn Krick's YouTube teachi
   - [Maintaining Your Deliverance Part 3](./receiving-and-maintaining-your-deliverance/4-6-maintaining-deliverance-part-3-episode.txt) (4-6-maintaining-deliverance-part-3-episode.txt)
   - [Maintaining Your Deliverance Part 4](./receiving-and-maintaining-your-deliverance/5-6-maintaining-deliverance-part-4-episode.txt) (5-6-maintaining-deliverance-part-4-episode.txt)
   - [The Connection Between Sowing and Deliverance](./receiving-and-maintaining-your-deliverance/6-6-connection-sowing-deliverance-episode.txt) (6-6-connection-sowing-deliverance-episode.txt)
+- [revival-is-now-podcast](./revival-is-now-podcast/): Transcripts from "Revival is Now Podcast" playlist on Youtube (11 videos complete, Youtube numbering of episodes might vary from the numbering on other platforms).
+  - [Revival is Now Podcast - Episode 1 on Youtube](./revival-is-now-podcast/1-11--episode.txt) (1-11--episode.txt)
+  - [Revival is Now Podcast - Episode 2 on Youtube](./revival-is-now-podcast/2-11--episode.txt) (2-11--episode.txt)
+  - [Revival is Now Podcast - Episode 3 on Youtube](./revival-is-now-podcast/3-11--episode.txt) (3-11--episode.txt)
+  - [Revival is Now Podcast - Episode 4 on Youtube](./revival-is-now-podcast/4-11--episode.txt) (4-11--episode.txt)
+  - [Revival is Now Podcast - Episode 5 on Youtube](./revival-is-now-podcast/5-11--episode.txt) (5-11--episode.txt)
+  - [Revival is Now Podcast - Episode 6 on Youtube](./revival-is-now-podcast/6-11--episode.txt) (6-11--episode.txt)
+  - [Revival is Now Podcast - Episode 7 on Youtube](./revival-is-now-podcast/7-11--episode.txt) (7-11--episode.txt)
+  - [Revival is Now Podcast - Episode 8 on Youtube](./revival-is-now-podcast/8-11--episode.txt) (8-11--episode.txt)
+  - [Revival is Now Podcast - Episode 9 on Youtube](./revival-is-now-podcast/9-11--episode.txt) (9-11--episode.txt)
+  - [Revival is Now Podcast - Episode 10 on Youtube](./revival-is-now-podcast/10-11--episode.txt) (10-11--episode.txt)
+  - [Revival is Now Podcast - Episode 11 on Youtube](./revival-is-now-podcast/11-11--episode.txt) (11-11--episode.txt)
 
 ## Metadata Notes
 Each .txt file includes metadata at the top: Type, Playlist, Author, Position/Total, YouTube URL, Title, Date (if available), Keywords (e.g., for theological tagging like "deliverance, spiritual maintenance").
