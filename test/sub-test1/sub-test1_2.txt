@@ -1,1 +1,0 @@
-This is the second test file for the first sub-folder of the root directory in the test folder
