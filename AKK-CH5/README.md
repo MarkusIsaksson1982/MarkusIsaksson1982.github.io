@@ -1,55 +1,28 @@
-# AKK-CH5 Reference Data
+# AKK-CH5 Transcript Archive
 
-**Last Updated:** 2025-08-12  
-**Note:** Filenames and URLs are case-sensitive.
+This repository contains **40 raw transcripts** from Kathryn Krick's YouTube ministry materials, organized into three playlists.
 
-This repository hosts transcripts from Apostle Kathryn Krick’s YouTube content for AI-based theological research. Designed for compatibility with **ChatGPT-5**, **Claude**, and **Grok**.
+## Structure
+- **new-believer/** — 23 episodes
+- **receiving-and-maintaining-your-deliverance/** — 6 episodes
+- **revival-is-now-podcast/** — 11 episodes
 
----
+## Index
+For a visual index with links, see [index.html](index.html).
 
-## Contents
+## AI Parsing Best Practices
+### For ChatGPT
+- If HTML parsing fails, read `manifest.json` for full playlist/episode data.
+- Backup direct YouTube links are stored in `manifest.json`.
 
-### Receiving & Maintaining Your Deliverance (6 Episodes)
-| # | Title | Date | Local File | YouTube URL |
-|---|-------|------|------------|-------------|
-| 1 | How to Receive Complete Deliverance | YYYY-MM-DD | receiving-and-maintaining-your-deliverance/1-6-receiving-complete-deliverance-episode.txt | https://youtube.com/VIDEO1 |
-| ... | ... | ... | ... | ... |
+### For Claude
+- Use `manifest.json` when HTML load is slow due to crawl-lag.
 
-### New Believer (23 Episodes)
-| # | Title | Date | Local File | YouTube URL |
-|---|-------|------|------------|-------------|
-| 1 | The Full Gospel | YYYY-MM-DD | new-believer/1-23-full-gospel-episode.txt | https://youtube.com/VIDEO2 |
-| ... | ... | ... | ... | ... |
+### For Grok
+- Structured `.html` and `.json` files included to allow direct parsing without `.txt` format quirks.
 
-### Revival is Now Podcast (11 Episodes)
-| # | Title | Date | Local File | YouTube URL |
-|---|-------|------|------------|-------------|
-| 1 | Episode 1 | YYYY-MM-DD | revival-is-now-podcast/1-11--episode.txt | https://youtube.com/VIDEO3 |
-| ... | ... | ... | ... | ... |
+## Fallback
+- All local `.txt` files are stored in subfolders by playlist.
+- `manifest.json` contains playlist, episode number, title, and placeholder YouTube links.
 
----
-
-## AI Parsing Notes
-
-- **ChatGPT-5**: Use “YouTube URL” column for fallback if `.txt` files fail.  
-- **Claude**: Use embedded excerpts in `index.html` or parse `manifest.json` for a single crawl source.  
-- **Grok**: Use `.html` or `.json` versions for structured parsing (planned as supplement).
-
----
-
-## Manifest File
-
-- [manifest.json](./manifest.json) contains:
-  - Playlist
-  - Episode Number / Total
-  - Title
-  - Date
-  - Local File Path
-  - YouTube URL
-  - Keywords
-
----
-
-## License
-
-Content intended for research, commentary, and educational use.
+## Example Local File Path
