@@ -1,0 +1,224 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Theological Resources Event Metadata",
+  "type": "object",
+  "required": [
+    "event_title",
+    "date",
+    "transcript_type",
+    "speakers",
+    "theological_themes",
+    "sources",
+    "file_formats"
+  ],
+  "properties": {
+    "event_title": {
+      "type": "string",
+      "description": "Official title of the theological/religious event"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Event date in YYYY-MM-DD format"
+    },
+    "location": {
+      "type": "string",
+      "description": "Physical location where event took place"
+    },
+    "transcript_type": {
+      "type": "string",
+      "enum": ["full", "partial", "edited", "partial-cleaned"],
+      "description": "Type and completeness of transcript"
+    },
+    "transcript_source_type": {
+      "type": "string",
+      "enum": ["official", "youtube-auto", "news-media", "stenographer", "mixed"],
+      "description": "How the transcript was originally generated"
+    },
+    "speakers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {"type": "string"},
+          "title": {"type": "string"},
+          "role": {"type": "string", "enum": ["primary", "secondary", "chaplain", "musical"]},
+          "affiliation": {"type": "string"}
+        },
+        "required": ["name", "role"]
+      },
+      "description": "List of speakers with their roles and affiliations"
+    },
+    "theological_themes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "military-chaplaincy",
+          "prayer-in-government", 
+          "christian-worship",
+          "biblical-authority",
+          "divine-providence",
+          "church-state-relations",
+          "warrior-spirituality",
+          "national-prayer",
+          "denominational-specific",
+          "interfaith-dialogue",
+          "civil-religion",
+          "christian-nationalism",
+          "religious-freedom",
+          "biblical-hermeneutics",
+          "discipleship-practices"
+        ]
+      },
+      "description": "Primary theological themes present in the event"
+    },
+    "government_level": {
+      "type": "string",
+      "enum": ["federal", "state", "local", "military"],
+      "description": "Level of government involvement"
+    },
+    "denominational_context": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["protestant", "catholic", "orthodox", "evangelical", "mainline", "reformed", "pentecostal", "non-denominational", "interfaith"]
+      },
+      "description": "Religious denominational contexts represented"
+    },
+    "political_context": {
+      "type": "object",
+      "properties": {
+        "administration": {"type": "string"},
+        "political_significance": {"type": "string"},
+        "policy_connections": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {"type": "string", "format": "uri"},
+          "type": {"type": "string", "enum": ["video", "transcript", "news", "official", "archive"]},
+          "reliability": {"type": "string", "enum": ["primary", "secondary", "tertiary"]},
+          "description": {"type": "string"}
+        },
+        "required": ["url", "type"]
+      },
+      "description": "Source materials and references"
+    },
+    "file_formats": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [".html", ".txt", ".md", ".json", ".pdf"]
+      },
+      "description": "Available file formats for this event"
+    },
+    "ai_optimization": {
+      "type": "object",
+      "properties": {
+        "primary_ai_targets": {
+          "type": "array",
+          "items": {"type": "string", "enum": ["claude-sonnet-4", "chatgpt-5", "other"]}
+        },
+        "processing_notes": {"type": "string"},
+        "quality_score": {"type": "integer", "minimum": 1, "maximum": 10},
+        "completeness_score": {"type": "integer", "minimum": 1, "maximum": 10}
+      }
+    },
+    "content_warnings": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Any content that requires contextual awareness"
+    },
+    "research_applications": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "theological-analysis",
+          "church-state-studies", 
+          "political-theology",
+          "comparative-religion",
+          "american-civil-religion",
+          "military-religion",
+          "contemporary-christianity",
+          "ai-content-analysis"
+        ]
+      }
+    },
+    "last_updated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this metadata was last updated"
+    },
+    "version": {
+      "type": "string",
+      "description": "Metadata schema version"
+    }
+  },
+  
+  "examples": [
+    {
+      "event_title": "Pentagon Christian Prayer Service",
+      "date": "2025-05-21",
+      "location": "Pentagon Auditorium",
+      "transcript_type": "partial-cleaned",
+      "transcript_source_type": "youtube-auto",
+      "speakers": [
+        {
+          "name": "Pete Hegseth",
+          "title": "Secretary of Defense",
+          "role": "primary",
+          "affiliation": "U.S. Department of Defense"
+        },
+        {
+          "name": "Brooks Podiger",
+          "title": "Pastor",
+          "role": "primary", 
+          "affiliation": "Pilgrim Hill Reformed Fellowship"
+        }
+      ],
+      "theological_themes": [
+        "military-chaplaincy",
+        "prayer-in-government",
+        "christian-worship",
+        "biblical-authority",
+        "divine-providence",
+        "warrior-spirituality"
+      ],
+      "government_level": "federal",
+      "denominational_context": ["reformed", "evangelical"],
+      "political_context": {
+        "administration": "Trump 2025",
+        "political_significance": "First monthly prayer service under new administration",
+        "policy_connections": ["military-religious-freedom", "chaplaincy-expansion"]
+      },
+      "sources": [
+        {
+          "url": "https://www.youtube.com/watch?v=EKcOA5ojMXo",
+          "type": "video",
+          "reliability": "primary",
+          "description": "Original Defense Now YouTube video"
+        }
+      ],
+      "file_formats": [".html", ".txt", ".json"],
+      "ai_optimization": {
+        "primary_ai_targets": ["claude-sonnet-4", "chatgpt-5"],
+        "processing_notes": "Auto-generated transcript cleaned for AI analysis",
+        "quality_score": 8,
+        "completeness_score": 7
+      },
+      "research_applications": [
+        "military-religion",
+        "church-state-studies",
+        "contemporary-christianity",
+        "ai-content-analysis"
+      ],
+      "last_updated": "2025-08-13T10:00:00Z",
+      "version": "1.0"
+    }
+  ]
+}
