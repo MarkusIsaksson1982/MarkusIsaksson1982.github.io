@@ -2,6 +2,7 @@
   "playlists": [
     {
       "name": "New Believer",
+      "youtube": "https://www.youtube.com/playlist?list=PLX3SBMW-XlAiWLoYzf9A-IG8jTn_okxY8",
       "episodes": [
         {"episode": "1/23", "title": "Full Gospel", "file": "new-believer/1-23-full-gospel-episode.txt", "youtube": "https://www.youtube.com/watch?v=Akhg8zou-3U"},
         {"episode": "2/23", "title": "Right Way to Pray", "file": "new-believer/2-23-right-way-to-pray-episode.txt", "youtube": ""},
@@ -27,6 +28,35 @@
         {"episode": "22/23", "title": "Praying the Jesus Way (Part 3)", "file": "new-believer/22-23-praying-the-Jesus-way-part-3-episode.txt", "youtube": ""},
         {"episode": "23/23", "title": "Praying the Jesus Way (Part 4)", "file": "new-believer/23-23-praying-the-Jesus-way-part-4-episode.txt", "youtube": ""}
       ]
+    },
+    {
+      "name": "Receiving & Maintaining Your Deliverance",
+      "youtube": "https://www.youtube.com/playlist?list=PLX3SBMW-XlAj-eTItta1x8--2LOF0biUP",
+      "episodes": [
+        {"episode": "1", "title": "", "file": "[placeholder]", "youtube": ""},
+        {"episode": "2", "title": "", "file": "[placeholder]", "youtube": ""},
+        {"episode": "3", "title": "", "file": "[placeholder]", "youtube": ""},
+        {"episode": "4", "title": "", "file": "[placeholder]", "youtube": ""},
+        {"episode": "5", "title": "", "file": "[placeholder]", "youtube": ""},
+        {"episode": "6", "title": "", "file": "[placeholder]", "youtube": ""}
+      ]
+    },
+    {
+      "name": "Revival is Now Podcast",
+      "youtube": "https://www.youtube.com/playlist?list=PLX3SBMW-XlAg_GAaumJ79218DVREPf5nD",
+      "episodes": [
+        {"episode": "1", "title": "", "file": "revival-podcast/1-11--episode.txt", "youtube": ""},
+        {"episode": "2", "title": "", "file": "revival-podcast/2-11--episode.txt", "youtube": ""},
+        {"episode": "3", "title": "", "file": "revival-podcast/3-11--episode.txt", "youtube": ""},
+        {"episode": "4", "title": "", "file": "revival-podcast/4-11--episode.txt", "youtube": ""},
+        {"episode": "5", "title": "", "file": "revival-podcast/5-11--episode.txt", "youtube": ""},
+        {"episode": "6", "title": "", "file": "revival-podcast/6-11--episode.txt", "youtube": ""},
+        {"episode": "7", "title": "", "file": "revival-podcast/7-11--episode.txt", "youtube": ""},
+        {"episode": "8", "title": "", "file": "revival-podcast/8-11--episode.txt", "youtube": ""},
+        {"episode": "9", "title": "", "file": "revival-podcast/9-11--episode.txt", "youtube": ""},
+        {"episode": "10", "title": "", "file": "revival-podcast/10-11--episode.txt", "youtube": ""},
+        {"episode": "11", "title": "", "file": "revival-podcast/11-11--episode.txt", "youtube": ""}
+        ]
     }
   ]
 }
