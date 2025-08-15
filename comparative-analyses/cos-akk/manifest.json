@@ -5,7 +5,7 @@
       "youtube": "https://www.youtube.com/playlist?list=PLX3SBMW-XlAiWLoYzf9A-IG8jTn_okxY8",
       "episodes": [
         {
-          "episode": "1/20", 
+          "episode": "1/21", 
           "date": "2025-08-10",
           "liturgical_day": "8:e söndagen e. trefaldighet",
           "theme": "Andlig klarsyn",
@@ -20,7 +20,7 @@
           }
         },
         {
-          "episode": "2/20", 
+          "episode": "2/21", 
           "date": "2025-08-03",
           "liturgical_day": "Kristi förklarings dag",
           "theme": "Jesus förhärligad",
@@ -35,7 +35,7 @@
           }
         },
         {
-          "episode": "3/20",
+          "episode": "3/21",
           "date": "2025-07-27", 
           "liturgical_day": "6:e söndagen e. trefaldighet",
           "theme": "Efterföljelse",
@@ -50,7 +50,7 @@
           }
         },
         {
-          "episode": "4/20",
+          "episode": "4/21",
           "date": "2025-07-20",
           "liturgical_day": "Apostladagen", 
           "theme": "Sänd mig",
@@ -65,7 +65,7 @@
           }
         },
         {
-          "episode": "5/20",
+          "episode": "5/21",
           "date": "2025-07-13",
           "liturgical_day": "4:e söndagen e. trefaldighet",
           "theme": "Att inte döma", 
@@ -80,7 +80,7 @@
           }
         },
         {
-          "episode": "6/20",
+          "episode": "6/21",
           "date": "2025-07-06",
           "liturgical_day": "3:e söndagen e. trefaldighet",
           "theme": "Förlorad och återfunnen",
@@ -95,7 +95,7 @@
           }
         },
         {
-          "episode": "7/20",
+          "episode": "7/21",
           "date": "2025-06-29",
           "liturgical_day": "2:a söndagen e. trefaldighet",
           "theme": "Kallelsen till Guds rike",
@@ -110,7 +110,7 @@
           }
         },
         {
-          "episode": "8/20", 
+          "episode": "8/21", 
           "date": "2025-06-22",
           "liturgical_day": "Den helige Johannes döp. dag",
           "theme": "Den Högstes profet",
@@ -125,7 +125,21 @@
           }
         },
         {
-          "episode": "9/20",
+          "episode": "9/21",
+          "date": "2025-06-21",
+          "liturgical_day": "Midsommardagen",
+          "theme": "Skapelsen",
+          "title": "Midsommardagen",
+          "file": "",
+          "readings": {
+            "ot": "Job 12:7-13",
+            "epistle": "Apg 17:22-31",
+            "gospel": "Matt 6:25-30",
+            "psalm": "Ps 104:1-13"
+          }
+        },
+        {
+          "episode": "10/21",
           "date": "2025-06-15",
           "liturgical_day": "Heliga trefaldighets dag",
           "theme": "Gud - Fader, Son och Ande",
@@ -142,7 +156,21 @@
           }
         },
         {
-          "episode": "10/20",
+          "episode": "11/21",
+          "date": "2025-06-09",
+          "liturgical_day": "Annandag pingst",
+          "theme": "Andens vind över världen",
+          "title": "Annandag pingst",
+          "file": "",
+          "readings": {
+            "ot": "Hes 11:17-20",
+            "epistle": "Apg 11:19-26",
+            "gospel": "Joh 3:31-36",
+            "psalm": "Ps 68:10-14, 20-21"
+          }
+        },
+        {
+          "episode": "12/21",
           "date": "2025-06-08", 
           "liturgical_day": "Pingstdagen",
           "theme": "Den Helige Anden",
@@ -159,7 +187,7 @@
           }
         },
         {
-          "episode": "11/20",
+          "episode": "13/21",
           "date": "2025-06-01",
           "liturgical_day": "Söndagen före pingst",
           "theme": "Hjälparen kommer",
@@ -174,7 +202,7 @@
           }
         },
         {
-          "episode": "12/20",
+          "episode": "14/21",
           "date": "2025-05-29",
           "liturgical_day": "Kristi himmelsfärds dag",
           "theme": "Herre över allting",
@@ -189,7 +217,7 @@
           }
         },
         {
-          "episode": "13/20",
+          "episode": "15/21",
           "date": "2025-05-25",
           "liturgical_day": "Bönsöndagen",
           "theme": "Bönen", 
@@ -204,12 +232,13 @@
           }
         },
         {
-          "episode": "14/20",
+          "episode": "16/21",
           "date": "2025-05-18",
           "liturgical_day": "5:e söndagen i påsktiden",
           "theme": "Att växa i tro",
           "title": "Wise Servants of God", 
           "file": "akk-transcripts/2025-05-18-wise-servants-of-god.html", 
+          "svk_transcript": "svk-transkriptioner/2025-05-18-5-e-sondagen-i-pasktiden-att-vaxa-i-tro.html",
           "youtube": "https://www.youtube.com/watch?v=btaUBp8jhGg", 
           "svk_youtube": "https://www.youtube.com/watch?v=7XALrdXJgMg",
           "readings": {
@@ -220,7 +249,7 @@
           }
         },
         {
-          "episode": "15/20",
+          "episode": "17/21",
           "date": "2025-05-11",
           "liturgical_day": "4:e söndagen i påsktiden", 
           "theme": "Vägen till livet",
@@ -235,7 +264,7 @@
           }
         },
         {
-          "episode": "16/20",
+          "episode": "18/21",
           "date": "2025-05-04",
           "liturgical_day": "3:e söndagen i påsktiden",
           "theme": "Den gode herden",
@@ -250,7 +279,7 @@
           }
         },
         {
-          "episode": "17/20",
+          "episode": "19/21",
           "date": "2025-04-27",
           "liturgical_day": "2:a söndagen i påsktiden",
           "theme": "Påskens vittnen", 
@@ -265,7 +294,21 @@
           }
         },
         {
-          "episode": "18/20",
+          "episode": "20/21",
+          "date": "2025-04-21",
+          "liturgical_day": "Annandag påsk",
+          "theme": "Möte med den uppståndne",
+          "title": "Annandag påsk",
+          "file": "",
+          "readings": {
+            "ot": "5 Mos 18:15-18",
+            "epistle": "Kol 3:1-4",
+            "gospel": "Luk 24:36-49",
+            "psalm": "Ps 16:6-11"
+          }
+        },
+        {
+          "episode": "21/21",
           "date": "2025-04-20",
           "liturgical_day": "Påskdagen",
           "theme": "Kristus är uppstånden",
@@ -278,21 +321,6 @@
             "gospel": "Mark 16:1-14",
             "psalm": "Ps 118:15-24"
           }
-        },
-        {
-          "episode": "19/20",
-          "date": "2025-04-13",
-          "liturgical_day": "Palmsöndagen",
-          "theme": "Vägen till korset",
-          "title": "The Power of Expectancy",
-          "file": "akk-transcripts/2025-04-13-the-power-of-expectancy.txt",
-          "youtube": "YT_PLACEHOLDER",
-          "readings": {
-            "ot": "2 Mos 13:6-10",
-            "epistle": "Heb 2:14-18",
-            "gospel": "Mark 11:1-11",
-            "psalm": "Ps 118:19-29"
-          }
         }
       ]
     },
@@ -300,11 +328,76 @@
       "name": "Special Services",
       "youtube": "https://www.youtube.com/playlist?list=PLX3SBMW-XlAj-eTItta1x8--2LOF0biUP",
       "episodes": [
-        {"episode": "1/5", "title": "Revival is Now Stockholm", "file": "2025-08-02-revival-is-now-stockholm.html", "youtube": "https://www.youtube.com/watch?v=54_FDa236xs"},
-        {"episode": "2/5", "title": "Revival Is Now Minneapolis", "file": "2025-07-10-revival-is-now-minneapolis.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "3/5", "title": "Revival is Now Portland", "file": "2025-07-10-revival-is-now-portland.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "4/5", "title": "Revival Is Now London", "file": "2025-07-10-revival-is-now-london.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "5/5", "title": "Revival Is Now Toronto", "file": "2025-06-10-revival-is-now-toronto.html", "youtube": "YT_PLACEHOLDER"}
+        {
+          "episode": "1/6", 
+          "date": "2025-08-02",
+          "title": "Revival is Now Stockholm, Sweden",
+          "file": "akk-transcripts/2025-08-02-revival-is-now-stockholm-sweden.html",
+          "youtube": "https://www.youtube.com/watch?v=54_FDa236xs"
+        },
+        {"episode": "2/6", "title": "Revival Is Now Minneapolis", "file": "2025-07-10-revival-is-now-minneapolis.html", "youtube": "YT_PLACEHOLDER"},
+        {"episode": "3/6", "title": "Revival is Now Portland", "file": "2025-07-10-revival-is-now-portland.html", "youtube": "YT_PLACEHOLDER"},
+        {"episode": "4/6", "title": "Revival Is Now London", "file": "2025-07-10-revival-is-now-london.html", "youtube": "YT_PLACEHOLDER"},
+        {"episode": "5/6", "title": "Revival Is Now Toronto", "file": "2025-06-10-revival-is-now-toronto.html", "youtube": "YT_PLACEHOLDER"},
+        {
+          "episode": "6/6",
+          "date": "2025-04-19",
+          "title": "Påsknatten - Genom död till liv",
+          "file": "svk-transkriptioner/2025-04-19-pasknatten-genom-dod-till-liv.html",
+          "youtube": "YT_PLACEHOLDER",
+          "readings": {
+            "ot": "Dan 3:19-25",
+            "epistle": "2 Tim 2:8-13",
+            "gospel": "Mark 16:1-8",
+            "psalm": "Ps 114"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Svenska kyrkan",
+      "youtube": "https://www.youtube.com/playlist?list=PLX3SBMW-XlAj-eTItta1x8--2LOF0biUP",
+      "episodes": [
+        {
+          "episode": "1/5",
+          "date": "2025-06-15",
+          "liturgical_day": "Heliga trefaldighets dag",
+          "title": "Högmässa pingstdagen med prästvigning",
+          "file": "svk-transkriptioner/2025-06-15-hogmassa-pingstdagen-med-prastvigning.html",
+          "youtube": "https://www.youtube.com/watch?v=NsiJU6Qfyww"
+        },
+        {
+          "episode": "2/5",
+          "date": "2025-06-08",
+          "liturgical_day": "Pingstdagen",
+          "title": "Högmässa på pingstdagen",
+          "file": "svk-transkriptioner/2025-06-08-hogmassa-pingstdagen.html",
+          "youtube": "https://www.youtube.com/watch?v=thPVfhBiJh0"
+        },
+        {
+          "episode": "3/5",
+          "date": "2025-05-18",
+          "liturgical_day": "5:e söndagen i påsktiden",
+          "title": "5:e söndagen i påsktiden – Att växa i tro",
+          "file": "svk-transkriptioner/2025-05-18-5-e-sondagen-i-pasktiden-att-vaxa-i-tro.html",
+          "youtube": "https://www.youtube.com/watch?v=7XALrdXJgMg"
+        },
+        {
+          "episode": "4/5",
+          "date": "2025-04-19",
+          "liturgical_day": "Påsknatten",
+          "title": "Påsknatten – Genom död till liv",
+          "file": "svk-transkriptioner/2025-04-19-pasknatten-genom-dod-till-liv.html",
+          "youtube": "YT_PLACEHOLDER"
+        },
+        {
+          "episode": "5/5",
+          "date": "2025-04-13",
+          "liturgical_day": "Palmsöndagen",
+          "title": "Palmsöndagen – Vägen till korset",
+          "file": "svk-transkriptioner/2025-04-13-palmsondagen-vagen-till-korset.html",
+          "youtube": "YT_PLACEHOLDER"
+        }
       ]
     },
     {
