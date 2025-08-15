@@ -329,28 +329,35 @@
       "youtube": "https://www.youtube.com/playlist?list=PLX3SBMW-XlAj-eTItta1x8--2LOF0biUP",
       "episodes": [
         {
-          "episode": "1/6", 
+          "episode": "1/5", 
           "date": "2025-08-02",
           "title": "Revival is Now Stockholm, Sweden",
           "file": "akk-transcripts/2025-08-02-revival-is-now-stockholm-sweden.html",
           "youtube": "https://www.youtube.com/watch?v=54_FDa236xs"
         },
-        {"episode": "2/6", "title": "Revival Is Now Minneapolis", "file": "2025-07-10-revival-is-now-minneapolis.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "3/6", "title": "Revival is Now Portland", "file": "2025-07-10-revival-is-now-portland.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "4/6", "title": "Revival Is Now London", "file": "2025-07-10-revival-is-now-london.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "5/6", "title": "Revival Is Now Toronto", "file": "2025-06-10-revival-is-now-toronto.html", "youtube": "YT_PLACEHOLDER"},
         {
-          "episode": "6/6",
-          "date": "2025-04-19",
-          "title": "Påsknatten - Genom död till liv",
-          "file": "svk-transkriptioner/2025-04-19-pasknatten-genom-dod-till-liv.html",
-          "youtube": "YT_PLACEHOLDER",
-          "readings": {
-            "ot": "Dan 3:19-25",
-            "epistle": "2 Tim 2:8-13",
-            "gospel": "Mark 16:1-8",
-            "psalm": "Ps 114"
-          }
+          "episode": "2/5",
+          "title": "Revival Is Now Minneapolis",
+          "file": "2025-07-10-revival-is-now-minneapolis.html",
+          "youtube": "YT_PLACEHOLDER"
+        },
+        {
+          "episode": "3/5",
+          "title": "Revival is Now Portland",
+          "file": "2025-07-10-revival-is-now-portland.html",
+          "youtube": "YT_PLACEHOLDER"
+        },
+        {
+          "episode": "4/5",
+          "title": "Revival Is Now London",
+          "file": "2025-07-10-revival-is-now-london.html",
+          "youtube": "YT_PLACEHOLDER"
+        },
+        {
+          "episode": "5/5",
+          "title": "Revival Is Now Toronto",
+          "file": "2025-06-10-revival-is-now-toronto.html",
+          "youtube": "YT_PLACEHOLDER"
         }
       ]
     },
@@ -359,44 +366,94 @@
       "youtube": "https://www.youtube.com/playlist?list=PLX3SBMW-XlAj-eTItta1x8--2LOF0biUP",
       "episodes": [
         {
-          "episode": "1/5",
+          "episode": "1/6",
           "date": "2025-06-15",
           "liturgical_day": "Heliga trefaldighets dag",
+          "theme": "Gud - Fader, Son och Ande",
           "title": "Högmässa pingstdagen med prästvigning",
           "file": "svk-transkriptioner/2025-06-15-hogmassa-pingstdagen-med-prastvigning.html",
-          "youtube": "https://www.youtube.com/watch?v=NsiJU6Qfyww"
+          "youtube": "https://www.youtube.com/watch?v=NsiJU6Qfyww",
+          "readings": {
+            "ot": "2 Mos 3:1-15",
+            "epistle": "Rom 11:33-36",
+            "gospel": "Matt 28:16-20",
+            "psalm": "Ps 113:1-6"
+          }
         },
         {
-          "episode": "2/5",
+          "episode": "2/6",
           "date": "2025-06-08",
           "liturgical_day": "Pingstdagen",
+          "theme": "Den Helige Anden",
           "title": "Högmässa på pingstdagen",
           "file": "svk-transkriptioner/2025-06-08-hogmassa-pingstdagen.html",
-          "youtube": "https://www.youtube.com/watch?v=thPVfhBiJh0"
+          "youtube": "https://www.youtube.com/watch?v=thPVfhBiJh0",
+          "readings": {
+            "ot": "Joel 2:28-29",
+            "epistle": "Apg 2:1-11 (Apg 2:14-21)",
+            "gospel": "Joh 14:15-21",
+            "psalm": "Ps 104:27-31"
+          }
         },
         {
-          "episode": "3/5",
+          "episode": "3/6",
           "date": "2025-05-18",
           "liturgical_day": "5:e söndagen i påsktiden",
+          "theme": "Att växa i tro",
           "title": "5:e söndagen i påsktiden – Att växa i tro",
           "file": "svk-transkriptioner/2025-05-18-5-e-sondagen-i-pasktiden-att-vaxa-i-tro.html",
-          "youtube": "https://www.youtube.com/watch?v=7XALrdXJgMg"
+          "youtube": "https://www.youtube.com/watch?v=7XALrdXJgMg",
+          "readings": {
+            "ot": "Hos 14:5-9",
+            "epistle": "1 Joh 3:18-24",
+            "gospel": "Joh 15:10-17",
+            "psalm": "Ps 98:1-8"
+          }
         },
         {
-          "episode": "4/5",
+          "episode": "4/6",
           "date": "2025-04-19",
           "liturgical_day": "Påsknatten",
+          "theme": "Genom död till liv",
           "title": "Påsknatten – Genom död till liv",
           "file": "svk-transkriptioner/2025-04-19-pasknatten-genom-dod-till-liv.html",
-          "youtube": "YT_PLACEHOLDER"
+          "youtube": "YT_PLACEHOLDER",
+          "readings": {
+            "ot": "Dan 3:19-25",
+            "epistle": "2 Tim 2:8-13",
+            "gospel": "Mark 16:1-8",
+            "psalm": "Ps 114"
+          }
         },
         {
-          "episode": "5/5",
+          "episode": "5/6",
+          "date": "2025-04-17",
+          "liturgical_day": "Skärtorsdagen",
+          "theme": "Det nya förbundet",
+          "title": "Skärtorsdagen – Det nya förbundet",
+          "file": "svk-transkriptioner/2025-04-17-skartorsdagen-det-nya-forbundet.html",
+          "youtube": "YT_PLACEHOLDER",
+          "readings": {
+            "ot": "2 Mos 24:3-11",
+            "epistle": "1 Kor 10:16-17",
+            "gospel": "Mark 14:12-26",
+            "psalm": "Ps 111:1-5"
+          }
+        },
+        {
+          "episode": "6/6",
           "date": "2025-04-13",
           "liturgical_day": "Palmsöndagen",
+          "theme": "Vägen till korset",
           "title": "Palmsöndagen – Vägen till korset",
           "file": "svk-transkriptioner/2025-04-13-palmsondagen-vagen-till-korset.html",
-          "youtube": "YT_PLACEHOLDER"
+          "youtube": "YT_PLACEHOLDER",
+          "readings": {
+            "ot": "2 Mos 13:6-10",
+            "epistle": "Heb 2:14-18",
+            "gospel": "Mark 11:1-11",
+            "psalm": "Ps 118:19-29"
+          }
         }
       ]
     },
@@ -404,19 +461,54 @@
       "name": "Spiritual Q&A Sessions",
       "youtube": "https://www.youtube.com/playlist?list=PLX3SBMW-XlAg_GAaumJ79218DVREPf5nD",
       "episodes": [
-        {"episode": "1/4", "title": "Spiritual Q&A + MIRACLES ON ZOOM", "file": "2025-07-10-spiritual-qa-miracles-on-zoom.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "2/4", "title": "Spiritual Q&A", "file": "2025-07-10-spiritual-qa.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "3/4", "title": "Your Spiritual Questions Answered + Prophetic Ministry", "file": "2025-06-10-your-spiritual-questions-answered-prophetic-ministry.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "4/4", "title": "How to Guard Your Heart from Manipulation and be Wise as a Serpent", "file": "2025-06-10-how-to-guard-your-heart-from-manipulation.html", "youtube": "YT_PLACEHOLDER"}
+        {
+          "episode": "1/4",
+          "title": "Spiritual Q&A + MIRACLES ON ZOOM",
+          "file": "2025-07-10-spiritual-qa-miracles-on-zoom.html",
+          "youtube": "YT_PLACEHOLDER"
+        },
+        {
+          "episode": "2/4",
+          "title": "Spiritual Q&A",
+          "file": "2025-07-10-spiritual-qa.html",
+          "youtube": "YT_PLACEHOLDER"
+        },
+        {
+          "episode": "3/4",
+          "title": "Your Spiritual Questions Answered + Prophetic Ministry",
+          "file": "2025-06-10-your-spiritual-questions-answered-prophetic-ministry.html",
+          "youtube": "YT_PLACEHOLDER"
+        },
+        {
+          "episode": "4/4",
+          "title": "How to Guard Your Heart from Manipulation and be Wise as a Serpent",
+          "file": "2025-06-10-how-to-guard-your-heart-from-manipulation.html",
+          "youtube": "YT_PLACEHOLDER"
+        }
       ]
     },
     {
       "name": "Revival Teachings",
       "youtube": "https://www.youtube.com/playlist?list=PLX3SBMW-XlAhGFoO63dcauAlBqEpW01zu",
       "episodes": [
-        {"episode": "1/3", "title": "The Truth About Demons", "file": "2025-07-10-the-truth-about-demons.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "2/3", "title": "How to Win Battles: Spiritual Maturity", "file": "2025-04-10-how-to-win-battles-spiritual-maturity.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "3/3", "title": "Overcoming the Father of Lies", "file": "2025-04-10-overcoming-the-father-of-lies.html", "youtube": "YT_PLACEHOLDER"}
+        {
+          "episode": "1/3",
+          "title": "The Truth About Demons",
+          "file": "2025-07-10-the-truth-about-demons.html",
+          "youtube": "YT_PLACEHOLDER"
+        },
+        {
+          "episode": "2/3",
+          "title": "How to Win Battles: Spiritual Maturity",
+          "file": "2025-04-10-how-to-win-battles-spiritual-maturity.html",
+          "youtube": "YT_PLACEHOLDER"
+        },
+        {
+          "episode": "3/3",
+          "title": "Overcoming the Father of Lies",
+          "file": "2025-04-10-overcoming-the-father-of-lies.html",
+          "youtube": "YT_PLACEHOLDER"
+        }
       ]
     }
   ]
