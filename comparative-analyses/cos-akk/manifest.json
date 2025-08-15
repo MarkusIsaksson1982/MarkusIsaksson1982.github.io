@@ -43,7 +43,7 @@
       "name": "Special Services",
       "youtube": "https://www.youtube.com/playlist?list=PLX3SBMW-XlAj-eTItta1x8--2LOF0biUP",
       "episodes": [
-        {"episode": "1/5", "title": "Revival is Now Stockholm", "file": "2025-08-02-revival-is-now-stockholm.html", "youtube": "YT_PLACEHOLDER"},
+        {"episode": "1/5", "title": "Revival is Now Stockholm", "file": "2025-08-02-revival-is-now-stockholm.html", "youtube": "https://www.youtube.com/watch?v=54_FDa236xs"},
         {"episode": "2/5", "title": "Revival Is Now Minneapolis", "file": "2025-07-10-revival-is-now-minneapolis.html", "youtube": "YT_PLACEHOLDER"},
         {"episode": "3/5", "title": "Revival is Now Portland", "file": "2025-07-10-revival-is-now-portland.html", "youtube": "YT_PLACEHOLDER"},
         {"episode": "4/5", "title": "Revival Is Now London", "file": "2025-07-10-revival-is-now-london.html", "youtube": "YT_PLACEHOLDER"},
