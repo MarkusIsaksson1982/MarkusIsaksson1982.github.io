@@ -12,8 +12,20 @@
         {"episode": "6/19", "title": "The Urgency to Spread the Good News", "file": "akk-transcripts/2025-07-06-the-urgency-to-spread-the-good-news.html", "youtube": "YT_PLACEHOLDER"},
         {"episode": "7/19", "title": "Representing Jesus Rightly", "file": "akk-transcripts/2025-06-29-representing-jesus-rightly.html", "youtube": "YT_PLACEHOLDER"},
         {"episode": "8/19", "title": "Prepared for Harvest", "file": "akk-transcripts/2025-06-22-prepared-for-harvest.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "9/19", "title": "About the Father's Business", "file": "akk-transcripts/2025-06-15-about-the-fathers-business.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "10/19", "title": "Pentecost Sunday", "file": "akk-transcripts/2025-06-08-pentecost-sunday.html", "youtube": "YT_PLACEHOLDER"},
+        {
+          "episode": "9/19",
+          "title": "About the Father's Business",
+          "file": "akk-transcripts/2025-06-15-about-the-fathers-business.html",
+          "svk_transcript": "svk-transkriptioner/2025-06-15-hogmassa-pingstdagen-med-prastvigning.html",
+          "youtube": "YT_PLACEHOLDER"
+        },
+        {
+          "episode": "10/19",
+          "title": "Pentecost Sunday",
+          "file": "akk-transcripts/2025-06-08-pentecost-sunday.html",
+          "svk_transcript": "svk-transkriptioner/2025-06-08-hogmassa-pingstdagen.html",
+          "youtube": "YT_PLACEHOLDER"
+        },
         {"episode": "11/19", "title": "Prophetic Word for All Ministers & those Called to Ministry", "file": "akk-transcripts/2025-06-01-prophetic-word-for-all-ministers-those-called-to-ministry.html", "youtube": "YT_PLACEHOLDER"},
         {"episode": "12/19", "title": "Your Spiritual Questions Answered + Prophetic Ministry", "file": "akk-transcripts/2025-05-29-your-spiritual-questions-answered-prophetic-ministry.html", "youtube": "YT_PLACEHOLDER"},
         {"episode": "13/19", "title": "Great Faith", "file": "akk-transcripts/2025-05-25-great-faith.html", "youtube": "YT_PLACEHOLDER"},
