@@ -1,3 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2025-04-20-easter-sunday</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<pre style="white-space: pre-wrap; font-family: sans-serif;">
+---
+Type: Transcript
+Playlist: Live streams
+Author: Apostle Kathryn Krick
+Position: N/A 
+YouTube URL: https://www.youtube.com/watch?v=UxKZ9JjUSaQ
+Title: The Power of Expectancy - 5F Church Sunday Service
+Date: 2025-04-13
+Keywords: [not added yet]
+---
+
 0:00
 says "Happy Palm Sunday hallelujah hosana hosana in the
 0:06
@@ -3518,3 +3539,6 @@ Theater at 12:00 p.m next Sunday Easter Sunday hallelujah
 and arise and shine we'll see you on Friday and Saturday arise and shine hallelujah
 3:17:13
 [Music]
+</pre>
+</body>
+</html>
