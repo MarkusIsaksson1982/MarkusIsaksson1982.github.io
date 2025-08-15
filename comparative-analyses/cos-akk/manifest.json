@@ -4,39 +4,296 @@
       "name": "Sunday Services",
       "youtube": "https://www.youtube.com/playlist?list=PLX3SBMW-XlAiWLoYzf9A-IG8jTn_okxY8",
       "episodes": [
-        {"episode": "1/19", "title": "The Spirit of Caleb and Joshua", "file": "akk-transcripts/2025-08-10-the-spirit-of-caleb-and-joshua.html", "youtube": "https://www.youtube.com/watch?v=UzljQU2U6Z4"},
-        {"episode": "2/19", "title": "The Winning Team", "file": "akk-transcripts/2025-08-03-the-winning-team.html", "youtube": "https://www.youtube.com/watch?v=cNYezI0qZPA"},
-        {"episode": "3/19", "title": "A Heart for Souls", "file": "akk-transcripts/2025-07-27-a-heart-for-souls.html", "youtube": "https://www.youtube.com/watch?v=SOo30jVhBeY"},
-        {"episode": "4/19", "title": "Growing in the Knowledge of God", "file": "akk-transcripts/2025-07-20-growing-in-the-knowledge-of-god.html", "youtube": "https://www.youtube.com/watch?v=dqf8cAdCt04"},
-        {"episode": "5/19", "title": "Your Divine Assignment", "file": "akk-transcripts/2025-07-13-your-divine-assignment.html", "youtube": "https://www.youtube.com/watch?v=kx28KYIKK-U"},
-        {"episode": "6/19", "title": "The Urgency to Spread the Good News", "file": "akk-transcripts/2025-07-06-the-urgency-to-spread-the-good-news.html", "youtube": "https://www.youtube.com/watch?v=qKnK5AXYcIY"},
-        {"episode": "7/19", "title": "Representing Jesus Rightly", "file": "akk-transcripts/2025-06-29-representing-jesus-rightly.html", "youtube": "https://www.youtube.com/watch?v=DTZXqto8qkI"},
-        {"episode": "8/19", "title": "Prepared for Harvest", "file": "akk-transcripts/2025-06-22-prepared-for-harvest.html", "youtube": "https://www.youtube.com/watch?v=8oTZgzIvClM"},
         {
-          "episode": "9/19",
+          "episode": "1/20", 
+          "date": "2025-08-10",
+          "liturgical_day": "8:e söndagen e. trefaldighet",
+          "theme": "Andlig klarsyn",
+          "title": "The Spirit of Caleb and Joshua", 
+          "file": "akk-transcripts/2025-08-10-the-spirit-of-caleb-and-joshua.html", 
+          "youtube": "https://www.youtube.com/watch?v=UzljQU2U6Z4",
+          "readings": {
+            "ot": "Ords 7:1-3",
+            "epistle": "1 Kor 3:10-15", 
+            "gospel": "Matt 7:22-29",
+            "psalm": "Ps 119:30-35"
+          }
+        },
+        {
+          "episode": "2/20", 
+          "date": "2025-08-03",
+          "liturgical_day": "Kristi förklarings dag",
+          "theme": "Jesus förhärligad",
+          "title": "The Winning Team", 
+          "file": "akk-transcripts/2025-08-03-the-winning-team.html", 
+          "youtube": "https://www.youtube.com/watch?v=cNYezI0qZPA",
+          "readings": {
+            "ot": "2 Mos 34:27-35",
+            "epistle": "2 Kor 3:9-18",
+            "gospel": "Mark 9:1-13", 
+            "psalm": "Ps 89:12-18"
+          }
+        },
+        {
+          "episode": "3/20",
+          "date": "2025-07-27", 
+          "liturgical_day": "6:e söndagen e. trefaldighet",
+          "theme": "Efterföljelse",
+          "title": "A Heart for Souls", 
+          "file": "akk-transcripts/2025-07-27-a-heart-for-souls.html", 
+          "youtube": "https://www.youtube.com/watch?v=SOo30jVhBeY",
+          "readings": {
+            "ot": "Amos 7:10-15",
+            "epistle": "1 Thess 2:1-8",
+            "gospel": "Matt 16:24-27",
+            "psalm": "Ps 15"
+          }
+        },
+        {
+          "episode": "4/20",
+          "date": "2025-07-20",
+          "liturgical_day": "Apostladagen", 
+          "theme": "Sänd mig",
+          "title": "Growing in the Knowledge of God", 
+          "file": "akk-transcripts/2025-07-20-growing-in-the-knowledge-of-god.html", 
+          "youtube": "https://www.youtube.com/watch?v=dqf8cAdCt04",
+          "readings": {
+            "ot": "Jes 6:1-8",
+            "epistle": "1 Pet 2:4-10",
+            "gospel": "Matt 16:13-20",
+            "psalm": "Ps 40:6-12"
+          }
+        },
+        {
+          "episode": "5/20",
+          "date": "2025-07-13",
+          "liturgical_day": "4:e söndagen e. trefaldighet",
+          "theme": "Att inte döma", 
+          "title": "Your Divine Assignment", 
+          "file": "akk-transcripts/2025-07-13-your-divine-assignment.html", 
+          "youtube": "https://www.youtube.com/watch?v=kx28KYIKK-U",
+          "readings": {
+            "ot": "Sak 7:8-10",
+            "epistle": "Rom 14:11-14",
+            "gospel": "Joh 8:1-11",
+            "psalm": "Ps 62:2-9"
+          }
+        },
+        {
+          "episode": "6/20",
+          "date": "2025-07-06",
+          "liturgical_day": "3:e söndagen e. trefaldighet",
+          "theme": "Förlorad och återfunnen",
+          "title": "The Urgency to Spread the Good News", 
+          "file": "akk-transcripts/2025-07-06-the-urgency-to-spread-the-good-news.html", 
+          "youtube": "https://www.youtube.com/watch?v=qKnK5AXYcIY",
+          "readings": {
+            "ot": "Jes 51:1-3",
+            "epistle": "Ef 2:1-10",
+            "gospel": "Luk 15:8-10", 
+            "psalm": "Ps 119:170-176"
+          }
+        },
+        {
+          "episode": "7/20",
+          "date": "2025-06-29",
+          "liturgical_day": "2:a söndagen e. trefaldighet",
+          "theme": "Kallelsen till Guds rike",
+          "title": "Representing Jesus Rightly", 
+          "file": "akk-transcripts/2025-06-29-representing-jesus-rightly.html", 
+          "youtube": "https://www.youtube.com/watch?v=DTZXqto8qkI",
+          "readings": {
+            "ot": "5 Mos 7:6-9",
+            "epistle": "Rom 8:28-30",
+            "gospel": "Joh 1:35-46",
+            "psalm": "Ps 65:2-5"
+          }
+        },
+        {
+          "episode": "8/20", 
+          "date": "2025-06-22",
+          "liturgical_day": "Den helige Johannes döp. dag",
+          "theme": "Den Högstes profet",
+          "title": "Prepared for Harvest", 
+          "file": "akk-transcripts/2025-06-22-prepared-for-harvest.html", 
+          "youtube": "https://www.youtube.com/watch?v=8oTZgzIvClM",
+          "readings": {
+            "ot": "Jer 22:1-4",
+            "epistle": "Apg 13:16-25", 
+            "gospel": "Luk 1:57-66",
+            "psalm": "Ps 96"
+          }
+        },
+        {
+          "episode": "9/20",
+          "date": "2025-06-15",
+          "liturgical_day": "Heliga trefaldighets dag",
+          "theme": "Gud - Fader, Son och Ande",
           "title": "About the Father's Business",
           "file": "akk-transcripts/2025-06-15-about-the-fathers-business.html",
           "svk_transcript": "svk-transkriptioner/2025-06-15-hogmassa-pingstdagen-med-prastvigning.html",
           "youtube": "https://www.youtube.com/watch?v=WGXoy_HBngM",
-          "svk_youtube": "https://www.youtube.com/watch?v=NsiJU6Qfyww"
+          "svk_youtube": "https://www.youtube.com/watch?v=NsiJU6Qfyww",
+          "readings": {
+            "ot": "2 Mos 3:1-15",
+            "epistle": "Rom 11:33-36",
+            "gospel": "Matt 28:16-20",
+            "psalm": "Ps 113:1-6"
+          }
         },
         {
-          "episode": "10/19",
+          "episode": "10/20",
+          "date": "2025-06-08", 
+          "liturgical_day": "Pingstdagen",
+          "theme": "Den Helige Anden",
           "title": "Pentecost Sunday",
           "file": "akk-transcripts/2025-06-08-pentecost-sunday.html",
           "svk_transcript": "svk-transkriptioner/2025-06-08-hogmassa-pingstdagen.html",
           "youtube": "https://www.youtube.com/watch?v=c9XgeRRnS54",
-          "svk_youtube": "https://www.youtube.com/watch?v=thPVfhBiJh0"
+          "svk_youtube": "https://www.youtube.com/watch?v=thPVfhBiJh0",
+          "readings": {
+            "ot": "Joel 2:28-29",
+            "epistle": "Apg 2:1-11 (Apg 2:14-21)",
+            "gospel": "Joh 14:15-21",
+            "psalm": "Ps 104:27-31"
+          }
         },
-        {"episode": "11/19", "title": "Prophetic Word for All Ministers & those Called to Ministry", "file": "akk-transcripts/2025-06-01-prophetic-word-for-all-ministers-those-called-to-ministry.html", "youtube": "https://www.youtube.com/watch?v=nXfoh36NUxQ"},
-        {"episode": "12/19", "title": "Your Spiritual Questions Answered + Prophetic Ministry", "file": "akk-transcripts/2025-05-29-your-spiritual-questions-answered-prophetic-ministry.html", "youtube": "https://www.youtube.com/watch?v=1pM9ghg1n64"},
-        {"episode": "13/19", "title": "Great Faith", "file": "akk-transcripts/2025-05-25-great-faith.html", "youtube": "https://www.youtube.com/watch?v=G3c4WMAoRyo"},
-        {"episode": "14/19", "title": "Wise Servants of God", "file": "akk-transcripts/2025-05-18-wise-servants-of-god.html", "youtube": "https://www.youtube.com/watch?v=btaUBp8jhGg", "svk_youtube": "https://www.youtube.com/watch?v=7XALrdXJgMg"},
-        {"episode": "15/19", "title": "Like A Child", "file": "akk-transcripts/2025-05-11-like-a-child.html", "youtube": "https://www.youtube.com/watch?v=sv-AV7PMBLQ"},
-        {"episode": "16/19", "title": "Running With the Revival Torch", "file": "akk-transcripts/2025-05-04-running-with-the-revival-torch.html", "youtube": "https://www.youtube.com/watch?v=qu9kQox11ko"},
-        {"episode": "17/19", "title": "Igniting Revival", "file": "2akk-transcripts/025-04-27-igniting-revival.html", "youtube": "https://www.youtube.com/watch?v=qN4VJwvTHWk"},
-        {"episode": "18/19", "title": "Easter Sunday", "file": "akk-transcripts/2025-04-20-easter-sunday.html", "youtube": "https://www.youtube.com/watch?v=wc0MsdMMlOI"},
-        {"episode": "19/19", "title": "Spiritual Q&A + MIRACLES ON ZOOM", "file": "", "youtube": "YT_PLACEHOLDER"}
+        {
+          "episode": "11/20",
+          "date": "2025-06-01",
+          "liturgical_day": "Söndagen före pingst",
+          "theme": "Hjälparen kommer",
+          "title": "Prophetic Word for All Ministers & those Called to Ministry", 
+          "file": "akk-transcripts/2025-06-01-prophetic-word-for-all-ministers-those-called-to-ministry.html", 
+          "youtube": "https://www.youtube.com/watch?v=nXfoh36NUxQ",
+          "readings": {
+            "ot": "5 Mos 31:6-8",
+            "epistle": "Rom 8:31-39",
+            "gospel": "Joh 16:23-33", 
+            "psalm": "Ps 33:18-22"
+          }
+        },
+        {
+          "episode": "12/20",
+          "date": "2025-05-29",
+          "liturgical_day": "Kristi himmelsfärds dag",
+          "theme": "Herre över allting",
+          "title": "Your Spiritual Questions Answered + Prophetic Ministry", 
+          "file": "akk-transcripts/2025-05-29-your-spiritual-questions-answered-prophetic-ministry.html", 
+          "youtube": "https://www.youtube.com/watch?v=1pM9ghg1n64",
+          "readings": {
+            "ot": "Jes 61:10-11",
+            "epistle": "Apg 1:1-11 (Ef 1:17-23)",
+            "gospel": "Luk 24:49-53",
+            "psalm": "Ps 110"
+          }
+        },
+        {
+          "episode": "13/20",
+          "date": "2025-05-25",
+          "liturgical_day": "Bönsöndagen",
+          "theme": "Bönen", 
+          "title": "Great Faith", 
+          "file": "akk-transcripts/2025-05-25-great-faith.html", 
+          "youtube": "https://www.youtube.com/watch?v=G3c4WMAoRyo",
+          "readings": {
+            "ot": "Jer 29:11-14",
+            "epistle": "1 Joh 5:13-15",
+            "gospel": "Luk 11:1-13",
+            "psalm": "Ps 13"
+          }
+        },
+        {
+          "episode": "14/20",
+          "date": "2025-05-18",
+          "liturgical_day": "5:e söndagen i påsktiden",
+          "theme": "Att växa i tro",
+          "title": "Wise Servants of God", 
+          "file": "akk-transcripts/2025-05-18-wise-servants-of-god.html", 
+          "youtube": "https://www.youtube.com/watch?v=btaUBp8jhGg", 
+          "svk_youtube": "https://www.youtube.com/watch?v=7XALrdXJgMg",
+          "readings": {
+            "ot": "Hos 14:5-9",
+            "epistle": "1 Joh 3:18-24",
+            "gospel": "Joh 15:10-17",
+            "psalm": "Ps 98:1-8"
+          }
+        },
+        {
+          "episode": "15/20",
+          "date": "2025-05-11",
+          "liturgical_day": "4:e söndagen i påsktiden", 
+          "theme": "Vägen till livet",
+          "title": "Like A Child", 
+          "file": "akk-transcripts/2025-05-11-like-a-child.html", 
+          "youtube": "https://www.youtube.com/watch?v=sv-AV7PMBLQ",
+          "readings": {
+            "ot": "Jer 17:5-8 (Syr 28:3-7)",
+            "epistle": "2 Kor 4:16-18", 
+            "gospel": "Joh 14:1-14",
+            "psalm": "Ps 147:1-7"
+          }
+        },
+        {
+          "episode": "16/20",
+          "date": "2025-05-04",
+          "liturgical_day": "3:e söndagen i påsktiden",
+          "theme": "Den gode herden",
+          "title": "Running With the Revival Torch", 
+          "file": "akk-transcripts/2025-05-04-running-with-the-revival-torch.html", 
+          "youtube": "https://www.youtube.com/watch?v=qu9kQox11ko",
+          "readings": {
+            "ot": "Hes 34:23-31",
+            "epistle": "Heb 13:20-21",
+            "gospel": "Joh 10:11-16", 
+            "psalm": "Ps 23"
+          }
+        },
+        {
+          "episode": "17/20",
+          "date": "2025-04-27",
+          "liturgical_day": "2:a söndagen i påsktiden",
+          "theme": "Påskens vittnen", 
+          "title": "Igniting Revival", 
+          "file": "akk-transcripts/2025-04-27-igniting-revival.html", 
+          "youtube": "https://www.youtube.com/watch?v=qN4VJwvTHWk",
+          "readings": {
+            "ot": "Jer 18:1-6",
+            "epistle": "1 Joh 5:1-5",
+            "gospel": "Joh 21:15-19",
+            "psalm": "Ps 145:1-7"
+          }
+        },
+        {
+          "episode": "18/20",
+          "date": "2025-04-20",
+          "liturgical_day": "Påskdagen",
+          "theme": "Kristus är uppstånden",
+          "title": "Easter Sunday", 
+          "file": "akk-transcripts/2025-04-20-easter-sunday.html", 
+          "youtube": "https://www.youtube.com/watch?v=wc0MsdMMlOI",
+          "readings": {
+            "ot": "2 Mos 15:1-11",
+            "epistle": "1 Kor 15:12-21",
+            "gospel": "Mark 16:1-14",
+            "psalm": "Ps 118:15-24"
+          }
+        },
+        {
+          "episode": "19/20",
+          "date": "2025-04-13",
+          "liturgical_day": "Palmsöndagen",
+          "theme": "Vägen till korset",
+          "title": "The Power of Expectancy",
+          "file": "akk-transcripts/2025-04-13-the-power-of-expectancy.txt",
+          "youtube": "YT_PLACEHOLDER",
+          "readings": {
+            "ot": "2 Mos 13:6-10",
+            "epistle": "Heb 2:14-18",
+            "gospel": "Mark 11:1-11",
+            "psalm": "Ps 118:19-29"
+          }
+        }
       ]
     },
     {
