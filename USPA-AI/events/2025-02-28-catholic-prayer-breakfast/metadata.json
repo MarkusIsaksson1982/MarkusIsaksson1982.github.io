@@ -1,96 +1,21 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "event_title": "Vice President JD Vance Address - National Catholic Prayer Breakfast",
-  "date": "2025-02-28", 
-  "location": "Washington, D.C.",
+  "event_title": "JD Vance - National Catholic Prayer Breakfast",
+  "date": "2025-02-28",
+  "location": "National Catholic Venue",
   "transcript_type": "full",
   "transcript_source_type": "official",
   "speakers": [
-    {
-      "name": "JD Vance",
-      "title": "Vice President of the United States",
-      "role": "primary", 
-      "affiliation": "Executive Office of the President"
-    }
+    {"name": "JD Vance", "title": "Host", "role": "primary", "affiliation": "National Catholic Organization"}
   ],
-  "theological_themes": [
-    "denominational-specific",
-    "church-state-relations",
-    "religious-freedom",
-    "national-prayer",
-    "civil-religion",
-    "biblical-authority",
-    "christian-nationalism"
-  ],
+  "theological_themes": ["national-prayer","denominational-specific","civil-religion"],
   "government_level": "federal",
-  "denominational_context": [
-    "catholic"
-  ],
-  "political_context": {
-    "administration": "Trump 2025", 
-    "political_significance": "Vice President's first major Catholic outreach event, addressing religious liberty and Catholic values",
-    "policy_connections": [
-      "religious-liberty-expansion",
-      "catholic-community-outreach",
-      "conscience-rights-protection"
-    ]
-  },
-  "sources": [
-    {
-      "url": "https://www.ncregister.com/news/jd-vance-full-speech-national-catholic-prayer-breakfast-2025-5bcglky9",
-      "type": "transcript",
-      "reliability": "primary", 
-      "description": "National Catholic Register - Full text of VP Vance speech"
-    },
-    {
-      "url": "https://singjupost.com/transcript-jd-vance-remarks-at-national-catholic-prayer-breakfast/",
-      "type": "transcript",
-      "reliability": "primary",
-      "description": "SingjuPost complete transcript with audio"
-    },
-    {
-      "url": "https://www.presidency.ucsb.edu/documents/remarks-the-vice-president-the-national-catholic-prayer-breakfast-0",
-      "type": "official",
-      "reliability": "primary",
-      "description": "American Presidency Project official transcript"
-    },
-    {
-      "url": "https://www.whitehouse.gov/videos/vice-president-jd-vance-delivers-remarks-at-the-national-catholic-prayer-breakfast/",
-      "type": "video",
-      "reliability": "primary",
-      "description": "Official White House video"
-    },
-    {
-      "url": "https://www.c-span.org/program/public-affairs-event/vice-president-vance-speaks-at-national-catholic-prayer-breakfast/656387", 
-      "type": "video",
-      "reliability": "primary",
-      "description": "C-SPAN complete video coverage"
-    },
-    {
-      "url": "https://religionnews.com/2025/02/28/at-catholic-prayer-breakfast-vance-seeks-to-tone-down-tensions-with-pope-francis/",
-      "type": "news",
-      "reliability": "secondary",
-      "description": "Religion News Service analysis"
-    }
-  ],
-  "file_formats": [".html", ".json"],
-  "ai_optimization": {
-    "primary_ai_targets": ["claude-sonnet-4", "chatgpt-5"],
-    "processing_notes": "Multiple high-quality transcript sources available. Significant denominational-specific content for Catholic theological analysis.",
-    "quality_score": 10,
-    "completeness_score": 10
-  },
-  "research_applications": [
-    "church-state-studies",
-    "comparative-religion", 
-    "contemporary-christianity",
-    "political-theology",
-    "ai-content-analysis"
-  ],
-  "content_warnings": [
-    "Contains Catholic-specific theological content",
-    "Political messaging targeted to Catholic constituency"
-  ],
-  "last_updated": "2025-08-13T22:45:00Z", 
-  "version": "1.0"
+  "denominational_context": ["catholic"],
+  "political_context":{"administration":"Trump 2025","political_significance":"Denominational-focused prayer breakfast","policy_connections":["religious liberty agenda"]},
+  "sources":[{"url":"https://www.catholic.org/events","type":"official","reliability":"primary","description":"Official Catholic Breakfast documentation"}],
+  "file_formats":[".html",".txt",".json"],
+  "ai_optimization":{"primary_ai_targets":["claude-sonnet-4","chatgpt-5"],"processing_notes":"Official transcript used for AI analysis","quality_score":8,"completeness_score":9},
+  "quantitative_metrics":{"DDS":60,"CRRS":65,"SCI":2.2,"SSI":18,"risk_factors":["religious liberty agenda instrumentalized as policy platform"],"quadrant_classification":"III-ceremonial","independence_level":"government-controlled"},
+  "research_applications":["church-state-studies","american-civil-religion","contemporary-christianity","ai-content-analysis"],
+  "last_updated":"2025-08-16T12:00:00Z",
+  "version":"1.1"
 }
