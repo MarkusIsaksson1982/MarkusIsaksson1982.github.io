@@ -1,0 +1,21 @@
+{
+  "event_title": "National Cathedral Inaugural Prayer Service",
+  "date": "2025-01-21",
+  "location": "Washington National Cathedral",
+  "transcript_type": "full",
+  "transcript_source_type": "official",
+  "speakers": [
+    {"name": "Bishop Mariann Edgar Budde", "title": "Bishop", "role": "primary", "affiliation": "Washington National Cathedral"}
+  ],
+  "theological_themes": ["christian-worship","biblical-authority","discipleship-practices","church-state-relations","divine-providence"],
+  "government_level": "federal",
+  "denominational_context": ["episcopal"],
+  "political_context": {"administration":"Trump 2025","political_significance":"Inaugural National Cathedral Service","policy_connections":[]},
+  "sources":[{"url":"https://www.nationalcathedral.org","type":"official","reliability":"primary","description":"Official Cathedral documentation"}],
+  "file_formats":[".html",".txt",".json"],
+  "ai_optimization":{"primary_ai_targets":["claude-sonnet-4","chatgpt-5"],"processing_notes":"Official transcript used for AI analysis","quality_score":9,"completeness_score":10},
+  "quantitative_metrics":{"DDS":70,"CRRS":25,"SCI":1.6,"SSI":22,"risk_factors":["institutional independence supports authentic prophetic ministry"],"quadrant_classification":"I-optimal","independence_level":"institutionally-independent"},
+  "research_applications":["theological-analysis","church-state-studies","contemporary-christianity","ai-content-analysis"],
+  "last_updated":"2025-08-16T12:00:00Z",
+  "version":"1.1"
+}
