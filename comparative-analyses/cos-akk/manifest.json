@@ -329,35 +329,11 @@
       "youtube": "https://www.youtube.com/playlist?list=PLX3SBMW-XlAj-eTItta1x8--2LOF0biUP",
       "episodes": [
         {
-          "episode": "1/5", 
+          "episode": "1/1", 
           "date": "2025-08-02",
           "title": "Revival is Now Stockholm, Sweden",
           "file": "akk-transcripts/2025-08-02-revival-is-now-stockholm-sweden.html",
           "youtube": "https://www.youtube.com/watch?v=54_FDa236xs"
-        },
-        {
-          "episode": "2/5",
-          "title": "Revival Is Now Minneapolis",
-          "file": "2025-07-10-revival-is-now-minneapolis.html",
-          "youtube": "YT_PLACEHOLDER"
-        },
-        {
-          "episode": "3/5",
-          "title": "Revival is Now Portland",
-          "file": "2025-07-10-revival-is-now-portland.html",
-          "youtube": "YT_PLACEHOLDER"
-        },
-        {
-          "episode": "4/5",
-          "title": "Revival Is Now London",
-          "file": "2025-07-10-revival-is-now-london.html",
-          "youtube": "YT_PLACEHOLDER"
-        },
-        {
-          "episode": "5/5",
-          "title": "Revival Is Now Toronto",
-          "file": "2025-06-10-revival-is-now-toronto.html",
-          "youtube": "YT_PLACEHOLDER"
         }
       ]
     },
@@ -417,7 +393,7 @@
           "theme": "Genom död till liv",
           "title": "Påsknatten – Genom död till liv",
           "file": "svk-transkriptioner/2025-04-19-pasknatten-genom-dod-till-liv.html",
-          "youtube": "YT_PLACEHOLDER",
+          "youtube": "https://www.youtube.com/watch?v=39i4RG2zsyo",
           "readings": {
             "ot": "Dan 3:19-25",
             "epistle": "2 Tim 2:8-13",
@@ -432,7 +408,7 @@
           "theme": "Det nya förbundet",
           "title": "Skärtorsdagen – Det nya förbundet",
           "file": "svk-transkriptioner/2025-04-17-skartorsdagen-det-nya-forbundet.html",
-          "youtube": "YT_PLACEHOLDER",
+          "youtube": "https://www.youtube.com/watch?v=6XtQMxgBd5o",
           "readings": {
             "ot": "2 Mos 24:3-11",
             "epistle": "1 Kor 10:16-17",
@@ -447,7 +423,7 @@
           "theme": "Vägen till korset",
           "title": "Palmsöndagen – Vägen till korset",
           "file": "svk-transkriptioner/2025-04-13-palmsondagen-vagen-till-korset.html",
-          "youtube": "YT_PLACEHOLDER",
+          "youtube": "https://www.youtube.com/watch?v=wOEHMQAAFUY",
           "readings": {
             "ot": "2 Mos 13:6-10",
             "epistle": "Heb 2:14-18",
@@ -457,12 +433,12 @@
         },
         {
           "episode": "7/7",
-          "date": "2025-03-5",
+          "date": "2025-03-05",
           "liturgical_day": "Askonsdagen",
           "theme": "Bön och fasta",
           "title": "Askonsdagen – Bön och fasta",
           "file": "svk-transkriptioner/2025-03-05-askonsdagen-bon-och-fasta.html",
-          "youtube": "YT_PLACEHOLDER",
+          "youtube": "https://www.youtube.com/watch?v=yTaXdDmPos4",
           "readings": {
             "ot": "Joel 2:12-19",
             "epistle": "Acts 13:1-3",
