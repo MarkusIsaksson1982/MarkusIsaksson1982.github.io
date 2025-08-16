@@ -1,0 +1,24 @@
+{
+  "event_title": "National Day of Prayer 2025",
+  "date": "2025-05-01",
+  "location": "White House Rose Garden",
+  "transcript_type": "partial",
+  "transcript_source_type": "youtube-auto",
+  "speakers":[
+    {"name":"President Trump","role":"primary"},
+    {"name":"Paula White-Cain","role":"primary"},
+    {"name":"Dr. Phil","role":"secondary"},
+    {"name":"Speaker Mike Johnson","role":"secondary"}
+  ],
+  "theological_themes":["national-prayer","prayer-in-government","civil-religion","prosperity-theology"],
+  "government_level":"federal",
+  "denominational_context":["evangelical","interfaith"],
+  "political_context":{"administration":"Trump 2025","political_significance":"Executive Order establishing Religious Liberty Commission signed during ceremony","policy_connections":["religious liberty","prosperity-theology elements"]},
+  "sources":[{"url":"https://www.whitehouse.gov/national-day-of-prayer","type":"official","reliability":"primary","description":"Official event documentation"}],
+  "file_formats":[".html",".txt",".json"],
+  "ai_optimization":{"primary_ai_targets":["claude-sonnet-4","chatgpt-5"],"processing_notes":"Transcript retrieval pending full cleaning","quality_score":6,"completeness_score":5},
+  "quantitative_metrics":{"DDS":35,"CRRS":85,"SCI":2.7,"SSI":10,"risk_factors":["policy launch platform","prosperity theology elements"],"quadrant_classification":"III-ceremonial","independence_level":"government-controlled"},
+  "research_applications":["church-state-studies","american-civil-religion","political-theology","ai-content-analysis"],
+  "last_updated":"2025-08-16T12:00:00Z",
+  "version":"1.1"
+}
