@@ -1,105 +1,23 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "event_title": "White House Easter Prayer Service and Dinner",
+  "event_title": "White House Easter Prayer Service & Dinner",
   "date": "2025-04-16",
-  "location": "White House Blue Room",
+  "location": "White House",
   "transcript_type": "full",
   "transcript_source_type": "official",
   "speakers": [
-    {
-      "name": "Donald J. Trump",
-      "title": "President of the United States", 
-      "role": "primary",
-      "affiliation": "Executive Office of the President"
-    },
-    {
-      "name": "Franklin Graham",
-      "title": "Evangelist",
-      "role": "secondary",
-      "affiliation": "Billy Graham Evangelistic Association"
-    },
-    {
-      "name": "Paula White Cain",
-      "title": "Senior Adviser, White House Faith Office",
-      "role": "secondary", 
-      "affiliation": "White House Faith Office"
-    }
+    {"name": "President Trump", "role": "primary"},
+    {"name": "Franklin Graham", "role": "primary"},
+    {"name": "Paula White Cain", "role": "primary"}
   ],
-  "theological_themes": [
-    "christian-worship",
-    "biblical-authority",
-    "divine-providence", 
-    "church-state-relations",
-    "national-prayer",
-    "civil-religion",
-    "christian-nationalism",
-    "religious-freedom"
-  ],
+  "theological_themes": ["national-prayer","christian-worship","civil-religion","success-theology"],
   "government_level": "federal",
-  "denominational_context": [
-    "evangelical",
-    "non-denominational",
-    "protestant"
-  ],
-  "political_context": {
-    "administration": "Trump 2025",
-    "political_significance": "Major Holy Week celebration, demonstrates administration's Christian identity",
-    "policy_connections": [
-      "religious-liberty-expansion",
-      "faith-office-initiatives", 
-      "christian-outreach-programs"
-    ]
-  },
-  "sources": [
-    {
-      "url": "https://www.c-span.org/program/white-house-event/president-trump-hosts-easter-prayer-service-and-dinner/658676",
-      "type": "video",
-      "reliability": "primary",
-      "description": "C-SPAN complete video coverage"
-    },
-    {
-      "url": "https://www.whitehouse.gov/videos/president-trump-participates-in-an-easter-prayer-service-and-dinner/",
-      "type": "video",
-      "reliability": "primary",
-      "description": "Official White House video"
-    },
-    {
-      "url": "https://www.whitehouse.gov/past-events/2025-white-house-easter-prayer-dinner/",
-      "type": "official",
-      "reliability": "primary", 
-      "description": "White House official event page"
-    },
-    {
-      "url": "https://www.deseret.com/politics/2025/04/18/holy-week-messages-and-activities-from-us-presidency/",
-      "type": "news",
-      "reliability": "secondary",
-      "description": "Deseret News coverage with details about attendees"
-    },
-    {
-      "url": "https://cbn.com/news/us/trump-issues-holy-week-declaration-living-son-god-plans-white-house-easter-service",
-      "type": "news", 
-      "reliability": "secondary",
-      "description": "CBN News coverage of Holy Week events"
-    }
-  ],
-  "file_formats": [".html", ".json"],
-  "ai_optimization": {
-    "primary_ai_targets": ["claude-sonnet-4", "chatgpt-5"],
-    "processing_notes": "Full official transcript available from multiple reliable sources. High-profile presidential religious event with clear theological and political dimensions.",
-    "quality_score": 10,
-    "completeness_score": 10
-  },
-  "research_applications": [
-    "church-state-studies",
-    "american-civil-religion", 
-    "contemporary-christianity",
-    "political-theology",
-    "ai-content-analysis"
-  ],
-  "content_warnings": [
-    "Contains explicit Christian theological content", 
-    "Presidential political messaging integrated with religious themes"
-  ],
-  "last_updated": "2025-08-13T22:45:00Z",
-  "version": "1.0"
+  "denominational_context": ["evangelical"],
+  "political_context":{"administration":"Trump 2025","political_significance":"Easter celebration at White House","policy_connections":[]},
+  "sources":[{"url":"https://www.whitehouse.gov/easter-service","type":"official","reliability":"primary","description":"Official White House Easter Service documentation"}],
+  "file_formats":[".html",".txt",".json"],
+  "ai_optimization":{"primary_ai_targets":["claude-sonnet-4","chatgpt-5"],"processing_notes":"Official transcript cleaned for AI analysis","quality_score":8,"completeness_score":9},
+  "quantitative_metrics":{"DDS":40,"CRRS":80,"SCI":2.8,"SSI":12,"risk_factors":["success theology emphasized"],"quadrant_classification":"III-ceremonial","independence_level":"government-controlled"},
+  "research_applications":["church-state-studies","american-civil-religion","contemporary-christianity","ai-content-analysis"],
+  "last_updated":"2025-08-16T12:00:00Z",
+  "version":"1.1"
 }
