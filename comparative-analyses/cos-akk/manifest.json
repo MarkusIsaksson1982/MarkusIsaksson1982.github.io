@@ -447,60 +447,6 @@
           }
         }
       ]
-    },
-    {
-      "name": "Spiritual Q&A Sessions",
-      "youtube": "https://www.youtube.com/playlist?list=PLX3SBMW-XlAg_GAaumJ79218DVREPf5nD",
-      "episodes": [
-        {
-          "episode": "1/4",
-          "title": "Spiritual Q&A + MIRACLES ON ZOOM",
-          "file": "2025-07-10-spiritual-qa-miracles-on-zoom.html",
-          "youtube": "YT_PLACEHOLDER"
-        },
-        {
-          "episode": "2/4",
-          "title": "Spiritual Q&A",
-          "file": "2025-07-10-spiritual-qa.html",
-          "youtube": "YT_PLACEHOLDER"
-        },
-        {
-          "episode": "3/4",
-          "title": "Your Spiritual Questions Answered + Prophetic Ministry",
-          "file": "2025-06-10-your-spiritual-questions-answered-prophetic-ministry.html",
-          "youtube": "YT_PLACEHOLDER"
-        },
-        {
-          "episode": "4/4",
-          "title": "How to Guard Your Heart from Manipulation and be Wise as a Serpent",
-          "file": "2025-06-10-how-to-guard-your-heart-from-manipulation.html",
-          "youtube": "YT_PLACEHOLDER"
-        }
-      ]
-    },
-    {
-      "name": "Revival Teachings",
-      "youtube": "https://www.youtube.com/playlist?list=PLX3SBMW-XlAhGFoO63dcauAlBqEpW01zu",
-      "episodes": [
-        {
-          "episode": "1/3",
-          "title": "The Truth About Demons",
-          "file": "2025-07-10-the-truth-about-demons.html",
-          "youtube": "YT_PLACEHOLDER"
-        },
-        {
-          "episode": "2/3",
-          "title": "How to Win Battles: Spiritual Maturity",
-          "file": "2025-04-10-how-to-win-battles-spiritual-maturity.html",
-          "youtube": "YT_PLACEHOLDER"
-        },
-        {
-          "episode": "3/3",
-          "title": "Overcoming the Father of Lies",
-          "file": "2025-04-10-overcoming-the-father-of-lies.html",
-          "youtube": "YT_PLACEHOLDER"
-        }
-      ]
     }
   ]
 }
