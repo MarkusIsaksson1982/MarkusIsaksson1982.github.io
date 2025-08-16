@@ -55,7 +55,7 @@
         "type": "string",
         "enum": [
           "military-chaplaincy",
-          "prayer-in-government", 
+          "prayer-in-government",
           "christian-worship",
           "biblical-authority",
           "divine-providence",
@@ -128,6 +128,25 @@
         "completeness_score": {"type": "integer", "minimum": 1, "maximum": 10}
       }
     },
+    "quantitative_metrics": {
+      "type": "object",
+      "properties": {
+        "DDS": {"type": "number", "minimum": 0, "maximum": 100},
+        "CRRS": {"type": "number", "minimum": 0, "maximum": 100},
+        "SCI": {"type": "number", "minimum": 1.0, "maximum": 3.0},
+        "SSI": {"type": "number", "minimum": 0, "maximum": 50},
+        "risk_factors": {"type": "array", "items": {"type": "string"}},
+        "quadrant_classification": {
+          "type": "string",
+          "enum": ["I-optimal", "II-mixed", "III-ceremonial", "IV-neutral"]
+        },
+        "independence_level": {
+          "type": "string",
+          "enum": ["government-controlled", "institutionally-independent"]
+        }
+      },
+      "description": "Validated quantitative metrics and classification for event authenticity analysis"
+    },
     "content_warnings": {
       "type": "array",
       "items": {"type": "string"},
@@ -139,7 +158,7 @@
         "type": "string",
         "enum": [
           "theological-analysis",
-          "church-state-studies", 
+          "church-state-studies",
           "political-theology",
           "comparative-religion",
           "american-civil-religion",
@@ -159,7 +178,6 @@
       "description": "Metadata schema version"
     }
   },
-  
   "examples": [
     {
       "event_title": "Pentagon Christian Prayer Service",
@@ -168,57 +186,39 @@
       "transcript_type": "partial-cleaned",
       "transcript_source_type": "youtube-auto",
       "speakers": [
-        {
-          "name": "Pete Hegseth",
-          "title": "Secretary of Defense",
-          "role": "primary",
-          "affiliation": "U.S. Department of Defense"
-        },
-        {
-          "name": "Brooks Podiger",
-          "title": "Pastor",
-          "role": "primary", 
-          "affiliation": "Pilgrim Hill Reformed Fellowship"
-        }
+        {"name": "Pete Hegseth", "title": "Secretary of Defense", "role": "primary", "affiliation": "U.S. Department of Defense"},
+        {"name": "Brooks Podiger", "title": "Pastor", "role": "primary", "affiliation": "Pilgrim Hill Reformed Fellowship"}
       ],
-      "theological_themes": [
-        "military-chaplaincy",
-        "prayer-in-government",
-        "christian-worship",
-        "biblical-authority",
-        "divine-providence",
-        "warrior-spirituality"
-      ],
+      "theological_themes": ["military-chaplaincy","prayer-in-government","christian-worship","biblical-authority","divine-providence","warrior-spirituality"],
       "government_level": "federal",
-      "denominational_context": ["reformed", "evangelical"],
-      "political_context": {
-        "administration": "Trump 2025",
-        "political_significance": "First monthly prayer service under new administration",
-        "policy_connections": ["military-religious-freedom", "chaplaincy-expansion"]
-      },
-      "sources": [
-        {
-          "url": "https://www.youtube.com/watch?v=EKcOA5ojMXo",
-          "type": "video",
-          "reliability": "primary",
-          "description": "Original Defense Now YouTube video"
-        }
-      ],
-      "file_formats": [".html", ".txt", ".json"],
-      "ai_optimization": {
-        "primary_ai_targets": ["claude-sonnet-4", "chatgpt-5"],
-        "processing_notes": "Auto-generated transcript cleaned for AI analysis",
-        "quality_score": 8,
-        "completeness_score": 7
-      },
-      "research_applications": [
-        "military-religion",
-        "church-state-studies",
-        "contemporary-christianity",
-        "ai-content-analysis"
-      ],
-      "last_updated": "2025-08-13T10:00:00Z",
-      "version": "1.0"
+      "denominational_context": ["reformed","evangelical"],
+      "political_context": {"administration":"Trump 2025","political_significance":"First monthly prayer service under new administration","policy_connections":["military-religious-freedom","chaplaincy-expansion"]},
+      "sources":[{"url":"https://www.youtube.com/watch?v=EKcOA5ojMXo","type":"video","reliability":"primary","description":"Original Defense Now YouTube video"}],
+      "file_formats":[".html",".txt",".json"],
+      "ai_optimization":{"primary_ai_targets":["claude-sonnet-4","chatgpt-5"],"processing_notes":"Auto-generated transcript cleaned for AI analysis","quality_score":8,"completeness_score":7},
+      "quantitative_metrics":{"DDS":75,"CRRS":45,"SCI":2.1,"SSI":28,"risk_factors":["sovereignly appointed theology compromises formation content"],"quadrant_classification":"II-mixed","independence_level":"government-controlled"},
+      "research_applications":["military-religion","church-state-studies","contemporary-christianity","ai-content-analysis"],
+      "last_updated":"2025-08-13T10:00:00Z",
+      "version":"1.1"
+    },
+    {
+      "event_title": "National Cathedral Inaugural Prayer Service",
+      "date": "2025-01-21",
+      "location": "Washington National Cathedral",
+      "transcript_type": "full",
+      "transcript_source_type": "official",
+      "speakers":[{"name":"Bishop Mariann Edgar Budde","title":"Bishop","role":"primary","affiliation":"Washington National Cathedral"}],
+      "theological_themes":["christian-worship","biblical-authority","discipleship-practices","church-state-relations","divine-providence"],
+      "government_level":"federal",
+      "denominational_context":["episcopal"],
+      "political_context":{"administration":"Trump 2025","political_significance":"Inaugural National Cathedral Service","policy_connections":[]},
+      "sources":[{"url":"https://www.nationalcathedral.org","type":"official","reliability":"primary","description":"Official Cathedral documentation"}],
+      "file_formats":[".html",".txt",".json"],
+      "ai_optimization":{"primary_ai_targets":["claude-sonnet-4","chatgpt-5"],"processing_notes":"Official transcript used for AI analysis","quality_score":9,"completeness_score":10},
+      "quantitative_metrics":{"DDS":70,"CRRS":25,"SCI":1.6,"SSI":22,"risk_factors":["institutional independence supports authentic prophetic ministry"],"quadrant_classification":"I-optimal","independence_level":"institutionally-independent"},
+      "research_applications":["theological-analysis","church-state-studies","contemporary-christianity","ai-content-analysis"],
+      "last_updated":"2025-08-13T10:00:00Z",
+      "version":"1.1"
     }
   ]
 }
