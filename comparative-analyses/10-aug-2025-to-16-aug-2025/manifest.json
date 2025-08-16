@@ -1,1 +1,59 @@
-
+{
+  "playlists": [
+    {
+      "name": "Upcoming Services",
+      "youtube": "https://www.youtube.com/playlist?list=PLX3SBMW-XlAiWLoYzf9A-PLACEHOLDER",
+      "episodes": [
+        {
+          "episode": "1/7",
+          "date": "2025-08-16",
+          "title": "Service on 2025-08-16",
+          "file": "akk-transcripts/2025-08-16-service.html",
+          "youtube": "https://www.youtube.com/watch?v=PLACEHOLDER1"
+        },
+        {
+          "episode": "2/7",
+          "date": "2025-08-14",
+          "title": "Service on 2025-08-14",
+          "file": "akk-transcripts/2025-08-14-service.html",
+          "youtube": "https://www.youtube.com/watch?v=PLACEHOLDER2"
+        },
+        {
+          "episode": "3/7",
+          "date": "2025-08-14",
+          "title": "Service on 2025-08-14 (2)",
+          "file": "akk-transcripts/2025-08-14-service-2.html",
+          "youtube": "https://www.youtube.com/watch?v=PLACEHOLDER3"
+        },
+        {
+          "episode": "4/7",
+          "date": "2025-08-13",
+          "title": "Service on 2025-08-13",
+          "file": "akk-transcripts/2025-08-13-service.html",
+          "youtube": "https://www.youtube.com/watch?v=PLACEHOLDER4"
+        },
+        {
+          "episode": "5/7",
+          "date": "2025-08-12",
+          "title": "Service on 2025-08-12",
+          "file": "akk-transcripts/2025-08-12-service.html",
+          "youtube": "https://www.youtube.com/watch?v=PLACEHOLDER5"
+        },
+        {
+          "episode": "6/7",
+          "date": "2025-08-11",
+          "title": "Service on 2025-08-11",
+          "file": "akk-transcripts/2025-08-11-service.html",
+          "youtube": "https://www.youtube.com/watch?v=PLACEHOLDER6"
+        },
+        {
+          "episode": "7/7",
+          "date": "2025-08-10",
+          "title": "Service on 2025-08-10",
+          "file": "akk-transcripts/2025-08-10-service.html",
+          "youtube": "https://www.youtube.com/watch?v=PLACEHOLDER7"
+        }
+      ]
+    }
+  ]
+}
