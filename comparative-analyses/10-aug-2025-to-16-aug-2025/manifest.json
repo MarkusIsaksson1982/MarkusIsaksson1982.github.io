@@ -2,55 +2,55 @@
   "playlists": [
     {
       "name": "Upcoming Services",
-      "youtube": "https://www.youtube.com/playlist?list=PLX3SBMW-XlAiWLoYzf9A-PLACEHOLDER",
+      "youtube": "PLACEHOLDER",
       "episodes": [
         {
           "date": "2025-08-16",
           "title": "",
           "file": "akk-transcripts/2025-08-16-service.html",
-          "youtube": "https://www.youtube.com/watch?v=PLACEHOLDER1",
+          "youtube": "https://www.youtube.com/watch?v=_HJIR-hQt0U",
           "comparison_note": "No official Church of Sweden readings"
         },
         {
           "date": "2025-08-14",
           "title": "",
           "file": "akk-transcripts/2025-08-14-service.html",
-          "youtube": "https://www.youtube.com/watch?v=PLACEHOLDER2",
+          "youtube": "https://www.youtube.com/watch?v=DiwIK2dYsIE",
           "comparison_note": "No official Church of Sweden readings"
         },
         {
           "date": "2025-08-14",
           "title": "",
           "file": "akk-transcripts/2025-08-14-service-2.html",
-          "youtube": "https://www.youtube.com/watch?v=PLACEHOLDER3",
+          "youtube": "https://www.youtube.com/watch?v=DiwIK2dYsIE",
           "comparison_note": "No official Church of Sweden readings"
         },
         {
           "date": "2025-08-13",
           "title": "",
           "file": "akk-transcripts/2025-08-13-service.html",
-          "youtube": "https://www.youtube.com/watch?v=PLACEHOLDER4",
+          "youtube": "https://www.youtube.com/watch?v=1G_zOozvJLY",
           "comparison_note": "No official Church of Sweden readings"
         },
         {
           "date": "2025-08-12",
           "title": "",
           "file": "akk-transcripts/2025-08-12-service.html",
-          "youtube": "https://www.youtube.com/watch?v=PLACEHOLDER5",
+          "youtube": "https://www.youtube.com/watch?v=DLLSRfgwBSo",
           "comparison_note": "No official Church of Sweden readings"
         },
         {
           "date": "2025-08-11",
           "title": "",
           "file": "akk-transcripts/2025-08-11-service.html",
-          "youtube": "https://www.youtube.com/watch?v=PLACEHOLDER6",
+          "youtube": "https://www.youtube.com/watch?v=65BPf9cdKuU",
           "comparison_note": "No official Church of Sweden readings"
         },
         {
           "date": "2025-08-10",
           "title": "Åttonde söndagen efter trefaldighet",
           "theme": "Andlig klarsyn",
-          "file": "akk-transcripts/2025-08-10-the-spirit-of-caleb-and-joshua.html",
+          "file": "akk-transcripts/2025-08-10-service.html",
           "youtube": "https://www.youtube.com/watch?v=UzljQU2U6Z4",
           "svk_readings": {
             "primary": {
