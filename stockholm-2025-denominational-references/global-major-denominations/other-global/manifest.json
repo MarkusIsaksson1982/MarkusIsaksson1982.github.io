@@ -1,0 +1,10 @@
+{
+  "denomination": "Other Global Christian Movements",
+  "percentage_of_global_christians": 8.0,
+  "description": "Includes indigenous Christian movements, independent churches, and syncretic traditions from Africa, Asia, and Latin America that don't fit traditional Western categories.",
+  "resources": [
+    { "name": "African Independent Churches", "url": "https://en.wikipedia.org/wiki/African_initiated_church" },
+    { "name": "Christianity in the Global South", "url": "https://www.pewresearch.org/religion/2011/12/19/global-christianity-regions/" },
+    { "name": "Pentecostalism in the Global South", "url": "https://www.pewforum.org/2006/10/05/spirit-and-power/" }
+  ]
+}
