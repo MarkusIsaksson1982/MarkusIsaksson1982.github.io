@@ -1,0 +1,9 @@
+{
+  "denomination": "Free Churches (Frikyrkor)",
+  "description": "Sweden's free churches include various Evangelical, Baptist, Methodist, and Pentecostal denominations outside the Church of Sweden.",
+  "resources": [
+    { "name": "Livets Ord", "url": "https://www.livetsord.se" },
+    { "name": "Församlingen Arken", "url": "https://www.arken.org" }
+    { "name": "We Are One Church", "url": "https://www.waochurch.com" }
+  ]
+}
