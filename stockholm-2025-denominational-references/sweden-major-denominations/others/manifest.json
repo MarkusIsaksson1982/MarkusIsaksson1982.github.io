@@ -1,0 +1,34 @@
+{
+  "denomination": "Other Christian Groups in Sweden",
+  "denomination_native": "Övriga kristna grupper i Sverige",
+  "scope": "sweden",
+  "classification": "Miscellaneous / Independent Christian Movements",
+  "episcopal": false,
+  "membership_sweden": 15000,
+  "stockholm_2025_role": "research_reference",
+  "description": "This category includes smaller or independent Christian communities in Sweden not represented among the major denominational categories. Examples include independent Evangelical groups, small Lutheran offshoots, Messianic Jewish congregations, and emerging house churches.",
+  "key_congregations": [
+    { "name": "Swedish Messianic Congregations", "url": "https://www.messianic.se" },
+    { "name": "Independent House Churches", "url": "https://www.housechurch.se" }
+  ],
+  "theological_distinctives": [
+    "Independent governance",
+    "Non-denominational practices",
+    "Focus on personal faith and community",
+    "Varied worship styles"
+  ],
+  "social_engagement": [
+    "Local outreach",
+    "Youth and family programs",
+    "Small-scale humanitarian work"
+  ],
+  "ai_analysis_ready": true,
+  "cross_reference_tags": [
+    "independent",
+    "non-denominational",
+    "emerging_church",
+    "sweden"
+  ],
+  "last_updated": "2025-08-17",
+  "data_quality": "primary_sources_stub"
+}
