@@ -5,7 +5,8 @@
     "name": "Stockholm 2025 Ecumenical Jubilee",
     "dates": "2025-08-18 to 2025-08-24",
     "theme": "Time for God's Peace",
-    "commemorates": "100th anniversary of the 1925 Stockholm Conference"
+    "commemorates": "100th anniversary of the 1925 Stockholm Conference",
+    "significance": "Modern ecumenical movement foundation; Söderblom Nobel Peace legacy"
   },
   "comparison_axes": [
     "ecclesiology",
@@ -15,68 +16,141 @@
     "ecumenical_theology",
     "swedish_context"
   ],
+  
   "denomination_centric": {
     "church-of-sweden": {
       "scope": "sweden",
-      "manifest": "./stockholm-2025-denominational-references/sweden-major-denominations/church-of-sweden/manifest.json",
-      "ecclesiology": "Episcopal-synodical, national church model",
-      "soteriology": "Lutheran emphasis on justification by faith",
-      "sacramental_theology": "Two sacraments (Baptism, Eucharist); broad inclusivity",
-      "social_ethics": "Active in peace, justice, environment, equality",
-      "ecumenical_theology": "Lutheran core, high ecumenical engagement",
-      "swedish_context": "Majority church, historic establishment role, diverse membership"
+      "family": "lutheran",
+      "stockholm_role": "host_primary",
+      "manifest": "./sweden-major-denominations/church-of-sweden/manifest.json",
+      "ecclesiology": "Episcopal-synodical with democratic governance; national church model with elected bishops",
+      "soteriology": "Lutheran justification by faith alone (sola fide), grace alone (sola gratia), scripture alone authority",
+      "sacramental_theology": "Two sacraments (Baptism, Eucharist); episcopal confirmation; broad inclusivity including LGBTQ+ ordination",
+      "social_ethics": "Progressive activism: climate leadership, peace advocacy, refugee support, LGBTQ+ inclusion, creation care priority",
+      "ecumenical_theology": "Full WCC engagement, Porvoo Communion with Anglicans, ecumenical leadership heritage from Söderblom",
+      "swedish_context": "Church-state separation (2000), ~3.3M members, cultural establishment role, declining but significant influence"
     },
+    
+    "swedish-pentecostal": {
+      "scope": "sweden",
+      "family": "pentecostal",
+      "stockholm_role": "worship_leadership",
+      "manifest": "./sweden-major-denominations/pentecostal/manifest.json",
+      "ecclesiology": "Congregational autonomy with cooperative fellowship; democratic local governance, elected leadership",
+      "soteriology": "Four-fold Gospel: Jesus as Savior, Sanctifier, Healer, Coming King; personal conversion and sanctification emphasis",
+      "sacramental_theology": "Two ordinances (believer's baptism by immersion, communion); baptism in Holy Spirit with initial evidence of tongues",
+      "social_ethics": "Holistic gospel combining evangelism with social action; PMU development work, addiction recovery, immigrant integration",
+      "ecumenical_theology": "Selective evangelical cooperation; growing openness to broader Christian dialogue while maintaining distinctives",
+      "swedish_context": "Revival origins (early 1900s), fully integrated Swedish identity, ~84K members, strong youth engagement, contemporary worship"
+    },
+    
     "roman-catholic": {
       "scope": "global",
-      "manifest": "./stockholm-2025-denominational-references/global-major-denominations/roman-catholic/manifest.json",
-      "ecclesiology": "",
-      "soteriology": "",
-      "sacramental_theology": "",
-      "social_ethics": "",
-      "ecumenical_theology": "",
-      "swedish_context": ""
+      "family": "catholic",
+      "stockholm_role": "major_participant",
+      "manifest": "./global-major-denominations/roman-catholic/manifest.json",
+      "ecclesiology": "Papal primacy and infallibility, episcopal hierarchy, magisterial authority, universal church unity under Pope",
+      "soteriology": "Grace through faith and works cooperation, sacramental mediation, purgatory doctrine, merit and satisfaction theology",
+      "sacramental_theology": "Seven sacraments with ex opere operato efficacy, Eucharistic transubstantiation, clerical celibacy in Latin rite",
+      "social_ethics": "Catholic Social Teaching: preferential option for poor, subsidiarity, solidarity, creation care (Laudato Si'), just war theory",
+      "ecumenical_theology": "Vatican II ecumenical commitment, bilateral theological dialogues, unity through visible communion under papal primacy",
+      "swedish_context": "See swedish-catholic entry for local adaptation; global Catholic perspective through Vatican representatives"
     },
-    "pentecostal": {
-      "scope": "sweden",
-      "manifest": "./stockholm-2025-denominational-references/sweden-major-denominations/pentecostal/manifest.json",
-      "ecclesiology": "",
-      "soteriology": "",
-      "sacramental_theology": "",
-      "social_ethics": "",
-      "ecumenical_theology": "",
-      "swedish_context": ""
+    
+    "ecumenical-patriarchate": {
+      "scope": "global",
+      "family": "orthodox",
+      "stockholm_role": "honored_guest",
+      "manifest": "./global-major-denominations/orthodox/manifest.json",
+      "ecclesiology": "Conciliar authority, episcopal collegiality, autocephalous churches, Ecumenical Patriarch as 'first among equals'",
+      "soteriology": "Theosis (deification) as salvation goal, synergy of divine grace and human cooperation, mystical union emphasis",
+      "sacramental_theology": "Seven mysteries (sacraments), real presence in Eucharist, chrismation, married priesthood allowed, epiclesis emphasis",
+      "social_ethics": "Orthodox creation theology, 'Green Patriarch' environmental leadership, peace advocacy, traditional moral teaching",
+      "ecumenical_theology": "Orthodox theological dialogues with Catholics and Protestants, unity through shared apostolic succession and Orthodox faith",
+      "swedish_context": "Patriarch Bartholomew as honored guest, represents global Orthodoxy to small Swedish Orthodox communities (~95K total)"
     }
   },
+  
   "axis_centric": {
     "ecclesiology": {
-      "church-of-sweden": "Episcopal-synodical, national church model",
-      "roman-catholic": "",
-      "pentecostal": ""
+      "church-of-sweden": "Episcopal-synodical with democratic governance; national church model with elected bishops",
+      "swedish-pentecostal": "Congregational autonomy with cooperative fellowship; democratic local governance, elected leadership",
+      "roman-catholic": "Papal primacy and infallibility, episcopal hierarchy, magisterial authority, universal church unity under Pope",
+      "ecumenical-patriarchate": "Conciliar authority, episcopal collegiality, autocephalous churches, Ecumenical Patriarch as 'first among equals'"
     },
+    
     "soteriology": {
-      "church-of-sweden": "Lutheran emphasis on justification by faith",
-      "roman-catholic": "",
-      "pentecostal": ""
+      "church-of-sweden": "Lutheran justification by faith alone (sola fide), grace alone (sola gratia), scripture alone authority",
+      "swedish-pentecostal": "Four-fold Gospel: Jesus as Savior, Sanctifier, Healer, Coming King; personal conversion and sanctification emphasis", 
+      "roman-catholic": "Grace through faith and works cooperation, sacramental mediation, purgatory doctrine, merit and satisfaction theology",
+      "ecumenical-patriarchate": "Theosis (deification) as salvation goal, synergy of divine grace and human cooperation, mystical union emphasis"
     },
+    
     "sacramental_theology": {
-      "church-of-sweden": "Two sacraments (Baptism, Eucharist); broad inclusivity",
-      "roman-catholic": "",
-      "pentecostal": ""
+      "church-of-sweden": "Two sacraments (Baptism, Eucharist); episcopal confirmation; broad inclusivity including LGBTQ+ ordination",
+      "swedish-pentecostal": "Two ordinances (believer's baptism by immersion, communion); baptism in Holy Spirit with initial evidence of tongues",
+      "roman-catholic": "Seven sacraments with ex opere operato efficacy, Eucharistic transubstantiation, clerical celibacy in Latin rite",
+      "ecumenical-patriarchate": "Seven mysteries (sacraments), real presence in Eucharist, chrismation, married priesthood allowed, epiclesis emphasis"
     },
+    
     "social_ethics": {
-      "church-of-sweden": "Active in peace, justice, environment, equality",
-      "roman-catholic": "",
-      "pentecostal": ""
+      "church-of-sweden": "Progressive activism: climate leadership, peace advocacy, refugee support, LGBTQ+ inclusion, creation care priority",
+      "swedish-pentecostal": "Holistic gospel combining evangelism with social action; PMU development work, addiction recovery, immigrant integration",
+      "roman-catholic": "Catholic Social Teaching: preferential option for poor, subsidiarity, solidarity, creation care (Laudato Si'), just war theory",
+      "ecumenical-patriarchate": "Orthodox creation theology, 'Green Patriarch' environmental leadership, peace advocacy, traditional moral teaching"
     },
+    
     "ecumenical_theology": {
-      "church-of-sweden": "Lutheran core, high ecumenical engagement",
-      "roman-catholic": "",
-      "pentecostal": ""
+      "church-of-sweden": "Full WCC engagement, Porvoo Communion with Anglicans, ecumenical leadership heritage from Söderblom",
+      "swedish-pentecostal": "Selective evangelical cooperation; growing openness to broader Christian dialogue while maintaining distinctives",
+      "roman-catholic": "Vatican II ecumenical commitment, bilateral theological dialogues, unity through visible communion under papal primacy",
+      "ecumenical-patriarchate": "Orthodox theological dialogues with Catholics and Protestants, unity through shared apostolic succession and Orthodox faith"
     },
+    
     "swedish_context": {
-      "church-of-sweden": "Majority church, historic establishment role, diverse membership",
-      "roman-catholic": "",
-      "pentecostal": ""
+      "church-of-sweden": "Church-state separation (2000), ~3.3M members, cultural establishment role, declining but significant influence",
+      "swedish-pentecostal": "Revival origins (early 1900s), fully integrated Swedish identity, ~84K members, strong youth engagement, contemporary worship",
+      "roman-catholic": "See swedish-catholic entry for local adaptation; global Catholic perspective through Vatican representatives",
+      "ecumenical-patriarchate": "Patriarch Bartholomew as honored guest, represents global Orthodoxy to small Swedish Orthodox communities (~95K total)"
+    }
+  },
+
+  "ai_analysis_examples": {
+    "theological_convergence_queries": [
+      "Which traditions emphasize creation care/environmental theology?",
+      "How do episcopal vs congregational governance models compare?", 
+      "What are the different approaches to sacramental theology?",
+      "Where do peace theologies align across denominations?"
+    ],
+    
+    "stockholm_2025_dynamics": {
+      "hosts_vs_guests": {
+        "primary_host": ["church-of-sweden"],
+        "worship_leadership": ["swedish-pentecostal"],
+        "major_participants": ["roman-catholic"],
+        "honored_guests": ["ecumenical-patriarchate"]
+      },
+      
+      "theological_bridges": {
+        "episcopal_structure": ["church-of-sweden", "roman-catholic", "ecumenical-patriarchate"],
+        "creation_theology": ["church-of-sweden", "roman-catholic", "ecumenical-patriarchate"],
+        "peace_advocacy": ["church-of-sweden", "swedish-pentecostal", "roman-catholic", "ecumenical-patriarchate"],
+        "immigrant_ministry": ["swedish-pentecostal", "roman-catholic", "ecumenical-patriarchate"]
+      },
+      
+      "potential_tensions": {
+        "authority_models": {
+          "papal_primacy": ["roman-catholic"],
+          "patriarchal_honor": ["ecumenical-patriarchate"], 
+          "democratic_episcopal": ["church-of-sweden"],
+          "congregational": ["swedish-pentecostal"]
+        },
+        "sacramental_recognition": {
+          "seven_sacraments": ["roman-catholic", "ecumenical-patriarchate"],
+          "two_sacraments": ["church-of-sweden"],
+          "ordinances_only": ["swedish-pentecostal"]
+        }
+      }
     }
   }
 }
