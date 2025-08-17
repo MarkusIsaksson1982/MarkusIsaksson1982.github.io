@@ -1,0 +1,8 @@
+{
+  "denomination": "Church of Sweden (Svenska kyrkan)",
+  "description": "The largest Christian denomination in Sweden, Lutheran in tradition, comprising the majority of Swedish Christians.",
+  "resources": [
+    { "name": "Official Church of Sweden", "url": "https://www.svenskakyrkan.se/" },
+    { "name": "Religion in Sweden Overview", "url": "https://en.wikipedia.org/wiki/Church_of_Sweden" }
+  ]
+}
