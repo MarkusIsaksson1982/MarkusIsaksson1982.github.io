@@ -105,6 +105,91 @@ This is a general template that supports both denominational reference and event
 
 All suggestions encourage a flexible, open-ended approach—whether populating new manifest.json files, cross-referencing events, or integrating additional folders and files for evolving research needs. Any manifest content will be parsed contextually and interpreted with adaptability in future questions, without assumptions of strict schema permanence. This will allow for productive, iterative, and tailored research in subsequent repository updates.
 
+######
+
+Here’s an open-ended summary of how to approach populating your manifest.json files and potential .html reference materials with first-hand, structured data parsed from the sources you provided:
+
+***
+
+## Key Principles for Data Extraction and Population
+
+### 1. Use First-Hand Structured Data Fields
+
+- For **event metadata.json files** (like the prayer breakfasts and Easter service), extract:
+  - event name, date, main organizers, denominational participants, keynote topics/speakers, and links to relevant transcripts or reference pages.
+  - Example fields (adapted for denominational manifest.json files):
+    - `"event_name"`, `"event_date"`, `"participants"`, `"themes"`, `"related_transcripts"`, `"reference_links"`
+
+### 2. Extract Liturgical Calendar Data (Kyrkoårets texter)
+
+- From the **liturgical year tables** (e.g. `allahogtider?y=2023`), produce for .json or .html reference:
+  - Swedish liturgical feast, date, theme, associated scripture readings (GT, Epistel, Evangelium), and recommended psalms.
+  - Can be organized as an array of objects, each for one liturgical occasion.
+  - This supports denominational folders, e.g. `/church-of-sweden/manifest.json` or `/free-churches/liturgical-calendar.html`.
+
+  Example parsed item:
+  ```json
+  {
+    "date": "2023-12-25",
+    "feast": "Juldagen",
+    "theme": "Jesu födelse",
+    "gt": "Jes 9:2-7",
+    "epistle": "Heb 1:1-3",
+    "gospel": "Luk 2:1-20",
+    "psalm": "Ps 72:1-7"
+  }
+  ```
+
+### 3. Transcript and Raw Text Integration
+
+- For **service transcripts** (e.g. Pentagon prayer service Cleaned/Raw HTML), you can create simple .html reference files by extracting:
+  - Speakers, affiliations, timestamped statements, thematic highlights (e.g. peace, justice, prayer).
+  - Store links in manifests as `"transcripts": [{ "name": "Cleaned transcript", "url": ".../transcript-cleaned.html" }, ...]`
+  - Excerpted quotes or sections can appear in denominational or event subfolders as supporting resource files.
+
+### 4. Manifest.json First-Hand Data Population Strategy
+
+- In global or Sweden-specific denominational manifests, populate these sections:
+  - `"reference_links"`: direct URLs to event metadata, transcripts, or liturgy pages, e.g. those provided above.
+  - `"liturgical_calendar"`: (optional) brief summary data from Kyrkoåret pages.
+  - `"key_events"`: array pointing to .json metadata files matching your pattern.
+  - `"transcripts"`: array of relevant .html text resource links.
+  - Adapt and localize descriptive fields as needed, keeping technical vocabulary and denominational specifics prominent.
+
+***
+
+## Example Manifest.json Fragment Using Parsed Data
+
+```json
+{
+  "denomination": "Church of Sweden",
+  "description": "Largest Christian denomination in Sweden, with active participation in ecumenical prayer events.",
+  "reference_links": [
+    { "name": "2025 National Prayer Breakfast", "url": "https://MarkusIsaksson1982.github.io/USPA-AI/2025-02-06-national-prayer-breakfast/metadata.json" }
+  ],
+  "liturgical_calendar": [
+    { "date": "2023-12-25", "feast": "Juldagen", "theme": "Jesu födelse", "gt": "Jes 9:2-7", "epistle": "Heb 1:1-3", "gospel": "Luk 2:1-20", "psalm": "Ps 72:1-7" }
+  ],
+  "transcripts": [
+    { "name": "Pentagon Prayer Service (Cleaned)", "url": "https://MarkusIsaksson1982.github.io/2025-05-21-pentagon-prayer-service/transcript-cleaned.html" },
+    { "name": "Pentagon Prayer Service (Raw)", "url": "https://MarkusIsaksson1982.github.io/2025-05-21-pentagon-prayer-service/transcript-raw.html" }
+  ]
+}
+```
+
+***
+
+## Best Practices for Repository Growth
+
+- As new versions or sources are provided, treat extracted data and manifest fields as iterative—update, expand, and specialize as needed for each denominational, event, or liturgy focus.
+- When parsing and populating, note provenance (e.g. "based on 2023 Swedish liturgical calendar" or "parsed from National Prayer Breakfast metadata"), to aid future research.
+- Consider creating supplementary .html summaries in each repository subfolder, using the first-hand data extracted here.
+
+This process remains open to further enrichment as you parse, structure, and interlink more first-hand data, enabling flexible, iterative use in future repository updates and research contexts.
+
+[1] https://MarkusIsaksson1982.github.io/USPA-AI/2025-02-06-national-prayer-breakfast/metadata.json
+[2] https://MarkusIsaksson1982.github.io
+
     </main>
 </body>
 </html>
