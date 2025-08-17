@@ -1,7 +1,86 @@
 {
-  "denomination": "Catholic",
-  "description": "Roman Catholics in Sweden represent a diverse minority, with growing immigrant contribution.",
-  "resources": [
-    { "name": "Catholic Church in Sweden", "url": "https://katolskakyrkan.se/" }
-  ]
+  "denomination": "Catholic Church in Sweden",
+  "denomination_native": "Katolska kyrkan i Sverige",
+  "scope": "sweden",
+  "classification": "Roman Catholic",
+  "episcopal": true,
+  "membership_sweden": 130000,
+  "membership_global": null,
+  "stockholm_2025_role": "major_participant",
+  "key_leaders": {
+    "cardinal": "Anders Arborelius",
+    "role_in_event": "participant in ecumenical service, Storkyrkan celebration"
+  },
+  "primary_sources": [
+    {
+      "title": "Catholic Church in Sweden Homepage",
+      "url": "https://www.katolskakyrkan.se/",
+      "type": "institutional",
+      "language": "sv"
+    },
+    {
+      "title": "Stockholm Catholic Diocese Structure",
+      "url": "https://www.katolskakyrkan.se/i-sverige/stockholms-katolska-stift",
+      "type": "organizational",
+      "language": "sv"
+    },
+    {
+      "title": "Liturgical Calendar and Readings",
+      "url": "https://www.katolskakyrkan.se/forsamlingsliv/ordo-och-veckans-lasningar",
+      "type": "liturgical",
+      "language": "sv"
+    },
+    {
+      "title": "Stockholm 2025 Ecumenical Week Coverage",
+      "url": "https://www.katolskakyrkan.se/aktuellt/stiftsnyheter/2025/varldens-kyrkor-samlas-ater-i-stockholm-under-ekumeniska-veckan-18-24-augusti",
+      "type": "event",
+      "language": "sv"
+    },
+    {
+      "title": "Vatican Official Website",
+      "url": "https://www.vatican.va/content/vatican/en.html",
+      "type": "magisterial",
+      "language": "en"
+    },
+    {
+      "title": "Jubilee 2025 Portal",
+      "url": "https://www.iubilaeum2025.va/en.html",
+      "type": "jubilee",
+      "language": "en"
+    }
+  ],
+  "key_documents": [
+    "Catechism of the Catholic Church",
+    "Vatican II Documents",
+    "Papal Encyclicals",
+    "Code of Canon Law"
+  ],
+  "ecumenical_memberships": [
+    "Swedish Christian Council (SKR)",
+    "Conference of European Churches (CEC)",
+    "Pontifical Council for Promoting Christian Unity (Vatican)"
+  ],
+  "theological_distinctives": [
+    "papal_primacy",
+    "magisterial_authority",
+    "seven_sacraments",
+    "transubstantiation",
+    "interfaith_dialogue_leadership"
+  ],
+  "stockholm_2025_contributions": [
+    "interfaith_dialogue_expertise",
+    "immigrant_pastoral_experience",
+    "catholic_social_teaching",
+    "vatican_ecumenical_perspective"
+  ],
+  "ai_analysis_ready": true,
+  "cross_reference_tags": [
+    "catholic",
+    "episcopal",
+    "immigrant_communities",
+    "interfaith_leadership",
+    "sweden"
+  ],
+  "last_updated": "2025-08-17",
+  "data_quality": "primary_sources_verified"
 }
