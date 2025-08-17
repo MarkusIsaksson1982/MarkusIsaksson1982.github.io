@@ -1,0 +1,10 @@
+{
+  "denomination": "Pentecostal",
+  "percentage_of_global_christians": 28.0,
+  "description": "Pentecostalism is one of the fastest-growing Christian movements worldwide, emphasizing the Holy Spirit's work, spiritual gifts, and vibrant worship. Includes classical Pentecostal denominations and newer charismatic movements.",
+  "resources": [
+    { "name": "Pentecostalism (Wikipedia)", "url": "https://en.wikipedia.org/wiki/Pentecostalism" },
+    { "name": "World Assemblies of God Fellowship", "url": "https://worldagfellowship.org" },
+    { "name": "Global Pentecostal Statistics", "url": "https://www.pewforum.org/2006/10/05/spirit-and-power/" }
+  ]
+}
