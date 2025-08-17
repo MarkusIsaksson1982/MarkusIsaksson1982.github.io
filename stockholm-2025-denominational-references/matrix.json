@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "last_updated": "2025-08-17",
+  "event_context": {
+    "name": "Stockholm 2025 Ecumenical Jubilee",
+    "dates": "2025-08-18 to 2025-08-24",
+    "theme": "Time for God's Peace",
+    "commemorates": "100th anniversary of the 1925 Stockholm Conference"
+  },
+  "comparison_axes": [
+    "ecclesiology",
+    "soteriology",
+    "sacramental_theology",
+    "social_ethics",
+    "ecumenical_theology",
+    "swedish_context"
+  ],
+  "denominations": {
+    "church-of-sweden": {
+      "scope": "sweden",
+      "manifest": "./stockholm-2025-denominational-references/sweden-major-denominations/church-of-sweden/manifest.json",
+      "ecclesiology": "Episcopal-synodical, national church model",
+      "soteriology": "Lutheran emphasis on justification by faith",
+      "sacramental_theology": "Two sacraments (Baptism, Eucharist); broad inclusivity",
+      "social_ethics": "Active in peace, justice, environment, equality",
+      "ecumenical_theology": "Lutheran core, high ecumenical engagement",
+      "swedish_context": "Majority church, historic establishment role, diverse membership"
+    },
+    "roman-catholic": {
+      "scope": "global",
+      "manifest": "./stockholm-2025-denominational-references/global-major-denominations/roman-catholic/manifest.json",
+      "ecclesiology": "",
+      "soteriology": "",
+      "sacramental_theology": "",
+      "social_ethics": "",
+      "ecumenical_theology": "",
+      "swedish_context": ""
+    },
+    "pentecostal": {
+      "scope": "sweden",
+      "manifest": "./stockholm-2025-denominational-references/sweden-major-denominations/pentecostal/manifest.json",
+      "ecclesiology": "",
+      "soteriology": "",
+      "sacramental_theology": "",
+      "social_ethics": "",
+      "ecumenical_theology": "",
+      "swedish_context": ""
+    }
+    // … continue for all global + Swedish denominations
+  }
+}
