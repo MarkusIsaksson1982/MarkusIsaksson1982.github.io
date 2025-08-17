@@ -10,7 +10,7 @@
       background: #f9f9f9;
       color: #333;
     }
-    h1, h2, h3 {
+    h1, h2 {
       color: #2c3e50;
     }
     ul {
@@ -18,7 +18,7 @@
       padding-left: 1rem;
     }
     li {
-      margin: 0.3rem 0;
+      margin: 0.4rem 0;
     }
     a {
       text-decoration: none;
@@ -27,8 +27,23 @@
     a:hover {
       text-decoration: underline;
     }
-    .section {
-      margin-bottom: 2rem;
+    .status {
+      font-size: 0.9em;
+      margin-left: 0.5rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 5px;
+    }
+    .ok {
+      background: #2ecc71;
+      color: #fff;
+    }
+    .stub {
+      background: #f39c12;
+      color: #fff;
+    }
+    .missing {
+      background: #e74c3c;
+      color: #fff;
     }
   </style>
 </head>
@@ -36,36 +51,30 @@
   <h1>📂 Stockholm 2025 Denominational References</h1>
   <p>Repository index for denominational manifests and comparison matrices.</p>
 
-  <div class="section">
-    <h2>🔗 Core Files</h2>
-    <ul>
-      <li><a href="./matrix.json">matrix.json</a></li>
-      <li><a href="./comparison-matrix.json">comparison-matrix.json</a></li>
-    </ul>
-  </div>
+  <h2>🔗 Core Files</h2>
+  <ul>
+    <li><a href="./matrix.json">matrix.json</a> <span class="status ok">✅ correct</span></li>
+    <li><a href="./comparison-matrix.json">comparison-matrix.json</a> <span class="status ok">✅ correct</span></li>
+  </ul>
 
-  <div class="section">
-    <h2>🇸🇪 Sweden – Major Denominations</h2>
-    <ul>
-      <li><a href="./sweden-major-denominations/church-of-sweden/manifest.json">Church of Sweden</a></li>
-      <li><a href="./sweden-major-denominations/pentecostal/manifest.json">Pentecostal</a></li>
-      <li><a href="./sweden-major-denominations/catholic/manifest.json">Catholic (Sweden)</a></li>
-      <li><a href="./sweden-major-denominations/free-churches/manifest.json">Free Churches</a></li>
-      <li><a href="./sweden-major-denominations/orthodox/manifest.json">Orthodox (Sweden)</a></li>
-      <li><a href="./sweden-major-denominations/others/manifest.json">Others</a></li>
-    </ul>
-  </div>
+  <h2>🇸🇪 Sweden – Major Denominations</h2>
+  <ul>
+    <li><a href="./sweden-major-denominations/church-of-sweden/manifest.json">Church of Sweden</a> <span class="status ok">✅ correct</span></li>
+    <li><a href="./sweden-major-denominations/pentecostal/manifest.json">Pentecostal</a> <span class="status ok">✅ correct</span></li>
+    <li><a href="./sweden-major-denominations/catholic/manifest.json">Catholic (Sweden)</a> <span class="status ok">✅ correct</span></li>
+    <li><a href="./sweden-major-denominations/free-churches/manifest.json">Free Churches</a> <span class="status stub">⚠️ stub</span></li>
+    <li><a href="./sweden-major-denominations/orthodox/manifest.json">Orthodox (Sweden)</a> <span class="status ok">✅ correct</span></li>
+    <li>Others <span class="status missing">❌ missing</span></li>
+  </ul>
 
-  <div class="section">
-    <h2>🌍 Global – Major Denominations</h2>
-    <ul>
-      <li><a href="./global-major-denominations/roman-catholic/manifest.json">Roman Catholic</a></li>
-      <li><a href="./global-major-denominations/protestant/manifest.json">Protestant</a></li>
-      <li><a href="./global-major-denominations/orthodox/manifest.json">Orthodox</a></li>
-      <li><a href="./global-major-denominations/anglican/manifest.json">Anglican</a></li>
-      <li><a href="./global-major-denominations/pentecostal/manifest.json">Pentecostal (Global)</a></li>
-      <li><a href="./global-major-denominations/other-global/manifest.json">Other Global</a></li>
-    </ul>
-  </div>
+  <h2>🌍 Global – Major Denominations</h2>
+  <ul>
+    <li><a href="./global-major-denominations/roman-catholic/manifest.json">Roman Catholic</a> <span class="status stub">⚠️ stub</span></li>
+    <li><a href="./global-major-denominations/protestant/manifest.json">Protestant</a> <span class="status stub">⚠️ stub</span></li>
+    <li><a href="./global-major-denominations/orthodox/manifest.json">Orthodox</a> <span class="status stub">⚠️ stub</span></li>
+    <li><a href="./global-major-denominations/anglican/manifest.json">Anglican</a> <span class="status stub">⚠️ stub</span></li>
+    <li><a href="./global-major-denominations/pentecostal/manifest.json">Pentecostal (Global)</a> <span class="status stub">⚠️ stub</span></li>
+    <li><a href="./global-major-denominations/other-global/manifest.json">Other Global</a> <span class="status stub">⚠️ stub</span></li>
+  </ul>
 </body>
 </html>
