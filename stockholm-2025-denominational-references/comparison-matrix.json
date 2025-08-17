@@ -1,0 +1,142 @@
+{
+  "metadata": {
+    "title": "Stockholm 2025 Ecumenical Gathering - Denominational Comparison Matrix",
+    "purpose": "AI-parseable framework for cross-denominational theological analysis",
+    "event_context": "100th Anniversary Stockholm Conference (1925-2025)",
+    "theme": "Time for God's Peace",
+    "last_updated": "2025-08-17",
+    "ai_compatible": true
+  },
+  
+  "comparison_categories": {
+    "ecclesiology": {
+      "description": "Church structure, authority, and governance models",
+      "values": ["episcopal", "presbyterian", "congregational", "episcopal-synodical", "papal", "conciliar"]
+    },
+    "sacraments": {
+      "description": "Number and understanding of sacramental practices",
+      "values": ["7_catholic", "2_protestant", "2_orthodox_mysteries", "ordinances_only"]
+    },
+    "scripture_authority": {
+      "description": "Relationship between Scripture, tradition, and reason",
+      "values": ["sola_scriptura", "prima_scriptura", "scripture_tradition_magisterium", "scripture_tradition_councils"]
+    },
+    "salvation_doctrine": {
+      "description": "Understanding of how salvation is received",
+      "values": ["sola_gratia", "faith_works_cooperation", "theosis", "holiness_perfection"]
+    },
+    "social_theology": {
+      "description": "Approach to social justice and political engagement",
+      "values": ["progressive_activist", "conservative_traditional", "liberation_theology", "two_kingdoms", "holistic_gospel"]
+    },
+    "ecumenical_stance": {
+      "description": "Level and type of inter-church engagement",
+      "values": ["full_engagement", "selective_evangelical", "orthodox_dialogue", "catholic_primacy", "protestant_cooperation"]
+    },
+    "peace_theology": {
+      "description": "Theological approach to peace, war, and conflict",
+      "values": ["pacifist", "just_war", "peace_advocacy", "social_justice_peace", "spiritual_peace_focus"]
+    }
+  },
+
+  "denominational_profiles": {
+    "church_of_sweden": {
+      "full_name": "Church of Sweden",
+      "scope": "sweden",
+      "family": "lutheran",
+      "stockholm_2025_role": "host_primary",
+      "ecclesiology": "episcopal-synodical",
+      "sacraments": "2_protestant",
+      "scripture_authority": "prima_scriptura",
+      "salvation_doctrine": "sola_gratia",
+      "social_theology": "progressive_activist",
+      "ecumenical_stance": "full_engagement",
+      "peace_theology": "peace_advocacy",
+      "distinctive_features": ["democratic_bishops", "lgbtq_inclusive", "climate_leader"],
+      "key_leaders": ["Martin Modéus (Archbishop)"],
+      "stockholm_contributions": ["hosting", "ecumenical_coordination", "söderblom_legacy"]
+    },
+    
+    "swedish_pentecostal": {
+      "full_name": "Swedish Pentecostal Movement (Pingst)",
+      "scope": "sweden", 
+      "family": "pentecostal",
+      "stockholm_2025_role": "worship_leadership",
+      "ecclesiology": "congregational",
+      "sacraments": "ordinances_only",
+      "scripture_authority": "sola_scriptura",
+      "salvation_doctrine": "sola_gratia",
+      "social_theology": "holistic_gospel",
+      "ecumenical_stance": "selective_evangelical",
+      "peace_theology": "spiritual_peace_focus",
+      "distinctive_features": ["spirit_baptism", "divine_healing", "contemporary_worship"],
+      "key_leaders": ["Josefina Gniste (Worship Leader)"],
+      "stockholm_contributions": ["praise_worship", "youth_engagement", "immigrant_integration"]
+    },
+
+    "_template_entry": {
+      "full_name": "[Denomination Full Name]",
+      "scope": "sweden|global",
+      "family": "catholic|orthodox|protestant|anglican|pentecostal|other",
+      "stockholm_2025_role": "host_primary|co_host|major_participant|participant|observer",
+      "ecclesiology": "[from values above]",
+      "sacraments": "[from values above]",
+      "scripture_authority": "[from values above]", 
+      "salvation_doctrine": "[from values above]",
+      "social_theology": "[from values above]",
+      "ecumenical_stance": "[from values above]",
+      "peace_theology": "[from values above]",
+      "distinctive_features": ["feature1", "feature2", "feature3"],
+      "key_leaders": ["Name (Title)"],
+      "stockholm_contributions": ["contribution1", "contribution2", "contribution3"]
+    }
+  },
+
+  "analysis_frameworks": {
+    "theological_proximity": {
+      "description": "Calculate denominational similarity based on category alignment",
+      "method": "weighted_scoring",
+      "weights": {
+        "ecclesiology": 0.2,
+        "sacraments": 0.15,
+        "scripture_authority": 0.15,
+        "salvation_doctrine": 0.2,
+        "social_theology": 0.1,
+        "ecumenical_stance": 0.1,
+        "peace_theology": 0.1
+      }
+    },
+    
+    "stockholm_2025_dynamics": {
+      "description": "Analyze ecumenical relationships specific to Stockholm 2025 event",
+      "factors": ["historical_connections", "current_dialogues", "shared_priorities", "theological_obstacles"],
+      "focus_themes": ["peace_building", "creation_care", "social_justice", "christian_unity"]
+    },
+
+    "swedish_context_factors": {
+      "description": "How global denominations adapt in Swedish secular context",
+      "considerations": ["post_christendom", "religious_freedom", "cultural_integration", "minority_status"],
+      "metrics": ["membership_trends", "cultural_influence", "political_engagement", "interfaith_relations"]
+    }
+  },
+
+  "ai_processing_instructions": {
+    "comparison_queries": [
+      "Which denominations share similar approaches to [category]?",
+      "How do Swedish vs global expressions of [denomination] differ?",
+      "What are the main ecumenical opportunities/challenges in Stockholm 2025?",
+      "Which theological themes show most convergence across participants?"
+    ],
+    "visualization_suggestions": [
+      "theological_proximity_matrix",
+      "ecumenical_relationship_network", 
+      "stockholm_2025_participant_map",
+      "peace_theology_spectrum"
+    ],
+    "data_validation": {
+      "required_fields": ["full_name", "scope", "family", "stockholm_2025_role"],
+      "theological_categories": "all_seven_required",
+      "source_verification": "primary_sources_preferred"
+    }
+  }
+}
