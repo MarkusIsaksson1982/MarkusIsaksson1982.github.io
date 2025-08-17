@@ -1,10 +1,28 @@
 {
-  "denomination": "Other Global Christian Movements",
-  "percentage_of_global_christians": 8.0,
-  "description": "Includes indigenous Christian movements, independent churches, and syncretic traditions from Africa, Asia, and Latin America that don't fit traditional Western categories.",
-  "resources": [
-    { "name": "African Independent Churches", "url": "https://en.wikipedia.org/wiki/African_initiated_church" },
-    { "name": "Christianity in the Global South", "url": "https://www.pewresearch.org/religion/2011/12/19/global-christianity-regions/" },
-    { "name": "Pentecostalism in the Global South", "url": "https://www.pewforum.org/2006/10/05/spirit-and-power/" }
-  ]
+  "denomination": "Other Global Christian Traditions",
+  "description": "This category includes various Christian movements and communities worldwide that are not represented in the major denominational folders. Examples include independent churches, newer charismatic movements, restorationist groups, and smaller regional fellowships.",
+  "scope": "global",
+  "family": "various",
+  "ecclesiology": "Diverse governance models including congregational, presbyterian, episcopal, or informal leadership structures",
+  "soteriology": "Varies widely: often emphasizes personal faith, holiness, community, or experiential spirituality depending on the tradition",
+  "sacramental_theology": "Ordinances or sacraments vary; some follow traditional sacramental practices, others focus on symbolic acts of baptism and communion",
+  "social_ethics": "Community development, missionary activity, holistic outreach, social justice or local advocacy initiatives depending on the group",
+  "ecumenical_theology": "Limited formal ecumenical engagement; some networks cooperate selectively with major denominations or regional councils",
+  "notable_characteristics": [
+    "Diversity of theology and worship",
+    "Rapidly adapting local expressions of faith",
+    "Emerging movements and independent churches",
+    "Flexibility in governance and practice"
+  ],
+  "stockholm_2025_role": "reference / minor_participant",
+  "membership_global_estimate": "varies, collectively several million",
+  "cross_reference_tags": [
+    "independent",
+    "charismatic",
+    "restorationist",
+    "regional"
+  ],
+  "last_updated": "2025-08-17",
+  "data_quality": "primary_sources_stub",
+  "ai_analysis_ready": true
 }
