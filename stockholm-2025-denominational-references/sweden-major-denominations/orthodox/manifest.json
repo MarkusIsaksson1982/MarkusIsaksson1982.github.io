@@ -1,0 +1,7 @@
+{
+  "denomination": "Orthodox",
+  "description": "Includes Greek and Syriac Orthodox churches, representing various immigrant communities in Sweden.",
+  "resources": [
+    { "name": "Orthodox Church in Sweden", "url": "https://www.ortodoxakyrkan.se/" }
+  ]
+}
