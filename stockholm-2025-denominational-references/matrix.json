@@ -5,47 +5,214 @@
     "name": "Stockholm 2025 Ecumenical Jubilee",
     "dates": "2025-08-18 to 2025-08-24",
     "theme": "Time for God's Peace",
-    "commemorates": "100th anniversary of the 1925 Stockholm Conference"
+    "commemorates": "100th anniversary of the 1925 Stockholm Conference",
+    "significance": "Modern ecumenical movement foundation, Archbishop Söderblom Nobel Peace Prize legacy"
   },
+  
   "comparison_axes": [
     "ecclesiology",
-    "soteriology",
+    "soteriology", 
     "sacramental_theology",
     "social_ethics",
     "ecumenical_theology",
     "swedish_context"
   ],
+
   "denominations": {
     "church-of-sweden": {
       "scope": "sweden",
-      "manifest": "./stockholm-2025-denominational-references/sweden-major-denominations/church-of-sweden/manifest.json",
-      "ecclesiology": "Episcopal-synodical, national church model",
-      "soteriology": "Lutheran emphasis on justification by faith",
-      "sacramental_theology": "Two sacraments (Baptism, Eucharist); broad inclusivity",
-      "social_ethics": "Active in peace, justice, environment, equality",
-      "ecumenical_theology": "Lutheran core, high ecumenical engagement",
-      "swedish_context": "Majority church, historic establishment role, diverse membership"
+      "family": "lutheran",
+      "stockholm_role": "host_primary",
+      "manifest": "./sweden-major-denominations/church-of-sweden/manifest.json",
+      "ecclesiology": "Episcopal-synodical, democratic governance, national church model",
+      "soteriology": "Lutheran justification by faith, emphasis on grace alone (sola gratia)",
+      "sacramental_theology": "Two sacraments (Baptism, Eucharist), broad inclusivity, episcopal confirmation",
+      "social_ethics": "Progressive activism: climate leadership, LGBTQ+ inclusion, refugee advocacy, peace building",
+      "ecumenical_theology": "Full WCC engagement, Porvoo Communion, ecumenical leadership heritage",
+      "swedish_context": "Separated from state 2000, cultural establishment role, declining but significant membership (~3.3M)"
     },
+    
+    "swedish-pentecostal": {
+      "scope": "sweden",
+      "family": "pentecostal", 
+      "stockholm_role": "worship_leadership",
+      "manifest": "./sweden-major-denominations/pentecostal/manifest.json",
+      "ecclesiology": "Congregational autonomy with cooperative fellowship, democratic local governance",
+      "soteriology": "Four-fold Gospel: Jesus as Savior, Sanctifier, Healer, Coming King; personal salvation emphasis",
+      "sacramental_theology": "Two ordinances (baptism by immersion, communion); baptism in Holy Spirit with initial evidence",
+      "social_ethics": "Holistic gospel combining evangelism with social action, addiction recovery, immigrant integration",
+      "ecumenical_theology": "Selective evangelical cooperation, growing openness to broader Christian dialogue",
+      "swedish_context": "Immigrant church origins, now fully integrated, strong youth engagement, contemporary worship"
+    },
+
     "roman-catholic": {
       "scope": "global",
-      "manifest": "./stockholm-2025-denominational-references/global-major-denominations/roman-catholic/manifest.json",
-      "ecclesiology": "",
-      "soteriology": "",
-      "sacramental_theology": "",
-      "social_ethics": "",
-      "ecumenical_theology": "",
-      "swedish_context": ""
+      "family": "catholic",
+      "stockholm_role": "major_participant",
+      "manifest": "./global-major-denominations/roman-catholic/manifest.json", 
+      "ecclesiology": "Papal primacy, episcopal hierarchy, magisterial authority, universal church unity",
+      "soteriology": "Grace through faith and works cooperation, sacramental mediation, purgatory doctrine",
+      "sacramental_theology": "Seven sacraments, ex opere operato efficacy, eucharistic transubstantiation",
+      "social_ethics": "Catholic Social Teaching: preferential option for poor, peace advocacy, creation care (Laudato Si')",
+      "ecumenical_theology": "Vatican II ecumenical commitment, bilateral dialogues, unity through visible communion",
+      "swedish_context": "Small minority (~150K), immigrant communities, interfaith dialogue leadership"
     },
-    "pentecostal": {
+
+    "ecumenical-patriarch": {
+      "scope": "global",
+      "family": "orthodox",
+      "stockholm_role": "honored_guest", 
+      "manifest": "./global-major-denominations/orthodox/manifest.json",
+      "ecclesiology": "Conciliar authority, episcopal collegiality, autocephalous churches, patriarch as 'first among equals'",
+      "soteriology": "Theosis (deification), synergy of divine grace and human cooperation, mystical union emphasis",
+      "sacramental_theology": "Seven mysteries, real presence in Eucharist, chrismation, married priesthood allowed",
+      "social_ethics": "Creation theology, environmental patriarch, peace advocacy, traditional moral teaching",
+      "ecumenical_theology": "Orthodox theological dialogue, unity through shared apostolic succession and faith",
+      "swedish_context": "Small immigrant communities, Finnish Orthodox Church presence, limited but growing"
+    },
+
+    "anglican-communion": {
+      "scope": "global", 
+      "family": "anglican",
+      "stockholm_role": "participant",
+      "manifest": "./global-major-denominations/anglican/manifest.json",
+      "ecclesiology": "Episcopal structure, via media between Catholic and Protestant, Canterbury primacy of honor",
+      "soteriology": "Reformed emphasis on grace, Catholic sacramental life, reason-scripture-tradition balance",
+      "sacramental_theology": "Two dominical sacraments primary, five others recognized, broad eucharistic theology",
+      "social_ethics": "Anglican social gospel tradition, peace advocacy, environmental stewardship, inclusion debates",
+      "ecumenical_theology": "Bridge church identity, Porvoo Agreement with Lutherans, bilateral dialogues",
+      "swedish_context": "Minimal presence, primarily expatriate communities, Church of Sweden cooperation"
+    },
+
+    "swedish-catholic": {
       "scope": "sweden",
-      "manifest": "./stockholm-2025-denominational-references/sweden-major-denominations/pentecostal/manifest.json",
-      "ecclesiology": "",
-      "soteriology": "",
-      "sacramental_theology": "",
-      "social_ethics": "",
-      "ecumenical_theology": "",
-      "swedish_context": ""
+      "family": "catholic",
+      "stockholm_role": "participant",
+      "manifest": "./sweden-major-denominations/catholic/manifest.json", 
+      "ecclesiology": "Diocese of Stockholm under papal authority, Cardinal Arborelius leadership",
+      "soteriology": "Universal Catholic teaching adapted to Swedish secular context",
+      "sacramental_theology": "Full Catholic sacramental life, Nordic cultural adaptations in liturgy",
+      "social_ethics": "Catholic Social Teaching emphasis, interfaith dialogue leadership, immigrant pastoral care",
+      "ecumenical_theology": "Vatican II ecumenical commitment, active in Swedish Christian Council",
+      "swedish_context": "Growing through immigration, strong interfaith presence, cultural bridge role"
     }
-    // … continue for all global + Swedish denominations
+  },
+
+  "cross_denominational_analysis": {
+    "ecclesiology": {
+      "episcopal_models": ["church-of-sweden", "roman-catholic", "anglican-communion", "ecumenical-patriarch"],
+      "congregational_models": ["swedish-pentecostal"],
+      "democratic_elements": ["church-of-sweden", "swedish-pentecostal"],
+      "hierarchical_authority": ["roman-catholic", "ecumenical-patriarch"],
+      "national_church_heritage": ["church-of-sweden"]
+    },
+    
+    "soteriology": {
+      "grace_alone_emphasis": ["church-of-sweden", "swedish-pentecostal"],
+      "grace_works_cooperation": ["roman-catholic", "swedish-catholic"],
+      "theosis_mystical": ["ecumenical-patriarch"],
+      "holiness_emphasis": ["swedish-pentecostal"],
+      "sacramental_mediation": ["roman-catholic", "swedish-catholic", "ecumenical-patriarch"]
+    },
+    
+    "sacramental_theology": {
+      "two_sacraments": ["church-of-sweden", "swedish-pentecostal"],
+      "seven_sacraments": ["roman-catholic", "swedish-catholic"],
+      "seven_mysteries": ["ecumenical-patriarch"], 
+      "ordinances_only": ["swedish-pentecostal"],
+      "real_presence_emphasis": ["roman-catholic", "swedish-catholic", "ecumenical-patriarch", "church-of-sweden"]
+    },
+    
+    "social_ethics": {
+      "progressive_activism": ["church-of-sweden"],
+      "catholic_social_teaching": ["roman-catholic", "swedish-catholic"],
+      "creation_theology": ["ecumenical-patriarch"],
+      "holistic_gospel": ["swedish-pentecostal"],
+      "peace_advocacy": ["church-of-sweden", "roman-catholic", "ecumenical-patriarch"],
+      "environmental_leadership": ["church-of-sweden", "ecumenical-patriarch"]
+    },
+    
+    "ecumenical_theology": {
+      "full_engagement": ["church-of-sweden"],
+      "catholic_bilateral_approach": ["roman-catholic", "swedish-catholic"],
+      "orthodox_theological_dialogue": ["ecumenical-patriarch"],
+      "selective_evangelical": ["swedish-pentecostal"],
+      "bridge_church_identity": ["anglican-communion"]
+    },
+    
+    "swedish_context": {
+      "majority_heritage": ["church-of-sweden"],
+      "immigrant_communities": ["roman-catholic", "swedish-catholic", "swedish-pentecostal", "ecumenical-patriarch"],
+      "post_christendom_adaptation": ["church-of-sweden", "swedish-pentecostal", "swedish-catholic"],
+      "interfaith_leadership": ["swedish-catholic"],
+      "youth_engagement": ["swedish-pentecostal"],
+      "cultural_establishment": ["church-of-sweden"]
+    }
+  },
+
+  "stockholm_2025_dynamics": {
+    "host_coordination": {
+      "primary_hosts": ["church-of-sweden"],
+      "co_hosts": [],
+      "major_contributors": ["swedish-pentecostal", "roman-catholic", "swedish-catholic"]
+    },
+    
+    "peace_theology_convergence": {
+      "creation_care_leaders": ["church-of-sweden", "ecumenical-patriarch"],
+      "social_justice_advocates": ["church-of-sweden", "roman-catholic", "swedish-catholic"],
+      "spiritual_peace_emphasis": ["swedish-pentecostal", "ecumenical-patriarch"],
+      "interfaith_dialogue": ["swedish-catholic", "church-of-sweden"]
+    },
+    
+    "unity_opportunities": {
+      "shared_apostolic_succession": ["church-of-sweden", "roman-catholic", "swedish-catholic", "ecumenical-patriarch", "anglican-communion"],
+      "baptismal_recognition": ["church-of-sweden", "roman-catholic", "swedish-catholic", "ecumenical-patriarch", "swedish-pentecostal"],
+      "peace_advocacy": ["church-of-sweden", "roman-catholic", "swedish-catholic", "ecumenical-patriarch"],
+      "creation_stewardship": ["church-of-sweden", "roman-catholic", "swedish-catholic", "ecumenical-patriarch"]
+    },
+    
+    "theological_tensions": {
+      "papal_authority": {
+        "affirming": ["roman-catholic", "swedish-catholic"],
+        "questioning": ["church-of-sweden", "ecumenical-patriarch", "swedish-pentecostal"]
+      },
+      "sacramental_recognition": {
+        "seven_sacraments": ["roman-catholic", "swedish-catholic", "ecumenical-patriarch"],
+        "two_sacraments": ["church-of-sweden", "swedish-pentecostal"]
+      },
+      "ordination_theology": {
+        "episcopal_succession": ["church-of-sweden", "roman-catholic", "swedish-catholic", "ecumenical-patriarch"],
+        "congregational_calling": ["swedish-pentecostal"]
+      }
+    }
+  },
+
+  "ai_analysis_tools": {
+    "proximity_calculator": {
+      "method": "weighted_category_alignment",
+      "weights": {
+        "ecclesiology": 0.20,
+        "soteriology": 0.20, 
+        "sacramental_theology": 0.15,
+        "social_ethics": 0.15,
+        "ecumenical_theology": 0.15,
+        "swedish_context": 0.15
+      }
+    },
+    
+    "query_templates": [
+      "Compare [denomination1] and [denomination2] on [theological_category]",
+      "Which denominations share positions on [specific_issue]?",
+      "What are the main ecumenical opportunities/obstacles for Stockholm 2025?",
+      "How do global denominations adapt in Swedish context?",
+      "Which theological themes show convergence around 'Time for God's Peace'?"
+    ],
+    
+    "visualization_data": {
+      "theological_proximity_matrix": "Calculate pairwise similarity scores",
+      "stockholm_2025_network": "Map participant relationships and roles", 
+      "peace_theology_spectrum": "Position denominations on peace-advocacy scale",
+      "swedish_adaptation_analysis": "Compare global vs local expressions"
+    }
   }
 }
