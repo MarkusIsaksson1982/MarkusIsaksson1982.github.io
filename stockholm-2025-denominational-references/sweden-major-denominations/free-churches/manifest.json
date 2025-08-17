@@ -1,9 +1,39 @@
 {
   "denomination": "Free Churches (Frikyrkor)",
-  "description": "Sweden's free churches include various Evangelical, Baptist, Methodist, and Pentecostal denominations outside the Church of Sweden.",
-  "resources": [
+  "denomination_native": "Frikyrkor",
+  "scope": "sweden",
+  "classification": "Evangelical / Charismatic / Baptist / Methodist",
+  "episcopal": false,
+  "membership_sweden": 60000,
+  "stockholm_2025_role": "research_reference",
+  "description": "Sweden's Free Churches include various Evangelical, Baptist, Methodist, and Pentecostal denominations outside the Church of Sweden. They emphasize personal conversion, charismatic worship, and congregational autonomy.",
+  "key_congregations": [
     { "name": "Livets Ord", "url": "https://www.livetsord.se" },
-    { "name": "Församlingen Arken", "url": "https://www.arken.org" }
+    { "name": "Församlingen Arken", "url": "https://www.arken.org" },
     { "name": "We Are One Church", "url": "https://www.waochurch.com" }
-  ]
+  ],
+  "theological_distinctives": [
+    "Word of Faith teaching",
+    "Charismatic worship",
+    "Personal conversion",
+    "Congregational governance",
+    "Lay leadership focus"
+  ],
+  "social_engagement": [
+    "Evangelism and discipleship",
+    "Community outreach",
+    "Addiction recovery programs",
+    "Youth ministry"
+  ],
+  "ai_analysis_ready": true,
+  "cross_reference_tags": [
+    "evangelical",
+    "charismatic",
+    "congregational",
+    "sweden",
+    "word_of_faith"
+  ],
+  "last_updated": "2025-08-17",
+  "data_quality": "primary_sources_verified"
 }
+s
