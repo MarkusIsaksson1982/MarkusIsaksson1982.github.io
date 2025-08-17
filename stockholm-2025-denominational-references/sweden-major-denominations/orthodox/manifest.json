@@ -1,7 +1,95 @@
 {
-  "denomination": "Orthodox",
-  "description": "Includes Greek and Syriac Orthodox churches, representing various immigrant communities in Sweden.",
-  "resources": [
-    { "name": "Orthodox Church in Sweden", "url": "https://www.ortodoxakyrkan.se/" }
-  ]
+  "denomination": "Orthodox Churches in Sweden",
+  "denomination_native": "Ortodoxa kyrkor i Sverige",
+  "scope": "sweden",
+  "classification": "Eastern Orthodox (multiple jurisdictions)",
+  "episcopal": true,
+  "membership_sweden": 95000,
+  "membership_global": null,
+  "stockholm_2025_role": "participant_honored_guests",
+  "key_leaders": {
+    "patriarch": "Bartholomew I (Ecumenical Patriarch - honored guest)",
+    "role_in_event": "orthodox_representation_multiple_jurisdictions"
+  },
+  "primary_sources": [
+    {
+      "title": "SKR Orthodox Churches Overview",
+      "url": "https://www.skr.org/kristen-tro/kyrkorna/ortodoxa-kyrkor/",
+      "type": "umbrella_description",
+      "language": "sv"
+    },
+    {
+      "title": "Ecumenical Patriarchate of Constantinople",
+      "url": "https://www.patriarchate.org/",
+      "type": "patriarchal",
+      "language": "en"
+    },
+    {
+      "title": "Russian Orthodox Church",
+      "url": "https://mospat.ru/en/",
+      "type": "patriarchal",
+      "language": "en"
+    },
+    {
+      "title": "Orthodox Church in America",
+      "url": "https://www.oca.org/",
+      "type": "autocephalous",
+      "language": "en"
+    },
+    {
+      "title": "Finnish Orthodox Church",
+      "url": "https://www.ort.fi/",
+      "type": "autocephalous_nordic",
+      "language": "fi"
+    },
+    {
+      "title": "Stockholm 2025 - Bartholomew I Statement",
+      "url": "https://www.skr.org/jubileet-narmar-sig-varldens-kyrkor-samlas-i-stockholm-nasta-vecka",
+      "type": "event",
+      "language": "sv"
+    }
+  ],
+  "key_documents": [
+    "Nicene-Constantinopolitan Creed",
+    "Canons of Ecumenical Councils",
+    "Patristic Writings",
+    "Liturgical Books (Byzantine Rite)"
+  ],
+  "ecumenical_memberships": [
+    "World Council of Churches (most jurisdictions)",
+    "Conference of European Churches",
+    "Orthodox-Catholic Theological Dialogue",
+    "Orthodox-Lutheran Dialogue"
+  ],
+  "theological_distinctives": [
+    "theosis_deification",
+    "conciliar_authority",
+    "seven_mysteries_sacraments",
+    "married_priesthood",
+    "creation_theology"
+  ],
+  "stockholm_2025_contributions": [
+    "patriarchal_presence_bartholomew",
+    "orthodox_theological_perspective",
+    "creation_care_leadership",
+    "immigrant_community_witness"
+  ],
+  "ai_analysis_ready": true,
+  "cross_reference_tags": [
+    "orthodox",
+    "episcopal",
+    "immigrant_communities",
+    "creation_theology",
+    "sweden"
+  ],
+  "jurisdictions_represented": [
+    "Ecumenical Patriarchate",
+    "Russian Orthodox Church",
+    "Serbian Orthodox Church", 
+    "Finnish Orthodox Church",
+    "Assyrian Church of the East",
+    "Other Oriental Orthodox"
+  ],
+  "last_updated": "2025-08-17",
+  "data_quality": "primary_sources_verified"
 }
