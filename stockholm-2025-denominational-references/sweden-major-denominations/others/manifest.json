@@ -1,34 +1,29 @@
 {
-  "denomination": "Other Christian Groups in Sweden",
-  "denomination_native": "Övriga kristna grupper i Sverige",
-  "scope": "sweden",
-  "classification": "Miscellaneous / Independent Christian Movements",
-  "episcopal": false,
-  "membership_sweden": 15000,
-  "stockholm_2025_role": "research_reference",
-  "description": "This category includes smaller or independent Christian communities in Sweden not represented among the major denominational categories. Examples include independent Evangelical groups, small Lutheran offshoots, Messianic Jewish congregations, and emerging house churches.",
-  "key_congregations": [
-    { "name": "Swedish Messianic Congregations", "url": "https://www.messianic.se" },
-    { "name": "Independent House Churches", "url": "https://www.housechurch.se" }
-  ],
-  "theological_distinctives": [
-    "Independent governance",
-    "Non-denominational practices",
-    "Focus on personal faith and community",
-    "Varied worship styles"
-  ],
-  "social_engagement": [
-    "Local outreach",
-    "Youth and family programs",
-    "Small-scale humanitarian work"
-  ],
-  "ai_analysis_ready": true,
-  "cross_reference_tags": [
-    "independent",
-    "non-denominational",
-    "emerging_church",
-    "sweden"
-  ],
-  "last_updated": "2025-08-17",
-  "data_quality": "primary_sources_stub"
+  "denomination": "Others (Sweden)",
+  "description": "Ecumenical and international ministries with influence in Sweden, outside the mainline Church of Sweden or Free Church networks.",
+  "events": [
+    {
+      "event_name": "Revival is Now Stockholm",
+      "dates": ["2025-08-01"],
+      "location": "Stockholm, Sweden",
+      "leaders": ["Kathryn Krick"],
+      "category": "international_minister_reference",
+      "impact": "Direct influence on Swedish charismatic networks and individual ministries",
+      "videos": [
+        { "url": "https://www.youtube.com/watch?v=54_FDa236xs" }
+      ],
+      "transcript": "https://markusisaksson1982.github.io/comparative-analyses/cos-akk/akk-transcripts/2025-08-02-revival-is-now-stockholm-sweden.html",
+      "index_html": "./index.html"
+    },
+    {
+      "event_name": "Sverige Tillber Jesus",
+      "dates": ["2025-08-02"],
+      "location": "Kungsträdgården, Stockholm",
+      "leaders": ["Various organizers including Church of Sweden ordained priest"],
+      "category": "ecumenical_event_reference",
+      "impact": "Ecumenical worship gathering, cross-denominational influence in Sweden",
+      "video_search": "https://www.youtube.com/results?search_query=Sverige+tillber+Jesus",
+      "index_html": "./index.html"
+    }
+  ]
 }
