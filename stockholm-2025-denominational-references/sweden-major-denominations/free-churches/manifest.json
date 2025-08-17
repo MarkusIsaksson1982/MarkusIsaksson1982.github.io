@@ -1,39 +1,40 @@
 {
   "denomination": "Free Churches (Frikyrkor)",
-  "denomination_native": "Frikyrkor",
-  "scope": "sweden",
-  "classification": "Evangelical / Charismatic / Baptist / Methodist",
-  "episcopal": false,
-  "membership_sweden": 60000,
-  "stockholm_2025_role": "research_reference",
-  "description": "Sweden's Free Churches include various Evangelical, Baptist, Methodist, and Pentecostal denominations outside the Church of Sweden. They emphasize personal conversion, charismatic worship, and congregational autonomy.",
-  "key_congregations": [
+  "description": "Sweden's free churches include various Evangelical, Baptist, Methodist, and Pentecostal denominations outside the Church of Sweden.",
+  "resources": [
     { "name": "Livets Ord", "url": "https://www.livetsord.se" },
     { "name": "Församlingen Arken", "url": "https://www.arken.org" },
     { "name": "We Are One Church", "url": "https://www.waochurch.com" }
   ],
-  "theological_distinctives": [
-    "Word of Faith teaching",
-    "Charismatic worship",
-    "Personal conversion",
-    "Congregational governance",
-    "Lay leadership focus"
-  ],
-  "social_engagement": [
-    "Evangelism and discipleship",
-    "Community outreach",
-    "Addiction recovery programs",
-    "Youth ministry"
-  ],
-  "ai_analysis_ready": true,
-  "cross_reference_tags": [
-    "evangelical",
-    "charismatic",
-    "congregational",
-    "sweden",
-    "word_of_faith"
-  ],
-  "last_updated": "2025-08-17",
-  "data_quality": "primary_sources_verified"
+  "events": [
+    {
+      "event_name": "Heidi Baker at Arken",
+      "dates": ["2025-08-19", "2025-08-20"],
+      "location": "Arken, Sweden",
+      "leaders": ["Heidi Baker"],
+      "category": "international_minister_with_local_context",
+      "impact": "Spiritual renewal and evangelistic influence in Swedish Free Church congregations",
+      "videos": [
+        { "date": "2025-08-19", "url": "https://www.youtube.com/watch?v=zyr6o6i-t6k" },
+        { "date": "2025-08-20", "url": "https://www.youtube.com/watch?v=Yo2HBX_p-Fs" }
+      ],
+      "index_html": "./index.html"
+    },
+    {
+      "event_name": "Livets Ords Europakonferens",
+      "dates": ["2025-07-22", "2025-07-27"],
+      "location": "Sweden",
+      "leaders": ["Ankit Sajwan", "Brandi Carrano", "John Carrano", "Henok Worku"],
+      "category": "international_ministers_local_context",
+      "impact": "European conference influence hosted in Sweden, local participation, reinforcement of Word of Faith networks",
+      "videos": [
+        { "date": "2025-07-23", "leader": "Brandi Carrano", "url": "https://www.youtube.com/watch?v=JzdnYflOJVk" },
+        { "date": "2025-07-24", "leader": "John Carrano", "url": "https://www.youtube.com/watch?v=ia6AtK1pHrw" },
+        { "date": "2025-07-24", "leader": "Ankit Sajwan", "url": "https://www.youtube.com/watch?v=Q-9Bu8zrH8A" },
+        { "date": "2025-07-25", "leader": "Henok Worku", "url": "https://www.youtube.com/watch?v=7B975P0exKA" },
+        { "date": "2025-07-26", "leader": "Henok Worku", "url": "https://www.youtube.com/watch?v=pzpZQAAUAq0" }
+      ],
+      "index_html": "./index.html"
+    }
+  ]
 }
-s
