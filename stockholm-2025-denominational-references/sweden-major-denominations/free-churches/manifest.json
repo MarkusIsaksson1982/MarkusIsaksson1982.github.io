@@ -17,7 +17,8 @@
       "videos": [
         { "date": "2025-08-19", "url": "https://www.youtube.com/watch?v=zyr6o6i-t6k",
       "transcript": "https://markusisaksson1982.github.io/stockholm-2025-denominational-references/sweden-major-denominations/free-churches/2025-08-19-heidi-baker-arken-raw.html" },
-        { "date": "2025-08-20", "url": "https://www.youtube.com/watch?v=Yo2HBX_p-Fs" }
+        { "date": "2025-08-20", "url": "https://www.youtube.com/watch?v=Yo2HBX_p-Fs",
+      "transcript": "https://markusisaksson1982.github.io/stockholm-2025-denominational-references/sweden-major-denominations/free-churches/2025-08-20-heidi-baker-arken-raw.html" }
       ],
       "index_html": "./index.html"
     },
