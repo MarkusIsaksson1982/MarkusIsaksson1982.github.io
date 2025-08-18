@@ -5,7 +5,21 @@
       "youtube": "https://www.youtube.com/playlist?list=PLX3SBMW-XlAiWLoYzf9A-IG8jTn_okxY8",
       "episodes": [
         {
-          "episode": "1/21", 
+      "episode": "1/22", 
+      "date": "2025-08-17",
+      "liturgical_day": "9:e söndagen e. trefaldighet",
+      "theme": "Goda förvaltare",
+      "title": "Revival at the Beach + Baptisms", 
+      "file": "akk-transcripts/2025-08-17-revival-at-the-beach-plus-baptisms.html", 
+      "youtube": "https://www.youtube.com/watch?v=UzljQU2U6Z4",
+      "readings": {
+        "ot": "Ords 7:27-32",
+        "epistle": "Ef 4:20-28", 
+        "gospel": "Luk 12:42-48",
+        "psalm": "Ps 8"
+      }
+    },{
+          "episode": "2/22", 
           "date": "2025-08-10",
           "liturgical_day": "8:e söndagen e. trefaldighet",
           "theme": "Andlig klarsyn",
@@ -20,7 +34,7 @@
           }
         },
         {
-          "episode": "2/21", 
+          "episode": "3/22", 
           "date": "2025-08-03",
           "liturgical_day": "Kristi förklarings dag",
           "theme": "Jesus förhärligad",
@@ -35,7 +49,7 @@
           }
         },
         {
-          "episode": "3/21",
+          "episode": "4/22",
           "date": "2025-07-27", 
           "liturgical_day": "6:e söndagen e. trefaldighet",
           "theme": "Efterföljelse",
@@ -50,7 +64,7 @@
           }
         },
         {
-          "episode": "4/21",
+          "episode": "5/22",
           "date": "2025-07-20",
           "liturgical_day": "Apostladagen", 
           "theme": "Sänd mig",
@@ -65,7 +79,7 @@
           }
         },
         {
-          "episode": "5/21",
+          "episode": "6/22",
           "date": "2025-07-13",
           "liturgical_day": "4:e söndagen e. trefaldighet",
           "theme": "Att inte döma", 
@@ -80,7 +94,7 @@
           }
         },
         {
-          "episode": "6/21",
+          "episode": "7/22",
           "date": "2025-07-06",
           "liturgical_day": "3:e söndagen e. trefaldighet",
           "theme": "Förlorad och återfunnen",
@@ -95,7 +109,7 @@
           }
         },
         {
-          "episode": "7/21",
+          "episode": "8/22",
           "date": "2025-06-29",
           "liturgical_day": "2:a söndagen e. trefaldighet",
           "theme": "Kallelsen till Guds rike",
@@ -110,7 +124,7 @@
           }
         },
         {
-          "episode": "8/21", 
+          "episode": "9/22", 
           "date": "2025-06-22",
           "liturgical_day": "Den helige Johannes döp. dag",
           "theme": "Den Högstes profet",
@@ -125,7 +139,7 @@
           }
         },
         {
-          "episode": "9/21",
+          "episode": "10/22",
           "date": "2025-06-21",
           "liturgical_day": "Midsommardagen",
           "theme": "Skapelsen",
@@ -139,7 +153,7 @@
           }
         },
         {
-          "episode": "10/21",
+          "episode": "11/22",
           "date": "2025-06-15",
           "liturgical_day": "Heliga trefaldighets dag",
           "theme": "Gud - Fader, Son och Ande",
@@ -156,7 +170,7 @@
           }
         },
         {
-          "episode": "11/21",
+          "episode": "12/22",
           "date": "2025-06-09",
           "liturgical_day": "Annandag pingst",
           "theme": "Andens vind över världen",
@@ -170,7 +184,7 @@
           }
         },
         {
-          "episode": "12/21",
+          "episode": "13/22",
           "date": "2025-06-08", 
           "liturgical_day": "Pingstdagen",
           "theme": "Den Helige Anden",
@@ -187,7 +201,7 @@
           }
         },
         {
-          "episode": "13/21",
+          "episode": "14/22",
           "date": "2025-06-01",
           "liturgical_day": "Söndagen före pingst",
           "theme": "Hjälparen kommer",
@@ -202,7 +216,7 @@
           }
         },
         {
-          "episode": "14/21",
+          "episode": "15/22",
           "date": "2025-05-29",
           "liturgical_day": "Kristi himmelsfärds dag",
           "theme": "Herre över allting",
@@ -217,7 +231,7 @@
           }
         },
         {
-          "episode": "15/21",
+          "episode": "16/22",
           "date": "2025-05-25",
           "liturgical_day": "Bönsöndagen",
           "theme": "Bönen", 
@@ -232,7 +246,7 @@
           }
         },
         {
-          "episode": "16/21",
+          "episode": "17/22",
           "date": "2025-05-18",
           "liturgical_day": "5:e söndagen i påsktiden",
           "theme": "Att växa i tro",
@@ -249,7 +263,7 @@
           }
         },
         {
-          "episode": "17/21",
+          "episode": "18/22",
           "date": "2025-05-11",
           "liturgical_day": "4:e söndagen i påsktiden", 
           "theme": "Vägen till livet",
@@ -264,7 +278,7 @@
           }
         },
         {
-          "episode": "18/21",
+          "episode": "19/22",
           "date": "2025-05-04",
           "liturgical_day": "3:e söndagen i påsktiden",
           "theme": "Den gode herden",
@@ -279,7 +293,7 @@
           }
         },
         {
-          "episode": "19/21",
+          "episode": "20/22",
           "date": "2025-04-27",
           "liturgical_day": "2:a söndagen i påsktiden",
           "theme": "Påskens vittnen", 
@@ -294,7 +308,7 @@
           }
         },
         {
-          "episode": "20/21",
+          "episode": "21/22",
           "date": "2025-04-21",
           "liturgical_day": "Annandag påsk",
           "theme": "Möte med den uppståndne",
@@ -308,7 +322,7 @@
           }
         },
         {
-          "episode": "21/21",
+          "episode": "22/22",
           "date": "2025-04-20",
           "liturgical_day": "Påskdagen",
           "theme": "Kristus är uppstånden",
