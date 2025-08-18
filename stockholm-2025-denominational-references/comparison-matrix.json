@@ -1,3 +1,63 @@
+### This is not intended as a regular .json file, but rather as a tabulation of .json content to later be integrated in matrix.json or elsewhere
+
+{
+  "special_events": {
+    "sverige_tillber_jesus": {
+      "title": "Sverige tillber Jesus",
+      "location": "Kungsträdgården, Stockholm",
+      "date": "2025-08-02",
+      "youtube": "https://www.youtube.com/watch?v=MwRnrjP4aEo",
+      "file": "special-events/2025-08-02-sverige-tillber-jesus.html",
+      "status": "transcript_in_progress"
+    }
+  },
+  "hierarchical": {
+    "leo_xiv": {
+      "angelus_2025_08_10": {
+        "title": "Angelus (10 August 2025)",
+        "speaker": "Pope Leo XIV",
+        "location": "St. Peter's Square, Vatican City",
+        "date": "2025-08-10",
+        "youtube": "https://www.youtube.com/watch?v=PLACEHOLDER_ANGELUS",
+        "file": "hierarchical/leo-xiv/2025-08-10-angelus.html",
+        "status": "pending_transcript"
+      },
+      "assumption_2025_08_15": {
+        "title": "Solemnity of the Assumption Homily (15 August 2025)",
+        "speaker": "Pope Leo XIV",
+        "location": "St. Peter's Basilica, Vatican City",
+        "date": "2025-08-15",
+        "youtube": "https://www.youtube.com/watch?v=PLACEHOLDER_ASSUMPTION",
+        "file": "hierarchical/leo-xiv/2025-08-15-assumption.html",
+        "status": "pending_transcript"
+      }
+    },
+    "bartholomew": {
+      "keynote_2025_07_29": {
+        "title": "Keynote Address (29 July 2025)",
+        "speaker": "Patriarch Bartholomew I",
+        "location": "Istanbul (exact venue TBD)",
+        "date": "2025-07-29",
+        "youtube": "https://www.youtube.com/watch?v=PLACEHOLDER_KEYNOTE",
+        "file": "hierarchical/bartholomew/2025-07-29-keynote.html",
+        "status": "pending_transcript"
+      },
+      "templeton_address": {
+        "title": "Templeton Prize Address (2025)",
+        "speaker": "Patriarch Bartholomew I",
+        "location": "Templeton Foundation Event (venue TBD)",
+        "date": "2025-??-??",
+        "youtube": "https://www.youtube.com/watch?v=PLACEHOLDER_TEMPLETON",
+        "file": "hierarchical/bartholomew/2025-templeton.html",
+        "status": "pending_transcript"
+      }
+    }
+  }
+}
+
+
+
+
 {
   "schema_version": "1.0",
   "last_updated": "2025-08-17",
