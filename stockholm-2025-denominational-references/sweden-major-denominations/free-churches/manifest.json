@@ -16,9 +16,9 @@
       "impact": "Spiritual renewal and evangelistic influence in Swedish Free Church congregations",
       "videos": [
         { "date": "2025-08-19", "url": "https://www.youtube.com/watch?v=zyr6o6i-t6k",
-      "transcript": "https://markusisaksson1982.github.io/stockholm-2025-denominational-references/sweden-major-denominations/free-churches/2025-08-19-heidi-baker-arken-raw.html" },
+      "transcript": "https://MarkusIsaksson1982.github.io/stockholm-2025-denominational-references/sweden-major-denominations/free-churches/2025-08-19-heidi-baker-arken-raw.html" },
         { "date": "2025-08-20", "url": "https://www.youtube.com/watch?v=Yo2HBX_p-Fs",
-      "transcript": "https://markusisaksson1982.github.io/stockholm-2025-denominational-references/sweden-major-denominations/free-churches/2025-08-20-heidi-baker-arken-raw.html" }
+      "transcript": "https://MarkusIsaksson1982.github.io/stockholm-2025-denominational-references/sweden-major-denominations/free-churches/2025-08-20-heidi-baker-arken-raw.html" }
       ],
       "index_html": "./index.html"
     },
@@ -34,8 +34,10 @@
       "videos": [
         { "date": "2025-07-23", "leader": "Brandi Carrano", "url": "https://www.youtube.com/watch?v=JzdnYflOJVk" },
         { "date": "2025-07-24", "leader": "John Carrano", "url": "https://www.youtube.com/watch?v=koNyCdrx3ok" },
-        { "date": "2025-07-24", "leader": "Ankit Sajwan", "url": "https://www.youtube.com/watch?v=ia6AtK1pHrw" },
-        { "date": "2025-07-25", "leader": "Ankit Sajwan", "url": "https://www.youtube.com/watch?v=Q-9Bu8zrH8A" },
+        { "date": "2025-07-24", "leader": "Ankit Sajwan", "url": "https://www.youtube.com/watch?v=ia6AtK1pHrw",
+      "transcript": "https://MarkusIsaksson1982.github.io/stockholm-2025-denominational-references/sweden-major-denominations/free-churches/2025-08-24-ankit-sajwan-livets-ord-raw.html" },
+        { "date": "2025-07-25", "leader": "Ankit Sajwan", "url": "https://www.youtube.com/watch?v=Q-9Bu8zrH8A",
+      "transcript": "https://MarkusIsaksson1982.github.io/stockholm-2025-denominational-references/sweden-major-denominations/free-churches/2025-08-25-ankit-sajwan-livets-ord-raw.html" },
         { "date": "2025-07-25", "leader": "Henok Worku", "url": "https://www.youtube.com/watch?v=7B975P0exKA" },
         { "date": "2025-07-26", "leader": "Henok Worku", "url": "https://www.youtube.com/watch?v=pzpZQAAUAq0" }
       ],
