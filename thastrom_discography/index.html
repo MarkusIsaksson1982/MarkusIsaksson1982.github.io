@@ -112,6 +112,26 @@
             font-size: 0.9rem;
             color: #7f8c8d;
             margin-top: 5px;
+            margin-bottom: 15px;
+        }
+        
+        /* NEW: Video container styling */
+        .video {
+            margin-top: 15px;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 5px;
         }
         
         footer {
@@ -155,6 +175,15 @@
             .lyrics {
                 font-size: 0.9rem;
             }
+            
+            .navigation {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-button {
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -175,36 +204,38 @@
             <a href="#" class="nav-button">Next Show</a>
         </div>
         
-       <div class="song">
-  <div class="song-title">
-    <span class="song-number">1</span>
-    Solen i den vänstra
-  </div>
-  <div class="album-info">From: Somliga av oss (2024)</div>
-  <div class="video">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/YSpuKcHru40"
-      title="Thåström - Solen i den vänstra" frameborder="0" allowfullscreen></iframe>
-  </div>
-</div>
-<div class="song">
-  <div class="song-title">
-    <span class="song-number">2</span>
-    Isbergen
-  </div>
-  <div class="album-info">From: Dom som skiner (2021)</div>
-  <div class="video">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/ZnOOkAWO6Lk"
-      title="Thåström - Isbergen" frameborder="0" allowfullscreen></iframe>
-  </div>
-</div>
-     
-<div class="song">
-    <div class="song-title">
-        <span class="song-number">3</span>
-        Alla vill till himlen
-    </div>
-    <div class="album-info">From: Thåström (1989)</div>
-    <div class="lyrics">
+        <div class="setlist">
+            <div class="song">
+                <div class="song-title">
+                    <span class="song-number">1</span>
+                    Solen i den vänstra
+                </div>
+                <div class="album-info">From: Somliga av oss (2024)</div>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/YSpuKcHru40" 
+                    title="Thåström - Solen i den vänstra" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <div class="song">
+                <div class="song-title">
+                    <span class="song-number">2</span>
+                    Isbergen
+                </div>
+                <div class="album-info">From: Dom som skiner (2021)</div>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/ZnOOkAWO6Lk" 
+                    title="Thåström - Isbergen" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <div class="song">
+                <div class="song-title">
+                    <span class="song-number">3</span>
+                    Alla vill till himlen
+                </div>
+                <div class="album-info">From: Thåström (1989)</div>
+                <div class="lyrics">
 [Vers 1]
 Kan du inte byta ut ditt namn så byt planet
 Du kan bli en stjärna som dom aldrig kan ta ner
@@ -253,20 +284,20 @@ Alla vill till himlen och
 Åka limousine förståss
 Alla vill till himlen, till himlen
 Till himlen, till himlen
-    </div>
-    <div class="video">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/O8rV3TMJfJA" 
-        title="Thåström - Alla vill till himlen" frameborder="0" allowfullscreen></iframe>
-    </div>
-</div>
-
+                </div>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/O8rV3TMJfJA" 
+                    title="Thåström - Alla vill till himlen" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            
             <div class="song">
-  <div class="song-title">
-    <span class="song-number">4</span>
-    Söndagmåndagsång
-  </div>
-  <div class="album-info">From: Skebokvarnsv. 209 (2005)</div>
-  <div class="lyrics">
+                <div class="song-title">
+                    <span class="song-number">4</span>
+                    Söndagmåndagsång
+                </div>
+                <div class="album-info">From: Skebokvarnsv. 209 (2005)</div>
+                <div class="lyrics">
 Det är ett party nere på gatan
 Men jag ska inte gå
 Har man levt så här länge är det
@@ -293,7 +324,7 @@ Tillbaks på samma punkt
 Man vet att man är hemma
 För stan är likadan
 Man vet att man är hemma, men
-Det är ändå inte samma sak
+Det är ändå ikke samma sak
 Vad bryr jag mig om fredag?
 Vad bryr jag mig om lördag?
 Det här
@@ -317,19 +348,20 @@ Det här
 En söndagmåndagsång
 En söndagmåndagsång
 Låtskrivare: Per Hägglund, Thåström
-  </div>
-  <div class="video">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/dVa6GW_A9H0"
-      title="Thåström - Söndagmåndagsång" frameborder="0" allowfullscreen></iframe>
-  </div>
-</div>
-<div class="song">
-  <div class="song-title">
-    <span class="song-number">5</span>
-    Främling överallt
-  </div>
-  <div class="album-info">From: Skebokvarnsv. 209 (2005)</div>
-  <div class="lyrics">
+                </div>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/dVa6GW_A9H0" 
+                    title="Thåström - Söndagmåndagsång" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <div class="song">
+                <div class="song-title">
+                    <span class="song-number">5</span>
+                    Främling överallt
+                </div>
+                <div class="album-info">From: Skebokvarnsv. 209 (2005)</div>
+                <div class="lyrics">
 Han rökte Röda Commerce utan
 Hans far hade varit 'stins i Laholm
 Han skulle visst blivit tandläkare, men han
@@ -351,82 +383,85 @@ Jag hörde honom genom väggen, jämt och ständigt
 Hur han låg och vred sig i varje natt
 Om det var allting som han hade spelat bort eller var han bara
 Främling överallt
-Om det var därför han var så sluten
+Om det var därför han är så sluten
 För han sa aldrig nåt
 Eller kanske drömde han bara om att långt tåg skulle ta honom
 Långt, långt bort
 Låtskrivare: Thåström.
-  </div>
-  <div class="video">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/p4RdFiMXHmo"
-      title="Thåström - Främling överallt" frameborder="0" allowfullscreen></iframe>
-  </div>
-</div>
+                </div>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/p4RdFiMXHmo" 
+                    title="Thåström - Främling överallt" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            
             <div class="song">
-  <div class="song-title">
-    <span class="song-number">6</span>
-    Norrut/Söderut
-  </div>
-  <div class="album-info">From: Somliga av oss (2024)</div>
-  <div class="video">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/gI9f6Q-bLtk"
-      title="Thåström - Norrut/Söderut" frameborder="0" allowfullscreen></iframe>
-  </div>
-</div>
-<div class="song">
-  <div class="song-title">
-    <span class="song-number">7</span>
-    Kom med mig
-  </div>
-  <div class="album-info">From: Album (2015)</div>
-  <div class="video">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/ABG3VpWqhws"
-      title="Thåström - Kom med mig" frameborder="0" allowfullscreen></iframe>
-  </div>
-</div>
-
+                <div class="song-title">
+                    <span class="song-number">6</span>
+                    Norrut/Söderut
+                </div>
+                <div class="album-info">From: Somliga av oss (2024)</div>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/gI9f6Q-bLtk" 
+                    title="Thåström - Norrut/Söderut" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            
             <div class="song">
-  <div class="song-title">
-    <span class="song-number">8</span>
-    Som tåg av längtan
-  </div>
-  <div class="album-info">From: Kärlek är för dom (2009)</div>
-  <div class="video">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/GoWVFWlpP1w"
-      title="Thåström - Som tåg av längtan" frameborder="0" allowfullscreen></iframe>
-  </div>
-</div>
-<div class="song">
-  <div class="song-title">
-    <span class="song-number">9</span>
-    Det bästa av allt
-  </div>
-  <div class="album-info">From: Somliga av oss (2024)</div>
-  <div class="video">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/XnZDb8F_yqM"
-      title="Thåström - Det bästa av allt" frameborder="0" allowfullscreen></iframe>
-  </div>
-</div>
-
-<div class="song">
-  <div class="song-title">
-    <span class="song-number">10</span>
-    Old Point Bar
-  </div>
-  <div class="album-info">From: Centralmassivet (2017)</div>
-  <div class="video">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/omupXyvV2is"
-      title="Thåström - Old Point Bar" frameborder="0" allowfullscreen></iframe>
-  </div>
-</div>
-
-    <div class="song">
-    <div class="song-title">
-        <span class="song-number">11</span>
-        Märk hur vår skugga
-    </div>
-    <div class="album-info">From: Imperiet - Singel (1985)</div>
-    <div class="lyrics">
+                <div class="song-title">
+                    <span class="song-number">7</span>
+                    Kom med mig
+                </div>
+                <div class="album-info">From: Den Morronen (2015)</div>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/ABG3VpWqhws" 
+                    title="Thåström - Kom med mig" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <div class="song">
+                <div class="song-title">
+                    <span class="song-number">8</span>
+                    Som tåg av längtan
+                </div>
+                <div class="album-info">From: Kärlek är för dom (2009)</div>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/GoWVFWlpP1w" 
+                    title="Thåström - Som tåg av längtan" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <div class="song">
+                <div class="song-title">
+                    <span class="song-number">9</span>
+                    Det bästa av allt
+                </div>
+                <div class="album-info">From: Somliga av oss (2024)</div>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/XnZDb8F_yqM" 
+                    title="Thåström - Det bästa av allt" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <div class="song">
+                <div class="song-title">
+                    <span class="song-number">10</span>
+                    Old Point Bar
+                </div>
+                <div class="album-info">From: Centralmassivet (2017)</div>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/omupXyvV2is" 
+                    title="Thåström - Old Point Bar" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <div class="song">
+                <div class="song-title">
+                    <span class="song-number">11</span>
+                    Märk hur vår skugga
+                </div>
+                <div class="album-info">From: Imperiet - Singel (1985)</div>
+                <div class="lyrics">
 Märk hur vår skugga, märk Movitz mon frére
 Inom ett mörker sig slutar
 Hur guld å purpur i skoveln, den där
@@ -454,45 +489,45 @@ Hon från Dantubommen skildes idag
 Vem skall nu flaskan befalla
 Törstig var hon och uttörstig är jag
 Vi är törstiga alla
-Låtskrivare: Carl Michael Bellman                
-    </div>
-    <div class="video">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/ssqmu-MYwBQ" 
-        title="Imperiet - Märk hur vår skugga" frameborder="0" allowfullscreen></iframe>
-    </div>
-</div>
-          
-    <div class="song">
-  <div class="song-title">
-    <span class="song-number">12</span>
-    Körkarlen
-  </div>
-  <div class="album-info">From: Centralmassivet (2017)</div>
-  <div class="video">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/qnOA3dhiEGk"
-      title="Thåström - Körkarlen" frameborder="0" allowfullscreen></iframe>
-  </div>
-</div>
-        
-<div class="song">
-  <div class="song-title">
-    <span class="song-number">13</span>
-    Långtbort
-  </div>
-  <div class="album-info">From: Kärlek är för dom (2009)</div>
-  <div class="video">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/dxuGY5itj50"
-      title="Thåström - Långtbort" frameborder="0" allowfullscreen></iframe>
-  </div>
-</div>
+Låtskrivare: Carl Michael Bellman
+                </div>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/ssqmu-MYwBQ" 
+                    title="Imperiet - Märk hur vår skugga" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
             
-<div class="song">
-  <div class="song-title">
-    <span class="song-number">14</span>
-    Ingen sjunger blues som Jeffrey Lee Pierce
-  </div>
-  <div class="album-info">From: Skebokvarnsv. 209 (2005)</div>
-  <div class="lyrics">
+            <div class="song">
+                <div class="song-title">
+                    <span class="song-number">12</span>
+                    Körkarlen
+                </div>
+                <div class="album-info">From: Centralmassivet (2017)</div>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/qnOA3dhiEGk" 
+                    title="Thåström - Körkarlen" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <div class="song">
+                <div class="song-title">
+                    <span class="song-number">13</span>
+                    Långtbort
+                </div>
+                <div class="album-info">From: Kärlek är för dom (2009)</div>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/dxuGY5itj50" 
+                    title="Thåström - Långtbort" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <div class="song">
+                <div class="song-title">
+                    <span class="song-number">14</span>
+                    Ingen sjunger blues som Jeffrey Lee Pierce
+                </div>
+                <div class="album-info">From: Skebokvarnsv. 209 (2005)</div>
+                <div class="lyrics">
 I hans trädgård faller äpplen idag
 I hans trädgård rasar rosenblad av
 I hans trädgård går kråkor och skrikor och skat
@@ -524,20 +559,21 @@ Ingen sjunger blues som Jeffrey Lee
 Och ingen sjunger blues som Jeffrey Lee
 Ingen sjunger blues som Jeffrey Lee
 Ingen sjunger blues som Jeffrey Lee
-Låtskrivare: Thåström  </div>
-  <div class="video">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/Di-KEssWVUE"
-      title="Thåström - Ingen sjunger blues som Jeffrey Lee Pierce" frameborder="0" allowfullscreen></iframe>
-  </div>
-</div>
+Låtskrivare: Thåström
+                </div>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/Di-KEssWVUE" 
+                    title="Thåström - Ingen sjunger blues som Jeffrey Lee Pierce" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
             
             <div class="song">
-    <div class="song-title">
-        <span class="song-number">15</span>
-        Flyktsoda
-    </div>
-    <div class="album-info">From: Ebba Grön – Kärlek & Uppror (1981)</div>
-    <div class="lyrics">
+                <div class="song-title">
+                    <span class="song-number">15</span>
+                    Flyktsoda
+                </div>
+                <div class="album-info">From: Ebba Grön – Kärlek & Uppror (1981)</div>
+                <div class="lyrics">
 Var inte rädd för mig, jag är så rädd för dig
 Jag går på glödande kol
 Lyckan kommer, lyckan går
@@ -575,35 +611,33 @@ Flyktsoda, ta mig iland, sätt mig i brand
 Flyktsoda, ta mig iland, sätt mig i brand
 Flyktsoda, ta mig iland, sätt mig i brand
 Ibland, ibland, ibland
-Låtskrivare: Joachim Th├ñstr├âm, Gunnar Nils Ljungstedt, Lennart Olof Eriksson, Anders Bo Sj├âholm, Joachim Thastrom.</div>
-    <div class="video">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/6nDllKuaM4E" 
-        title="Ebba Grön - Flyktsoda" frameborder="0" allowfullscreen></iframe>
-    </div>
-</div>
-
+Låtskrivare: Joachim Thåström, Gunnar Nils Ljungstedt, Lennart Olof Eriksson, Anders Bo Sjöholm
+                </div>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/6nDllKuaM4E" 
+                    title="Ebba Grön - Flyktsoda" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
             
-            
-<div class="song">
-  <div class="song-title">
-    <span class="song-number">16</span>
-    Södra korset
-  </div>
-  <div class="album-info">From: Dom som skiner (2021)</div>
-  <div class="video">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/cijFs3Pb_78"
-      title="Thåström - Södra korset" frameborder="0" allowfullscreen></iframe>
-  </div>
-</div>
-
-
             <div class="song">
-    <div class="song-title">
-        <span class="song-number">17</span>
-        Karenina
-    </div>
-    <div class="album-info">From: Thåström (1989)</div>
-    <div class="lyrics">
+                <div class="song-title">
+                    <span class="song-number">16</span>
+                    Södra korset
+                </div>
+                <div class="album-info">From: Dom som skiner (2021)</div>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/cijFs3Pb_78" 
+                    title="Thåström - Södra korset" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <div class="song">
+                <div class="song-title">
+                    <span class="song-number">17</span>
+                    Karenina
+                </div>
+                <div class="album-info">From: Thåström (1989)</div>
+                <div class="lyrics">
 Det är nånting du lämnat kvar
 En doft av alkohol och sav
 O nåt du aldrig får tillbaks
@@ -635,31 +669,33 @@ Karenina
 Mitt pussel blev aldrig klart
 Jag ser ditt hjärta brinner klart
 Som en cigarett i mitt askfat
-(Som nåt man aldrig får ha kvar)    </div>
-    <div class="video">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/5wF0DfPTUc0" 
-        title="Thåström - Karenina" frameborder="0" allowfullscreen></iframe>
-    </div>
-</div>
-    <div class="song">
-  <div class="song-title">
-    <span class="song-number">18</span>
-    Kort biografi med litet testamente
-  </div>
-  <div class="album-info">From: Kärlek är för dom (2009)</div>
-  <div class="video">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/CPLhrmfs23k"
-      title="Thåström - Kort biografi med litet testamente" frameborder="0" allowfullscreen></iframe>
-  </div>
-</div>
-
-    <div class="song">
-    <div class="song-title">
-        <span class="song-number">19</span>
-        Miss Huddinge -72
-    </div>
-    <div class="album-info">From: Xplodera Mig 2000 (1991)</div>
-    <div class="lyrics">
+(Som nåt man aldrig får ha kvar)
+                </div>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/5wF0DfPTUc0" 
+                    title="Thåström - Karenina" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <div class="song">
+                <div class="song-title">
+                    <span class="song-number">18</span>
+                    Kort biografi med litet testamente
+                </div>
+                <div class="album-info">From: Kärlek är för dom (2009)</div>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/CPLhrmfs23k" 
+                    title="Thåström - Kort biografi med litet testamente" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <div class="song">
+                <div class="song-title">
+                    <span class="song-number">19</span>
+                    Miss Huddinge -72
+                </div>
+                <div class="album-info">From: Xplodera Mig 2000 (1991)</div>
+                <div class="lyrics">
 (Vers)
 Pojkar och flickor, hör ni mig
 Pojkar och flickor, se på mig
@@ -678,7 +714,7 @@ Miss Huddinge centrum, nittonhundrasjuttitvå
 (Vers)
 Pojkar och flickor hör ni mig?
 Pojkar och flickor se på mig!
-Pojkar och flickor hör ni mig?
+Pojkar och flickor hör ni me?
 Pojkar och flickor se på mig!
 
 Vad vet ni om livet som aldrig har sett
@@ -710,25 +746,25 @@ Miss Huddinge centrum nittonhundrasjuttiotvå (x3)
 Miss Huddinge centrum nittonhundrasjuttiotvå (x2)
 Kom, kom, kommer ni ihåg
 Miss Huddinge centrum nittonhundrasjuttiotvå
-    </div>
-    <div class="video">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/Vk-3uVFNYHI" 
-        title="Thåström - Miss Huddinge -72" frameborder="0" allowfullscreen></iframe>
-    </div>
-</div>
-         
+                </div>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/Vk-3uVFNYHI" 
+                    title="Thåström - Miss Huddinge -72" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
             
-<div class="song">
-  <div class="song-title">
-    <span class="song-number">20</span>
-    Centralmassivet
-  </div>
-  <div class="album-info">From: Centralmassivet (2017)</div>
-  <div class="video">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/2FU0Ggu6kz0"
-      title="Thåström - Centralmassivet" frameborder="0" allowfullscreen></iframe>
-  </div>
-</div>
+            <div class="song">
+                <div class="song-title">
+                    <span class="song-number">20</span>
+                    Centralmassivet
+                </div>
+                <div class="album-info">From: Centralmassivet (2017)</div>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/2FU0Ggu6kz0" 
+                    title="Thåström - Centralmassivet" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
         
         <footer>
             <p>Thåström Setlist Archive | 2025 Summer Tour</p>
