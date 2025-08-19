@@ -1,5 +1,18 @@
 {
   "playlists": [
+    
+    {
+      "name": "Receiving & Maintaining Your Deliverance",
+      "youtube": "https://www.youtube.com/playlist?list=PLX3SBMW-XlAj-eTItta1x8--2LOF0biUP",
+      "episodes": [
+        {"episode": "1/6", "title": "Receiving Complete Deliverance", "file": "receiving-and-maintaining-your-deliverance/1-6-receiving-complete-deliverance-episode.html", "youtube": "https://www.youtube.com/watch?v=jxROT_VgZvM"},
+        {"episode": "2/6", "title": "Maintaining Deliverance (Part 1)", "file": "receiving-and-maintaining-your-deliverance/2-6-maintaining-deliverance-part-1-episode.html", "youtube": "https://www.youtube.com/watch?v=Ks3jrj5sCHY"},
+        {"episode": "3/6", "title": "Maintaining Deliverance (Part 2)", "file": "receiving-and-maintaining-your-deliverance/3-6-maintaining-deliverance-part-2-episode.html", "youtube": "https://www.youtube.com/watch?v=brZSOM2MkjI"},
+        {"episode": "4/6", "title": "Maintaining Deliverance (Part 3)", "file": "receiving-and-maintaining-your-deliverance/4-6-maintaining-deliverance-part-3-episode.html", "youtube": "https://www.youtube.com/watch?v=StKR9na8gkM"},
+        {"episode": "5/6", "title": "Maintaining Deliverance (Part 4)", "file": "receiving-and-maintaining-your-deliverance/5-6-maintaining-deliverance-part-4-episode.html", "youtube": "https://www.youtube.com/watch?v=p_NpxbZ15Ug"},
+        {"episode": "6/6", "title": "Connection Between Sowing and Deliverance", "file": "receiving-and-maintaining-your-deliverance/6-6-connection-sowing-deliverance-episode.html", "youtube": "https://www.youtube.com/watch?v=pd98L_nGGAI"}
+      ]
+    },
     {
       "name": "New Believer",
       "youtube": "https://www.youtube.com/playlist?list=PLX3SBMW-XlAiWLoYzf9A-IG8jTn_okxY8",
@@ -30,15 +43,47 @@
       ]
     },
     {
-      "name": "Receiving & Maintaining Your Deliverance",
-      "youtube": "https://www.youtube.com/playlist?list=PLX3SBMW-XlAj-eTItta1x8--2LOF0biUP",
+      "name": "Revival Army Training",
+      "youtube": "YT_PLACEHOLDER",
       "episodes": [
-        {"episode": "1/6", "title": "Receiving Complete Deliverance", "file": "receiving-and-maintaining-your-deliverance/1-6-receiving-complete-deliverance-episode.html", "youtube": "https://www.youtube.com/watch?v=jxROT_VgZvM"},
-        {"episode": "2/6", "title": "Maintaining Deliverance (Part 1)", "file": "receiving-and-maintaining-your-deliverance/2-6-maintaining-deliverance-part-1-episode.html", "youtube": "https://www.youtube.com/watch?v=Ks3jrj5sCHY"},
-        {"episode": "3/6", "title": "Maintaining Deliverance (Part 2)", "file": "receiving-and-maintaining-your-deliverance/3-6-maintaining-deliverance-part-2-episode.html", "youtube": "https://www.youtube.com/watch?v=brZSOM2MkjI"},
-        {"episode": "4/6", "title": "Maintaining Deliverance (Part 3)", "file": "receiving-and-maintaining-your-deliverance/4-6-maintaining-deliverance-part-3-episode.html", "youtube": "https://www.youtube.com/watch?v=StKR9na8gkM"},
-        {"episode": "5/6", "title": "Maintaining Deliverance (Part 4)", "file": "receiving-and-maintaining-your-deliverance/5-6-maintaining-deliverance-part-4-episode.html", "youtube": "https://www.youtube.com/watch?v=p_NpxbZ15Ug"},
-        {"episode": "6/6", "title": "Connection Between Sowing and Deliverance", "file": "receiving-and-maintaining-your-deliverance/6-6-connection-sowing-deliverance-episode.html", "youtube": "https://www.youtube.com/watch?v=pd98L_nGGAI"}
+        {"episode": "1/37", "title": "Revival Army Training Episode 1", "file": "AKK-CH5/revival-army-training/1-37-episode.html", "youtube": "https://www.youtube.com/watch?v=1bADQZ4E3Ss&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=1"},
+        {"episode": "2/37", "title": "Revival Army Training Episode 2", "file": "AKK-CH5/revival-army-training/2-37-episode.html", "youtube": "https://www.youtube.com/watch?v=G32Ofle31TA&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=2"},
+        {"episode": "3/37", "title": "Revival Army Training Episode 3", "file": "AKK-CH5/revival-army-training/3-37-episode.html", "youtube": "https://www.youtube.com/watch?v=4Xhs7h6ABlo&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=3"},
+        {"episode": "4/37", "title": "Revival Army Training Episode 4", "file": "AKK-CH5/revival-army-training/4-37-episode.html", "youtube": "https://www.youtube.com/watch?v=T1VztgIM8fI&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=4"},
+        {"episode": "5/37", "title": "Revival Army Training Episode 5", "file": "AKK-CH5/revival-army-training/5-37-episode.html", "youtube": "https://www.youtube.com/watch?v=5gkXxlYRxvo&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=5"},
+        {"episode": "6/37", "title": "Revival Army Training Episode 6", "file": "AKK-CH5/revival-army-training/6-37-episode.html", "youtube": "https://www.youtube.com/watch?v=N-DGYotj50w&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=6"},
+        {"episode": "7/37", "title": "Revival Army Training Episode 7", "file": "AKK-CH5/revival-army-training/7-37-episode.html", "youtube": "https://www.youtube.com/watch?v=VEbAlWbOt2E&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=7"},
+        {"episode": "8/37", "title": "Revival Army Training Episode 8", "file": "AKK-CH5/revival-army-training/8-37-episode.html", "youtube": "https://www.youtube.com/watch?v=NHYq4QHGdPw&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=8"},
+        {"episode": "9/37", "title": "Revival Army Training Episode 9", "file": "AKK-CH5/revival-army-training/9-37-episode.html", "youtube": "https://www.youtube.com/watch?v=5jU3dDWnMBw&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=9"},
+        {"episode": "10/37", "title": "Revival Army Training Episode 10", "file": "AKK-CH5/revival-army-training/10-37-episode.html", "youtube": "https://www.youtube.com/watch?v=oDVSFquQTI8&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=10"},
+        {"episode": "11/37", "title": "Revival Army Training Episode 11", "file": "AKK-CH5/revival-army-training/11-37-episode.html", "youtube": "https://www.youtube.com/watch?v=FfcKQIq6ouk&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=11"},
+        {"episode": "12/37", "title": "Revival Army Training Episode 12", "file": "AKK-CH5/revival-army-training/12-37-episode.html", "youtube": "https://www.youtube.com/watch?v=HY5BChLhIVM&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=12"},
+        {"episode": "13/37", "title": "Revival Army Training Episode 13", "file": "AKK-CH5/revival-army-training/13-37-episode.html", "youtube": "https://www.youtube.com/watch?v=kP_4_VC63vo&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=13"},
+        {"episode": "14/37", "title": "Revival Army Training Episode 14", "file": "AKK-CH5/revival-army-training/14-37-episode.html", "youtube": "https://www.youtube.com/watch?v=Hv5iToXJJzo&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=14"},
+        {"episode": "15/37", "title": "Revival Army Training Episode 15", "file": "AKK-CH5/revival-army-training/15-37-episode.html", "youtube": "https://www.youtube.com/watch?v=2TLpWqR2fKk&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=15"},
+        {"episode": "16/37", "title": "Revival Army Training Episode 16", "file": "AKK-CH5/revival-army-training/16-37-episode.html", "youtube": "https://www.youtube.com/watch?v=I_FWlwbzjyw&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=16"},
+        {"episode": "17/37", "title": "Revival Army Training Episode 17", "file": "AKK-CH5/revival-army-training/17-37-episode.html", "youtube": "https://www.youtube.com/watch?v=wk0w7zajuPg&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=17"},
+        {"episode": "18/37", "title": "Revival Army Training Episode 18", "file": "AKK-CH5/revival-army-training/18-37-episode.html", "youtube": "https://www.youtube.com/watch?v=SgLRfS3j5-w&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=18"},
+        {"episode": "19/37", "title": "Revival Army Training Episode 19", "file": "AKK-CH5/revival-army-training/19-37-episode.html", "youtube": "https://www.youtube.com/watch?v=A_bWdRYiZvE&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=19"},
+        {"episode": "20/37", "title": "Revival Army Training Episode 20", "file": "AKK-CH5/revival-army-training/20-37-episode.html", "youtube": "https://www.youtube.com/watch?v=cC61H2EyEoQ&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=20"},
+        {"episode": "21/37", "title": "Revival Army Training Episode 21", "file": "AKK-CH5/revival-army-training/21-37-episode.html", "youtube": "https://www.youtube.com/watch?v=S3j-eB__IOo&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=21"},
+        {"episode": "22/37", "title": "Revival Army Training Episode 22", "file": "AKK-CH5/revival-army-training/22-37-episode.html", "youtube": "https://www.youtube.com/watch?v=V_Szm1XWw70&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=22"},
+        {"episode": "23/37", "title": "Revival Army Training Episode 23", "file": "AKK-CH5/revival-army-training/23-37-episode.html", "youtube": "https://www.youtube.com/watch?v=nDEme3WzSHs&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=23"},
+        {"episode": "24/37", "title": "Revival Army Training Episode 24", "file": "AKK-CH5/revival-army-training/24-37-episode.html", "youtube": "https://www.youtube.com/watch?v=Akhg8zou-3U&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=24"},
+        {"episode": "25/37", "title": "Revival Army Training Episode 25", "file": "AKK-CH5/revival-army-training/25-37-episode.html", "youtube": "https://www.youtube.com/watch?v=1qgG3O3LhGs&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=25"},
+        {"episode": "26/37", "title": "Revival Army Training Episode 26", "file": "AKK-CH5/revival-army-training/26-37-episode.html", "youtube": "https://www.youtube.com/watch?v=YRNCeWZGHpw&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=26"},
+        {"episode": "27/37", "title": "Revival Army Training Episode 27", "file": "AKK-CH5/revival-army-training/27-37-episode.html", "youtube": "https://www.youtube.com/watch?v=XCk0x4ohWLI&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=27"},
+        {"episode": "28/37", "title": "Revival Army Training Episode 28", "file": "AKK-CH5/revival-army-training/28-37-episode.html", "youtube": "https://www.youtube.com/watch?v=kTPQtdhU-PQ&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=28"},
+        {"episode": "29/37", "title": "Revival Army Training Episode 29", "file": "AKK-CH5/revival-army-training/29-37-episode.html", "youtube": "https://www.youtube.com/watch?v=x1nWgjPqDDA&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=29"},
+        {"episode": "30/37", "title": "Revival Army Training Episode 30", "file": "AKK-CH5/revival-army-training/30-37-episode.html", "youtube": "https://www.youtube.com/watch?v=ONYawb2dtl4&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=30"},
+        {"episode": "31/37", "title": "Revival Army Training Episode 31", "file": "AKK-CH5/revival-army-training/31-37-episode.html", "youtube": "https://www.youtube.com/watch?v=HB3Ug_x9qAM&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=31"},
+        {"episode": "32/37", "title": "Revival Army Training Episode 32", "file": "AKK-CH5/revival-army-training/32-37-episode.html", "youtube": "https://www.youtube.com/watch?v=VH6NQdiyfhI&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=32"},
+        {"episode": "33/37", "title": "Revival Army Training Episode 33", "file": "AKK-CH5/revival-army-training/33-37-episode.html", "youtube": "https://www.youtube.com/watch?v=jlv44F1qdxU&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=33"},
+        {"episode": "34/37", "title": "Revival Army Training Episode 34", "file": "AKK-CH5/revival-army-training/34-37-episode.html", "youtube": "https://www.youtube.com/watch?v=4n_nUOMsQcs&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=34"},
+        {"episode": "35/37", "title": "Revival Army Training Episode 35", "file": "AKK-CH5/revival-army-training/35-37-episode.html", "youtube": "https://www.youtube.com/watch?v=WTlCMopUX7A&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=35"},
+        {"episode": "36/37", "title": "Revival Army Training Episode 36", "file": "AKK-CH5/revival-army-training/36-37-episode.html", "youtube": "https://www.youtube.com/watch?v=siDYAO9IEZ4&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=36"},
+        {"episode": "37/37", "title": "Revival Army Training Episode 37", "file": "AKK-CH5/revival-army-training/37-37-episode.html", "youtube": "https://www.youtube.com/watch?v=FJKPxH77WVk&list=PLX3SBMW-XlAhRWGmnXT7e3GGT-Z8fJ5UG&index=37"}
+        
       ]
     },
     {
@@ -56,28 +101,6 @@
         {"episode": "9/11", "title": "Revival is Now Podcast Episode 9", "file": "revival-is-now-podcast/9-11--episode.html", "youtube": "https://www.youtube.com/watch?v=nKVQzpalto4"},
         {"episode": "10/11", "title": "Revival is Now Podcast Episode 10", "file": "revival-is-now-podcast/10-11--episode.html", "youtube": "https://www.youtube.com/watch?v=Ko8jpOfjq8Y"},
         {"episode": "11/11", "title": "Revival is Now Podcast Episode 11", "file": "revival-is-now-podcast/11-11--episode.html", "youtube": "https://www.youtube.com/watch?v=9IOGpcQlMrc"}
-      ]
-    },
-    {
-      "name": "Revival Army Training",
-      "youtube": "YT_PLACEHOLDER",
-      "episodes": [
-        {"episode": "1/37", "title": "Revival Army Training Episode 1", "file": "AKK-CH5/revival-army-training/1-37-episode.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "2/37", "title": "Revival Army Training Episode 2", "file": "AKK-CH5/revival-army-training/2-37-episode.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "3/37", "title": "Revival Army Training Episode 3", "file": "AKK-CH5/revival-army-training/3-37-episode.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "4/37", "title": "Revival Army Training Episode 4", "file": "AKK-CH5/revival-army-training/4-37-episode.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "5/37", "title": "Revival Army Training Episode 5", "file": "AKK-CH5/revival-army-training/5-37-episode.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "6/37", "title": "Revival Army Training Episode 6", "file": "AKK-CH5/revival-army-training/6-37-episode.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "7/37", "title": "Revival Army Training Episode 7", "file": "AKK-CH5/revival-army-training/7-37-episode.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "8/37", "title": "Revival Army Training Episode 8", "file": "AKK-CH5/revival-army-training/8-37-episode.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "9/37", "title": "Revival Army Training Episode 9", "file": "AKK-CH5/revival-army-training/9-37-episode.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "10/37", "title": "Revival Army Training Episode 10", "file": "AKK-CH5/revival-army-training/10-37-episode.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "11/37", "title": "Revival Army Training Episode 11", "file": "AKK-CH5/revival-army-training/11-37-episode.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "12/37", "title": "Revival Army Training Episode 12", "file": "AKK-CH5/revival-army-training/12-37-episode.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "13/37", "title": "Revival Army Training Episode 13", "file": "AKK-CH5/revival-army-training/13-37-episode.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "14/37", "title": "Revival Army Training Episode 14", "file": "AKK-CH5/revival-army-training/14-37-episode.html", "youtube": "YT_PLACEHOLDER"},
-        {"episode": "15/37", "title": "Revival Army Training Episode 15", "file": "AKK-CH5/revival-army-training/15-37-episode.html", "youtube": "YT_PLACEHOLDER"}
-        
       ]
     },
     {
