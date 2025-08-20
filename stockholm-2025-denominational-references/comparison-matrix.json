@@ -58,3 +58,57 @@
 
 
 { "schema_version": "2.0", "last_updated": "2025-08-18", "event_context": { "name": "Stockholm 2025 Ecumenical Jubilee", "dates": "2025-08-18 to 2025-08-24", "theme": "Time for God's Peace", "commemorates": "100th anniversary of the 1925 Stockholm Conference", "significance": "Modern ecumenical movement foundation; Söderblom Nobel Peace legacy" }, "comparison_axes": [ "ecclesiology", "soteriology", "sacramental_theology", "social_ethics", "ecumenical_theology", "swedish_context" ], "denominational_profiles": { // [Unchanged from previous; fuller entries for Catholic, Orthodox, Lutheran, etc.] }, "leadership_statements": { "roman-catholic": { "leo_xiv": [ { "date": "2025-08-03", "event": "Jubilee of Youth Homily", "location": "Tor Vergata, Rome", "youtube": "https://www.youtube.com/watch?v=dqmUR8IuCj0", // Verified alternate "file": "hierarchical/leo-xiv/2025-08-03-jubilee-youth.html", "transcript_excerpt": "After last night’s Prayer Vigil... I drew in breath and now I pant for you. (Full: Emmaus encounter, thirst for God as hope/peace)", "peace_theme": "Youth transformation in Christ for shared pilgrimage", "primary_axes": ["ecclesiology", "soteriology", "ecumenical_theology"], "stockholm_relevance": "Youth as ecumenical peace witnesses" }, // [Similar for Aug 10 Angelus, Aug 15 Assumption with verified Vatican links] ] }, "ecumenical-patriarchate": { "bartholomew": [ { "date": "2025-07-29", "event": "Keynote Address", "location": "Istanbul, Turkey", "youtube": "https://www.youtube.com/watch?v=JQhcoNEI1Vg", "file": "hierarchical/bartholomew/2025-07-29-keynote.html", "transcript_excerpt": "The crisis of modernity... profoundly related phenomena. (Full transcript now live: dialogue contradictions, humility/synergy for peace/environmental action)", "peace_theme": "Interfaith cooperation in crises", "primary_axes": ["ecumenical_theology", "social_ethics"], "stockholm_relevance": "Aligns with Jubilee's interreligious peace focus" } ] }, "lutheran": { "burghardt": [ { "date": "2025-01-01", "event": "New Year Message", "location": "Geneva", "youtube": "https://vimeo.com/1039582295", "file": "hierarchical/burghardt/2025-01-01-new-year.html", "transcript_excerpt": "This year’s watchword... be transformed by the renewing of our minds. (Full: discernment for good amid challenges, hope in Christ)", "peace_theme": "Transformation for justice/hope", "primary_axes": ["soteriology", "social_ethics"], "stockholm_relevance": "Nordic Lutheran ties to host" }, { "date": "2024-08-29", "event": "Communities of Hope Keynote", "location": "Helsinki, Finland", "youtube": "N/A", "file": "hierarchical/burghardt/2024-08-29-helsinki.html", "transcript_excerpt": "One of the most critical tasks... share hope rooted in faith. (Summary: outward communities, solidarity in polarization—no full transcript, but report details)", "peace_theme": "Credible solidarity over division", "primary_axes": ["ecclesiology", "ecumenical_theology"], "stockholm_relevance": "Nordic prep for Jubilee" } ] // [Placeholders for modeus/rappmann unchanged—no sources found] }, "coptic-orthodox": { "tawadros_ii": [ { "date": "2025-01-06", "event": "Christmas Message", "location": "St. Mark’s Cathedral, Cairo", "youtube": "https://www.youtube.com/watch?v=U5-Hjo6BV0c", "file": "hierarchical/tawadros-ii/2025-01-06-christmas.html", "transcript_excerpt": "Happy New Year and glorious Nativity... the birth of Christ reflects unity. (Full: peace/stability in Egypt, Incarnation as reconciliation)", "peace_theme": "Christ's birth for cohesive humanity", "primary_axes": ["ecclesiology", "social_ethics"], "stockholm_relevance": "Global unity message" }, // [Easter 2024 placeholder updated with verified link/excerpt] ] }, "anglican": { "welby": [ { "date": "2024-09-23", "event": "Speech at International Meeting for Peace", "location": "Paris, France", "youtube": "N/A", "file": "hierarchical/welby/2024-09-23-peace.html", "transcript_excerpt": "Peace is a gift of God... through reconciliation in Christ. (Full: Christian peacemaking, interfaith friendship for common good)", "peace_theme": "Reconciliation as obedience", "primary_axes": ["ecumenical_theology", "social_ethics"], "stockholm_relevance": "Ecumenical vision pre-Jubilee" } ] }, "methodist": { "kingston": [ // [Placeholder; only letter found, no speech transcript—keep as-is] ] }, "orthodox-church-of-ukraine": { "epiphanius": [ { "date": "2024-12-14", "event": "Prayer Service for Peace", "location": "Rome, Italy", "youtube": "N/A", "file": "hierarchical/epiphanius/2024-12-14-rome-prayer.html", "transcript_excerpt": "We prayed for peace in Ukraine... unity among Christians. (Report: interfaith non-violence, appeals amid conflict—no full transcript)", "peace_theme": "Prayer for unity/non-violence", "primary_axes": ["ecumenical_theology", "social_ethics"], "stockholm_relevance": "Balanced Orthodox peace perspective" } ] } }, "worship_events": { "sverige_tillber_jesus": { "title": "Sverige tillber Jesus", "location": "Kungsträdgården, Stockholm", "date": "2025-08-02", "youtube": "https://www.youtube.com/watch?v=i4jsEPQ-NmM", // Verified full stream "file": "special-events/2025-08-02-sverige-tillber-jesus.html", "status": "transcript_available", "key_quotes": ["Vi tillber dig, Jesus, för nationens helande", "Alla folk ska böja knä inför Jesus"], "peace_theme": "Unity through worship/healing", "primary_axes": ["ecumenical_theology", "swedish_context"], "stockholm_relevance": "Pre-Jubilee communal praise" } } }
+
+,
+"_evidence": {
+  "kathryn-krick-revival": {
+    "female_leadership": [
+      {
+        "snippet": "I release impartation of anointing upon you now... Let revival spread through you.",
+        "note": "Commissioning applied to women and men; leadership legitimated by Spirit-gifting."
+      }
+    ],
+    "unity_pathways": [
+      {
+        "snippet": "We can’t keep old wine in new wineskins — the old religious ways won’t carry revival.",
+        "note": "Unity sought through Spirit encounters; critiques institutional/ecumenical formalism."
+      },
+      {
+        "snippet": "Caleb had a different spirit and followed God wholeheartedly.",
+        "note": "Calls for wholehearted obedience over inherited forms."
+      }
+    ]
+  },
+  "church-of-sweden-jackelen-emphasis": {
+    "female_leadership": [
+      {
+        "snippet": "First woman Archbishop of Uppsala (2014–2022); female ordination since 1960.",
+        "note": "Leadership grounded in institutional reform and synodical decisions."
+      }
+    ],
+    "unity_pathways": [
+      {
+        "snippet": "Keynote (20 Aug 2025) in Catholic cathedral: 'Until justice and peace embrace'.",
+        "note": "Unity through reconciliation, doctrine/sacraments, and structured dialogue."
+      },
+      {
+        "snippet": "Science–faith dialogue as public witness.",
+        "note": "Ecumenism integrated with societal ethics and public theology."
+      }
+    ]
+  },
+  "roman-catholic": {
+    "female_leadership": [
+      {
+        "snippet": "Male-only priesthood; women active in lay movements.",
+        "note": "Hospitality without doctrinal shift when hosting ecumenical events."
+      }
+    ],
+    "unity_pathways": [
+      {
+        "snippet": "Apostolic succession and the seven sacraments as sources of unity.",
+        "note": "Sacramental/hierarchical pathway contrasts with revivalist and synodical models."
+      }
+    ]
+  }
+}
