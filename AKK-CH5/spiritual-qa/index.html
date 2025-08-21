@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spiritual Q&A - Episode Index</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 300;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        .stat-number {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+        thead {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        th {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        tr:hover {
+            background-color: #f8f9ff;
+            transform: scale(1.01);
+            transition: all 0.2s ease;
+        }
+        .date {
+            font-weight: 500;
+            color: #495057;
+            white-space: nowrap;
+        }
+        .title {
+            font-weight: 500;
+            color: #2c3e50;
+            max-width: 400px;
+        }
+        .link-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            margin: 2px;
+        }
+        .link-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        .youtube-btn {
+            background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+        }
+        .youtube-btn:hover {
+            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);
+        }
+        .episode-num {
+            font-weight: bold;
+            color: #6c757d;
+            background: #f8f9fa;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Spiritual Q&A Episodes</h1>
+        <p>Complete index of all Spiritual Q&A episodes by Apostle Kathryn Krick</p>
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number" id="total-episodes">Loading...</span>
+                <span>Total Episodes</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="date-range">Loading...</span>
+                <span>Date Range</span>
+            </div>
+        </div>
+    </div>
+
+    <table id="episodes-table">
+        <thead>
+            <tr>
+                <th>Episode</th>
+                <th>Date</th>
+                <th>Title</th>
+                <th>Transcript</th>
+                <th>YouTube</th>
+            </tr>
+        </thead>
+        <tbody id="episodes-tbody">
+            <tr>
+                <td colspan="5" class="loading">Loading episodes...</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="footer">
+        <p>All episodes are part of the Spiritual Q&A playlist by Apostle Kathryn Krick</p>
+    </div>
+
+    <script>
+        // URLs to fetch metadata from
+        const urls = [
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/1-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/2-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/3-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/4-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/5-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/6-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/7-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/8-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/9-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/10-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/11-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/12-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/13-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/14-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/15-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/16-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/17-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/18-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/19-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/20-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/21-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/22-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/23-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/24-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/25-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/26-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/27-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/28-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/29-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/30-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/31-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/32-54.html',
+            'https://markusisaksson1982.github.io/AKK-CH5/spiritual-qa/33-54.html'
+        ];
+
+        // Function to extract metadata from HTML content
+        function extractMetadata(html) {
+            const lines = html.split('\n');
+            const metadata = {};
+            
+            let inMetadata = false;
+            for (const line of lines) {
+                if (line.trim() === '---' && !inMetadata) {
+                    inMetadata = true;
+                    continue;
+                } else if (line.trim() === '---' && inMetadata) {
+                    break;
+                }
+                
+                if (inMetadata) {
+                    const match = line.match(/^([^:]+):\s*(.+)$/);
+                    if (match) {
+                        const key = match[1].trim();
+                        const value = match[2].trim();
+                        metadata[key] = value;
+                    }
+                }
+            }
+            
+            return metadata;
+        }
+
+        // Function to load all episodes
+        async function loadAllEpisodes() {
+            const episodes = [];
+            const tbody = document.getElementById('episodes-tbody');
+            
+            // Show progress
+            tbody.innerHTML = '<tr><td colspan="5" class="loading">Loading episodes... (0/' + urls.length + ')</td></tr>';
+            
+            for (let i = 0; i < urls.length; i++) {
+                try {
+                    // Update progress
+                    tbody.innerHTML = '<tr><td colspan="5" class="loading">Loading episodes... (' + (i + 1) + '/' + urls.length + ')</td></tr>';
+                    
+                    const response = await fetch(urls[i]);
+                    const html = await response.text();
+                    const metadata = extractMetadata(html);
+                    
+                    if (metadata.Title && metadata.Date) {
+                        episodes.push({
+                            episode: i + 1,
+                            date: metadata.Date,
+                            title: metadata.Title,
+                            transcriptUrl: urls[i],
+                            youtubeUrl: metadata['YouTube URL'] || ''
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error loading episode', i + 1, ':', error);
+                }
+            }
+            
+            // Sort episodes by date (newest first)
+            episodes.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            // Update stats
+            document.getElementById('total-episodes').textContent = episodes.length;
+            
+            if (episodes.length > 0) {
+                const dates = episodes.map(e => new Date(e.date));
+                const oldest = new Date(Math.min(...dates));
+                const newest = new Date(Math.max(...dates));
+                document.getElementById('date-range').textContent = 
+                    oldest.getFullYear() + ' - ' + newest.getFullYear();
+            }
+            
+            // Render table
+            renderTable(episodes);
+        }
+
+        function renderTable(episodes) {
+            const tbody = document.getElementById('episodes-tbody');
+            
+            if (episodes.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="loading">No episodes found</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = episodes.map(episode => `
+                <tr>
+                    <td>
+                        <span class="episode-num">#${episode.episode}</span>
+                    </td>
+                    <td class="date">${formatDate(episode.date)}</td>
+                    <td class="title">${episode.title}</td>
+                    <td>
+                        <a href="${episode.transcriptUrl}" class="link-btn" target="_blank">
+                            📄 Transcript
+                        </a>
+                    </td>
+                    <td>
+                        ${episode.youtubeUrl ? 
+                            '<a href="' + episode.youtubeUrl + '" class="link-btn youtube-btn" target="_blank">▶️ YouTube</a>' : 
+                            '<span style="color: #6c757d;">N/A</span>'
+                        }
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            });
+        }
+
+        // Load episodes when page loads
+        document.addEventListener('DOMContentLoaded', loadAllEpisodes);
+    </script>
+</body>
+</html>
