@@ -1,320 +1,601 @@
 {
   "seriesTitle": "Spiritual Q&A with Apostle Kathryn Krick",
   "author": "Apostle Kathryn Krick",
-  "totalEpisodes": 52,
+  "description": "Weekly Q&A sessions addressing spiritual growth, practical life issues, and biblical application from a revivalist perspective emphasizing deliverance, spiritual warfare, and supernatural living.",
+  "totalEpisodes": 53,
+  "dateRange": {
+    "earliest": "2023-10-03",
+    "latest": "2025-07-18"
+  },
+  "repositoryBase": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/",
+  "playlistUrl": "https://www.youtube.com/playlist?list=PLX3SBMW-XlAhGFoO63dcauAlBqEpW01zu",
   "episodes": [
     {
       "number": 1,
-      "title": "[Episode 1 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP1]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/1-54.html"
+      "repoFile": "1-54.html",
+      "title": "Your Spiritual Questions Answered",
+      "date": "2025-07-18",
+      "youtubeUrl": "https://www.youtube.com/watch?v=MAWclngIY6s",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/1-54.html",
+      "keywords": ["pride", "humility", "new wine", "revival", "ministers", "spiritual warfare"],
+      "keyTopics": ["Barriers to receiving new wine", "Avoiding over-spiritualization", "Dealing with thoughts of death", "Enemy attacks as refining fire", "Good vs bad fruit in believers"],
+      "verified": true
     },
     {
       "number": 2,
-      "title": "[Episode 2 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP2]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/2-54.html"
+      "repoFile": "2-54.html", 
+      "title": "Spiritual Q&A: How to Discipline Your Child in a Way that Pleases God & More",
+      "date": "2025-07-08",
+      "youtubeUrl": "https://www.youtube.com/watch?v=Ot_ZvXtazOs",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/2-54.html",
+      "keywords": ["parenting", "discipline", "generosity", "family", "boundaries"],
+      "keyTopics": ["Christlike child discipline", "Healing parental rejection", "Financial boundaries with family", "Sowing seeds for resistant relatives"],
+      "verified": true
     },
     {
       "number": 3,
-      "title": "How to Keep Your Miracle & More",
+      "repoFile": "3-54.html",
+      "title": "Spiritual Q&A: How to Overcome Carnal Areas? How Come You're Not Healed Yet? & More", 
+      "date": "2025-06-25",
       "youtubeUrl": "https://www.youtube.com/watch?v=79TmWND0A_8",
       "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/3-54.html",
-      "keywords": ["miracle retention", "spiritual warfare", "obedience", "faith maturity"]
+      "keywords": ["healing", "addiction", "loneliness", "joy", "carnality"],
+      "keyTopics": ["Salvation amid addictions", "Maintaining healing", "Combating loneliness", "Authentic joy", "Overcoming carnal areas"],
+      "verified": true
     },
     {
       "number": 4,
-      "title": "[Episode 4 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP4]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/4-54.html"
+      "repoFile": "4-54.html",
+      "title": "Spiritual Q&A: How to Overcome Lack of Self Discipline, How to Have a Healthy Lifestyle and More",
+      "date": "2025-06-18",
+      "youtubeUrl": "https://www.youtube.com/watch?v=2HgskUjQmHE",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/4-54.html",
+      "keywords": ["self-discipline", "healthy lifestyle", "habits", "spiritual growth"],
+      "keyTopics": ["Building godly discipline", "Physical health and spirituality", "Lifestyle transformation"],
+      "verified": true
     },
     {
       "number": 5,
-      "title": "[Episode 5 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP5]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/5-54.html"
+      "repoFile": "5-54.html",
+      "title": "Spiritual Q&A - Ep. 49 (When It's Okay to Say \"God Told Me,\" Discerning the Angel of Light & More)",
+      "date": "2025-06-10", 
+      "youtubeUrl": "https://www.youtube.com/watch?v=Mz6Np6afek8",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/5-54.html",
+      "keywords": ["prophetic", "discernment", "false prophets", "hearing God"],
+      "keyTopics": ["Prophetic protocol", "Discerning deception", "Angel of light tactics"],
+      "verified": true
     },
     {
       "number": 6,
-      "title": "[Episode 6 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP6]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/6-54.html"
+      "repoFile": "6-54.html",
+      "title": "Spiritual Q&A - Ep. 48",
+      "date": "2025-06-04",
+      "youtubeUrl": "https://www.youtube.com/watch?v=twJlja68tjo", 
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/6-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 7,
-      "title": "[Episode 7 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP7]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/7-54.html"
+      "repoFile": "7-54.html",
+      "title": "Spiritual Q&A - Ep. 47",
+      "date": "2025-05-27",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/7-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 8,
-      "title": "[Episode 8 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP8]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/8-54.html"
+      "repoFile": "8-54.html", 
+      "title": "Spiritual Q&A - Ep. 46",
+      "date": "2025-05-20",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/8-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 9,
-      "title": "[Episode 9 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP9]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/9-54.html"
+      "repoFile": "9-54.html",
+      "title": "Spiritual Q&A - Ep. 45", 
+      "date": "2025-05-13",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/9-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 10,
-      "title": "[Episode 10 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP10]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/10-54.html"
+      "repoFile": "10-54.html",
+      "title": "Spiritual Q&A Ep. 44 (How to know if you're called to ministry, how to choose a job/start business)",
+      "date": "2025-02-05",
+      "youtubeUrl": "https://www.youtube.com/watch?v=j8d5l4qs5Zk", 
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/10-54.html",
+      "keywords": ["ministry calling", "anxiety", "depression", "addiction", "workplace evangelism"],
+      "keyTopics": ["Recognizing ministry calling", "Street deliverance encounters", "Pastoral burnout", "Job selection"],
+      "verified": true,
+      "redFlags": ["Anxiety/depression as demonic oppression", "Amateur crisis intervention"]
     },
     {
       "number": 11,
-      "title": "[Episode 11 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP11]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/11-54.html"
+      "repoFile": "11-54.html",
+      "title": "Spiritual Q&A - Ep. 43",
+      "date": "2025-01-29",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/11-54.html", 
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 12,
-      "title": "[Episode 12 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP12]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/12-54.html"
+      "repoFile": "12-54.html",
+      "title": "Spiritual Q&A - Ep. 42",
+      "date": "2025-01-22",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/12-54.html",
+      "keywords": ["TBD"], 
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 13,
-      "title": "[Episode 13 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP13]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/13-54.html"
+      "repoFile": "13-54.html",
+      "title": "Spiritual Q&A - Ep. 41",
+      "date": "2025-01-15",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/13-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"], 
+      "verified": false
     },
     {
       "number": 14,
-      "title": "[Episode 14 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP14]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/14-54.html"
+      "repoFile": "14-54.html",
+      "title": "Spiritual Q&A - Ep. 40",
+      "date": "2025-01-08",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/14-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 15,
-      "title": "[Episode 15 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP15]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/15-54.html"
+      "repoFile": "15-54.html",
+      "title": "Spiritual Q&A - Ep. 39", 
+      "date": "2025-01-01",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/15-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 16,
-      "title": "[Episode 16 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP16]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/16-54.html"
+      "repoFile": "16-54.html",
+      "title": "Spiritual Q&A - Ep. 38",
+      "date": "2024-12-25",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/16-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 17,
-      "title": "[Episode 17 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP17]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/17-54.html"
+      "repoFile": "17-54.html",
+      "title": "Spiritual Q&A - Ep. 37",
+      "date": "2024-12-18",
+      "youtubeUrl": "TBD", 
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/17-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 18,
-      "title": "[Episode 18 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP18]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/18-54.html"
+      "repoFile": "18-54.html",
+      "title": "Spiritual Q&A Ep. 42 (how to have strength in the waiting ...)",
+      "date": "2024-12-23",
+      "youtubeUrl": "https://www.youtube.com/watch?v=lbsQvU1on0M",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/18-54.html",
+      "keywords": ["waiting", "patience", "promises", "timing"],
+      "keyTopics": ["Strength during delays", "God's timing", "Managing expectations"], 
+      "verified": true
     },
     {
       "number": 19,
-      "title": "[Episode 19 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP19]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/19-54.html"
+      "repoFile": "19-54.html",
+      "title": "Spiritual Q&A - Ep. 35",
+      "date": "2024-12-04",
+      "youtubeUrl": "https://www.youtube.com/watch?v=ynVxU_xfUmw",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/19-54.html",
+      "keywords": ["intrusive thoughts", "voices", "psychosis", "mental health"],
+      "keyTopics": ["Handling intrusive thoughts", "Discerning voices", "Command hallucinations"],
+      "verified": true,
+      "redFlags": ["Voices commanding harm as spiritual warfare", "Psychosis-like symptoms treated as demonic"]
     },
     {
       "number": 20,
-      "title": "[Episode 20 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP20]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/20-54.html"
+      "repoFile": "20-54.html",
+      "title": "Spiritual Q&A - Ep. 34",
+      "date": "2024-11-27",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/20-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 21,
-      "title": "[Episode 21 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP21]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/21-54.html"
+      "repoFile": "21-54.html", 
+      "title": "Spiritual Q&A - Ep. 33",
+      "date": "2024-11-20",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/21-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 22,
-      "title": "[Episode 22 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP22]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/22-54.html"
+      "repoFile": "22-54.html",
+      "title": "Spiritual Q&A - Ep. 32",
+      "date": "2024-11-13", 
+      "youtubeUrl": "https://www.youtube.com/watch?v=mNoUlPA2Rz4",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/22-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 23,
-      "title": "[Episode 23 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP23]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/23-54.html"
+      "repoFile": "23-54.html",
+      "title": "Spiritual Q&A - Ep. 31",
+      "date": "2024-11-06",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/23-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 24,
-      "title": "[Episode 24 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP24]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/24-54.html"
+      "repoFile": "24-54.html",
+      "title": "Spiritual Q&A - Ep. 30",
+      "date": "2024-10-30",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/24-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 25,
-      "title": "[Episode 25 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP25]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/25-54.html"
+      "repoFile": "25-54.html",
+      "title": "Spiritual Q&A - Ep. 29",
+      "date": "2024-06-28",
+      "youtubeUrl": "https://www.youtube.com/watch?v=N1Tby5fJsmk",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/25-54.html",
+      "keywords": ["finances", "generosity", "wisdom", "stewardship"],
+      "keyTopics": ["Financial decisions", "Generous giving", "Seasonal wisdom", "Kingdom stewardship"],
+      "verified": true
     },
     {
       "number": 26,
-      "title": "[Episode 26 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP26]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/26-54.html"
+      "repoFile": "26-54.html",
+      "title": "Spiritual Q&A - Ep. 28", 
+      "date": "2024-06-21",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/26-54.html",
+      "keywords": ["suicide ideation", "enemy lies", "post-deliverance", "persistence"],
+      "keyTopics": ["Suicidal thoughts as enemy attacks", "Speaking life", "Persisting in prayer"],
+      "verified": false,
+      "redFlags": ["Suicide ideation treated spiritually without crisis resources"]
     },
     {
       "number": 27,
-      "title": "[Episode 27 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP27]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/27-54.html"
+      "repoFile": "27-54.html",
+      "title": "Spiritual Q&A - Ep. 27",
+      "date": "2024-06-14",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/27-54.html", 
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 28,
-      "title": "[Episode 28 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP28]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/28-54.html"
+      "repoFile": "28-54.html",
+      "title": "Spiritual Q&A - Ep. 26",
+      "date": "2024-06-07",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/28-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 29,
-      "title": "[Episode 29 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP29]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/29-54.html"
+      "repoFile": "29-54.html",
+      "title": "Spiritual Q&A - Ep. 25",
+      "date": "2024-05-31",
+      "youtubeUrl": "TBD", 
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/29-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 30,
-      "title": "[Episode 30 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP30]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/30-54.html"
+      "repoFile": "30-54.html",
+      "title": "Spiritual Q&A - Ep. 24",
+      "date": "2024-05-24",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/30-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 31,
-      "title": "[Episode 31 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP31]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/31-54.html"
+      "repoFile": "31-54.html",
+      "title": "Spiritual Q&A - Ep. 23",
+      "date": "2024-04-09",
+      "youtubeUrl": "https://www.youtube.com/watch?v=cSelWPsfdHI",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/31-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 32,
-      "title": "[Episode 32 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP32]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/32-54.html"
+      "repoFile": "32-54.html",
+      "title": "Spiritual Q&A - Ep. 22",
+      "date": "2024-04-02",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/32-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"], 
+      "verified": false
     },
     {
       "number": 33,
-      "title": "[Episode 33 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP33]",
-      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/33-54.html"
+      "repoFile": "33-54.html",
+      "title": "Spiritual Q&A - Ep. 21",
+      "date": "2024-03-26",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/33-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 34,
-      "title": "[Episode 34 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP34]",
-      "transcriptUrl": "[To be added]"
+      "repoFile": "34-54.html",
+      "title": "Spiritual Q&A - Ep. 20",
+      "date": "2024-03-19",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/34-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 35,
-      "title": "[Episode 35 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP35]",
-      "transcriptUrl": "[To be added]"
+      "repoFile": "35-54.html",
+      "title": "Spiritual Q&A - Ep. 19", 
+      "date": "2024-03-12",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/35-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 36,
-      "title": "[Episode 36 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP36]",
-      "transcriptUrl": "[To be added]"
+      "repoFile": "36-54.html",
+      "title": "Spiritual Q&A - Ep. 18",
+      "date": "2024-10-08",
+      "youtubeUrl": "https://www.youtube.com/watch?v=gjmVJPcCw-A",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/36-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 37,
-      "title": "[Episode 37 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP37]",
-      "transcriptUrl": "[To be added]"
+      "repoFile": "37-54.html",
+      "title": "Spiritual Q&A - Ep. 17",
+      "date": "2024-02-27",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/37-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 38,
-      "title": "[Episode 38 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP38]",
-      "transcriptUrl": "[To be added]"
+      "repoFile": "38-54.html", 
+      "title": "Spiritual Q&A - Ep. 16",
+      "date": "2024-02-20",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/38-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 39,
-      "title": "[Episode 39 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP39]",
-      "transcriptUrl": "[To be added]"
+      "repoFile": "39-54.html",
+      "title": "Spiritual Q&A - Ep. 15",
+      "date": "2024-02-13",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/39-54.html", 
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 40,
-      "title": "[Episode 40 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP40]",
-      "transcriptUrl": "[To be added]"
+      "repoFile": "40-54.html",
+      "title": "Spiritual Q&A - Ep. 14",
+      "date": "2024-02-06",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/40-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 41,
-      "title": "[Episode 41 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP41]",
-      "transcriptUrl": "[To be added]"
+      "repoFile": "41-54.html",
+      "title": "Spiritual Q&A - Ep. 13",
+      "date": "2024-01-30",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/41-54.html",
+      "keywords": ["TBD"], 
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 42,
-      "title": "[Episode 42 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP42]",
-      "transcriptUrl": "[To be added]"
+      "repoFile": "42-54.html",
+      "title": "Spiritual Q&A - Ep. 12",
+      "date": "2024-01-23",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/42-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 43,
-      "title": "[Episode 43 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP43]",
-      "transcriptUrl": "[To be added]"
+      "repoFile": "43-54.html",
+      "title": "Spiritual Q&A - Ep. 11",
+      "date": "2024-01-16",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/43-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"], 
+      "verified": false
     },
     {
       "number": 44,
-      "title": "[Episode 44 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP44]",
-      "transcriptUrl": "[To be added]"
+      "repoFile": "44-54.html",
+      "title": "Spiritual Q&A - Ep. 10",
+      "date": "2024-01-09",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/44-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 45,
-      "title": "[Episode 45 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP45]",
-      "transcriptUrl": "[To be added]"
+      "repoFile": "45-54.html",
+      "title": "Spiritual Q&A - Ep. 9",
+      "date": "2023-11-21",
+      "youtubeUrl": "https://www.youtube.com/watch?v=zOZS8-VjXYQ",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/45-54.html",
+      "keywords": ["family", "relationships", "authority", "patience"],
+      "keyTopics": ["Renouncing for family members", "Spiritual authority in relationships", "Being patient with resistant loved ones"],
+      "verified": true
     },
     {
       "number": 46,
-      "title": "[Episode 46 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP46]",
-      "transcriptUrl": "[To be added]"
+      "repoFile": "46-54.html",
+      "title": "Spiritual Q&A - Ep. 8", 
+      "date": "2023-11-14",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/46-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 47,
-      "title": "[Episode 47 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP47]",
-      "transcriptUrl": "[To be added]"
+      "repoFile": "47-54.html",
+      "title": "Spiritual Q&A - Ep. 7",
+      "date": "2023-11-07",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/47-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 48,
-      "title": "[Episode 48 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP48]",
-      "transcriptUrl": "[To be added]"
+      "repoFile": "48-54.html",
+      "title": "Spiritual Q&A - Ep. 6",
+      "date": "2023-10-31", 
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/48-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 49,
-      "title": "[Episode 49 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP49]",
-      "transcriptUrl": "[To be added]"
+      "repoFile": "49-54.html",
+      "title": "Spiritual Q&A - Ep. 5",
+      "date": "2023-10-24",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/49-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 50,
-      "title": "[Episode 50 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP50]",
-      "transcriptUrl": "[To be added]"
+      "repoFile": "50-54.html",
+      "title": "Spiritual Q&A - Ep. 4",
+      "date": "2023-10-03",
+      "youtubeUrl": "https://www.youtube.com/watch?v=RROfGp-ZHa8",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/50-54.html",
+      "keywords": ["love", "testimony", "spiritual sight", "honor", "glory"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 51,
-      "title": "[Episode 51 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP51]",
-      "transcriptUrl": "[To be added]"
+      "repoFile": "51-54.html",
+      "title": "Spiritual Q&A - Ep. 3",
+      "date": "2023-xx-xx",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/51-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     },
     {
       "number": 52,
-      "title": "[Episode 52 Title]",
-      "youtubeUrl": "https://www.youtube.com/watch?v=[EP52]",
-      "transcriptUrl": "[To be added]"
+      "repoFile": "52-54.html",
+      "title": "Spiritual Q&A - Ep. 2",
+      "date": "2023-xx-xx",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/52-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
+    }
+},
+    {
+      "number": 53,
+      "repoFile": "53-54.html",
+      "title": "Spiritual Q&A - Ep. 1",
+      "date": "2023-xx-xx",
+      "youtubeUrl": "TBD",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/53-54.html",
+      "keywords": ["TBD"],
+      "keyTopics": ["TBD"],
+      "verified": false
     }
   ]
 }
