@@ -1,11 +1,25 @@
 {
-  "playlists": [
+  "playlists": [ 2025-08-24-the-power-of-positive-believing.html
     {
       "name": "Sunday Services",
       "youtube": "https://www.youtube.com/playlist?list=PLX3SBMW-XlAiWLoYzf9A-IG8jTn_okxY8",
       "episodes": [
         {
-      "episode": "1/22", 
+      "episode": "0/22", 
+      "date": "2025-08-24",
+      "liturgical_day": "10:e söndagen e. trefaldighet",
+      "theme": "Nådens gåvor",
+      "title": "The Power of Positive Believing", 
+      "file": "akk-transcripts/2025-08-24-the-power-of-positive-believing.html", 
+      "youtube": "https://www.youtube.com/watch?v=I5tbdjpZ8f8",
+      "readings": {
+        "ot": "2 Mos 19:3–8",  
+        "epistle": "Rom 12:3–8", 
+        "gospel": "Matt 18:18–22",
+        "psalm": "Ps 28:6–9"
+      }
+    },{
+          "episode": "1/22", 
       "date": "2025-08-17",
       "liturgical_day": "9:e söndagen e. trefaldighet",
       "theme": "Goda förvaltare",
@@ -17,8 +31,8 @@
         "epistle": "Ef 4:20-28", 
         "gospel": "Luk 12:42-48",
         "psalm": "Ps 8"
-      }
-    },{
+          }
+        },{
           "episode": "2/22", 
           "date": "2025-08-10",
           "liturgical_day": "8:e söndagen e. trefaldighet",
