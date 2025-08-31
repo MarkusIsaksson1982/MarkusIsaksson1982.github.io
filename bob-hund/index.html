@@ -1,3 +1,8 @@
+# Expanded Video Tabs Version
+
+I'll modify the HTML to have all video tabs expanded by default. This requires changes to both the CSS and JavaScript to ensure all song content sections are visible when the page loads.
+
+```html
 <!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -195,15 +200,9 @@
     }
     
     .song-content {
-      padding: 0;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s ease, padding 0.3s ease;
-    }
-    
-    .song-content.active {
       padding: 1.5rem;
       max-height: 1000px;
+      overflow: hidden;
     }
     
     .video-container {
@@ -254,9 +253,6 @@
       color: var(--gray);
       cursor: pointer;
       transition: transform 0.3s ease;
-    }
-    
-    .expand-btn.active {
       transform: rotate(180deg);
     }
     
@@ -838,7 +834,8 @@
               item.previousElementSibling.querySelector('.expand-btn').classList.remove('active');
             }
           });
-          
+       
+   
           // Växla aktuell låt
           songContent.classList.toggle('active');
           this.classList.toggle('active');
