@@ -26,7 +26,7 @@ def detect_bias(original_text, ai_translated_text, language="sami"):
         "omission_rate": round(omission_rate * 100, 2),
         "missing_terms": missing_terms,
         "added_terms": added_terms,
-        "notes": "Check for cultural term loss (e.g., Sami-specific concepts)."
+        "notes": "Check for cultural term loss (e.g., Sami-specific concepts). Cross-reference /common/arti-matrix.json for assessment."
     }
     return log
 
