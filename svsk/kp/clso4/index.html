@@ -1,1 +1,269 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Sonnet 4 - SVSK AI Literacy Resources</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+        }
+        .header h1 {
+            color: #2d3748;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        .resource-card {
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+        }
+        .resource-card:hover {
+            border-color: #667eea;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15);
+        }
+        .resource-card h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .file-list {
+            list-style: none;
+            padding: 0;
+        }
+        .file-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .file-list li:last-child {
+            border-bottom: none;
+        }
+        .file-link {
+            color: #4c51bf;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .file-link:hover {
+            color: #667eea;
+            text-decoration: underline;
+        }
+        .file-type {
+            background: #667eea;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .nav-links {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .nav-links h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .nav-links a {
+            display: inline-block;
+            margin: 5px 10px;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        .nav-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        .description {
+            background: #e6fffa;
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .description h4 {
+            color: #2c5282;
+            margin-bottom: 10px;
+        }
+        .status-badge {
+            display: inline-block;
+            background: #48bb78;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Claude Sonnet 4 <span class="status-badge">Active</span></h1>
+            <div class="subtitle">AI Literacy Resources för Gy25</div>
+            <div class="subtitle">Teknisk implementering • Etisk reflektion • Svenskt sammanhang</div>
+        </div>
 
+        <div class="description">
+            <h4>🎯 Claude Sonnet 4:s Specialisering</h4>
+            <p>Denna mapp (<code>/clso4/</code>) innehåller <strong>tekniskt fokuserade och praktiskt implementerbara resurser</strong> för ARTI-kursen (Gy25). Claude Sonnet 4 bidrar med djup teknisk förståelse, interaktiva kodverktyg och etiska resonemang som är förankrade i svensk kontext.</p>
+            
+            <p><strong>Unikt fokus:</strong> Teknisk implementation, scaffolded learning, och integration av svenska AI-exempel (Volvo, Spotify, svensk sjukvård).</p>
+        </div>
+
+        <div class="resources-grid">
+            <div class="resource-card">
+                <h3><span class="icon"></span>Manifest & Dokumentation</h3>
+                <ul class="file-list">
+                    <li>
+                        <a href="ai-literacy-manifest.md" class="file-link">ai-literacy-manifest.md</a>
+                        <span class="file-type">MD</span>
+                    </li>
+                    <li>
+                        <a href="claude-rubric.json" class="file-link">claude-rubric.json</a>
+                        <span class="file-type">JSON</span>
+                    </li>
+                    <li>
+                        <a href="swedish-ai-glossary.json" class="file-link">swedish-ai-glossary.json</a>
+                        <span class="file-type">JSON</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <h3><span class="icon"></span>Kodverktyg & Templates</h3>
+                <ul class="file-list">
+                    <li>
+                        <a href="bias-detector.py" class="file-link">bias-detector.py</a>
+                        <span class="file-type">PY</span>
+                    </li>
+                    <li>
+                        <a href="ethics-simulation.html" class="file-link">ethics-simulation.html</a>
+                        <span class="file-type">HTML</span>
+                    </li>
+                    <li>
+                        <a href="self-assessment-tool.js" class="file-link">self-assessment-tool.js</a>
+                        <span class="file-type">JS</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <h3><span class="icon"></span>Svenska Exempel & Case Studies</h3>
+                <ul class="file-list">
+                    <li>
+                        <a href="volvo-case-study.md" class="file-link">volvo-case-study.md</a>
+                        <span class="file-type">MD</span>
+                    </li>
+                    <li>
+                        <a href="spotify-algorithm-analysis.md" class="file-link">spotify-algorithm-analysis.md</a>
+                        <span class="file-type">MD</span>
+                    </li>
+                    <li>
+                        <a href="swedish-healthcare-ai.md" class="file-link">swedish-healthcare-ai.md</a>
+                        <span class="file-type">MD</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <h3><span class="icon"></span>Pedagogiska Moduler</h3>
+                <ul class="file-list">
+                    <li>
+                        <a href="ai-detective-module.md" class="file-link">ai-detective-module.md</a>
+                        <span class="file-type">MD</span>
+                    </li>
+                    <li>
+                        <a href="kommun-simulation-guide.md" class="file-link">kommun-simulation-guide.md</a>
+                        <span class="file-type">MD</span>
+                    </li>
+                    <li>
+                        <a href="ethics-courtroom-roleplay.md" class="file-link">ethics-courtroom-roleplay.md</a>
+                        <span class="file-type">MD</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="nav-links">
+            <h3>🤝 Relaterade AI-resurser</h3>
+            <a href="../common/">Gemensamma resurser</a>
+            <a href="../gpt-5/">ChatGPT-5 resurser</a>
+            <a href="../mistral/">Mistral resurser</a>
+            <a href="../gr4/">Grok resurser</a>
+        </div>
+
+        <div class="description">
+            <h4>📋 Kommande utveckling</h4>
+            <ul>
+                <li><strong>Interaktiva verktyg:</strong> Webb-baserad bias-detektor med svenska exempel</li>
+                <li><strong>Case study-bibliotek:</strong> Utökade svenska AI-etik scenarios</li>
+                <li><strong>Bedömningsplattform:</strong> Rubrik-integrerat utvärderingssystem</li>
+                <li><strong>Lärarutbildning:</strong> Professionell utvecklingsmaterial</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; padding: 20px; background: #f7fafc; border-radius: 8px; border: 2px dashed #cbd5e0;">
+            <p style="color: #4a5568; font-style: italic;">
+                Claude Sonnet 4's bidrag till det kollaborativa SVSK AI-literacy ramverket<br>
+                <strong>Fokus:</strong> Teknisk djup • Etiskt resonemang • Svensk kulturell kontext
+            </p>
+        </div>
+    </div>
+</body>
+</html>
