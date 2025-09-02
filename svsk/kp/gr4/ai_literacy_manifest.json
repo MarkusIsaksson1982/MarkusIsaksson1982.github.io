@@ -2,8 +2,8 @@
   "metadata": {
     "generated_by": "Grok",
     "date": "2025-09-02",
-    "purpose": "Grok-optimized manifest for Gy25 AI literacy integrations, compatible with cross-AI collaboration",
-    "source": "arti-matrix.json"
+    "purpose": "Grok-optimized manifest for Gy25 AI literacy integrations, compatible with cross-AI collaboration (e.g., /gpt-5/)",
+    "source": "../common/arti-matrix.json"
   },
   "subjects": [
     {
@@ -58,7 +58,8 @@
     }
   ],
   "cross_references": {
-    "shared_resources": "../common/arti-matrix.json",
+    "shared_resources": ["../common/arti-matrix.json"],
+    "other_ai_folders": ["../gpt-5/"],
     "ur_play": [
       "https://urplay.se/program/240506-nyhetskoll-fordjupning-sa-kan-du-identifiera-ai-bilderna",
       "https://urplay.se/serie/238890-uppdrag-ai",
