@@ -1,243 +1,467 @@
 {
-  "matrix_version": "1.0",
-  "created_date": "2025-09-02",
-  "description": "Cross-curricular integration matrix mapping ARTI relationships with other Gy25 subjects",
+  "manifest_version": "2.0",
+  "last_updated": "2025-09-02",
+  "description": "Swedish curriculum plans (läroplaner) organization system with AI integration mapping",
   
-  "arti_core_competencies": {
-    "nivå_1": [
-      "AI_definition_and_concepts",
-      "data_quality_and_selection",
-      "AI_development_drivers", 
-      "application_areas_and_methods",
-      "human_vs_artificial_intelligence_comparison",
-      "ethical_dilemmas_and_AI_questions"
-    ],
-    "nivå_2": [
-      "AI_techniques_methods_algorithms",
-      "machine_learning_and_neural_networks",
-      "AI_limitations_and_challenges",
-      "future_development_and_consequences",
-      "practical_AI_tool_applications"
-    ]
-  },
-
-  "subject_integration_matrix": {
-    "svenska_sven": {
-      "integration_level": "very_high",
-      "shared_competencies": [
-        "critical_text_analysis",
-        "rhetorical_evaluation", 
-        "source_criticism_and_reliability",
-        "digital_literacy_in_text_environments",
-        "ethical_reflection_on_communication_tools"
-      ],
-      "specific_connections": {
-        "nivå_1_svenska_nivå_1_arti": {
-          "joint_activities": [
-            "AI_generated_text_analysis_for_rhetorical_devices",
-            "comparison_of_human_vs_AI_writing_styles",
-            "critical_evaluation_of_AI_grammar_corrections"
-          ],
-          "learning_objectives": [
-            "understand_AI_limitations_in_cultural_interpretation",
-            "develop_critical_stance_toward_automated_feedback",
-            "recognize_human_creativity_vs_algorithmic_generation"
-          ]
+  "categories": {
+    "grundskola_2022": {
+      "name": "2022 Grundskola curriculum plans in Swedish",
+      "description": "Grundskola årskurs 1 till 9",
+      "language": "sv",
+      "year": 2022,
+      "school_level": "grundskola",
+      "grades": "1-9",
+      "general_documents": [],
+      "subjects": {
+        "svenska": {
+          "subject_id": "GRGRSVE01",
+          "subject_name": "Svenska",
+          "subject_name_en": "Swedish",
+          "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/grundskolan/kursplaner-for-grundskolan/kursplan/svid12_6a3421f41969f369f2c9bd1/907561864/subject/GRGRSVE01/15/pdf",
+          "html_file": "svenska_grundskola_2022.html",
+          "version": 15
         },
-        "nivå_2_svenska_nivå_1_arti": {
-          "joint_activities": [
-            "AI_analysis_of_Nordic_language_variations",
-            "algorithmic_bias_detection_in_minority_language_processing",
-            "evaluation_of_AI_translation_quality_across_Nordic_languages"
-          ],
-          "learning_objectives": [
-            "understand_algorithmic_bias_in_linguistic_diversity",
-            "develop_advocacy_skills_for_minority_language_protection",
-            "analyze_democratic_implications_of_AI_mediated_communication"
-          ]
+        "svenska_som_andrasprak": {
+          "subject_id": "GRGRSVA01",
+          "subject_name": "Svenska som andraspråk",
+          "subject_name_en": "Swedish as a Second Language",
+          "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/grundskolan/kursplaner-for-grundskolan/kursplan/svid12_6a3421f41969f369f2c9bd1/907561864/subject/GRGRSVA01/14/pdf",
+          "html_file": "svenska_andrasprak_grundskola_2022.html",
+          "version": 14
         },
-        "nivå_3_svenska_nivå_2_arti": {
-          "joint_activities": [
-            "advanced_rhetorical_analysis_of_AI_vs_human_scientific_writing",
-            "development_of_AI_evaluation_frameworks_for_academic_texts",
-            "investigation_of_AI_impact_on_literary_creation_and_interpretation"
-          ],
-          "learning_objectives": [
-            "synthesize_technical_AI_knowledge_with_humanistic_analysis",
-            "develop_sophisticated_frameworks_for_AI_ethics_in_education",
-            "prepare_for_lifelong_learning_in_AI_augmented_environments"
-          ]
-        }
-      },
-      "assessment_integration": {
-        "shared_rubrics": ["ai_interaction_checklist", "bias_detection_protocols", "ethical_reflection_frameworks"],
-        "cross_subject_portfolios": "Students maintain AI interaction logs across Svenska and ARTI"
-      }
-    },
-
-    "svenska_som_andrasprak_svea": {
-      "integration_level": "very_high",
-      "equity_focus": "Primary subject for addressing AI bias and multilingual considerations",
-      "shared_competencies": [
-        "multilingual_AI_evaluation",
-        "L1_interference_pattern_recognition",
-        "contrastive_linguistic_analysis",
-        "minority_language_advocacy_through_technology_critique"
-      ],
-      "specific_connections": {
-        "nivå_1_svea_nivå_1_arti": {
-          "joint_activities": [
-            "AI_tool_testing_with_multiple_languages_for_bias_detection",
-            "development_of_L1_informed_Swedish_learning_strategies",
-            "creation_of_multilingual_AI_prompt_libraries"
-          ],
-          "equity_applications": [
-            "ensuring_AI_scaffolding_preserves_cultural_identity",
-            "developing_AI_literacy_in_multiple_languages",
-            "creating_inclusive_classroom_AI_policies"
-          ]
+        "engelska": {
+          "subject_id": "GRGRENG01",
+          "subject_name": "Engelska",
+          "subject_name_en": "English",
+          "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/grundskolan/kursplaner-for-grundskolan/kursplan/svid12_6a3421f41969f369f2c9bd1/907561864/subject/GRGRENG01/14/pdf",
+          "html_file": "engelska_grundskola_2022.html",
+          "version": 14
         },
-        "nivå_2_svea_nivå_1_arti": {
-          "joint_activities": [
-            "Nordic_language_AI_comprehension_testing",
-            "minority_language_preservation_advocacy_projects",
-            "analysis_of_AI_impact_on_Nordic_språkgemenskap"
-          ]
-        },
-        "nivå_3_svea_nivå_2_arti": {
-          "joint_activities": [
-            "advanced_multilingual_AI_ethics_research",
-            "development_of_inclusive_AI_evaluation_frameworks",
-            "leadership_in_cross_cultural_AI_literacy_initiatives"
-          ]
+        "matematik": {
+          "subject_id": "GRGRMAT01",
+          "subject_name": "Matematik",
+          "subject_name_en": "Mathematics",
+          "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/grundskolan/kursplaner-for-grundskolan/kursplan/svid12_6a3421f41969f369f2c9bd1/907561864/subject/GRGRMAT01/14/pdf",
+          "html_file": "matematik_grundskola_2022.html",
+          "version": 14
         }
       }
     },
 
-    "matematik_mate": {
-      "integration_level": "high", 
-      "shared_competencies": [
-        "algorithmic_thinking_and_logical_reasoning",
-        "pattern_recognition_in_data_analysis",
-        "statistical_evaluation_of_AI_performance",
-        "mathematical_modeling_of_language_phenomena"
-      ],
-      "specific_connections": {
-        "joint_projects": [
-          "statistical_analysis_of_AI_language_generation_quality",
-          "mathematical_modeling_of_linguistic_variation_patterns",
-          "algorithmic_approach_to_rhetorical_analysis"
-        ],
-        "svenska_bridges": [
-          "quantitative_analysis_of_literary_texts_using_AI",
-          "mathematical_validation_of_linguistic_theories",
-          "statistical_rhetoric_analysis_in_political_discourse"
-        ]
+    "gymnasium_2011_sv": {
+      "name": "2011 Gymnasium curriculum plans in Swedish",
+      "description": "Gymnasium årskurs 1 till 3",
+      "language": "sv",
+      "year": 2011,
+      "school_level": "gymnasium",
+      "grades": "1-3",
+      "replacement_status": "Being gradually replaced by Gy25 2025–2027",
+      "general_documents": [],
+      "subjects": {
+        "common_subjects": {
+          "description": "Subjects common to all gymnasium programs",
+          "subjects": {
+            "svenska": {
+              "subject_id": "SVE",
+              "subject_name": "Svenska",
+              "subject_name_en": "Swedish",
+              "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-amnen-och-kurser-i-gymnasieskolan-gy11/amne/svid12_5dfee44715d35a5cdfa92a3/907561864/subject/SVE/8/pdf",
+              "html_file": "svenska_gymnasium_2011.html",
+              "version": 8,
+              "course_structure": {
+                "type": "separate_courses",
+                "courses": ["Svenska 1", "Svenska 2", "Svenska 3", "Litteratur", "Retorik", "Skrivande"]
+              },
+              "ai_integration_potential": {
+                "level": "moderate",
+                "applications": ["grammar_feedback", "text_analysis_scaffolding", "rhetorical_analysis"],
+                "limitations": ["linear_progression", "late_digital_integration", "separate_course_silos"]
+              },
+              "cross_reference": {
+                "english_version": "gymnasium_2011_en.svenska",
+                "updated_version": "gymnasium_2025_sv.common_subjects.subjects.svenska"
+              }
+            },
+            "svenska_som_andrasprak": {
+              "subject_id": "SVA",
+              "subject_name": "Svenska som andraspråk",
+              "subject_name_en": "Swedish as a Second Language",
+              "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-amnen-och-kurser-i-gymnasieskolan-gy11/amne/svid12_5dfee44715d35a5cdfa92a3/907561864/subject/SVA/4/pdf",
+              "html_file": "svenska_andrasprak_gymnasium_2011.html",
+              "version": 4,
+              "ai_integration_potential": {
+                "level": "high",
+                "applications": ["contrastive_analysis", "L1_interference_detection", "multilingual_scaffolding"],
+                "advantages": ["supports_multilingualism", "addresses_equity_gaps"]
+              },
+              "cross_reference": {
+                "english_version": "gymnasium_2011_en.svenska_som_andrasprak",
+                "updated_version": "gymnasium_2025_sv.common_subjects.subjects.svenska_som_andrasprak"
+              }
+            },
+            "engelska": {
+              "subject_id": "ENG",
+              "subject_name": "Engelska",
+              "subject_name_en": "English",
+              "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-amnen-och-kurser-i-gymnasieskolan-gy11/amne/svid12_5dfee44715d35a5cdfa92a3/907561864/subject/ENG/6/pdf",
+              "html_file": "engelska_gymnasium_2011.html",
+              "version": 6,
+              "cross_reference": {
+                "english_version": "gymnasium_2011_en.engelska",
+                "updated_version": "gymnasium_2025_sv.common_subjects.subjects.engelska"
+              }
+            },
+            "matematik": {
+              "subject_id": "MAT",
+              "subject_name": "Matematik",
+              "subject_name_en": "Mathematics",
+              "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-amnen-och-kurser-i-gymnasieskolan-gy11/amne/svid12_5dfee44715d35a5cdfa92a3/907561864/subject/MAT/11/pdf",
+              "html_file": "matematik_gymnasium_2011.html",
+              "version": 11,
+              "cross_reference": {
+                "english_version": "gymnasium_2011_en.matematik",
+                "updated_version": "gymnasium_2025_sv.common_subjects.subjects.matematik"
+              }
+            }
+          }
+        },
+        "program_specific": {
+          "description": "Subjects specific to individual gymnasium programs",
+          "programs": {
+            "placeholder_program_1": {
+              "program_name": "Program Name",
+              "program_code": "XX",
+              "subjects": {}
+            }
+          }
+        }
       }
     },
 
-    "programmering_prog": {
-      "integration_level": "very_high",
-      "role": "Technical implementation of AI concepts learned in ARTI",
-      "shared_competencies": [
-        "practical_AI_tool_development",
-        "coding_ethics_and_responsible_development",
-        "debugging_and_testing_methodologies",
-        "user_interface_design_for_inclusive_AI_tools"
-      ],
-      "svenska_connections": [
-        "building_text_analysis_tools_for_literature_study",
-        "creating_multilingual_grammar_checkers_for_SvA_students",
-        "developing_AI_assisted_writing_platforms_with_ethical_guidelines"
-      ]
+    "gymnasium_2025_sv": {
+      "name": "2025 Gymnasium curriculum plans in Swedish",
+      "description": "Gymnasium årskurs 1 till 3 (Updated version)",
+      "language": "sv",
+      "year": 2025,
+      "school_level": "gymnasium",
+      "grades": "1-3",
+      "implementation_status": "Phased rollout 2025-2027",
+      "general_documents": [],
+      "subjects": {
+        "common_subjects": {
+          "description": "Subjects common to all gymnasium programs",
+          "subjects": {
+            "svenska": {
+              "subject_id": "SVEN",
+              "subject_name": "Svenska",
+              "subject_name_en": "Swedish",
+              "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/SVEN/1/pdf",
+              "html_file": "svenska_gymnasium_2025.html",
+              "version": 1,
+              "course_structure": {
+                "type": "integrated_levels",
+                "levels": ["Nivå 1", "Nivå 2", "Nivå 3"],
+                "points_per_level": 100
+              },
+              "key_innovations": {
+                "digital_integration": "Digital textvärld throughout progression",
+                "early_critical_thinking": "Source criticism and media literacy from Nivå 1",
+                "integrated_rhetoric": "Rhetorical skills woven across all levels",
+                "continuous_language_history": "Language development concepts throughout"
+              },
+              "arti_connections": {
+                "shared_competencies": [
+                  "critical_evaluation_of_AI_generated_texts",
+                  "digital_literacy_and_source_criticism", 
+                  "ethical_reflection_on_technology_use",
+                  "media_analysis_and_bias_detection"
+                ],
+                "complementary_activities": [
+                  "AI_audit_projects_for_text_analysis",
+                  "rhetorical_analysis_of_AI_vs_human_communication",
+                  "minority_language_AI_bias_investigation"
+                ]
+              },
+              "cross_reference": {
+                "previous_version": "gymnasium_2011_sv.common_subjects.subjects.svenska",
+                "related_subjects": ["ARTI", "ENGE", "SAMH"]
+              }
+            },
+            "svenska_som_andrasprak": {
+              "subject_id": "SVEA",
+              "subject_name": "Svenska som andraspråk",
+              "subject_name_en": "Swedish as a Second Language",
+              "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/SVEA/1/pdf",
+              "html_file": "svenska_andrasprak_gymnasium_2025.html",
+              "version": 1,
+              "special_focus": {
+                "multilingual_assets": "Leveraging students' L1 knowledge",
+                "nordic_språkgemenskap": "Enhanced inter-Nordic language awareness",
+                "minority_language_awareness": "Protection and recognition of linguistic diversity"
+              },
+              "arti_connections": {
+                "shared_competencies": [
+                  "multilingual_AI_evaluation",
+                  "algorithmic_bias_detection_for_minority_languages",
+                  "contrastive_analysis_using_AI_tools",
+                  "digital_equity_and_access_considerations"
+                ],
+                "equity_applications": [
+                  "AI_tools_for_L1_Swedish_interference_patterns",
+                  "minority_language_preservation_through_AI_critique",
+                  "multilingual_scaffolding_in_digital_environments"
+                ]
+              },
+              "cross_reference": {
+                "previous_version": "gymnasium_2011_sv.common_subjects.subjects.svenska_som_andrasprak",
+                "related_subjects": ["ARTI", "SVEN", "minority_language_studies"]
+              }
+            },
+            "engelska": {
+              "subject_id": "ENGE",
+              "subject_name": "Engelska",
+              "subject_name_en": "English",
+              "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/ENGE/1/pdf",
+              "html_file": "engelska_gymnasium_2025.html",
+              "version": 1,
+              "arti_connections": {
+                "shared_competencies": ["cross_linguistic_AI_analysis", "international_AI_ethics_perspectives"],
+                "applications": ["AI_conversation_partners", "global_communication_analysis"]
+              },
+              "cross_reference": {
+                "previous_version": "gymnasium_2011_sv.common_subjects.subjects.engelska",
+                "related_subjects": ["ARTI", "SVEN", "SVEA"]
+              }
+            },
+            "matematik": {
+              "subject_id": "MATE",
+              "subject_name": "Matematik",
+              "subject_name_en": "Mathematics",
+              "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/MATE/1/pdf",
+              "html_file": "matematik_gymnasium_2025.html",
+              "version": 1,
+              "arti_connections": {
+                "shared_competencies": ["algorithmic_thinking", "pattern_recognition", "data_analysis"],
+                "applications": ["mathematical_modeling_with_AI", "statistical_analysis_of_language_data"]
+              },
+              "cross_reference": {
+                "previous_version": "gymnasium_2011_sv.common_subjects.subjects.matematik",
+                "related_subjects": ["ARTI", "PROG", "NATU"]
+              }
+            },
+            "artificiell_intelligens": {
+              "subject_id": "ARTI",
+              "subject_name": "Artificiell intelligens",
+              "subject_name_en": "Artificial Intelligence",
+              "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/ARTI/2/pdf",
+              "html_file": "artificiell_intelligens_gymnasium_2025.html",
+              "version": 2,
+              "status": "new_in_gy25",
+              "course_structure": {
+                "type": "integrated_levels",
+                "levels": ["Nivå 1", "Nivå 2"],
+                "points_per_level": 100
+              },
+              "central_content": {
+                "nivå_1": {
+                  "areas": [
+                    "Definition av AI samt centrala begrepp inom området",
+                    "Vikten av data, datakvalitet för AI och val av data",
+                    "Drivkrafter för AI-utvecklingen",
+                    "Användningsområden och arbetssätt för AI",
+                    "Jämförelse mellan mänsklig och artificiell intelligens",
+                    "Etiska dilemman och frågeställningar kring AI"
+                  ]
+                },
+                "nivå_2": {
+                  "areas": [
+                    "Tekniker, metoder och algoritmer inom AI",
+                    "Maskininlärning och neurala nätverk",
+                    "AI:s begränsningar och utmaningar",
+                    "Framtida utveckling och konsekvenser av AI",
+                    "Praktiska tillämpningar av AI-verktyg"
+                  ]
+                }
+              },
+              "interdisciplinary_hub": {
+                "role": "Central coordination point for AI literacy across subjects",
+                "primary_connections": [
+                  "SVEN - text analysis and rhetorical critique",
+                  "SVEA - multilingual AI bias detection",
+                  "MATE - algorithmic thinking and pattern recognition",
+                  "ENGE - global AI communication patterns",
+                  "PROG - practical AI tool development",
+                  "SAMH - societal implications of AI adoption"
+                ]
+              },
+              "pedagogical_frameworks": {
+                "ai_audit_methodology": "Critical evaluation of AI outputs across subjects",
+                "ethical_reflection_protocols": "Structured approaches to AI ethics in educational contexts",
+                "minority_language_protection": "Bias detection and mitigation strategies"
+              }
+            },
+            "programmering": {
+              "subject_id": "PROG",
+              "subject_name": "Programmering",
+              "subject_name_en": "Programming",
+              "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/PROG/1/pdf",
+              "html_file": "programmering_gymnasium_2025.html",
+              "version": 1,
+              "arti_connections": {
+                "shared_competencies": ["algorithmic_thinking", "logical_problem_solving", "code_ethics"],
+                "svenska_bridges": ["text_analysis_algorithm_development", "linguistic_pattern_recognition"]
+              }
+            },
+            "samhallskunskap": {
+              "subject_id": "SAMH",
+              "subject_name": "Samhällskunskap",
+              "subject_name_en": "Social Studies",
+              "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/SAMH/1/pdf",
+              "html_file": "samhallskunskap_gymnasium_2025.html",
+              "version": 1,
+              "arti_connections": {
+                "shared_competencies": ["democratic_participation", "ethical_reasoning", "policy_analysis"],
+                "svenska_bridges": ["rhetorical_analysis_of_political_discourse", "media_literacy_and_democracy"]
+              }
+            }
+          }
+        },
+        "program_specific": {
+          "description": "Subjects specific to individual gymnasium programs",
+          "programs": {
+            "naturvetenskap": {
+              "program_name": "Naturvetenskapsprogrammet",
+              "program_code": "NA",
+              "arti_integration": "High - data analysis, scientific modeling",
+              "subjects": {
+                "biologi": {
+                  "arti_connections": ["bioinformatics", "pattern_analysis_in_biological_data"]
+                },
+                "fysik": {
+                  "arti_connections": ["computational_physics", "simulation_analysis"]
+                }
+              }
+            },
+            "teknik": {
+              "program_name": "Teknikprogrammet", 
+              "program_code": "TE",
+              "arti_integration": "Very High - core technical applications",
+              "subjects": {}
+            }
+          }
+        }
+      }
     },
 
-    "engelska_enge": {
-      "integration_level": "medium",
-      "shared_competencies": [
-        "cross_linguistic_AI_communication_analysis",
-        "global_perspectives_on_AI_development_and_regulation",
-        "international_collaboration_in_AI_ethics_discussions"
-      ],
-      "connections": [
-        "comparative_analysis_of_AI_performance_across_languages",
-        "study_of_global_AI_policy_through_English_language_sources",
-        "development_of_multilingual_AI_evaluation_skills"
-      ]
-    },
-
-    "samhallskunskap_samh": {
-      "integration_level": "high",
-      "shared_competencies": [
-        "democratic_implications_of_AI_adoption",
-        "policy_analysis_and_civic_engagement_with_AI_issues",
-        "ethical_reasoning_about_technology_in_society",
-        "critical_media_literacy_in_AI_mediated_information_environments"
-      ],
-      "svenska_bridges": [
-        "rhetorical_analysis_of_AI_policy_debates",
-        "critical_evaluation_of_AI_impact_on_democratic_discourse",
-        "media_literacy_skills_applied_to_AI_generated_content"
-      ]
+    "gymnasium_2011_en": {
+      "name": "2011 Gymnasium curriculum plans in English",
+      "description": "Gymnasium årskurs 1 till 3 (English translations)",
+      "language": "en",
+      "year": 2011,
+      "school_level": "gymnasium",
+      "grades": "1-3",
+      "general_documents": [],
+      "subjects": {
+        "common_subjects": {
+          "description": "Subjects common to all gymnasium programs",
+          "subjects": {
+            "svenska": {
+              "subject_id": "SVE_EN",
+              "subject_name": "Swedish",
+              "subject_name_sv": "Svenska",
+              "curriculum_url": "https://www.skolverket.se/download/18.4fc05a3f164131a7418107c/1535372300410/Swedish-in-swedish-school.pdf",
+              "html_file": "svenska_gymnasium_2011_en.html",
+              "status": "current",
+              "cross_reference": {
+                "swedish_version": "gymnasium_2011_sv.common_subjects.subjects.svenska",
+                "updated_swedish_version": "gymnasium_2025_sv.common_subjects.subjects.svenska"
+              }
+            },
+            "svenska_som_andrasprak": {
+              "subject_id": "SVA_EN",
+              "subject_name": "Swedish as a Second Language",
+              "subject_name_sv": "Svenska som andraspråk",
+              "curriculum_url": "https://www.skolverket.se/download/18.4d4520c518a623a3744ddb/1695108113486/Swedish-second-language-2.pdf",
+              "html_file": "svenska_andrasprak_gymnasium_2011_en.html",
+              "status": "current",
+              "cross_reference": {
+                "swedish_version": "gymnasium_2011_sv.common_subjects.subjects.svenska_som_andrasprak",
+                "updated_swedish_version": "gymnasium_2025_sv.common_subjects.subjects.svenska_som_andrasprak"
+              }
+            },
+            "engelska": {
+              "subject_id": "ENG_EN",
+              "subject_name": "English",
+              "subject_name_sv": "Engelska",
+              "curriculum_url": "https://www.skolverket.se/download/18.4fc05a3f164131a74181056/1704689136733/English-swedish-school.pdf",
+              "html_file": "engelska_gymnasium_2011_en.html",
+              "status": "obsolete",
+              "status_note": "Document version obsolete but considered valid while cross-referenced",
+              "cross_reference": {
+                "swedish_version": "gymnasium_2011_sv.common_subjects.subjects.engelska",
+                "updated_swedish_version": "gymnasium_2025_sv.common_subjects.subjects.engelska"
+              }
+            },
+            "matematik": {
+              "subject_id": "MAT_EN",
+              "subject_name": "Mathematics",
+              "subject_name_sv": "Matematik",
+              "curriculum_url": "https://www.skolverket.se/download/18.4fc05a3f164131a74181063/1535372298267/Mathematics-swedish-school.pdf",
+              "html_file": "matematik_gymnasium_2011_en.html",
+              "status": "obsolete",
+              "status_note": "Document version obsolete but considered valid while cross-referenced",
+              "cross_reference": {
+                "swedish_version": "gymnasium_2011_sv.common_subjects.subjects.matematik",
+                "updated_swedish_version": "gymnasium_2025_sv.common_subjects.subjects.matematik"
+              }
+            }
+          }
+        }
+      }
     }
   },
 
-  "implementation_pathways": {
-    "year_1_priorities": [
-      "establish_ARTI_as_interdisciplinary_hub",
-      "pilot_svenska_arti_integration_in_select_schools",
-      "develop_teacher_AI_literacy_through_micro_cycles"
+  "ai_integration_framework": {
+    "description": "Cross-curricular AI integration mapping for Gy25",
+    "core_principles": [
+      "AI as enhancement tool, not replacement for human judgment",
+      "Equity through multiple pathway options",
+      "Critical evaluation of AI outputs and biases",
+      "Protection and recognition of linguistic diversity"
     ],
-    "year_2_expansion": [
-      "extend_integration_to_matematik_and_programmering",
-      "implement_cross_subject_ai_audit_projects",
-      "establish_student_ai_ethics_committees"
-    ],
-    "year_3_maturation": [
-      "full_cross_curricular_implementation",
-      "student_led_ai_literacy_peer_mentoring",
-      "evaluation_and_refinement_of_integration_approaches"
+    "assessment_approaches": {
+      "process_focused_rubrics": "Evaluate reasoning and reflection, not technical sophistication",
+      "ai_interaction_documentation": "Transparent logging of AI use and decision-making",
+      "dual_path_assignments": "Digital, analog, and hybrid options for all activities"
+    },
+    "teacher_development": {
+      "micro_cycles": ["grammar_ai_integration", "media_criticism_with_ai", "ethical_ai_reflection"],
+      "cross_subject_collaboration": "ARTI teachers as AI literacy coordinators"
+    }
+  },
+
+  "metadata": {
+    "file_structure": {
+      "root": "curriculum_system/",
+      "folders": {
+        "grundskola_2022": "curriculum_system/grundskola_2022/",
+        "gymnasium_2011_sv": "curriculum_system/gymnasium_2011_sv/",
+        "gymnasium_2025_sv": "curriculum_system/gymnasium_2025_sv/",
+        "gymnasium_2011_en": "curriculum_system/gymnasium_2011_en/",
+        "ai_integration": "curriculum_system/ai_integration/"
+      }
+    },
+    "cross_reference_format": "category.path.to.subject",
+    "html_naming_convention": "{subject}_{level}_{year}_{lang}.html",
+    "ai_documentation": {
+      "templates": ["ai_interaction_checklist", "dual_path_assignments", "ai_audit_rubrics"],
+      "professional_development": ["micro_cycle_plans", "resistance_mitigation_strategies"]
+    },
+    "notes": [
+      "ARTI serves as interdisciplinary hub for AI literacy",
+      "Cross-references map relationships between subjects and AI applications",
+      "Minority language protection integrated throughout AI activities",
+      "Transitional support for Gy11/Gy25 simultaneous implementation"
     ]
-  },
-
-  "assessment_and_documentation": {
-    "shared_assessment_tools": {
-      "ai_interaction_checklist": {
-        "components": ["source_transparency", "bias_check", "citation_protocol", "disagreement_documentation", "reflection_on_human_irreplaceability"],
-        "application": "Used across all subjects integrating AI tools"
-      },
-      "dual_path_rubrics": {
-        "criteria": ["clarity_of_reasoning", "awareness_of_variation", "evidence_use", "ethical_reflection"],
-        "pathways": ["digital_ai_assisted", "analog_traditional", "hybrid_approach"]
-      },
-      "ai_audit_framework": {
-        "focus_areas": ["minority_language_treatment", "cultural_bias_detection", "democratic_discourse_impact"],
-        "deliverables": ["annotated_outputs", "advocacy_reports", "improvement_recommendations"]
-      }
-    },
-    "portfolio_integration": {
-      "cross_subject_documentation": "Students maintain AI interaction logs showing development across subjects",
-      "reflection_prompts": [
-        "How has your understanding of AI capabilities/limitations evolved?",
-        "What patterns do you notice in AI bias across different subjects?", 
-        "How do you balance AI assistance with authentic personal voice?"
-      ]
-    }
-  },
-
-  "minority_language_protection_framework": {
-    "priority_languages": ["Sami_languages", "Meänkieli", "Romani_chib", "Swedish_Sign_Language"],
-    "protection_strategies": {
-      "detection": "Regular AI audits for minority language bias",
-      "preservation": "Annotation and correction of AI outputs that erase minority features",
-      "advocacy": "Student projects documenting and addressing AI limitations",
-      "education": "Explicit instruction on linguistic diversity and AI bias"
-    },
-    "cross_subject_applications": {
-      "svenska_svea": "Primary implementation through Nordic språkgemenskap studies",
-      "arti": "Technical understanding of bias sources and mitigation strategies", 
-      "samhallskunskap": "Policy implications and democratic participation aspects",
-      "historia": "Historical context of minority language suppression and protection"
-    }
   }
 }
