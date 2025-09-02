@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "author": "ChatGPT-5",
+    "version": "1.0",
+    "focus": "AI-facing manifest for Gy25 AI literacy projects",
+    "links": {
+      "arti_matrix": "../common/arti-matrix.json",
+      "common_index": "../common/index.html"
+    }
+  },
+  "rubric": {
+    "dimensions": [
+      {
+        "name": "Language Development (SvA)",
+        "criteria": "Språkriktighet, retorik, purpose adaptation",
+        "indicators": {
+          "SvA1": "Basic AI translation critique (L1 influence logs)",
+          "SvA3": "Advocacy essays on minority language bias"
+        },
+        "weight_percent": 20
+      },
+      {
+        "name": "Source Criticism & Bias Detection",
+        "criteria": "Källkritik, bias protocols",
+        "indicators": {
+          "SvA": "Fact-check AI outputs",
+          "Prog/Mat": "Validate via code/stats (e.g., omission rate)"
+        },
+        "weight_percent": 25
+      },
+      {
+        "name": "AI & Technical Competencies",
+        "criteria": "AI limitations, code/stats",
+        "indicators": {
+          "Prog": "Functional bias detector (regex/NLTK)",
+          "Mat": "Error rates, confidence intervals"
+        },
+        "weight_percent": 25
+      },
+      {
+        "name": "Ethics & Democracy (SvA)",
+        "criteria": "Linguistic equity, democratic implications",
+        "indicators": {
+          "SvA1": "Reflection on cultural identity",
+          "SvA3": "Argue AI’s discourse impact"
+        },
+        "weight_percent": 20
+      },
+      {
+        "name": "Process & Reflection",
+        "criteria": "Method logs, portfolios",
+        "indicators": {
+          "All": "AI/code logs + joint reflection"
+        },
+        "weight_percent": 10
+      }
+    ]
+  },
+  "timeline": {
+    "theme": "Build/test a bias detector for minority languages",
+    "weeks": [
+      {
+        "week": 1,
+        "focus": "Intro with UR Play resource, team planning"
+      },
+      {
+        "week": 2,
+        "focus": "SvA: Annotate translations; Prog: Code detector; Mat: Begin error metrics"
+      },
+      {
+        "week": 3,
+        "focus": "Continue coding + statistical calculations"
+      },
+      {
+        "week": 4,
+        "focus": "Synthesize outputs (essays, UI, data visualization)"
+      },
+      {
+        "week": 5,
+        "focus": "Refine and integrate across subjects"
+      },
+      {
+        "week": 6,
+        "focus": "Present deliverables; compile AI interaction logs"
+      }
+    ]
+  },
+  "deliverables": {
+    "portfolio": [
+      "Code (Prog.)",
+      "Statistical report (Mat.)",
+      "Annotated translations + advocacy essay (SvA)"
+    ],
+    "reflection": "Joint 300-500 word statement on how AI shaped equity insights"
+  },
+  "equity_focus": "Minority languages (Sami, Meänkieli) centered; multilingual students positioned as experts"
+}
