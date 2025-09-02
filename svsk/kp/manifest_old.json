@@ -1,1 +1,430 @@
+{
+  "manifest_version": "1.0",
+  "last_updated": "2025-08-28",
+  "description": "Swedish curriculum plans (läroplaner) organization system",
+  
+  "categories": {
+    "grundskola_2022": {
+      "name": "2022 Grundskola curriculum plans in Swedish",
+      "description": "Grundskola årskurs 1 till 9",
+      "language": "sv",
+      "year": 2022,
+      "school_level": "grundskola",
+      "grades": "1-9",
+      "general_documents": [],
+      "subjects": {
+        "svenska": {
+          "subject_id": "GRGRSVE01",
+          "subject_name": "Svenska",
+          "subject_name_en": "Swedish",
+          "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/grundskolan/kursplaner-for-grundskolan/kursplan/svid12_6a3421f41969f369f2c9bd1/907561864/subject/GRGRSVE01/15/pdf",
+          "html_file": "placeholder_svenska_grundskola.html",
+          "version": 15
+        },
+        "svenska_som_andrasprak": {
+          "subject_id": "GRGRSVA01",
+          "subject_name": "Svenska som andraspråk",
+          "subject_name_en": "Swedish as a Second Language",
+          "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/grundskolan/kursplaner-for-grundskolan/kursplan/svid12_6a3421f41969f369f2c9bd1/907561864/subject/GRGRSVA01/14/pdf",
+          "html_file": "placeholder_svenska_andrasprak_grundskola.html",
+          "version": 14
+        },
+        "engelska": {
+          "subject_id": "GRGRENG01",
+          "subject_name": "Engelska",
+          "subject_name_en": "English",
+          "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/grundskolan/kursplaner-for-grundskolan/kursplan/svid12_6a3421f41969f369f2c9bd1/907561864/subject/GRGRENG01/14/pdf",
+          "html_file": "placeholder_engelska_grundskola.html",
+          "version": 14
+        },
+        "matematik": {
+          "subject_id": "GRGRMAT01",
+          "subject_name": "Matematik",
+          "subject_name_en": "Mathematics",
+          "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/grundskolan/kursplaner-for-grundskolan/kursplan/svid12_6a3421f41969f369f2c9bd1/907561864/subject/GRGRMAT01/14/pdf",
+          "html_file": "placeholder_matematik_grundskola.html",
+          "version": 14
+        },
+        "religionskunskap": {
+          "subject_id": "GRGRREL01",
+          "subject_name": "Religionskunskap",
+          "subject_name_en": "Religion",
+          "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/grundskolan/kursplaner-for-grundskolan/kursplan/svid12_6a3421f41969f369f2c9bd1/907561864/subject/GRGRREL01/14/pdf",
+          "html_file": "religionskunskap_grundskola.html",
+          "version": 14
+        }
+      }
+    },
 
+    "gymnasium_2011_sv": {
+      "name": "2011 Gymnasium curriculum plans in Swedish",
+      "description": "Gymnasium årskurs 1 till 3",
+      "language": "sv",
+      "year": 2011,
+      "school_level": "gymnasium",
+      "grades": "1-3",
+      "general_documents": [],
+      "subjects": {
+        "common_subjects": {
+          "description": "Subjects common to all gymnasium programs",
+          "subjects": {
+            "svenska": {
+              "subject_id": "SVE",
+              "subject_name": "Svenska",
+              "subject_name_en": "Swedish",
+              "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-amnen-och-kurser-i-gymnasieskolan-gy11/amne/svid12_5dfee44715d35a5cdfa92a3/907561864/subject/SVE/8/pdf",
+              "html_file": "placeholder_svenska_gymnasium_2011.html",
+              "version": 8,
+              "course_structure": {
+                "type": "separate_courses",
+                "courses": ["Svenska 1", "Svenska 2", "Svenska 3", "Litteratur", "Retorik", "Skrivande"]
+              },
+              "content_analysis": {
+                "main_purpose": "Undervisningen i ämnet svenska ska syfta till att eleverna utvecklar sin förmåga att kommunicera i tal och skrift samt att läsa och arbeta med texter, både skönlitteratur och andra typer av texter. Eleverna ska ges möjlighet att i skönlitteraturen se såväl det särskiljande som det allmänmänskliga i tid och rum.",
+                "core_focus": ["kommunikativ förmåga", "textmångfald", "litterärt perspektiv"],
+                "approach": "Mer traditionell formulering, fokus på litterär tolkning",
+                "structural_characteristics": {
+                  "progression": "linjär (Svenska 1 → 2 → 3)",
+                  "literature_focus": "tydlig tyngd på litteraturhistoria och klassiska genrer",
+                  "scientific_texts": "vetenskaplig text och retorik först på avancerad nivå (Svenska 3)",
+                  "language_history": "placeras i slutet (Svenska 3)",
+                  "digitalization": "i första hand som verktyg för textbearbetning/presentation"
+                },
+                "extracted_date": "2025-08-28"
+              },
+              "central_content": {
+                "svenska_1": {
+                  "areas": [
+                    "Muntlig framställning (mottagaranpassning, respons, digitala hjälpmedel)",
+                    "Skriftlig framställning (argumentation, språkriktighet, digital textbearbetning)",
+                    "Retoriska grunder",
+                    "Textanalys, källkritik, upphovsrätt",
+                    "Skönlitteratur från olika tider/kulturer",
+                    "Berättarteknik, genrer, stil",
+                    "Språkliga begrepp och variation (sociolekt, dialekt, kön, ålder, digitalisering)"
+                  ]
+                },
+                "svenska_2": {
+                  "areas": [
+                    "Muntlig framställning (utredande, argumenterande)",
+                    "Skriftlig framställning (utredande/argumenterande texter)",
+                    "Referat, källkritik, normer och stildrag",
+                    "Svenska och internationella författarskap, inkl. dansk/norsk litteratur",
+                    "Litteratur och samhällsutveckling",
+                    "Språkets uppbyggnad (grammatik)",
+                    "Språkförhållanden i Sverige/Norden (minoritetsspråk, lagstiftning, dialekter)"
+                  ]
+                },
+                "svenska_3": {
+                  "areas": [
+                    "Muntlig framställning (fördjupad retorik)",
+                    "Vetenskapliga texter (disposition, stil, källkritik)",
+                    "Litteraturanalys (prosa, lyrik, dramatik, litteraturvetenskapliga begrepp)",
+                    "Språkhistoria (ursprung, utveckling, släktskap, språkförändring)"
+                  ]
+                },
+                "optional_courses": {
+                  "litteratur": [
+                    "Epoker, centrala verk, genrer",
+                    "Litteratur i relation till samhälle, kultur, konstformer",
+                    "Etik, censur, upphovsrätt",
+                    "Djupanalys (tematik, symbolik, stilmedel, jämförelser, perspektivval)"
+                  ],
+                  "retorik": [
+                    "Retoriska arbetsprocessen (intellectio–actio)",
+                    "Praktiska tillämpningar (tal, debatt, analys)",
+                    "Yttrandefrihet, etik, censur"
+                  ],
+                  "skrivande": [
+                    "Skönlitterärt och journalistiskt skrivande",
+                    "Retorisk arbetsprocess",
+                    "Spänning fakta–fiktion, tradition–innovation",
+                    "Multimodala texter",
+                    "Textkritik, språklig medvetenhet, grafisk utformning"
+                  ]
+                }
+              },
+              "cross_reference": {
+                "english_version": "gymnasium_2011_en.svenska",
+                "updated_version": "gymnasium_2025_sv.svenska"
+              }
+            },
+            "svenska_som_andrasprak": {
+              "subject_id": "SVA",
+              "subject_name": "Svenska som andraspråk",
+              "subject_name_en": "Swedish as a Second Language",
+              "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-amnen-och-kurser-i-gymnasieskolan-gy11/amne/svid12_5dfee44715d35a5cdfa92a3/907561864/subject/SVA/4/pdf",
+              "html_file": "placeholder_svenska_andrasprak_gymnasium_2011.html",
+              "version": 4,
+              "cross_reference": {
+                "english_version": "gymnasium_2011_en.svenska_som_andrasprak",
+                "updated_version": "gymnasium_2025_sv.svenska_som_andrasprak"
+              }
+            },
+            "engelska": {
+              "subject_id": "ENG",
+              "subject_name": "Engelska",
+              "subject_name_en": "English",
+              "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-amnen-och-kurser-i-gymnasieskolan-gy11/amne/svid12_5dfee44715d35a5cdfa92a3/907561864/subject/ENG/6/pdf",
+              "html_file": "placeholder_engelska_gymnasium_2011.html",
+              "version": 6,
+              "cross_reference": {
+                "english_version": "gymnasium_2011_en.engelska",
+                "updated_version": "gymnasium_2025_sv.engelska"
+              }
+            },
+            "matematik": {
+              "subject_id": "MAT",
+              "subject_name": "Matematik",
+              "subject_name_en": "Mathematics",
+              "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-amnen-och-kurser-i-gymnasieskolan-gy11/amne/svid12_5dfee44715d35a5cdfa92a3/907561864/subject/MAT/11/pdf",
+              "html_file": "placeholder_matematik_gymnasium_2011.html",
+              "version": 11,
+              "cross_reference": {
+                "english_version": "gymnasium_2011_en.matematik",
+                "updated_version": "gymnasium_2025_sv.matematik"
+              }
+            },
+            "religion": {
+              "subject_id": "REL",
+              "subject_name": "Religionskunskap",
+              "subject_name_en": "Religion",
+              "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-amnen-och-kurser-i-gymnasieskolan-gy11/amne/svid12_5dfee44715d35a5cdfa92a3/907561864/subject/REL/3/pdf",
+              "html_file": "religionskunskap_gymnasium_2011.html",
+              "version": 11,
+              "cross_reference": {
+                "english_version": "gymnasium_2011_en.religionskunskap",
+                "updated_version": "gymnasium_2025_sv.religionskunskap"
+              }
+            }
+          }
+        },
+        "program_specific": {
+          "description": "Subjects specific to individual gymnasium programs",
+          "programs": {
+            "placeholder_program_1": {
+              "program_name": "Program Name",
+              "program_code": "XX",
+              "subjects": {}
+            }
+          }
+        }
+      }
+    },
+
+    "gymnasium_2025_sv": {
+      "name": "2025 Gymnasium curriculum plans in Swedish",
+      "description": "Gymnasium årskurs 1 till 3 (Updated version)",
+      "language": "sv",
+      "year": 2025,
+      "school_level": "gymnasium",
+      "grades": "1-3",
+      "general_documents": [],
+      "subjects": {
+        "common_subjects": {
+          "description": "Subjects common to all gymnasium programs",
+          "subjects": {
+            "svenska": {
+              "subject_id": "SVEN",
+              "subject_name": "Svenska",
+              "subject_name_en": "Swedish",
+              "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/SVEN/1/pdf",
+              "html_file": "placeholder_svenska_gymnasium_2025.html",
+              "version": 1,
+              "course_structure": {
+                "type": "integrated_levels",
+                "levels": ["Nivå 1", "Nivå 2", "Nivå 3"]
+              },
+              "content_analysis": {
+                "approach": "Modernare och bredare, med inslag av digital kompetens, språkidentitet, kritiskt tänkande",
+                "expanded_focus": ["identitet", "demokrati", "källkritik"],
+                "comparison_source": "kau.diva-portal.org akademisk analys",
+                "structural_characteristics": {
+                  "progression": "nivåbaserad integration",
+                  "digital_integration": "digital textvärld, interaktivitet, mediekritik",
+                  "rhetoric_integration": "integrerat i alla nivåer",
+                  "language_history": "närvarande genom hela progressionen",
+                  "choice_options": "flexibla specialiseringar (t.ex. projekt, media, kultur)"
+                }
+              },
+              "comparison_with_gy11": {
+                "structure": "Nivåer (grund, fördjupning, specialisering) vs Kurser (1–3 + valbara)",
+                "progression": "Vetenskaplig metod, kritiskt tänkande tidigare vs Litteraturhistoria och vetenskaplig text sent (Sv 2–3)",
+                "digitalization": "Digital textvärld, interaktivitet, mediekritik vs Verktygsfokus (textbearbetning, presentation)",
+                "rhetoric": "Integrerat i alla nivåer vs Separat kurs + i Sv 1/3",
+                "language_history": "Närvarande genom hela progressionen vs Endast i Sv 3",
+                "options": "Flexibla specialiseringar vs Extra kurser (Litteratur, Retorik, Skrivande)"
+              },
+              "cross_reference": {
+                "previous_version": "gymnasium_2011_sv.common_subjects.subjects.svenska"
+              }
+            },
+            "svenska_som_andrasprak": {
+              "subject_id": "SVEA",
+              "subject_name": "Svenska som andraspråk",
+              "subject_name_en": "Swedish as a Second Language",
+              "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/SVEA/1/pdf",
+              "html_file": "placeholder_svenska_andrasprak_gymnasium_2025.html",
+              "version": 1,
+              "cross_reference": {
+                "previous_version": "gymnasium_2011_sv.common_subjects.subjects.svenska_som_andrasprak"
+              }
+            },
+            "engelska": {
+              "subject_id": "ENGE",
+              "subject_name": "Engelska",
+              "subject_name_en": "English",
+              "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/ENGE/1/pdf",
+              "html_file": "placeholder_engelska_gymnasium_2025.html",
+              "version": 1,
+              "cross_reference": {
+                "previous_version": "gymnasium_2011_sv.common_subjects.subjects.engelska"
+              }
+            },
+            "matematik": {
+              "subject_id": "MATE",
+              "subject_name": "Matematik",
+              "subject_name_en": "Mathematics",
+              "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/MATE/1/pdf",
+              "html_file": "placeholder_matematik_gymnasium_2025.html",
+              "version": 1,
+              "cross_reference": {
+                "previous_version": "gymnasium_2011_sv.common_subjects.subjects.matematik"
+              },
+            "religionskunskap": {
+              "subject_id": "RELI",
+              "subject_name": "Religionskunskap",
+              "subject_name_en": "Religion",
+              "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/RELI/1/pdf",
+              "html_file": "religionskunskap_gymnasium_2025.html",
+              "version": 1,
+              "cross_reference": {
+                "previous_version": "gymnasium_2011_sv.common_subjects.subjects.religionskunskap"
+              }
+            }
+          }
+        },
+        "program_specific": {
+          "description": "Subjects specific to individual gymnasium programs",
+          "programs": {
+            "placeholder_program_1": {
+              "program_name": "Program Name",
+              "program_code": "XX",
+              "subjects": {}
+            }
+          }
+        }
+      }
+    },
+
+    "gymnasium_2011_en": {
+      "name": "2011 Gymnasium curriculum plans in English",
+      "description": "Gymnasium årskurs 1 till 3 (English translations)",
+      "language": "en",
+      "year": 2011,
+      "school_level": "gymnasium",
+      "grades": "1-3",
+      "general_documents": [],
+      "subjects": {
+        "common_subjects": {
+          "description": "Subjects common to all gymnasium programs",
+          "subjects": {
+            "svenska": {
+              "subject_id": "SVE_EN",
+              "subject_name": "Swedish",
+              "subject_name_sv": "Svenska",
+              "curriculum_url": "https://www.skolverket.se/download/18.4fc05a3f164131a7418107c/1535372300410/Swedish-in-swedish-school.pdf",
+              "html_file": "placeholder_svenska_gymnasium_2011_en.html",
+              "status": "current",
+              "cross_reference": {
+                "swedish_version": "gymnasium_2011_sv.common_subjects.subjects.svenska",
+                "updated_swedish_version": "gymnasium_2025_sv.common_subjects.subjects.svenska"
+              }
+            },
+            "svenska_som_andrasprak": {
+              "subject_id": "SVA_EN",
+              "subject_name": "Swedish as a Second Language",
+              "subject_name_sv": "Svenska som andraspråk",
+              "curriculum_url": "https://www.skolverket.se/download/18.4d4520c518a623a3744ddb/1695108113486/Swedish-second-language-2.pdf",
+              "html_file": "placeholder_svenska_andrasprak_gymnasium_2011_en.html",
+              "status": "current",
+              "cross_reference": {
+                "swedish_version": "gymnasium_2011_sv.common_subjects.subjects.svenska_som_andrasprak",
+                "updated_swedish_version": "gymnasium_2025_sv.common_subjects.subjects.svenska_som_andrasprak"
+              }
+            },
+            "engelska": {
+              "subject_id": "ENG_EN",
+              "subject_name": "English",
+              "subject_name_sv": "Engelska",
+              "curriculum_url": "https://www.skolverket.se/download/18.4fc05a3f164131a74181056/1704689136733/English-swedish-school.pdf",
+              "html_file": "placeholder_engelska_gymnasium_2011_en.html",
+              "status": "obsolete",
+              "status_note": "This document version is obsolete, but should for practical reasons be considered valid as long as it is cross-referenced towards Swedish versions",
+              "cross_reference": {
+                "swedish_version": "gymnasium_2011_sv.common_subjects.subjects.engelska",
+                "updated_swedish_version": "gymnasium_2025_sv.common_subjects.subjects.engelska"
+              }
+            },
+            "matematik": {
+              "subject_id": "MAT_EN",
+              "subject_name": "Mathematics",
+              "subject_name_sv": "Matematik",
+              "curriculum_url": "https://www.skolverket.se/download/18.4fc05a3f164131a74181063/1535372298267/Mathematics-swedish-school.pdf",
+              "html_file": "placeholder_matematik_gymnasium_2011_en.html",
+              "status": "obsolete",
+              "status_note": "This document version is obsolete, but should for practical reasons be considered valid as long as it is cross-referenced towards Swedish versions",
+              "cross_reference": {
+                "swedish_version": "gymnasium_2011_sv.common_subjects.subjects.matematik",
+                "updated_swedish_version": "gymnasium_2025_sv.common_subjects.subjects.matematik"
+              }
+            },
+            "religionskunskap": {
+              "subject_id": "REL_EN",
+              "subject_name": "Religionskunskap",
+              "subject_name_sv": "Religion",
+              "curriculum_url": "https://www.skolverket.se/download/18.4fc05a3f164131a74181074/1535372299749/Religion-swedish-school.pdf",
+              "html_file": "religionskunskap_gymnasium_2011_en.html",
+              "status": "",
+              "status_note": "",
+              "cross_reference": {
+                "swedish_version": "gymnasium_2011_sv.common_subjects.subjects.religionskunskap",
+                "updated_swedish_version": "gymnasium_2025_sv.common_subjects.subjects.religionskunskap"
+              }
+            }
+          }
+        },
+        "program_specific": {
+          "description": "Subjects specific to individual gymnasium programs",
+          "programs": {
+            "placeholder_program_1": {
+              "program_name": "Program Name",
+              "program_code": "XX",
+              "subjects": {}
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "metadata": {
+    "file_structure": {
+      "root": "curriculum_system/",
+      "folders": {
+        "grundskola_2022": "curriculum_system/grundskola_2022/",
+        "gymnasium_2011_sv": "curriculum_system/gymnasium_2011_sv/",
+        "gymnasium_2025_sv": "curriculum_system/gymnasium_2025_sv/",
+        "gymnasium_2011_en": "curriculum_system/gymnasium_2011_en/"
+      }
+    },
+    "cross_reference_format": "category.path.to.subject",
+    "placeholder_html_naming": "placeholder_{subject}_{level}_{year}_{lang}.html",
+    "notes": [
+      "HTML placeholders are created for each subject",
+      "Cross-references use dot notation for navigation between versions",
+      "Program-specific subjects can be expanded with actual program data",
+      "General documents array can hold links to overarching curriculum documents"
+    ]
+  }
+}
