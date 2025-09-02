@@ -1,1 +1,228 @@
-
+{
+  "manifest_version": "1.0",
+  "last_updated": "2025-08-29",
+  "description": "Swedish curriculum plans (läroplaner) organization system",
+  "categories": {
+    "grundskola_2022": {
+      "name": "2022 Grundskola curriculum plans in Swedish",
+      "description": "Grundskola årskurs 1 till 9",
+      "language": "sv",
+      "year": 2022,
+      "school_level": "grundskola",
+      "grades": "1-9",
+      "general_documents": [],
+      "subjects": {
+        "svenska": {
+          "subject_id": "GRGRSVE01",
+          "subject_name": "Svenska",
+          "subject_name_en": "Swedish",
+          "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/grundskolan/kursplaner-for-grundskolan/kursplan/svid12_6a3421f41969f369f2c9bd1/907561864/subject/GRGRSVE01/15/pdf",
+          "html_file": "placeholder_svenska_grundskola_2022.html",
+          "version": 15
+        },
+        "svenska_som_andrasprak": {
+          "subject_id": "GRGRSVA01",
+          "subject_name": "Svenska som andraspråk",
+          "subject_name_en": "Swedish as a Second Language",
+          "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/grundskolan/kursplaner-for-grundskolan/kursplan/svid12_6a3421f41969f369f2c9bd1/907561864/subject/GRGRSVA01/14/pdf",
+          "html_file": "placeholder_svenska_andrasprak_grundskola_2022.html",
+          "version": 14
+        },
+        "engelska": {
+          "subject_id": "GRGRENG01",
+          "subject_name": "Engelska",
+          "subject_name_en": "English",
+          "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/grundskolan/kursplaner-for-grundskolan/kursplan/svid12_6a3421f41969f369f2c9bd1/907561864/subject/GRGRENG01/14/pdf",
+          "html_file": "placeholder_engelska_grundskola_2022.html",
+          "version": 14
+        },
+        "matematik": {
+          "subject_id": "GRGRMAT01",
+          "subject_name": "Matematik",
+          "subject_name_en": "Mathematics",
+          "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/grundskolan/kursplaner-for-grundskolan/kursplan/svid12_6a3421f41969f369f2c9bd1/907561864/subject/GRGRMAT01/14/pdf",
+          "html_file": "placeholder_matematik_grundskola_2022.html",
+          "version": 14
+        }
+      }
+    },
+    "gymnasium_2011_sv": {
+      "name": "2011 Gymnasium curriculum plans in Swedish",
+      "description": "Gymnasium årskurs 1 till 3",
+      "language": "sv",
+      "year": 2011,
+      "school_level": "gymnasium",
+      "grades": "1-3",
+      "general_documents": [],
+      "replacement_status": "Being gradually replaced by Gy25 2025–2027",
+      "subjects": {
+        "svenska": {
+          "subject_id": "SVE",
+          "subject_name": "Svenska",
+          "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-amnen-och-kurser-i-gymnasieskolan-gy11/amne/svid12_5dfee44715d35a5cdfa92a3/907561864/subject/SVE/8/pdf",
+          "html_file": "placeholder_svenska_gymnasium_2011.html",
+          "version": 8
+        },
+        "svenska_som_andrasprak": {
+          "subject_id": "SVA",
+          "subject_name": "Svenska som andraspråk",
+          "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-amnen-och-kurser-i-gymnasieskolan-gy11/amne/svid12_5dfee44715d35a5cdfa92a3/907561864/subject/SVA/4/pdf",
+          "html_file": "placeholder_svenska_andrasprak_gymnasium_2011.html",
+          "version": 4
+        },
+        "engelska": {
+          "subject_id": "ENG",
+          "subject_name": "Engelska",
+          "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-amnen-och-kurser-i-gymnasieskolan-gy11/amne/svid12_5dfee44715d35a5cdfa92a3/907561864/subject/ENG/6/pdf",
+          "html_file": "placeholder_engelska_gymnasium_2011.html",
+          "version": 6
+        },
+        "matematik": {
+          "subject_id": "MAT",
+          "subject_name": "Matematik",
+          "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-amnen-och-kurser-i-gymnasieskolan-gy11/amne/svid12_5dfee44715d35a5cdfa92a3/907561864/subject/MAT/11/pdf",
+          "html_file": "placeholder_matematik_gymnasium_2011.html",
+          "version": 11
+        },
+        "hantverk_och_formgivning": {
+          "subject_id": "HAV",
+          "subject_name": "Hantverk och formgivning",
+          "subject_name_en": "Handicrafts and Design",
+          "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-amnen-och-kurser-i-gymnasieskolan-gy11/amne/svid12_5dfee44715d35a5cdfa92a3/907561864/subject/HAV/10/pdf",
+          "html_file": "placeholder_hantverk_formgivning_gymnasium_2011.html",
+          "version": 10
+        }
+      }
+    },
+    "gymnasium_2025_sv": {
+      "name": "2025 Gymnasium curriculum plans in Swedish",
+      "description": "Gymnasium årskurs 1 till 3 (Updated version)",
+      "language": "sv",
+      "year": 2025,
+      "school_level": "gymnasium",
+      "grades": "1-3",
+      "general_documents": [],
+      "subjects": {
+        "svenska": {
+          "subject_id": "SVEN",
+          "subject_name": "Svenska",
+          "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/SVEN/1/pdf",
+          "html_file": "placeholder_svenska_gymnasium_2025.html",
+          "version": 1
+        },
+        "svenska_som_andrasprak": {
+          "subject_id": "SVEA",
+          "subject_name": "Svenska som andraspråk",
+          "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/SVEA/1/pdf",
+          "html_file": "placeholder_svenska_andrasprak_gymnasium_2025.html",
+          "version": 1
+        },
+        "engelska": {
+          "subject_id": "ENGE",
+          "subject_name": "Engelska",
+          "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/ENGE/1/pdf",
+          "html_file": "placeholder_engelska_gymnasium_2025.html",
+          "version": 1
+        },
+        "matematik": {
+          "subject_id": "MATE",
+          "subject_name": "Matematik",
+          "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/MATE/1/pdf",
+          "html_file": "placeholder_matematik_gymnasium_2025.html",
+          "version": 1
+        },
+        "harstyling_och_makeupteknik": {
+          "subject_id": "HARS",
+          "subject_name": "Hårstyling och makeupteknik",
+          "subject_name_en": "Hair Styling and Makeup Techniques",
+          "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/HARS/1/pdf",
+          "html_file": "placeholder_harstyling_makeup_gymnasium_2025.html",
+          "version": 1
+        },
+        "vard_och_omsorgsprogrammet": {
+          "subject_id": "VO25",
+          "subject_name": "Vård- och omsorgsprogrammet",
+          "subject_name_en": "Health and Social Care Program Structure",
+          "curriculum_url": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/gymnasieprogrammen-gy25/program-gy2025/svid12_680ec99c197a1c18f61b023/907561864/syllabuscw/jsp/program.pdf?programCode=VO25&date=2025-06-30&version=3",
+          "html_file": "placeholder_vard_omsorg_gymnasium_2025.html",
+          "version": 3
+        }
+      }
+    },
+    "gymnasium_2011_en": {
+      "name": "2011 Gymnasium curriculum plans in English",
+      "description": "Gymnasium årskurs 1 till 3 (English translations)",
+      "language": "en",
+      "year": 2011,
+      "school_level": "gymnasium",
+      "grades": "1-3",
+      "general_documents": [],
+      "subjects": {
+        "swedish": {
+          "subject_id": "SVE_EN",
+          "subject_name": "Swedish",
+          "curriculum_url": "https://www.skolverket.se/download/18.4fc05a3f164131a7418107c/1535372300410/Swedish-in-swedish-school.pdf",
+          "html_file": "placeholder_svenska_gymnasium_2011_en.html",
+          "cross_reference": {
+            "swedish_version": "gymnasium_2011_sv.svenska",
+            "updated_swedish_version": "gymnasium_2025_sv.svenska"
+          }
+        },
+        "swedish_as_second_language": {
+          "subject_id": "SVA_EN",
+          "subject_name": "Swedish as a Second Language",
+          "curriculum_url": "https://www.skolverket.se/download/18.4d4520c518a623a3744ddb/1695108113486/Swedish-second-language-2.pdf",
+          "html_file": "placeholder_svenska_andrasprak_gymnasium_2011_en.html",
+          "cross_reference": {
+            "swedish_version": "gymnasium_2011_sv.svenska_som_andrasprak",
+            "updated_swedish_version": "gymnasium_2025_sv.svenska_som_andrasprak"
+          }
+        },
+        "english": {
+          "subject_id": "ENG_EN",
+          "subject_name": "English",
+          "curriculum_url": "https://www.skolverket.se/download/18.4fc05a3f164131a74181056/1704689136733/English-swedish-school.pdf",
+          "html_file": "placeholder_engelska_gymnasium_2011_en.html",
+          "cross_reference": {
+            "swedish_version": "gymnasium_2011_sv.engelska",
+            "updated_swedish_version": "gymnasium_2025_sv.engelska"
+          }
+        },
+        "mathematics": {
+          "subject_id": "MAT_EN",
+          "subject_name": "Mathematics",
+          "curriculum_url": "https://www.skolverket.se/download/18.4fc05a3f164131a74181063/1535372298267/Mathematics-swedish-school.pdf",
+          "html_file": "placeholder_matematik_gymnasium_2011_en.html",
+          "cross_reference": {
+            "swedish_version": "gymnasium_2011_sv.matematik",
+            "updated_swedish_version": "gymnasium_2025_sv.matematik"
+          }
+        },
+        "handicrafts": {
+          "subject_id": "HAV_EN",
+          "subject_name": "Handicrafts and Design",
+          "curriculum_url": "https://www.skolverket.se/download/18.4fc05a3f164131a74181059/1535372297459/Handicrafts-swedish-school.pdf",
+          "html_file": "placeholder_hantverk_formgivning_gymnasium_2011_en.html",
+          "cross_reference": {
+            "swedish_version": "gymnasium_2011_sv.hantverk_och_formgivning"
+          }
+        },
+        "health_and_social_care": {
+          "subject_id": "VO_EN",
+          "subject_name": "Health and Social Care",
+          "curriculum_url": "https://www.skolverket.se/download/18.4fc05a3f164131a7418107e/1535372298330/Health-and-social-care-swedish-school.pdf",
+          "html_file": "placeholder_vard_omsorg_gymnasium_2011_en.html"
+        },
+        "people": {
+          "subject_id": "PEOPLE_EN",
+          "subject_name": "People",
+          "curriculum_url": "https://www.skolverket.se/download/18.4fc05a3f164131a7418106c/1535372299206/People-swedish-school.pdf",
+          "html_file": "placeholder_people_gymnasium_2011_en.html",
+          "cross_reference": {
+            "swedish_version": "gymnasium_2011_sv.vard_och_omsorgsprogrammet.people"
+          }
+        }
+      }
+    }
+  }
+}
