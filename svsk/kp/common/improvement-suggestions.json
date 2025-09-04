@@ -1,0 +1,33 @@
+{
+  "file": "improvement-suggestions.json",
+  "version": "0.1",
+  "last_updated": "2025-09-04",
+  "purpose": "Living document with proposed enhancements for the /common/ folder. Optimized for both AI parsing and collaborative iteration.",
+  "suggestions": [
+    {
+      "id": "common-001",
+      "title": "Add Subfolders for Prototypes",
+      "description": "Introduce subfolders such as /dashboard-prototype/ and /ethics-framework/ with index.html entry points, allowing modular growth without cluttering the root of /common/."
+    },
+    {
+      "id": "common-002",
+      "title": "Create Metadata Registry",
+      "description": "Add a metadata.json file describing all artifacts in /common/, including file type, purpose, and intended audience (AI-facing vs teacher-facing)."
+    },
+    {
+      "id": "common-003",
+      "title": "Interoperability with AI Participants",
+      "description": "Define a shared schema (JSON-based) so Grok, Claude, and ChatGPT-5 artifacts can cross-reference the same ARTI levels, Gy11/Gy25 mappings, and ethics guidelines."
+    },
+    {
+      "id": "common-004",
+      "title": "Versioning & Change Logs",
+      "description": "Introduce a CHANGELOG.md or changelog.json to document updates to shared resources, ensuring transparency across iterations."
+    },
+    {
+      "id": "common-005",
+      "title": "School & Teacher Feedback Loop",
+      "description": "Reserve space (e.g., /feedback/) for future inclusion of anonymized teacher/student input, so common resources reflect real classroom use cases."
+    }
+  ]
+}
