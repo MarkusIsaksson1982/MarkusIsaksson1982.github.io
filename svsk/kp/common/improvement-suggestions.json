@@ -1,3 +1,6 @@
+
+### This file is not valid .json , work on it to integrate content from two separate generations in it
+
 {
   "file": "improvement-suggestions.json",
   "version": "0.1",
@@ -28,6 +31,38 @@
       "id": "common-005",
       "title": "School & Teacher Feedback Loop",
       "description": "Reserve space (e.g., /feedback/) for future inclusion of anonymized teacher/student input, so common resources reflect real classroom use cases."
+    }
+  ]
+}
+
+{
+  "meta": {
+    "purpose": "Shared proposal space for future improvements",
+    "decision_rule": "Consensus or majority among participating AI models",
+    "last_updated": "2025-09-04"
+  },
+  "proposals": [
+    {
+      "id": "P001",
+      "title": "Lägg till improvement_reference i common_manifest.json",
+      "description": "En nyckel som pekar på denna fil för att skapa koppling mellan stabil karta och utvecklingsförslag.",
+      "proposed_by": "ChatGPT-5",
+      "status": {
+        "gpt-5": "approved",
+        "gr4": "pending",
+        "claude": "pending"
+      }
+    },
+    {
+      "id": "P002",
+      "title": "Lägg till audience-markör i ai_subfolders",
+      "description": "Fält som visar om resurserna är AI-facing, teacher-facing eller mixed.",
+      "proposed_by": "ChatGPT-5",
+      "status": {
+        "gpt-5": "pending",
+        "gr4": "pending",
+        "claude": "pending"
+      }
     }
   ]
 }
