@@ -1,0 +1,117 @@
+{
+  "subject": "SVESVE",
+  "version": "GY25",
+  "purpose": "Undervisningen i svenska ska ge eleverna möjlighet att utveckla kunskaper i och om svenska språket, litteratur, kultur och kommunikation. Den ska bidra till att eleverna utvecklar förmågan att uttrycka sig och förstå andra i olika sammanhang och för olika syften.",
+  "levels": [
+    {
+      "id": "1",
+      "course_code": "SVESVE01",
+      "central_content": [
+        "Muntlig och skriftlig framställning i olika genrer.",
+        "Läsning och analys av skönlitteratur och sakprosa.",
+        "Grundläggande textanalys och språklig variation.",
+        "Källkritik och informationssökning.",
+        "Digitala verktyg för skrivande och presentation."
+      ],
+      "requirements": {
+        "E": "Eleven kan förstå och tolka texter på en grundläggande nivå och uttrycker sig begripligt i både tal och skrift.",
+        "C": "Eleven kan förstå och tolka texter relativt väl och uttrycker sig med viss säkerhet och variation.",
+        "A": "Eleven kan förstå och tolka texter med säkerhet och uttrycker sig varierat och med god språklig säkerhet."
+      },
+      "ethical_aspects": [
+        "Källkritik vid användning av digitala resurser",
+        "Integritet vid publicering av texter online"
+      ],
+      "tool_integrations": [
+        "Ordbehandlingsprogram",
+        "Presentationsteknikprogram",
+        "AI-baserade språkstöd"
+      ],
+      "swedish_legislative_context": "Skollagen och upphovsrättslagen.",
+      "semantic_tags": ["communication", "literature", "critical_thinking"],
+      "examples": [
+        "Analysera en novell utifrån berättartekniska grepp.",
+        "Skriva en argumenterande text om en aktuell samhällsfråga."
+      ],
+      "integrations": {
+        "SAMH": "Skriva och analysera debattartiklar om samhällsfrågor.",
+        "SVASVA": "Jämföra språkanvändning mellan första- och andraspråkselever."
+      }
+    },
+    {
+      "id": "2",
+      "course_code": "SVESVE02",
+      "central_content": [
+        "Fördjupad muntlig framställning, inklusive retoriska grepp.",
+        "Analys av skönlitterära verk och sakprosatexter från olika tider och kulturer.",
+        "Fördjupning i svenska språkets struktur och språkhistoria.",
+        "Journalistik, medieanalyser och digitala textmiljöer.",
+        "Språkets roll i maktrelationer och samhällsutveckling."
+      ],
+      "requirements": {
+        "E": "Eleven kan analysera texter översiktligt och uttrycker sig begripligt i muntliga och skriftliga framställningar.",
+        "C": "Eleven kan analysera texter utförligt och uttrycker sig med relativt god säkerhet och variation.",
+        "A": "Eleven kan analysera texter nyanserat och uttrycker sig med hög säkerhet, variation och stilistisk medvetenhet."
+      },
+      "ethical_aspects": [
+        "Etiska frågor kring källor och journalistik",
+        "Ansvar vid språklig påverkan i samhällsdebatt",
+        "AI-genererad text och dess trovärdighet"
+      ],
+      "tool_integrations": [
+        "Digitala presentationsverktyg",
+        "Korpusanalysverktyg",
+        "AI-verktyg för stil- och språkgranskning"
+      ],
+      "swedish_legislative_context": "Tryckfrihetsförordningen och yttrandefrihetsgrundlagen.",
+      "semantic_tags": ["rhetoric", "media", "literature", "analysis"],
+      "examples": [
+        "Genomföra en retorisk analys av ett politiskt tal.",
+        "Använda korpusverktyg för att studera språkbruk över tid."
+      ],
+      "integrations": {
+        "SAMH": "Analysera retorik i politiska debatter.",
+        "GEOG": "Studera litteratur med teman kopplade till miljö och plats."
+      }
+    },
+    {
+      "id": "3",
+      "course_code": "SVESVE03",
+      "central_content": [
+        "Vetenskapligt skrivande och akademiska textnormer.",
+        "Fördjupad litteraturvetenskaplig analys.",
+        "Avancerad retorik och muntlig framställning.",
+        "Språkets funktion i olika samhälls- och maktstrukturer.",
+        "Mediernas påverkan på samhällsopinioner."
+      ],
+      "requirements": {
+        "E": "Eleven kan skriva enklare vetenskapliga texter och analysera litteratur på en grundläggande nivå.",
+        "C": "Eleven skriver relativt välstrukturerade vetenskapliga texter och gör utförliga litterära analyser.",
+        "A": "Eleven skriver välstrukturerade och språkligt säkra vetenskapliga texter och gör nyanserade litterära analyser."
+      },
+      "ethical_aspects": [
+        "Plagiering och akademisk integritet",
+        "Retorikens roll i politisk påverkan",
+        "Etiska dilemman vid mediepåverkan"
+      ],
+      "tool_integrations": [
+        "Referenshanteringsverktyg",
+        "Språkbankens digitala resurser",
+        "AI-baserad textanalys"
+      ],
+      "swedish_legislative_context": "Upphovsrättslagen, GDPR för akademiska texter.",
+      "semantic_tags": ["academia", "literary_analysis", "rhetoric", "media_influence"],
+      "examples": [
+        "Författa en vetenskaplig uppsats med korrekt källhantering.",
+        "Analysera en roman utifrån ett postkolonialt perspektiv."
+      ],
+      "integrations": {
+        "SAMH": "Skriva akademiska texter om samhällsutmaningar.",
+        "ARTI": "Diskutera språkmodellers roll i litteraturanalys."
+      }
+    }
+  ],
+  "comparisons": {
+    "gy11": "Större fokus på digitala verktyg och källkritik i GY25, särskilt kopplat till AI och medieanvändning."
+  }
+}
