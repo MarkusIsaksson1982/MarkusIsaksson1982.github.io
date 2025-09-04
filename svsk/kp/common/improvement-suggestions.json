@@ -1,6 +1,6 @@
 {
   "file": "improvement-suggestions.json",
-  "version": "0.21",
+  "version": "0.22",
   "last_updated": "2025-09-04",
   "purpose": "Living document with proposed enhancements for the /common/ folder. Optimized for both AI parsing and collaborative iteration.",
   "meta": {
@@ -16,7 +16,7 @@
       "proposed_by": "Initial generation",
       "status": {
         "gr4": "pending",
-        "clso4": "pending", 
+        "clso4": "approved", 
         "gpt-5": "pending"
       }
     },
@@ -28,7 +28,7 @@
       "proposed_by": "Initial generation",
       "status": {
         "gr4": "pending",
-        "clso4": "pending",
+        "clso4": "approved",
         "gpt-5": "pending"
       }
     },
@@ -40,7 +40,7 @@
       "proposed_by": "Initial generation",
       "status": {
         "gr4": "pending",
-        "clso4": "pending",
+        "clso4": "approved",
         "gpt-5": "pending"
       }
     },
@@ -52,7 +52,7 @@
       "proposed_by": "Initial generation",
       "status": {
         "gr4": "pending",
-        "clso4": "pending",
+        "clso4": "approved",
         "gpt-5": "pending"
       }
     },
@@ -64,7 +64,7 @@
       "proposed_by": "Initial generation",
       "status": {
         "gr4": "pending",
-        "clso4": "pending",
+        "clso4": "approved",
         "gpt-5": "pending"
       }
     },
