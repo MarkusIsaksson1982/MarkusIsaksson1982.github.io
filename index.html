@@ -85,6 +85,16 @@
             padding-bottom: 0.5rem;
         }
 
+        .progress-note {
+            background: #f8f9fa;
+            border-left: 4px solid #17a2b8;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 5px;
+            font-style: italic;
+            color: #495057;
+        }
+
         .progress-bar {
             background: #ecf0f1;
             border-radius: 25px;
@@ -265,6 +275,16 @@
             background: #95a5a6;
             color: white;
         }
+
+        .additional-content {
+            background: #e8f5e8;
+            border-left: 4px solid #28a745;
+            padding: 0.5rem 1rem;
+            margin-top: 0.5rem;
+            border-radius: 0 5px 5px 0;
+            font-size: 0.9rem;
+            color: #155724;
+        }
     </style>
 </head>
 <body>
@@ -278,9 +298,13 @@
 
         <div class="section">
             <h2>🎯 Current Focus: Certified Full Stack Developer Curriculum</h2>
-            <p style="margin-bottom: 2rem; color: #555; font-size: 1.1rem;">
+            <p style="margin-bottom: 1rem; color: #555; font-size: 1.1rem;">
                 Advancing through freeCodeCamp's comprehensive beta curriculum, mastering modern web development technologies and preparing for the complete full-stack certification expected in late 2026.
             </p>
+            
+            <div class="progress-note">
+                <strong>Note:</strong> Progress bars reflect 100% completion of currently available content as of September 4, 2025, not the entire planned curriculum when fully released.
+            </div>
             
             <div class="curriculum-item">
                 <div class="curriculum-title">HTML <span class="status-badge completed">COMPLETED</span></div>
@@ -312,20 +336,26 @@
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: 100%;">100%</div>
                 </div>
-            </div>
-            <div class="curriculum-item">
-                <div class="curriculum-title">Python (Basics, Loops, Sequences, Dictionaries, Sets, Error Handling)
-                    <span class="status-badge completed">COMPLETED</span></div>
-                <div class="step-count">279 steps completed</div>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 100%;">100%</div>
+                <div class="additional-content">
+                    <strong>Coming Fall 2025:</strong> TypeScript Fundamentals section will be added
                 </div>
             </div>
 
+            <div class="curriculum-item">
+                <div class="curriculum-title">Python (Basics, Loops, Sequences, Dictionaries, Sets, Error Handling)
+                    <span class="status-badge completed">COMPLETED</span></div>
+                <div class="step-count">130 steps completed (Basics, Loops, Sequences, Dictionaries, Sets, Error Handling)</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 100%;">100%</div>
+                </div>
+                <div class="additional-content">
+                    <strong>Coming Winter 2025:</strong> Classes & Objects, OOP, Data Structures, Algorithms, Graphs & Trees, Dynamic Programming
+                </div>
+            </div>
 
             <div class="curriculum-item">
                 <div class="curriculum-title">Relational Databases <span class="status-badge upcoming">Winter 2025</span></div>
-                <div class="step-count">Bash, SQL, Git version control</div>
+                <div class="step-count">Bash Fundamentals, SQL, Bash Scripting, Git version control</div>
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: 0%;">Upcoming</div>
                 </div>
@@ -333,7 +363,18 @@
 
             <div class="curriculum-item">
                 <div class="curriculum-title">Backend JavaScript <span class="status-badge upcoming">Late 2026</span></div>
-                <div class="step-count">Node.js, Express, APIs, authentication, deployment</div>
+                <div class="step-count">Node.js, Express, APIs, WebSockets, Authentication, Security, Deployment</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%;">Upcoming</div>
+                </div>
+                <div class="additional-content">
+                    <strong>Coming Fall 2025:</strong> Security and Privacy module available earlier
+                </div>
+            </div>
+
+            <div class="curriculum-item">
+                <div class="curriculum-title">Career Preparation <span class="status-badge upcoming">Late 2026</span></div>
+                <div class="step-count">Job Search Strategies, Capstone Project, Certification Exam</div>
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: 0%;">Upcoming</div>
                 </div>
