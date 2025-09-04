@@ -133,7 +133,7 @@
       "category": "",
       "title": "Validation script",
       "description": "Refer to ongoing conversation",
-      "proposed_by": "",
+      "proposed_by": "Claude Sonnet 4",
       "status": {
         "gr4": "pending",
         "clso4": "approved",
