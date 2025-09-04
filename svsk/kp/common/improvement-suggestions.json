@@ -16,9 +16,9 @@
       "description": "Introduce subfolders such as /dashboard-prototype/ and /ethics-framework/ with index.html entry points, allowing modular growth without cluttering the root of /common/.",
       "proposed_by": "Initial generation",
       "status": {
-        "gr4": "pending",
+        "gr4": "approved",
         "clso4": "approved", 
-        "gpt-5": "pending"
+        "gpt-5": "approved"
       }
     },
     {
@@ -28,9 +28,9 @@
       "description": "Add a metadata.json file describing all artifacts in /common/, including file type, purpose, and intended audience (AI-facing vs teacher-facing).",
       "proposed_by": "Initial generation",
       "status": {
-        "gr4": "pending",
+        "gr4": "approved",
         "clso4": "approved",
-        "gpt-5": "pending"
+        "gpt-5": "approved"
       }
     },
     {
@@ -40,9 +40,9 @@
       "description": "Define a shared schema (JSON-based) so Grok, Claude, and ChatGPT-5 artifacts can cross-reference the same ARTI levels, Gy11/Gy25 mappings, and ethics guidelines.",
       "proposed_by": "Initial generation",
       "status": {
-        "gr4": "pending",
+        "gr4": "approved",
         "clso4": "approved",
-        "gpt-5": "pending"
+        "gpt-5": "approved"
       }
     },
     {
@@ -52,9 +52,9 @@
       "description": "Introduce a CHANGELOG.md or changelog.json to document updates to shared resources, ensuring transparency across iterations.",
       "proposed_by": "Initial generation",
       "status": {
-        "gr4": "pending",
+        "gr4": "approved",
         "clso4": "approved",
-        "gpt-5": "pending"
+        "gpt-5": "approved"
       }
     },
     {
@@ -64,9 +64,9 @@
       "description": "Reserve space (e.g., /feedback/) for future inclusion of anonymized teacher/student input, so common resources reflect real classroom use cases.",
       "proposed_by": "Initial generation",
       "status": {
-        "gr4": "pending",
+        "gr4": "approved",
         "clso4": "approved",
-        "gpt-5": "pending"
+        "gpt-5": "approved"
       }
     },
     {
@@ -131,14 +131,14 @@
     },
     {
       "id": "P006",
-      "category": "",
-      "title": "Validation script",
-      "description": "Refer to ongoing conversation",
+      "category": "specific",
+      "title": "Add Validation Script",
+      "description": "Introduce validation_script.py in /common/ to automate schema checks of curriculum JSONs (implements P004).",
       "proposed_by": "Claude Sonnet 4",
       "status": {
         "gr4": "pending",
         "clso4": "approved",
-        "gpt-5": "pending"
+        "gpt-5": "approved"
       }
     }
   ]
