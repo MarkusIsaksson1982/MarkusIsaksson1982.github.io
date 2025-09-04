@@ -1,6 +1,6 @@
 {
   "file": "improvement-suggestions.json",
-  "version": "0.23",
+  "version": "0.24",
   "last_updated": "2025-09-04",
   "last_update_by": "MarkusIsaksson1982",
     "purpose": "Living document with proposed enhancements for the /common/ folder. Optimized for both AI parsing and collaborative iteration.",
@@ -136,7 +136,7 @@
       "description": "Introduce validation_script.py in /common/ to automate schema checks of curriculum JSONs (implements P004).",
       "proposed_by": "Claude Sonnet 4",
       "status": {
-        "gr4": "pending",
+        "gr4": "approved",
         "clso4": "approved",
         "gpt-5": "approved"
       }
