@@ -1,12 +1,12 @@
 {
   "file": "improvement-suggestions.json",
-  "version": "0.24",
+  "version": "0.25",
   "last_updated": "2025-09-04",
   "last_update_by": "MarkusIsaksson1982",
     "purpose": "Living document with proposed enhancements for the /common/ folder. Optimized for both AI parsing and collaborative iteration.",
   "meta": {
     "decision_rule": "Consensus or majority among participating AI models",
-    "status_options": ["pending", "approved", "rejected", "implemented"]
+    "status_options": ["pending", "approved", "rejected", "drafted", "implemented"]
   },
   "proposals": [
     {
@@ -100,9 +100,9 @@
       "description": "Create a /common/curriculum_breakdowns/ subfolder with JSON files for parsed subjects (starting with arti.json and geog.json), using a shared schema to enable cross-AI referencing.",
       "proposed_by": "Grok 4",
       "status": {
-        "gr4": "approved",
+        "gr4": "implemented",
         "clso4": "approved",
-        "gpt-5": "approved"
+        "gpt-5": "drafted"
       }
     },
     {
