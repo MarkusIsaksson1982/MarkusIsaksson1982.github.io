@@ -11,16 +11,21 @@
             margin: 0;
             padding: 20px;
             color: #333;
+            background-color: #f8f9fa;
         }
         h1 {
             color: #2c3e50;
             text-align: center;
             margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
         }
         table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 30px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: white;
         }
         th, td {
             padding: 12px 15px;
@@ -28,8 +33,11 @@
             border-bottom: 1px solid #ddd;
         }
         th {
-            background-color: #f2f2f2;
+            background-color: #2c3e50;
+            color: white;
             font-weight: bold;
+            position: sticky;
+            top: 0;
         }
         tr:hover {
             background-color: #f5f5f5;
@@ -45,14 +53,37 @@
         }
         .video-col {
             width: 300px;
-            font-style: italic;
         }
         a {
             color: #3498db;
             text-decoration: none;
+            transition: color 0.3s;
         }
         a:hover {
+            color: #2980b9;
             text-decoration: underline;
+        }
+        .placeholder-link {
+            font-style: italic;
+            color: #7f8c8d;
+        }
+        .section-title {
+            background-color: #e74c3c;
+            color: white;
+            font-weight: bold;
+        }
+        .instructions {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
+            border-left: 4px solid #3498db;
+        }
+        @media (max-width: 768px) {
+            table {
+                display: block;
+                overflow-x: auto;
+            }
         }
     </style>
 </head>
@@ -74,6 +105,8 @@
             </tr>
         </thead>
         <tbody>
+            
+            
             <tr>
                 <td>2025-09-07</td>
                 <td>12:e söndagen efter trefaldighet</td>
@@ -82,7 +115,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
+                <td><a href="placeholder" class="placeholder-link">Placeholder Link</a></td>
                 <td></td>
             </tr>
             <tr>
@@ -163,6 +196,50 @@
                 <td></td>
             </tr>
             <tr>
+                <td>2025-07-26</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><a href="placeholder" class="placeholder-link">Placeholder Link</a></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2025-07-25</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><a href="placeholder" class="placeholder-link">Placeholder Link</a></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2025-07-24</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><a href="placeholder" class="placeholder-link">Placeholder Link</a></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2025-07-23</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><a href="placeholder" class="placeholder-link">Placeholder Link</a></td>
+                <td></td>
+            </tr>
+            <tr>
                 <td>2025-07-20</td>
                 <td>Apostladagen</td>
                 <td>Sänd mig</td>
@@ -172,6 +249,10 @@
                 <td>Ps 40:6-12</td>
                 <td></td>
                 <td></td>
+            </tr>
+            
+            <tr class="section-title">
+                <td colspan="9">Earlier entries with Svenska kyrkan transcripts</td>
             </tr>
             <tr>
                 <td>2025-06-15</td>
@@ -195,7 +276,21 @@
                 <td></td>
                 <td><a href="svk-transkriptioner/2025-06-08-hogmassa-pingstdagen.html">Direktsänd högmässa på pingstdagen</a></td>
             </tr>
-            <tr>
+
+            
+<tr>
+                <td>2025-05-20</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><a href="placeholder" class="placeholder-link">Placeholder Link</a>
+</td>
+                <td></td>
+            </tr>
+<tr>
                 <td>2025-05-18</td>
                 <td>5:e söndagen i påsktiden</td>
                 <td>Att växa i tro</td>
@@ -217,6 +312,7 @@
                 <td></td>
                 <td><a href="svk-transkriptioner/2025-04-19-pasknatten-genom-dod-till-liv.html">Påsknatten – Genom död till liv</a></td>
             </tr>
+
             <tr>
                 <td>2025-04-17</td>
                 <td>Skärtorsdagen</td>
@@ -236,7 +332,7 @@
                 <td>Heb 2:14-18</td>
                 <td>Mark 11:1-11</td>
                 <td>Ps 118:19-29</td>
-                <td></td>
+                <td><a href="placeholder" class="placeholder-link">Placeholder Link</a></td>
                 <td><a href="svk-transkriptioner/2025-04-13-palmsondagen-vagen-till-korset.html">Palm­söndagen – Vägen till korset</a></td>
             </tr>
             <tr>
@@ -252,12 +348,14 @@
             </tr>
         </tbody>
     </table>
-<hr>
-<h2>AI Fallback Notes</h2>
-<pre>
+
+    <div class="instructions">
+        <h2>AI Fallback Notes</h2>
+        <pre>
 For ChatGPT: Use manifest.json for a direct episode list if HTML not accessible.
 For Claude: If crawl-lag, fetch manifest.json as it contains the same episode metadata.
 For Grok: Use HTML or JSON for structured parsing; HTML preferred for human-readable + machine-readable hybrid.
-</pre>
+        </pre>
+    </div>
 </body>
 </html>
