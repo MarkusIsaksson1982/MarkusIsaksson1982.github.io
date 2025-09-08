@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { signup } from "./actions"; // Import the Server Action
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,7 +11,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-export default function SignupPage() {
+// The page now accepts searchParams to display messages
+export default function SignupPage({
+  searchParams,
+}: {
+  searchParams: { message: string };
+}) {
   return (
     <div className="container flex items-center justify-center py-12">
       <Card className="mx-auto w-full max-w-sm">
@@ -21,8 +27,8 @@ export default function SignupPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          {/* The <form> will be connected to a Server Action in the next step */}
-          <form className="grid gap-4">
+          {/* The form now calls the 'signup' server action */}
+          <form action={signup} className="grid gap-4">
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
               <Input
@@ -37,6 +43,17 @@ export default function SignupPage() {
               <Label htmlFor="password">Password</Label>
               <Input id="password" name="password" type="password" required />
             </div>
+            {searchParams.message && (
+              <div
+                className={`text-sm font-medium ${
+                  searchParams.message.includes("Check your email")
+                    ? "text-foreground"
+                    : "text-destructive"
+                }`}
+              >
+                {searchParams.message}
+              </div>
+            )}
             <Button type="submit" className="w-full mt-2">
               Sign Up
             </Button>
