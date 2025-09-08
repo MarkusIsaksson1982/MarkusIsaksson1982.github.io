@@ -47,3 +47,23 @@ export async function getQuizResultsByUser(userId: string): Promise<QuizResult[]
 
   return data as QuizResult[];
 }
+
+export type LeaderboardEntry = {
+  user_id: string;
+  email: string;
+  max_score: number;
+};
+
+export async function getLeaderboard(): Promise<LeaderboardEntry[]> {
+  const supabase = createClient();
+
+  // Call the PostgreSQL function we created
+  const { data, error } = await supabase.rpc('get_leaderboard');
+
+  if (error) {
+    console.error("Error fetching leaderboard data:", error.message);
+    return [];
+  }
+
+  return data as LeaderboardEntry[];
+}
