@@ -18,7 +18,7 @@ The chosen theme is **ethical AI use and cyber safety education** — a real-wor
 ## 🎯 Project Goals
 
 1. **Demonstrate AI-assisted productivity**  
-   - Show how multiple AI models (ChatGPT-5, Claude, Grok) can contribute parallel implementations and insights.  
+   - Show how multiple AI models can contribute parallel implementations and insights.  
    - Document how prompts, code review, and iteration replaced hours of manual work.
 
 2. **Deliver a low-code educational app**  
@@ -40,7 +40,7 @@ The chosen theme is **ethical AI use and cyber safety education** — a real-wor
 - **Routing:** [React Router](https://reactrouter.com/)  
 - **Data Layer:** [@tanstack/react-query](https://tanstack.com/query/latest) (ready for API/data fetching)  
 - **Notifications & UX Enhancements:** Custom hooks (e.g. `use-toast`)  
-- **AI-Enhanced Workflow:** Parallel contributions from AI models (ChatGPT, Claude, Grok)  
+- **AI-Enhanced Workflow:** Parallel contributions from AI models
 
 ---
 
