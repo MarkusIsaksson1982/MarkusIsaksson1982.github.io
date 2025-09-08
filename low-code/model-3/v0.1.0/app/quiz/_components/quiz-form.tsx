@@ -6,19 +6,19 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
+import { saveQuizResult } from "@/app/quiz/actions"; // Import the Server Action
 
 interface QuizFormProps {
   questions: Question[];
 }
 
 export function QuizForm({ questions }: QuizFormProps) {
-  // State to manage the user's progress and answers
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState<Record<string, string>>({});
   const [score, setScore] = useState(0);
   const [quizCompleted, setQuizCompleted] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
 
-  // If there are no questions, display a message.
   if (!questions || questions.length === 0) {
     return (
       <div className="flex justify-center items-center h-full">
@@ -27,7 +27,6 @@ export function QuizForm({ questions }: QuizFormProps) {
     );
   }
 
-  // Handle the selection of an answer option
   const handleAnswerSelect = (value: string) => {
     setUserAnswers((prev) => ({
       ...prev,
@@ -35,26 +34,39 @@ export function QuizForm({ questions }: QuizFormProps) {
     }));
   };
 
-  // Move to the next question
   const handleNextQuestion = () => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     }
   };
 
-  // Calculate the score and mark the quiz as completed
-  const handleSubmitQuiz = () => {
+  const handleSubmitQuiz = async () => {
+    setIsSaving(true);
     let newScore = 0;
     questions.forEach((question) => {
       if (userAnswers[question.id] === question.correct_answer) {
         newScore += 1;
       }
     });
+
     setScore(newScore);
-    setQuizCompleted(true);
+
+    try {
+      // Call the Server Action to save the score
+      const result = await saveQuizResult(newScore);
+      if (result.success) {
+        console.log("Quiz result saved!");
+      } else {
+        console.error("Failed to save quiz result:", result.message);
+      }
+    } catch (e) {
+      console.error("An unexpected error occurred while saving the quiz result:", e);
+    } finally {
+      setIsSaving(false);
+      setQuizCompleted(true);
+    }
   };
 
-  // Function to restart the quiz
   const handleRestartQuiz = () => {
     setCurrentQuestionIndex(0);
     setUserAnswers({});
@@ -62,7 +74,6 @@ export function QuizForm({ questions }: QuizFormProps) {
     setQuizCompleted(false);
   };
 
-  // Conditional rendering for quiz results
   if (quizCompleted) {
     return (
       <Card className="max-w-xl mx-auto">
@@ -84,7 +95,6 @@ export function QuizForm({ questions }: QuizFormProps) {
     );
   }
 
-  // Get the current question
   const currentQuestion = questions[currentQuestionIndex];
   const isLastQuestion = currentQuestionIndex === questions.length - 1;
   const isAnswerSelected = userAnswers[currentQuestion.id] !== undefined;
@@ -119,11 +129,17 @@ export function QuizForm({ questions }: QuizFormProps) {
         </RadioGroup>
         <div className="mt-8 flex justify-end">
           {isLastQuestion ? (
-            <Button onClick={handleSubmitQuiz} disabled={!isAnswerSelected}>
-              Submit Quiz
+            <Button
+              onClick={handleSubmitQuiz}
+              disabled={!isAnswerSelected || isSaving}
+            >
+              {isSaving ? "Saving..." : "Submit Quiz"}
             </Button>
           ) : (
-            <Button onClick={handleNextQuestion} disabled={!isAnswerSelected}>
+            <Button
+              onClick={handleNextQuestion}
+              disabled={!isAnswerSelected}
+            >
               Next Question
             </Button>
           )}
