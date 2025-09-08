@@ -1,7 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
-import { getQuizQuestions } from "@/lib/data/quiz"; // Import the data fetching function
+import { getQuizQuestions } from "@/lib/data/quiz";
 import { redirect } from "next/navigation";
-// import { QuizForm } from "./_components/quiz-form"; // We will create this next
+import { QuizForm } from "./_components/quiz-form"; // Import the client component
 
 export default async function QuizPage() {
   const supabase = createClient();
@@ -17,9 +17,6 @@ export default async function QuizPage() {
   // Fetch the quiz questions on the server
   const questions = await getQuizQuestions();
   
-  // Log the questions to the server console to verify fetching
-  console.log("Fetched questions on the server:", questions);
-
   return (
     <div className="container mx-auto py-12">
       <div className="text-center mb-8">
@@ -30,19 +27,10 @@ export default async function QuizPage() {
       </div>
       
       {/*
-        We will pass the questions to a client component that handles interactivity.
-        For now, this is a placeholder for the next step.
+        Pass the server-fetched questions as a prop to the client component.
+        This is a key Next.js pattern: Fetch on the server, render on the client.
       */}
-      {/* <QuizForm questions={questions} /> */}
-      
-      <div className="mt-8 p-8 border rounded-lg bg-card max-w-2xl mx-auto">
-        <h2 className="font-semibold text-lg mb-4">Quiz data loaded!</h2>
-        <p className="text-muted-foreground">
-          {questions.length > 0
-            ? `Successfully fetched ${questions.length} questions from the database. Ready to build the interactive UI.`
-            : "No questions found in the database. Please add some questions to the 'questions' table in Supabase."}
-        </p>
-      </div>
+      <QuizForm questions={questions} />
     </div>
   );
 }
