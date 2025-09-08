@@ -2,7 +2,7 @@ import Link from "next/link";
 import { BrainCircuit } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/server";
-import { logout } from "@/app/auth/actions";
+import { UserNav } from "./user-nav"; // Import the new component
 
 export default async function Header() {
   const supabase = createClient();
@@ -41,14 +41,7 @@ export default async function Header() {
         </div>
         <div className="flex flex-1 items-center justify-end space-x-4">
           {user ? (
-            <div className="flex items-center gap-4">
-              <span className="text-sm text-muted-foreground hidden sm:inline-block">
-                {user.email}
-              </span>
-              <form action={logout}>
-                <Button variant="ghost">Sign Out</Button>
-              </form>
-            </div>
+            <UserNav email={user.email!} /> // Use the UserNav component
           ) : (
             <Button asChild variant="ghost">
               <Link href="/login">Sign In</Link>
