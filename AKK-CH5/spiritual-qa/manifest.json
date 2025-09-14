@@ -11,6 +11,17 @@
   "playlistUrl": "https://www.youtube.com/playlist?list=PLX3SBMW-XlAhGFoO63dcauAlBqEpW01zu",
   "episodes": [
     {
+      "number": 0,
+      "repoFile": "0-54.html",
+      "title": "Your Spiritual Questions Answered",
+      "date": "2025-09-12",
+      "youtubeUrl": "https://www.youtube.com/watch?v=FqeMefJjb-I",
+      "transcriptUrl": "https://MarkusIsaksson1982.github.io/AKK-CH5/spiritual-qa/0-54.html",
+      "keywords": ["AI", "Artificial Intelligence"],
+      "keyTopics": ["How to use Artificial Intelligence wisely"],
+      "verified": false
+    },
+    {
       "number": 1,
       "repoFile": "1-54.html",
       "title": "Your Spiritual Questions Answered",
