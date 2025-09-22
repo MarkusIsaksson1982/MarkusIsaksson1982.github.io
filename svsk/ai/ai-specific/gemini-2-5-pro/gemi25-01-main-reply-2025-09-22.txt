@@ -1,0 +1,157 @@
+Of course. Here is a development plan and conceptual overview for a React component library, which we can call **"Skolstöd Verktyg" (School Support Tools)**, designed for Swedish gymnasium teachers.
+
+This library would provide a suite of reusable, interactive components for building modern assessment and scaffolding tools.
+
+-----
+
+## 🏛️ Core Architecture & Philosophy
+
+The library will be built on a flexible and modern foundation to ensure it's easy to integrate into existing school platforms or new projects.
+
+  * **Technology Stack:** Built with **React** and **TypeScript** for robust, type-safe components.
+  * **Styling:** Utilizes a CSS-in-JS solution like **Styled-Components** or **Emotion**. This allows for powerful theming capabilities, enabling schools to customize the look and feel to match their branding.
+  * **State Management:** For complex, cross-component interactions, components will be self-contained but can be easily integrated with state management libraries like Redux Toolkit or Zustand.
+  * **Monorepo Structure:** Developed in a monorepo (e.g., using pnpm workspaces) to manage the core library and its documentation (Storybook) efficiently.
+
+-----
+
+## 🧩 Key Components
+
+Here are the primary components the library would include:
+
+### 1\. Dynamic Rubric Builder (`<RubricBuilder />`)
+
+This component allows teachers to create and modify assessment rubrics directly in the browser.
+
+  * **Features:**
+      * **Custom Criteria:** Teachers can add, edit, reorder (drag-and-drop), and delete criteria rows.
+      * **Progression Levels:** Dynamically add or remove columns for different levels (e.g., F, E, C, A). Level titles and descriptions are fully editable.
+      * **Read-Only Mode:** A `readOnly` prop to display the rubric for student view without editing capabilities.
+  * **Example Usage:**
+    ```jsx
+    import { RubricBuilder } from '@skolstod/verktyg';
+
+    const MyRubric = () => {
+      const [rubricData, setRubricData] = useState({
+        title: "Essay Analysis Rubric",
+        criteria: [
+          { id: 'c1', name: 'Källkritik', levels: [
+            { id: 'l1', score: 'E', description: 'Visar grundläggande förståelse...' },
+            { id: 'l2', score: 'C', description: 'Gör en utvecklad analys...' },
+            { id: 'l3', score: 'A', description: 'Gör en nyanserad och välgrundad analys...' }
+          ]}
+        ]
+      });
+
+      return <RubricBuilder data={rubricData} onChange={setRubricData} />;
+    }
+    ```
+
+### 2\. Student Self-Assessment Sliders (`<SelfAssessment />`)
+
+A tool for metacognition, allowing students to reflect on their own work against the established rubric.
+
+  * **Features:**
+      * **Criteria Mapping:** Renders each criterion from a rubric.
+      * **Slider Input:** Students use a slider to indicate their perceived level of achievement for each criterion.
+      * **Confidence Rating:** An accompanying input (e.g., a 3-star rating or a "low" to "high" slider) for students to express their confidence in their self-assessment.
+  * **Example Usage:**
+    ```jsx
+    import { SelfAssessment } from '@skolstod/verktyg';
+
+    const StudentReflection = ({ rubricData }) => {
+      const [assessment, setAssessment] = useState({});
+
+      return <SelfAssessment rubric={rubricData} onAssessmentChange={setAssessment} />;
+    }
+    ```
+
+### 3\. Peer Feedback System (`<PeerFeedback />`)
+
+Facilitates structured peer-to-peer feedback, a cornerstone of formative assessment.
+
+  * **Features:**
+      * **Targeted Comments:** Students can leave comments directly on specific criteria within a peer's rubric.
+      * **Anonymity Toggle:** Can be configured to show student names or be fully anonymous.
+      * **Guided Prompts:** Includes optional fields for "Two Stars and a Wish" (Två stjärnor och en önskan) to guide constructive feedback.
+  * **Example Usage:**
+    ```jsx
+    import { PeerFeedback } from '@skolstod/verktyg';
+
+    const FeedbackPortal = ({ rubricData, studentToReview }) => {
+      const handleSubmit = (feedback) => {
+        console.log(`Feedback for ${studentToReview}:`, feedback);
+      };
+
+      return <PeerFeedback rubric={rubricData} onSubmit={handleSubmit} />;
+    }
+    ```
+
+### 4\. Portfolio Evidence Tracker (`<PortfolioTracker />`)
+
+Connects student work directly to learning objectives, making assessment more authentic.
+
+  * **Features:**
+      * **Evidence Linking:** Students can attach evidence (file uploads, URLs, text snippets) to each rubric criterion to justify their self-assessment.
+      * **Multi-format Support:** Handles links to Google Docs, videos, images, and text reflections.
+      * **Visual Indicators:** Clearly shows which criteria have associated evidence.
+  * **Example Usage:**
+    ```jsx
+    import { PortfolioTracker } from '@skolstod/verktyg';
+
+    const StudentPortfolio = ({ rubricData }) => {
+      const [evidence, setEvidence] = useState([]);
+
+      return <PortfolioTracker rubric={rubricData} evidence={evidence} onEvidenceChange={setEvidence} />;
+    }
+    ```
+
+-----
+
+## 🚀 Technical Features
+
+The library is designed with the practical realities of a school environment in mind.
+
+### Offline Functionality 🌐
+
+The components are built to be "offline-first." Using technologies like **Service Workers** for caching the application and **IndexedDB** (via a library like `Dexie.js`) for local data storage, students and teachers can continue their work without a stable internet connection. Data is stored securely in the browser and automatically syncs with the server once connectivity is restored.
+
+### Data Export 📊
+
+All assessment data can be easily exported. The library will provide utility functions to convert data into formats compatible with common tools used by teachers.
+
+  * **`exportToExcel(data)`:** Generates a downloadable `.xlsx` file summarizing rubric scores, feedback, and self-assessments.
+  * **`exportToCSV(data)`:** Generates a `.csv` file for easy import into Google Sheets or other spreadsheet software.
+
+### Accessibility (WCAG) ♿
+
+Adherence to **WCAG 2.1 AA guidelines** is a core priority. This includes:
+
+  * **Keyboard Navigation:** All interactive elements are fully navigable and operable using only a keyboard.
+  * **ARIA Roles:** Proper ARIA attributes are used to ensure compatibility with screen readers.
+  * **Color Contrast:** Default themes are designed with sufficient color contrast, and theming guides will include contrast-checking utilities.
+
+### Multilingual Support & Theming 🇸🇪/🇬🇧
+
+  * **Internationalization (i18n):** Built with `i18next`, the library will ship with complete Swedish (`sv`) and English (`en`) translations. Adding more languages is straightforward.
+  * **Customizable Themes:** A `ThemeProvider` component allows for deep customization. Schools can override a default theme object with their own brand colors, fonts, and logos to create a seamless user experience.
+    ```jsx
+    import { ThemeProvider, skolstodTheme } from '@skolstod/verktyg';
+
+    const mySchoolTheme = {
+      ...skolstodTheme,
+      colors: {
+        primary: '#004F9F', // Example: Stockholm Stad blue
+        accent: '#FDB813',
+      },
+      fonts: {
+        body: 'Roboto, sans-serif',
+      }
+    };
+
+    const App = () => (
+      <ThemeProvider theme={mySchoolTheme}>
+        {/* All rubric components will now use the custom theme */}
+      </ThemeProvider>
+    );
+    ```
