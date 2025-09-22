@@ -1,0 +1,280 @@
+# Swedish Curriculum Parser Configuration
+# =====================================
+
+# Keywords for identifying potential bridge connections between subjects
+bridge_keywords:
+  Svenska:
+    - språk
+    - text
+    - läsning
+    - skrivning
+    - kommunikation
+    - berättelse
+    - argumentation
+    - reflektion
+    - analys
+    - språkbruk
+    - ordförråd
+    - grammatik
+    - retorik
+    - diskussion
+    - presentation
+    
+  Historia:
+    - historia
+    - historisk
+    - utveckling
+    - förändring
+    - tid
+    - epok
+    - period
+    - utvecklingsprocess
+    - förr
+    - samtid
+    - framtid
+    - kontinuitet
+    - kronologi
+    - tradition
+    - kulturarv
+    
+  Samhällskunskap:
+    - samhälle
+    - demokrati
+    - politik
+    - ekonomi
+    - miljö
+    - rättigheter
+    - ansvar
+    - medborgar
+    - hållbar
+    - global
+    - lokal
+    - påverkan
+    - delaktighet
+    - värdering
+    - etik
+    - moral
+    
+  Matematik:
+    - matematik
+    - räkning
+    - beräkning
+    - statistik
+    - diagram
+    - mätning
+    - geometri
+    - procent
+    - proportion
+    - logik
+    - problemlösning
+    - algoritm
+    
+  Naturvetenskap:
+    - natur
+    - miljö
+    - ekosystem
+    - hållbarhet
+    - experiment
+    - observation
+    - hypotes
+    - undersökning
+    - fenomen
+    - naturlag
+    - biologi
+    - fysik
+    - kemi
+    
+  Engelska:
+    - engelska
+    - främmande språk
+    - internationell
+    - global kommunikation
+    - flerspråkig
+    - översättning
+    - interkulturellt
+    
+  Idrott och hälsa:
+    - hälsa
+    - fysisk aktivitet
+    - rörelse
+    - välbefinnande
+    - livsstil
+    - säkerhet
+    - ergonomi
+    - stress
+    
+  Teknik:
+    - teknik
+    - innovation
+    - digitalisering
+    - programmering
+    - design
+    - konstruktion
+    - automatisering
+    - digitala verktyg
+
+# Indicators of competency descriptions in text
+competency_indicators:
+  - kan
+  - förmåga
+  - kunskap
+  - förståelse
+  - färdighet
+  - beskriver
+  - förklarar
+  - analyserar
+  - värderar
+  - använder
+  - tillämpar
+  - resonerar
+  - reflekterar
+  - kommunicerar
+  - identifierar
+  - jämför
+  - motiverar
+  - diskuterar
+  - planerar
+  - genomför
+  - utvärderar
+  - skapar
+  - utvecklar
+
+# Keywords associated with different grade levels
+grade_keywords:
+  E:
+    - grundläggande
+    - enkla
+    - med stöd
+    - delvis
+    - översiktligt
+    - i stort
+    - begränsad
+    - med hjälp
+    
+  C:
+    - utvecklade
+    - förhållandevis
+    - relativt
+    - i huvudsak
+    - utförligt
+    - i viss utsträckning
+    - tillfredsställande
+    - någorlunda
+    
+  A:
+    - välutvecklade
+    - komplexa
+    - självständigt
+    - nyanserat
+    - fördjupat
+    - avancerad
+    - säkert
+    - kreativt
+    - kritiskt
+
+# Additional patterns for identifying kunskapskrav sections
+section_markers:
+  - "kunskapskrav"
+  - "bedömning"
+  - "betyg"
+  - "kriteria"
+  - "nivå"
+  - "kvalitet"
+
+# Text cleaning rules
+text_cleaning:
+  remove_patterns:
+    - "\\d+\\s*$"  # Page numbers at line start/end
+    - "^(?:Skolverket|ARTI).*$"  # Header/footer text
+    - "©.*$"  # Copyright notices
+  
+  fix_encoding:
+    "Ã¥": "å"
+    "Ã¤": "ä"
+    "Ã¶": "ö"
+    "Ã…": "Å"
+    "Ã„": "Ä"
+    "Ã–": "Ö"
+
+# Output configuration
+output:
+  csv:
+    encoding: "utf-8"
+    separator: ","
+    include_metadata: true
+    max_content_length: 500
+    
+  json:
+    encoding: "utf-8"
+    indent: 2
+    ensure_ascii: false
+    include_full_content: true
+    
+  markdown:
+    encoding: "utf-8"
+    include_toc: true
+    max_preview_length: 300
+    include_statistics: true
+
+# Language support settings
+languages:
+  primary: "sv"  # Swedish
+  secondary: "en"  # English
+  
+  # Language-specific patterns
+  patterns:
+    sv:
+      grade_markers:
+        - "betyg"
+        - "kunskapskrav"
+        - "bedömning"
+      competency_verbs:
+        - "kan"
+        - "förmår"
+        - "behärskar"
+    en:
+      grade_markers:
+        - "grade"
+        - "assessment"
+        - "criteria"
+      competency_verbs:
+        - "can"
+        - "able to"
+        - "demonstrates"
+
+# Processing settings
+processing:
+  max_context_length: 2000  # Characters around grade markers
+  min_section_length: 50    # Minimum characters for valid section
+  max_sections_per_page: 10 # Limit sections per page
+  
+  # Error handling
+  continue_on_error: true
+  log_parsing_details: true
+  
+  # Performance settings
+  use_multiprocessing: false
+  max_workers: 4
+
+# Subject mapping for filename detection
+subject_mapping:
+  # Map common abbreviations/codes to full subject names
+  "sv": "Svenska"
+  "svenska": "Svenska"
+  "ma": "Matematik"
+  "matematik": "Matematik"
+  "en": "Engelska"
+  "engelska": "Engelska"
+  "hi": "Historia"
+  "historia": "Historia"
+  "sh": "Samhällskunskap"
+  "samhallskunskap": "Samhällskunskap"
+  "no": "Naturorienterande ämnen"
+  "naturvetenskap": "Naturorienterande ämnen"
+  "tk": "Teknik"
+  "teknik": "Teknik"
+  "idrott": "Idrott och hälsa"
+  "halsa": "Idrott och hälsa"
+  "bild": "Bild"
+  "musik": "Musik"
+  "slojd": "Slöjd"
