@@ -1,0 +1,60 @@
+{
+  "name": "SVSK AI Prompts and Model Responses",
+  "version": "1.0.0",
+  "description": "Manifest for AI-generated code and prompts related to Swedish educational tools",
+  "base_url": "https://markusisaksson1982.github.io/svsk/ai/",
+  "directories": {
+    "ai-specific": {
+      "mystery-model-3": [
+        "myst3-01-main-reply-2025-09-22.txt",
+        "myst3-02-main-reply-2025-09-22.txt"
+      ],
+      "mystery-model-4": [
+        "myst4-02-main-reply-2025-09-22.txt"
+      ],
+      "chatgpt-5": [
+        "gpt5-01-main-reply-2025-09-22.jsx",
+        "gpt5-02-main-reply-2025-09-22.txt"
+      ],
+      "mystery-model-2": [
+        "myst2-01-main-reply-2025-09-22.txt",
+        "myst2-02-main-reply-2025-09-22.txt"
+      ],
+      "grok-4": [
+        "grok4-01-main-reply-2025-09-22.txt",
+        "grok4-02-main-reply-2025-09-22.txt"
+      ],
+      "claude-sonnet-4": [
+        "clso4-2-agnostic-2-reply-2025-09-22.txt",
+        "clso4-2-agnostic-2-reply-2025-09-22.yaml",
+        "clso4-1-agnostic-1-reply-2025-09-22.js",
+        "clso4-2-agnostic-2b-reply-2025-09-22.py",
+        "clso4-2-agnostic-2b-reply-2025-09-22.txt",
+        "clso4-1-agnostic-1-reply-2025-09-22.txt",
+        "clso4-2-agnostic-2-reply-2025-09-22.py"
+      ],
+      "gemini-2-5-pro": [
+        "gemi25-02-main-reply-2025-09-22.md",
+        "gemi25-02-main-reply-2025-09-22.json",
+        "gemi25-02-main-reply-2025-09-22.py",
+        "gemi25-02-rev-b-reply-2025-09-22.txt",
+        "gemi25-01-main-reply-2025-09-22.txt",
+        "gemi25-02-main-reply-2025-09-22.txt"
+      ]
+    },
+    "prompts": [
+      "1-agnostic-2025-09-22.json",
+      "1-agnostic-2025-09-22.html",
+      "1-agnostic-2025-09-22.txt",
+      "2-agnostic-2025-09-22.json",
+      "2-agnostic-2025-09-22.html",
+      "2-agnostic-2025-09-22.txt"
+    ]
+  },
+  "metadata": {
+    "created": "2025-09-22",
+    "last_updated": "2025-09-22",
+    "total_files": 28,
+    "purpose": "Facilitate AI model access to educational prompt responses and structures"
+  }
+}
