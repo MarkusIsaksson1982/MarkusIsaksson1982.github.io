@@ -1,60 +1,210 @@
 {
-  "name": "SVSK AI Prompts and Model Responses",
-  "version": "1.0.0",
-  "description": "Manifest for AI-generated code and prompts related to Swedish educational tools",
-  "base_url": "https://MarkusIsaksson1982.github.io/svsk/ai/",
-  "directories": {
-    "ai-specific": {
-      "mystery-model-3": [
-        "myst3-01-main-reply-2025-09-22.txt",
-        "myst3-02-main-reply-2025-09-22.txt"
-      ],
-      "mystery-model-4": [
-        "myst4-02-main-reply-2025-09-22.txt"
-      ],
-      "chatgpt-5": [
-        "gpt5-01-main-reply-2025-09-22.jsx",
-        "gpt5-02-main-reply-2025-09-22.txt"
-      ],
-      "mystery-model-2": [
-        "myst2-01-main-reply-2025-09-22.txt",
-        "myst2-02-main-reply-2025-09-22.txt"
-      ],
-      "grok-4": [
-        "grok4-01-main-reply-2025-09-22.txt",
-        "grok4-02-main-reply-2025-09-22.txt"
-      ],
-      "claude-sonnet-4": [
-        "clso4-2-agnostic-2-reply-2025-09-22.txt",
-        "clso4-2-agnostic-2-reply-2025-09-22.yaml",
-        "clso4-1-agnostic-1-reply-2025-09-22.js",
-        "clso4-2-agnostic-2b-reply-2025-09-22.py",
-        "clso4-2-agnostic-2b-reply-2025-09-22.txt",
-        "clso4-1-agnostic-1-reply-2025-09-22.txt",
-        "clso4-2-agnostic-2-reply-2025-09-22.py"
-      ],
-      "gemini-2-5-pro": [
-        "gemi25-02-main-reply-2025-09-22.md",
-        "gemi25-02-main-reply-2025-09-22.json",
-        "gemi25-02-main-reply-2025-09-22.py",
-        "gemi25-02-rev-b-reply-2025-09-22.txt",
-        "gemi25-01-main-reply-2025-09-22.txt",
-        "gemi25-02-main-reply-2025-09-22.txt"
+  "name": "ai",
+  "type": "directory",
+  "children": [
+    {
+      "name": "structure_20250922_121655.log",
+      "type": "file"
+    },
+    {
+      "name": "manifest.json",
+      "type": "file"
+    },
+    {
+      "name": "gy25_manifest.json",
+      "type": "file"
+    },
+    {
+      "name": "generate_structure.py",
+      "type": "file"
+    },
+    {
+      "name": "ai-specific",
+      "type": "directory",
+      "children": [
+        {
+          "name": "mystery-model-3",
+          "type": "directory",
+          "children": [
+            {
+              "name": "myst3-01-main-reply-2025-09-22.txt",
+              "type": "file"
+            },
+            {
+              "name": "myst3-02-main-reply-2025-09-22.txt",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "mystery-model-4",
+          "type": "directory",
+          "children": [
+            {
+              "name": "myst4-02-main-reply-2025-09-22.txt",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "chatgpt-5",
+          "type": "directory",
+          "children": [
+            {
+              "name": "gpt5-01-main-reply-2025-09-22.jsx",
+              "type": "file"
+            },
+            {
+              "name": "gpt5-02-main-reply-2025-09-22.txt",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "mystery-model-2",
+          "type": "directory",
+          "children": [
+            {
+              "name": "myst2-01-main-reply-2025-09-22.txt",
+              "type": "file"
+            },
+            {
+              "name": "myst2-02-main-reply-2025-09-22.txt",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "grok-4",
+          "type": "directory",
+          "children": [
+            {
+              "name": "grok4-01-main-reply-2025-09-22.txt",
+              "type": "file"
+            },
+            {
+              "name": "grok4-02-main-reply-2025-09-22.txt",
+              "type": "file"
+            },
+            {
+              "name": "curriculum-parser.py",
+              "type": "file"
+            },
+            {
+              "name": "gymnasium-assessment-toolkit",
+              "type": "directory",
+              "children": [
+                {
+                  "name": "OfflineProvider.jsx",
+                  "type": "file"
+                },
+                {
+                  "name": "BridgeNetwork.jsx",
+                  "type": "file"
+                },
+                {
+                  "name": "BridgeGraph.jsx",
+                  "type": "file"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "claude-sonnet-4",
+          "type": "directory",
+          "children": [
+            {
+              "name": "clso4-2-agnostic-2-reply-2025-09-22.txt",
+              "type": "file"
+            },
+            {
+              "name": "clso4-2-agnostic-2-reply-2025-09-22.yaml",
+              "type": "file"
+            },
+            {
+              "name": "clso4-1-agnostic-1-reply-2025-09-22.js",
+              "type": "file"
+            },
+            {
+              "name": "clso4-2-agnostic-2b-reply-2025-09-22.py",
+              "type": "file"
+            },
+            {
+              "name": "clso4-2-agnostic-2b-reply-2025-09-22.txt",
+              "type": "file"
+            },
+            {
+              "name": "clso4-1-agnostic-1-reply-2025-09-22.txt",
+              "type": "file"
+            },
+            {
+              "name": "clso4-2-agnostic-2-reply-2025-09-22.py",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "gemini-2-5-pro",
+          "type": "directory",
+          "children": [
+            {
+              "name": "gemi25-02-main-reply-2025-09-22.md",
+              "type": "file"
+            },
+            {
+              "name": "gemi25-02-main-reply-2025-09-22.json",
+              "type": "file"
+            },
+            {
+              "name": "gemi25-02-main-reply-2025-09-22.py",
+              "type": "file"
+            },
+            {
+              "name": "gemi25-02-rev-b-reply-2025-09-22.txt",
+              "type": "file"
+            },
+            {
+              "name": "gemi25-01-main-reply-2025-09-22.txt",
+              "type": "file"
+            },
+            {
+              "name": "gemi25-02-main-reply-2025-09-22.txt",
+              "type": "file"
+            }
+          ]
+        }
       ]
     },
-    "prompts": [
-      "1-agnostic-2025-09-22.json",
-      "1-agnostic-2025-09-22.html",
-      "1-agnostic-2025-09-22.txt",
-      "2-agnostic-2025-09-22.json",
-      "2-agnostic-2025-09-22.html",
-      "2-agnostic-2025-09-22.txt"
-    ]
-  },
-  "metadata": {
-    "created": "2025-09-22",
-    "last_updated": "2025-09-22",
-    "total_files": 28,
-    "purpose": "Facilitate AI model access to educational prompt responses and structures"
-  }
+    {
+      "name": "prompts",
+      "type": "directory",
+      "children": [
+        {
+          "name": "1-agnostic-2025-09-22.json",
+          "type": "file"
+        },
+        {
+          "name": "1-agnostic-2025-09-22.html",
+          "type": "file"
+        },
+        {
+          "name": "1-agnostic-2025-09-22.txt",
+          "type": "file"
+        },
+        {
+          "name": "2-agnostic-2025-09-22.json",
+          "type": "file"
+        },
+        {
+          "name": "2-agnostic-2025-09-22.html",
+          "type": "file"
+        },
+        {
+          "name": "2-agnostic-2025-09-22.txt",
+          "type": "file"
+        }
+      ]
+    }
+  ]
 }
