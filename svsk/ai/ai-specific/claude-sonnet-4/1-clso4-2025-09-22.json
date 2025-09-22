@@ -1,0 +1,4 @@
+### Not actual .json
+
+Create a Python class that implements a rubric assessment system for the ARTI-Svenska integration framework we've developed. The class should handle the three-criteria grading system (Bias & Källkritik, Democratic Link, Process & Documentation) with E/C/A progression levels. Include methods for: calculating overall grades from individual criteria, generating detailed feedback based on assessment patterns, tracking student progress over time, and exporting results to both CSV and JSON formats. The system should validate that process evidence comprises at least 50% of the assessment weight and include safeguards against grade inflation. Add functionality to flag potential over-reliance on AI tools based on assessment patterns, and generate suggestions for non-AI fallback activities when technology constraints are detected.
+
