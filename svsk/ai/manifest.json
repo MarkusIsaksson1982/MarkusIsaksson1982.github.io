@@ -2,7 +2,7 @@
   "name": "SVSK AI Prompts and Model Responses",
   "version": "1.0.0",
   "description": "Manifest for AI-generated code and prompts related to Swedish educational tools",
-  "base_url": "https://markusisaksson1982.github.io/svsk/ai/",
+  "base_url": "https://MarkusIsaksson1982.github.io/svsk/ai/",
   "directories": {
     "ai-specific": {
       "mystery-model-3": [
