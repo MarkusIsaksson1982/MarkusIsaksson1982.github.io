@@ -1,0 +1,54 @@
+{
+  "subject_bridges": {
+    "Svenska": [
+      "analysera",
+      "tolka",
+      "argumentera",
+      "resonera",
+      "kommunicera",
+      "språk",
+      "text",
+      "berättande",
+      "källkritik",
+      "referera"
+    ],
+    "Historia": [
+      "historiska",
+      "förändring",
+      "kontinuitet",
+      "orsaker",
+      "konsekvenser",
+      "perspektiv",
+      "källor",
+      "epoker",
+      "samhället",
+      "utveckling",
+      "makt"
+    ],
+    "Samhällskunskap": [
+      "samhällsfrågor",
+      "demokrati",
+      "mänskliga rättigheter",
+      "maktstrukturer",
+      "identitet",
+      "normer",
+      "ekonomi",
+      "politik",
+      "globala",
+      "medier",
+      "hållbar utveckling"
+    ],
+    "English": [
+      "analyze",
+      "interpret",
+      "argue",
+      "reason",
+      "communicate",
+      "language",
+      "text",
+      "narrative",
+      "source criticism",
+      "reference"
+    ]
+  }
+}
