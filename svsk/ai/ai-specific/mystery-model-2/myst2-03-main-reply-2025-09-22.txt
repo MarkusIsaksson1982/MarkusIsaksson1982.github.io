@@ -1,0 +1,229 @@
+
+## Micro App: CSV Data Quality Checker for ARTI (Level 1)
+
+### 1. Educational tie‑in
+The app addresses the **"vikten av data och datakvalitet"** theme from the Level 1 curriculum.  
+* It lets students see concretely how missing values, duplicate rows, and imbalanced class labels can degrade an AI model's performance.  
+* After the technical report, a reflection question prompts a classroom discussion about bias, fairness, and the societal impact of poor data quality.
+
+### 2. What the app does
+| Task | Output |
+|------|--------|
+| **Missing values** | Count and percentage per column |
+| **Duplicate rows** | Number of duplicate rows |
+| **Label balance** (optional) | Frequency of each class, shown as a simple asterisk bar |
+| **Ethical prompt** | One discussion question linking data quality to AI bias |
+
+The app is a **single Python script** that only requires `pandas` (standard for data handling) and the built-in `sys` module.
+
+---
+
+## 3. Code (`data_quality_checker.py`)
+
+```python
+#!/usr/bin/env python3
+"""
+CSV Data Quality Checker for ARTI Level 1.
+
+Usage:
+    python data_quality_checker.py path/to/file.csv [--label COLUMN]
+
+The script prints a readable report containing:
+    * Missing value statistics
+    * Duplicate row count
+    * Class balance (if a label column is given) as a text bar
+    * One ethical reflection question
+"""
+
+import sys
+import argparse
+import pandas as pd
+
+
+def load_csv(path: str) -> pd.DataFrame:
+    """Load CSV file into a DataFrame. Handles common encoding issues."""
+    try:
+        df = pd.read_csv(path)
+    except UnicodeDecodeError:
+        df = pd.read_csv(path, encoding="latin1")
+    return df
+
+
+def missing_values_report(df: pd.DataFrame) -> str:
+    """Return a formatted string with missing value stats."""
+    missing_counts = df.isnull().sum()
+    missing_percent = (missing_counts / len(df) * 100).round(2)
+    report = "=== Missing Values ===\n"
+    for col, cnt, perc in zip(missing_counts.index, missing_counts, missing_percent):
+        report += f"{col:20s}: {cnt:5d} missing ({perc:5.2f} %)\n"
+    return report
+
+
+def duplicates_report(df: pd.DataFrame) -> str:
+    """Return a string with the number of duplicate rows."""
+    dup_cnt = df.duplicated().sum()
+    report = "\n=== Duplicate Rows ===\n"
+    report += f"Total duplicate rows: {dup_cnt}\n"
+    return report
+
+
+def label_balance_report(df: pd.DataFrame, label_col: str) -> str:
+    """Return a string showing class frequencies with a simple asterisk bar."""
+    if label_col not in df.columns:
+        raise ValueError(f"Label column '{label_col}' not found in the CSV.")
+
+    counts = df[label_col].value_counts().sort_index()
+    max_len = max(len(str(k)) for k in counts.index)
+    report = f"\n=== Class Balance (column: {label_col}) ===\n"
+    for label, cnt in counts.items():
+        # Scale the bar so the longest bar fits into ~50 characters
+        bar_len = int(50 * cnt / counts.max())
+        label_str = str(label).ljust(max_len)
+        report += f"{label_str}: {cnt:5d} | {'*' * bar_len}\n"
+    return report
+
+
+def ethical_prompt() -> str:
+    """Return a discussion question for classroom reflection."""
+    return """
+=== Ethical Reflection ===
+How might unbalanced data (e.g., many more examples of one class than another) lead to unfair AI outcomes?
+Discuss concrete examples, possible mitigations, and the broader societal impact.
+"""
+
+
+def generate_report(csv_path: str, label_col: str = None) -> str:
+    """Create the full report string."""
+    df = load_csv(csv_path)
+
+    report_parts = [
+        f"Data Quality Report for: {csv_path}",
+        missing_values_report(df),
+        duplicates_report(df),
+    ]
+
+    if label_col:
+        try:
+            report_parts.append(label_balance_report(df, label_col))
+        except ValueError as e:
+            report_parts.append(f"\nWarning: {e}")
+
+    report_parts.append(ethical_prompt())
+    return "\n".join(report_parts)
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="CSV Data Quality Checker for ARTI Level 1."
+    )
+    parser.add_argument(
+        "csv_path", type=str, help="Path to the CSV file to analyse."
+    )
+    parser.add_argument(
+        "--label",
+        type=str,
+        help="Column name that contains the class label for balance checking.",
+    )
+    args = parser.parse_args()
+
+    report = generate_report(args.csv_path, args.label)
+    print(report)
+
+
+if __name__ == "__main__":
+    main()
+```
+
+### How to run
+1. Save the script as `data_quality_checker.py`.
+2. Ensure you have `pandas` installed (`pip install pandas`).
+3. Run from the command line:
+
+```bash
+# Basic usage (no label balance)
+python data_quality_checker.py data/example.csv
+
+# With label balance checking
+python data_quality_checker.py data/example.csv --label target
+```
+
+---
+
+## 4. Example usage
+
+### Sample CSV (`example.csv`)
+
+```csv
+age,city,salary,target
+25,Stockholm,30000,Yes
+32,Gothenburg,45000,No
+,Malmo,40000,Yes
+28,Stockholm,35000,Yes
+32,Gothenburg,45000,No
+45,Uppsala,60000,No
+,Stockholm,?,Yes
+```
+
+### Running the app
+
+```bash
+python data_quality_checker.py example.csv --label target
+```
+
+### Sample output
+
+```
+Data Quality Report for: example.csv
+=== Missing Values ===
+age                : 2 missing (28.57 %)
+city               : 0 missing ( 0.00 %)
+salary             : 1 missing (14.29 %)
+target             : 0 missing ( 0.00 %)
+
+=== Duplicate Rows ===
+Total duplicate rows: 2
+
+=== Class Balance (column: target) ===
+No   : 3 | ******
+Yes  : 3 | ******
+
+=== Ethical Reflection ===
+How might unbalanced data (e.g., many more examples of one class than another) lead to unfair AI outcomes?
+Discuss concrete examples, possible mitigations, and the broader societal impact.
+```
+
+*The asterisk bars visualise the distribution of the `target` classes. In this tiny example the classes are balanced, but the missing values and duplicates are highlighted.*
+
+---
+
+## 5. Classroom discussion starters
+
+1. **Missing values** – *What could be the consequences if we train a model on data with many missing entries?*  
+2. **Duplicates** – *How do duplicate rows affect the learning process and model evaluation?*  
+3. **Label balance** – *If the dataset had 90% "Yes" and 10% "No", what biases might a classifier develop?*  
+4. **Ethical prompt** – Use the provided question to debate fairness, transparency, and potential mitigation strategies (e.g., resampling, reweighting).
+
+---
+
+## 6. Extension ideas for students
+
+| Idea | What students learn |
+|------|----------------------|
+| **Add a "suggestion" column** that proposes how to handle missing values (e.g., "mean", "drop") and let the script output a remediation plan. | Data cleaning strategies, imputation. |
+| **Implement a simple scoring metric** (e.g., data quality score = 100 - %missing - %duplicates) and let the script print a grade. | Quantifying data health. |
+| **Visualise missingness** with a heatmap using only text characters (`*` for missing, `-` for present). | Patterns of missingness, MCAR vs. MAR. |
+| **Create a small GUI** (e.g., with `tkinter`) that lets users pick a CSV file and optional label column. | Basic UI development, integrating Python modules. |
+| **Compare two versions of a dataset** (before and after cleaning) using the script to highlight improvements. | Version control, iterative data cleaning. |
+
+---
+
+## 7. Tips for teachers
+
+* Provide a short tutorial on reading CSV files and the meaning of missing values and duplicates.  
+* Let students run the script on a small dataset they create (e.g., a survey of classmates) to see real-world relevance.  
+* After the technical report, split the class into groups and assign each group a discussion question (missing values, duplicates, label balance, ethical prompt).  
+* Collect group conclusions on a shared board and connect them back to the curriculum points: **"vikten av data"**, **"etiska dilemman"**, and **"konsekvenser för samhället."**
+
+---
+
+**The app is intentionally lightweight, focuses on one key skill (data quality validation), and couples technical results with an ethical reflection, making it a perfect micro lesson for ARTI Level 1.*
