@@ -25,4 +25,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: directory-structure
-        path: svsk/ai/structure_*.log  # Updated path to match script location
+        path: lovable/structure_*.log  # Updated path to match script location
