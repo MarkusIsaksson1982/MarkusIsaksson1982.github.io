@@ -1,0 +1,54 @@
+{
+  "subjects": [
+    {
+      "subject": "Artificiell Intelligens (Artificial Intelligence)",
+      "pdf": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/ARTI/2/pdf",
+      "html": "Artificiell-Intelligens.html"
+    },
+    {
+      "subject": "Engelska (English)",
+      "pdf": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/ENGE/1/pdf",
+      "html": "Engelska.html"
+    },
+    {
+      "subject": "Historia (History)",
+      "pdf": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/HIST/1/pdf",
+      "html": "Historia.html"
+    },
+    {
+      "subject": "Idrott och hälsa (Physical Education & Health)",
+      "pdf": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/IDRO/1/pdf",
+      "html": "Idrott_och_halsa.html"
+    },
+    {
+      "subject": "Matematik (Mathematics)",
+      "pdf": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/MATE/1/pdf",
+      "html": "Matematik.html"
+    },
+    {
+      "subject": "Naturkunskap (General Natural Science)",
+      "pdf": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/NATU/1/pdf",
+      "html": "Naturkunskap.html"
+    },
+    {
+      "subject": "Religionskunskap (Religion)",
+      "pdf": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/RELI/1/pdf",
+      "html": "Religionskunskap.html"
+    },
+    {
+      "subject": "Samhällskunskap (Social Studies)",
+      "pdf": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/SAMH/1/pdf",
+      "html": "Samhallskunskap.html"
+    },
+    {
+      "subject": "Svenska (Swedish)",
+      "pdf": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/SVEN/1/pdf",
+      "html": "Svenska.html"
+    },
+    {
+      "subject": "Svenska som andraspråk (Swedish as a second language)",
+      "pdf": "https://www.skolverket.se/sitevision/proxy/undervisning/gymnasieskolan/program-och-amnen-i-gymnasieskolan/hitta-program-och-amnen-i-gymnasieskolan-gy25/amne-gy2025/svid12_467ba038192d14ade318a/907561864/subject/SVEA/1/pdf",
+      "html": "Svenska_som_andrasprak.html"
+    }
+  ]
+}

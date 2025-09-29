@@ -1,0 +1,63 @@
+[
+  {
+    "response_id": "gr4_sample_svenska_niva3",
+    "grader": "Mistral/Le Chat",
+    "scores": {
+      "Språkriktighet & Retorik": 24,
+      "Källkritik & Analys": 25,
+      "Innehåll & Reflektion": 23,
+      "Språklig Kreativitet (Mistral)": 24,
+      "Källintegritet (Mistral)": 25,
+      "Total": 121,
+      "Grade": "A"
+    },
+    "feedback": {
+      "strengths": [
+        "Utmärkt användning av samiska exempel för att illustrera språkidentitet i digitala medier.",
+        "Djupgående källkritik med referenser till UR Play och Skolverket.",
+        "Kreativt språkbruk, t.ex. metaforen om 'digitalt kolonialism'."
+      ],
+      "areas_for_improvement": [
+        "Kunde ha jämfört med andra minoritetsspråk (t.ex. meänkieli) för bredare perspektiv.",
+        "Vissa källor saknar publiceringsdatum, vilket försvårar bedömningen av aktuellhet."
+      ],
+      "suggestions": [
+        "Lägg till en etisk reflektion om vem som kontrollerar AI-genererat innehåll på samiska.",
+        "Använd fler retoriska frågor för att engagera läsaren."
+      ]
+    },
+    "timestamp": "2025-09-02"
+  },
+  {
+    "response_id": "mistral_sample_svenska_niva1",
+    "grader": "Grok",
+    "scores": {
+      "Språkriktighet & Retorik": 25,
+      "Källkritik & Analys": 22,
+      "Innehåll & Reflektion": 23,
+      "Språklig Kreativitet (Mistral)": 20,
+      "Källintegritet (Mistral)": 20,
+      "Overall (A)": 22
+    },
+    "total": 88.5,
+    "grade": "B",
+    "ml_score": 85.0,
+    "notes": "Solid Nivå 1 response with clear arguments and SvA focus. Limited source analysis depth; more stylistic variety needed for A-level."
+  },
+  {
+    "response_id": "mistral_sample_engelska_niva3",
+    "grader": "Grok",
+    "scores": {
+      "Proficiency & Rhetoric": 25,
+      "Critical Analysis & Sources": 25,
+      "Content & Reflection": 25,
+      "Språklig Kreativitet (Mistral)": 25,
+      "Källintegritet (Mistral)": 25,
+      "Overall (A)": 25
+    },
+    "total": 92.5,
+    "grade": "A",
+    "ml_score": 90.0,
+    "notes": "Excellent Nivå 3 response with robust cross-cultural analysis and ethical reflection. Strong source integration."
+  }
+]

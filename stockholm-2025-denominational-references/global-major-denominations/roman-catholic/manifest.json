@@ -1,0 +1,10 @@
+{
+  "denomination": "Roman Catholic",
+  "percentage_of_global_christians": 50.1,
+  "description": "The Roman Catholic Church is the largest Christian denomination worldwide, with over 1.3 billion members. It maintains a hierarchical structure under the Pope and is present in every country, with particular strength in Latin America and Southern Europe.",
+  "resources": [
+    { "name": "Vatican Official Site", "url": "https://www.vatican.va" },
+    { "name": "Catholicism (Wikipedia)", "url": "https://en.wikipedia.org/wiki/Catholic_Church" },
+    { "name": "Global Catholic Statistics", "url": "https://www.pewresearch.org/religion/2013/02/13/the-global-catholic-population/" }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "subject": "GEOG",
+  "version": "GY25",
+  "purpose": "Geografikursen (GEOG) utvecklar elevernas förståelse för samspelet mellan människa, miljö och teknik. Kursen betonar datadrivna analyser och hållbarhetsfrågor, där AI och GIS används som redskap för att förstå komplexa processer.",
+  "levels": [
+    {
+      "id": "1",
+      "course_code": "GEOG1001",
+      "central_content": [
+        "Jordens resurser och klimatförändringar",
+        "GIS och datainsamling",
+        "AI-tillämpningar för riskanalys och prognoser"
+      ],
+      "requirements": {
+        "E": "Eleven kan beskriva grundläggande geografiska processer och använda enkla GIS-verktyg.",
+        "C": "Eleven kan analysera samband mellan människa och miljö med hjälp av data och diskutera konsekvenser.",
+        "A": "Eleven kan systematiskt använda geografiska data och AI-verktyg för att föreslå välgrundade lösningar på hållbarhetsutmaningar."
+      },
+      "ethical_aspects": [
+        "Rättvisa i resursfördelning",
+        "Integritet i datainsamling",
+        "Ansvar vid klimatprognoser"
+      ],
+      "tool_integrations": [
+        "GIS-programvara",
+        "AI-modeller för klimatdata"
+      ],
+      "swedish_legislative_context": "Relaterat till miljöbalken och svenska klimatmål i linje med EU-reglering.",
+      "semantic_tags": ["climate", "GIS", "sustainability"],
+      "examples": [
+        "Använd AI för att modellera översvämningsrisk i svenska städer."
+      ],
+      "integrations": {
+        "ARTI": "Etisk användning av AI i klimatdataanalys",
+        "BIO": "Koppling till biodiversitet och ekosystempåverkan"
+      }
+    }
+  ],
+  "comparisons": {
+    "gy11": "Större fokus på naturresurser utan digital verktygsintegration.",
+    "gy25": "Stärkt koppling till AI och GIS som centrala arbetsredskap."
+  }
+}

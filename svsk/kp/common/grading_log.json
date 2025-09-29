@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "generated_by": "Grok",
+    "date": "2025-09-02",
+    "purpose": "Log AI responses and grading feedback for Gy25 Svenska/SvA and Engelska, scalable for cross-AI collaboration",
+    "scalable_to": ["gr4", "gpt-5", "clso4", "future_models"]
+  },
+  "entries": [
+    {
+      "ai_model": "Grok",
+      "subject": "Svenska",
+      "prompt_level": "Nivå 1",
+      "response_file": "../gr4/sample_response_svenska.md",
+      "grades": [
+        {
+          "graded_by": "Grok",
+          "score": "A",
+          "feedback": "Response meets A-level criteria: nuanced retorik, robust källkritik (2 sources), equity focus (minority languages). Dynamic structure with clear thesis and ethical reflection. Minor suggestion: expand counterarguments for deeper debate.",
+          "date": "2025-09-02"
+        },
+        {
+          "graded_by": "ChatGPT-5",
+          "score": "TBD",
+          "feedback": "Awaiting grading post-crawl-lag",
+          "date": "TBD"
+        },
+        {
+          "graded_by": "Claude",
+          "score": "TBD",
+          "feedback": "Awaiting grading post-crawl-lag (placeholder /clso4/)",
+          "date": "TBD"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "purpose": "Unified cross-AI manifest for Gy25 AI literacy project",
+    "maintainers": ["Markus Isaksson", "AI collaborators"],
+    "version": "1.0",
+    "notes": "Aggregates shared resources and subfolder references. AI-facing."
+  },
+  "shared_resources": {
+    "arti_matrix": "arti-matrix.json",
+    "index_page": "index.html",
+    "ur_play_examples": [
+      {
+        "title": "UR Samtiden – AI och språk",
+        "url": "https://urplay.se/program/223861-ur-samtiden-ai-och-sprak"
+      },
+      {
+        "title": "UR Samtiden – AI i skolan",
+        "url": "https://urplay.se/program/230412-ur-samtiden-ai-i-skolan"
+      }
+    ]
+  },
+  "subjects": [
+    {
+      "code": "SvA",
+      "name": "Svenska som andraspråk",
+      "focus": ["Språkutveckling", "Källkritik", "Retorik", "Demokrati & etik"]
+    },
+    {
+      "code": "Prog",
+      "name": "Programmering",
+      "focus": ["Kodning av AI-verktyg", "Algoritmisk biasdetektion"]
+    },
+    {
+      "code": "Mat",
+      "name": "Matematik",
+      "focus": ["Statistiska mått", "Felanalys", "Visualisering"]
+    },
+    {
+      "code": "Equity",
+      "name": "Minoritetsspråk & likvärdighet",
+      "focus": ["Samiska", "Meänkieli", "Multilingual student agency"]
+    }
+  ],
+  "ai_subfolders": [
+    {
+      "name": "gr4",
+      "model": "Grok",
+      "path": "../gr4/",
+      "contents": [
+        "index.html",
+        "teacher_takeaway_kit.md",
+        "ai_literacy_manifest.json",
+        "bias_detector.py",
+        "gr4_one_pager_chart.json"
+      ]
+    },
+    {
+      "name": "gpt-5",
+      "model": "ChatGPT-5",
+      "path": "../gpt-5/",
+      "contents": [
+        "index.html",
+        "ai-literacy-manifest.json"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARTI Etik: Transparens i AI-system</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.2em;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        .decision-node {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+            transition: all 0.3s ease;
+        }
+        .decision-node:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+        }
+        .question {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        .options {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .option {
+            background: white;
+            border: 2px solid #ecf0f1;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .option:hover {
+            border-color: #3498db;
+            background: #ebf3fd;
+            transform: translateY(-2px);
+        }
+        .option.selected {
+            border-color: #27ae60;
+            background: #d5f4e6;
+        }
+        .result {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+        .result.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .legal-note {
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .swedish-context {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .reset-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background 0.3s ease;
+        }
+        .reset-btn:hover {
+            background: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 AI Transparens: Etiskt Beslutsträd</h1>
+        <p class="subtitle">Interaktivt verktyg för ARTI-kursen - Analysera transparensdilemman i svenska AI-system</p>
+        
+        <div class="legal-note">
+            <strong>📋 Svensk juridisk kontext:</strong> GDPR Art. 13-15 (rätt till information), AI-förordningen (EU) 2024/1689, och Diskrimineringslagen (2008:567) påverkar transparenskrav för AI-system i Sverige.
+        </div>
+
+        <div class="decision-node" id="node1">
+            <div class="question">1. Vilken typ av AI-system analyserar du?</div>
+            <div class="options">
+                <div class="option" onclick="selectOption(this, 'healthcare')">
+                    🏥 Hälso- och sjukvård (diagnostik, behandlingsförslag)
+                </div>
+                <div class="option" onclick="selectOption(this, 'hiring')">
+                    👔 Rekrytering och personalval
+                </div>
+                <div class="option" onclick="selectOption(this, 'finance')">
+                    💰 Finansiella tjänster (kreditbedömning, försäkring)
+                </div>
+                <div class="option" onclick="selectOption(this, 'education')">
+                    🎓 Utbildning (betygsättning, rekommendationer)
+                </div>
+            </div>
+        </div>
+
+        <div class="decision-node" id="node2" style="display: none;">
+            <div class="question">2. Vem påverkas av AI:ns beslut?</div>
+            <div class="options">
+                <div class="option" onclick="selectOption(this, 'individual')">
+                    👤 Enskilda individer direkt
+                </div>
+                <div class="option" onclick="selectOption(this, 'group')">
+                    👥 Grupper eller samhällen
+                </div>
+                <div class="option" onclick="selectOption(this, 'organization')">
+                    🏢 Organisationer eller företag
+                </div>
+            </div>
+        </div>
+
+        <div class="decision-node" id="node3" style="display: none;">
+            <div class="question">3. Hur kritiska är konsekvenserna av AI:ns beslut?</div>
+            <div class="options">
+                <div class="option" onclick="selectOption(this, 'high_risk')">
+                    🔴 Högrisk: Påverkar hälsa, säkerhet eller grundläggande rättigheter
+                </div>
+                <div class="option" onclick="selectOption(this, 'medium_risk')">
+                    🟡 Mediumrisk: Påverkar möjligheter eller ekonomisk ställning
+                </div>
+                <div class="option" onclick="selectOption(this, 'low_risk')">
+                    🟢 Lågrisk: Begränsad påverkan på individens liv
+                </div>
+            </div>
+        </div>
+
+        <div class="decision-node" id="node4" style="display: none;">
+            <div class="question">4. Vilken är huvudutmaningen med transparens i detta fall?</div>
+            <div class="options">
+                <div class="option" onclick="selectOption(this, 'complexity')">
+                    🧠 Teknisk komplexitet (svårt att förklara algoritmen)
+                </div>
+                <div class="option" onclick="selectOption(this, 'trade_secret')">
+                    🔒 Affärshemligheter (konkurrensfördelar)
+                </div>
+                <div class="option" onclick="selectOption(this, 'gaming')">
+                    🎯 Risk för manipulation (system-gaming)
+                </div>
+                <div class="option" onclick="selectOption(this, 'bias')">
+                    ⚖️ Potentiell diskriminering eller bias
+                </div>
+            </div>
+        </div>
+
+        <div class="result" id="result">
+            <h3 id="resultTitle">Rekommendation</h3>
+            <p id="resultText"></p>
+            <div class="swedish-context" id="swedishContext"></div>
+            <button class="reset-btn" onclick="resetTree()">🔄 Börja om</button>
+        </div>
+    </div>
+
+    <script>
+        let selections = {};
+        let currentNode = 1;
+
+        function selectOption(element, value) {
+            // Clear previous selections in this node
+            element.parentNode.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            
+            selections['node' + currentNode] = value;
+            
+            // Show next node or result
+            if (currentNode < 4) {
+                currentNode++;
+                document.getElementById('node' + currentNode).style.display = 'block';
+                document.getElementById('node' + currentNode).scrollIntoView({ behavior: 'smooth' });
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            const systemType = selections.node1;
+            const impact = selections.node2;
+            const risk = selections.node3;
+            const challenge = selections.node4;
+
+            let recommendation = "";
+            let swedishContext = "";
+
+            // Generate contextual recommendations
+            if (risk === 'high_risk') {
+                recommendation = "🔴 <strong>Hög transparens krävs:</strong> Detta system klassas som högrisk enligt EU:s AI-förordning. Full transparens och förklarbarhet är obligatorisk. Användare måste informeras om AI:ns roll och ha rätt till mänsklig överprövning.";
+                swedishContext = "Svenska myndigheter (som Datainspektionen) kommer att övervaka efterlevnaden. Dokumentera alla beslut och säkerställ att användare kan begära förklaringar på svenska.";
+            } else if (risk === 'medium_risk' && (systemType === 'hiring' || systemType === 'finance')) {
+                recommendation = "🟡 <strong>Balanserad transparens:</strong> Ge tydliga förklaringar av vilka faktorer som väger tyngst, utan att avslöja känsliga algoritmer. Implementera 'counterfactual explanations' - vad som skulle ha krävts för ett annat resultat.";
+                swedishContext = "Följ Diskrimineringslagen - särskilt viktigt för rekrytering och finansiella tjänster. Dokumentera att systemet inte diskriminerar utifrån kön, etnicitet eller andra skyddade egenskaper.";
+            } else if (challenge === 'bias') {
+                recommendation = "⚖️ <strong>Bias-fokuserad transparens:</strong> Publicera regelbundna granskningar av systemets prestanda för olika grupper. Implementera 'fairness metrics' och gör resultaten tillgängliga för allmänheten.";
+                swedishContext = "Sveriges jämställdhetsmål kräver särskild uppmärksamhet på köns- och etnicitetsbias. Samarbeta med Diskrimineringsombudsmannen för validering.";
+            } else {
+                recommendation = "🟢 <strong>Grundläggande transparens:</strong> Informera tydligt om att AI används, vilket syfte det har, och ge användare möjlighet att få mer information vid behov. Fokus på användarvänlighet snarare än tekniska detaljer.";
+                swedishContext = "Även för lågrisk-system gäller grundläggande GDPR-krav. Säkerställ att information finns tillgänglig på svenska och är lätt att förstå.";
+            }
+
+            // Add specific challenge considerations
+            if (challenge === 'complexity') {
+                recommendation += "<br><br>💡 <em>För teknisk komplexitet: Använd visualiseringar, analogier och stegvisa förklaringar istället för teknisk jargong.</em>";
+            } else if (challenge === 'trade_secret') {
+                recommendation += "<br><br>💡 <em>För affärshemligheter: Fokusera på vad systemet gör och varför, snarare än exakt hur. 'Process transparency' över 'algorithmic transparency'.</em>";
+            } else if (challenge === 'gaming') {
+                recommendation += "<br><br>💡 <em>För gaming-risker: Förklara allmänna principer men håll specifika tröskelvärden hemliga. Använd 'approximate explanations'.</em>";
+            }
+
+            document.getElementById('resultTitle').innerHTML = 'Transparensrekommendation för ditt AI-system';
+            document.getElementById('resultText').innerHTML = recommendation;
+            document.getElementById('swedishContext').innerHTML = '<strong>🇸🇪 Svensk kontext:</strong> ' + swedishContext;
+            document.getElementById('result').classList.add('show');
+            document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetTree() {
+            selections = {};
+            currentNode = 1;
+            
+            // Hide all nodes except first
+            for (let i = 2; i <= 4; i++) {
+                document.getElementById('node' + i).style.display = 'none';
+            }
+            
+            // Clear selections
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Hide result
+            document.getElementById('result').classList.remove('show');
+            
+            // Scroll to top
+            document.getElementById('node1').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

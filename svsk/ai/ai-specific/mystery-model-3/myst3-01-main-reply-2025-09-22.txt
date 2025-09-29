@@ -1,0 +1,127 @@
+
+# Assessment Rubric Component Library for Swedish Gymnasium Teachers
+
+## Overview
+
+This React component library is designed to help Swedish gymnasium teachers create interactive assessment rubrics and scaffolding tools. The library includes components for dynamic rubric builders, student self-assessment sliders, peer feedback collection systems, and portfolio evidence trackers. It supports offline functionality, exports assessment data to Excel/Google Sheets formats, and follows WCAG guidelines for accessibility. The library also includes multilingual support for Swedish/English interfaces and customizable themes for different school branding requirements.
+
+## Component Library Structure
+
+The component library is structured into several modules, each addressing a specific requirement:
+
+1. **Rubric Builder**: A dynamic form builder for creating customizable assessment rubrics with criteria and progression levels.
+2. **Self-Assessment Slider**: A slider component for students to rate their confidence and understanding of specific criteria.
+3. **Peer Feedback Collector**: A form component for collecting peer feedback with ratings and comments.
+4. **Portfolio Tracker**: A component for tracking and displaying student portfolio evidence.
+5. **Data Export**: A utility for exporting assessment data to Excel/Google Sheets formats.
+6. **Accessibility Provider**: A wrapper component ensuring WCAG compliance across the library.
+7. **Theme Provider**: A wrapper component for customizable themes aligning with school branding.
+8. **Language Provider**: A wrapper component for multilingual support (Swedish/English).
+
+## Key Components
+
+### Rubric Builder
+
+*   Allows teachers to create and customize assessment rubrics with dynamic criteria and progression levels.
+*   Supports drag-and-drop reordering of criteria and levels.
+*   Includes a preview mode to visualize the rubric.
+
+### Self-Assessment Slider
+
+*   Enables students to rate their confidence and understanding using a slider.
+*   Includes optional comment fields for reflections.
+*   Supports multiple slider orientations (horizontal/vertical).
+
+### Peer Feedback Collector
+
+*   Allows peers to provide feedback with ratings and comments.
+*   Supports anonymous feedback collection.
+*   Includes a dashboard for teachers to review and analyze feedback.
+
+### Portfolio Tracker
+
+*   Helps students track and organize portfolio evidence.
+*   Supports uploading files, linking resources, and adding descriptions.
+*   Includes a timeline view for tracking progress.
+
+## Offline Functionality
+
+*   Utilizes IndexedDB or LocalStorage for caching assessment data when offline.
+*   Implements a service worker for caching library assets and enabling offline access.
+*   Syncs data when the connection is restored.
+
+## Data Export
+
+*   Exports assessment data to Excel (.xlsx) and Google Sheets formats.
+*   Supports customizable export templates.
+*   Includes data validation and formatting for accurate exports.
+
+## Accessibility Features
+
+*   Follows WCAG 2.1 guidelines for accessibility.
+*   Includes semantic HTML, ARIA attributes, and keyboard navigation support.
+*   Supports high contrast themes and font size adjustments.
+
+## Multilingual Support
+
+*   Provides Swedish and English interfaces.
+*   Utilizes a translation framework (e.g., i18next) for easy language switching.
+*   Supports RTL (right-to-left) languages if needed.
+
+## Customizable Themes
+
+*   Allows schools to customize themes matching their branding.
+*   Supports CSS variables for easy theme adjustments.
+*   Includes a theme builder tool for generating custom themes.
+
+## Implementation Details
+
+The library is built using React, with each component designed to be modular and reusable. State management is handled using React Context or a state management library like Redux or MobX. The library leverages modern React features such as Hooks and Context API for efficient state management and component composition.
+
+For offline functionality, the library uses a combination of IndexedDB for data storage and a service worker for asset caching. The service worker is configured using Workbox or a similar tool to precache assets and handle network requests.
+
+Data export functionality is implemented using libraries like `xlsx` for Excel exports and Google Sheets API for direct integration. The library handles data formatting and validation to ensure accurate exports.
+
+Accessibility is ensured by following WCAG guidelines, using tools like `eslint-plugin-jsx-a11y` for linting, and testing with screen readers and accessibility testing tools.
+
+Multilingual support is achieved using `i18next` or a similar translation library, with translations managed in JSON files or a translation management system.
+
+Customizable themes are implemented using CSS variables and a theme provider component that allows context-based theme switching. A theme builder tool is included, allowing users to generate custom themes via a visual interface.
+
+## Getting Started
+
+To use the Assessment Rubric Component Library, follow these steps:
+
+1.  Install the library using npm or yarn: `npm install assessment-rubric-library` or `yarn add assessment-rubric-library`.
+2.  Import the required components into your React project.
+3.  Wrap your application with the `AccessibilityProvider`, `ThemeProvider`, and `LanguageProvider` to enable accessibility features, customizable themes, and multilingual support.
+4.  Use the components to build your assessment tools, such as rubrics, self-assessment sliders, peer feedback collectors, and portfolio trackers.
+5.  Configure offline functionality and data export options as needed.
+
+## Example Usage
+
+```jsx
+import React from 'react';
+import { RubricBuilder, SelfAssessmentSlider, PeerFeedbackCollector, PortfolioTracker, AccessibilityProvider, ThemeProvider, LanguageProvider } from 'assessment-rubric-library';
+
+const App = () => {
+  return (
+    <AccessibilityProvider>
+      <ThemeProvider theme="default">
+        <LanguageProvider language="sv">
+          <RubricBuilder />
+          <SelfAssessmentSlider criteria="Mathematics" />
+          <PeerFeedbackCollector assignmentId="12345" />
+          <PortfolioTracker studentId="67890" />
+        </LanguageProvider>
+      </ThemeProvider>
+    </AccessibilityProvider>
+  );
+};
+
+export default App;
+```
+
+## Conclusion
+
+The Assessment Rubric Component Library provides Swedish gymnasium teachers with a comprehensive toolset for creating interactive assessment rubrics and scaffolding tools. With features like offline functionality, data export, accessibility, multilingual support, and customizable themes, this library aims to streamline the assessment process and enhance student engagement.

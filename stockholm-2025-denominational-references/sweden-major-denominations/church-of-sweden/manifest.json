@@ -1,0 +1,75 @@
+{
+  "denomination": "Church of Sweden",
+  "denomination_native": "Svenska kyrkan",
+  "scope": "sweden",
+  "classification": "Lutheran",
+  "episcopal": true,
+  "membership_sweden": 3300000,
+  "membership_global": null,
+  "stockholm_2025_role": "host_denomination",
+  "key_leaders": {
+    "archbishop": "Martin Modéus",
+    "role_in_event": "chairman_swedish_christian_council"
+  },
+  "primary_sources": [
+    {
+      "title": "Official Website",
+      "url": "https://www.svenskakyrkan.se/",
+      "type": "institutional",
+      "language": "sv"
+    },
+    {
+      "title": "Theological Foundation",
+      "url": "https://www.svenskakyrkan.se/bekannelse",
+      "type": "doctrinal",
+      "language": "sv"
+    },
+    {
+      "title": "Church Order",
+      "url": "https://www.svenskakyrkan.se/kyrkoordning",
+      "type": "constitutional",
+      "language": "sv"
+    },
+    {
+      "title": "Climate Position",
+      "url": "https://www.svenskakyrkan.se/klimat",
+      "type": "social_teaching",
+      "language": "sv"
+    }
+  ],
+  "key_documents": [
+    "Augsburg Confession",
+    "Church Order (Kyrkoordning)",
+    "Porvoo Agreement"
+  ],
+  "ecumenical_memberships": [
+    "World Council of Churches",
+    "Lutheran World Federation", 
+    "Conference of European Churches",
+    "Porvoo Communion",
+    "Swedish Christian Council (host)"
+  ],
+  "theological_distinctives": [
+    "episcopal_lutheran",
+    "democratic_governance",
+    "inclusive_ordination",
+    "creation_care",
+    "refugee_advocacy"
+  ],
+  "stockholm_2025_contributions": [
+    "host_infrastructure",
+    "ecumenical_leadership", 
+    "peace_theology_legacy",
+    "interfaith_dialogue"
+  ],
+  "ai_analysis_ready": true,
+  "cross_reference_tags": [
+    "lutheran",
+    "episcopal",
+    "nordic",
+    "progressive",
+    "ecumenical_host"
+  ],
+  "last_updated": "2025-08-17",
+  "data_quality": "primary_sources_verified"
+}

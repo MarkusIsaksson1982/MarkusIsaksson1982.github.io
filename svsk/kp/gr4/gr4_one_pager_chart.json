@@ -1,0 +1,67 @@
+{
+  "type": "bar",
+  "data": {
+    "labels": ["Language Development", "Source Criticism & Bias", "AI & Technical", "Ethics & Democracy", "Process & Reflection"],
+    "datasets": [{
+      "label": "Rubric Weights (%)",
+      "data": [20, 25, 25, 20, 10],
+      "backgroundColor": ["#4CAF50", "#2196F3", "#FF9800", "#9C27B0", "#607D8B"],
+      "borderColor": ["#388E3C", "#1976D2", "#F57C00", "#7B1FA2", "#455A64"],
+      "borderWidth": 1
+    }]
+  },
+  "options": {
+    "plugins": {
+      "title": {
+        "display": true,
+        "text": "AI Literacy Project: Rubric Weights & 6-Week Timeline",
+        "font": { "size": 16 }
+      },
+      "subtitle": {
+        "display": true,
+        "text": "For SvA, Programmering, Matematik (Gy25, Minority Language Focus)",
+        "font": { "size": 12 }
+      },
+      "annotation": {
+        "annotations": {
+          "timeline": {
+            "type": "box",
+            "xMin": -0.5,
+            "xMax": 4.5,
+            "yMin": 30,
+            "yMax": 35,
+            "backgroundColor": "rgba(0, 0, 0, 0.1)",
+            "borderWidth": 0,
+            "label": {
+              "content": [
+                "W1: Intro + Plan (UR Play 'AI-bilder')",
+                "W2-3: SvA annotates, Prog. codes, Mat. stats",
+                "W4-5: Advocacy essays, UI refine, visualizations",
+                "W6: Present portfolio (code, stats, essay)"
+              ],
+              "display": true,
+              "position": "center",
+              "font": { "size": 10 }
+            }
+          }
+        }
+      }
+    },
+    "scales": {
+      "y": {
+        "beginAtZero": true,
+        "title": { "display": true, "text": "Weight (%)" },
+        "max": 40
+      },
+      "x": {
+        "title": { "display": true, "text": "Assessment Dimensions" }
+      }
+    }
+  },
+  "metadata": {
+    "generated_by": "Grok",
+    "date": "2025-09-02",
+    "cross_reference": ["../gpt-5/", "../common/arti-matrix.json"],
+    "purpose": "Dynamic rendering of rubric weights and timeline for Gy25 AI literacy project"
+  }
+}

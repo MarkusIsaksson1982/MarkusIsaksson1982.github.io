@@ -1,0 +1,244 @@
+# Swedish Curriculum Parser - Setup Guide
+==========================================
+
+## Requirements (requirements.txt)
+
+PyMuPDF>=1.23.0
+pdfplumber>=0.9.0
+pandas>=1.5.0
+PyYAML>=6.0
+pathlib2>=2.3.0; python_version < "3.4"
+
+## Installation
+
+### 1. Clone or Download Files
+Save the following files in your project directory:
+- curriculum_parser.py (main parser script)
+- usage_example.py (examples and tests)
+- config.yaml (configuration file)
+
+### 2. Install Dependencies
+```bash
+# Using pip
+pip install -r requirements.txt
+
+# Or install individually
+pip install PyMuPDF pdfplumber pandas PyYAML
+
+# For development/testing
+pip install pytest pytest-cov
+```
+
+### 3. Basic Usage
+
+#### Command Line Usage
+```bash
+# Parse a single PDF
+python curriculum_parser.py path/to/curriculum.pdf
+
+# Parse all PDFs in a directory
+python curriculum_parser.py path/to/pdf_directory/
+
+# Specify output directory and formats
+python curriculum_parser.py path/to/pdfs/ -o results/ --formats csv json markdown
+
+# Create default configuration file
+python curriculum_parser.py --create-config my_config.yaml
+
+# Use custom configuration
+python curriculum_parser.py path/to/pdfs/ -c my_config.yaml
+```
+
+#### Python Script Usage
+```python
+from curriculum_parser import CurriculumParser
+
+# Initialize parser
+parser = CurriculumParser()
+
+# Parse a PDF
+document = parser.parse_pdf('curriculum.pdf')
+
+# Export results
+parser.export_to_csv([document], 'results.csv')
+parser.export_to_json([document], 'results.json')
+parser.export_to_markdown([document], 'results.md')
+```
+
+## Features
+
+### Core Functionality
+- ✅ Extract text from PDF files using PyMuPDF and pdfplumber
+- ✅ Identify kunskapskrav sections by grade levels (E/C/A)
+- ✅ Extract competency descriptors using pattern matching
+- ✅ Generate bridge connections to other subjects
+- ✅ Support for both Swedish and English text
+- ✅ Configurable keyword mappings
+- ✅ Multiple output formats (CSV, JSON, Markdown)
+- ✅ Comprehensive error handling
+- ✅ Metadata extraction
+- ✅ Batch processing capabilities
+
+### Output Formats
+
+#### CSV Format
+- Spreadsheet-compatible for analysis in Excel/Google Sheets
+- Columns: filename, subject, grade_level, content, competencies, bridge_connections
+- Perfect for statistical analysis and filtering
+
+#### JSON Format
+- Web application compatible
+- Structured data with full metadata
+- Hierarchical organization by document → sections
+- Includes parsing timestamps and statistics
+
+#### Markdown Format
+- Human-readable documentation
+- Summary statistics and detailed breakdowns
+- Perfect for reports and documentation
+- Includes content previews and bridge connection summaries
+
+### Configuration Options
+
+The parser uses a YAML configuration file to customize:
+- **Bridge Keywords**: Define subject-specific keywords for cross-curricular connections
+- **Competency Indicators**: Words that indicate learning objectives
+- **Grade Keywords**: Terms associated with different achievement levels
+- **Text Cleaning**: Rules for improving OCR text quality
+- **Output Settings**: Format-specific options
+
+### Error Handling
+
+The parser includes robust error handling for:
+- ❌ Malformed or corrupted PDF files
+- ❌ OCR extraction failures
+- ❌ Missing or invalid configuration files
+- ❌ Encoding issues with Swedish characters
+- ❌ Empty or invalid content sections
+- ❌ File system permissions issues
+
+## Advanced Usage
+
+### Custom Subject Bridge Mappings
+```python
+# Create custom configuration
+custom_config = {
+    'bridge_keywords': {
+        'Digital Kompetens': ['digitala verktyg', 'programmering', 'AI'],
+        'Hållbarhet': ['miljö', 'klimat', 'återvinning', 'hållbar utveckling'],
+        'Entreprenörskap': ['innovation', 'kreativitet', 'företagande']
+    }
+}
+
+# Save and use configuration
+import yaml
+with open('custom_config.yaml', 'w') as f:
+    yaml.dump(custom_config, f, allow_unicode=True)
+
+parser = CurriculumParser('custom_config.yaml')
+```
+
+### Batch Processing with Analysis
+```python
+from pathlib import Path
+import pandas as pd
+
+# Process all PDFs in directory
+pdf_files = Path('curriculum_pdfs').glob('*.pdf')
+documents = []
+
+for pdf_file in pdf_files:
+    try:
+        doc = parser.parse_pdf(str(pdf_file))
+        documents.append(doc)
+    except Exception as e:
+        print(f"Error: {pdf_file}: {e}")
+
+# Export and analyze
+parser.export_to_csv(documents, 'all_curricula.csv')
+
+# Load for analysis
+df = pd.read_csv('all_curricula.csv')
+print(f"Total sections: {len(df)}")
+print(f"Grade distribution:\n{df['grade_level'].value_counts()}")
+print(f"Subjects found: {df['subject'].unique()}")
+```
+
+### Integration with Web Applications
+```python
+import json
+
+# Parse documents
+documents = [parser.parse_pdf(pdf) for pdf in pdf_files]
+
+# Export to JSON for web app
+parser.export_to_json(documents, 'curriculum_data.json')
+
+# Load in web application
+with open('curriculum_data.json', 'r', encoding='utf-8') as f:
+    curriculum_data = json.load(f)
+
+# Use in REST API, React app, etc.
+```
+
+## Troubleshooting
+
+### Common Issues
+
+1. **"No PDF files found"**
+   - Check file paths and permissions
+   - Ensure files have .pdf extension
+   - Verify directory exists
+
+2. **"Error parsing PDF"**
+   - PDF may be corrupted or password-protected
+   - Try with different PDF files
+   - Check parser logs for detailed error messages
+
+3. **"No kunskapskrav sections found"**
+   - PDF may not contain Swedish curriculum content
+   - Adjust grade patterns in configuration
+   - Check if text extraction is working (enable detailed logging)
+
+4. **"Encoding issues with Swedish characters"**
+   - Ensure UTF-8 encoding is used
+   - Check text cleaning configuration
+   - OCR quality may need improvement
+
+5. **"Empty or missing competency descriptors"**
+   - Adjust competency indicator patterns
+   - Check if text contains expected Swedish educational terminology
+   - Review extracted content for pattern matching
+
+### Performance Optimization
+
+For large batches of PDFs:
+- Enable multiprocessing in configuration
+- Increase memory allocation for Python
+- Process files in smaller batches
+- Use SSD storage for better I/O performance
+
+### Logging and Debugging
+
+Enable detailed logging:
+```python
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
+parser = CurriculumParser()
+# Detailed logs will be written to curriculum_parser.log
+```
+
+## Contributing
+
+To extend the parser:
+1. Add new bridge keywords to configuration
+2. Improve pattern matching for different document formats  
+3. Add support for additional output formats
+4. Enhance error handling for edge cases
+5. Optimize performance for large document sets
+
+## License
+
+This tool is provided for educational and research purposes.
+Ensure compliance with Skolverket's terms of use for curriculum documents.

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <title>SVSK – Common Resources</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      line-height: 1.6;
+      margin: 2rem;
+      background: #f9f9f9;
+      color: #222;
+    }
+    h1, h2 {
+      color: #004466;
+    }
+    ul {
+      margin-left: 1.2rem;
+    }
+    code {
+      background: #eee;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+    }
+    .note {
+      background: #eef6ff;
+      border-left: 4px solid #004466;
+      padding: 0.8rem;
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Gemensamma resurser (Common)</h1>
+  <p>
+    Denna mapp innehåller <strong>delade resurser</strong> för alla AI-deltagare i SVSK-projektet.
+    Här hittar du både läroplansanknytning (Gy25) och gemensamma artefakter som används av olika
+    AI-modeller i sina egna underkataloger.
+  </p>
+
+  <h2>📑 Viktiga filer</h2>
+  <ul>
+    <li><a href="arti-matrix.json">arti-matrix.json</a> – matris över AI-integrering i ämnen (AI literacy, equity, Gy25-fokus).</li>
+    <li><a href="common_manifest.json">common_manifest.json</a> – <em>ny</em> översiktlig manifestfil som länkar samman resurser och AI-submappar.</li>
+    <li><a href="index.html">index.html</a> – denna översiktssida.</li>
+  </ul>
+
+  <h2>🎥 UR Play exempel</h2>
+  <ul>
+    <li><a href="https://urplay.se/program/223861-ur-samtiden-ai-och-sprak" target="_blank">UR Samtiden – AI och språk</a></li>
+    <li><a href="https://urplay.se/program/230412-ur-samtiden-ai-i-skolan" target="_blank">UR Samtiden – AI i skolan</a></li>
+  </ul>
+
+  <h2>🤝 AI-specifika underkataloger</h2>
+  <ul>
+    <li><a href="../gr4/">/gr4/</a> – Grok-optimerade resurser (t.ex. Teacher Takeaway Kit, bias-detektor, visualiseringar).</li>
+    <li><a href="../gpt-5/">/gpt-5/</a> – ChatGPT-5-optimerade resurser (manifest, index, AI-parsning).</li>
+  </ul>
+
+  <div class="note">
+    <strong>Notering:</strong> <br>
+    <code>common_manifest.json</code> fungerar som en AI-läsbar "karta" för att hålla ihop alla
+    resurser. <br>
+    Varje AI-modell arbetar i sin egen underkatalog, men de kan alltid referera tillbaka hit för
+    gemensamma dokument och länkar.
+  </div>
+</body>
+</html>

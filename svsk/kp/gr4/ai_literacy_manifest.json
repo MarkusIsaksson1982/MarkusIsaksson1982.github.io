@@ -1,0 +1,69 @@
+{
+  "metadata": {
+    "generated_by": "Grok",
+    "date": "2025-09-02",
+    "purpose": "Grok-optimized manifest for Gy25 AI literacy integrations, compatible with cross-AI collaboration (e.g., /gpt-5/)",
+    "source": "../common/arti-matrix.json"
+  },
+  "subjects": [
+    {
+      "name": "Svenska (SVEN)",
+      "levels": [
+        {
+          "level": "Nivå 1",
+          "activities": ["AI_generated_text_analysis_for_rhetorical_devices", "Critical_evaluation_of_AI_grammar_corrections"],
+          "assessments": ["AI interaction logs", "bias detection protocols"]
+        },
+        {
+          "level": "Nivå 3",
+          "activities": ["Advanced_rhetorical_analysis_of_AI_vs_human_scientific_writing", "Development_of_AI_evaluation_frameworks_for_academic_texts"],
+          "assessments": ["dual-path rubrics", "cross-subject portfolios"]
+        }
+      ]
+    },
+    {
+      "name": "Svenska som andraspråk (SVEA)",
+      "levels": [
+        {
+          "level": "Nivå 1",
+          "activities": ["AI_tool_testing_with_multiple_languages_for_bias_detection"],
+          "assessments": ["AI interaction logs", "ethical reflection frameworks"]
+        },
+        {
+          "level": "Nivå 3",
+          "activities": ["Advanced_multilingual_AI_ethics_research"],
+          "assessments": ["dual-path rubrics", "advocacy reports"]
+        }
+      ]
+    },
+    {
+      "name": "Programmering",
+      "levels": [
+        {
+          "level": "Nivå 1-2",
+          "activities": ["Building text analysis tools for literature study", "Creating multilingual grammar checkers"],
+          "assessments": ["code functionality logs", "bias detection protocols"]
+        }
+      ]
+    },
+    {
+      "name": "Matematik",
+      "levels": [
+        {
+          "level": "Nivå 1-2",
+          "activities": ["Statistical evaluation of AI performance", "Mathematical modeling of linguistic phenomena"],
+          "assessments": ["statistical reports", "cross-subject portfolios"]
+        }
+      ]
+    }
+  ],
+  "cross_references": {
+    "shared_resources": ["../common/arti-matrix.json"],
+    "other_ai_folders": ["../gpt-5/"],
+    "ur_play": [
+      "https://urplay.se/program/240506-nyhetskoll-fordjupning-sa-kan-du-identifiera-ai-bilderna",
+      "https://urplay.se/serie/238890-uppdrag-ai",
+      "https://urplay.se/program/233524-svenska-forklarad-nationella-minoritetsspaken"
+    ]
+  }
+}

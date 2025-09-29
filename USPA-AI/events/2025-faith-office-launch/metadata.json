@@ -1,0 +1,28 @@
+{
+  "event_title": "U.S. Department of Defense Faith Office Launch",
+  "date": "2025-01-15",
+  "location": "Pentagon",
+  "transcript_type": "full",
+  "transcript_source_type": "official",
+  "speakers": [
+    {"name": "Secretary of Defense Pete Hegseth", "role": "primary", "affiliation": "U.S. Department of Defense"},
+    {"name": "Brooks Podiger", "title": "Pastor", "role": "secondary", "affiliation": "Pilgrim Hill Reformed Fellowship"}
+  ],
+  "theological_themes": ["military-chaplaincy","prayer-in-government","warrior-spirituality","biblical-authority"],
+  "government_level": "federal",
+  "denominational_context": ["reformed","evangelical"],
+  "political_context": {
+    "administration":"Trump 2025",
+    "political_significance":"Institutionalization of Faith Office within Pentagon",
+    "policy_connections":["military-religious-freedom","chaplaincy-expansion","institutional worship policy"]
+  },
+  "sources":[
+    {"url":"https://www.defense.gov/faith-office-launch","type":"official","reliability":"primary","description":"Official DOD announcement"}
+  ],
+  "file_formats":[".html",".txt",".json"],
+  "ai_optimization":{"primary_ai_targets":["claude-sonnet-4","chatgpt-5"],"processing_notes":"Institutional launch analyzed for AI extraction","quality_score":9,"completeness_score":9},
+  "quantitative_metrics":{"DDS":80,"CRRS":40,"SCI":1.8,"SSI":30,"risk_factors":["centralized faith office may compromise local chaplain autonomy"],"quadrant_classification":"II-mixed","independence_level":"government-controlled"},
+  "research_applications":["military-religion","church-state-studies","political-theology","ai-content-analysis"],
+  "last_updated":"2025-08-16T12:15:00Z",
+  "version":"1.1"
+}
