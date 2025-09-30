@@ -457,6 +457,126 @@
             }
         }
 
+        .floating-orbs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float-orb 20s ease-in-out infinite;
+        }
+
+        .orb1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.6), transparent);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .orb2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.6), transparent);
+            top: 60%;
+            right: 10%;
+            animation-delay: 7s;
+        }
+
+        .orb3 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.5), transparent);
+            bottom: 10%;
+            left: 50%;
+            animation-delay: 14s;
+        }
+
+        @keyframes float-orb {
+            0%, 100% { 
+                transform: translate(0, 0) scale(1);
+            }
+            33% { 
+                transform: translate(50px, -50px) scale(1.1);
+            }
+            66% { 
+                transform: translate(-30px, 30px) scale(0.9);
+            }
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .scroll-indicator::before {
+            content: '↓';
+            font-size: 2rem;
+            color: rgba(99, 102, 241, 0.6);
+            display: block;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        .stat-counter {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(99, 102, 241, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            font-size: 0.9rem;
+            color: #a5b4fc;
+        }
+
+        .stat-number {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #6366f1;
+        }
+
+        .timeline-indicator {
+            position: absolute;
+            left: -1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: #6366f1;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.8);
+        }
+
+        .curriculum-item {
+            position: relative;
+        }
+
+        .micro-interaction {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .micro-interaction:active {
+            transform: scale(0.98);
+        }
+
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
@@ -467,8 +587,14 @@
     </style>
 </head>
 <body>
+    <div class="floating-orbs">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="orb orb3"></div>
+    </div>
     <div class="bg-gradient"></div>
     <div class="grain"></div>
+    <div class="scroll-indicator"></div>
     
     <div class="container">
         <header>
@@ -476,7 +602,21 @@
             <div class="profile-image">MI</div>
             <h1>Markus Isaksson</h1>
             <div class="subtitle">Full Stack Developer & Data Scientist</div>
-            <div class="progress-update">Progress updated: September 30, 2025</div>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem;">
+                <div class="stat-counter">
+                    <span class="stat-number">13</span>
+                    <span>Certifications</span>
+                </div>
+                <div class="stat-counter">
+                    <span class="stat-number">2,783</span>
+                    <span>Steps Completed</span>
+                </div>
+                <div class="stat-counter">
+                    <span class="stat-number">178</span>
+                    <span>Dialogues Mastered</span>
+                </div>
+            </div>
+            <div class="progress-update micro-interaction">Progress updated: September 30, 2025</div>
         </header>
 
         <div class="section">
@@ -490,6 +630,7 @@
             </div>
             
             <div class="curriculum-item">
+                <div class="timeline-indicator"></div>
                 <div class="curriculum-title">HTML <span class="status-badge completed">COMPLETED</span></div>
                 <div class="step-count">223 steps completed</div>
                 <div class="progress-bar">
@@ -498,6 +639,7 @@
             </div>
 
             <div class="curriculum-item">
+                <div class="timeline-indicator"></div>
                 <div class="curriculum-title">CSS <span class="status-badge completed">COMPLETED</span></div>
                 <div class="step-count">1,156 steps completed</div>
                 <div class="progress-bar">
@@ -506,6 +648,7 @@
             </div>
 
             <div class="curriculum-item">
+                <div class="timeline-indicator"></div>
                 <div class="curriculum-title">JavaScript <span class="status-badge completed">COMPLETED</span></div>
                 <div class="step-count">995 steps completed</div>
                 <div class="progress-bar">
@@ -514,6 +657,7 @@
             </div>
 
             <div class="curriculum-item">
+                <div class="timeline-indicator"></div>
                 <div class="curriculum-title">Front End Libraries <span class="status-badge completed">COMPLETED</span></div>
                 <div class="step-count">279 steps completed (React, Testing, Performance)</div>
                 <div class="progress-bar">
@@ -525,6 +669,7 @@
             </div>
 
             <div class="curriculum-item">
+                <div class="timeline-indicator"></div>
                 <div class="curriculum-title">Python <span class="status-badge completed">COMPLETED</span></div>
                 <div class="step-count">130 steps completed (Basics, Loops, Sequences, Dictionaries, Sets, Error Handling)</div>
                 <div class="progress-bar">
@@ -536,6 +681,7 @@
             </div>
 
             <div class="curriculum-item">
+                <div class="timeline-indicator" style="background: #94a3b8;"></div>
                 <div class="curriculum-title">Relational Databases <span class="status-badge upcoming">Winter 2025</span></div>
                 <div class="step-count">Bash Fundamentals, SQL, Bash Scripting, Git version control</div>
                 <div class="progress-bar">
@@ -544,6 +690,7 @@
             </div>
 
             <div class="curriculum-item">
+                <div class="timeline-indicator" style="background: #94a3b8;"></div>
                 <div class="curriculum-title">Backend JavaScript <span class="status-badge upcoming">Late 2026</span></div>
                 <div class="step-count">Node.js, Express, APIs, WebSockets, Authentication, Security, Deployment</div>
                 <div class="progress-bar">
@@ -555,6 +702,7 @@
             </div>
 
             <div class="curriculum-item">
+                <div class="timeline-indicator" style="background: #94a3b8;"></div>
                 <div class="curriculum-title">Career Preparation <span class="status-badge upcoming">Late 2026</span></div>
                 <div class="step-count">Job Search Strategies, Capstone Project, Certification Exam</div>
                 <div class="progress-bar">
