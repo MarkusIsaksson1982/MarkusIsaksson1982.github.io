@@ -1,3 +1,7 @@
+
+
+###### README.md
+
 # Markus Isaksson - Developer Portfolio
 
 A modern, dark-themed portfolio showcasing my journey through full-stack development and data science certifications.
@@ -103,6 +107,17 @@ Denna sektion innehåller fristående tekniska demonstrationer och mindre projek
 
 *   **[WebAssembly Performance Demo: Bubble Sort](./projects/wasm-sorter-demo/)**
     *   En demonstration som jämför prestandan för en C++-algoritm kompilerad till WebAssembly mot en motsvarande algoritm i ren JavaScript.
+
+*   **[WebAssembly Tic Tac Toe ](./projects/tic-tac-toe-wasm/)**
+    *   Tic Tac Toe in Rust.
+
+---
+
+## 🎯 Other repositories
+
+*   **[Research and code for my work as a substitute teacher](https://markus-school.github.io/)**
+    *   My other repository for school related code and research
+
 
 ---
 
