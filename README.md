@@ -95,6 +95,17 @@ All 13 completed certifications are displayed with verification links:
 - Keyboard navigation support
 - Screen reader friendly
 
+---
+
+## 🚀 Showcase-projekt
+
+Denna sektion innehåller fristående tekniska demonstrationer och mindre projekt. Varje projekt finns i sin egen undermapp och är fullt dokumenterat.
+
+*   **[WebAssembly Performance Demo: Bubble Sort](./projects/wasm-sorter-demo/)**
+    *   En demonstration som jämför prestandan för en C++-algoritm kompilerad till WebAssembly mot en motsvarande algoritm i ren JavaScript.
+
+---
+
 ## 📧 Connect
 
 **LinkedIn**: [Markus Isaksson](https://www.linkedin.com/in/markus-isaksson-08273a127/)
