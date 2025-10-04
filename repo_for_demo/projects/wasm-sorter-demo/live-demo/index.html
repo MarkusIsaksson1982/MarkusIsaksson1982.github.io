@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebAssembly Sortering</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="main-container">
+        <h1>WebAssembly Bubble Sort</h1>
+        <p>Demonstration av en sorteringsalgoritm (Bubble Sort) som körs i en WebAssembly-modul kompilerad från C++.</p>
+        <div class="controls">
+            <button id="resetButton">Generera Ny Data</button>
+            <button id="sortButton">Jämför Prestanda (Wasm vs. JS)</button>
+        </div>
+
+        <div id="performance-container" class="performance-container">
+            <h3>Resultat (tid i millisekunder):</h3>
+            <div id="performance-results">
+                <p>WebAssembly: <span id="wasm-time">...</span></p>
+                <p>JavaScript: <span id="js-time">...</span></p>
+            </div>
+        </div>
+
+        <div class="visualization-area">
+            <div class="data-container">
+                <h2>Osorterad Data</h2>
+                <div id="unsorted-container" class="bar-container"></div>
+            </div>
+            <div class="data-container">
+                <h2>Sorterad Data</h2>
+                <div id="sorted-container" class="bar-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Emscripten "glue code" och vår applikationslogik -->
+    <!-- Emscripten "glue code" och vår applikationslogik -->
+    <!-- VIKTIGT: sorter.js måste laddas först för att definiera SorterModule-funktionen! -->
+    <script src="sorter.js"></script>
+    <script src="main.js"></script>
+
+</body>
+</html>
