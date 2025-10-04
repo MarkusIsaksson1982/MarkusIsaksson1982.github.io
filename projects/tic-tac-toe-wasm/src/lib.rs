@@ -14,6 +14,56 @@ impl TicTacToe {
         TicTacToe {
             board: [0; 9],
             current_player: 1, // Player starts
+        }
+    }
+
+    #[wasm_bindgen]
+    pub fn get_board(&self) -> Vec<i32> {
+        self.board.to_vec()
+    }
+
+    #[wasm_bindgen]
+    pub fn make_move(&mut self, position: usize) -> bool {
+        if position >= 9 || self.board[position] != 0 {
+            return false;
+        }
+        self.board[position] = self.current_player;
+        self.current_player = if self.current_player == 1 { 2 } else { 1 };
+        true
+    }
+
+    #[wasm_bindgen]
+    pub fn check_win(&self) -> i32 {
+        check_win_for_board(&self.board)
+    }
+
+    #[wasm_bindgen]
+    pub fn check_draw(&self) -> bool {
+        is_draw(&self.board)
+    }
+
+    #[wasm_bindgen]
+    pub fn get_best_move(&self, max_depth: i32) -> usize {
+        if self.check_win() != 0 || self.check_draw() {
+            return usize::MAX; // Game over
+        }
+
+        let mut best_score = i32::MIN;
+        let mut best_move = usize::MAX;
+        let ai_player = 2;
+
+        for i in 0..9 {
+            if self.board[i] == 0 {
+                let mut board_copy = self.board;
+                board_copy[i] = ai_player;
+                let score = minimax(&board_copy, 1, false, i32::MIN, i32::MAX, ai_player, max_depth);
+                if score > best_score {
+                    best_score = score;
+                    best_move = i;
+                }
+            }
+        }
+        best_move
     }
 }
 
@@ -126,57 +176,5 @@ mod tests {
         assert_eq!(score, 0); // Should be draw for optimal play
     }
 }
-
-    #[wasm_bindgen]
-    pub fn get_board(&self) -> Vec<i32> {
-        self.board.to_vec()
-    }
-
-    #[wasm_bindgen]
-    pub fn make_move(&mut self, position: usize) -> bool {
-        if position >= 9 || self.board[position] != 0 {
-            return false;
-        }
-        self.board[position] = self.current_player;
-        self.current_player = if self.current_player == 1 { 2 } else { 1 };
-        true
-    }
-
-    #[wasm_bindgen]
-    pub fn check_win(&self) -> i32 {
-        check_win_for_board(&self.board)
-    }
-
-    #[wasm_bindgen]
-    pub fn check_draw(&self) -> bool {
-        is_draw(&self.board)
-    }
-
-    #[wasm_bindgen]
-    pub fn get_best_move(&self, max_depth: i32) -> usize {
-        if self.check_win() != 0 || self.check_draw() {
-            return usize::MAX; // Game over
-        }
-
-        let mut best_score = i32::MIN;
-        let mut best_move = usize::MAX;
-        let ai_player = 2;
-
-        for i in 0..9 {
-            if self.board[i] == 0 {
-                let mut board_copy = self.board;
-                board_copy[i] = ai_player;
-                let score = minimax(&board_copy, 1, false, i32::MIN, i32::MAX, ai_player, max_depth);
-                if score > best_score {
-                    best_score = score;
-                    best_move = i;
-                }
-            }
-        }
-        best_move
-    }
-
-
-
 
 }
