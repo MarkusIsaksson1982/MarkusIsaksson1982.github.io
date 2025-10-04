@@ -20,9 +20,9 @@ A modern, dark-themed portfolio showcasing my journey through full-stack develop
 
 ## 📊 Current Progress
 
-As of September 30, 2025:
+As of October 4, 2025:
 - **13 Completed Certifications** from freeCodeCamp
-- **2,783 Steps Completed** across HTML, CSS, JavaScript, Python, and more
+- **2,789 Steps Completed** across HTML, CSS, JavaScript, Python, and more
 - **178 Dialogues Mastered** in English for Developers (A2 & B1 CEFR)
 
 ## 🛠️ Technologies Showcased
