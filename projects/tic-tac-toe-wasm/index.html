@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';">
+    <title>Tic-Tac-Toe WASM</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+            gap: 5px;
+            margin: 20px;
+        }
+        .cell {
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            border: 2px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .cell:hover {
+            background-color: #e0e0e0;
+        }
+        .status {
+            font-size: 24px;
+            margin: 20px;
+            color: #333;
+        }
+        .reset {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .reset:hover {
+            background-color: #45a049;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin: 20px;
+        }
+        select {
+            padding: 5px;
+            font-size: 16px;
+        }
+        .hint {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .hint:hover {
+            background-color: #0b7dda;
+        }
+        .cell.hint {
+            background-color: #ffff99;
+        }
+
+        @media (max-width: 600px) {
+            .board {
+                grid-template-columns: repeat(3, 80px);
+                grid-template-rows: repeat(3, 80px);
+            }
+            .cell {
+                width: 80px;
+                height: 80px;
+                font-size: 36px;
+            }
+            .controls {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Tic-Tac-Toe</h1>
+    <div class="controls" role="toolbar" aria-label="Game controls">
+        <label for="difficulty">Difficulty:</label>
+        <select id="difficulty" aria-label="Select AI difficulty">
+            <option value="3">Easy</option>
+            <option value="6">Medium</option>
+            <option value="9">Hard</option>
+        </select>
+        <button class="hint" id="hint" aria-label="Get a hint for the best move">Hint</button>
+        <button class="reset" id="reset" aria-label="Reset the game">Reset Game</button>
+    </div>
+    <div class="board" id="board" role="grid" aria-label="Tic-tac-toe game board"></div>
+    <div class="status" id="status" role="status" aria-live="polite">Loading game...</div>
+
+    <script type="module">
+        import init, { TicTacToe } from './pkg/tic_tac_toe_wasm.js';
+
+        let game;
+        const boardElement = document.getElementById('board');
+        const statusElement = document.getElementById('status');
+        const resetButton = document.getElementById('reset');
+        const difficultySelect = document.getElementById('difficulty');
+        const hintButton = document.getElementById('hint');
+
+        async function run() {
+            try {
+                await init();
+                game = new TicTacToe();
+                renderBoard();
+            } catch (error) {
+                console.error('Failed to load WASM:', error);
+                statusElement.textContent = 'Error loading game. Please refresh.';
+            }
+        }
+
+        function renderBoard() {
+            boardElement.innerHTML = '';
+            const board = game.get_board();
+            for (let i = 0; i < 9; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'cell';
+                cell.dataset.index = i;
+                cell.textContent = board[i] === 1 ? 'X' : board[i] === 2 ? 'O' : '';
+                cell.tabIndex = 0;
+                cell.setAttribute('aria-label', `Cell ${i + 1}: ${cell.textContent || 'empty'}`);
+                cell.addEventListener('click', handleClick);
+                cell.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        handleClick({ target: cell });
+                    }
+                });
+                boardElement.appendChild(cell);
+            }
+            updateStatus();
+        }
+
+        function showHint() {
+            const depth = parseInt(difficultySelect.value);
+            const hintMove = game.get_best_move(depth);
+            if (hintMove !== undefined && hintMove < 9) {
+                const cells = boardElement.querySelectorAll('.cell');
+                cells[hintMove].classList.add('hint');
+                setTimeout(() => {
+                    cells[hintMove].classList.remove('hint');
+                }, 2000);
+            }
+        }
+
+        function handleClick(event) {
+            const index = parseInt(event.target.dataset.index);
+            if (game.make_move(index)) {
+                renderBoard();
+                if (!game.check_win() && !game.check_draw()) {
+                    // AI turn
+                    setTimeout(() => {
+                        const depth = parseInt(difficultySelect.value);
+                        const aiMove = game.get_best_move(depth);
+                        if (aiMove < 9) {
+                            game.make_move(aiMove);
+                            renderBoard();
+                        }
+                    }, 500);
+                }
+            }
+        }
+
+        function updateStatus() {
+            const winner = game.check_win();
+            if (winner === 1) {
+                statusElement.textContent = 'Player wins!';
+            } else if (winner === 2) {
+                statusElement.textContent = 'AI wins!';
+            } else if (game.check_draw()) {
+                statusElement.textContent = 'It\'s a draw!';
+            } else {
+                statusElement.textContent = 'Player\'s turn';
+            }
+        }
+
+        resetButton.addEventListener('click', () => {
+            game = new TicTacToe();
+            renderBoard();
+        });
+
+        hintButton.addEventListener('click', showHint);
+
+        run();
+
+        // Register service worker for caching
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(reg => console.log('SW registered'))
+                .catch(err => console.log('SW registration failed'));
+        }
+    </script>
+</body>
+</html>
