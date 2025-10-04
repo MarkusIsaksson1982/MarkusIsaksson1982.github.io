@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markus Isaksson - Full Stack Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #e4e4e7;
+            background: #0a0a0f;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at top, rgba(99, 102, 241, 0.15), transparent 50%),
+                        radial-gradient(ellipse at bottom, rgba(236, 72, 153, 0.15), transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='3' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .profile-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.3), transparent 70%);
+            filter: blur(60px);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            font-weight: 700;
+            position: relative;
+            box-shadow: 0 0 60px rgba(99, 102, 241, 0.4);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #a0a0aa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #a1a1aa;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .progress-update {
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            color: #a5b4fc;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .progress-update:hover {
+            background: rgba(99, 102, 241, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .section {
+            background: rgba(24, 24, 27, 0.6);
+            margin-bottom: 2rem;
+            padding: 2.5rem;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.5), transparent);
+        }
+
+        .section:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #fafafa;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .progress-note {
+            background: rgba(6, 182, 212, 0.1);
+            border-left: 3px solid #06b6d4;
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            color: #a1a1aa;
+            font-size: 0.95rem;
+        }
+
+        .curriculum-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(39, 39, 42, 0.4);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .curriculum-item:hover {
+            background: rgba(39, 39, 42, 0.6);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .curriculum-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #fafafa;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .step-count {
+            color: #71717a;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            background: rgba(39, 39, 42, 0.6);
+            border-radius: 50px;
+            overflow: hidden;
+            height: 12px;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #6366f1, #ec4899);
+            border-radius: 50px;
+            position: relative;
+            transition: width 1s ease;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .completed {
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .in-progress {
+            background: rgba(251, 146, 60, 0.15);
+            color: #fb923c;
+            border: 1px solid rgba(251, 146, 60, 0.3);
+        }
+
+        .upcoming {
+            background: rgba(148, 163, 184, 0.15);
+            color: #94a3b8;
+            border: 1px solid rgba(148, 163, 184, 0.3);
+        }
+
+        .additional-content {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 3px solid #10b981;
+            padding: 0.8rem 1.2rem;
+            margin-top: 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #a1a1aa;
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .certificate-card {
+            background: rgba(39, 39, 42, 0.4);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .certificate-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
+        }
+
+        .certificate-card:hover::before {
+            opacity: 1;
+        }
+
+        .certificate-image {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #6366f1, #ec4899);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        .certificate-title {
+            font-weight: 600;
+            color: #fafafa;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .certificate-link {
+            color: #a5b4fc;
+            text-decoration: none;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        .certificate-link:hover {
+            color: #6366f1;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-item {
+            background: rgba(39, 39, 42, 0.4);
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-left: 3px solid #6366f1;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: rgba(39, 39, 42, 0.6);
+            transform: translateX(4px);
+            border-left-color: #ec4899;
+        }
+
+        .skill-item strong {
+            color: #fafafa;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .english-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .english-level {
+            background: rgba(39, 39, 42, 0.4);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #10b981;
+            transition: all 0.3s ease;
+        }
+
+        .english-level:hover {
+            background: rgba(39, 39, 42, 0.6);
+            transform: translateY(-4px);
+        }
+
+        .english-level h3 {
+            color: #fafafa;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .dialogue-count {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem;
+            color: #71717a;
+            font-size: 0.95rem;
+        }
+
+        .footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+            
+            .certificates-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .floating-orbs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float-orb 20s ease-in-out infinite;
+        }
+
+        .orb1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.6), transparent);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .orb2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.6), transparent);
+            top: 60%;
+            right: 10%;
+            animation-delay: 7s;
+        }
+
+        .orb3 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.5), transparent);
+            bottom: 10%;
+            left: 50%;
+            animation-delay: 14s;
+        }
+
+        @keyframes float-orb {
+            0%, 100% { 
+                transform: translate(0, 0) scale(1);
+            }
+            33% { 
+                transform: translate(50px, -50px) scale(1.1);
+            }
+            66% { 
+                transform: translate(-30px, 30px) scale(0.9);
+            }
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .scroll-indicator::before {
+            content: '↓';
+            font-size: 2rem;
+            color: rgba(99, 102, 241, 0.6);
+            display: block;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        .stat-counter {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(99, 102, 241, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            font-size: 0.9rem;
+            color: #a5b4fc;
+        }
+
+        .stat-number {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #6366f1;
+        }
+
+        .timeline-indicator {
+            position: absolute;
+            left: -1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: #6366f1;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.8);
+        }
+
+        .curriculum-item {
+            position: relative;
+        }
+
+        .micro-interaction {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .micro-interaction:active {
+            transform: scale(0.98);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-orbs">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="orb orb3"></div>
+    </div>
+    <div class="bg-gradient"></div>
+    <div class="grain"></div>
+    <div class="scroll-indicator"></div>
+    
+    <div class="container">
+        <header>
+            <div class="profile-glow"></div>
+            <div class="profile-image">MI</div>
+            <h1>Markus Isaksson</h1>
+            <div class="subtitle">Full Stack Developer & Data Scientist</div>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem;">
+                <div class="stat-counter">
+                    <span class="stat-number">13</span>
+                    <span>Certifications</span>
+                </div>
+                <div class="stat-counter">
+                    <span class="stat-number">2,789</span>
+                    <span>Steps Completed</span>
+                </div>
+                <div class="stat-counter">
+                    <span class="stat-number">178</span>
+                    <span>Dialogues Mastered</span>
+                </div>
+            </div>
+            <div class="progress-update micro-interaction">Progress updated: October 4, 2025</div>
+        </header>
+
+        <div class="section">
+            <h2>🎯 Current Focus: Certified Full Stack Developer Curriculum</h2>
+            <p style="margin-bottom: 1.5rem; color: #a1a1aa; font-size: 1.05rem; line-height: 1.7;">
+                Advancing through freeCodeCamp's comprehensive beta curriculum, mastering modern web development technologies and preparing for the complete full-stack certification expected in late 2026.
+            </p>
+            
+            <div class="progress-note">
+                <strong>Note:</strong> Progress bars reflect 100% completion of currently available content as of October 4, 2025, not the entire planned curriculum when fully released.
+            </div>
+            
+            <div class="curriculum-item">
+                <div class="timeline-indicator"></div>
+                <div class="curriculum-title">HTML <span class="status-badge completed">COMPLETED</span></div>
+                <div class="step-count">228 steps completed</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 100%;"></div>
+                </div>
+            </div>
+
+            <div class="curriculum-item">
+                <div class="timeline-indicator"></div>
+                <div class="curriculum-title">CSS <span class="status-badge completed">COMPLETED</span></div>
+                <div class="step-count">1,156 steps completed</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 100%;"></div>
+                </div>
+            </div>
+
+            <div class="curriculum-item">
+                <div class="timeline-indicator"></div>
+                <div class="curriculum-title">JavaScript <span class="status-badge completed">COMPLETED</span></div>
+                <div class="step-count">996 steps completed</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 100%;"></div>
+                </div>
+            </div>
+
+            <div class="curriculum-item">
+                <div class="timeline-indicator"></div>
+                <div class="curriculum-title">Front End Libraries <span class="status-badge completed">COMPLETED</span></div>
+                <div class="step-count">279 steps completed (React, Testing, Performance)</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 100%;"></div>
+                </div>
+                <div class="additional-content">
+                    <strong>Coming Fall 2025:</strong> TypeScript Fundamentals section will be added
+                </div>
+            </div>
+
+            <div class="curriculum-item">
+                <div class="timeline-indicator"></div>
+                <div class="curriculum-title">Python <span class="status-badge completed">COMPLETED</span></div>
+                <div class="step-count">130 steps completed (Basics, Loops, Sequences, Dictionaries, Sets, Error Handling)</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 100%;"></div>
+                </div>
+                <div class="additional-content">
+                    <strong>Coming Winter 2025:</strong> Classes & Objects, OOP, Data Structures, Algorithms, Graphs & Trees, Dynamic Programming
+                </div>
+            </div>
+
+            <div class="curriculum-item">
+                <div class="timeline-indicator" style="background: #94a3b8;"></div>
+                <div class="curriculum-title">Relational Databases <span class="status-badge upcoming">Winter 2025</span></div>
+                <div class="step-count">Bash Fundamentals, SQL, Bash Scripting, Git version control</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%;"></div>
+                </div>
+            </div>
+
+            <div class="curriculum-item">
+                <div class="timeline-indicator" style="background: #94a3b8;"></div>
+                <div class="curriculum-title">Backend JavaScript <span class="status-badge upcoming">Late 2026</span></div>
+                <div class="step-count">Node.js, Express, APIs, WebSockets, Authentication, Security, Deployment</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%;"></div>
+                </div>
+                <div class="additional-content">
+                    <strong>Coming Fall 2025:</strong> Security and Privacy module available earlier
+                </div>
+            </div>
+
+            <div class="curriculum-item">
+                <div class="timeline-indicator" style="background: #94a3b8;"></div>
+                <div class="curriculum-title">Career Preparation <span class="status-badge upcoming">Late 2026</span></div>
+                <div class="step-count">Job Search Strategies, Capstone Project, Certification Exam</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🗣️ English for Developers Certifications</h2>
+            <div class="english-section">
+                <div class="english-level">
+                    <h3>A2 Level (CEFR) <span class="status-badge completed">COMPLETED</span></h3>
+                    <div class="dialogue-count">105 dialogues completed</div>
+                    <p style="color: #a1a1aa;">Professional communication fundamentals including workplace conversations, technical vocabulary, stand-up meetings, and code documentation.</p>
+                </div>
+                <div class="english-level">
+                    <h3>B1 Level (CEFR) <span class="status-badge completed">COMPLETED</span></h3>
+                    <div class="dialogue-count">73 dialogues completed</div>
+                    <p style="color: #a1a1aa;">Advanced communication including complex grammar, professional feedback, technical discussions, and conversation management in tech environments.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🏆 Completed freeCodeCamp Certifications</h2>
+            <div class="certificates-grid">
+                <div class="certificate-card">
+                    <div class="certificate-image">🌐</div>
+                    <div class="certificate-title">Responsive Web Design</div>
+                    <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/responsive-web-design" target="_blank" class="certificate-link">View Certificate →</a>
+                </div>
+                
+                <div class="certificate-card">
+                    <div class="certificate-image">⚡</div>
+                    <div class="certificate-title">JavaScript Algorithms and Data Structures</div>
+                    <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/javascript-algorithms-and-data-structures-v8" target="_blank" class="certificate-link">View Certificate →</a>
+                </div>
+                
+                <div class="certificate-card">
+                    <div class="certificate-image">⚛️</div>
+                    <div class="certificate-title">Front End Development Libraries</div>
+                    <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/front-end-development-libraries" target="_blank" class="certificate-link">View Certificate →</a>
+                </div>
+                
+                <div class="certificate-card">
+                    <div class="certificate-image">📊</div>
+                    <div class="certificate-title">Data Visualization</div>
+                    <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/data-visualization" target="_blank" class="certificate-link">View Certificate →</a>
+                </div>
+                
+                <div class="certificate-card">
+                    <div class="certificate-image">🗄️</div>
+                    <div class="certificate-title">Relational Databases</div>
+                    <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/relational-database-v8" target="_blank" class="certificate-link">View Certificate →</a>
+                </div>
+                
+                <div class="certificate-card">
+                    <div class="certificate-image">🔧</div>
+                    <div class="certificate-title">Back End Development and APIs</div>
+                    <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/back-end-development-and-apis" target="_blank" class="certificate-link">View Certificate →</a>
+                </div>
+                
+                <div class="certificate-card">
+                    <div class="certificate-image">✅</div>
+                    <div class="certificate-title">Quality Assurance</div>
+                    <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/quality-assurance-v7" target="_blank" class="certificate-link">View Certificate →</a>
+                </div>
+                
+                <div class="certificate-card">
+                    <div class="certificate-image">🐍</div>
+                    <div class="certificate-title">Scientific Computing with Python</div>
+                    <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/scientific-computing-with-python-v7" target="_blank" class="certificate-link">View Certificate →</a>
+                </div>
+                
+                <div class="certificate-card">
+                    <div class="certificate-image">📈</div>
+                    <div class="certificate-title">Data Analysis with Python</div>
+                    <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/data-analysis-with-python-v7" target="_blank" class="certificate-link">View Certificate →</a>
+                </div>
+                
+                <div class="certificate-card">
+                    <div class="certificate-image">🔒</div>
+                    <div class="certificate-title">Information Security</div>
+                    <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/information-security-v7" target="_blank" class="certificate-link">View Certificate →</a>
+                </div>
+                
+                <div class="certificate-card">
+                    <div class="certificate-image">🤖</div>
+                    <div class="certificate-title">Machine Learning with Python</div>
+                    <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/machine-learning-with-python-v7" target="_blank" class="certificate-link">View Certificate →</a>
+                </div>
+                
+                <div class="certificate-card">
+                    <div class="certificate-image">📐</div>
+                    <div class="certificate-title">College Algebra with Python</div>
+                    <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/college-algebra-with-python-v8" target="_blank" class="certificate-link">View Certificate →</a>
+                </div>
+                
+                <div class="certificate-card">
+                    <div class="certificate-image">🔷</div>
+                    <div class="certificate-title">Foundational C# with Microsoft</div>
+                    <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/foundational-c-sharp-with-microsoft" target="_blank" class="certificate-link">View Certificate →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💻 Core Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <strong>Frontend</strong>
+                    HTML5, CSS3, JavaScript ES6+, React, Responsive Design
+                </div>
+                <div class="skill-item">
+                    <strong>Backend</strong>
+                    Node.js, Express, APIs, Authentication, Database Integration
+                </div>
+                <div class="skill-item">
+                    <strong>Data Science</strong>
+                    Python, Data Analysis, Machine Learning, Scientific Computing
+                </div>
+                <div class="skill-item">
+                    <strong>Databases</strong>
+                    SQL, Relational Database Design, Data Modeling
+                </div>
+                <div class="skill-item">
+                    <strong>Development Tools</strong>
+                    Git, Testing, Quality Assurance, Performance Optimization
+                </div>
+                <div class="skill-item">
+                    <strong>Languages</strong>
+                    JavaScript, Python, C#, Professional English (B1 CEFR)
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Professional development journey through freeCodeCamp's comprehensive curriculum</p>
+            <p>Continuously expanding skills in modern web development and data science</p>
+            <p><em>Portfolio status as of October 4, 2025</em></p>
+        </div>
+    </div>
+</body>
+</html>
