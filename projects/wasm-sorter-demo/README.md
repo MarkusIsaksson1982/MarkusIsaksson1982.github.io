@@ -4,7 +4,7 @@ Detta projekt är en tydlig och minimal demonstration av WebAssemblys (Wasm) pre
 
 En klassisk sorteringsalgoritm, Bubble Sort, har implementerats i både C++ (kompilerad till Wasm) och JavaScript. Applikationen kör båda versionerna på samma stora datamängd och mäter tiden det tar för varje, vilket tydligt visar hastighetsskillnaden.
 
-**Live Demo:** [https://markusisaksson1982.github.io/wasm_sorter_app/](https://markusisaksson1982.github.io/wasm_sorter_app/) *(Denna länk är en platshållare. Du måste ladda upp de genererade filerna till din GitHub Pages-repo för att den ska fungera.)*
+**Live Demo:** [Klicka här för att se live-demonstrationen](./live-demo/)
 
 ---
 
@@ -71,28 +71,3 @@ Du måste ha **Emscripten SDK** installerat och aktiverat i din terminal.
 
 4.  **Öppna i webbläsaren.** Gå till `http://localhost:8000`.
 
----
-
-## Hur man publicerar på GitHub Pages
-
-Följ dessa steg för att lägga till detta projekt i en undermapp på din `MarkusIsaksson1982.github.io`-sajt.
-
-1.  **Bygg projektet:** Se till att du har kört byggskriptet (steg 2 ovan) så att du har de färdiga filerna `sorter.js` och `sorter.wasm`.
-
-2.  **Skapa en undermapp:** I din lokala klon av `MarkusIsaksson1982.github.io`-repot, skapa en ny mapp. Låt oss kalla den `wasm_sorter_app`.
-
-3.  **Kopiera de nödvändiga filerna:** Kopiera följande 5 filer till den nya `wasm_sorter_app`-mappen:
-    *   `index.html`
-    *   `style.css`
-    *   `main.js`
-    *   `sorter.js` (genererad)
-    *   `sorter.wasm` (genererad)
-
-4.  **Committa och pusha:** Lägg till den nya mappen och dess innehåll i Git, committa ändringarna och pusha till din GitHub-repository.
-    ```shell
-    git add wasm_sorter_app/
-    git commit -m "Add Wasm sorter showcase project"
-    git push
-    ```
-
-5.  **Klart!** Efter en liten stund kommer ditt projekt att vara live på `https://MarkusIsaksson1982.github.io/wasm_sorter_app/`.
