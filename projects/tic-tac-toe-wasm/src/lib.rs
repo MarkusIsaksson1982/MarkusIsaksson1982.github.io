@@ -176,5 +176,3 @@ mod tests {
         assert_eq!(score, 0); // Should be draw for optimal play
     }
 }
-
-}
