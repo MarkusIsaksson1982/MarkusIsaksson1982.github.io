@@ -1,1 +1,347 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markus Isaksson - AI-prompt för Gemini</title>
+    <style>
+        /*
+         * All CSS från din ursprungliga index.html klistras in här
+         * för att garantera en identisk visuell stil.
+        */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #e4e4e7;
+            background: #0a0a0f;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at top, rgba(99, 102, 241, 0.15), transparent 50%),
+                        radial-gradient(ellipse at bottom, rgba(236, 72, 153, 0.15), transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='3' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .profile-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.3), transparent 70%);
+            filter: blur(60px);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            font-weight: 700;
+            position: relative;
+            box-shadow: 0 0 60px rgba(99, 102, 241, 0.4);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #a0a0aa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #a1a1aa;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .section {
+            background: rgba(24, 24, 27, 0.6);
+            margin-bottom: 2rem;
+            padding: 2.5rem;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.5), transparent);
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #fafafa;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem;
+            color: #71717a;
+            font-size: 0.95rem;
+        }
+
+        .footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .floating-orbs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float-orb 20s ease-in-out infinite;
+        }
+
+        .orb1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.6), transparent);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .orb2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.6), transparent);
+            top: 60%;
+            right: 10%;
+            animation-delay: 7s;
+        }
+
+        .orb3 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.5), transparent);
+            bottom: 10%;
+            left: 50%;
+            animation-delay: 14s;
+        }
+
+        @keyframes float-orb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(50px, -50px) scale(1.1); }
+            66% { transform: translate(-30px, 30px) scale(0.9); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* Nya stilar specifika för denna sida */
+        .prompt-box {
+            background: rgba(10, 10, 15, 0.7);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            position: relative;
+        }
+        .prompt-box pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'SF Mono', 'Consolas', 'Menlo', monospace;
+            font-size: 0.95rem;
+            color: #d1d5db;
+            line-height: 1.7;
+            padding-top: 3rem; /* Utrymme för knappen */
+        }
+        .copy-button {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(10px);
+            opacity: 0.85;
+            font-size: 0.9rem;
+        }
+        .copy-button:hover {
+            background: #4f46e5;
+            opacity: 1;
+        }
+        .copy-button:active {
+            transform: scale(0.96);
+        }
+        .copy-button.copied {
+            background: #10b981; /* Grön färg för att visa framgång */
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-orbs">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="orb orb3"></div>
+    </div>
+    <div class="bg-gradient"></div>
+    <div class="grain"></div>
+    
+    <div class="container">
+        <header>
+            <div class="profile-glow"></div>
+            <div class="profile-image">MI</div>
+            <h1>Gemini AI-Prompt</h1>
+            <div class="subtitle">En specialanpassad prompt för designers och visuella tänkare.</div>
+        </header>
+
+        <div class="section">
+            <h2>🤖 Prompt för Designers (Fokus: UI/UX & Design)</h2>
+            <p style="margin-bottom: 1.5rem; color: #a1a1aa; font-size: 1.05rem; line-height: 1.7;">
+                Kopiera texten nedan och klistra in den i en ny Gemini-chatt. Den är utformad för att ge dig en sammanfattning av mina meriter ur ett design- och användarperspektiv, utan tung teknisk jargong.
+            </p>
+            
+            <div class="prompt-box">
+                <button class="copy-button" id="copyButton">Kopiera prompt</button>
+                <pre><code id="promptText">You are an AI assistant. Your task is to analyze the provided professional profile of Markus Isaksson and present a summary of his merits.
+
+**Target Audience:** A person interested in design (UI/UX, visual design, user experience) who may not have advanced knowledge of coding.
+
+**Task:**
+1.  Start by introducing yourself as an assistant ready to discuss Markus's profile.
+2.  Summarize his professional merits, focusing *specifically* on skills relevant to design and user experience.
+3.  Highlight skills from his 'UI/UX & Design' category (like User-Centered Design, Accessibility (WCAG, ARIA), Visual Hierarchy, Typography, Color Theory).
+4.  Mention the practical frontend skills he uses to *build* these designs (like CSS3 (Flexbox, Grid, Animations, Responsive Design), HTML5 (Semantic, Accessibility), and React).
+5.  Mention his 'Responsive Web Design' and 'Front End Development Libraries' certifications as proof of these skills.
+6.  Keep the summary professional, clear, and easy to understand for a non-technical designer.
+7.  Conclude by inviting the user to ask any questions they have about his profile in their next prompt.
+8.  **Crucially:** You MUST output the entire answer in **Swedish**.
+
+**Profile Data to Use:**
+* **Name:** Markus Isaksson
+* **Title:** Full Stack Developer & Data Scientist
+* **Stats:** 13 Certifications, 3294 Steps Completed, 178 English Dialogues Mastered
+* **Key Skill Category (UI/UX & Design):** User-Centered Design, Accessibility (WCAG, ARIA), Typography, Color Theory, Visual Hierarchy, Progressive Enhancement
+* **Key Skill Category (Frontend):** HTML5 (Semantic, Accessibility), CSS3 (Flexbox, Grid, Animations), JavaScript ES6+, React (Hooks, Routing, State Management), Responsive Design, Performance Optimization
+* **Key Certifications:** Responsive Web Design, Front End Development Libraries, Data Visualization</code></pre>
+            </div>
+            
+            <p style="margin-top: 2rem; color: #a1a1aa; font-size: 1.05rem; line-height: 1.7;">
+                Efter att du har klistrat in texten, skicka den till Gemini. AI:n kommer då att starta tråden med en sammanfattning och bjuda in dig att ställa dina egna frågor.
+            </p>
+        </div>
+
+        <div class="footer">
+            <p>Portfolio status as of November 11, 2025</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('copyButton').addEventListener('click', function() {
+            var text = document.getElementById('promptText').innerText;
+            navigator.clipboard.writeText(text).then(function() {
+                var button = document.getElementById('copyButton');
+                button.innerText = 'Kopierad!';
+                button.classList.add('copied');
+                setTimeout(function() {
+                    button.innerText = 'Kopiera prompt';
+                    button.classList.remove('copied');
+                }, 2000);
+            }, function(err) {
+                console.error('Kunde inte kopiera text: ', err);
+            });
+        });
+    </script>
+</body>
+</html>
