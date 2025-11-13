@@ -1,1 +1,126 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatGPT-5 prompt | Markus Isaksson</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body {
+      font-family: "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(to bottom right, #f9f9f9, #eef2f7);
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 0.3rem;
+    }
+
+    header p {
+      color: #555;
+      font-size: 1.1rem;
+    }
+
+    main {
+      max-width: 700px;
+      margin: 2rem auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      padding: 2rem;
+    }
+
+    textarea {
+      width: 100%;
+      font-size: 0.95rem;
+      font-family: Consolas, monospace;
+      background: #f5f5f5;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem;
+      height: 240px;
+      resize: none;
+      color: #333;
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    button {
+      background-color: #0078d4;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background-color 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #005fa3;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.85rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ChatGPT-5 Prompt</h1>
+    <p>Använd detta prompt för att be ChatGPT-5 sammanfatta Markus Isakssons meriter på ett sätt som tilltalar formgivare och kreativa yrkespersoner.</p>
+  </header>
+
+  <main>
+    <h2>Prompt att använda</h2>
+    <textarea id="promptText" readonly>
+You are ChatGPT-5. Output the answer in Swedish.
+
+Summarize Markus Isaksson’s professional merits in a way that appeals to people interested in design, creativity, and visual thinking — even if they don’t have deep technical knowledge. 
+Present him as a technical expert who communicates clearly with designers, with a friendly and engaging tone and some creative sensibility.
+
+End the reply by inviting the reader to ask their next question or describe what kind of design or collaboration they’re interested in.
+    </textarea>
+
+    <div class="button-row">
+      <button id="copyBtn">Kopiera prompt</button>
+      <button id="openBtn">Öppna i ChatGPT</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Markus Isaksson — Del av portföljen MarkusIsaksson1982.github.io</p>
+  </footer>
+
+  <script>
+    document.getElementById("copyBtn").addEventListener("click", () => {
+      const text = document.getElementById("promptText");
+      text.select();
+      document.execCommand("copy");
+      alert("Prompten har kopierats till urklipp!");
+    });
+
+    document.getElementById("openBtn").addEventListener("click", () => {
+      window.open("https://chat.openai.com/", "_blank");
+    });
+  </script>
+</body>
+</html>
 
