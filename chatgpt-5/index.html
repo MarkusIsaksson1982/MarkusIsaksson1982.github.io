@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ChatGPT-5 Prompt | Markus Isaksson</title>
-  <link rel="stylesheet" href="../style.css">
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
@@ -113,7 +112,15 @@
     </p>
 
     <textarea id="promptText" readonly>
-Loading prompt...
+You are ChatGPT-5. Output the answer in Swedish.
+
+Summarize Markus Isaksson’s professional merits in a way that appeals to people interested in design, creativity, and visual thinking — even if they don’t have deep technical knowledge.
+
+Markus Isaksson is a Full Stack Developer & Data Scientist with over 1800 hours of freeCodeCamp training, covering HTML, CSS, JavaScript, Bash, PostgreSQL, and Python. He is progressing through the full-stack curriculum, aiming for certification by late 2026. His portfolio shows 13 certifications, 3294 steps completed, and 178 dialogues mastered as of November 2025.
+
+Present him as a technical expert who communicates clearly with designers and creative professionals — highlighting his appreciation for aesthetics, usability, and human-centered design thinking.
+
+End your reply by inviting the reader to ask their next question or describe what kind of design or collaboration they’re curious about.
     </textarea>
 
     <div class="button-row">
@@ -126,40 +133,6 @@ Loading prompt...
   </footer>
 
   <script>
-    // Load portfolio data and inject it into the prompt dynamically
-    async function loadPrompt() {
-      try {
-        const res = await fetch("../data.html");
-        const text = await res.text();
-        const jsonText = text.match(/<script[^>]*id="portfolio-data"[^>]*>([\\s\\S]*?)<\\/script>/)[1];
-        const data = JSON.parse(jsonText);
-
-        const prompt = `
-You are ChatGPT-5. Output the answer in Swedish.
-
-Using the following data, write a warm, design-friendly professional summary of Markus Isaksson.
-Make it appealing to people with interest in creativity and design — even if they lack deep coding knowledge.
-Present Markus as a technical expert who communicates clearly with designers and creative professionals, highlighting his understanding of design concepts and human-centered thinking.
-
-Include relevant details from his profile and data below:
-Name: ${data.name}
-Title: ${data.title}
-Certifications: ${data.stats.certifications}
-Steps completed: ${data.stats.stepsCompleted}
-Dialogues mastered: ${data.stats.dialoguesMastered}
-Last updated: ${data.updateDate}
-
-End by inviting the reader to write their next question or describe what kind of design or collaboration they’re curious about.
-        `.trim();
-
-        document.getElementById("promptText").value = prompt;
-      } catch (err) {
-        document.getElementById("promptText").value = "Could not load data.json: " + err;
-      }
-    }
-
-    loadPrompt();
-
     document.getElementById("copyBtn").addEventListener("click", () => {
       const text = document.getElementById("promptText");
       text.select();
