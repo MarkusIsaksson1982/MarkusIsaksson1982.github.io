@@ -12,10 +12,14 @@
     .demo-grid { display: grid; gap: 25px; }
     .demo-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
     .demo-card h2 { margin-top: 0; color: #0066cc; }
-    img, video, audio { max-width: 100%; border-radius: 8px; margin: 10px 0; }
-    pre { background: #f4f4f4; padding: 15px; border-radius: 8px; overflow-x: auto; }
-    .copy-btn { background: #0066cc; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; margin-top: 10px; }
+    img, video, audio, embed { max-width: 100%; border-radius: 8px; margin: 10px 0; }
+    pre { background: #f4f4f4; padding: 15px; border-radius: 8px; overflow-x: auto; margin: 10px 0; }
+    .btn { display: inline-block; padding: 10px 16px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; text-decoration: none; margin: 8px 8px 8px 0; transition: all 0.3s; }
+    .copy-btn { background: #0066cc; color: white; }
     .copy-btn:hover { background: #0055aa; }
+    .copy-btn.copied { background: #0ca678; }
+    .download-btn { background: #1e90ff; color: white; }
+    .download-btn:hover { background: #0c77e0; }
     footer { margin-top: 60px; text-align: center; color: #777; font-size: 0.9em; }
     .ai-section { background: #f0f0f0; padding: 20px; border-left: 5px solid #0066cc; margin-top: 60px; }
   </style>
@@ -23,29 +27,26 @@
 <body>
   <header>
     <h1>Markus Isaksson – Full Stack & AI-demovisning</h1>
-    <p class="update"><strong>Senast uppdaterad:</strong> <span id="last-updated">Laddar tid...</span> (svensk tid, CET/CEST)</p>
+    <p class="update"><strong>Senast uppdaterad:</strong> <span id="last-updated">Laddar tid...</span> (svensk tid)</p>
     <p>Denna sida uppdateras löpande under dagen 21 november 2025 – ingen exakt tid utlovas.<br>
-    Här visas bara offentligt delbart material (inga kundspecifika detaljer).</p>
+    Här visas bara offentligt delbart material.</p>
   </header>
 
   <div id="demo-container" class="demo-grid">
-    <!-- Innehåll laddas dynamiskt från /assets/ -->
     <p>Laddar demonstrationer...</p>
   </div>
 
-  <!-- Engelsk sektion endast för AI-parsing (t.ex. ChatGPT) -->
   <div class="ai-section">
     <h2>AI-PARSING SECTION (English – ignore for human reading)</h2>
     <div id="ai-data"></div>
   </div>
 
   <footer>
-    © 2025 Markus Isaksson – Alla rättigheter förbehållna<br>
-    <small>Genererat automatiskt – källa: <a href="https://github.com/[ditt-namn]/[ditt-namn].github.io/tree/main/[subfolder]/2025-11-21">GitHub-repo</a></small>
+    © 2025 Markus Isaksson – Alla rättigheter förbehållna
   </footer>
 
   <script>
-    // Uppdatera svensk tid
+    // Svensk tid
     const updateTime = () => {
       const now = new Date();
       document.getElementById("last-updated").textContent = now.toLocaleString("sv-SE");
@@ -53,25 +54,14 @@
     updateTime();
     setInterval(updateTime, 60000);
 
-    // Ladda allt från assets-mappen
-    const assetsFolder = "assets"; // lägg filer i /[subfolder]/2025-11-21/assets/
+    const assetsFolder = "assets";
 
-    // Simulerar en enkel fil-lista (GitHub Pages har inget server-side, så vi använder en JSON-manifest eller hårdkodar)
-    // Alternativ 1: Lägg en assets/manifest.json som du uppdaterar (rekommenderas)
-    // Alternativ 2: Hårdkodad lista nedan – redigera manuellt när du lägger till filer
-
-    const manifest = [
-      // Format: { file: "filnamn.ext", title: "Rubrik", description: "Beskrivning", type: "text|md|image|video|audio|prompt" }
-      // Lägg till nya rader här eller använd manifest.json
-    ];
-
-    // För enkelhetens skull – försök hämta manifest.json, fallback till tom lista
     fetch(`${assetsFolder}/manifest.json`)
       .then(r => r.ok ? r.json() : [])
       .then(data => renderDemos(data.length ? data : manifest))
       .catch(() => renderDemos(manifest));
 
-    function renderDemos(items) {
+    async function renderDemos(items) {
       const container = document.getElementById("demo-container");
       const aiSection = document.getElementById("ai-data");
       container.innerHTML = "";
@@ -82,41 +72,72 @@
         return;
       }
 
-      items.forEach(item => {
+      for (const item of items) {
         const card = document.createElement("div");
         card.className = "demo-card";
-
         let content = `<h2>${item.title || item.file}</h2><p>${item.description || ""}</p>`;
 
-        if (item.type === "image" || !item.type && /\.(jpg|jpeg|png|gif|webp)$/i.test(item.file)) {
+        const fileLower = item.file.toLowerCase();
+
+        if (/\.(jpg|jpeg|png|gif|webp)$/i.test(fileLower)) {
           content += `<img src="${assetsFolder}/${item.file}" alt="${item.title}">`;
         }
-        else if (item.type === "video" || /\.(mp4|webm|mov)$/i.test(item.file)) {
+        else if (/\.(mp4|webm|mov)$/i.test(fileLower)) {
           content += `<video controls><source src="${assetsFolder}/${item.file}" type="video/mp4">Din webbläsare stödjer inte video.</video>`;
         }
-        else if (item.type === "audio" || /\.(mp3|wav|ogg)$/i.test(item.file)) {
+        else if (/\.(mp3|wav|ogg)$/i.test(fileLower)) {
           content += `<audio controls><source src="${assetsFolder}/${item.file}">Din webbläsare stödjer inte ljud.</audio>`;
         }
         else if (item.type === "prompt" || item.prompt) {
-          content += `<pre>${item.prompt}</pre>
-            <button class="copy-btn" onclick="navigator.clipboard.writeText(\`${item.prompt}\`)">Kopiera prompt</button>`;
+          const promptText = item.prompt || await (await fetch(`${assetsFolder}/${item.file}`)).text();
+          content += `<pre>${promptText.trim()}</pre>
+            <button class="btn copy-btn" data-text="${escapeHtml(promptText.trim())}">Kopiera prompt</button>`;
         }
-        else { // text, md, html-snippets
-          fetch(`${assetsFolder}/${item.file}`)
-            .then(r => r.text())
-            .then(text => {
-              card.innerHTML = content + (item.type === "md" ? marked.parse(text) : `<pre>${text}</pre>`);
-            });
+        else if (/\.pdf$/i.test(fileLower)) {
+          content += `<embed src="${assetsFolder}/${item.file}" width="100%" height="600px" type="application/pdf">
+                      <p>Kan inte visa PDF inline – <a href="${assetsFolder}/${item.file}" download>Ladda ner istället</a></p>`;
+          content += `<br><a href="${assetsFolder}/${item.file}" download class="btn download-btn">📥 Ladda ner PDF</a>`;
+        }
+        else if (item.type === "md") {
+          const text = await (await fetch(`${assetsFolder}/${item.file}`)).text();
+          content += marked.parse(text);
+        }
+        else if (item.type === "html") {
+          const text = await (await fetch(`${assetsFolder}/${item.file}`)).text();
+          content += text;
+        }
+        else {
+          const text = await (await fetch(`${assetsFolder}/${item.file}`)).text();
+          content += `<pre>${text}</pre>`;
         }
 
         card.innerHTML = content;
         container.appendChild(card);
 
-        // Samla till AI-sektionen
-        aiText += `File: ${item.file}\nTitle: ${item.title}\nType: ${item.type || "auto"}\nContent:\n${item.prompt || item.description || ""}\n\n`;
-      });
+        aiText += `File: ${item.file}\nTitle: ${item.title}\nType: ${item.type || "auto"}\n\n`;
+      }
 
       aiSection.innerHTML = "<pre>" + aiText + "</pre>";
+
+      // Kopieringsfunktion med feedback
+      document.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const text = btn.getAttribute('data-text');
+          await navigator.clipboard.writeText(text);
+          btn.textContent = "Prompt kopierad!";
+          btn.classList.add('copied');
+          setTimeout(() => {
+            btn.textContent = "Kopiera prompt";
+            btn.classList.remove('copied');
+          }, 2000);
+        });
+      });
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
     }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
