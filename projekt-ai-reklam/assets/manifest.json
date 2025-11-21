@@ -1,0 +1,32 @@
+[
+  {
+    "file": "01-checklista.txt",
+    "title": "Checklista – frågor till kunden",
+    "description": "Allt vi behöver veta innan vi bygger lösningen",
+    "type": "text"
+  },
+  {
+    "file": "02-beskrivning.md",
+    "title": "Projektbeskrivning (offentlig)",
+    "description": "Högnivå hur AI kan effektivisera lokal reklam",
+    "type": "md"
+  },
+  {
+    "file": "03-prompt-samling.html",
+    "title": "Färdiga prompts att kopiera",
+    "description": "Direkt klistra in i ChatGPT/Claude/Gemini",
+    "type": "html"
+  },
+  {
+    "file": "04-demovideo-guide.pdf",
+    "title": "Guide – så här ser resultatet ut",
+    "description": "PDF med exempel och förklaring",
+    "type": "image"
+  },
+  {
+    "file": "05-exempel-prompts.json",
+    "title": "JSON med prompts (AI-vänligt)",
+    "description": "Strukturerad data för utvecklare",
+    "type": "text"
+  }
+]
