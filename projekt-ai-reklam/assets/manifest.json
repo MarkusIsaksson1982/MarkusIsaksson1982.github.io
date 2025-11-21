@@ -40,5 +40,23 @@
   "title": "Flashy storstadsannons (8 sek)",
   "description": "Piccadilly Circus/Times Square-känsla – neon, regn, explosiva effekter",
   "type": "video"
+},
+{
+  "file": "video3.mp4",
+  "title": "Test 1 Pika 1.5",
+  "description": "",
+  "type": "video"
+},
+{
+  "file": "video4.mp4",
+  "title": "Test 2 Pika 1.5",
+  "description": "",
+  "type": "video"
+},
+{
+  "file": "video5.mp4",
+  "title": "Test 3 Pika 1.5",
+  "description": "",
+  "type": "video"
 }
 ]
