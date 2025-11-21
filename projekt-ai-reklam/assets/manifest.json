@@ -2,25 +2,25 @@
   {
     "file": "01-checklista.txt",
     "title": "Checklista – frågor till kunden",
-    "description": "Allt vi behöver veta innan vi bygger lösningen (offentlig version)",
+    "description": "Checklista (offentlig version)",
     "type": "text"
   },
   {
     "file": "02-beskrivning.md",
-    "title": "Projektöversikt – AI-effektivisering av lokal reklam",
-    "description": "Högnivå hur vi kan gå från 20 minuter → under 1 minut per annons",
+    "title": "Projektöversikt – AI-effektivisering av reklam",
+    "description": "Prjektbeskrivning",
     "type": "md"
   },
   {
     "file": "03-prompt-samling.html",
     "title": "Färdiga prompts att kopiera",
-    "description": "Direkt kopierbara prompts för ChatGPT / Claude / Gemini",
+    "description": "Direkt kopierbara prompts huvudsakligen riktade till ChatGPT",
     "type": "html"
   },
   {
     "file": "04-demovideo-guide.pdf",
     "title": "Guide & exempel – så här kan resultatet se ut",
-    "description": "PDF med storyboard och förklaring (1–2 sidor)",
+    "description": "PDF med mer ingående beskrivning (1–2 sidor)",
     "type": "image"
   },
   {
