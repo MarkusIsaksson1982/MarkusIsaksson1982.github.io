@@ -28,5 +28,17 @@
     "title": "Strukturerade prompts (JSON)",
     "description": "AI-vänlig data för utvecklare och automatiserade flöden",
     "type": "text"
-  }
+  },
+  {
+  "file": "demo-basic.mp4",
+  "title": "Enkel & informativ annons (8 sek)",
+  "description": "Stilren, läsbar, subtil rörelse – perfekt för lokala skärmar i mataffärer, väntrum etc.",
+  "type": "video"
+},
+{
+  "file": "demo-flashy.mp4",
+  "title": "Flashy storstadsannons (8 sek)",
+  "description": "Piccadilly Circus/Times Square-känsla – neon, regn, explosiva effekter",
+  "type": "video"
+}
 ]
