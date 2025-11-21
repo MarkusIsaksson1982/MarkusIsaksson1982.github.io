@@ -17,7 +17,7 @@
     .btn { display: inline-block; padding: 10px 16px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; text-decoration: none; margin: 8px 8px 8px 0; transition: all 0.3s; }
     .copy-btn { background: #0066cc; color: white; }
     .copy-btn:hover { background: #0055aa; }
-    .copy-btn.copied { background: #0ca678; }
+    .copy-btn.copied { background: #0ca678 !important; }
     .download-btn { background: #1e90ff; color: white; }
     .download-btn:hover { background: #0c77e0; }
     footer { margin-top: 60px; text-align: center; color: #777; font-size: 0.9em; }
@@ -46,7 +46,6 @@
   </footer>
 
   <script>
-    // Svensk tid
     const updateTime = () => {
       const now = new Date();
       document.getElementById("last-updated").textContent = now.toLocaleString("sv-SE");
@@ -58,8 +57,8 @@
 
     fetch(`${assetsFolder}/manifest.json`)
       .then(r => r.ok ? r.json() : [])
-      .then(data => renderDemos(data.length ? data : manifest))
-      .catch(() => renderDemos(manifest));
+      .then(data => renderDemos(data))
+      .catch(() => renderDemos([]));
 
     async function renderDemos(items) {
       const container = document.getElementById("demo-container");
@@ -67,7 +66,7 @@
       container.innerHTML = "";
       let aiText = "";
 
-      if (items.length === 0) {
+      if (!items || items.length === 0) {
         container.innerHTML = "<p>Inga demonstrationer än – sidan uppdateras under dagen.</p>";
         return;
       }
@@ -75,8 +74,8 @@
       for (const item of items) {
         const card = document.createElement("div");
         card.className = "demo-card";
-        let content = `<h2>${item.title || item.file}</h2><p>${item.description || ""}</p>`;
 
+        let content = `<h2>${item.title || item.file}</h2><p>${item.description || ""}</p>`;
         const fileLower = item.file.toLowerCase();
 
         if (/\.(jpg|jpeg|png|gif|webp)$/i.test(fileLower)) {
@@ -88,17 +87,20 @@
         else if (/\.(mp3|wav|ogg)$/i.test(fileLower)) {
           content += `<audio controls><source src="${assetsFolder}/${item.file}">Din webbläsare stödjer inte ljud.</audio>`;
         }
-        else if (item.type === "prompt" || item.prompt) {
+        else if (item.type === "prompt" || item.prompt || fileLower.endsWith(".txt")) {
           const promptText = item.prompt || await (await fetch(`${assetsFolder}/${item.file}`)).text();
-          content += `<pre>${promptText.trim()}</pre>
-            <button class="btn copy-btn" data-text="${escapeHtml(promptText.trim())}">Kopiera prompt</button>`;
+          const cleanText = promptText.trim();
+          content += `<pre>${cleanText}</pre>
+            <button class="btn copy-btn">Kopiera prompt</button>`;
+          // Spara texten på knappen så vi kan hämta den senare
+          card.querySelector('.copy-btn')?.setAttribute('data-text', cleanText);
         }
         else if (/\.pdf$/i.test(fileLower)) {
           content += `<embed src="${assetsFolder}/${item.file}" width="100%" height="600px" type="application/pdf">
                       <p>Kan inte visa PDF inline? – <a href="${assetsFolder}/${item.file}" download>Ladda ner istället</a></p>`;
-          content += `<br><a href="${assetsFolder}/${item.file}" download class="btn download-btn">📥 Ladda ner PDF</a>`;
+          content += `<br><a href="${assetsFolder}/${item.file}" download class="btn download-btn">Ladda ner PDF</a>`;
         }
-        else if (item.type === "md") {
+        else if (item.type === "md" && typeof marked !== "undefined") {
           const text = await (await fetch(`${assetsFolder}/${item.file}`)).text();
           content += marked.parse(text);
         }
@@ -119,21 +121,26 @@
 
       aiSection.innerHTML = "<pre>" + aiText + "</pre>";
 
-      // Kopieringsfunktion med feedback
+      // ← VIKTIGT: Lägg på listeners EFTER att allt är renderat
       document.querySelectorAll('.copy-btn').forEach(btn => {
-        btn.addEventListener('click', async () => {
-          const text = btn.getAttribute('data-text');
-          await navigator.clipboard.writeText(text);
-          btn.textContent = "Prompt kopierad!";
-          btn.classList.add('copied');
-          setTimeout(() => {
-            btn.textContent = "Kopiera prompt";
-            btn.classList.remove('copied');
-          }, 2000);
-        });
+        btn.onclick = async () => {
+          const text = btn.getAttribute('data-text') || btn.previousElementSibling.textContent;
+          try {
+            await navigator.clipboard.writeText(text);
+            btn.textContent = "Prompt kopierad!";
+            btn.classList.add('copied');
+            setTimeout(() => {
+              btn.textContent = "Kopiera prompt";
+              btn.classList.remove('copied');
+            }, 2000);
+          } catch (err) {
+            alert("Kopiering misslyckades – försök markera och kopiera manuellt");
+          }
+        };
       });
     }
 
+    // Säker escape-funktion (används bara om data-text saknas)
     function escapeHtml(text) {
       const div = document.createElement('div');
       div.textContent = text;
