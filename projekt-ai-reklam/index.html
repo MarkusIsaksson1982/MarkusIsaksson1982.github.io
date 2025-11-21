@@ -78,6 +78,8 @@
         let content = `<h2>${item.title || item.file}</h2><p>${item.description || ""}</p>`;
         const fileLower = item.file.toLowerCase();
 
+        let rawText = ""; // för kopiering av txt/md
+
         if (/\.(jpg|jpeg|png|gif|webp)$/i.test(fileLower)) {
           content += `<img src="${assetsFolder}/${item.file}" alt="${item.title}">`;
         }
@@ -87,21 +89,25 @@
         else if (/\.(mp3|wav|ogg)$/i.test(fileLower)) {
           content += `<audio controls><source src="${assetsFolder}/${item.file}">Din webbläsare stödjer inte ljud.</audio>`;
         }
-        else if (item.type === "prompt" || item.prompt || fileLower.endsWith(".txt")) {
-          const promptText = item.prompt || await (await fetch(`${assetsFolder}/${item.file}`)).text();
-          const cleanText = promptText.trim();
-          const escapedText = cleanText.replace(/`/g, "\\`").replace(/\$/g, "\\$");
-          content += `<pre>${cleanText}</pre>
-            <button class="btn copy-btn" data-text="${escapedText}">Kopiera prompt</button>`;
+        else if (item.type === "prompt" || item.prompt) {
+          rawText = item.prompt ? item.prompt.trim() : "";
+          content += `<pre>${rawText}</pre>
+            <button class="btn copy-btn">Kopiera prompt</button>`;
+        }
+        else if (fileLower.endsWith(".txt") || item.type === "text") {
+          rawText = await (await fetch(`${assetsFolder}/${item.file}`)).text();
+          content += `<pre>${rawText}</pre>
+            <button class="btn copy-btn">Kopiera text</button>`;
+        }
+        else if (fileLower.endsWith(".md")) {
+          rawText = await (await fetch(`${assetsFolder}/${item.file}`)).text();
+          content += marked.parse(rawText);
+          content += `<br><button class="btn copy-btn">Kopiera markdown</button>`;
         }
         else if (/\.pdf$/i.test(fileLower)) {
           content += `<embed src="${assetsFolder}/${item.file}" width="100%" height="600px" type="application/pdf">
                       <p>Kan inte visa PDF inline? – <a href="${assetsFolder}/${item.file}" download>Ladda ner istället</a></p>`;
-          content += `<br><a href="${assetsFolder}/${item.file}" download class="btn download-btn">Ladda ner PDF</a>`;
-        }
-        else if (item.type === "md" && typeof marked !== "undefined") {
-          const text = await (await fetch(`${assetsFolder}/${item.file}`)).text();
-          content += marked.parse(text);
+          content += `<br><a href="${assetsFolder}/${item.file}" download class="btn download-btn">📥 Ladda ner PDF</a>`;
         }
         else if (item.type === "html") {
           const text = await (await fetch(`${assetsFolder}/${item.file}`)).text();
@@ -115,26 +121,32 @@
         card.innerHTML = content;
         container.appendChild(card);
 
+        // Spara rawText för kopiering (om det finns)
+        if (rawText) {
+          const lastBtn = card.querySelector(".copy-btn:last-of-type");
+          if (lastBtn) lastBtn.dataset.raw = rawText.trim();
+        }
+
         aiText += `File: ${item.file}\nTitle: ${item.title}\nType: ${item.type || "auto"}\n\n`;
       }
 
       aiSection.innerHTML = "<pre>" + aiText + "</pre>";
 
-      // Kopiera-funktion – körs efter att allt är i DOM
+      // Kopiera-funktion – en gång efter all rendering
       document.querySelectorAll('.copy-btn').forEach(btn => {
         btn.addEventListener('click', async () => {
-          const text = btn.getAttribute('data-text') || btn.previousElementSibling.innerText;
+          const text = btn.dataset.raw || btn.previousElementSibling.innerText || btn.parentNode.querySelector('pre').innerText;
           try {
             await navigator.clipboard.writeText(text);
-            const original = btn.innerText;
-            btn.innerText = "Prompt kopierad!";
+            const orig = btn.innerText;
+            btn.innerText = "Kopierat!";
             btn.classList.add('copied');
             setTimeout(() => {
-              btn.innerText = original;
+              btn.innerText = orig;
               btn.classList.remove('copied');
             }, 2000);
           } catch (err) {
-            alert("Kopiering misslyckades – markera texten och kopiera manuellt");
+            alert("Kopiering misslyckades – markera och kopiera manuellt");
           }
         });
       });
