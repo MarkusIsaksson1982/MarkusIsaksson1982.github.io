@@ -90,13 +90,14 @@
         else if (item.type === "prompt" || item.prompt || fileLower.endsWith(".txt")) {
           const promptText = item.prompt || await (await fetch(`${assetsFolder}/${item.file}`)).text();
           const cleanText = promptText.trim();
+          const escapedText = cleanText.replace(/`/g, "\\`").replace(/\$/g, "\\$");
           content += `<pre>${cleanText}</pre>
-            <button class="btn copy-btn" data-text="${btoa(unescape(encodeURIComponent(cleanText)))}">Kopiera prompt</button>`;
+            <button class="btn copy-btn" data-text="${escapedText}">Kopiera prompt</button>`;
         }
         else if (/\.pdf$/i.test(fileLower)) {
           content += `<embed src="${assetsFolder}/${item.file}" width="100%" height="600px" type="application/pdf">
                       <p>Kan inte visa PDF inline? – <a href="${assetsFolder}/${item.file}" download>Ladda ner istället</a></p>`;
-          content += `<br><a href="${assetsFolder}/${item.file}" download class="btn download-btn">📥 Ladda ner PDF</a>`;
+          content += `<br><a href="${assetsFolder}/${item.file}" download class="btn download-btn">Ladda ner PDF</a>`;
         }
         else if (item.type === "md" && typeof marked !== "undefined") {
           const text = await (await fetch(`${assetsFolder}/${item.file}`)).text();
@@ -119,25 +120,23 @@
 
       aiSection.innerHTML = "<pre>" + aiText + "</pre>";
 
-      // ← Kopieringshändelser – nu när allt är i DOM!
+      // Kopiera-funktion – körs efter att allt är i DOM
       document.querySelectorAll('.copy-btn').forEach(btn => {
-        btn.onclick = async () => {
-          let text = btn.getAttribute('data-text');
-          if (text) text = decodeURIComponent(escape(atob(text)));
-          else text = btn.previousElementSibling.textContent;
-
+        btn.addEventListener('click', async () => {
+          const text = btn.getAttribute('data-text') || btn.previousElementSibling.innerText;
           try {
             await navigator.clipboard.writeText(text);
-            btn.textContent = "Prompt kopierad!";
+            const original = btn.innerText;
+            btn.innerText = "Prompt kopierad!";
             btn.classList.add('copied');
             setTimeout(() => {
-              btn.textContent = "Kopiera prompt";
+              btn.innerText = original;
               btn.classList.remove('copied');
             }, 2000);
           } catch (err) {
-            alert("Kopiering misslyckades – markera och kopiera manuellt");
+            alert("Kopiering misslyckades – markera texten och kopiera manuellt");
           }
-        };
+        });
       });
     }
   </script>
