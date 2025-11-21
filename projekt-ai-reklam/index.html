@@ -95,7 +95,7 @@
         }
         else if (/\.pdf$/i.test(fileLower)) {
           content += `<embed src="${assetsFolder}/${item.file}" width="100%" height="600px" type="application/pdf">
-                      <p>Kan inte visa PDF inline – <a href="${assetsFolder}/${item.file}" download>Ladda ner istället</a></p>`;
+                      <p>Kan inte visa PDF inline? – <a href="${assetsFolder}/${item.file}" download>Ladda ner istället</a></p>`;
           content += `<br><a href="${assetsFolder}/${item.file}" download class="btn download-btn">📥 Ladda ner PDF</a>`;
         }
         else if (item.type === "md") {
