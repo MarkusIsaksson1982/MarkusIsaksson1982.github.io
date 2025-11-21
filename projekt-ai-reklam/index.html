@@ -13,7 +13,7 @@
     .demo-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
     .demo-card h2 { margin-top: 0; color: #0066cc; }
     img, video, audio, embed { max-width: 100%; border-radius: 8px; margin: 10px 0; }
-    pre { background: #f4f4f4; padding: 15px; border-radius: 8px; overflow-x: auto; margin: 10px 0; }
+    pre { background: #f4f4f4; padding: 15px; border-radius: 8px; overflow-x: auto; margin: 10px 0; position: relative; }
     .btn { display: inline-block; padding: 10px 16px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; text-decoration: none; margin: 8px 8px 8px 0; transition: all 0.3s; }
     .copy-btn { background: #0066cc; color: white; }
     .copy-btn:hover { background: #0055aa; }
@@ -78,8 +78,6 @@
         let content = `<h2>${item.title || item.file}</h2><p>${item.description || ""}</p>`;
         const fileLower = item.file.toLowerCase();
 
-        let rawText = ""; // för kopiering av txt/md
-
         if (/\.(jpg|jpeg|png|gif|webp)$/i.test(fileLower)) {
           content += `<img src="${assetsFolder}/${item.file}" alt="${item.title}">`;
         }
@@ -90,28 +88,41 @@
           content += `<audio controls><source src="${assetsFolder}/${item.file}">Din webbläsare stödjer inte ljud.</audio>`;
         }
         else if (item.type === "prompt" || item.prompt) {
-          rawText = item.prompt ? item.prompt.trim() : "";
-          content += `<pre>${rawText}</pre>
-            <button class="btn copy-btn">Kopiera prompt</button>`;
+          const promptText = (item.prompt || "").trim();
+          content += `<pre>${promptText}</pre>
+            <button class="btn copy-btn" data-raw="${promptText.replace(/`/g, "\\`")}">Kopiera prompt</button>`;
         }
-        else if (fileLower.endsWith(".txt") || item.type === "text") {
-          rawText = await (await fetch(`${assetsFolder}/${item.file}`)).text();
-          content += `<pre>${rawText}</pre>
-            <button class="btn copy-btn">Kopiera text</button>`;
+        else if (fileLower.endsWith(".txt")) {
+          const text = await (await fetch(`${assetsFolder}/${item.file}`)).text();
+          content += `<pre>${text}</pre>
+            <button class="btn copy-btn" data-raw="${text.trim().replace(/`/g, "\\`")}">Kopiera text</button>`;
         }
         else if (fileLower.endsWith(".md")) {
-          rawText = await (await fetch(`${assetsFolder}/${item.file}`)).text();
-          content += marked.parse(rawText);
-          content += `<br><button class="btn copy-btn">Kopiera markdown</button>`;
+          const text = await (await fetch(`${assetsFolder}/${item.file}`)).text();
+          content += marked.parse(text);
+          content += `<br><button class="btn copy-btn" data-raw="${text.trim().replace(/`/g, "\\`")}">Kopiera markdown</button>`;
+        }
+        else if (fileLower.endsWith(".html")) {
+          const text = await (await fetch(`${assetsFolder}/${item.file}`)).text();
+          const tempDiv = document.createElement("div");
+          tempDiv.innerHTML = text;
+
+          // Lägg automatiskt till fungerande kopieringsknapp efter varje <pre> i HTML-filen
+          tempDiv.querySelectorAll("pre").forEach(pre => {
+            const btn = document.createElement("button");
+            btn.className = "btn copy-btn";
+            btn.textContent = "Kopiera prompt";
+            btn.dataset.raw = pre.textContent.trim();
+            pre.insertAdjacentHTML("afterend", "<br>");
+            pre.insertAdjacentElement("afterend", btn);
+          });
+
+          content += tempDiv.innerHTML;
         }
         else if (/\.pdf$/i.test(fileLower)) {
           content += `<embed src="${assetsFolder}/${item.file}" width="100%" height="600px" type="application/pdf">
                       <p>Kan inte visa PDF inline? – <a href="${assetsFolder}/${item.file}" download>Ladda ner istället</a></p>`;
           content += `<br><a href="${assetsFolder}/${item.file}" download class="btn download-btn">📥 Ladda ner PDF</a>`;
-        }
-        else if (item.type === "html") {
-          const text = await (await fetch(`${assetsFolder}/${item.file}`)).text();
-          content += text;
         }
         else {
           const text = await (await fetch(`${assetsFolder}/${item.file}`)).text();
@@ -121,28 +132,22 @@
         card.innerHTML = content;
         container.appendChild(card);
 
-        // Spara rawText för kopiering (om det finns)
-        if (rawText) {
-          const lastBtn = card.querySelector(".copy-btn:last-of-type");
-          if (lastBtn) lastBtn.dataset.raw = rawText.trim();
-        }
-
         aiText += `File: ${item.file}\nTitle: ${item.title}\nType: ${item.type || "auto"}\n\n`;
       }
 
       aiSection.innerHTML = "<pre>" + aiText + "</pre>";
 
-      // Kopiera-funktion – en gång efter all rendering
+      // En enda kopieringslistener – fungerar för alla knappar oavsett filtyp
       document.querySelectorAll('.copy-btn').forEach(btn => {
         btn.addEventListener('click', async () => {
-          const text = btn.dataset.raw || btn.previousElementSibling.innerText || btn.parentNode.querySelector('pre').innerText;
+          const text = btn.dataset.raw || btn.previousElementSibling.textContent || btn.previousElementSibling.innerText;
           try {
             await navigator.clipboard.writeText(text);
-            const orig = btn.innerText;
-            btn.innerText = "Kopierat!";
+            const originalText = btn.textContent;
+            btn.textContent = "Kopierat!";
             btn.classList.add('copied');
             setTimeout(() => {
-              btn.innerText = orig;
+              btn.textContent = originalText;
               btn.classList.remove('copied');
             }, 2000);
           } catch (err) {
