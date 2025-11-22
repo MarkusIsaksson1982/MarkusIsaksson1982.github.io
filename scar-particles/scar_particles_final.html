@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Particle Attractor</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #000;
+            overflow: hidden;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<canvas id="particles" width="800" height="600"></canvas>
+
+<script>
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+
+    // Particle class
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.vx = (Math.random() - 0.5) * 3 + 1;
+            this.vy = (Math.random() - 0.5) * 3 + 1;
+            this.r = Math.random() * 2 + 1;
+            this.color = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+            this.speed = 0.05;
+            this.trail = [];
+        }
+
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+
+            if (this.x < 0 || this.x > canvas.width) {
+                this.vx *= -1;
+            }
+            if (this.y < 0 || this.y > canvas.height) {
+                this.vy *= -1;
+            }
+
+            // Collision detection
+            for (let i = 0; i < particles.length; i++) {
+                const otherParticle = particles[i];
+                const distance = Math.hypot(this.x - otherParticle.x, this.y - otherParticle.y);
+                if (distance < this.r + otherParticle.r) {
+                    // Collision
+                    this.collide(otherParticle);
+                    otherParticle.collide(this);
+                }
+            }
+
+            // Update trail
+            if (this.trail.length > 0 && this.trail[0].alpha < 1) {
+                this.trail.push([this.x, this.y, this.color]);
+            } else {
+                this.trail.push({x: this.x, y: this.y, color: this.color, alpha: 1});
+            }
+            if (this.trail.length > 100) {
+                this.trail.shift();
+            }
+
+            // Apply alpha fade
+            for (let i = 0; i < this.trail.length - 1; i++) {
+                const [x, y, c] = this.trail[i];
+                const [nextX, nextY, nextC] = this.trail[i + 1];
+                ctx.globalAlpha = (i / this.trail.length);
+                ctx.fillStyle = c;
+                ctx.fillRect(x, y, Math.hypot(nextX - x, nextY - y), 5);
+            }
+        }
+
+        collide(particle) {
+            // Randomly change color and add scar fragment
+            const newColor = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)},
+${Math.floor(Math.random() * 255)})`;
+            this.color = newColor;
+            particle.color = newColor;
+
+            // Add scar fragment to trail
+            for (let i = 0; i < particle.trail.length; i++) {
+                const [x, y, c] = particle.trail[i];
+                if (Math.hypot(x - this.x, y - this.y) < 10) {
+                    particle.trail.splice(i, 1);
+                }
+            }
+
+            // Add scar fragment to our trail
+            for (let i = 0; i < particle.trail.length; i++) {
+                const [x, y, c] = particle.trail[i];
+                if (Math.hypot(x - this.x, y - this.y) < 10) {
+                    this.trail.push([x, y, c]);
+                }
+            }
+        }
+
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+
+            // Draw trail
+            for (let i = 0; i < this.trail.length - 1; i++) {
+                const [x, y, c] = this.trail[i];
+                ctx.beginPath();
+                ctx.arc(x, y, 5, 0, 2 * Math.PI);
+                ctx.fillStyle = c;
+                ctx.fill();
+
+                // Draw alpha fade
+                for (let j = i + 1; j < this.trail.length; j++) {
+                    const [nextX, nextY, nextC] = this.trail[j];
+                    ctx.globalAlpha = (i / this.trail.length);
+                    ctx.fillStyle = nextC;
+                    ctx.fillRect(x, y, Math.hypot(nextX - x, nextY - y), 5);
+                }
+            }
+        }
+    }
+
+    let particles = [];
+    for (let i = 0; i < 500; i++) {
+        particles.push(new Particle());
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw();
+        }
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+
+</script>
+</body>
+</html>
