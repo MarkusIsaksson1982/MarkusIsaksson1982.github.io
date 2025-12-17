@@ -16,8 +16,8 @@
     .prompt-list { margin-top: 30px; }
     .prompt-item { background: #eef; padding: 15px; border-radius: 6px; margin-bottom: 15px; position: relative; }
     .prompt-text { white-space: pre-wrap; word-break: break-word; margin-bottom: 10px; }
-    .copy-btn { position: absolute; top: 10px; right: 10px; padding: 6px 12px; font-size: 0.9em; }
-    .copied { color: green; font-size: 0.8em; margin-left: 10px; opacity: 0; }
+    .copy-btn { position: absolute; top: 10px; right: 10px; padding: 6px 12px; font-size: 0.9em; background: #0066ff; color: white; border: none; border-radius: 4px; }
+    .copied { color: green; font-size: 0.8em; position: absolute; top: 45px; right: 10px; opacity: 0; transition: opacity 0.3s; }
   </style>
 </head>
 <body>
@@ -36,20 +36,20 @@
   <input type="text" id="tagline" placeholder="e.g. Vi får dig att se fantastisk ut!" />
 
   <label>Services (one per line)</label>
-  <textarea id="services" rows="5" placeholder="Bröllop och fest\nSminkkurser\nStyling & foto\nPersonlig rådgivning"></textarea>
+  <textarea id="services" rows="5" placeholder="Example Service 1\nExample Service 2\nExample Service 3\nExample Service 4"></textarea>
 
-  <label>Call-to-Action Button</label>
+  <label>Call-to-Action Button Text</label>
   <input type="text" id="cta" value="BOKA TID IDAG!" />
 
-  <label>Contact Details (address • phone • email • website)</label>
-  <input type="text" id="contact" placeholder="e.g. Rosagatan 7, 123 45 Sminklunda • 08-123 456 78 • info@sminkmupparna.se • www.sminkmupparna.se" />
+  <label>Contact Line (with separators)</label>
+  <input type="text" id="contact" placeholder="e.g. Rosagatan 7, 123 45 Sminklunda • 08-123 456 78 • info@business.se • www.business.se" />
 
   <div class="image-only hidden">
-    <label>Color Theme</label>
-    <input type="text" id="theme" placeholder="e.g. soft pink with glitter and sparkle effects, feminine and elegant" />
+    <label>Overall Color Theme</label>
+    <input type="text" id="theme" placeholder="e.g. soft pink with glitter and sparkles, feminine elegant" />
 
     <label>Top Illustration Description</label>
-    <input type="text" id="illustration" placeholder="e.g. cute cartoon makeup brushes with big eyes and smiles surrounded by sparkles" />
+    <input type="text" id="illustration" placeholder="e.g. playful decorative elements related to the business with sparkles" />
   </div>
 
   <button onclick="generatePrompts()">Generate Prompts</button>
@@ -58,19 +58,21 @@
 
   <script>
     function toggleFields() {
-      document.querySelector('.image-only').classList.toggle('hidden', 
-        document.querySelector('input[value="text"]').checked);
+      document.querySelector('.image-only').classList.toggle('hidden', document.querySelector('input[value="text"]').checked);
     }
     document.querySelectorAll('input[name="model"]').forEach(r => r.addEventListener('change', toggleFields));
     toggleFields();
 
     function copyToClipboard(text, btn) {
       navigator.clipboard.writeText(text).then(() => {
-        const feedback = btn.nextElementSibling || document.createElement('span');
-        feedback.textContent = 'Copied!';
-        feedback.className = 'copied';
+        let feedback = btn.parentNode.querySelector('.copied');
+        if (!feedback) {
+          feedback = document.createElement('span');
+          feedback.className = 'copied';
+          feedback.textContent = 'Copied!';
+          btn.parentNode.appendChild(feedback);
+        }
         feedback.style.opacity = '1';
-        btn.parentNode.appendChild(feedback);
         setTimeout(() => feedback.style.opacity = '0', 2000);
       });
     }
@@ -82,16 +84,16 @@
       const name = document.getElementById('businessName').value.trim() || 'Business Name';
       const tagline = document.getElementById('tagline').value.trim() || 'Your tagline here';
       const services = document.getElementById('services').value.trim().split('\n').map(s => s.trim()).filter(Boolean);
-      const cta = document.getElementById('cta').value.trim() || 'BOKA TID IDAG!';
-      const contact = document.getElementById('contact').value.trim() || 'Contact info here';
+      const cta = document.getElementById('cta').value.trim() || 'CALL TO ACTION';
+      const contact = document.getElementById('contact').value.trim() || 'Contact info';
 
-      const serviceList = services.map(s => `✓ ${s}`).join(', ');
+      const serviceList = services.length ? services.map(s => `✓ ${s}`).join(', ') : 'list of services';
 
       if (document.querySelector('input[value="image"]').checked) {
-        const theme = document.getElementById('theme').value.trim() || 'soft pastel with sparkle effects';
-        const illus = document.getElementById('illustration').value.trim() || 'decorative illustration related to the business';
+        const theme = document.getElementById('theme').value.trim() || 'clean modern with decorative elements';
+        const illus = document.getElementById('illustration').value.trim() || 'stylish top decorative illustration';
 
-        const prompt = `Vertical advertisement flyer in ${theme} style. Top: ${illus} next to large bold "${name}" and smaller "${tagline}". Middle section in clean layout: heading "Professionell makeup för alla tillfällen" followed by bullet list ${serviceList}. Prominent rounded pink button with white text "${cta}". Bottom section with icons and text: ${contact}. Feminine elegant design, glitter particles, lots of white space, modern and inviting.`;
+        const prompt = `Vertical flyer advertisement in ${theme} style. Top section: ${illus} alongside large bold "${name}" and "${tagline}" below. Middle: clean bullet list of services (${serviceList}). Prominent rounded button with "${cta}". Bottom: contact info with icons "${contact}". Modern elegant layout, plenty of white space.`;
 
         const item = document.createElement('div');
         item.className = 'prompt-item';
@@ -102,13 +104,13 @@
         output.appendChild(item);
       } else {
         const variants = [
-          `Beautiful vertical flyer ad for "${name}" with soft feminine color palette and sparkle effects. Top decorative illustration, large bold business name and "${tagline}". Clean bullet list of services: ${serviceList}. Big rounded CTA button "${cta}". Bottom contact with icons: ${contact}. Modern, elegant, inviting design.`,
+          `Stylish vertical flyer for "${name}" with decorative top illustration. Large bold business name and "${tagline}". Bullet list: ${serviceList}. Big rounded CTA button "${cta}". Bottom contact with icons: ${contact}. Clean modern elegant design with good spacing.`,
 
-          `Create a stylish multi-section advertisement poster for "${name}". Include cute top illustration, prominent "${name}" and "${tagline}", bullet-point services ${serviceList}, eye-catching "${cta}" button, and clear contact info ${contact} with icons. Pastel sparkling theme, feminine and professional.`,
+          `Multi-section advertisement poster: top playful illustration, prominent "${name}" and "${tagline}", services as checkmark bullets (${serviceList}), eye-catching "${cta}" button, clear icon-based contact "${contact}". Attractive professional layout.`,
 
-          `Vertical promotional image: top fun illustration, large "${name}", "${tagline}", service list with checkmarks ${serviceList}, bold "${cta}" button, bottom icon-based contact ${contact}. Soft pink glitter background, clean modern layout, highly appealing design.`,
+          `Vertical promotional image for "${name}": decorative top graphic, "${name}" large title, "${tagline}", service list with checkmarks (${serviceList}), bold "${cta}" button, bottom contact info with icons "${contact}". Clean inviting design.`,
 
-          `Design an elegant flyer for "${name}" featuring decorative top graphic, business name and "${tagline}", services as bulleted list ${serviceList}, prominent call-to-action button "${cta}", and contact details ${contact} with icons. Sparkling feminine aesthetic, premium feel.`
+          `Elegant flyer design featuring top illustration, big "${name}" and "${tagline}", bulleted services (${serviceList}), prominent call-to-action button "${cta}", and contact details with icons "${contact}". Modern premium aesthetic with white space.`
         ];
 
         variants.forEach((p, i) => {
