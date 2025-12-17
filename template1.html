@@ -16,8 +16,8 @@
     .prompt-list { margin-top: 30px; }
     .prompt-item { background: #eef; padding: 15px; border-radius: 6px; margin-bottom: 15px; position: relative; }
     .prompt-text { white-space: pre-wrap; word-break: break-word; margin-bottom: 10px; }
-    .copy-btn { position: absolute; top: 10px; right: 10px; padding: 6px 12px; font-size: 0.9em; }
-    .copied { color: green; font-size: 0.8em; margin-left: 10px; opacity: 0; }
+    .copy-btn { position: absolute; top: 10px; right: 10px; padding: 6px 12px; font-size: 0.9em; background: #0066ff; color: white; border: none; border-radius: 4px; }
+    .copied { color: green; font-size: 0.8em; position: absolute; top: 45px; right: 10px; opacity: 0; transition: opacity 0.3s; }
   </style>
 </head>
 <body>
@@ -35,21 +35,12 @@
   <label>Main Headline / Slogan</label>
   <input type="text" id="headline" placeholder="e.g. Allt du behöver för dina cykelbehov i Österås" />
 
-  <label>Address</label>
-  <input type="text" id="address" placeholder="e.g. Stigmakargatan 15 Österås" />
-
-  <label>Phone</label>
-  <input type="text" id="phone" placeholder="e.g. 08-137372" />
-
-  <label>Social / Website (optional)</label>
-  <input type="text" id="social" placeholder="e.g. Instagram @cyklosisterna" />
+  <label>Contact Line (address • phone • social)</label>
+  <input type="text" id="contact" placeholder="e.g. Stigmakargatan 15 Österås • Tel: 08-137372 • @cyklosisterna" />
 
   <div class="image-only hidden">
-    <label>Background Scene Description (critical)</label>
-    <textarea id="scene" rows="4" placeholder="e.g. A young man in a bright modern home workshop carefully lifting a sleek red mountain bike onto a wall rack, cozy bookshelves and plants in background, soft natural window light..."></textarea>
-
-    <label>Photography Style (optional)</label>
-    <input type="text" id="style" placeholder="e.g. photorealistic, cinematic, Hasselblad medium format, shallow depth of field" />
+    <label>Background Scene Description</label>
+    <textarea id="scene" rows="4" placeholder="e.g. A young man in a bright cozy home workshop lifting a red mountain bike onto a wall mount, bookshelves and plants in background, soft natural light..."></textarea>
   </div>
 
   <button onclick="generatePrompts()">Generate Prompts</button>
@@ -58,19 +49,21 @@
 
   <script>
     function toggleFields() {
-      document.querySelector('.image-only').classList.toggle('hidden', 
-        document.querySelector('input[value="text"]').checked);
+      document.querySelector('.image-only').classList.toggle('hidden', document.querySelector('input[value="text"]').checked);
     }
     document.querySelectorAll('input[name="model"]').forEach(r => r.addEventListener('change', toggleFields));
     toggleFields();
 
     function copyToClipboard(text, btn) {
       navigator.clipboard.writeText(text).then(() => {
-        const feedback = btn.nextElementSibling || document.createElement('span');
-        feedback.textContent = 'Copied!';
-        feedback.className = 'copied';
+        let feedback = btn.parentNode.querySelector('.copied');
+        if (!feedback) {
+          feedback = document.createElement('span');
+          feedback.className = 'copied';
+          feedback.textContent = 'Copied!';
+          btn.parentNode.appendChild(feedback);
+        }
         feedback.style.opacity = '1';
-        btn.parentNode.appendChild(feedback);
         setTimeout(() => feedback.style.opacity = '0', 2000);
       });
     }
@@ -81,16 +74,12 @@
 
       const name = document.getElementById('businessName').value.trim() || 'Business Name';
       const headline = document.getElementById('headline').value.trim() || 'Your catchy slogan here';
-      const address = document.getElementById('address').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const social = document.getElementById('social').value.trim();
-      const contact = [address, phone ? `Tel: ${phone}` : '', social].filter(Boolean).join(' • ');
+      const contact = document.getElementById('contact').value.trim() || 'Contact details';
 
       if (document.querySelector('input[value="image"]').checked) {
-        const scene = document.getElementById('scene').value.trim() || 'a professional advertising scene featuring the business';
-        const style = document.getElementById('style').value.trim() || 'photorealistic, cinematic lighting, sharp focus';
-        
-        const prompt = `Photorealistic high-end advertising image: ${scene}. ${style}. In the center overlay a dark semi-transparent rectangular panel with elegant white bold sans-serif text: large "${name}" at the top, below it "${headline}" in medium size. Bottom-right small white text: "${contact}". Clean premium composition, natural colors, professional photography style, no additional text or elements outside the panel.`;
+        const scene = document.getElementById('scene').value.trim() || 'professional inviting scene related to the business';
+
+        const prompt = `Photorealistic advertising image: ${scene}. Cinematic natural lighting, sharp focus, premium composition. Overlay a centered dark semi-transparent rectangular panel with clean bold white sans-serif text: large "${name}" at the top, "${headline}" below in medium size, and small "${contact}" at bottom-right. High-end commercial style, no text outside the panel.`;
 
         const item = document.createElement('div');
         item.className = 'prompt-item';
@@ -100,23 +89,22 @@
         `;
         output.appendChild(item);
       } else {
-        // Text model → multiple direct variants
         const variants = [
-          `Create a photorealistic advertising image for "${name}". Show a sharp, inviting scene of a customer happily interacting with the product/service. Overlay a centered dark semi-transparent panel containing in clean bold white text: "${name}" large at top, "${headline}" below it, and small contact info at bottom-right: "${contact}". Cinematic lighting, premium feel.`,
+          `Photorealistic high-end ad image for "${name}". Sharp inviting scene with customer or product in use. Overlay centered dark semi-transparent panel: large bold white "${name}" at top, "${headline}" below, small "${contact}" bottom-right. Premium cinematic lighting, clean modern composition.`,
 
-          `Photorealistic vertical ad poster: beautiful natural-light scene related to ${name}. Center a sleek dark translucent overlay box with high-contrast white sans-serif typography: "${name}" as main title, "${headline}" as subtitle, and "${contact}" in smaller font bottom-right. Professional composition, shallow depth of field, aspirational mood.`,
+          `Ultra-realistic vertical advertisement: beautiful natural-light background scene. Center a sleek dark translucent overlay with elegant white typography: "${name}" large title, "${headline}" subtitle, "${contact}" small at bottom-right. Professional premium feel, shallow depth of field.`,
 
-          `Generate a premium advertising visual for "${name}" with "${headline}". Use a sharp photorealistic background showing the business in action. Add a modern centered semi-transparent dark panel with elegant white text layout: large business name, medium slogan, small contact details bottom-right ("${contact}"). Clean, high-end commercial style.`,
+          `Generate a premium commercial image for "${name}" featuring "${headline}". Photorealistic sharp background, then add centered dark semi-transparent rectangular panel containing only white bold text: top "${name}", middle "${headline}", bottom-right "${contact}". Clean, trustworthy, high-end style.`,
 
-          `Ultra-realistic advertisement image: inviting scene for "${name}". Apply a centered dark semi-transparent rectangular overlay with bold white text: top large "${name}", middle "${headline}", bottom-right small "${contact}". Hasselblad-quality photography, soft natural lighting, premium and trustworthy atmosphere.`
+          `Cinematic photorealistic ad: inviting scene for "${name}". Apply centered dark semi-transparent overlay box with high-contrast white sans-serif text layout: large business name, medium slogan "${headline}", small contact "${contact}" bottom-right. Hasselblad-quality, soft natural light.`
         ];
 
-        variants.forEach((prompt, i) => {
+        variants.forEach((p, i) => {
           const item = document.createElement('div');
           item.className = 'prompt-item';
           item.innerHTML = `
             <strong>Variant ${i+1}</strong>
-            <div class="prompt-text">${prompt}</div>
+            <div class="prompt-text">${p}</div>
             <button class="copy-btn" onclick="copyToClipboard(this.parentNode.querySelector('.prompt-text').textContent, this)">Copy</button>
           `;
           output.appendChild(item);
