@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prompt Generator – Template 1: Overlay Panel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; background: #f9f9fb; }
+    h1 { text-align: center; }
+    label { display: block; margin: 15px 0 5px; font-weight: 600; }
+    input, textarea, select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; }
+    .model-selection { margin: 20px 0; }
+    .hidden { display: none; }
+    button { margin-top: 20px; padding: 12px 20px; background: #0066ff; color: white; border: none; border-radius: 6px; cursor: pointer; }
+    #output { margin-top: 30px; padding: 15px; background: #eef; border-radius: 6px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h1>Prompt Generator – Template 1<br><small>Centered Headline on Semi-Transparent Overlay Panel</small></h1>
+
+  <div class="model-selection">
+    <label>Target Model:</label>
+    <label><input type="radio" name="model" value="text" checked> Text model (ChatGPT / Claude / Grok)</label>
+    <label><input type="radio" name="model" value="image"> Image model (Nano Banana Pro / Higgsfield / Flux)</label>
+  </div>
+
+  <label>Business Name</label>
+  <input type="text" id="businessName" placeholder="e.g. Cyklos Cykelbutik" />
+
+  <label>Main Slogan / Headline</label>
+  <input type="text" id="headline" placeholder="e.g. Allt du behöver för dina cykelbehov i Österås" />
+
+  <label>Address</label>
+  <input type="text" id="address" placeholder="e.g. Stigmakargatan 15 Österås" />
+
+  <label>Phone</label>
+  <input type="text" id="phone" placeholder="e.g. 08-137372" />
+
+  <label>Instagram / Website (optional)</label>
+  <input type="text" id="social" placeholder="e.g. @cyklosisterna" />
+
+  <div class="image-only">
+    <label>Scene Description (very important for image models)</label>
+    <textarea id="scene" rows="4" placeholder="Describe the sharp, photorealistic background scene, e.g. A young man in a cozy home workshop lifting a red mountain bike onto a wall mount, bookshelves in background, warm natural light..."></textarea>
+
+    <label>Photography Style</label>
+    <input type="text" id="style" placeholder="e.g. photorealistic, Hasselblad medium format, shallow depth of field, cinematic lighting" />
+  </div>
+
+  <button onclick="generatePrompt()">Generate Prompt</button>
+
+  <div id="output"></div>
+
+  <script>
+    const textModel = document.querySelector('input[value="text"]');
+    const imageModel = document.querySelector('input[value="image"]');
+    const imageOnly = document.querySelector('.image-only');
+
+    function toggleFields() {
+      if (imageModel.checked) {
+        imageOnly.classList.remove('hidden');
+      } else {
+        imageOnly.classList.add('hidden');
+      }
+    }
+    document.querySelectorAll('input[name="model"]').forEach(r => r.addEventListener('change', toggleFields));
+    toggleFields();
+
+    function generatePrompt() {
+      const name = document.getElementById('businessName').value.trim();
+      const headline = document.getElementById('headline').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const social = document.getElementById('social').value.trim();
+
+      let prompt = "";
+
+      if (imageModel.checked) {
+        const scene = document.getElementById('scene').value.trim() || "a professional advertising photograph";
+        const style = document.getElementById('style').value.trim() || "photorealistic, cinematic";
+        prompt = `Photorealistic advertising image for "${name}". ${scene}. ${style}, sharp focus on subject, natural lighting. Overlay a dark semi-transparent rectangular panel in the center with high-contrast white bold text: "${name}" at the top in large font, below it "${headline}". Bottom-right small white text: "${address}", "Tel: ${phone}"${social ? `, "Instagram ${social}"` : ""}. Clean modern composition, premium feel, no additional text outside the panel.`;
+      } else {
+        prompt = `Create a detailed prompt for an AI image generator to produce a static advertisement in the style of a centered headline on a semi-transparent overlay panel.
+
+Business: ${name}
+Headline: ${headline}
+Address: ${address}
+Phone: ${phone}
+${social ? `Social: ${social}` : ""}
+
+The final image should have a sharp photorealistic background scene with a dark semi-transparent panel overlay containing the text above in clean bold white sans-serif font.`;
+      }
+
+      document.getElementById('output').textContent = prompt;
+    }
+  </script>
+</body>
+</html>
