@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prompt Generator – Template 3: Multi-Section Illustrative</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; background: #f9f9fb; }
+    h1 { text-align: center; }
+    label { display: block; margin: 15px 0 5px; font-weight: 600; }
+    input, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; }
+    .model-selection { margin: 20px 0; }
+    .hidden { display: none; }
+    button { margin-top: 20px; padding: 12px 20px; background: #0066ff; color: white; border: none; border-radius: 6px; cursor: pointer; }
+    #output { margin-top: 30px; padding: 15px; background: #eef; border-radius: 6px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h1>Prompt Generator – Template 3<br><small>Multi-Section Illustrative Layout with Icons</small></h1>
+
+  <div class="model-selection">
+    <label>Target Model:</label>
+    <label><input type="radio" name="model" value="text" checked> Text model</label>
+    <label><input type="radio" name="model" value="image"> Image model</label>
+  </div>
+
+  <label>Business Name</label>
+  <input type="text" id="businessName" placeholder="e.g. Sminkmupparna" />
+
+  <label>Tagline</label>
+  <input type="text" id="tagline" placeholder="e.g. Vi får dig att se fantastisk ut!" />
+
+  <label>Services (one per line)</label>
+  <textarea id="services" rows="5" placeholder="Bröllop och fest&#10;Sminkkurser&#10;Styling & foto&#10;Personlig rådgivning"></textarea>
+
+  <label>Call-to-Action Button Text</label>
+  <input type="text" id="cta" value="BOKA TID IDAG!" />
+
+  <label>Contact Details (address, phone, email, website)</label>
+  <textarea id="contact" rows="4"></textarea>
+
+  <div class="image-only">
+    <label>Overall Color Theme</label>
+    <input type="text" id="theme" placeholder="e.g. soft pink with glitter and sparkle effects" />
+
+    <label>Top Illustrative Element Description</label>
+    <input type="text" id="illustration" placeholder="e.g. cute animated makeup brushes with eyes and smiles" />
+  </div>
+
+  <button onclick="generatePrompt()">Generate Prompt</button>
+  <div id="output"></div>
+
+  <script>
+    const imageOnly = document.querySelector('.image-only');
+    document.querySelectorAll('input[name="model"]').forEach(r => r.addEventListener('change', () => {
+      imageOnly.classList.toggle('hidden', document.querySelector('input[value="text"]').checked);
+    }));
+
+    function generatePrompt() {
+      const name = document.getElementById('businessName').value.trim();
+      const tagline = document.getElementById('tagline').value.trim();
+      const services = document.getElementById('services').value.trim().split('\n').map(s => s.trim()).filter(s => s);
+      const cta = document.getElementById('cta').value.trim();
+      const contact = document.getElementById('contact').value.trim();
+
+      let prompt = "";
+      if (document.querySelector('input[value="image"]').checked) {
+        const theme = document.getElementById('theme').value.trim() || "soft pastel";
+        const illus = document.getElementById('illustration').value.trim() || "decorative makeup-related illustration";
+        const serviceList = services.map(s => `✓ ${s}`).join(', ');
+        prompt = `Create a stylish vertical advertisement flyer with ${theme} background and sparkle effects. Top section: ${illus} next to large bold text "${name}" and below it "${tagline}". Middle section: "Professionell makeup för alla tillfällen" followed by bullet list: ${serviceList}. Large pink rounded button with "${cta}". Bottom section with icons: address, phone, email, website: "${contact}". Clean, modern, feminine design with plenty of white space and glitter particles.`;
+      } else {
+        prompt = `Write a detailed prompt for generating a multi-section illustrative advertisement image.
+
+Business: ${name}
+Tagline: ${tagline}
+Services: ${services.join(', ')}
+CTA: ${cta}
+Contact: ${contact}
+
+Include top illustration, bullet list of services, prominent CTA button, and contact info with icons.`;
+      }
+      document.getElementById('output').textContent = prompt;
+    }
+  </script>
+</body>
+</html>
