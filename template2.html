@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prompt Generator – Template 2: Blurred Background</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; background: #f9f9fb; }
+    h1 { text-align: center; }
+    label { display: block; margin: 15px 0 5px; font-weight: 600; }
+    input, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; }
+    .model-selection { margin: 20px 0; }
+    .hidden { display: none; }
+    button { margin-top: 20px; padding: 12px 20px; background: #0066ff; color: white; border: none; border-radius: 6px; cursor: pointer; }
+    #output { margin-top: 30px; padding: 15px; background: #eef; border-radius: 6px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h1>Prompt Generator – Template 2<br><small>Large Centered Text on Blurred Photographic Background</small></h1>
+
+  <div class="model-selection">
+    <label>Target Model:</label>
+    <label><input type="radio" name="model" value="text" checked> Text model</label>
+    <label><input type="radio" name="model" value="image"> Image model</label>
+  </div>
+
+  <label>Business Name</label>
+  <input type="text" id="businessName" />
+
+  <label>Main Headline</label>
+  <input type="text" id="headline" />
+
+  <label>Text Color (for image model)</label>
+  <input type="text" id="textColor" placeholder="e.g. bright white, vibrant green, bold yellow with black outline" />
+
+  <label>Contact Info (address, phone, social)</label>
+  <textarea id="contact" rows="3"></textarea>
+
+  <div class="image-only">
+    <label>Background Scene Description</label>
+    <textarea id="scene" rows="4" placeholder="e.g. Interior of a clean modern cleaning company office with a worker mopping a shiny floor, large windows with sunlight..."></textarea>
+
+    <label>Overall Mood / Color Palette</label>
+    <input type="text" id="mood" placeholder="e.g. fresh and eco-friendly greens, warm and inviting" />
+  </div>
+
+  <button onclick="generatePrompt()">Generate Prompt</button>
+  <div id="output"></div>
+
+  <script>
+    const imageOnly = document.querySelector('.image-only');
+    document.querySelectorAll('input[name="model"]').forEach(r => r.addEventListener('change', () => {
+      imageOnly.classList.toggle('hidden', document.querySelector('input[value="text"]').checked);
+    }));
+
+    function generatePrompt() {
+      const name = document.getElementById('businessName').value.trim();
+      const headline = document.getElementById('headline').value.trim();
+      const color = document.getElementById('textColor').value.trim() || "bright white";
+      const contact = document.getElementById('contact').value.trim();
+
+      let prompt = "";
+      if (document.querySelector('input[value="image"]').checked) {
+        const scene = document.getElementById('scene').value.trim();
+        const mood = document.getElementById('mood').value.trim();
+        prompt = `Photorealistic advertisement: ${scene || "relevant professional scene"}. Apply strong gaussian blur to the entire background. Overlay large bold centered ${color} sans-serif text: "${name}" at the top, below it "${headline}". Bottom aligned small ${color} text with contact details: "${contact}". ${mood ? mood + "," : ""} premium advertising style, high contrast, clean composition.`;
+      } else {
+        prompt = `Write a detailed image-generation prompt for a blurred-background advertisement template.
+
+Business: ${name}
+Headline: ${headline}
+Text color: ${color}
+Contact: ${contact}
+
+The background should be a blurred photorealistic scene, with large centered bold text overlay and smaller contact text at the bottom.`;
+      }
+      document.getElementById('output').textContent = prompt;
+    }
+  </script>
+</body>
+</html>
