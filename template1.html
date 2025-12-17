@@ -9,11 +9,15 @@
     body { font-family: 'Inter', sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; background: #f9f9fb; }
     h1 { text-align: center; }
     label { display: block; margin: 15px 0 5px; font-weight: 600; }
-    input, textarea, select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; }
+    input, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; }
     .model-selection { margin: 20px 0; }
     .hidden { display: none; }
     button { margin-top: 20px; padding: 12px 20px; background: #0066ff; color: white; border: none; border-radius: 6px; cursor: pointer; }
-    #output { margin-top: 30px; padding: 15px; background: #eef; border-radius: 6px; white-space: pre-wrap; }
+    .prompt-list { margin-top: 30px; }
+    .prompt-item { background: #eef; padding: 15px; border-radius: 6px; margin-bottom: 15px; position: relative; }
+    .prompt-text { white-space: pre-wrap; word-break: break-word; margin-bottom: 10px; }
+    .copy-btn { position: absolute; top: 10px; right: 10px; padding: 6px 12px; font-size: 0.9em; }
+    .copied { color: green; font-size: 0.8em; margin-left: 10px; opacity: 0; }
   </style>
 </head>
 <body>
@@ -28,7 +32,7 @@
   <label>Business Name</label>
   <input type="text" id="businessName" placeholder="e.g. Cyklos Cykelbutik" />
 
-  <label>Main Slogan / Headline</label>
+  <label>Main Headline / Slogan</label>
   <input type="text" id="headline" placeholder="e.g. Allt du behöver för dina cykelbehov i Österås" />
 
   <label>Address</label>
@@ -37,62 +41,87 @@
   <label>Phone</label>
   <input type="text" id="phone" placeholder="e.g. 08-137372" />
 
-  <label>Instagram / Website (optional)</label>
-  <input type="text" id="social" placeholder="e.g. @cyklosisterna" />
+  <label>Social / Website (optional)</label>
+  <input type="text" id="social" placeholder="e.g. Instagram @cyklosisterna" />
 
-  <div class="image-only">
-    <label>Scene Description (very important for image models)</label>
-    <textarea id="scene" rows="4" placeholder="Describe the sharp, photorealistic background scene, e.g. A young man in a cozy home workshop lifting a red mountain bike onto a wall mount, bookshelves in background, warm natural light..."></textarea>
+  <div class="image-only hidden">
+    <label>Background Scene Description (critical)</label>
+    <textarea id="scene" rows="4" placeholder="e.g. A young man in a bright modern home workshop carefully lifting a sleek red mountain bike onto a wall rack, cozy bookshelves and plants in background, soft natural window light..."></textarea>
 
-    <label>Photography Style</label>
-    <input type="text" id="style" placeholder="e.g. photorealistic, Hasselblad medium format, shallow depth of field, cinematic lighting" />
+    <label>Photography Style (optional)</label>
+    <input type="text" id="style" placeholder="e.g. photorealistic, cinematic, Hasselblad medium format, shallow depth of field" />
   </div>
 
-  <button onclick="generatePrompt()">Generate Prompt</button>
+  <button onclick="generatePrompts()">Generate Prompts</button>
 
-  <div id="output"></div>
+  <div id="output" class="prompt-list"></div>
 
   <script>
-    const textModel = document.querySelector('input[value="text"]');
-    const imageModel = document.querySelector('input[value="image"]');
-    const imageOnly = document.querySelector('.image-only');
-
     function toggleFields() {
-      if (imageModel.checked) {
-        imageOnly.classList.remove('hidden');
-      } else {
-        imageOnly.classList.add('hidden');
-      }
+      document.querySelector('.image-only').classList.toggle('hidden', 
+        document.querySelector('input[value="text"]').checked);
     }
     document.querySelectorAll('input[name="model"]').forEach(r => r.addEventListener('change', toggleFields));
     toggleFields();
 
-    function generatePrompt() {
-      const name = document.getElementById('businessName').value.trim();
-      const headline = document.getElementById('headline').value.trim();
+    function copyToClipboard(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const feedback = btn.nextElementSibling || document.createElement('span');
+        feedback.textContent = 'Copied!';
+        feedback.className = 'copied';
+        feedback.style.opacity = '1';
+        btn.parentNode.appendChild(feedback);
+        setTimeout(() => feedback.style.opacity = '0', 2000);
+      });
+    }
+
+    function generatePrompts() {
+      const output = document.getElementById('output');
+      output.innerHTML = '';
+
+      const name = document.getElementById('businessName').value.trim() || 'Business Name';
+      const headline = document.getElementById('headline').value.trim() || 'Your catchy slogan here';
       const address = document.getElementById('address').value.trim();
       const phone = document.getElementById('phone').value.trim();
       const social = document.getElementById('social').value.trim();
+      const contact = [address, phone ? `Tel: ${phone}` : '', social].filter(Boolean).join(' • ');
 
-      let prompt = "";
+      if (document.querySelector('input[value="image"]').checked) {
+        const scene = document.getElementById('scene').value.trim() || 'a professional advertising scene featuring the business';
+        const style = document.getElementById('style').value.trim() || 'photorealistic, cinematic lighting, sharp focus';
+        
+        const prompt = `Photorealistic high-end advertising image: ${scene}. ${style}. In the center overlay a dark semi-transparent rectangular panel with elegant white bold sans-serif text: large "${name}" at the top, below it "${headline}" in medium size. Bottom-right small white text: "${contact}". Clean premium composition, natural colors, professional photography style, no additional text or elements outside the panel.`;
 
-      if (imageModel.checked) {
-        const scene = document.getElementById('scene').value.trim() || "a professional advertising photograph";
-        const style = document.getElementById('style').value.trim() || "photorealistic, cinematic";
-        prompt = `Photorealistic advertising image for "${name}". ${scene}. ${style}, sharp focus on subject, natural lighting. Overlay a dark semi-transparent rectangular panel in the center with high-contrast white bold text: "${name}" at the top in large font, below it "${headline}". Bottom-right small white text: "${address}", "Tel: ${phone}"${social ? `, "Instagram ${social}"` : ""}. Clean modern composition, premium feel, no additional text outside the panel.`;
+        const item = document.createElement('div');
+        item.className = 'prompt-item';
+        item.innerHTML = `
+          <div class="prompt-text">${prompt}</div>
+          <button class="copy-btn" onclick="copyToClipboard(this.parentNode.querySelector('.prompt-text').textContent, this)">Copy</button>
+        `;
+        output.appendChild(item);
       } else {
-        prompt = `Create a detailed prompt for an AI image generator to produce a static advertisement in the style of a centered headline on a semi-transparent overlay panel.
+        // Text model → multiple direct variants
+        const variants = [
+          `Create a photorealistic advertising image for "${name}". Show a sharp, inviting scene of a customer happily interacting with the product/service. Overlay a centered dark semi-transparent panel containing in clean bold white text: "${name}" large at top, "${headline}" below it, and small contact info at bottom-right: "${contact}". Cinematic lighting, premium feel.`,
 
-Business: ${name}
-Headline: ${headline}
-Address: ${address}
-Phone: ${phone}
-${social ? `Social: ${social}` : ""}
+          `Photorealistic vertical ad poster: beautiful natural-light scene related to ${name}. Center a sleek dark translucent overlay box with high-contrast white sans-serif typography: "${name}" as main title, "${headline}" as subtitle, and "${contact}" in smaller font bottom-right. Professional composition, shallow depth of field, aspirational mood.`,
 
-The final image should have a sharp photorealistic background scene with a dark semi-transparent panel overlay containing the text above in clean bold white sans-serif font.`;
+          `Generate a premium advertising visual for "${name}" with "${headline}". Use a sharp photorealistic background showing the business in action. Add a modern centered semi-transparent dark panel with elegant white text layout: large business name, medium slogan, small contact details bottom-right ("${contact}"). Clean, high-end commercial style.`,
+
+          `Ultra-realistic advertisement image: inviting scene for "${name}". Apply a centered dark semi-transparent rectangular overlay with bold white text: top large "${name}", middle "${headline}", bottom-right small "${contact}". Hasselblad-quality photography, soft natural lighting, premium and trustworthy atmosphere.`
+        ];
+
+        variants.forEach((prompt, i) => {
+          const item = document.createElement('div');
+          item.className = 'prompt-item';
+          item.innerHTML = `
+            <strong>Variant ${i+1}</strong>
+            <div class="prompt-text">${prompt}</div>
+            <button class="copy-btn" onclick="copyToClipboard(this.parentNode.querySelector('.prompt-text').textContent, this)">Copy</button>
+          `;
+          output.appendChild(item);
+        });
       }
-
-      document.getElementById('output').textContent = prompt;
     }
   </script>
 </body>
