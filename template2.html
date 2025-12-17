@@ -16,8 +16,8 @@
     .prompt-list { margin-top: 30px; }
     .prompt-item { background: #eef; padding: 15px; border-radius: 6px; margin-bottom: 15px; position: relative; }
     .prompt-text { white-space: pre-wrap; word-break: break-word; margin-bottom: 10px; }
-    .copy-btn { position: absolute; top: 10px; right: 10px; padding: 6px 12px; font-size: 0.9em; }
-    .copied { color: green; font-size: 0.8em; margin-left: 10px; opacity: 0; }
+    .copy-btn { position: absolute; top: 10px; right: 10px; padding: 6px 12px; font-size: 0.9em; background: #0066ff; color: white; border: none; border-radius: 4px; }
+    .copied { color: green; font-size: 0.8em; position: absolute; top: 45px; right: 10px; opacity: 0; transition: opacity 0.3s; }
   </style>
 </head>
 <body>
@@ -30,23 +30,20 @@
   </div>
 
   <label>Business Name</label>
-  <input type="text" id="businessName" placeholder="e.g. Cyklos Cykelbutik" />
+  <input type="text" id="businessName" placeholder="e.g. Grönstädat AB" />
 
   <label>Main Headline</label>
-  <input type="text" id="headline" placeholder="e.g. Allt du behöver för dina cykelbehov i Österås" />
+  <input type="text" id="headline" placeholder="e.g. Miljövänlig städning som gör skillnad" />
 
   <label>Text Color & Style</label>
-  <input type="text" id="textColor" placeholder="e.g. bright white, bold green, yellow with black outline" />
+  <input type="text" id="textColor" placeholder="e.g. bright white, vibrant green, bold yellow with black outline" />
 
-  <label>Contact Info (one line)</label>
-  <input type="text" id="contact" placeholder="e.g. Stigmakargatan 15 Österås • Tel: 08-137372 • @cyklosisterna" />
+  <label>Contact Line</label>
+  <input type="text" id="contact" placeholder="e.g. Kopparvägen 12, 791 45 Falun • 010 456 78 90 • kontakt@gronstadat.se" />
 
   <div class="image-only hidden">
     <label>Background Scene Description</label>
-    <textarea id="scene" rows="4" placeholder="e.g. Busy but organized bike repair workshop with mechanic working on a bicycle, tools and bikes in background, warm indoor lighting..."></textarea>
-
-    <label>Mood / Color Tone</label>
-    <input type="text" id="mood" placeholder="e.g. fresh and professional, warm earth tones" />
+    <textarea id="scene" rows="4" placeholder="e.g. A cleaner in a bright modern office carefully mopping a wooden floor, large windows with sunlight streaming in..."></textarea>
   </div>
 
   <button onclick="generatePrompts()">Generate Prompts</button>
@@ -55,19 +52,21 @@
 
   <script>
     function toggleFields() {
-      document.querySelector('.image-only').classList.toggle('hidden', 
-        document.querySelector('input[value="text"]').checked);
+      document.querySelector('.image-only').classList.toggle('hidden', document.querySelector('input[value="text"]').checked);
     }
     document.querySelectorAll('input[name="model"]').forEach(r => r.addEventListener('change', toggleFields));
     toggleFields();
 
     function copyToClipboard(text, btn) {
       navigator.clipboard.writeText(text).then(() => {
-        const feedback = btn.nextElementSibling || document.createElement('span');
-        feedback.textContent = 'Copied!';
-        feedback.className = 'copied';
+        let feedback = btn.parentNode.querySelector('.copied');
+        if (!feedback) {
+          feedback = document.createElement('span');
+          feedback.className = 'copied';
+          feedback.textContent = 'Copied!';
+          btn.parentNode.appendChild(feedback);
+        }
         feedback.style.opacity = '1';
-        btn.parentNode.appendChild(feedback);
         setTimeout(() => feedback.style.opacity = '0', 2000);
       });
     }
@@ -79,13 +78,12 @@
       const name = document.getElementById('businessName').value.trim() || 'Business Name';
       const headline = document.getElementById('headline').value.trim() || 'Your headline here';
       const color = document.getElementById('textColor').value.trim() || 'bright white bold';
-      const contact = document.getElementById('contact').value.trim() || 'Contact details here';
+      const contact = document.getElementById('contact').value.trim() || 'Contact details';
 
       if (document.querySelector('input[value="image"]').checked) {
-        const scene = document.getElementById('scene').value.trim() || 'a relevant professional scene';
-        const mood = document.getElementById('mood').value.trim();
+        const scene = document.getElementById('scene').value.trim() || 'relevant professional scene';
 
-        const prompt = `Photorealistic advertisement: ${scene}. Apply heavy gaussian blur to the entire background. Overlay large bold centered ${color} sans-serif text: "${name}" at the very top, immediately below it "${headline}" in slightly smaller size. At the bottom center small ${color} text: "${contact}". ${mood ? mood + ',' : ''} clean modern advertising style, high contrast, premium feel.`;
+        const prompt = `Photorealistic advertisement: ${scene}. Apply strong gaussian blur to the entire image. Overlay large bold centered ${color} sans-serif text: "${name}" at the top, "${headline}" directly below in slightly smaller size, and small "${contact}" at the bottom center. Clean high-contrast premium advertising style.`;
 
         const item = document.createElement('div');
         item.className = 'prompt-item';
@@ -96,13 +94,13 @@
         output.appendChild(item);
       } else {
         const variants = [
-          `Photorealistic ad image: sharp scene of ${name}'s activity, then heavily blur the entire background. Overlay massive centered ${color} text: "${name}" large at top, "${headline}" below, and small "${contact}" at bottom. Clean, bold, high-impact commercial style.`,
+          `Photorealistic ad with heavily blurred background showing ${name} in action. Large bold centered ${color} text: "${name}" top, "${headline}" middle, small "${contact}" bottom. Modern eye-catching commercial design.`,
 
-          `Create a vertical advertisement with a beautifully blurred photorealistic background showing ${name} in action. Large bold centered ${color} typography: "${name}" top, "${headline}" middle, "${contact}" small at bottom. Modern, premium, eye-catching design.`,
+          `Vertical advertisement: sharp scene then strong blur applied. Prominent centered ${color} typography: huge "${name}", medium "${headline}", small bottom contact "${contact}". Clean professional high-impact style.`,
 
-          `Ultra-realistic blurred-background ad: relevant inviting scene for ${name}. Strong blur applied. Prominent centered ${color} bold text layout: huge "${name}", medium "${headline}", small bottom "${contact}". Professional advertising aesthetic.`,
+          `Ultra-realistic blurred-background poster for "${name}". Overlay massive ${color} centered text layout: top "${name}", middle "${headline}", bottom "${contact}". Strong visual hierarchy, premium feel.`,
 
-          `Generate a high-end ad with heavily blurred photorealistic background. Overlay striking centered ${color} sans-serif text: top "${name}", middle "${headline}", bottom small contact "${contact}". Clean composition, strong visual hierarchy.`
+          `Generate high-end ad image: photorealistic scene heavily blurred. Striking centered ${color} bold sans-serif text: "${name}" large, "${headline}" below, "${contact}" small at bottom. Clean modern composition.`
         ];
 
         variants.forEach((p, i) => {
