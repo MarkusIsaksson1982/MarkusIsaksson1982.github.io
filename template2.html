@@ -9,11 +9,15 @@
     body { font-family: 'Inter', sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; background: #f9f9fb; }
     h1 { text-align: center; }
     label { display: block; margin: 15px 0 5px; font-weight: 600; }
-    input, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; }
+    input, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; }
     .model-selection { margin: 20px 0; }
     .hidden { display: none; }
     button { margin-top: 20px; padding: 12px 20px; background: #0066ff; color: white; border: none; border-radius: 6px; cursor: pointer; }
-    #output { margin-top: 30px; padding: 15px; background: #eef; border-radius: 6px; white-space: pre-wrap; }
+    .prompt-list { margin-top: 30px; }
+    .prompt-item { background: #eef; padding: 15px; border-radius: 6px; margin-bottom: 15px; position: relative; }
+    .prompt-text { white-space: pre-wrap; word-break: break-word; margin-bottom: 10px; }
+    .copy-btn { position: absolute; top: 10px; right: 10px; padding: 6px 12px; font-size: 0.9em; }
+    .copied { color: green; font-size: 0.8em; margin-left: 10px; opacity: 0; }
   </style>
 </head>
 <body>
@@ -26,56 +30,92 @@
   </div>
 
   <label>Business Name</label>
-  <input type="text" id="businessName" />
+  <input type="text" id="businessName" placeholder="e.g. Cyklos Cykelbutik" />
 
   <label>Main Headline</label>
-  <input type="text" id="headline" />
+  <input type="text" id="headline" placeholder="e.g. Allt du behöver för dina cykelbehov i Österås" />
 
-  <label>Text Color (for image model)</label>
-  <input type="text" id="textColor" placeholder="e.g. bright white, vibrant green, bold yellow with black outline" />
+  <label>Text Color & Style</label>
+  <input type="text" id="textColor" placeholder="e.g. bright white, bold green, yellow with black outline" />
 
-  <label>Contact Info (address, phone, social)</label>
-  <textarea id="contact" rows="3"></textarea>
+  <label>Contact Info (one line)</label>
+  <input type="text" id="contact" placeholder="e.g. Stigmakargatan 15 Österås • Tel: 08-137372 • @cyklosisterna" />
 
-  <div class="image-only">
+  <div class="image-only hidden">
     <label>Background Scene Description</label>
-    <textarea id="scene" rows="4" placeholder="e.g. Interior of a clean modern cleaning company office with a worker mopping a shiny floor, large windows with sunlight..."></textarea>
+    <textarea id="scene" rows="4" placeholder="e.g. Busy but organized bike repair workshop with mechanic working on a bicycle, tools and bikes in background, warm indoor lighting..."></textarea>
 
-    <label>Overall Mood / Color Palette</label>
-    <input type="text" id="mood" placeholder="e.g. fresh and eco-friendly greens, warm and inviting" />
+    <label>Mood / Color Tone</label>
+    <input type="text" id="mood" placeholder="e.g. fresh and professional, warm earth tones" />
   </div>
 
-  <button onclick="generatePrompt()">Generate Prompt</button>
-  <div id="output"></div>
+  <button onclick="generatePrompts()">Generate Prompts</button>
+
+  <div id="output" class="prompt-list"></div>
 
   <script>
-    const imageOnly = document.querySelector('.image-only');
-    document.querySelectorAll('input[name="model"]').forEach(r => r.addEventListener('change', () => {
-      imageOnly.classList.toggle('hidden', document.querySelector('input[value="text"]').checked);
-    }));
+    function toggleFields() {
+      document.querySelector('.image-only').classList.toggle('hidden', 
+        document.querySelector('input[value="text"]').checked);
+    }
+    document.querySelectorAll('input[name="model"]').forEach(r => r.addEventListener('change', toggleFields));
+    toggleFields();
 
-    function generatePrompt() {
-      const name = document.getElementById('businessName').value.trim();
-      const headline = document.getElementById('headline').value.trim();
-      const color = document.getElementById('textColor').value.trim() || "bright white";
-      const contact = document.getElementById('contact').value.trim();
+    function copyToClipboard(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const feedback = btn.nextElementSibling || document.createElement('span');
+        feedback.textContent = 'Copied!';
+        feedback.className = 'copied';
+        feedback.style.opacity = '1';
+        btn.parentNode.appendChild(feedback);
+        setTimeout(() => feedback.style.opacity = '0', 2000);
+      });
+    }
 
-      let prompt = "";
+    function generatePrompts() {
+      const output = document.getElementById('output');
+      output.innerHTML = '';
+
+      const name = document.getElementById('businessName').value.trim() || 'Business Name';
+      const headline = document.getElementById('headline').value.trim() || 'Your headline here';
+      const color = document.getElementById('textColor').value.trim() || 'bright white bold';
+      const contact = document.getElementById('contact').value.trim() || 'Contact details here';
+
       if (document.querySelector('input[value="image"]').checked) {
-        const scene = document.getElementById('scene').value.trim();
+        const scene = document.getElementById('scene').value.trim() || 'a relevant professional scene';
         const mood = document.getElementById('mood').value.trim();
-        prompt = `Photorealistic advertisement: ${scene || "relevant professional scene"}. Apply strong gaussian blur to the entire background. Overlay large bold centered ${color} sans-serif text: "${name}" at the top, below it "${headline}". Bottom aligned small ${color} text with contact details: "${contact}". ${mood ? mood + "," : ""} premium advertising style, high contrast, clean composition.`;
+
+        const prompt = `Photorealistic advertisement: ${scene}. Apply heavy gaussian blur to the entire background. Overlay large bold centered ${color} sans-serif text: "${name}" at the very top, immediately below it "${headline}" in slightly smaller size. At the bottom center small ${color} text: "${contact}". ${mood ? mood + ',' : ''} clean modern advertising style, high contrast, premium feel.`;
+
+        const item = document.createElement('div');
+        item.className = 'prompt-item';
+        item.innerHTML = `
+          <div class="prompt-text">${prompt}</div>
+          <button class="copy-btn" onclick="copyToClipboard(this.parentNode.querySelector('.prompt-text').textContent, this)">Copy</button>
+        `;
+        output.appendChild(item);
       } else {
-        prompt = `Write a detailed image-generation prompt for a blurred-background advertisement template.
+        const variants = [
+          `Photorealistic ad image: sharp scene of ${name}'s activity, then heavily blur the entire background. Overlay massive centered ${color} text: "${name}" large at top, "${headline}" below, and small "${contact}" at bottom. Clean, bold, high-impact commercial style.`,
 
-Business: ${name}
-Headline: ${headline}
-Text color: ${color}
-Contact: ${contact}
+          `Create a vertical advertisement with a beautifully blurred photorealistic background showing ${name} in action. Large bold centered ${color} typography: "${name}" top, "${headline}" middle, "${contact}" small at bottom. Modern, premium, eye-catching design.`,
 
-The background should be a blurred photorealistic scene, with large centered bold text overlay and smaller contact text at the bottom.`;
+          `Ultra-realistic blurred-background ad: relevant inviting scene for ${name}. Strong blur applied. Prominent centered ${color} bold text layout: huge "${name}", medium "${headline}", small bottom "${contact}". Professional advertising aesthetic.`,
+
+          `Generate a high-end ad with heavily blurred photorealistic background. Overlay striking centered ${color} sans-serif text: top "${name}", middle "${headline}", bottom small contact "${contact}". Clean composition, strong visual hierarchy.`
+        ];
+
+        variants.forEach((p, i) => {
+          const item = document.createElement('div');
+          item.className = 'prompt-item';
+          item.innerHTML = `
+            <strong>Variant ${i+1}</strong>
+            <div class="prompt-text">${p}</div>
+            <button class="copy-btn" onclick="copyToClipboard(this.parentNode.querySelector('.prompt-text').textContent, this)">Copy</button>
+          `;
+          output.appendChild(item);
+        });
       }
-      document.getElementById('output').textContent = prompt;
     }
   </script>
 </body>
