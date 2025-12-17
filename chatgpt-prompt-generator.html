@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT-5.2 – Promptgenerator för annonser</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 20px; background: #f0f2f5; }
+        h1 { text-align: center; color: #1a73e8; }
+        .container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        label { display: block; margin-top: 15px; font-weight: bold; color: #333; }
+        input, textarea, select { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 6px; }
+        button { margin-top: 20px; padding: 12px 24px; background: #1a73e8; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
+        button:hover { background: #1557b0; }
+        .prompt-list { margin-top: 30px; }
+        .prompt-item { display: flex; margin-bottom: 12px; align-items: center; }
+        .prompt-text { flex-grow: 1; background: #f8f9fa; padding: 14px; border-radius: 8px; border: 1px solid #e0e0e0; }
+        .copy-btn { margin-left: 10px; padding: 10px 18px; background: #34a853; color: white; border: none; border-radius: 6px; cursor: pointer; }
+        .copy-btn:hover { background: #2d9147; }
+        .copy-feedback { color: #34a853; font-size: 0.9em; margin-left: 10px; display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ChatGPT-5.2 – 50 Promptvarianter för annonser</h1>
+        <label>Företagsnamn</label>
+        <input type="text" id="name" placeholder="Kvarn & Koppen">
+
+        <label>Stad</label>
+        <input type="text" id="city" placeholder="Lillhammar">
+
+        <label>Beskrivning av verksamheten</label>
+        <textarea id="description" rows="4" placeholder="Vi bakar bröd på lokal spannmål och rostar eget kaffe..."></textarea>
+
+        <label>Kontaktinformation (telefon, öppettider, hemsida)</label>
+        <textarea id="contact" rows="3" placeholder="0123-456 78\nMån-fre 07-17, lör 09-14\nwww.kvarnochkoppen.se"></textarea>
+
+        <label>Önskad känsla/stil</label>
+        <input type="text" id="style" placeholder="mysig, varm, inbjudande, modern">
+
+        <button onclick="generatePrompts()">Generera 50 varianter</button>
+
+        <div class="prompt-list" id="promptList"></div>
+    </div>
+
+    <script>
+        const templates = [
+            "Skapa en professionell reklamannons för {name} {city}. {description} Visa företagsnamnet stort högst upp, inkludera kontaktinfo: {contact}. Stil: {style}. Modern layout med tydliga typsnitt och inbjudande känsla.",
+            "Designa en annonsbild för {name} i {city}. Företaget erbjuder {description}. Placera namn och logga framträdande, visa kontaktuppgifter ({contact}) tydligt. {style} atmosfär, kommersiell och tilltalande design.",
+            "Generera en reklamannons för {name}, {city}. Verksamhet: {description}. Kontakt: {contact}. Använd {style} tema med varm och välkomnande känsla, professionell layout för sociala medier.",
+            "Skapa en vacker annons för {name} ({city}). {description} Inkludera all kontaktinformation ({contact}) på ett snyggt sätt. Stil: {style}, hög kvalitet, inbjudande och professionell.",
+            "Designa en annonsbild där {name} i {city} presenteras. Företaget: {description}. Visa kontaktuppgifter tydligt: {contact}. {style} känsla med modern och aptitlig design."
+        ];
+
+        function generatePrompts() {
+            const name = document.getElementById('name').value.trim() || "Företaget";
+            const city = document.getElementById('city').value.trim() ? "i " + document.getElementById('city').value.trim() : "";
+            const description = document.getElementById('description').value.trim() || "en lokal verksamhet";
+            const contact = document.getElementById('contact').value.trim().replace(/\n/g, ", ");
+            const style = document.getElementById('style').value.trim() || "mysig och inbjudande";
+
+            const list = document.getElementById('promptList');
+            list.innerHTML = '<h2>50 promptvarianter för ChatGPT-5.2 (klicka Kopiera):</h2>';
+
+            for (let i = 0; i < 50; i++) {
+                const template = templates[i % templates.length];
+                const prompt = template
+                    .replace(/{name}/g, name)
+                    .replace(/{city}/g, city)
+                    .replace(/{description}/g, description)
+                    .replace(/{contact}/g, contact)
+                    .replace(/{style}/g, style);
+
+                const div = document.createElement('div');
+                div.className = 'prompt-item';
+                div.innerHTML = `
+                    <div class="prompt-text">${(i+1).toString().padStart(2, '0')}. ${prompt}</div>
+                    <button class="copy-btn" onclick="copyToClipboard(this, '${prompt.replace(/'/g, "\\'")}')">Kopiera</button>
+                    <span class="copy-feedback">Kopierad!</span>
+                `;
+                list.appendChild(div);
+            }
+        }
+
+        function copyToClipboard(btn, text) {
+            navigator.clipboard.writeText(text);
+            const feedback = btn.nextElementSibling;
+            feedback.style.display = 'inline';
+            setTimeout(() => feedback.style.display = 'none', 2000);
+        }
+    </script>
+</body>
+</html>
