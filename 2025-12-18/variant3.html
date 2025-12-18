@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt-generator: Annons (med ikoner)</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; background: #f9f9f9; }
+        h1 { text-align: center; }
+        label { display: block; margin-top: 15px; }
+        input, textarea { width: 100%; padding: 10px; margin-top: 5px; font-size: 16px; }
+        button { margin-top: 30px; padding: 12px 20px; font-size: 18px; background: #dc3545; color: white; border: none; cursor: pointer; }
+        #output { margin-top: 30px; padding: 15px; background: #e9ecef; white-space: pre-wrap; border: 1px solid #ced4da; }
+    </style>
+</head>
+<body>
+    <h1>Prompt-generator: Annons (med ikonförslag)</h1>
+
+    <label>Företagsnamn</label>
+    <input type="text" id="company">
+
+    <label>Beskrivning</label>
+    <textarea id="description" rows="4"></textarea>
+
+    <label>Adress</label>
+    <input type="text" id="address">
+
+    <label>Telefon</label>
+    <input type="text" id="phone">
+
+    <label>E-post</label>
+    <input type="text" id="email">
+
+    <label>Sociala medier</label>
+    <input type="text" id="social">
+
+    <button onclick="generatePrompt()">Generera prompt</button>
+
+    <div id="output"></div>
+
+    <script>
+        function generatePrompt() {
+            const company = document.getElementById('company').value.trim() || 'Företag';
+            const description = document.getElementById('description').value.trim() || '';
+            const address = document.getElementById('address').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const social = document.getElementById('social').value.trim();
+
+            const textBlock = `"${company}
+${description}
+
+📍 Adress: ${address}
+📞 Tel: ${phone}
+✉️ Email: ${email}
+🌐 Sociala medier: ${social || '–'}"`;
+
+            const prompt = `Create a polished marketing visual by combining the company logo and a high-quality kitchen photo into one cohesive layout. Use warm, natural tones and elegant typography. Include small tasteful icons next to contact information (pin for address, phone for tel, envelope for email, globe/instagram icon for social). Add clear text hierarchy and good whitespace for a modern, professional advertisement feel.
+
+The text to include in the design is:
+${textBlock}`;
+
+            document.getElementById('output').textContent = prompt;
+        }
+    </script>
+</body>
+</html>
