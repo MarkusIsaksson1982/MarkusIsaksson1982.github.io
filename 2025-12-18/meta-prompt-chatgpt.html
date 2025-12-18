@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta-prompt-generator för ChatGPT</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f8f9fa;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .intro {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 5px solid #2196f3;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #1565c0;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        button.generate {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            font-size: 20px;
+            background: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 30px 0;
+        }
+        button.generate:hover {
+            background: #1565c0;
+        }
+        .result {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .meta-prompt {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            font-size: 15px;
+            line-height: 1.5;
+            border: 1px dashed #999;
+        }
+        .copy-btn {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .copy-btn:hover {
+            background: #43a047;
+        }
+        .copy-feedback {
+            color: #4caf50;
+            font-weight: bold;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Meta-prompt-generator för ChatGPT</h1>
+
+    <div class="intro">
+        <p>Den här sidan hjälper dig att skapa en <strong>smart meta-prompt</strong> som du kan kopiera och klistra in direkt i ChatGPT (t.ex. GPT-4o eller kommande GPT-5.2).</p>
+        <p>När du använder meta-prompten i ChatGPT kommer den att automatiskt skapa <strong>6 olika varianter av annonsprompters</strong> åt dig – varje prompt visas i ett eget kopierbart fönster så att du enkelt kan testa dem en i taget i en bildgenerator.</p>
+        <p>Fyll bara i företagets uppgifter nedan och klicka på knappen!</p>
+    </div>
+
+    <div class="form-group">
+        <label>Företagsnamn</label>
+        <input type="text" id="company" placeholder="t.ex. Rena Rutor">
+    </div>
+
+    <div class="form-group">
+        <label>Kort beskrivning av verksamheten (valfritt men rekommenderas)</label>
+        <textarea id="description" placeholder="t.ex. Vi erbjuder fönsterputs och städtjänster i Västerås. Vårt arbete kännetecknas av noggrannhet och tydliga tider."></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>Adress</label>
+        <input type="text" id="address" placeholder="t.ex. Retortgatan 5, 721 30 Västerås">
+    </div>
+
+    <div class="form-group">
+        <label>Telefon</label>
+        <input type="text" id="phone" placeholder="t.ex. 021 44 18 990">
+    </div>
+
+    <div class="form-group">
+        <label>E-post</label>
+        <input type="text" id="email" placeholder="t.ex. bokning@renarutor.se">
+    </div>
+
+    <div class="form-group">
+        <label>Sociala medier (valfritt)</label>
+        <input type="text" id="social" placeholder="t.ex. Instagram: @renarutor  eller  Facebook: Rena Rutor">
+    </div>
+
+    <button class="generate" onclick="generateMetaPrompt()">Generera meta-prompt för ChatGPT</button>
+
+    <div id="result-container" class="result" style="display:none;">
+        <h2>Klar! Här är din meta-prompt</h2>
+        <p>Kopiera hela texten nedan och klistra in den i ChatGPT. Den kommer då att skapa 6 färdiga annonsprompters åt dig.</p>
+
+        <div class="meta-prompt" id="meta-prompt"></div>
+
+        <button class="copy-btn" onclick="copyMetaPrompt()">Kopiera hela meta-prompten</button>
+        <div class="copy-feedback">✓ Kopierad till urklipp! Nu kan du klistra in i ChatGPT.</div>
+    </div>
+
+    <script>
+        function generateMetaPrompt() {
+            const company = document.getElementById('company').value.trim() || 'Företag';
+            const description = document.getElementById('description').value.trim();
+            const address = document.getElementById('address').value.trim() || '–';
+            const phone = document.getElementById('phone').value.trim() || '–';
+            const email = document.getElementById('email').value.trim() || '–';
+            const social = document.getElementById('social').value.trim();
+
+            const businessData = {
+                company: company,
+                description: description,
+                address: address,
+                phone: phone,
+                email: email,
+                social: social || null
+            };
+
+            const metaPrompt = `Du är en expert på att skapa högkvalitativa bildprompter för annonsbilder.
+
+Här är information om ett företag i JSON-format:
+
+\`\`\`json
+${JSON.stringify(businessData, null, 2)}
+\`\`\`
+
+Din uppgift är att skapa **6 olika, tydligt varierande prompter** på engelska som kan användas för att generera professionella annonsbilder (t.ex. i Midjourney, DALL·E, Flux eller liknande).
+
+Varje prompt ska:
+- Kombinera företagets logga med en relevant, högkvalitativ bild som passar verksamheten
+- Inkludera all text från JSON:en på ett snyggt och läsbart sätt
+- Ha tydlig text-hierarki (stor rubrik, underrubrik, kontaktinfo)
+- Kännas modern, trovärdig och tilltalande
+
+Skapa 6 olika stilar/varianter (variera layout, färgkänsla, bildkomposition osv.). Var kreativ men håll dig professionell.
+
+Presentera **varje prompt i ett eget kodblock** så här:
+
+**Variant 1 – [Kort beskrivning av stilen]**
+\`\`\`
+[hela prompten här]
+\`\`\`
+
+**Variant 2 – [Kort beskrivning av stilen]**
+\`\`\`
+[hela prompten här]
+\`\`\`
+
+...och så vidare för alla 6.
+
+Börja direkt med Variant 1, ingen inledning behövs.`;
+
+            document.getElementById('meta-prompt').textContent = metaPrompt;
+            document.getElementById('result-container').style.display = 'block';
+            document.getElementById('result-container').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function copyMetaPrompt() {
+            const text = document.getElementById('meta-prompt').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const feedback = document.querySelector('.copy-feedback');
+                feedback.style.display = 'block';
+                setTimeout(() => feedback.style.display = 'none', 3000);
+            });
+        }
+    </script>
+</body>
+</html>
