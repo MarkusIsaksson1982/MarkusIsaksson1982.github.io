@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GPT-5.2 Image Analysis - Focus on Advertising Materials</title>
+    
+    <!-- Global hidden metadata for AI parsing: Core reusable prompt template for advertising images -->
+    <meta name="ad-generation-template-prompt" content="Create a polished marketing visual by combining the company logo and the business image into one cohesive layout. Use the brand’s color palette, typography style, and overall visual identity to guide the design. Add clear, well structured text sections with varied hierarchy such as headline, subhead, and body text to ensure readability at a glance. Balance imagery, whitespace, and graphic elements so the design feels modern, trustworthy, and visually appealing. The result should look like a professional ad or website hero section, clean, easy to read, and well organized.">
+    
+    <!-- Global notes from contact person -->
+    <meta name="contact-notes-general" content="The core prompt is reused across brands with only company-specific text/info changed. Rerunning the same prompt multiple times improves results (most outputs become acceptable). Minor errors can occur (e.g., duplicated email); refine prompt for exact details like icons for address/phone/social if needed.">
+    
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; background: #f9f9f9; }
         h1 { text-align: center; color: #333; }
@@ -28,22 +35,34 @@
     <p class="note">These are the main targets for detailed analysis – commercial branding, flyers, and ad mockups.</p>
 
     <div class="gallery priority-gallery">
-        <div><img src="blackochpapper1.jpeg" alt="Bläck & Papper 1" loading="eager" class="priority-img"><div class="caption priority-caption">blackochpapper1.jpeg</div></div>
-        <div><img src="blackochpapper2.jpeg" alt="Bläck & Papper 2" loading="eager" class="priority-img"><div class="caption priority-caption">blackochpapper2.jpeg</div></div>
-        <div><img src="blackochpapper3.jpeg" alt="Bläck & Papper 3" loading="eager" class="priority-img"><div class="caption priority-caption">blackochpapper3.jpeg</div></div>
-        <div><img src="blackochpapper4.jpeg" alt="Bläck & Papper 4" loading="eager" class="priority-img"><div class="caption priority-caption">blackochpapper4.jpeg</div></div>
+        <!-- Bläck & Papper group -->
+        <div><img src="blackochpapper1.jpeg" alt="Bläck & Papper 1" loading="eager" class="priority-img"
+            data-prompt-instructions="Reusable core prompt applied (same for all blackochpapper images): Create polished marketing visual combining logo + business image. Specific text: “Bläck & Papper Vi driver en bokhandel i Visby med fokus på litteratur och lokala författare. Butiken är en mötesplats för alla som älskar böcker. Adress: Adelsgatan 27, 621 57 Visby Tel: 0498 21 08 75 Email: butik@blackochpapper.se Sociala medier: Instagram: @blackochpapper”"
+            data-contact-notes="Made 25 similar; all use the same prompt, only company info changes."><div class="caption priority-caption">blackochpapper1.jpeg</div></div>
+        <div><img src="blackochpapper2.jpeg" alt="Bläck & Papper 2" loading="eager" class="priority-img" data-prompt-instructions="Same core reusable prompt as blackochpapper1.jpeg" data-contact-notes="Same notes as blackochpapper1.jpeg"><div class="caption priority-caption">blackochpapper2.jpeg</div></div>
+        <div><img src="blackochpapper3.jpeg" alt="Bläck & Papper 3" loading="eager" class="priority-img" data-prompt-instructions="Same core reusable prompt as blackochpapper1.jpeg" data-contact-notes="Same notes as blackochpapper1.jpeg"><div class="caption priority-caption">blackochpapper3.jpeg</div></div>
+        <div><img src="blackochpapper4.jpeg" alt="Bläck & Papper 4" loading="eager" class="priority-img" data-prompt-instructions="Same core reusable prompt as blackochpapper1.jpeg" data-contact-notes="Same notes as blackochpapper1.jpeg"><div class="caption priority-caption">blackochpapper4.jpeg</div></div>
         
-        <div><img src="kokochkansla1.jpeg" alt="Kök & Känsla 1" loading="eager" class="priority-img"><div class="caption priority-caption">kokochkansla1.jpeg</div></div>
-        <div><img src="kokochkansla2.jpeg" alt="Kök & Känsla 2" loading="eager" class="priority-img"><div class="caption priority-caption">kokochkansla2.jpeg</div></div>
-        <div><img src="kokochkansla3.jpeg" alt="Kök & Känsla 3" loading="eager" class="priority-img"><div class="caption priority-caption">kokochkansla3.jpeg</div></div>
-        <div><img src="kokochkansla4.jpeg" alt="Kök & Känsla 4" loading="eager" class="priority-img"><div class="caption priority-caption">kokochkansla4.jpeg</div></div>
+        <!-- Kök & Känsla group -->
+        <div><img src="kokochkansla1.jpeg" alt="Kök & Känsla 1" loading="eager" class="priority-img"
+            data-prompt-instructions="Core reusable prompt applied to Kök & Känsla variants."
+            data-contact-notes="Occasional minor errors like duplicated email (visible in this variant); Google's image gen assessed as better overall, but ChatGPT improved significantly."><div class="caption priority-caption">kokochkansla1.jpeg</div></div>
+        <div><img src="kokochkansla2.jpeg" alt="Kök & Känsla 2" loading="eager" class="priority-img" data-prompt-instructions="Same core prompt; reruns recommended." data-contact-notes="Rerunning the same prompt a few times yields mostly acceptable results."><div class="caption priority-caption">kokochkansla2.jpeg</div></div>
+        <div><img src="kokochkansla3.jpeg" alt="Kök & Känsla 3" loading="eager" class="priority-img" data-prompt-instructions="Same core reusable prompt." data-contact-notes="General improvement notes apply."><div class="caption priority-caption">kokochkansla3.jpeg</div></div>
+        <div><img src="kokochkansla4.jpeg" alt="Kök & Känsla 4" loading="eager" class="priority-img"
+            data-prompt-instructions="Same core reusable prompt."
+            data-contact-notes="Prompt can be refined for exact details, e.g., add icons for address, phone, social media."><div class="caption priority-caption">kokochkansla4.jpeg</div></div>
         
-        <div><img src="renarutor1.jpeg" alt="Rena Rutor 1" loading="eager" class="priority-img"><div class="caption priority-caption">renarutor1.jpeg</div></div>
-        <div><img src="renarutor2.jpeg" alt="Rena Rutor 2" loading="eager" class="priority-img"><div class="caption priority-caption">renarutor2.jpeg</div></div>
-        <div><img src="renarutor3.jpeg" alt="Rena Rutor 3" loading="eager" class="priority-img"><div class="caption priority-caption">renarutor3.jpeg</div></div>
-        <div><img src="renarutor4.jpeg" alt="Rena Rutor 4" loading="eager" class="priority-img"><div class="caption priority-caption">renarutor4.jpeg</div></div>
+        <!-- Rena Rutor group -->
+        <div><img src="renarutor1.jpeg" alt="Rena Rutor 1" loading="eager" class="priority-img"
+            data-prompt-instructions="Core prompt example: Create polished marketing visual combining logo + business image. Specific text: “Rena Rutor Vi erbjuder fönsterputs och städtjänster i Västerås. Vårt arbete kännetecknas av noggrannhet och tydliga tider. Adress: Retortgatan 5, 721 30 Västerås Tel: 021 44 18 990 Email: bokning@renarutor.se Sociala medier: Facebook: Rena Rutor” (applies broadly to all renarutor images)"
+            data-contact-notes="Example provided with attached logo and image; results in multiple formats."><div class="caption priority-caption">renarutor1.jpeg</div></div>
+        <div><img src="renarutor2.jpeg" alt="Rena Rutor 2" loading="eager" class="priority-img" data-prompt-instructions="Same core prompt as renarutor1.jpeg" data-contact-notes="Same notes as renarutor1.jpeg"><div class="caption priority-caption">renarutor2.jpeg</div></div>
+        <div><img src="renarutor3.jpeg" alt="Rena Rutor 3" loading="eager" class="priority-img" data-prompt-instructions="Same core prompt as renarutor1.jpeg" data-contact-notes="Same notes as renarutor1.jpeg"><div class="caption priority-caption">renarutor3.jpeg</div></div>
+        <div><img src="renarutor4.jpeg" alt="Rena Rutor 4" loading="eager" class="priority-img" data-prompt-instructions="Same core prompt as renarutor1.jpeg" data-contact-notes="Same notes as renarutor1.jpeg"><div class="caption priority-caption">renarutor4.jpeg</div></div>
     </div>
 
+    <!-- Secondary general images remain unchanged -->
     <h2>Secondary: General Experimental Images (25 Images)</h2>
     <p class="note">These are available for context or keyword reference if needed (lazy-loaded).</p>
 
