@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Last Raindrop</title>
+<style>
+  body { margin:0; background:#000; height:100vh; overflow:hidden; }
+  canvas { display:block; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+canvas.width = 900;
+canvas.height = 600;
+
+let dropY = -20;
+let trail = [];
+let city = [];
+
+function update() {
+  dropY += 0.8;
+  if (dropY > canvas.height) dropY = -20;
+
+  // Add to trail
+  trail.push({ y: dropY, x: canvas.width / 2 + Math.sin(dropY * 0.02) * 40 });
+  if (trail.length > 300) trail.shift();
+
+  // Add watercolor bleed
+  if (Math.random() < 0.05) {
+    const bleed = {
+      x: trail[trail.length-1].x + (Math.random()-0.5)*80,
+      y: trail[trail.length-1].y,
+      size: 20 + Math.random()*40,
+      color: `hsl(${Math.random()*360}, 40%, ${60 + Math.random()*30}%)`
+    };
+    city.push(bleed);
+  }
+
+  // Limit city elements
+  if (city.length > 500) city.shift();
+}
+
+function draw() {
+  ctx.fillStyle = 'rgba(0,0,0,0.02)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Draw trail
+  trail.forEach((p, i) => {
+    const alpha = i / trail.length;
+    ctx.fillStyle = `rgba(100,180,255,${alpha*0.6})`;
+    ctx.fillRect(p.x-3, p.y-3, 6, 6);
+  });
+
+  // Draw watercolor city
+  city.forEach(c => {
+    ctx.globalAlpha = 0.3;
+    ctx.fillStyle = c.color;
+    ctx.fillRect(c.x - c.size/2, c.y - c.size/2, c.size, c.size);
+  });
+
+  // Draw raindrop
+  ctx.fillStyle = '#a0d0ff';
+  ctx.beginPath();
+  ctx.arc(canvas.width/2 + Math.sin(dropY*0.02)*40, dropY, 10, 0, Math.PI*2);
+  ctx.fill();
+}
+
+function loop() {
+  update();
+  draw();
+  requestAnimationFrame(loop);
+}
+
+loop();
+</script>
+</body>
+</html>
