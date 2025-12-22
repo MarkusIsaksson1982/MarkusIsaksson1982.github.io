@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>One Million Years</title>
+<style>
+  body { margin:0; background:#000; height:100vh; display:flex; justify-content:center; align-items:center; }
+  #pixel { width:200px; height:200px; border:1px solid #333; }
+  #info { position:absolute; bottom:20px; left:50%; transform:translateX(-50%); color:#444; font-family:monospace; font-size:13px; }
+</style>
+</head>
+<body>
+<div id="pixel"></div>
+<div id="info">One pixel, cycling through every RGB color once every ~1 million years.<br>Watch for a few seconds and feel eternity.</div>
+
+<script>
+const pixel = document.getElementById('pixel');
+let r = 0, g = 0, b = 0;
+let step = 0;
+
+function cycleColor() {
+  step++;
+  if (step % 256 === 0) {
+    if (b < 255) b++;
+    else if (g < 255) { g++; b = 0; }
+    else if (r < 255) { r++; g = 0; b = 0; }
+    else { r = g = b = 0; } // reset after full cycle
+  }
+  pixel.style.background = `rgb(${r}, ${g}, ${b})`;
+}
+
+function animate() {
+  cycleColor();
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+</body>
+</html>
