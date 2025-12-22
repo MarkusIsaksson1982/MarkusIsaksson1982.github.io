@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Forgotten Clock</title>
+<style>
+  body { margin:0; background:#000; height:100vh; display:flex; justify-content:center; align-items:center; }
+  canvas { image-rendering: pixelated; }
+</style>
+</head>
+<body>
+<canvas id="c" width="800" height="600"></canvas>
+
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+let time = 0;
+const history = [];
+
+function draw() {
+  time += 0.02;
+  ctx.fillStyle = 'rgba(0,0,0,0.05)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  const cx = canvas.width / 2;
+  const cy = canvas.height / 2;
+
+  // Hour hand (slow, backward)
+  const hAngle = -time * 0.1;
+  const hX = cx + Math.cos(hAngle) * 120;
+  const hY = cy + Math.sin(hAngle) * 120;
+  ctx.strokeStyle = '#0ff';
+  ctx.lineWidth = 4;
+  ctx.beginPath();
+  ctx.moveTo(cx, cy);
+  ctx.lineTo(hX, hY);
+  ctx.stroke();
+
+  // Minute hand (medium)
+  const mAngle = -time * 0.5;
+  const mX = cx + Math.cos(mAngle) * 160;
+  const mY = cy + Math.sin(mAngle) * 160;
+  ctx.strokeStyle = '#f0f';
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(cx, cy);
+  ctx.lineTo(mX, mY);
+  ctx.stroke();
+
+  // Save history every 20 frames
+  if (Math.floor(time * 50) % 20 === 0) {
+    history.push({ hAngle, mAngle });
+    if (history.length > 100) history.shift();
+  }
+
+  // Draw ghostly past positions
+  history.forEach((p, i) => {
+    const alpha = (i / history.length) * 0.3;
+    // Past hour hand
+    ctx.strokeStyle = `rgba(0, 255, 255, ${alpha})`;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(cx + Math.cos(p.hAngle) * 120, cy + Math.sin(p.hAngle) * 120);
+    ctx.stroke();
+    // Past minute hand
+    ctx.strokeStyle = `rgba(255, 0, 255, ${alpha})`;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(cx + Math.cos(p.mAngle) * 160, cy + Math.sin(p.mAngle) * 160);
+    ctx.stroke();
+  });
+}
+
+function loop() {
+  draw();
+  requestAnimationFrame(loop);
+}
+
+loop();
+</script>
+</body>
+</html>
