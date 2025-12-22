@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Nebula Weaver</title>
+<style>
+  body { margin:0; background:#000; height:100vh; overflow:hidden; }
+  canvas { display:block; }
+</style>
+</head>
+<body>
+<canvas id="c" width="900" height="600"></canvas>
+
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const threads = [];
+
+function createThread(x, y) {
+  threads.push({
+    x, y,
+    vx: (Math.random() - 0.5) * 2,
+    vy: (Math.random() - 0.5) * 2,
+    hue: Math.random() * 360,
+    length: 0
+  });
+}
+
+function animate() {
+  ctx.fillStyle = 'rgba(0,0,0,0.05)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  threads.forEach(t => {
+    t.x += t.vx;
+    t.y += t.vy;
+    t.length += 0.5;
+
+    // Bounce off edges
+    if (t.x < 0 || t.x > canvas.width) t.vx *= -1;
+    if (t.y < 0 || t.y > canvas.height) t.vy *= -1;
+
+    // Draw thread with glow
+    ctx.strokeStyle = `hsla(${t.hue}, 100%, 70%, 0.6)`;
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(t.x, t.y);
+    ctx.lineTo(t.x + t.vx * 10, t.y + t.vy * 10);
+    ctx.stroke();
+
+    // Glow
+    ctx.globalAlpha = 0.2;
+    ctx.fillStyle = `hsla(${t.hue}, 100%, 70%, 0.3)`;
+    ctx.fillRect(t.x - 10, t.y - 10, 20, 20);
+  });
+
+  ctx.globalAlpha = 1;
+
+  requestAnimationFrame(animate);
+}
+
+canvas.addEventListener('click', e => {
+  createThread(e.clientX, e.clientY);
+  // Add a few extra threads for density
+  for (let i = 0; i < 3; i++) {
+    createThread(e.clientX + (Math.random() - 0.5) * 100, e.clientY + (Math.random() - 0.5) * 100);
+  }
+});
+
+animate();
+</script>
+</body>
+</html>
