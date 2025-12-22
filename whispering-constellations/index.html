@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Whispering Constellations</title>
+<style>
+  body { margin:0; background:#000; height:100vh; overflow:hidden; }
+  canvas { display:block; }
+</style>
+</head>
+<body>
+<canvas id="c" width="900" height="600"></canvas>
+
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const stars = [];
+const trails = [];
+let mouseX = canvas.width / 2;
+let mouseY = canvas.height / 2;
+let lastMouseX = mouseX;
+let lastMouseY = mouseY;
+
+for (let i = 0; i < 200; i++) {
+  stars.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    baseX: Math.random() * canvas.width,
+    baseY: Math.random() * canvas.height
+  });
+}
+
+function animate() {
+  const dx = mouseX - lastMouseX;
+  const dy = mouseY - lastMouseY;
+  const speed = Math.hypot(dx, dy);
+
+  ctx.fillStyle = 'rgba(0,0,0,0.05)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Stars follow mouse slowly
+  stars.forEach(s => {
+    s.x += (mouseX - s.x) * 0.02;
+    s.y += (mouseY - s.y) * 0.02;
+    s.x += (s.baseX - s.x) * 0.005;
+    s.y += (s.baseY - s.y) * 0.005;
+
+    // Draw star
+    ctx.fillStyle = `hsl(${Date.now() * 0.01 % 360}, 100%, 80%)`;
+    ctx.fillRect(s.x - 2, s.y - 2, 4, 4);
+
+    // Whisper trails when mouse is still
+    if (speed < 2) {
+      trails.push({ x: s.x, y: s.y, age: 0, color: Math.floor(Date.now() * 0.1) % 360 });
+    }
+  });
+
+  // Draw trails
+  trails.forEach(t => {
+    t.age++;
+    if (t.age > 120) return;
+    const alpha = 1 - t.age / 120;
+    ctx.fillStyle = `hsla(${t.color}, 100%, 70%, ${alpha * 0.6})`;
+    ctx.fillRect(t.x - 2, t.y - 2, 4, 4);
+  });
+
+  if (trails.length > 1000) trails.shift();
+
+  lastMouseX = mouseX;
+  lastMouseY = mouseY;
+  requestAnimationFrame(animate);
+}
+
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+animate();
+</script>
+</body>
+</html>
