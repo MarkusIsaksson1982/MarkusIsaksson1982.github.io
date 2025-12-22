@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Breath Canvas</title>
+<style>
+  body { margin:0; background:#000; height:100vh; overflow:hidden; }
+  canvas { display:block; }
+  #info { position:absolute; top:10px; left:10px; color:#333; font-family:monospace; font-size:12px; }
+</style>
+</head>
+<body>
+<canvas id="c" width="900" height="600"></canvas>
+<div id="info">Stay still to let the canvas breathe. Move to scatter the glow.</div>
+
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const particles = [];
+let lastMoveTime = Date.now();
+
+for (let i = 0; i < 300; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    vx: (Math.random() - 0.5) * 0.5,
+    vy: (Math.random() - 0.5) * 0.5
+  });
+}
+
+function animate() {
+  ctx.fillStyle = 'rgba(0,0,0,0.05)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  const still = (Date.now() - lastMoveTime > 500);
+
+  particles.forEach(p => {
+    // Slow movement when still
+    if (still) {
+      p.x += p.vx * 0.1;
+      p.y += p.vy * 0.1;
+    } else {
+      p.x += p.vx * 3;
+      p.y += p.vy * 3;
+    }
+
+    // Bounce
+    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+    // Glow intensity based on stillness
+    const alpha = still ? 0.8 : 0.2;
+    ctx.fillStyle = `rgba(100, 255, 255, ${alpha})`;
+    ctx.fillRect(p.x - 2, p.y - 2, 4, 4);
+  });
+
+  requestAnimationFrame(animate);
+}
+
+document.addEventListener('mousemove', () => {
+  lastMoveTime = Date.now();
+});
+
+animate();
+</script>
+</body>
+</html>
