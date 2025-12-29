@@ -2,6 +2,9 @@
 
 ![freeCodeCamp Logo](https://design-style-guide.freecodecamp.org/downloads/fcc_primary_small.svg)
 
+![freeCodeCamp Logo](https://design-style-guide.freecodecamp.org/downloads/fcc_primary_large.svg))
+
+
 Welcome to my personal portfolio landing page, hosted via GitHub Pages.
 
 This repository contains a simple, self-contained `index.html` showcasing my journey as a self-taught full-stack developer, with a strong focus on my extensive progress through the [freeCodeCamp](https://www.freecodecamp.org/) curriculum.
@@ -36,13 +39,13 @@ I have earned multiple freeCodeCamp certifications across both the legacy curric
 - **Additional Certification**
   - Foundational C# with Microsoft
 
-All certifications are publicly verifiable. See the full list with direct links on the [live site](#live-site).
+All certifications are publicly verifiable. See the full list with direct links on the [https://MarkusIsaksson1982.github.io/](https://MarkusIsaksson1982.github.io/).
 
 **Conservative learning effort**: 3,600+ hours from legacy certifications alone, plus significant additional progress in the evolving new curriculum.
 
 ## Live Site
 
-Visit the portfolio: [https://your-username.github.io/your-repo-name/](https://your-username.github.io/your-repo-name/)  
+Visit the portfolio: [https://MarkusIsaksson1982.github.io/](https://MarkusIsaksson1982.github.io/)  
 *(Replace with your actual GitHub Pages URL once deployed)*
 
 You can also verify my certifications and connect with me on LinkedIn:  
@@ -52,10 +55,6 @@ You can also verify my certifications and connect with me on LinkedIn:
 
 - `index.html` – Main landing page
 - `README.md` – This file
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE) (feel free to add a LICENSE file if desired).
 
 ---
 
