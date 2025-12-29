@@ -1,10 +1,5 @@
 # Markus Isaksson - Portfolio
 
-![freeCodeCamp Logo](https://design-style-guide.freecodecamp.org/downloads/fcc_primary_small.svg)
-
-![freeCodeCamp Logo](https://design-style-guide.freecodecamp.org/downloads/fcc_primary_large.svg))
-
-
 Welcome to my personal portfolio landing page, hosted via GitHub Pages.
 
 This repository contains a simple, self-contained `index.html` showcasing my journey as a self-taught full-stack developer, with a strong focus on my extensive progress through the [freeCodeCamp](https://www.freecodecamp.org/) curriculum.
