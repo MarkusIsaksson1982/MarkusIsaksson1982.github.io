@@ -1,43 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Micro-Artworks – Markus Isaksson</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-  body { margin:0; background:#000; color:#ccc; font-family:monospace; padding:20px; }
-  h1 { text-align:center; color:#fff; margin-bottom:10px; }
-  .subtitle { text-align:center; color:#888; margin-bottom:40px; }
-  .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:20px; max-width:1200px; margin:0 auto; }
-  .card { background:#111; border:1px solid #333; padding:15px; text-align:center; transition:0.3s; }
-  .card:hover { border-color:#0ff; box-shadow:0 0 15px #0ff; }
-  .card a { color:#0ff; text-decoration:none; font-size:1.1em; }
-  .card p { color:#777; font-size:0.85em; margin-top:8px; }
-  footer { text-align:center; margin-top:60px; color:#444; font-size:0.9em; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markus Isaksson - Portfolio Landing Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #0b6623; /* freeCodeCamp green */
+        }
+        h2 {
+            color: #006400;
+            border-bottom: 2px solid #0b6623;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: #e9f7ef;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 5px solid #0b6623;
+        }
+        .note {
+            font-style: italic;
+            background: #fffbe6;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        a {
+            color: #0b6623;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
-<h1>Micro-Artworks</h1>
-<p class="subtitle">12 single-file experiments born from local AI<br>Ollama + Grok 4.1 – November–December 2025</p>
+    <div class="container">
+        <header>
+            <h1>Markus Isaksson</h1>
+            <p>Self-taught Full-Stack Developer</p>
+            <p><a href="https://www.linkedin.com/in/markus-isaksson-08273a127/" target="_blank">LinkedIn Profile</a></p>
+        </header>
 
-<div class="grid">
-  <div class="card"><a href="gravity-ghosts/">Gravity Ghosts</a><p>Temporal Resonance</p></div>
-  <div class="card"><a href="scar-particles/">Scar Particles</a><p>Memories as permanent scars</p></div>
-  <div class="card"><a href="echo-bloom/">Echo Bloom</a><p>Golden flower & fractal echoes</p></div>
-  <div class="card"><a href="whispering-constellations/">Whispering Constellations</a><p>Stars that remember</p></div>
-  <div class="card"><a href="nebula-weaver/">Nebula Weaver</a><p>Click to weave the cosmos</p></div>
-  <div class="card"><a href="breath-canvas/">Breath Canvas</a><p>Glow when still, scatter when you move</p></div>
-  <div class="card"><a href="memory-mirror/">Memory Mirror</a><p>Stare too long and it remembers</p></div>
-  <div class="card"><a href="fractal-heartbeat/">Fractal Heartbeat</a><p>Beats to your keystrokes</p></div>
-  <div class="card"><a href="the-last-raindrop/">The Last Raindrop</a><p>A watercolor city from one falling drop</p></div>
-  <div class="card"><a href="forgotten-clock/">Forgotten Clock</a><p>Time flows backward</p></div>
-  <div class="card"><a href="one-million-years/">One Million Years</a><p>One pixel, every RGB color</p></div>
-  <div class="card"><a href="the-unfinished-poem/">The Unfinished Poem</a><p>Types itself, guided by your keys</p></div>
-</div>
+        <section>
+            <h2>freeCodeCamp Certifications & Achievements</h2>
+            <p>I have dedicated extensive time to freeCodeCamp's curriculum, earning multiple certifications across both the legacy and new formats.</p>
 
-<footer>
-  100% local · No dependencies · Just open & play<br>
-  Created with Ollama + llama3.2 + Grok 4.1
-</footer>
+            <h3>Legacy Certifications (each approximating 300 hours of coursework)</h3>
+            <ul>
+                <li><a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/responsive-web-design" target="_blank">Responsive Web Design</a></li>
+                <li><a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/javascript-algorithms-and-data-structures" target="_blank">JavaScript Algorithms and Data Structures</a> (original legacy version)</li>
+                <li><a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/front-end-development-libraries" target="_blank">Front End Development Libraries</a></li>
+                <li><a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/data-visualization" target="_blank">Data Visualization</a></li>
+                <li><a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/relational-database-v8" target="_blank">Relational Database (v8)</a></li>
+                <li><a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/back-end-development-and-apis" target="_blank">Back End Development and APIs</a></li>
+                <li><a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/information-security-and-quality-assurance" target="_blank">Information Security and Quality Assurance</a> (legacy version)</li>
+                <li><a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/scientific-computing-with-python-v7" target="_blank">Scientific Computing with Python</a></li>
+                <li><a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/data-analysis-with-python-v7" target="_blank">Data Analysis with Python</a></li>
+                <li><a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/information-security-v7" target="_blank">Information Security</a></li>
+                <li><a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/machine-learning-with-python-v7" target="_blank">Machine Learning with Python</a></li>
+                <li><a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/college-algebra-with-python-v8" target="_blank">College Algebra with Python</a></li>
+            </ul>
+
+            <h3>New Curriculum Certifications</h3>
+            <ul>
+                <li><a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/full-stack" target="_blank">Certified Full Stack Developer (Beta)</a> – Completed all currently available sections</li>
+                <li><a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/a2-english-for-developers" target="_blank">A2 English for Developers (Beta)</a></li>
+                <li>B1 English for Developers (Beta) – Completed all curriculum and passed the exam (certificate pending full release)</li>
+            </ul>
+
+            <h3>Additional Certification</h3>
+            <ul>
+                <li><a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/foundational-c-sharp-with-Microsoft" target="_blank">Foundational C# with Microsoft</a></li>
+            </ul>
+
+            <div class="note">
+                <strong>Summary of Effort:</strong> The 12 legacy certifications above each represent approximately 300 hours of coursework, for a conservative total of <strong>3,600+ hours</strong> of dedicated learning. Additional progress in the new Certified Full Stack Developer curriculum (estimated at 1,800 hours total when complete) and English certifications adds substantial further depth without double-counting overlapping content. These are official freeCodeCamp estimates; actual time varies by individual, and my prior aptitude allowed efficient progress while ensuring deep understanding.
+            </div>
+
+            <div class="note">
+                <strong>Curriculum Transition Note (as of December 29, 2025):</strong> freeCodeCamp is transitioning to a new curriculum with checkpoint certifications, each ~300 hours, culminating in the Full Stack capstone. I have completed all currently available steps in the new format except final exams for the updated certificates (where legacy versions overlap). I am actively preparing for those exams.
+            </div>
+        </section>
+
+        <footer>
+            <p>Portfolio hosted on GitHub Pages | Last updated: December 2025</p>
+            <p>All certifications are publicly verifiable via the links above or on my <a href="https://www.linkedin.com/in/markus-isaksson-08273a127/" target="_blank">LinkedIn profile</a>.</p>
+        </footer>
+    </div>
 </body>
 </html>
