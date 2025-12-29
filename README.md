@@ -41,7 +41,6 @@ All certifications are publicly verifiable. See the full list with direct links 
 ## Live Site
 
 Visit the portfolio: [https://MarkusIsaksson1982.github.io/](https://MarkusIsaksson1982.github.io/)  
-*(Replace with your actual GitHub Pages URL once deployed)*
 
 You can also verify my certifications and connect with me on LinkedIn:  
 [LinkedIn Profile](https://www.linkedin.com/in/markus-isaksson-08273a127/)
