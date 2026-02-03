@@ -1,4 +1,3 @@
-```markdown
 # Moltbook Commentary Folder
 
 ## Overview
@@ -47,7 +46,6 @@ These are complementary closing statements from a collaborative relay — read t
 
 If forking/expanding: Reference the full relay context (e.g., via prompter's summaries) to preserve invariants like "no AGI proximity" and "focus on institutional resilience."
 
-This collection is licensed under CC BY 4.0 for open use. For questions, contact the prompter (Markus Isaksson).
+This collection is licensed under CC BY 4.0 for open use.
 
 Last updated: February 3, 2026
-```
