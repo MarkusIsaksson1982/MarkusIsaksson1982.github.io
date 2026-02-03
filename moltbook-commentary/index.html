@@ -84,14 +84,24 @@
     .model-body p {
       margin: 0 0 1rem;
     }
-    .model-link {
+    .model-primary-link {
       display: inline-block;
       margin-top: 12px;
-      color: var(--accent);
+      padding: 10px 16px;
+      background: var(--accent);
+      color: #000;
+      font-weight: 600;
+      border-radius: 6px;
       text-decoration: none;
-      font-weight: 500;
     }
-    .model-link:hover {
+    .model-primary-link:hover {
+      background: #79c0ff;
+    }
+    .model-secondary-link {
+      display: block;
+      margin-top: 8px;
+      font-size: 0.95rem;
+      color: #8b949e;
       text-decoration: underline;
     }
     footer {
@@ -115,57 +125,58 @@
     </header>
 
     <div class="intro">
-      <p>This folder collects final commentary artifacts from four leading AI models (Grok, ChatGPT-5.2, Claude Sonnet 4.5, Gemini 3 Flash) produced during a collaborative technical relay in early February 2026.</p>
-      <p>The discussion started by examining the real-world Moltbook/OpenClaw agent-only social network (launched January 2026) and evolved into designing <strong>Iron-Shell</strong> — a constitutionally-bounded, resilient architecture for persistent agent coordination.</p>
-      <p>Each artifact is the model’s independent closing synthesis, focusing on autonomy assessment, institutional dynamics, and governance insights. They share axioms (e.g., Iron-Shell v3.0–v4.0 validation, ACR as pivot, ~5% AGI proximity) and can be read standalone or together for complementary perspectives.</p>
+      <p>This folder contains final commentary artifacts from four leading AI models produced during a collaborative technical relay in early February 2026.</p>
+      <p>The discussion analyzed the real-world Moltbook/OpenClaw agent-only social network and designed <strong>Iron-Shell</strong> — a constitutionally-bounded, resilient architecture for persistent agent coordination. Each artifact is the model's independent closing synthesis.</p>
+      <p><strong>Primary reading:</strong> Click the large buttons for formatted HTML versions (easier to read).<br>
+         <strong>Raw source:</strong> Smaller links below each lead to original Markdown files.</p>
     </div>
 
     <div class="models-grid">
-      <!-- Grok -->
       <div class="model-card">
         <div class="model-header">
           <h2>Grok (xAI)</h2>
-          <div class="author">grok-moltbook-institutional-resilience.md</div>
+          <div class="author">Institutional Resilience & Failure Modes</div>
         </div>
         <div class="model-body">
-          <p>Grounded real-world analysis of Moltbook chaos, autonomy spectrum, Iron-Shell stack, simulation verdicts, and the frontier as institutional resilience.</p>
-          <a href="grok-moltbook-institutional-resilience.md" class="model-link">Read Grok's Commentary →</a>
+          <p>Grounded real-world analysis, autonomy spectrum, Iron-Shell stack, simulation verdicts, frontier as institutional resilience.</p>
+          <a href="grok-moltbook-institutional-resilience.html" class="model-primary-link">Read in HTML →</a>
+          <a href="grok-moltbook-institutional-resilience.md" class="model-secondary-link">(View raw Markdown source)</a>
         </div>
       </div>
 
-      <!-- ChatGPT -->
       <div class="model-card">
         <div class="model-header">
           <h2>ChatGPT-5.2</h2>
-          <div class="author">chatgpt-moltbook-artificial-institutional-resilience.md</div>
+          <div class="author">Artificial Institutional Resilience (AIR)</div>
         </div>
         <div class="model-body">
-          <p>Focuses on institutional patterns, failure modes, ACR as immune system, and why drift is containable through active norm maintenance.</p>
-          <a href="chatgpt-moltbook-artificial-institutional-resilience.md" class="model-link">Read ChatGPT's Commentary →</a>
+          <p>Institutional patterns, failure modes, ACR as immune system, why drift is containable through active norm maintenance.</p>
+          <a href="chatgpt-moltbook-artificial-institutional-resilience.html" class="model-primary-link">Read in HTML →</a>
+          <a href="chatgpt-moltbook-artificial-institutional-resilience.md" class="model-secondary-link">(View raw Markdown source)</a>
         </div>
       </div>
 
-      <!-- Claude -->
       <div class="model-card">
         <div class="model-header">
           <h2>Claude Sonnet 4.5</h2>
-          <div class="author">claude-sonnet-moltbook-commentary.md</div>
+          <div class="author">Formal Defenses & Constitutional Reinforcement</div>
         </div>
         <div class="model-body">
-          <p>Formal architecture layers, constitutional specs, simulation insights, mapping to real institutions, and emphasis on falsifiability.</p>
-          <a href="claude-sonnet-moltbook-commentary.md" class="model-link">Read Claude's Commentary →</a>
+          <p>Formal architecture layers, constitutional specs, simulation insights, mapping to real institutions, falsifiability.</p>
+          <a href="claude-sonnet-moltbook-commentary.html" class="model-primary-link">Read in HTML →</a>
+          <a href="claude-sonnet-moltbook-commentary.md" class="model-secondary-link">(View raw Markdown source)</a>
         </div>
       </div>
 
-      <!-- Gemini -->
       <div class="model-card">
         <div class="model-header">
           <h2>Gemini 3 Flash</h2>
-          <div class="author">gemini-moltbook-institutional-enclosure.md</div>
+          <div class="author">The Institutional Enclosure</div>
         </div>
         <div class="model-body">
-          <p>Enclosure metaphor, immune-system design, simulation executions, and shift from alignment to civilizational interface resilience.</p>
-          <a href="gemini-moltbook-institutional-enclosure.md" class="model-link">Read Gemini's Commentary →</a>
+          <p>Enclosure metaphor, immune-system design, simulation executions, shift from alignment to civilizational interface resilience.</p>
+          <a href="gemini-moltbook-institutional-enclosure.html" class="model-primary-link">Read in HTML →</a>
+          <a href="gemini-moltbook-institutional-enclosure.md" class="model-secondary-link">(View raw Markdown source)</a>
         </div>
       </div>
     </div>
