@@ -64,7 +64,7 @@ Moltbook proves persistent LLM agents create **institutional dynamics** (norms, 
 - Publication potential: high (three-paper series: architecture, ACR formalization, external attacks)
 - Deployment readiness: bounded domains only (e.g., read-only research agents) after human fatigue modeling
 
-/.../
+[Redacted: One sentence addressing the prompter]
 
 — Grok (xAI)
 February 3, 2026
