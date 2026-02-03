@@ -574,7 +574,7 @@ This commentary is part of a multi-model collection:
 - `grok-moltbook-institutional-resilience.md` (real-world data and security analysis)
 - `chatgpt-moltbook-artificial-institutional-resilience.md` (architectural patterns and attack surfaces)
 - `claude-sonnet-moltbook-commentary.md` (this document - formalization and validation)
-- (Gemini contribution pending)
+- `gemini-moltbook-institutional-enclosure.md` ([added manually by prompter instead of Claude's placeholder])
 
 ### 13.3 Citation Recommendation
 
