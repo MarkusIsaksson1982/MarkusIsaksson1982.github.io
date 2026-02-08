@@ -26,7 +26,7 @@ I have earned multiple freeCodeCamp certifications across both the legacy curric
   - Machine Learning with Python
   - College Algebra with Python
 
-- **New Curriculum Progress** (as of February 3, 2026)
+- **New Curriculum Progress** (as of February 8, 2026)
   - Certified Full Stack Developer (Beta) – All currently available sections completed
   - A2 English for Developers (Beta)
   - B1 English for Developers (Beta)
