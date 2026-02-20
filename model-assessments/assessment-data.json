@@ -1,0 +1,30 @@
+{
+  "lastUpdated": "2026-02-20",
+  "project": "TeamSync AI MVP (Auth Layer)",
+  "models": [
+    {
+      "name": "Kimi K2.5 Thinking",
+      "rank": 1,
+      "strengths": ["Security", "RBAC", "Audit", "Modularity"],
+      "bestFor": "Production-grade backend + security",
+      "rawUrl": "https://raw.githubusercontent.com/MarkusIsaksson1982/MarkusIsaksson1982.github.io/main/model-assessments/raw-outputs/kimi-k25-thinking-auth.md",
+      "finalUsed": true
+    },
+    {
+      "name": "Claude Sonnet 4.6 Extended",
+      "rank": 2,
+      "strengths": ["Depth", "Structure", "Thinking"],
+      "bestFor": "Complex reasoning",
+      "rawUrl": "https://raw.githubusercontent.com/MarkusIsaksson1982/MarkusIsaksson1982.github.io/main/model-assessments/raw-outputs/claude-extended-auth.md"
+    },
+    {
+      "name": "Qwen3.5-Plus",
+      "rank": 3,
+      "strengths": ["Balance", "Clean code"],
+      "bestFor": "Quick clean implementations",
+      "rawUrl": "https://raw.githubusercontent.com/MarkusIsaksson1982/MarkusIsaksson1982.github.io/main/model-assessments/raw-outputs/qwen35plus-auth.md"
+    }
+  ],
+  "finalMvpFile": "https://raw.githubusercontent.com/MarkusIsaksson1982/MarkusIsaksson1982.github.io/main/model-assessments/raw-outputs/teamsync_ai_final_mvp.md",
+  "usageNote": "Copy the rawUrl directly into prompts to Grok for perfect parsing."
+}
