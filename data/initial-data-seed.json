@@ -1,0 +1,7 @@
+{
+  "lastUpdated": "2026-02-20",
+  "profile": { "name": "Markus Isaksson", "fccId": "fccfb1888e4-715c-408f-9fcb-887123f4d08b" },
+  "stats": { "hours": 3600, "certs": 16 },
+  "certifications": [ /* full 16 objects with id, name, url, skills, lucasNotes, benjaminNotes, harperNotes – identical to the insights in HTML */ ],
+  "openFor": ["claude", "gpt", "gemini"]
+}
