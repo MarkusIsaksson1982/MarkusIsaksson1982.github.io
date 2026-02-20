@@ -1,0 +1,71 @@
+{
+  "lastUpdated": "2026-02-20",
+  "project": "TeamSync AI MVP (Auth Layer)",
+  "assessmentModel": "Claude Sonnet 4.6",
+  "task": "JWT + Redis session service (services/auth.py + services/deps.py)",
+  "rubric": ["instruction_adherence","security_correctness","code_structure","fastapi_integration","redis_usage","error_handling","modality_fit","reasoning_transparency"],
+  "models": [
+    {
+      "name": "Codex",
+      "interface": "CLI (OpenAI Codex)",
+      "rank": 1,
+      "score": 35,
+      "maxScore": 40,
+      "strengths": ["Runnable end-to-end","Correct blacklist TTL from exp claim","WatchError retry loop for atomicity","Clean deps layer","Edge-case handling (missing jti fallback)"],
+      "weaknesses": ["Approximate all_sessions blacklist TTL","Fewer explanatory comments"],
+      "bestFor": "Production-grade auth service — most correct and complete",
+      "rawFile": "app/services/auth_codex.py"
+    },
+    {
+      "name": "MiniMax",
+      "interface": "CLI (OpenCode)",
+      "rank": 2,
+      "score": 33,
+      "maxScore": 40,
+      "strengths": ["Roles embedded in token","Lua atomic session management","Cleanest deps file","Concise and readable"],
+      "weaknesses": ["Fixed TTL for all_sessions blacklist","TTL floor padding (max 60s)"],
+      "bestFor": "Clean implementation — good balance of correctness and readability",
+      "rawFile": "app/services/auth_minimax.py"
+    },
+    {
+      "name": "Qwen3.5-Plus",
+      "interface": "Web",
+      "rank": 4,
+      "score": 23,
+      "maxScore": 40,
+      "note": "Scored over 7 dimensions due to missing deps file (consolidation error)",
+      "strengths": ["Best documentation and reasoning transparency","Excellent code organisation","Lua Lua script with production notes","Best for team handoff"],
+      "weaknesses": ["Same TTL flaws as MiniMax"],
+      "bestFor": "Well-documented auth logic — ideal when code will be reviewed or maintained by others",
+      "rawFile": "app/services/auth_qwen.py"
+    },
+    {
+      "name": "Kimi K2.5 Thinking",
+      "interface": "Web",
+      "rank": 3,
+      "score": 32,
+      "maxScore": 40,
+      "strengths": ["Good security instinct (fail-closed on JWTError)","Best get_current_user docstring","Lua concept sound"],
+      "weaknesses": ["create_session missing async — won't run","Wrong pwdlib API","Redis list instead of sorted set","Cluster-incompatible Lua key design","Wrong import paths in deps"],
+      "bestFor": "Review and reference — good ideas but not directly runnable",
+      "rawFile": "app/services/auth_kimi.py"
+    },
+    {
+      "name": "Trinity Large Preview",
+      "interface": "CLI (OpenCode)",
+      "rank": 5,
+      "score": 20,
+      "maxScore": 40,
+      "strengths": ["Class-based architecture has testing benefits","Argon2 cost parameters show tuning awareness"],
+      "weaknesses": ["Wrong pwdlib import (won't import)","Wrong JWT library (PyJWT not jose)","logout all_sessions doesn't blacklist access tokens","Non-atomic session eviction","Unusable deps file"],
+      "bestFor": "Architectural discussion and exploration only — not production-ready",
+      "rawFile": "app/services/auth_trinity.py"
+    }
+  ],
+  "sharedFlaws": {
+    "allSessionsBlacklistTTL": ["MiniMax","Qwen","Trinity"],
+    "ttlFloorPadding": ["MiniMax","Qwen"],
+    "missingAsyncKeyword": ["Kimi"],
+    "wrongLibraryImport": ["Trinity","Kimi"]
+  }
+}
