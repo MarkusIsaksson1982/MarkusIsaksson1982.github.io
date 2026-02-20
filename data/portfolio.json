@@ -1,0 +1,226 @@
+{
+  "lastUpdated": "2026-02-20",
+  "version": "1.0",
+  "profile": {
+    "name": "Markus Isaksson",
+    "title": "Self-Taught Full-Stack Developer",
+    "fccId": "fccfb1888e4-715c-408f-9fcb-887123f4d08b",
+    "fccProfileUrl": "https://www.freecodecamp.org/fccfb1888e4-715c-408f-9fcb-887123f4d08b",
+    "linkedinUrl": "https://www.linkedin.com/in/markus-isaksson-08273a127/",
+    "githubUrl": "https://github.com/MarkusIsaksson1982",
+    "portfolioUrl": "https://MarkusIsaksson1982.github.io/",
+    "githubRepo": "https://github.com/MarkusIsaksson1982/MarkusIsaksson1982.github.io"
+  },
+  "stats": {
+    "totalHoursConservative": 3600,
+    "certificationsEarned": 16,
+    "legacyHours": 3600,
+    "newCurriculumProgressHours": 1800,
+    "endToEndCapability": "Full Stack"
+  },
+  "certifications": [
+    {
+      "slug": "responsive-web-design",
+      "name": "Responsive Web Design",
+      "category": "legacy",
+      "approxHours": 300,
+      "url": "https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/responsive-web-design",
+      "icon": "🌐",
+      "skills": ["HTML", "CSS", "Flexbox", "CSS Grid", "Media Queries"],
+      "lucasNotes": "The creative foundation for beautiful, adaptive user interfaces — this very portfolio is a living example.",
+      "benjaminNotes": "Mastery of layout algorithms, constraint-based systems, and responsive design principles.",
+      "harperNotes": "Publicly verifiable starting point of structured web development journey (link active Feb 2026)."
+    },
+    {
+      "slug": "javascript-algorithms-and-data-structures",
+      "name": "JavaScript Algorithms and Data Structures",
+      "category": "legacy",
+      "approxHours": 300,
+      "url": "https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/javascript-algorithms-and-data-structures",
+      "icon": "⚡",
+      "skills": ["JavaScript", "ES6+", "Algorithms", "Data Structures", "Recursion"],
+      "lucasNotes": "Powers dynamic, engaging, and interactive web experiences.",
+      "benjaminNotes": "Core CS foundations: Big-O, recursion, sorting, searching, trees, graphs.",
+      "harperNotes": "Verifiable algorithmic thinking and data organization mastery."
+    },
+    {
+      "slug": "front-end-development-libraries",
+      "name": "Front End Development Libraries",
+      "category": "legacy",
+      "approxHours": 300,
+      "url": "https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/front-end-development-libraries",
+      "icon": "⚛️",
+      "skills": ["React", "Redux", "Bootstrap", "jQuery", "SASS"],
+      "lucasNotes": "Enables modern, component-based, visually rich front-end applications.",
+      "benjaminNotes": "State management, component architecture, and declarative UI patterns.",
+      "harperNotes": "Official certification of production-ready frontend tooling proficiency."
+    },
+    {
+      "slug": "data-visualization",
+      "name": "Data Visualization",
+      "category": "legacy",
+      "approxHours": 300,
+      "url": "https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/data-visualization",
+      "icon": "📊",
+      "skills": ["D3.js", "JSON APIs", "SVG", "Data-Driven Documents"],
+      "lucasNotes": "Transforms raw numbers into compelling visual narratives.",
+      "benjaminNotes": "Data-binding, scales, and rendering pipelines.",
+      "harperNotes": "Verifiable skills in turning data into insight."
+    },
+    {
+      "slug": "relational-database-v8",
+      "name": "Relational Database",
+      "category": "legacy",
+      "approxHours": 300,
+      "url": "https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/relational-database-v8",
+      "icon": "🗄️",
+      "skills": ["PostgreSQL", "SQL", "Bash", "Git", "Relational Design"],
+      "lucasNotes": "Beautifully structured data behind every great application.",
+      "benjaminNotes": "Normalization, joins, transactions, ACID principles.",
+      "harperNotes": "Public proof of backend data architecture competence."
+    },
+    {
+      "slug": "back-end-development-and-apis",
+      "name": "Back End Development and APIs",
+      "category": "legacy",
+      "approxHours": 300,
+      "url": "https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/back-end-development-and-apis",
+      "icon": "🔧",
+      "skills": ["Node.js", "Express", "MongoDB", "REST APIs", "Mongoose"],
+      "lucasNotes": "The invisible magic that makes apps actually work.",
+      "benjaminNotes": "Server architecture, routing, middleware, authentication patterns.",
+      "harperNotes": "Verifiable full-stack backend mastery."
+    },
+    {
+      "slug": "information-security-and-quality-assurance",
+      "name": "Information Security and Quality Assurance",
+      "category": "legacy",
+      "approxHours": 300,
+      "url": "https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/information-security-and-quality-assurance",
+      "icon": "🔒",
+      "skills": ["HelmetJS", "Chai", "Mocha", "Passport.js"],
+      "lucasNotes": "Security and testing make great experiences trustworthy.",
+      "benjaminNotes": "Testing frameworks, security headers, authentication flows.",
+      "harperNotes": "Publicly documented quality and security practices."
+    },
+    {
+      "slug": "scientific-computing-with-python-v7",
+      "name": "Scientific Computing with Python",
+      "category": "legacy",
+      "approxHours": 300,
+      "url": "https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/scientific-computing-with-python-v7",
+      "icon": "🐍",
+      "skills": ["Python", "Algorithms", "OOP", "File I/O"],
+      "lucasNotes": "Python as a creative tool for problem solving.",
+      "benjaminNotes": "Algorithmic thinking and software engineering principles.",
+      "harperNotes": "Verifiable Python foundation."
+    },
+    {
+      "slug": "data-analysis-with-python-v7",
+      "name": "Data Analysis with Python",
+      "category": "legacy",
+      "approxHours": 300,
+      "url": "https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/data-analysis-with-python-v7",
+      "icon": "📈",
+      "skills": ["NumPy", "Pandas", "Matplotlib", "Seaborn"],
+      "lucasNotes": "Turning data into stories anyone can understand.",
+      "benjaminNotes": "Vectorized operations, data frames, statistical analysis.",
+      "harperNotes": "Official certification of data analysis proficiency."
+    },
+    {
+      "slug": "information-security-v7",
+      "name": "Information Security",
+      "category": "legacy",
+      "approxHours": 300,
+      "url": "https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/information-security-v7",
+      "icon": "🛡️",
+      "skills": ["Python Pen-Testing", "TCP/IP", "Cryptography", "Network Security"],
+      "lucasNotes": "Protecting the digital world with elegance.",
+      "benjaminNotes": "Low-level networking, encryption algorithms, ethical hacking.",
+      "harperNotes": "Public verification of security knowledge."
+    },
+    {
+      "slug": "machine-learning-with-python-v7",
+      "name": "Machine Learning with Python",
+      "category": "legacy",
+      "approxHours": 300,
+      "url": "https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/machine-learning-with-python-v7",
+      "icon": "🤖",
+      "skills": ["TensorFlow", "Neural Networks", "Scikit-learn", "Keras"],
+      "lucasNotes": "The future of intelligent, adaptive user experiences.",
+      "benjaminNotes": "Supervised/unsupervised learning, backpropagation, model evaluation.",
+      "harperNotes": "Verifiable ML engineering foundation."
+    },
+    {
+      "slug": "college-algebra-with-python-v8",
+      "name": "College Algebra with Python",
+      "category": "legacy",
+      "approxHours": 300,
+      "url": "https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/college-algebra-with-python-v8",
+      "icon": "🧮",
+      "skills": ["Linear Algebra", "Functions", "Matrices", "Applied Math"],
+      "lucasNotes": "Math made beautiful through code.",
+      "benjaminNotes": "Symbolic and numerical computation, proof-based thinking.",
+      "harperNotes": "Public proof of advanced mathematical competence."
+    },
+    {
+      "slug": "full-stack",
+      "name": "Certified Full Stack Developer (Beta)",
+      "category": "new",
+      "approxHours": 1800,
+      "url": "https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/full-stack",
+      "icon": "FS",
+      "skills": ["Modern Full Stack", "All available sections completed"],
+      "lucasNotes": "Culmination of creative, end-to-end digital craftsmanship.",
+      "benjaminNotes": "Complete architectural mastery across layers.",
+      "harperNotes": "Beta capstone — all currently available checkpoints passed."
+    },
+    {
+      "slug": "a2-english-for-developers",
+      "name": "A2 English for Developers (Beta)",
+      "category": "new",
+      "approxHours": 100,
+      "url": "https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/a2-english-for-developers",
+      "icon": "🅰️",
+      "skills": ["Technical English A2"],
+      "lucasNotes": "Clear communication of creative ideas.",
+      "benjaminNotes": "Precise technical documentation skills.",
+      "harperNotes": "Verifiable English proficiency for developers."
+    },
+    {
+      "slug": "b1-english-for-developers",
+      "name": "B1 English for Developers (Beta)",
+      "category": "new",
+      "approxHours": 150,
+      "url": "https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/b1-english-for-developers",
+      "icon": "🅱️",
+      "skills": ["Technical English B1"],
+      "lucasNotes": "Confident storytelling in tech contexts.",
+      "benjaminNotes": "Advanced technical discussion and writing.",
+      "harperNotes": "Public B1 certification."
+    },
+    {
+      "slug": "foundational-c-sharp-with-microsoft",
+      "name": "Foundational C# with Microsoft",
+      "category": "additional",
+      "approxHours": 50,
+      "url": "https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/foundational-c-sharp-with-microsoft",
+      "icon": "🟣",
+      "skills": ["C#", ".NET Basics", "Object-Oriented Programming"],
+      "lucasNotes": "Expanding creative toolkit across languages.",
+      "benjaminNotes": "Strongly-typed, enterprise-grade language fundamentals.",
+      "harperNotes": "Official Microsoft + freeCodeCamp certification."
+    }
+  ],
+  "openForAI": ["claude", "gpt", "gemini", "grok"],
+  "aiMetadata": {
+    "semanticHTML": true,
+    "structuredData": true,
+    "perspectiveSupport": ["lucas", "benjamin", "harper"],
+    "directLinkFormat": "https://MarkusIsaksson1982.github.io/?view={perspective}#certifications"
+  },
+  "notes": {
+    "effortSummary": "3,600+ conservative hours from legacy certifications alone + substantial new curriculum progress. All links active and publicly verifiable as of February 2026.",
+    "curriculumNote": "freeCodeCamp transition ongoing — all available new curriculum sections completed."
+  }
+}
