@@ -1,55 +1,16 @@
-# Markus Isaksson - Portfolio
+# Markus Isaksson - Portfolio (Multi-Perspective Edition)
 
-Welcome to my personal portfolio landing page, hosted via GitHub Pages.
+**New:** Choose your perspective at the top of the live site.
 
-This repository contains a simple, self-contained `index.html` showcasing my journey as a self-taught full-stack developer, with a strong focus on my extensive progress through the [freeCodeCamp](https://www.freecodecamp.org/) curriculum.
+- **For Recruiters/HR** (default) – clean, scannable, achievement-focused.
+- **For Design & Creative Reviewers** (Lucas specialization) – storytelling, visual emphasis, idea sparks, front-end showcase.
+- **For Technical/Engineering Reviewers** (Benjamin specialization) – logic, data structures, skill matrices, machine-readable sections.
+- **For Research & Verification Specialists** (Harper specialization) – evidence, timelines, public links, fact-verification depth.
 
-## About Me
+Direct deep links work: `https://MarkusIsaksson1982.github.io/?view=benjamin#certifications`
 
-I'm a dedicated self-taught developer with a passion for clean code, problem-solving, and continuous learning. I have invested thousands of hours into structured coursework, primarily through freeCodeCamp's comprehensive and respected programs.
+All data is centralized and open (JSON + semantic HTML) so Claude Opus, GPT-5, Gemini, or any future Grok view can parse it directly.
 
-## Certifications & Achievements
+Live site: https://MarkusIsaksson1982.github.io/
 
-I have earned multiple freeCodeCamp certifications across both the legacy curriculum and the new beta curriculum:
-
-- **12 Legacy Certifications** (each approximating 300 hours of coursework)
-  - Responsive Web Design
-  - JavaScript Algorithms and Data Structures
-  - Front End Development Libraries
-  - Data Visualization
-  - Relational Database
-  - Back End Development and APIs
-  - Information Security and Quality Assurance
-  - Scientific Computing with Python
-  - Data Analysis with Python
-  - Information Security
-  - Machine Learning with Python
-  - College Algebra with Python
-
-- **New Curriculum Progress** (as of February 8, 2026)
-  - Certified Full Stack Developer (Beta) – All currently available sections completed
-  - A2 English for Developers (Beta)
-  - B1 English for Developers (Beta)
-
-- **Additional Certification**
-  - Foundational C# with Microsoft
-
-All certifications are publicly verifiable. See the full list with direct links on the [https://MarkusIsaksson1982.github.io/](https://MarkusIsaksson1982.github.io/).
-
-**Conservative learning effort**: 3,600+ hours from legacy certifications alone, plus significant additional progress in the evolving new curriculum.
-
-## Live Site
-
-Visit the portfolio: [https://MarkusIsaksson1982.github.io/](https://MarkusIsaksson1982.github.io/)  
-
-You can also verify my certifications and connect with me on LinkedIn:  
-[LinkedIn Profile](https://www.linkedin.com/in/markus-isaksson-08273a127/)
-
-## Repository Contents
-
-- `index.html` – Main landing page
-- `README.md` – This file
-
----
-
-Thank you for visiting!
+Repository now demonstrates full-stack thinking: structured data, multiple stakeholder views, future-proof for AI ingestion.
