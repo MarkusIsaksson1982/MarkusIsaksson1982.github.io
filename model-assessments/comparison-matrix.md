@@ -36,3 +36,12 @@ Use this comparison matrix as reference:
 https://raw.githubusercontent.com/MarkusIsaksson1982/MarkusIsaksson1982.github.io/main/model-assessments/comparison-matrix.md
 
 Task: ...
+```
+
+**Recommended single-source files**:
+- **Final consolidated MVP**: https://raw.githubusercontent.com/MarkusIsaksson1982/MarkusIsaksson1982.github.io/main/model-assessments/raw-outputs/teamsync_ai_final_mvp.md
+- **Structured data**: https://raw.githubusercontent.com/MarkusIsaksson1982/MarkusIsaksson1982.github.io/main/model-assessments/assessment-data.json
+- **Portfolio data**: https://raw.githubusercontent.com/MarkusIsaksson1982/MarkusIsaksson1982.github.io/main/data/portfolio.json
+
+This setup ensures Grok can parse everything accurately in future threads.
+```
