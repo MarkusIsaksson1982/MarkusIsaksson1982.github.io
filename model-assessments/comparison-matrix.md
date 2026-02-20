@@ -44,4 +44,3 @@ Task: ...
 - **Portfolio data**: https://raw.githubusercontent.com/MarkusIsaksson1982/MarkusIsaksson1982.github.io/main/data/portfolio.json
 
 This setup ensures Grok can parse everything accurately in future threads.
-```
