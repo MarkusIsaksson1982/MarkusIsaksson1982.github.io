@@ -212,6 +212,30 @@
       "harperNotes": "Official Microsoft + freeCodeCamp certification."
     }
   ],
+  "microProjects": [
+    {
+      "id": "mp1-fcc-explorer",
+      "title": "FCC Certification Explorer & Tracker",
+      "type": "micro-project",
+      "complexityLevel": 1,
+      "fcccertsCovered": ["Responsive Web Design", "JavaScript Algorithms and Data Structures"],
+      "liveUrl": "https://markusisaksson1982.github.io/micro-projects/mp1-fcc-explorer/",
+      "repoPath": "micro-projects/mp1-fcc-explorer",
+      "description": "Fully interactive showcase of all 16 freeCodeCamp certifications. Advanced filtering, localStorage notes, dark/light/system theme, complete accessibility. Demonstrates clean vanilla architecture and elite AI orchestration workflow.",
+      "highlight": "First live proof of multi-AI orchestration (Claude → Grok) for junior-level production code"
+    },
+    {
+      "id": "mp2-survey-builder",
+      "title": "Dynamic Survey Builder with Live Preview",
+      "type": "micro-project",
+      "complexityLevel": 2,
+      "fcccertsCovered": ["JavaScript Algorithms and Data Structures", "Front End Development Libraries"],
+      "liveUrl": "https://markusisaksson1982.github.io/micro-projects/mp2-survey-builder/",
+      "repoPath": "micro-projects/mp2-survey-builder",
+      "description": "Full-featured survey prototyping tool with real-time two-pane preview, validation engine, named drafts and JSON export. Demonstrates nested state management, selective rendering and pure validation logic in vanilla JS.",
+      "highlight": "Proof of progression: from static explorer (MP1) to interactive stateful application"
+    }
+  ],
   "openForAI": ["claude", "gpt", "gemini", "grok"],
   "aiMetadata": {
     "semanticHTML": true,
