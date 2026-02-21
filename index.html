@@ -338,6 +338,38 @@
     body[data-view="lucas"] .cert-card:hover { border-color:var(--gold); box-shadow:0 12px 32px rgba(184,150,62,.15); }
     body[data-view="lucas"] .cert-icon { background:linear-gradient(135deg,#fffbf0,#fff3d6); border-color:rgba(184,150,62,.3); }
 
+    /* ── PROJECT CARDS ── */
+    .projects-grid { margin-top:1.25rem; }
+    .project-card {
+      background:#fff; border:1.5px solid #dce8e0; border-radius:16px;
+      padding:1.5rem; transition:all .25s ease; position:relative; overflow:hidden;
+    }
+    .project-card::after {
+      content:''; position:absolute; top:0; left:0; right:0; height:3px;
+      background:linear-gradient(90deg, var(--pine), var(--sage));
+    }
+    .project-card:hover { transform:translateY(-4px); box-shadow:0 12px 32px rgba(26,58,42,.12); border-color:var(--sage); }
+    .project-header { display:flex; align-items:center; gap:.6rem; flex-wrap:wrap; margin-bottom:1rem; }
+    .badge {
+      font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+      background:var(--forest); color:var(--gold-light); padding:.3rem .75rem; border-radius:9999px;
+    }
+    .tech-stack {
+      font-size:.72rem; font-weight:600; color:var(--stone);
+      background:var(--cloud); padding:.3rem .75rem; border-radius:9999px; border:1px solid var(--mist);
+    }
+    .project-card h3 { font-size:1rem; font-weight:700; color:var(--forest); margin-bottom:.6rem; line-height:1.3; }
+    .project-card p  { font-size:.85rem; color:var(--stone); line-height:1.65; margin-bottom:1.25rem; }
+    .project-links { display:flex; gap:.6rem; flex-wrap:wrap; }
+    .live-btn, .source-btn {
+      display:inline-flex; align-items:center; padding:.5rem 1.1rem;
+      border-radius:9999px; font-size:.8rem; font-weight:600; text-decoration:none; transition:all .2s;
+    }
+    .live-btn { background:var(--forest); color:#fff; }
+    .live-btn:hover { background:var(--pine); transform:translateY(-1px); }
+    .source-btn { background:#fff; color:var(--forest); border:1.5px solid var(--mist); }
+    .source-btn:hover { border-color:var(--sage); transform:translateY(-1px); }
+
     /* ── NOTES ── */
     .note-block {
       background:var(--cloud); border-radius:12px; padding:1.5rem; margin:.75rem 0;
@@ -843,6 +875,38 @@
       </table>
       <div class="note-block">
         <strong>Machine-readable:</strong> All data is also available as structured JSON at <a href="https://MarkusIsaksson1982.github.io/data/portfolio.json" target="_blank">/data/portfolio.json</a> for programmatic ingestion.
+      </div>
+
+      <!-- Projects Grid -->
+      <h3 class="cert-group-title" style="color:var(--pine); margin-top:3rem;">Live Micro-Projects</h3>
+      <div class="cert-grid projects-grid">
+
+        <article class="project-card micro-project" data-complexity="1">
+          <div class="project-header">
+            <span class="badge">MP1 • Vanilla JS</span>
+            <span class="tech-stack">HTML5 • CSS Grid • Vanilla JS • WCAG AA</span>
+          </div>
+          <h3>FCC Certification Explorer &amp; Tracker</h3>
+          <p>16 real certifications • 3,600+ hours • Real-time filters, persistent personal notes, full accessibility. Zero dependencies. Built with deliberate multi-model AI orchestration (Claude Sonnet 4.6 architecture + Grok orchestration).</p>
+          <div class="project-links">
+            <a href="micro-projects/mp1-fcc-explorer/" target="_blank" class="live-btn">Live Demo ↗</a>
+            <a href="micro-projects/mp1-fcc-explorer/" target="_blank" class="source-btn">Source + AI Log</a>
+          </div>
+        </article>
+
+        <article class="project-card micro-project" data-complexity="2">
+          <div class="project-header">
+            <span class="badge">MP2 • Dynamic JS</span>
+            <span class="tech-stack">Vanilla JS • Reducer • Real-time Sync • Validation</span>
+          </div>
+          <h3>Dynamic Survey Builder with Live Preview</h3>
+          <p>Build, preview, validate and export surveys. Full CRUD on nested state, named drafts, selective DOM reconciliation. Zero dependencies. Builds directly on MP1 skills with algorithmic depth.</p>
+          <div class="project-links">
+            <a href="micro-projects/mp2-survey-builder/" target="_blank" class="live-btn">Live Demo ↗</a>
+            <a href="micro-projects/mp2-survey-builder/" target="_blank" class="source-btn">Source + Full AI Log</a>
+          </div>
+        </article>
+
       </div>
     </div>
   </div>
