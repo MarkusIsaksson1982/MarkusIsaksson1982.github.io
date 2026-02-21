@@ -1,0 +1,12 @@
+.main {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding: var(--sp-8) var(--sp-5);
+}
+
+.resultsMeta {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--sp-5);
+}

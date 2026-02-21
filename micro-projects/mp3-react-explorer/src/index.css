@@ -1,0 +1,143 @@
+/* =====================================================
+   GLOBAL TOKENS — 100% IDENTICAL TO MP1 + MP2
+   All CSS custom properties inherited by CSS Modules
+   via the cascade. Change here → changes everywhere.
+   ===================================================== */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  transition: background var(--t-smooth), color var(--t-smooth);
+}
+
+img, svg { display: block; max-width: 100%; }
+button, input, select, textarea { font: inherit; color: inherit; }
+ul, ol { list-style: none; }
+a { color: var(--color-accent-txt); }
+a:hover { color: var(--color-accent-h); }
+
+/* ── LIGHT THEME (default) — identical to MP1/MP2 ── */
+:root {
+  /* Typography */
+  --font-display: 'DM Serif Display', 'Palatino Linotype', Georgia, serif;
+  --font-body:    'DM Sans', 'Trebuchet MS', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Consolas', monospace;
+
+  /* Fluid type scale */
+  --text-xs:   clamp(0.65rem,  1.4vw, 0.75rem);
+  --text-sm:   clamp(0.8rem,   1.8vw, 0.875rem);
+  --text-base: clamp(0.9rem,   2vw,   1rem);
+  --text-lg:   clamp(1rem,     2.4vw, 1.125rem);
+  --text-xl:   clamp(1.125rem, 2.8vw, 1.375rem);
+  --text-2xl:  clamp(1.375rem, 3.5vw, 1.75rem);
+  --text-3xl:  clamp(1.75rem,  4.5vw, 2.5rem);
+
+  /* 8pt spacing grid */
+  --sp-1: .25rem;  --sp-2: .5rem;   --sp-3: .75rem;
+  --sp-4: 1rem;    --sp-5: 1.25rem; --sp-6: 1.5rem;
+  --sp-8: 2rem;    --sp-10: 2.5rem; --sp-12: 3rem;
+  --sp-16: 4rem;
+
+  /* Radius */
+  --r-sm: .25rem; --r-md: .5rem; --r-lg: .875rem;
+  --r-xl: 1.25rem; --r-full: 9999px;
+
+  /* Transitions */
+  --t-fast:   120ms ease;
+  --t-base:   220ms ease;
+  --t-smooth: 350ms cubic-bezier(.4,0,.2,1);
+  --t-spring: 400ms cubic-bezier(.34,1.56,.64,1);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.08);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.09), 0 1px 4px rgba(0,0,0,.05);
+  --shadow-lg: 0 16px 48px rgba(0,0,0,.12), 0 4px 12px rgba(0,0,0,.06);
+  --shadow-modal: 0 32px 80px rgba(0,0,0,.18), 0 8px 24px rgba(0,0,0,.10);
+
+  /* Light palette */
+  --color-bg:           #f5f4f0;
+  --color-surface:      #ffffff;
+  --color-surface-2:    #faf9f7;
+  --color-border:       #e8e6e0;
+  --color-border-2:     #d0cdc6;
+  --color-text-primary: #181715;
+  --color-text-2:       #524f49;
+  --color-text-muted:   #908c84;
+  --color-text-inv:     #ffffff;
+  --color-accent:       #166534;
+  --color-accent-h:     #14532d;
+  --color-accent-sub:   #dcfce7;
+  --color-accent-txt:   #15803d;
+  --color-overlay:      rgba(15,15,13,.55);
+
+  /* Category colors */
+  --cat-legacy-c:   #92400e; --cat-legacy-bg:  #fffbeb; --cat-legacy-b:   #fde68a;
+  --cat-new-c:      #1e40af; --cat-new-bg:     #eff6ff; --cat-new-b:      #bfdbfe;
+  --cat-add-c:      #6b21a8; --cat-add-bg:     #faf5ff; --cat-add-b:      #e9d5ff;
+
+  /* Layout */
+  --max-w: 1320px;
+  --card-min: 280px;
+}
+
+/* ── DARK THEME — identical to MP1/MP2 ── */
+[data-theme="dark"] {
+  --color-bg:           #0f0f0d;
+  --color-surface:      #1a1a17;
+  --color-surface-2:    #222220;
+  --color-border:       #2c2c28;
+  --color-border-2:     #3a3a35;
+  --color-text-primary: #eeece6;
+  --color-text-2:       #aaa89f;
+  --color-text-muted:   #68655d;
+  --color-text-inv:     #0f0f0d;
+  --color-accent:       #4ade80;
+  --color-accent-h:     #22c55e;
+  --color-accent-sub:   #052e16;
+  --color-accent-txt:   #4ade80;
+  --color-overlay:      rgba(0,0,0,.72);
+  --cat-legacy-c:   #fbbf24; --cat-legacy-bg:  #0f0a00; --cat-legacy-b:   #451a03;
+  --cat-new-c:      #60a5fa; --cat-new-bg:     #0a0f1e; --cat-new-b:      #1e3a5f;
+  --cat-add-c:      #c084fc; --cat-add-bg:     #150a20; --cat-add-b:      #3b1a56;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.4);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.5);
+  --shadow-lg: 0 16px 48px rgba(0,0,0,.6);
+  --shadow-modal: 0 32px 80px rgba(0,0,0,.7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+}
+
+/* ── Global utilities ── */
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+.skip-link {
+  position: fixed; top: var(--sp-3); left: var(--sp-4);
+  background: var(--color-accent); color: var(--color-text-inv);
+  padding: var(--sp-2) var(--sp-5); border-radius: var(--r-md);
+  font-weight: 700; font-size: var(--text-sm); z-index: 9999;
+  text-decoration: none; transform: translateY(-200%);
+  transition: transform var(--t-fast);
+}
+.skip-link:focus { transform: translateY(0); }
+
+:focus-visible {
+  outline: 2.5px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--r-sm);
+}
