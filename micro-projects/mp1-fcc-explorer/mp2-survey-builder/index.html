@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="system">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Build, preview, validate, and export surveys — a dynamic developer tool by Markus Isaksson. MP2 of the portfolio micro-project series." />
+  <meta name="author" content="Markus Isaksson" />
+  <title>Survey Builder — Markus Isaksson · MP2</title>
+  <style>
+    /* =====================================================
+       RESET
+       ===================================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+      transition: background var(--t-smooth), color var(--t-smooth);
+    }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    a { color: var(--color-accent-txt); }
+    ul, ol { list-style: none; }
+    textarea { resize: vertical; }
+
+    /* =====================================================
+       DESIGN TOKENS — 100% IDENTICAL TO MP1
+       Additional MP2 tokens clearly marked
+       ===================================================== */
+    :root {
+      /* Typography — same as MP1 */
+      --font-display: 'DM Serif Display', 'Palatino Linotype', Georgia, serif;
+      --font-body:    'DM Sans', 'Trebuchet MS', system-ui, sans-serif;
+      --font-mono:    'JetBrains Mono', 'Consolas', monospace;
+
+      /* Fluid type — same as MP1 */
+      --text-xs:   clamp(0.65rem,  1.4vw, 0.75rem);
+      --text-sm:   clamp(0.8rem,   1.8vw, 0.875rem);
+      --text-base: clamp(0.9rem,   2vw,   1rem);
+      --text-lg:   clamp(1rem,     2.4vw, 1.125rem);
+      --text-xl:   clamp(1.125rem, 2.8vw, 1.375rem);
+      --text-2xl:  clamp(1.375rem, 3.5vw, 1.75rem);
+      --text-3xl:  clamp(1.75rem,  4.5vw, 2.5rem);
+
+      /* 8pt grid — same as MP1 */
+      --sp-1: .25rem; --sp-2: .5rem; --sp-3: .75rem; --sp-4: 1rem;
+      --sp-5: 1.25rem; --sp-6: 1.5rem; --sp-8: 2rem; --sp-10: 2.5rem;
+      --sp-12: 3rem; --sp-16: 4rem;
+
+      /* Radius — same as MP1 */
+      --r-sm: .25rem; --r-md: .5rem; --r-lg: .875rem; --r-xl: 1.25rem; --r-full: 9999px;
+
+      /* Transitions — same as MP1 */
+      --t-fast: 120ms ease; --t-base: 220ms ease;
+      --t-smooth: 350ms cubic-bezier(.4,0,.2,1);
+      --t-spring: 400ms cubic-bezier(.34,1.56,.64,1);
+
+      /* Shadows — same as MP1 */
+      --shadow-sm: 0 1px 3px rgba(0,0,0,.08);
+      --shadow-md: 0 4px 16px rgba(0,0,0,.09), 0 1px 4px rgba(0,0,0,.05);
+      --shadow-lg: 0 16px 48px rgba(0,0,0,.12), 0 4px 12px rgba(0,0,0,.06);
+
+      /* ── LIGHT THEME — identical to MP1 ── */
+      --color-bg:           #f5f4f0;
+      --color-surface:      #ffffff;
+      --color-surface-2:    #faf9f7;
+      --color-border:       #e8e6e0;
+      --color-border-2:     #d0cdc6;
+      --color-text-primary: #181715;
+      --color-text-2:       #524f49;
+      --color-text-muted:   #908c84;
+      --color-text-inv:     #ffffff;
+      --color-accent:       #166534;
+      --color-accent-h:     #14532d;
+      --color-accent-sub:   #dcfce7;
+      --color-accent-txt:   #15803d;
+      --color-overlay:      rgba(15,15,13,.55);
+
+      /* ── MP2 EXTENSION TOKENS ── */
+      --color-error:        #dc2626;
+      --color-error-sub:    #fef2f2;
+      --color-error-b:      #fecaca;
+      --color-warn:         #92400e;
+      --color-warn-sub:     #fffbeb;
+      --color-warn-b:       #fde68a;
+      --color-info:         #1e40af;
+      --color-info-sub:     #eff6ff;
+
+      /* Question type badge colors */
+      --qt-text-c:   #1e40af; --qt-text-bg:   #eff6ff;
+      --qt-multi-c:  #6b21a8; --qt-multi-bg:  #faf5ff;
+      --qt-rating-c: #92400e; --qt-rating-bg: #fffbeb;
+      --qt-email-c:  #0f766e; --qt-email-bg:  #f0fdfa;
+      --qt-num-c:    #166534; --qt-num-bg:    #f0fdf4;
+
+      /* Layout */
+      --header-h: auto;
+      --max-w: 1400px;
+      --pane-p: var(--sp-6);
+    }
+
+    /* ── DARK THEME — identical to MP1 ── */
+    [data-theme="dark"] {
+      --color-bg:           #0f0f0d;
+      --color-surface:      #1a1a17;
+      --color-surface-2:    #222220;
+      --color-border:       #2c2c28;
+      --color-border-2:     #3a3a35;
+      --color-text-primary: #eeece6;
+      --color-text-2:       #aaa89f;
+      --color-text-muted:   #68655d;
+      --color-text-inv:     #0f0f0d;
+      --color-accent:       #4ade80;
+      --color-accent-h:     #22c55e;
+      --color-accent-sub:   #052e16;
+      --color-accent-txt:   #4ade80;
+      --color-overlay:      rgba(0,0,0,.72);
+      --color-error:        #f87171;
+      --color-error-sub:    #1f0a0a;
+      --color-error-b:      #450a0a;
+      --color-warn:         #fbbf24;
+      --color-warn-sub:     #1a1200;
+      --color-warn-b:       #451a03;
+      --color-info:         #60a5fa;
+      --color-info-sub:     #0a0f1e;
+      --qt-text-c:   #93c5fd; --qt-text-bg:   #0a0f1e;
+      --qt-multi-c:  #c084fc; --qt-multi-bg:  #150a20;
+      --qt-rating-c: #fbbf24; --qt-rating-bg: #0f0a00;
+      --qt-email-c:  #2dd4bf; --qt-email-bg:  #0a1a18;
+      --qt-num-c:    #4ade80; --qt-num-bg:    #052e16;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,.4);
+      --shadow-md: 0 4px 16px rgba(0,0,0,.5);
+      --shadow-lg: 0 16px 48px rgba(0,0,0,.6);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+    }
+
+    /* =====================================================
+       ACCESSIBILITY UTILITIES
+       ===================================================== */
+    .visually-hidden {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+    .skip-link {
+      position: fixed; top: var(--sp-3); left: var(--sp-4);
+      background: var(--color-accent); color: var(--color-text-inv);
+      padding: var(--sp-2) var(--sp-5); border-radius: var(--r-md);
+      font-weight: 700; font-size: var(--text-sm); z-index: 9999;
+      text-decoration: none; transform: translateY(-200%);
+      transition: transform var(--t-fast);
+    }
+    .skip-link:focus { transform: translateY(0); }
+    :focus-visible { outline: 2.5px solid var(--color-accent); outline-offset: 3px; border-radius: var(--r-sm); }
+
+    /* =====================================================
+       LAYOUT SHELL
+       ===================================================== */
+    .page { display: flex; flex-direction: column; min-height: 100vh; }
+
+    /* =====================================================
+       HEADER
+       ===================================================== */
+    .site-header {
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      position: sticky; top: 0; z-index: 200;
+      box-shadow: var(--shadow-sm);
+    }
+    .inner { width: 100%; max-width: var(--max-w); margin-inline: auto; padding-inline: var(--sp-5); }
+    .header-inner { padding-block: var(--sp-4); }
+    .header-top { display: flex; align-items: center; gap: var(--sp-4); flex-wrap: wrap; }
+    .header-title { flex: 1; min-width: 0; }
+    .header-name {
+      font-family: var(--font-display); font-size: var(--text-xl);
+      font-weight: 400; letter-spacing: -.02em; line-height: 1.1;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .header-sub { font-size: var(--text-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: .05em; }
+    .header-actions { display: flex; align-items: center; gap: var(--sp-2); flex-wrap: wrap; }
+
+    /* Draft controls */
+    .draft-controls { display: flex; gap: var(--sp-2); align-items: center; }
+    .draft-select {
+      height: 2.25rem; padding: 0 var(--sp-3);
+      background: var(--color-surface-2); border: 1.5px solid var(--color-border);
+      border-radius: var(--r-lg); font-size: var(--text-sm); cursor: pointer;
+      max-width: 160px;
+    }
+    .draft-select:focus { border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-accent-sub); outline: none; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: var(--sp-2);
+      padding: var(--sp-2) var(--sp-4); border-radius: var(--r-lg);
+      font-size: var(--text-sm); font-weight: 600; cursor: pointer;
+      border: 1.5px solid transparent;
+      transition: all var(--t-fast); text-decoration: none;
+      min-height: 2.25rem; white-space: nowrap;
+    }
+    .btn--primary { background: var(--color-accent); color: var(--color-text-inv); border-color: var(--color-accent); }
+    .btn--primary:hover { background: var(--color-accent-h); border-color: var(--color-accent-h); }
+    [data-theme="dark"] .btn--primary { color: #0f0f0d; }
+    .btn--secondary { background: var(--color-surface-2); border-color: var(--color-border-2); color: var(--color-text-primary); }
+    .btn--secondary:hover { border-color: var(--color-accent-txt); color: var(--color-accent-txt); }
+    .btn--ghost { background: transparent; border-color: var(--color-border); color: var(--color-text-2); }
+    .btn--ghost:hover { border-color: var(--color-accent-txt); color: var(--color-accent-txt); }
+    .btn--danger { background: var(--color-error); color: #fff; border-color: var(--color-error); }
+    .btn--danger:hover { opacity: .85; }
+    .btn--sm { padding: var(--sp-1) var(--sp-3); font-size: var(--text-xs); min-height: 1.75rem; }
+    .btn--full { width: 100%; justify-content: center; }
+    .btn:disabled { opacity: .4; cursor: not-allowed; }
+
+    .icon-btn {
+      width: 2rem; height: 2rem; border-radius: var(--r-md);
+      border: 1.5px solid var(--color-border); background: var(--color-surface-2);
+      cursor: pointer; font-size: .85rem;
+      display: inline-flex; align-items: center; justify-content: center;
+      color: var(--color-text-muted); transition: all var(--t-fast);
+      flex-shrink: 0;
+    }
+    .icon-btn:hover { border-color: var(--color-accent-txt); color: var(--color-accent-txt); }
+    .icon-btn:disabled { opacity: .35; cursor: not-allowed; pointer-events: none; }
+    .btn-delete--danger:hover { border-color: var(--color-error); color: var(--color-error); }
+    .theme-toggle:hover { border-color: var(--color-accent-txt); transform: rotate(15deg); }
+
+    /* =====================================================
+       MOBILE TABS
+       ===================================================== */
+    .mobile-tabs {
+      display: none;
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .mobile-tab {
+      flex: 1; padding: var(--sp-3);
+      background: none; border: none;
+      border-bottom: 2px solid transparent;
+      font-size: var(--text-sm); font-weight: 600;
+      color: var(--color-text-muted); cursor: pointer;
+      transition: all var(--t-fast);
+    }
+    .mobile-tab--active,
+    .mobile-tab[aria-selected="true"] {
+      color: var(--color-accent-txt);
+      border-bottom-color: var(--color-accent);
+    }
+    @media (max-width: 768px) {
+      .mobile-tabs { display: flex; }
+    }
+
+    /* =====================================================
+       TWO-PANE WORKSPACE
+       ===================================================== */
+    .workspace {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 60fr 40fr;
+      align-items: start;
+      max-width: var(--max-w);
+      margin-inline: auto;
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .workspace { grid-template-columns: 1fr; }
+      .pane { display: none; }
+      .pane--active { display: flex; }
+    }
+
+    .pane {
+      flex-direction: column;
+      padding: var(--pane-p);
+      min-height: calc(100vh - 60px);
+      overflow-y: auto;
+    }
+
+    @media (min-width: 769px) {
+      .pane { display: flex; }
+      .pane--builder {
+        border-right: 1px solid var(--color-border);
+        position: sticky; top: 57px;
+        max-height: calc(100vh - 57px);
+      }
+      .pane--preview {
+        background: var(--color-surface-2);
+        position: sticky; top: 57px;
+        max-height: calc(100vh - 57px);
+      }
+    }
+
+    /* =====================================================
+       BUILDER PANE
+       ===================================================== */
+    .builder-meta {
+      display: flex; flex-direction: column; gap: var(--sp-4);
+      margin-bottom: var(--sp-5);
+      padding-bottom: var(--sp-5);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .field-group { display: flex; flex-direction: column; gap: var(--sp-2); }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-3); }
+    .field-label {
+      font-size: var(--text-xs); font-weight: 700;
+      text-transform: uppercase; letter-spacing: .06em;
+      color: var(--color-text-muted);
+    }
+    .optional { font-weight: 400; text-transform: none; letter-spacing: 0; }
+    .field-input {
+      background: var(--color-surface-2); border: 1.5px solid var(--color-border);
+      border-radius: var(--r-lg); padding: var(--sp-2) var(--sp-3);
+      font-size: var(--text-base); color: var(--color-text-primary);
+      transition: border-color var(--t-fast), box-shadow var(--t-fast);
+      width: 100%;
+    }
+    .field-input:focus {
+      border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-accent-sub); outline: none;
+    }
+    .field-input::placeholder { color: var(--color-text-muted); }
+    .field-input[aria-invalid="true"] { border-color: var(--color-error); }
+    .field-input[aria-invalid="true"]:focus { box-shadow: 0 0 0 3px var(--color-error-sub); }
+    .field-input--lg { font-size: var(--text-lg); font-family: var(--font-display); }
+    .field-input--sm { }
+    .field-textarea { min-height: 4rem; }
+
+    /* Builder warnings */
+    .builder-warnings { margin-bottom: var(--sp-4); display: flex; flex-direction: column; gap: var(--sp-2); }
+    .builder-warn {
+      background: var(--color-warn-sub); border: 1px solid var(--color-warn-b);
+      border-radius: var(--r-md); padding: var(--sp-2) var(--sp-3);
+      font-size: var(--text-xs); color: var(--color-warn);
+    }
+
+    /* Question list */
+    .question-list { display: flex; flex-direction: column; gap: var(--sp-3); flex: 1; margin-bottom: var(--sp-5); }
+
+    /* Question cards */
+    .q-card {
+      background: var(--color-surface);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      transition: border-color var(--t-fast), box-shadow var(--t-fast);
+    }
+    .q-card:hover { border-color: var(--color-border-2); box-shadow: var(--shadow-sm); }
+    .q-card--pending-delete { border-color: var(--color-error); animation: pulseDanger 1s ease infinite; }
+    @keyframes pulseDanger {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(220,38,38,0); }
+      50% { box-shadow: 0 0 0 4px rgba(220,38,38,.15); }
+    }
+
+    .q-card__header {
+      display: flex; align-items: center; gap: var(--sp-2);
+      padding: var(--sp-3) var(--sp-4);
+      cursor: pointer;
+    }
+    .q-card__label-preview {
+      flex: 1; min-width: 0;
+      font-size: var(--text-sm); color: var(--color-text-2);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .q-card__controls { display: flex; align-items: center; gap: var(--sp-1); flex-shrink: 0; }
+
+    /* Question type badges */
+    .qt-badge {
+      font-size: var(--text-xs); font-weight: 700;
+      padding: 2px var(--sp-2); border-radius: var(--r-full);
+      letter-spacing: .02em; white-space: nowrap; flex-shrink: 0;
+    }
+    .qt-badge--text    { background: var(--qt-text-bg);   color: var(--qt-text-c); }
+    .qt-badge--email   { background: var(--qt-email-bg);  color: var(--qt-email-c); }
+    .qt-badge--number  { background: var(--qt-num-bg);    color: var(--qt-num-c); }
+    .qt-badge--multiple{ background: var(--qt-multi-bg);  color: var(--qt-multi-c); }
+    .qt-badge--rating  { background: var(--qt-rating-bg); color: var(--qt-rating-c); }
+
+    /* Required toggle */
+    .required-toggle {
+      font-size: var(--text-xs); font-weight: 600;
+      padding: 2px var(--sp-2); border-radius: var(--r-full);
+      border: 1.5px solid var(--color-border);
+      background: transparent; cursor: pointer;
+      color: var(--color-text-muted); transition: all var(--t-fast);
+      white-space: nowrap;
+    }
+    .required-toggle--on {
+      background: var(--color-error-sub); border-color: var(--color-error-b);
+      color: var(--color-error);
+    }
+
+    /* Question edit panel */
+    .q-edit-panel {
+      padding: var(--sp-4);
+      border-top: 1px solid var(--color-border);
+      background: var(--color-surface-2);
+      display: flex; flex-direction: column; gap: var(--sp-4);
+      animation: slideDown .2s ease;
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Options list */
+    .options-list { display: flex; flex-direction: column; gap: var(--sp-2); }
+    .option-row { display: flex; gap: var(--sp-2); align-items: center; }
+    .option-input { flex: 1; }
+
+    /* Delete confirmation */
+    .delete-confirm {
+      display: flex; align-items: center; gap: var(--sp-3);
+      padding: var(--sp-3) var(--sp-4);
+      background: var(--color-error-sub);
+      border-top: 1px solid var(--color-error-b);
+      font-size: var(--text-sm); color: var(--color-error);
+      animation: slideDown .15s ease;
+    }
+    .delete-confirm span { flex: 1; font-weight: 600; }
+
+    /* Add question bar */
+    .add-question-bar {
+      display: flex; gap: var(--sp-3); align-items: center;
+      padding-top: var(--sp-4);
+      border-top: 1px solid var(--color-border);
+      flex-shrink: 0;
+    }
+    .add-type-select {
+      flex: 1; height: 2.5rem; padding: 0 var(--sp-3);
+      background: var(--color-surface-2); border: 1.5px solid var(--color-border);
+      border-radius: var(--r-lg); font-size: var(--text-sm); cursor: pointer;
+    }
+    .add-type-select:focus {
+      border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-accent-sub); outline: none;
+    }
+
+    /* =====================================================
+       PREVIEW PANE
+       ===================================================== */
+    .preview-header {
+      display: flex; align-items: center; gap: var(--sp-2);
+      margin-bottom: var(--sp-5);
+      padding-bottom: var(--sp-4);
+      border-bottom: 1px solid var(--color-border);
+      flex-shrink: 0;
+    }
+    .preview-label {
+      font-size: var(--text-xs); font-weight: 700;
+      text-transform: uppercase; letter-spacing: .06em;
+      color: var(--color-text-muted);
+    }
+    .preview-dot {
+      width: 6px; height: 6px; border-radius: var(--r-full);
+      background: var(--color-accent);
+      animation: blink 2s ease infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; } 50% { opacity: .3; }
+    }
+
+    .preview-survey {
+      flex: 1; display: flex; flex-direction: column; gap: var(--sp-1);
+      overflow-y: auto; padding-bottom: var(--sp-4);
+    }
+
+    /* Preview survey header */
+    .preview-survey-title {
+      font-family: var(--font-display); font-size: var(--text-2xl);
+      font-weight: 400; letter-spacing: -.02em; margin-bottom: var(--sp-2);
+    }
+    .preview-survey-desc {
+      font-size: var(--text-base); color: var(--color-text-2);
+      margin-bottom: var(--sp-6);
+    }
+    .preview-divider { height: 1px; background: var(--color-border); margin-bottom: var(--sp-5); }
+
+    /* Preview question */
+    .preview-question { padding: var(--sp-4) 0; border-bottom: 1px solid var(--color-border); }
+    .preview-question:last-of-type { border-bottom: none; }
+    .preview-qlabel {
+      display: block;
+      font-size: var(--text-base); font-weight: 600;
+      color: var(--color-text-primary); margin-bottom: var(--sp-3);
+    }
+    .required-star { color: var(--color-error); margin-left: var(--sp-1); font-size: .8em; }
+
+    /* Preview inputs */
+    .preview-input { }
+
+    /* Radio group */
+    .radio-group { display: flex; flex-direction: column; gap: var(--sp-2); }
+    .radio-label {
+      display: flex; align-items: center; gap: var(--sp-3);
+      padding: var(--sp-2) var(--sp-3);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--r-lg); cursor: pointer;
+      transition: all var(--t-fast);
+      font-size: var(--text-base);
+    }
+    .radio-label:hover { border-color: var(--color-accent-txt); background: var(--color-accent-sub); }
+    .radio-label:has(.radio-input:checked) {
+      border-color: var(--color-accent); background: var(--color-accent-sub);
+      color: var(--color-accent-txt);
+    }
+    .radio-input { accent-color: var(--color-accent); width: 1rem; height: 1rem; }
+
+    /* Rating */
+    .rating-group { display: flex; gap: var(--sp-2); flex-wrap: wrap; }
+    .rating-btn {
+      width: 2.5rem; height: 2.5rem;
+      border-radius: var(--r-lg);
+      border: 1.5px solid var(--color-border);
+      background: var(--color-surface-2);
+      cursor: pointer; font-weight: 700; font-size: var(--text-sm);
+      transition: all var(--t-fast);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .rating-btn:hover { border-color: var(--color-accent-txt); color: var(--color-accent-txt); }
+    .rating-btn--active {
+      background: var(--color-accent); border-color: var(--color-accent);
+      color: var(--color-text-inv);
+    }
+    [data-theme="dark"] .rating-btn--active { color: #0f0f0d; }
+
+    /* Field error */
+    .field-error {
+      font-size: var(--text-xs); color: var(--color-error);
+      margin-top: var(--sp-2); display: flex; align-items: center; gap: var(--sp-1);
+    }
+    .field-error::before { content: '⚠'; }
+
+    .preview-actions {
+      flex-shrink: 0;
+      padding-top: var(--sp-5);
+      border-top: 1px solid var(--color-border);
+    }
+
+    /* =====================================================
+       TOAST
+       ===================================================== */
+    .toast {
+      position: fixed; bottom: var(--sp-5); right: var(--sp-5);
+      background: var(--color-text-primary); color: var(--color-bg);
+      padding: var(--sp-3) var(--sp-5);
+      border-radius: var(--r-xl);
+      box-shadow: var(--shadow-lg);
+      display: flex; align-items: center; gap: var(--sp-3);
+      font-size: var(--text-sm); font-weight: 500;
+      z-index: 9000; max-width: 360px;
+      animation: toastIn .3s var(--t-spring);
+    }
+    .toast[hidden] { display: none; }
+    @keyframes toastIn {
+      from { opacity: 0; transform: translateY(12px) scale(.96); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .toast--success { background: var(--color-accent); color: var(--color-text-inv); }
+    [data-theme="dark"] .toast--success { color: #0f0f0d; }
+    .toast--error { background: var(--color-error); color: #fff; }
+    .toast--info { background: var(--color-info); color: #fff; }
+    .toast__close {
+      background: none; border: none; cursor: pointer;
+      font-size: .85rem; opacity: .7; padding: 0;
+      flex-shrink: 0; line-height: 1;
+    }
+    .toast__close:hover { opacity: 1; }
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+    .site-footer { background: var(--color-surface); border-top: 1px solid var(--color-border); padding-block: var(--sp-6); }
+    .footer-inner { display: flex; flex-direction: column; gap: var(--sp-2); align-items: center; text-align: center; }
+    .footer-inner p { font-size: var(--text-sm); color: var(--color-text-muted); }
+    .footer-inner a { color: var(--color-accent-txt); text-decoration: none; }
+    .footer-inner a:hover { text-decoration: underline; }
+    .footer-ai-note { font-size: var(--text-xs) !important; opacity: .65; }
+
+    /* =====================================================
+       EMPTY STATE
+       ===================================================== */
+    .empty-questions {
+      text-align: center; padding: var(--sp-10) var(--sp-4);
+      border: 2px dashed var(--color-border); border-radius: var(--r-xl);
+      color: var(--color-text-muted); font-size: var(--text-sm);
+    }
+    .empty-questions p:first-child { font-size: 2rem; margin-bottom: var(--sp-2); }
+  </style>
+</head>
+<body class="page">
+
+  <a href="#builder-pane" class="skip-link">Skip to builder</a>
+
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <header class="site-header" role="banner">
+    <div class="inner header-inner">
+      <div class="header-top">
+        <hgroup class="header-title">
+          <h1 class="header-name">Survey Builder</h1>
+          <p class="header-sub">MP2 · Dynamic Tool · Markus Isaksson</p>
+        </hgroup>
+        <div class="header-actions">
+          <div class="draft-controls" role="group" aria-label="Draft management">
+            <select id="draft-select" class="draft-select" aria-label="Load a saved draft">
+              <option value="">── Saved Drafts ──</option>
+            </select>
+            <button class="btn btn--ghost" id="save-draft-btn">Save Draft</button>
+          </div>
+          <button class="btn btn--secondary" id="export-json-btn">Export JSON ↓</button>
+          <button class="icon-btn" id="copy-json-btn" aria-label="Copy JSON to clipboard" title="Copy JSON to clipboard">⎘</button>
+          <button class="icon-btn theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+            <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       MOBILE TABS
+       ============================================================ -->
+  <div class="mobile-tabs" role="tablist" aria-label="Switch view">
+    <button role="tab" id="tab-builder" class="mobile-tab mobile-tab--active"
+      aria-selected="true" aria-controls="builder-pane" data-action="set-tab" data-tab="builder">
+      ✏️ Builder
+    </button>
+    <button role="tab" id="tab-preview" class="mobile-tab"
+      aria-selected="false" aria-controls="preview-pane" data-action="set-tab" data-tab="preview">
+      👁 Preview
+    </button>
+  </div>
+
+  <!-- ============================================================
+       WORKSPACE
+       ============================================================ -->
+  <main class="workspace" id="workspace" aria-label="Survey builder workspace">
+
+    <!-- BUILDER PANE -->
+    <section class="pane pane--builder pane--active" id="builder-pane"
+      role="tabpanel" aria-labelledby="tab-builder">
+
+      <div class="builder-meta">
+        <div class="field-group">
+          <label for="survey-title" class="field-label">Survey Title</label>
+          <input type="text" id="survey-title" class="field-input field-input--lg"
+            placeholder="Untitled Survey" aria-required="true" />
+        </div>
+        <div class="field-group">
+          <label for="survey-desc" class="field-label">Description <span class="optional">(optional)</span></label>
+          <textarea id="survey-desc" class="field-input field-textarea"
+            placeholder="What is this survey about?" rows="2"></textarea>
+        </div>
+      </div>
+
+      <div id="builder-warnings" class="builder-warnings" aria-live="polite" hidden></div>
+
+      <div class="question-list" id="question-list" aria-label="Survey questions"></div>
+
+      <div class="add-question-bar">
+        <label for="add-question-type" class="visually-hidden">Question type to add</label>
+        <select id="add-question-type" class="add-type-select">
+          <option value="text">Short Text</option>
+          <option value="email">Email</option>
+          <option value="number">Number</option>
+          <option value="multiple">Multiple Choice</option>
+          <option value="rating">Rating Scale</option>
+        </select>
+        <button class="btn btn--primary" id="add-question-btn" data-action="add-question">
+          + Add Question
+        </button>
+      </div>
+    </section>
+
+    <!-- PREVIEW PANE -->
+    <section class="pane pane--preview" id="preview-pane"
+      role="tabpanel" aria-labelledby="tab-preview">
+
+      <div class="preview-header">
+        <span class="preview-label">Live Preview</span>
+        <span class="preview-dot" aria-hidden="true" title="Updates in real-time"></span>
+      </div>
+
+      <div id="sr-errors" class="visually-hidden" aria-live="assertive" aria-atomic="true"></div>
+
+      <div class="preview-survey" id="preview-survey" aria-label="Survey preview"></div>
+
+      <div class="preview-actions">
+        <button class="btn btn--primary btn--full" data-action="submit-survey" id="submit-btn">
+          Submit Survey
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       TOAST
+       ============================================================ -->
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true" hidden>
+    <span id="toast-text"></span>
+    <button class="toast__close" id="toast-close" aria-label="Dismiss">✕</button>
+  </div>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="inner footer-inner">
+      <p>
+        <a href="https://markusisaksson1982.github.io">Portfolio</a> ·
+        <a href="../mp1-fcc-explorer/">MP1 — FCC Explorer</a> ·
+        MP2 — Survey Builder · Vanilla JS · Zero Dependencies
+      </p>
+      <p class="footer-ai-note">
+        <small>Architected with Claude Sonnet 4.6 · AI orchestration log in README</small>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    'use strict';
+
+    // =====================================================
+    // NANOID-LITE — No library. crypto.getRandomValues()
+    // gives unpredictable IDs; no collision risk for this scale.
+    // =====================================================
+    function uid() {
+      return Array.from(crypto.getRandomValues(new Uint8Array(6)))
+        .map(b => b.toString(36)).join('').slice(0, 8);
+    }
+
+    // =====================================================
+    // QUESTION TYPE DEFAULTS
+    // =====================================================
+    const Q_DEFAULTS = {
+      text:     { label: 'Your answer',        placeholder: 'Type here…',       required: false, options: [], min: null, max: null, minRating: 1, maxRating: 5 },
+      email:    { label: 'Email address',       placeholder: 'you@example.com',  required: true,  options: [], min: null, max: null, minRating: 1, maxRating: 5 },
+      number:   { label: 'Your number',         placeholder: 'Enter a number',   required: false, options: [], min: null, max: null, minRating: 1, maxRating: 5 },
+      multiple: { label: 'Choose one',          placeholder: '',                 required: false, options: ['Option A', 'Option B'], min: null, max: null, minRating: 1, maxRating: 5 },
+      rating:   { label: 'Rate your experience',placeholder: '',                 required: false, options: [], min: null, max: null, minRating: 1, maxRating: 5 },
+    };
+
+    const TYPE_LABELS = { text: 'Text', email: 'Email', number: 'Number', multiple: 'Multiple Choice', rating: 'Rating' };
+
+    // =====================================================
+    // STATE — Single source of truth
+    // =====================================================
+    const state = {
+      survey: {
+        id: uid(),
+        title: 'My Survey',
+        description: '',
+        questions: [
+          { id: uid(), type: 'text', ...deepClone(Q_DEFAULTS.text), label: 'What is your name?', required: true }
+        ]
+      },
+      responses: {},
+      errors: {},
+      activeTab: 'builder',
+      editingQuestionId: null,
+      pendingDeleteId: null,
+      _pendingDeleteTimer: null,
+      _toastTimer: null,
+      theme: (() => { try { return localStorage.getItem('mp2-theme') || 'system'; } catch { return 'system'; } })(),
+      drafts: loadDraftsFromStorage(),
+      currentDraftName: null,
+      isDirty: false,
+    };
+
+    // =====================================================
+    // DISPATCH + REDUCER
+    // =====================================================
+    function dispatch(action) {
+      const { type, payload } = action;
+
+      switch (type) {
+
+        // ── Survey meta ─────────────────────────────────
+        case 'SET_TITLE':
+          state.survey.title = payload;
+          state.isDirty = true;
+          syncPreviewMeta();
+          break;
+
+        case 'SET_DESCRIPTION':
+          state.survey.description = payload;
+          state.isDirty = true;
+          syncPreviewMeta();
+          break;
+
+        // ── Question CRUD ───────────────────────────────
+        case 'ADD_QUESTION': {
+          const q = { id: uid(), type: payload.type, ...deepClone(Q_DEFAULTS[payload.type]) };
+          state.survey.questions.push(q);
+          state.editingQuestionId = q.id;
+          state.isDirty = true;
+          renderBuilderPane();
+          renderPreviewPane();
+          // Focus new card's label input
+          requestAnimationFrame(() => {
+            const inp = document.querySelector(`[data-qid="${q.id}"] .q-label-input`);
+            if (inp) inp.focus();
+          });
+          break;
+        }
+
+        case 'DELETE_QUESTION': {
+          const idx = state.survey.questions.findIndex(q => q.id === payload.id);
+          if (idx === -1) break;
+          state.survey.questions.splice(idx, 1);
+          delete state.responses[payload.id];
+          delete state.errors[payload.id];
+          clearTimeout(state._pendingDeleteTimer);
+          state.pendingDeleteId = null;
+          state.isDirty = true;
+          renderBuilderPane();
+          renderPreviewPane();
+          renderBuilderWarnings();
+          requestAnimationFrame(() => {
+            const qs = state.survey.questions;
+            const prev = qs[Math.max(0, idx - 1)];
+            const target = prev
+              ? document.querySelector(`[data-qid="${prev.id}"] .q-label-input`)
+              : document.getElementById('add-question-btn');
+            target?.focus();
+          });
+          break;
+        }
+
+        case 'UPDATE_QUESTION': {
+          const q = state.survey.questions.find(q => q.id === payload.id);
+          if (!q) break;
+          // Coerce number fields
+          const numFields = ['min','max','minRating','maxRating'];
+          q[payload.field] = numFields.includes(payload.field)
+            ? (payload.value === '' ? null : Number(payload.value))
+            : payload.value;
+          state.isDirty = true;
+          renderPreviewPane();      // Only preview re-renders; builder input retains focus
+          renderBuilderWarnings();
+          break;
+        }
+
+        case 'REORDER_QUESTION': {
+          const qs = state.survey.questions;
+          const idx = qs.findIndex(q => q.id === payload.id);
+          if (idx === -1) break;
+          const to = payload.direction === 'up' ? idx - 1 : idx + 1;
+          if (to < 0 || to >= qs.length) break;
+          [qs[idx], qs[to]] = [qs[to], qs[idx]];
+          state.isDirty = true;
+          renderBuilderPane();
+          renderPreviewPane();
+          requestAnimationFrame(() => {
+            const btn = document.querySelector(`[data-qid="${payload.id}"] .reorder-${payload.direction}`);
+            btn?.focus();
+          });
+          break;
+        }
+
+        case 'TOGGLE_REQUIRED': {
+          const q = state.survey.questions.find(q => q.id === payload.id);
+          if (!q) break;
+          q.required = !q.required;
+          state.isDirty = true;
+          // Surgical update — no full re-render
+          const btn = document.querySelector(`[data-qid="${payload.id}"] .required-toggle`);
+          if (btn) {
+            btn.setAttribute('aria-pressed', String(q.required));
+            btn.classList.toggle('required-toggle--on', q.required);
+            btn.textContent = q.required ? '* Required' : 'Optional';
+          }
+          renderPreviewPane();
+          break;
+        }
+
+        case 'SET_EDITING': {
+          state.editingQuestionId = payload.id;
+          renderBuilderPane();
+          if (payload.id) {
+            requestAnimationFrame(() => {
+              document.querySelector(`[data-qid="${payload.id}"] .q-label-input`)?.focus();
+            });
+          }
+          break;
+        }
+
+        case 'REQUEST_DELETE': {
+          if (state.pendingDeleteId === payload.id) break; // already pending
+          clearTimeout(state._pendingDeleteTimer);
+          state.pendingDeleteId = payload.id;
+          state._pendingDeleteTimer = setTimeout(() => dispatch({ type: 'CANCEL_DELETE' }), 4000);
+          const card = document.querySelector(`[data-qid="${payload.id}"]`);
+          if (card) {
+            card.classList.add('q-card--pending-delete');
+            card.querySelector('.delete-confirm')?.removeAttribute('hidden');
+          }
+          break;
+        }
+
+        case 'CANCEL_DELETE': {
+          clearTimeout(state._pendingDeleteTimer);
+          const pid = state.pendingDeleteId;
+          state.pendingDeleteId = null;
+          const card = document.querySelector(`[data-qid="${pid}"]`);
+          if (card) {
+            card.classList.remove('q-card--pending-delete');
+            card.querySelector('.delete-confirm')?.setAttribute('hidden', '');
+          }
+          break;
+        }
+
+        // ── Multiple-choice options ──────────────────────
+        case 'ADD_OPTION': {
+          const q = state.survey.questions.find(q => q.id === payload.questionId);
+          if (!q) break;
+          q.options.push(`Option ${q.options.length + 1}`);
+          state.isDirty = true;
+          renderBuilderPane();
+          renderPreviewPane();
+          requestAnimationFrame(() => {
+            const inputs = document.querySelectorAll(`[data-qid="${payload.questionId}"] .option-input`);
+            inputs[inputs.length - 1]?.focus();
+          });
+          break;
+        }
+
+        case 'UPDATE_OPTION': {
+          const q = state.survey.questions.find(q => q.id === payload.questionId);
+          if (!q) break;
+          q.options[payload.index] = payload.value;
+          state.isDirty = true;
+          renderBuilderWarnings();
+          renderPreviewPane();
+          break;
+        }
+
+        case 'DELETE_OPTION': {
+          const q = state.survey.questions.find(q => q.id === payload.questionId);
+          if (!q || q.options.length <= 1) break;
+          q.options.splice(payload.index, 1);
+          state.isDirty = true;
+          renderBuilderPane();
+          renderPreviewPane();
+          renderBuilderWarnings();
+          break;
+        }
+
+        // ── Preview / Responses ──────────────────────────
+        case 'SET_RESPONSE':
+          state.responses[payload.questionId] = payload.value;
+          // Clear error without full re-render
+          if (state.errors[payload.questionId]) {
+            delete state.errors[payload.questionId];
+            clearFieldError(payload.questionId);
+          }
+          break;
+
+        case 'SUBMIT_SURVEY': {
+          const allErrors = validateSurvey(state.survey, state.responses);
+          state.errors = Object.fromEntries(
+            Object.entries(allErrors).filter(([k]) => !k.startsWith('builder_'))
+          );
+          const count = Object.keys(state.errors).length;
+          if (count > 0) {
+            renderPreviewPane();
+            document.getElementById('sr-errors').textContent =
+              `${count} error${count !== 1 ? 's' : ''} found. Please correct and resubmit.`;
+            // Focus first error field
+            const firstId = Object.keys(state.errors)[0];
+            document.querySelector(`[data-preview-qid="${firstId}"] input, [data-preview-qid="${firstId}"] textarea`)?.focus();
+          } else {
+            state.responses = {};
+            state.errors = {};
+            renderPreviewPane();
+            document.getElementById('sr-errors').textContent = 'Survey submitted successfully.';
+            dispatch({ type: 'SHOW_TOAST', payload: { text: '✓ Survey submitted!', type: 'success' } });
+          }
+          break;
+        }
+
+        // ── Drafts ───────────────────────────────────────
+        case 'SAVE_DRAFT': {
+          const name = payload.name.trim();
+          if (!name) break;
+          state.drafts[name] = deepClone(state.survey);
+          state.currentDraftName = name;
+          state.isDirty = false;
+          persistDrafts(state.drafts);
+          renderDraftDropdown();
+          dispatch({ type: 'SHOW_TOAST', payload: { text: `Draft "${name}" saved.`, type: 'success' } });
+          break;
+        }
+
+        case 'LOAD_DRAFT': {
+          const draft = state.drafts[payload.name];
+          if (!draft) break;
+          state.survey = deepClone(draft);
+          state.responses = {};
+          state.errors = {};
+          state.editingQuestionId = null;
+          state.pendingDeleteId = null;
+          state.currentDraftName = payload.name;
+          state.isDirty = false;
+          renderAll();
+          dispatch({ type: 'SHOW_TOAST', payload: { text: `Loaded "${payload.name}".`, type: 'info' } });
+          break;
+        }
+
+        case 'DELETE_DRAFT': {
+          delete state.drafts[payload.name];
+          if (state.currentDraftName === payload.name) state.currentDraftName = null;
+          persistDrafts(state.drafts);
+          renderDraftDropdown();
+          dispatch({ type: 'SHOW_TOAST', payload: { text: `Draft "${payload.name}" deleted.`, type: 'info' } });
+          break;
+        }
+
+        // ── UI ────────────────────────────────────────────
+        case 'SET_TAB': {
+          state.activeTab = payload;
+          const builder = document.getElementById('builder-pane');
+          const preview = document.getElementById('preview-pane');
+          const tabB = document.getElementById('tab-builder');
+          const tabP = document.getElementById('tab-preview');
+          // On mobile: show/hide via class; on desktop both always visible
+          if (window.innerWidth <= 768) {
+            builder.classList.toggle('pane--active', payload === 'builder');
+            preview.classList.toggle('pane--active', payload === 'preview');
+          }
+          tabB.setAttribute('aria-selected', String(payload === 'builder'));
+          tabP.setAttribute('aria-selected', String(payload === 'preview'));
+          tabB.classList.toggle('mobile-tab--active', payload === 'builder');
+          tabP.classList.toggle('mobile-tab--active', payload === 'preview');
+          break;
+        }
+
+        case 'SET_THEME':
+          state.theme = payload;
+          try { localStorage.setItem('mp2-theme', payload); } catch(e) {}
+          applyTheme(payload);
+          break;
+
+        case 'SHOW_TOAST': {
+          const toast = document.getElementById('toast');
+          document.getElementById('toast-text').textContent = payload.text;
+          toast.className = `toast toast--${payload.type}`;
+          toast.hidden = false;
+          clearTimeout(state._toastTimer);
+          state._toastTimer = setTimeout(() => dispatch({ type: 'HIDE_TOAST' }), 3000);
+          break;
+        }
+
+        case 'HIDE_TOAST':
+          document.getElementById('toast').hidden = true;
+          break;
+      }
+    }
+
+    // =====================================================
+    // VALIDATION ENGINE — Pure function, no side effects
+    // Returns { [qId]: errorMessage }
+    // Builder structural errors prefixed with 'builder_'
+    // =====================================================
+    function validateSurvey(survey, responses) {
+      const errors = {};
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      survey.questions.forEach(q => {
+        const val = responses[q.id];
+        const empty = val === undefined || val === null || String(val).trim() === '';
+
+        if (q.required && empty) { errors[q.id] = 'This field is required.'; return; }
+        if (empty) return;
+
+        if (q.type === 'email' && !emailRe.test(String(val))) {
+          errors[q.id] = 'Please enter a valid email address.';
+        }
+        if (q.type === 'number') {
+          const n = Number(val);
+          if (isNaN(n)) errors[q.id] = 'Please enter a valid number.';
+          else if (q.min !== null && n < Number(q.min)) errors[q.id] = `Minimum is ${q.min}.`;
+          else if (q.max !== null && n > Number(q.max)) errors[q.id] = `Maximum is ${q.max}.`;
+        }
+        if (q.type === 'rating') {
+          const n = Number(val);
+          if (!n || n < q.minRating || n > q.maxRating) {
+            errors[q.id] = `Select a rating from ${q.minRating} to ${q.maxRating}.`;
+          }
+        }
+      });
+
+      // Structural: multiple-choice needs ≥ 2 options
+      survey.questions
+        .filter(q => q.type === 'multiple' && q.options.length < 2)
+        .forEach(q => { errors[`builder_${q.id}`] = 'Needs at least 2 options.'; });
+
+      return errors;
+    }
+
+    // =====================================================
+    // RENDER — BUILDER PANE
+    // =====================================================
+    function renderBuilderPane() {
+      const list = document.getElementById('question-list');
+      const qs = state.survey.questions;
+
+      // Sync meta inputs without disturbing active focus
+      syncInputValue('survey-title', state.survey.title);
+      syncInputValue('survey-desc', state.survey.description);
+
+      if (qs.length === 0) {
+        list.innerHTML = `<div class="empty-questions" aria-label="No questions yet">
+          <p>📋</p><p>No questions yet. Add one below!</p></div>`;
+        return;
+      }
+
+      list.innerHTML = qs.map((q, i) => buildQCardHTML(q, i, qs.length)).join('');
+    }
+
+    function buildQCardHTML(q, idx, total) {
+      const isEditing = state.editingQuestionId === q.id;
+      const isPending = state.pendingDeleteId === q.id;
+      return `
+        <div class="q-card${isPending ? ' q-card--pending-delete' : ''}" data-qid="${q.id}">
+          <div class="q-card__header" data-action="set-editing" data-id="${isEditing ? 'null' : q.id}" style="cursor:pointer" role="button" tabindex="0" aria-expanded="${isEditing}" aria-label="${isEditing ? 'Collapse' : 'Expand'} question editor">
+            <span class="qt-badge qt-badge--${q.type}">${TYPE_LABELS[q.type]}</span>
+            <span class="q-card__label-preview">${escHtml(q.label) || '(no label)'}</span>
+            <div class="q-card__controls" role="group">
+              <button class="icon-btn reorder-up" data-action="reorder-question" data-id="${q.id}" data-dir="up"
+                aria-label="Move up" ${idx === 0 ? 'disabled' : ''} title="Move up">↑</button>
+              <button class="icon-btn reorder-down" data-action="reorder-question" data-id="${q.id}" data-dir="down"
+                aria-label="Move down" ${idx === total - 1 ? 'disabled' : ''} title="Move down">↓</button>
+              <button class="required-toggle${q.required ? ' required-toggle--on' : ''}"
+                data-action="toggle-required" data-id="${q.id}"
+                aria-pressed="${q.required}" title="Toggle required">
+                ${q.required ? '* Required' : 'Optional'}
+              </button>
+              <button class="icon-btn btn-delete--danger" data-action="request-delete" data-id="${q.id}"
+                aria-label="Delete question">✕</button>
+            </div>
+          </div>
+
+          ${isEditing ? buildEditPanel(q) : ''}
+
+          <div class="delete-confirm" ${isPending ? '' : 'hidden'} role="alertdialog" aria-label="Confirm deletion">
+            <span>Delete this question?</span>
+            <button class="btn btn--danger btn--sm" data-action="delete-question" data-id="${q.id}">Delete</button>
+            <button class="btn btn--ghost btn--sm" data-action="cancel-delete">Cancel</button>
+          </div>
+        </div>`;
+    }
+
+    function buildEditPanel(q) {
+      const commonFields = `
+        <div class="field-group">
+          <label for="ql-${q.id}" class="field-label">Question Label</label>
+          <input type="text" id="ql-${q.id}" class="field-input q-label-input"
+            value="${escHtml(q.label)}"
+            data-action="update-question" data-id="${q.id}" data-field="label"
+            aria-label="Question label" />
+        </div>`;
+
+      const placeholderField = (q.type !== 'multiple' && q.type !== 'rating') ? `
+        <div class="field-group">
+          <label for="qp-${q.id}" class="field-label">Placeholder</label>
+          <input type="text" id="qp-${q.id}" class="field-input"
+            value="${escHtml(q.placeholder)}"
+            data-action="update-question" data-id="${q.id}" data-field="placeholder"
+            aria-label="Placeholder text" />
+        </div>` : '';
+
+      const numberFields = q.type === 'number' ? `
+        <div class="field-row">
+          <div class="field-group">
+            <label for="qmin-${q.id}" class="field-label">Min Value</label>
+            <input type="number" id="qmin-${q.id}" class="field-input"
+              value="${q.min ?? ''}" placeholder="None"
+              data-action="update-question" data-id="${q.id}" data-field="min" />
+          </div>
+          <div class="field-group">
+            <label for="qmax-${q.id}" class="field-label">Max Value</label>
+            <input type="number" id="qmax-${q.id}" class="field-input"
+              value="${q.max ?? ''}" placeholder="None"
+              data-action="update-question" data-id="${q.id}" data-field="max" />
+          </div>
+        </div>` : '';
+
+      const ratingFields = q.type === 'rating' ? `
+        <div class="field-row">
+          <div class="field-group">
+            <label for="qminr-${q.id}" class="field-label">Min Rating</label>
+            <input type="number" id="qminr-${q.id}" class="field-input"
+              value="${q.minRating}" min="1" max="9"
+              data-action="update-question" data-id="${q.id}" data-field="minRating" />
+          </div>
+          <div class="field-group">
+            <label for="qmaxr-${q.id}" class="field-label">Max Rating</label>
+            <input type="number" id="qmaxr-${q.id}" class="field-input"
+              value="${q.maxRating}" min="2" max="10"
+              data-action="update-question" data-id="${q.id}" data-field="maxRating" />
+          </div>
+        </div>` : '';
+
+      const optionsFields = q.type === 'multiple' ? `
+        <div class="field-group">
+          <span class="field-label">Options</span>
+          <div class="options-list">
+            ${q.options.map((opt, i) => `
+              <div class="option-row">
+                <input type="text" class="field-input option-input"
+                  value="${escHtml(opt)}" placeholder="Option ${i + 1}"
+                  data-action="update-option"
+                  data-question-id="${q.id}" data-index="${i}"
+                  aria-label="Option ${i + 1}" />
+                <button class="icon-btn btn-delete--danger"
+                  data-action="delete-option"
+                  data-question-id="${q.id}" data-index="${i}"
+                  aria-label="Remove option ${i + 1}"
+                  ${q.options.length <= 1 ? 'disabled' : ''}>✕</button>
+              </div>`).join('')}
+          </div>
+          <button class="btn btn--ghost btn--sm" style="margin-top:var(--sp-2)"
+            data-action="add-option" data-question-id="${q.id}">+ Add Option</button>
+        </div>` : '';
+
+      return `<div class="q-edit-panel">
+        ${commonFields}${placeholderField}${numberFields}${ratingFields}${optionsFields}
+      </div>`;
+    }
+
+    // =====================================================
+    // RENDER — PREVIEW PANE (with selective reconciliation)
+    // =====================================================
+    function renderPreviewPane() {
+      const container = document.getElementById('preview-survey');
+
+      // Ensure meta header exists
+      ensurePreviewMeta(container);
+      syncPreviewMeta();
+
+      const qs = state.survey.questions;
+      const stateIds = new Set(qs.map(q => q.id));
+
+      // Remove deleted questions
+      container.querySelectorAll('[data-preview-qid]').forEach(el => {
+        if (!stateIds.has(el.dataset.previewQid)) el.remove();
+      });
+
+      // Add/update questions at correct position
+      qs.forEach((q, idx) => {
+        const html = buildPreviewQuestionHTML(q);
+        const hash = simpleHash(html);
+        let node = container.querySelector(`[data-preview-qid="${q.id}"]`);
+
+        if (!node) {
+          // Create and insert at correct index
+          const tmp = document.createElement('div');
+          tmp.innerHTML = html;
+          node = tmp.firstElementChild;
+          // Find the reference node (element after idx)
+          const existing = [...container.querySelectorAll('[data-preview-qid]')];
+          if (existing[idx]) {
+            container.insertBefore(node, existing[idx]);
+          } else {
+            container.appendChild(node);
+          }
+        } else if (node.dataset.renderHash !== hash) {
+          // Only replace DOM when content actually changed
+          const activeEl = document.activeElement;
+          const activeIsInside = node.contains(activeEl);
+          const activeId = activeEl?.id;
+          const activeSelStart = activeEl?.selectionStart;
+
+          const tmp = document.createElement('div');
+          tmp.innerHTML = html;
+          const newNode = tmp.firstElementChild;
+          node.replaceWith(newNode);
+          node = newNode;
+
+          // Restore focus if it was inside the replaced node
+          if (activeIsInside && activeId) {
+            const restored = node.querySelector(`#${CSS.escape(activeId)}`);
+            if (restored) {
+              restored.focus();
+              if (activeSelStart !== undefined) {
+                try { restored.setSelectionRange(activeSelStart, activeSelStart); } catch(e) {}
+              }
+            }
+          }
+        }
+      });
+    }
+
+    function ensurePreviewMeta(container) {
+      if (!container.querySelector('.preview-survey-title')) {
+        container.insertAdjacentHTML('afterbegin', `
+          <h2 class="preview-survey-title" id="preview-survey-title"></h2>
+          <p class="preview-survey-desc" id="preview-survey-desc"></p>
+          <hr class="preview-divider" aria-hidden="true" />
+        `);
+      }
+    }
+
+    function syncPreviewMeta() {
+      const titleEl = document.getElementById('preview-survey-title');
+      const descEl  = document.getElementById('preview-survey-desc');
+      if (titleEl) titleEl.textContent = state.survey.title || 'Untitled Survey';
+      if (descEl)  {
+        descEl.textContent = state.survey.description;
+        descEl.hidden = !state.survey.description;
+      }
+    }
+
+    function buildPreviewQuestionHTML(q) {
+      const error = state.errors[q.id];
+      const value = state.responses[q.id];
+      const req = q.required ? `<span class="required-star" aria-label="required">*</span>` : '';
+      const errHtml = error
+        ? `<p class="field-error" id="err-${q.id}">${escHtml(error)}</p>`
+        : `<p class="field-error" id="err-${q.id}" hidden></p>`;
+      const ariaDesc = error ? `aria-describedby="err-${q.id}"` : '';
+      const ariaInvalid = `aria-invalid="${error ? 'true' : 'false'}"`;
+
+      let inputHtml = '';
+      switch (q.type) {
+        case 'text':
+          inputHtml = `<input type="text" class="field-input preview-input" id="pi-${q.id}"
+            value="${escHtml(String(value || ''))}" placeholder="${escHtml(q.placeholder)}"
+            data-action="set-response" data-qid="${q.id}"
+            aria-required="${q.required}" ${ariaDesc} ${ariaInvalid} />`;
+          break;
+        case 'email':
+          inputHtml = `<input type="email" class="field-input preview-input" id="pi-${q.id}"
+            value="${escHtml(String(value || ''))}" placeholder="${escHtml(q.placeholder)}"
+            data-action="set-response" data-qid="${q.id}"
+            aria-required="${q.required}" ${ariaDesc} ${ariaInvalid} autocomplete="email" />`;
+          break;
+        case 'number':
+          inputHtml = `<input type="number" class="field-input preview-input" id="pi-${q.id}"
+            value="${value ?? ''}" placeholder="${escHtml(q.placeholder)}"
+            ${q.min !== null ? `min="${q.min}"` : ''} ${q.max !== null ? `max="${q.max}"` : ''}
+            data-action="set-response" data-qid="${q.id}"
+            aria-required="${q.required}" ${ariaDesc} ${ariaInvalid} />`;
+          break;
+        case 'multiple':
+          inputHtml = `<div class="radio-group" role="radiogroup" aria-required="${q.required}" ${ariaDesc}>
+            ${q.options.map((opt, i) => `
+              <label class="radio-label">
+                <input type="radio" class="radio-input" name="q-${q.id}"
+                  value="${escHtml(opt)}" ${value === opt ? 'checked' : ''}
+                  data-action="set-response" data-qid="${q.id}" />
+                ${escHtml(opt)}
+              </label>`).join('')}
+          </div>`;
+          break;
+        case 'rating': {
+          const stars = [];
+          for (let i = q.minRating; i <= q.maxRating; i++) {
+            stars.push(`<button type="button" class="rating-btn${Number(value) === i ? ' rating-btn--active' : ''}"
+              data-action="set-response" data-qid="${q.id}" data-value="${i}"
+              aria-label="Rate ${i}" aria-pressed="${Number(value) === i}"
+              ${ariaDesc}>${i}</button>`);
+          }
+          inputHtml = `<div class="rating-group" role="group" aria-label="Rating">${stars.join('')}</div>`;
+          break;
+        }
+      }
+
+      const hash = simpleHash(JSON.stringify({ q, value: value ?? null, error: error ?? null }));
+      return `<div class="preview-question" data-preview-qid="${q.id}" data-render-hash="${hash}">
+        <label class="preview-qlabel" for="pi-${q.id}">${escHtml(q.label)}${req}</label>
+        ${inputHtml}
+        ${errHtml}
+      </div>`;
+    }
+
+    // =====================================================
+    // SURGICAL UPDATE — Clear one error without re-render
+    // =====================================================
+    function clearFieldError(qId) {
+      const el = document.querySelector(`[data-preview-qid="${qId}"] .field-error`);
+      if (!el) return;
+      el.textContent = ''; el.hidden = true;
+      const input = document.querySelector(`[data-preview-qid="${qId}"] input, [data-preview-qid="${qId}"] textarea`);
+      input?.setAttribute('aria-invalid', 'false');
+    }
+
+    // =====================================================
+    // DRAFT DROPDOWN
+    // =====================================================
+    function renderDraftDropdown() {
+      const sel = document.getElementById('draft-select');
+      const names = Object.keys(state.drafts).sort();
+      sel.innerHTML = `<option value="">── Saved Drafts ──</option>` +
+        names.map(n => `<option value="${escHtml(n)}"${n === state.currentDraftName ? ' selected' : ''}>${escHtml(n)}</option>`).join('');
+    }
+
+    // =====================================================
+    // BUILDER WARNINGS
+    // =====================================================
+    function renderBuilderWarnings() {
+      const warnings = state.survey.questions
+        .filter(q => q.type === 'multiple' && q.options.length < 2)
+        .map(q => `"${q.label || 'Question'}" needs at least 2 options.`);
+      const el = document.getElementById('builder-warnings');
+      el.hidden = warnings.length === 0;
+      el.innerHTML = warnings.map(w => `<div class="builder-warn">⚠ ${escHtml(w)}</div>`).join('');
+    }
+
+    // =====================================================
+    // RENDER ALL
+    // =====================================================
+    function renderAll() {
+      syncInputValue('survey-title', state.survey.title);
+      syncInputValue('survey-desc', state.survey.description);
+      renderBuilderPane();
+      renderPreviewPane();
+      renderDraftDropdown();
+      renderBuilderWarnings();
+    }
+
+    // =====================================================
+    // EVENT DELEGATION
+    // =====================================================
+    const debouncedQUpdate = debounce((id, field, value) => {
+      dispatch({ type: 'UPDATE_QUESTION', payload: { id, field, value } });
+    }, 150);
+
+    document.addEventListener('input', e => {
+      const el = e.target;
+      if (el.id === 'survey-title') { dispatch({ type: 'SET_TITLE', payload: el.value }); return; }
+      if (el.id === 'survey-desc')  { dispatch({ type: 'SET_DESCRIPTION', payload: el.value }); return; }
+      if (el.dataset.action === 'update-question') {
+        debouncedQUpdate(el.dataset.id, el.dataset.field, el.value); return;
+      }
+      if (el.dataset.action === 'update-option') {
+        dispatch({ type: 'UPDATE_OPTION', payload: {
+          questionId: el.dataset.questionId, index: Number(el.dataset.index), value: el.value
+        }}); return;
+      }
+      if (el.dataset.action === 'set-response') {
+        dispatch({ type: 'SET_RESPONSE', payload: { questionId: el.dataset.qid, value: el.value } });
+      }
+    });
+
+    document.addEventListener('click', e => {
+      // Handle card header click for expand/collapse
+      const header = e.target.closest('.q-card__header[data-action="set-editing"]');
+      // But don't trigger if we clicked a button inside the header
+      if (header && !e.target.closest('button')) {
+        dispatch({ type: 'SET_EDITING', payload: { id: header.dataset.id === 'null' ? null : header.dataset.id } });
+        return;
+      }
+
+      const el = e.target.closest('[data-action]');
+      if (!el) return;
+      const { action } = el.dataset;
+
+      switch (action) {
+        case 'add-question':
+          dispatch({ type: 'ADD_QUESTION', payload: { type: document.getElementById('add-question-type').value } });
+          break;
+        case 'delete-question':
+          dispatch({ type: 'DELETE_QUESTION', payload: { id: el.dataset.id } });
+          break;
+        case 'request-delete':
+          e.stopPropagation(); // Prevent card expand
+          dispatch({ type: 'REQUEST_DELETE', payload: { id: el.dataset.id } });
+          break;
+        case 'cancel-delete':
+          dispatch({ type: 'CANCEL_DELETE' });
+          break;
+        case 'reorder-question':
+          e.stopPropagation();
+          dispatch({ type: 'REORDER_QUESTION', payload: { id: el.dataset.id, direction: el.dataset.dir } });
+          break;
+        case 'toggle-required':
+          e.stopPropagation();
+          dispatch({ type: 'TOGGLE_REQUIRED', payload: { id: el.dataset.id } });
+          break;
+        case 'set-editing':
+          dispatch({ type: 'SET_EDITING', payload: { id: el.dataset.id === 'null' ? null : el.dataset.id } });
+          break;
+        case 'add-option':
+          dispatch({ type: 'ADD_OPTION', payload: { questionId: el.dataset.questionId } });
+          break;
+        case 'delete-option':
+          dispatch({ type: 'DELETE_OPTION', payload: { questionId: el.dataset.questionId, index: Number(el.dataset.index) } });
+          break;
+        case 'submit-survey':
+          dispatch({ type: 'SUBMIT_SURVEY' });
+          break;
+        case 'set-tab':
+          dispatch({ type: 'SET_TAB', payload: el.dataset.tab });
+          break;
+        case 'set-response':
+          // For rating buttons (radio handled via 'input' event)
+          dispatch({ type: 'SET_RESPONSE', payload: { questionId: el.dataset.qid, value: el.dataset.value } });
+          break;
+      }
+    });
+
+    // Keyboard: Enter/Space on card header
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const header = e.target.closest('.q-card__header');
+        if (header && e.target === header) {
+          e.preventDefault();
+          const id = header.dataset.id;
+          dispatch({ type: 'SET_EDITING', payload: { id: id === 'null' ? null : id } });
+        }
+      }
+    });
+
+    // Header button handlers
+    document.getElementById('export-json-btn').addEventListener('click', () => {
+      const json = JSON.stringify(state.survey, null, 2);
+      const blob = new Blob([json], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = Object.assign(document.createElement('a'), { href: url, download: `${slugify(state.survey.title)}.json` });
+      a.click();
+      URL.revokeObjectURL(url);
+      dispatch({ type: 'SHOW_TOAST', payload: { text: 'Survey exported as JSON.', type: 'success' } });
+    });
+
+    document.getElementById('copy-json-btn').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(JSON.stringify(state.survey, null, 2));
+        dispatch({ type: 'SHOW_TOAST', payload: { text: '✓ JSON copied to clipboard.', type: 'success' } });
+      } catch {
+        dispatch({ type: 'SHOW_TOAST', payload: { text: 'Copy failed. Use Export JSON instead.', type: 'error' } });
+      }
+    });
+
+    document.getElementById('save-draft-btn').addEventListener('click', () => {
+      const name = prompt('Save draft as:', state.currentDraftName || state.survey.title || 'My Survey');
+      if (name) dispatch({ type: 'SAVE_DRAFT', payload: { name } });
+    });
+
+    document.getElementById('draft-select').addEventListener('change', e => {
+      const name = e.target.value;
+      if (!name) return;
+      if (state.isDirty && !confirm('Unsaved changes will be lost. Load draft anyway?')) {
+        e.target.value = state.currentDraftName || '';
+        return;
+      }
+      dispatch({ type: 'LOAD_DRAFT', payload: { name } });
+    });
+
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      const cur = document.documentElement.getAttribute('data-theme');
+      dispatch({ type: 'SET_THEME', payload: cur === 'dark' ? 'light' : 'dark' });
+    });
+
+    document.getElementById('toast-close').addEventListener('click', () => {
+      dispatch({ type: 'HIDE_TOAST' });
+    });
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+      if (state.theme === 'system') applyTheme('system');
+    });
+
+    // =====================================================
+    // UTILITIES
+    // =====================================================
+    function deepClone(obj) { return JSON.parse(JSON.stringify(obj)); }
+
+    function debounce(fn, ms) {
+      let t;
+      return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), ms); };
+    }
+
+    function escHtml(str) {
+      if (str === null || str === undefined) return '';
+      return String(str)
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+        .replace(/"/g,'&quot;').replace(/'/g,'&#x27;');
+    }
+
+    // Fast non-crypto hash for render-change detection
+    function simpleHash(str) {
+      let h = 0;
+      for (let i = 0; i < str.length; i++) h = (Math.imul(31, h) + str.charCodeAt(i)) | 0;
+      return h.toString(36);
+    }
+
+    // Sync an input's value without disturbing active focus
+    function syncInputValue(id, value) {
+      const el = document.getElementById(id);
+      if (el && el !== document.activeElement) el.value = value || '';
+    }
+
+    function slugify(str) {
+      return String(str).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'survey';
+    }
+
+    function applyTheme(theme) {
+      const root = document.documentElement;
+      const resolved = theme === 'system'
+        ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : theme;
+      root.setAttribute('data-theme', resolved);
+      const isDark = resolved === 'dark';
+      const btn = document.getElementById('theme-toggle');
+      btn.setAttribute('aria-pressed', String(isDark));
+      btn.querySelector('.theme-toggle__icon').textContent = isDark ? '☀️' : '🌙';
+    }
+
+    function loadDraftsFromStorage() {
+      try { return JSON.parse(localStorage.getItem('mp2-drafts') || '{}'); } catch { return {}; }
+    }
+
+    function persistDrafts(drafts) {
+      try { localStorage.setItem('mp2-drafts', JSON.stringify(drafts)); }
+      catch { dispatch({ type: 'SHOW_TOAST', payload: { text: 'Storage full — draft not saved.', type: 'error' } }); }
+    }
+
+    // =====================================================
+    // INIT
+    // =====================================================
+    function init() {
+      applyTheme(state.theme);
+      renderAll();
+    }
+
+    init();
+  </script>
+</body>
+</html>
