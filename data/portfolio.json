@@ -225,16 +225,16 @@
       "highlight": "First live proof of multi-AI orchestration (Claude → Grok) for junior-level production code"
     },
     {
-      "id": "mp2-survey-builder",
-      "title": "Dynamic Survey Builder with Live Preview",
-      "type": "micro-project",
-      "complexityLevel": 2,
-      "fcccertsCovered": ["JavaScript Algorithms and Data Structures", "Front End Development Libraries"],
-      "liveUrl": "https://markusisaksson1982.github.io/micro-projects/mp2-survey-builder/",
-      "repoPath": "micro-projects/mp2-survey-builder",
-      "description": "Full-featured survey prototyping tool with real-time two-pane preview, validation engine, named drafts and JSON export. Demonstrates nested state management, selective rendering and pure validation logic in vanilla JS.",
-      "highlight": "Proof of progression: from static explorer (MP1) to interactive stateful application"
-    }
+  "id": "mp3-react-explorer",
+  "title": "React FCC Certification Explorer",
+  "type": "micro-project",
+  "complexityLevel": 3,
+  "fcccertsCovered": ["Responsive Web Design", "JavaScript Algorithms and Data Structures", "Front End Development Libraries"],
+  "liveUrl": "https://markusisaksson1982.github.io/micro-projects/mp3-react-explorer/",
+  "repoPath": "micro-projects/mp3-react-explorer",
+  "description": "Full React 18 port of MP1 with identical features and visual design. Demonstrates deliberate use of React.memo, Context split, custom hooks, and performance optimization. Clear comparison between vanilla and React implementations.",
+  "highlight": "The arc is complete: fundamentals → algorithmic depth → framework fluency"
+}
   ],
   "openForAI": ["claude", "gpt", "gemini", "grok"],
   "aiMetadata": {
