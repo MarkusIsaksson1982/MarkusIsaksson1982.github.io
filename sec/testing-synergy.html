@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testning som samarbetsspråk — Cybersecurity × Development</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Source+Serif+4:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-deep: #0a0e17;
+    --bg-card: #111827;
+    --bg-card-hover: #1a2336;
+    --bg-expand: #0d1525;
+    --border: #1e2d4a;
+    --border-glow: #2563eb33;
+    --accent: #38bdf8;
+    --accent-warm: #f59e0b;
+    --accent-green: #34d399;
+    --accent-rose: #fb7185;
+    --accent-purple: #a78bfa;
+    --text: #e2e8f0;
+    --text-dim: #94a3b8;
+    --text-bright: #f1f5f9;
+    --font-body: 'DM Sans', sans-serif;
+    --font-display: 'Source Serif 4', Georgia, serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    text-decoration: none;
+    margin-bottom: 1rem;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--accent); }
+
+  /* ---- HEADER ---- */
+  header {
+    text-align: center;
+    padding: 3rem 0 2.5rem;
+    position: relative;
+  }
+
+  header::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-purple), var(--accent-green));
+    margin: 2rem auto 0;
+    border-radius: 1px;
+  }
+
+  .tag-line {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent-purple);
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.1s forwards;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4.5vw, 2.7rem);
+    font-weight: 700;
+    color: var(--text-bright);
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.25s forwards;
+  }
+
+  h1 .amp { color: var(--accent-purple); font-style: italic; }
+
+  .subtitle {
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    max-width: 620px;
+    margin: 0 auto;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.4s forwards;
+  }
+
+  /* ---- INTRO ---- */
+  .intro {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.55s forwards;
+  }
+
+  .intro p { margin-bottom: 1rem; }
+  .intro p:last-child { margin-bottom: 0; }
+  .intro strong { color: var(--text-bright); }
+
+  .intro a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+  }
+  .intro a:hover { color: var(--accent-green); }
+
+  .en {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+    color: var(--accent);
+    background: #38bdf80d;
+    padding: 0.1em 0.35em;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  /* ---- KEY INSIGHT BOX ---- */
+  .key-insight {
+    background: linear-gradient(135deg, #1e3a5f22, #1a104033);
+    border: 1px solid var(--accent-purple);
+    border-radius: 12px;
+    padding: 1.75rem 2rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.65s forwards;
+  }
+
+  .key-insight::before {
+    content: '💡';
+    position: absolute;
+    top: -14px;
+    left: 20px;
+    font-size: 1.4rem;
+    background: var(--bg-deep);
+    padding: 0 0.5rem;
+  }
+
+  .key-insight-title {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent-purple);
+    margin-bottom: 0.75rem;
+  }
+
+  .key-insight p {
+    font-size: 0.95rem;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+  }
+  .key-insight p:last-child { margin-bottom: 0; }
+
+  /* ---- TESTING OVERVIEW TABLE ---- */
+  .test-overview {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    overflow-x: auto;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.7s forwards;
+  }
+
+  .test-overview h3 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--text-bright);
+    margin-bottom: 0.5rem;
+  }
+
+  .test-overview .table-intro {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    margin-bottom: 1.25rem;
+  }
+
+  .test-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+
+  .test-table th {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-align: left;
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .test-table td {
+    padding: 0.65rem 0.75rem;
+    border-bottom: 1px solid #1e2d4a55;
+    color: var(--text);
+    vertical-align: top;
+  }
+
+  .test-table tr:last-child td { border-bottom: none; }
+
+  .test-table .type-name {
+    font-weight: 600;
+    color: var(--text-bright);
+    white-space: nowrap;
+  }
+
+  .test-table .relevance {
+    font-size: 0.8rem;
+    color: var(--accent-green);
+    font-family: var(--font-mono);
+  }
+
+  /* ---- TIER SECTIONS ---- */
+  .tier {
+    margin-bottom: 2.5rem;
+  }
+
+  .tier-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .tier-badge {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+
+  .tier-badge.basic { background: #34d39918; color: var(--accent-green); border: 1px solid #34d39933; }
+  .tier-badge.intermediate { background: #f59e0b15; color: var(--accent-warm); border: 1px solid #f59e0b33; }
+  .tier-badge.advanced { background: #fb718515; color: var(--accent-rose); border: 1px solid #fb718533; }
+
+  .tier-title {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    color: var(--text-bright);
+  }
+
+  .tier-subtitle {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .hours-estimate {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: 6px;
+    background: #38bdf80a;
+    border: 1px solid #38bdf818;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+  }
+
+  /* ---- CONCEPT CARDS (reused) ---- */
+  .concept {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .concept:hover {
+    border-color: #2563eb55;
+    box-shadow: 0 0 20px var(--border-glow);
+  }
+
+  .concept-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.15rem 1.5rem;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: background 0.2s;
+  }
+
+  .concept-header:hover { background: var(--bg-card-hover); }
+
+  .concept-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    flex-shrink: 0;
+  }
+
+  .concept-meta { flex: 1; min-width: 0; }
+
+  .concept-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-bright);
+    line-height: 1.3;
+  }
+
+  .concept-brief {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    margin-top: 0.1rem;
+  }
+
+  .chevron {
+    width: 20px;
+    height: 20px;
+    color: var(--text-dim);
+    transition: transform 0.3s ease, color 0.3s;
+    flex-shrink: 0;
+  }
+
+  .concept.open .chevron {
+    transform: rotate(180deg);
+    color: var(--accent);
+  }
+
+  .concept-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .concept.open .concept-body { max-height: 3000px; }
+
+  .concept-inner {
+    padding: 0 1.5rem 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .concept-inner p {
+    margin-top: 1rem;
+    color: var(--text);
+    font-size: 0.93rem;
+  }
+
+  .orientation {
+    margin-top: 1rem;
+    background: #a78bfa0a;
+    border-left: 3px solid var(--accent-purple);
+    border-radius: 0 8px 8px 0;
+    padding: 0.85rem 1.1rem;
+  }
+
+  .orientation-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent-purple);
+    margin-bottom: 0.4rem;
+  }
+
+  .orientation p {
+    margin-top: 0.4rem !important;
+    font-size: 0.87rem !important;
+    color: var(--text-dim) !important;
+  }
+
+  .synergy-box {
+    margin-top: 1.15rem;
+    background: linear-gradient(135deg, #1e3a5f22, #0d192e55);
+    border-left: 3px solid var(--accent-green);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.15rem;
+  }
+
+  .synergy-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent-green);
+    margin-bottom: 0.4rem;
+  }
+
+  .synergy-box p {
+    margin-top: 0.4rem !important;
+    font-size: 0.87rem !important;
+  }
+
+  .markus-ref {
+    color: var(--accent-warm);
+    font-weight: 500;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1rem;
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    padding: 0.18rem 0.5rem;
+    border-radius: 4px;
+    background: #38bdf80d;
+    color: var(--accent);
+    border: 1px solid #38bdf822;
+  }
+
+  .tag.python { background: #f59e0b0d; color: var(--accent-warm); border-color: #f59e0b22; }
+  .tag.security { background: #fb718511; color: var(--accent-rose); border-color: #fb718522; }
+  .tag.web { background: #34d39911; color: var(--accent-green); border-color: #34d39922; }
+  .tag.collab { background: #a78bfa0d; color: var(--accent-purple); border-color: #a78bfa22; }
+
+  /* ---- CODE SAMPLE ---- */
+  .code-block {
+    margin-top: 1rem;
+    background: #080c14;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.15rem;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    line-height: 1.65;
+    color: var(--text-dim);
+  }
+
+  .code-block .comment { color: #4a6a8a; }
+  .code-block .keyword { color: var(--accent-purple); }
+  .code-block .string { color: var(--accent-green); }
+  .code-block .func { color: var(--accent); }
+  .code-block .const { color: var(--accent-warm); }
+
+  /* ---- FOOTER ---- */
+  footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+  }
+
+  footer a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  footer a:hover { border-bottom-color: var(--accent); }
+
+  footer .links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  /* ---- ANIMATIONS ---- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 600px) {
+    .container { padding: 1rem 1rem 3rem; }
+    header { padding: 2rem 0 1.5rem; }
+    .concept-header { padding: 1rem; }
+    .concept-inner { padding: 0 1rem 1.25rem; }
+    .test-table { font-size: 0.8rem; }
+    .test-table th, .test-table td { padding: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<a href="index.html" class="back-link">← Tillbaka till synergisidan</a>
+
+<header>
+  <p class="tag-line">Samarbete genom testning</p>
+  <h1>Testning som <span class="amp">gemensamt språk</span></h1>
+  <p class="subtitle">Hur fördefinierade tester gör det möjligt att arbeta självständigt men synkroniserat — oavsett om man sitter med koden eller med säkerhetskraven.</p>
+</header>
+
+<section class="intro">
+  <p>
+    Inom professionell mjukvaruutveckling är <strong>tester</strong> inte bara ett verktyg för att hitta buggar — de är ett <strong>samarbetskontrakt</strong>. Om två personer kommer överens om <em>vilka tester som ska passera</em> innan arbetet börjar, kan de arbeta relativt oberoende av varandra och ändå veta att resultatet kommer att fungera ihop.
+  </p>
+  <p>
+    Det här är särskilt kraftfullt i skärningspunkten mellan <strong>cybersäkerhet och utveckling</strong>: du kan definiera säkerhetskrav som tester, och en utvecklare som Markus kan implementera lösningar som bevisligen uppfyller dem — utan att ni behöver sitta bredvid varandra hela tiden.
+  </p>
+  <p>
+    Den här sidan förklarar hur det fungerar, med konkreta scenarier indelade i tre nivåer.
+  </p>
+</section>
+
+<div class="key-insight">
+  <div class="key-insight-title">Nyckelinsikt — varför testning möjliggör distribuerat samarbete</div>
+  <p>
+    Tänk dig att du identifierar en säkerhetsrisk: <em>"Systemet ska neka åtkomst efter fem misslyckade inloggningsförsök."</em> Det är ett krav. Om det kravet skrivs som ett <span class="en">test</span> — ett litet program som automatiskt kontrollerar beteendet — kan en utvecklare arbeta helt självständigt tills testet passerar. Ni behöver inte definiera <em>hur</em> det ska lösas, bara <em>vad</em> som ska gälla.
+  </p>
+  <p>
+    Det kallas ibland <span class="en">contract-based development</span> eller <span class="en">test-driven development (TDD)</span>, och det fungerar lika bra med två personer som med tjugo.
+  </p>
+</div>
+
+<!-- TEST OVERVIEW TABLE -->
+<section class="test-overview">
+  <h3>Testtyper — en snabbguide</h3>
+  <p class="table-intro">Olika testtyper tjänar olika syften. Här är de vanligaste, med en notering om vilka som är mest relevanta ur ett cybersäkerhetsperspektiv.</p>
+  <table class="test-table">
+    <thead>
+      <tr>
+        <th>Testtyp</th>
+        <th>Vad den verifierar</th>
+        <th>Säkerhetsrelevans</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="type-name">Unit Tests</td>
+        <td>Minsta möjliga kodkomponent — en enskild funktion</td>
+        <td class="relevance">★★☆</td>
+      </tr>
+      <tr>
+        <td class="type-name">Integration</td>
+        <td>Att databas + tjänster fungerar tillsammans</td>
+        <td class="relevance">★★★</td>
+      </tr>
+      <tr>
+        <td class="type-name">Contract Tests</td>
+        <td>Att API:er uppfyller överenskommen specifikation</td>
+        <td class="relevance">★★★</td>
+      </tr>
+      <tr>
+        <td class="type-name">E2E Tests</td>
+        <td>Hela användarflöden, som en riktig användare</td>
+        <td class="relevance">★★★</td>
+      </tr>
+      <tr>
+        <td class="type-name">Load Tests</td>
+        <td>Beteende under hög belastning (många samtidiga användare)</td>
+        <td class="relevance">★★☆</td>
+      </tr>
+      <tr>
+        <td class="type-name">Smoke Tests</td>
+        <td>Att grundläggande tjänster lever och svarar</td>
+        <td class="relevance">★★☆</td>
+      </tr>
+      <tr>
+        <td class="type-name">Security Tests</td>
+        <td>Att kända sårbarhetsmönster inte finns i koden</td>
+        <td class="relevance">★★★</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+
+<!-- ═══════════════════════════════ BASIC ═══════════════════════════════ -->
+<section class="tier">
+  <div class="tier-header">
+    <span class="tier-badge basic">Grundnivå</span>
+    <h2 class="tier-title">Tydliga kontroller</h2>
+  </div>
+  <p class="tier-subtitle">Enkla, binära tester som verifierar att grundläggande säkerhetsregler följs. Lämpliga som inträde i testbaserat samarbete.</p>
+  <div class="hours-estimate">⏱ Typisk arbetsinsats: 2–8 timmar per scenario</div>
+
+  <!-- B1: Input Validation -->
+  <article class="concept">
+    <div class="concept-header" onclick="toggle(this)">
+      <div class="concept-icon" style="background:#34d39911;">🛡️</div>
+      <div class="concept-meta">
+        <div class="concept-title"><span class="en">Input Validation</span> — stoppa farlig indata</div>
+        <div class="concept-brief">Grundläggande skydd mot injection och felaktig data</div>
+      </div>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="concept-body"><div class="concept-inner">
+      <div class="orientation">
+        <div class="orientation-label">📖 Orientering — vad menas?</div>
+        <p>
+          <span class="en">Input validation</span> innebär att kontrollera all data som kommer in i ett system — formulärfält, API-anrop, URL-parametrar — <em>innan</em> den bearbetas. Det är en av de viktigaste säkerhetskontrollerna och relaterar direkt till <span class="en">Integrity</span> i CIA-triaden.
+        </p>
+      </div>
+      <p>
+        <strong>Scenario:</strong> Du definierar kravet: <em>"Ingen indata som innehåller SQL-liknande mönster får nå databasen ofiltrerad."</em> Markus skriver sedan <span class="en">unit tests</span> som testar exakt detta — och implementerar lösningen tills alla tester passerar.
+      </p>
+      <div class="code-block">
+        <span class="comment">// Exempel: Unit test (Chai + Mocha) som verifierar input sanitization</span><br>
+        <span class="keyword">describe</span>(<span class="string">'sanitizeInput'</span>, () => {<br>
+        &nbsp;&nbsp;<span class="keyword">it</span>(<span class="string">'should reject SQL injection patterns'</span>, () => {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">const</span> <span class="const">malicious</span> = <span class="string">"'; DROP TABLE users; --"</span>;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="func">expect</span>(<span class="func">sanitize</span>(<span class="const">malicious</span>)).<span class="func">to</span>.<span class="func">not</span>.<span class="func">include</span>(<span class="string">"DROP"</span>);<br>
+        &nbsp;&nbsp;});<br>
+        });
+      </div>
+      <div class="synergy-box">
+        <div class="synergy-label">↗ Samarbetsmodell</div>
+        <p>
+          <strong>Din roll:</strong> Definiera vilka typer av farlig indata som ska blockeras, baserat på dina kunskaper om vanliga <span class="en">attack vectors</span> (från kursens Module 2).
+          <span class="markus-ref">Markus roll:</span> Implementera valideringen och skriva tester med <span class="en">Chai</span> och <span class="en">Mocha</span> (som han har certifierad erfarenhet av) som bevisar att kraven uppfylls.
+        </p>
+      </div>
+      <div class="tags">
+        <span class="tag web">Chai</span>
+        <span class="tag web">Mocha</span>
+        <span class="tag security">SQL Injection</span>
+        <span class="tag collab">Unit Test</span>
+      </div>
+    </div></div>
+  </article>
+
+  <!-- B2: Password Policy -->
+  <article class="concept">
+    <div class="concept-header" onclick="toggle(this)">
+      <div class="concept-icon" style="background:#34d39911;">🔑</div>
+      <div class="concept-meta">
+        <div class="concept-title"><span class="en">Password Policy Enforcement</span></div>
+        <div class="concept-brief">Testa att lösenordskrav verkligen upprätthålls</div>
+      </div>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="concept-body"><div class="concept-inner">
+      <div class="orientation">
+        <div class="orientation-label">📖 Orientering</div>
+        <p>
+          <span class="en">Unit tests</span> testar den allra minsta kodkomponenten — en enda funktion. De är snabba (millisekunder), körs ofta, och ger omedelbar feedback. Perfekt för att verifiera regler som "lösenord måste vara minst 12 tecken" eller "måste innehålla minst en siffra".
+        </p>
+      </div>
+      <p>
+        <strong>Scenario:</strong> Utifrån bästa praxis (som du stött på via <span class="en">Security Controls</span> i Module 3) sätter du kraven: minimilängd, komplexitet, att lösenord inte lagras i klartext. Markus skriver enhetstester för varje krav.
+      </p>
+      <div class="synergy-box">
+        <div class="synergy-label">↗ Samarbetsmodell</div>
+        <p>
+          Ni enas om en specifikation: <em>"Lösenord hashas med <span class="en">Argon2id</span>, minst 12 tecken, minst en versal, en siffra, ett specialtecken."</em>
+          <span class="markus-ref">Markus implementerar och testar.</span> Hans certifiering i <span class="en">Information Security &amp; QA</span> täcker exakt denna typ av arbetsflöde. Testerna blir ett levande kontrakt — om någon ändrar koden och bryter mot policyn, larmar testerna automatiskt.
+        </p>
+      </div>
+      <div class="tags">
+        <span class="tag security">Argon2id</span>
+        <span class="tag security">Hashing</span>
+        <span class="tag collab">Unit Test</span>
+        <span class="tag collab">Kontrakt</span>
+      </div>
+    </div></div>
+  </article>
+
+  <!-- B3: HTTP Security Headers -->
+  <article class="concept">
+    <div class="concept-header" onclick="toggle(this)">
+      <div class="concept-icon" style="background:#34d39911;">📋</div>
+      <div class="concept-meta">
+        <div class="concept-title"><span class="en">Security Headers</span> — <span class="en">Smoke Tests</span></div>
+        <div class="concept-brief">Verifiera att grundläggande skydd alltid är aktivt</div>
+      </div>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="concept-body"><div class="concept-inner">
+      <div class="orientation">
+        <div class="orientation-label">📖 Orientering</div>
+        <p>
+          <span class="en">Smoke tests</span> är enkla "lever det?"-kontroller. De verifierar inte komplex logik, utan att grundläggande saker är på plats. Att ett API svarar. Att en server har rätt <span class="en">security headers</span>. De är billiga att skriva och enormt värdefulla.
+        </p>
+      </div>
+      <p>
+        <strong>Scenario:</strong> Du listar vilka HTTP-headers som måste finnas (<span class="en">X-Content-Type-Options</span>, <span class="en">Strict-Transport-Security</span>, <span class="en">Content-Security-Policy</span>). Markus sätter upp ett <span class="en">smoke test</span> som körs dagligen och larmar om något saknas.
+      </p>
+      <div class="synergy-box">
+        <div class="synergy-label">↗ Samarbetsmodell</div>
+        <p>
+          <strong>Din roll:</strong> Ta fram checklistan utifrån ramverk som NIST eller OWASP.
+          <span class="markus-ref">Markus roll:</span> Implementera <span class="en">HelmetJS</span>-konfiguration och skriva automatiserade smoke tests — antingen med Node.js eller som Python-skript som gör HTTP-anrop och verifierar headers. Ett kompakt men professionellt samarbetsstycke.
+        </p>
+      </div>
+      <div class="tags">
+        <span class="tag web">HelmetJS</span>
+        <span class="tag python">Python</span>
+        <span class="tag collab">Smoke Test</span>
+        <span class="tag">OWASP</span>
+      </div>
+    </div></div>
+  </article>
+</section>
+
+
+<!-- ══════════════════════════ INTERMEDIATE ══════════════════════════ -->
+<section class="tier">
+  <div class="tier-header">
+    <span class="tier-badge intermediate">Mellannivå</span>
+    <h2 class="tier-title">Sammansatta flöden</h2>
+  </div>
+  <p class="tier-subtitle">Tester som involverar flera systemdelar och realistiska användarscenarier. Kräver mer planering men speglar professionell verklighet.</p>
+  <div class="hours-estimate">⏱ Typisk arbetsinsats: 8–30 timmar per scenario</div>
+
+  <!-- I1: Auth Flow E2E -->
+  <article class="concept">
+    <div class="concept-header" onclick="toggle(this)">
+      <div class="concept-icon" style="background:#f59e0b11;">🔐</div>
+      <div class="concept-meta">
+        <div class="concept-title"><span class="en">Authentication Flow — E2E Test</span></div>
+        <div class="concept-brief">Testa hela inloggningsflödet som en verklig användare</div>
+      </div>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="concept-body"><div class="concept-inner">
+      <div class="orientation">
+        <div class="orientation-label">📖 Orientering</div>
+        <p>
+          <span class="en">End-to-End (E2E) tests</span> simulerar en riktig användare: de öppnar en webbsida, fyller i fält, klickar på knappar, och verifierar vad som händer. Det är det mest realistiska testet — men också det långsammaste och dyraste att underhålla. E2E-tester skrivs med verktyg som <span class="en">Cypress</span> eller <span class="en">Playwright</span>.
+        </p>
+      </div>
+      <p>
+        <strong>Scenario:</strong> Ni definierar tillsammans hela <span class="en">authentication flow</span>: registrering → verifiering → inloggning → session → utloggning. Ni definierar vad som ska hända vid felaktigt lösenord, utgången session, och vid brute-force-försök (t.ex. <span class="en">rate limiting</span> efter 5 försök).
+      </p>
+      <div class="synergy-box">
+        <div class="synergy-label">↗ Samarbetsmodell</div>
+        <p>
+          <strong>Din roll:</strong> Utifrån CISSP-domänen <span class="en">Identity and Access Management</span> sätter du kravspecifikationen: vilka beteenden ska och inte ska vara möjliga.
+          <span class="markus-ref">Markus roll:</span> Bygga hela autentiseringsflödet med <span class="en">Passport.js</span>, <span class="en">JWT</span>, och <span class="en">Express middleware</span>, samt E2E-tester som verifierar varje definierat scenario. Ni kan arbeta i veckor utan daglig synk — testerna garanterar att kontraktet hålls.
+        </p>
+      </div>
+      <div class="tags">
+        <span class="tag web">Passport.js</span>
+        <span class="tag web">JWT</span>
+        <span class="tag security">IAM</span>
+        <span class="tag collab">E2E Test</span>
+        <span class="tag collab">Kontrakt</span>
+      </div>
+    </div></div>
+  </article>
+
+  <!-- I2: API Contract Testing -->
+  <article class="concept">
+    <div class="concept-header" onclick="toggle(this)">
+      <div class="concept-icon" style="background:#f59e0b11;">📄</div>
+      <div class="concept-meta">
+        <div class="concept-title"><span class="en">API Contract Testing</span></div>
+        <div class="concept-brief">Garantera att gränssnitt mellan system håller sina löften</div>
+      </div>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="concept-body"><div class="concept-inner">
+      <div class="orientation">
+        <div class="orientation-label">📖 Orientering</div>
+        <p>
+          <span class="en">Contract tests</span> verifierar att ett API levererar exakt den data det lovat — rätt fält, rätt format, rätt statuskoder. Om ett API lovar att returnera <code>{ "user": { "id": 1, "role": "admin" } }</code>, så testar ett <span class="en">contract test</span> att det faktiskt ser ut så. Specifikationer som <span class="en">OpenAPI</span> (Swagger) gör detta maskinläsbart.
+        </p>
+      </div>
+      <p>
+        <strong>Scenario:</strong> Ni designar tillsammans ett API för incidentrapportering. Du specificerar vilka fält som krävs (<span class="en">severity</span>, <span class="en">timestamp</span>, <span class="en">affected_asset</span>, <span class="en">reporter_id</span>), vilka roller som får göra vad, och vilka HTTP-statuskoder som ska returneras vid olika fel.
+      </p>
+      <div class="synergy-box">
+        <div class="synergy-label">↗ Samarbetsmodell</div>
+        <p>
+          Det här är det kanske mest naturliga samarbetsmönstret: du <strong>specificerar kontraktet</strong> (baserat på domänkunskap från säkerhetsfältet), och <span class="markus-ref">Markus implementerar API:et</span> med <span class="en">Node.js/Express</span> och skriver <span class="en">contract tests</span> som bevakar att specifikationen hålls. Om en tredje person senare ändrar API:et, bryter testet — och alla vet direkt.
+        </p>
+      </div>
+      <div class="tags">
+        <span class="tag web">REST API</span>
+        <span class="tag web">Express</span>
+        <span class="tag">OpenAPI</span>
+        <span class="tag collab">Contract Test</span>
+      </div>
+    </div></div>
+  </article>
+
+  <!-- I3: Integration Test — DB + Auth -->
+  <article class="concept">
+    <div class="concept-header" onclick="toggle(this)">
+      <div class="concept-icon" style="background:#f59e0b11;">🔗</div>
+      <div class="concept-meta">
+        <div class="concept-title"><span class="en">Integration Tests</span> — databas + behörighet</div>
+        <div class="concept-brief">Verifierar att flera systemdelar samverkar korrekt</div>
+      </div>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="concept-body"><div class="concept-inner">
+      <div class="orientation">
+        <div class="orientation-label">📖 Orientering</div>
+        <p>
+          <span class="en">Integration tests</span> ligger mellan <span class="en">unit tests</span> och <span class="en">E2E tests</span>. De testar att två eller fler komponenter fungerar ihop — typiskt en databas och en tjänst, eller en autentiseringsmodul och ett API. De är snabbare än E2E men fångar fler verkliga problem än enhetstester.
+        </p>
+      </div>
+      <p>
+        <strong>Scenario:</strong> Ni vill verifiera att en användare med rollen <span class="en">"analyst"</span> kan läsa men inte skriva säkerhetsloggar, medan rollen <span class="en">"admin"</span> kan göra båda. Det kräver att <em>databasen</em>, <em>autentiseringen</em> och <em>API-lagret</em> alla samverkar korrekt.
+      </p>
+      <div class="synergy-box">
+        <div class="synergy-label">↗ Samarbetsmodell</div>
+        <p>
+          <strong>Din roll:</strong> Designa rollmatrisen — vilka roller finns, vad får de göra? (CISSP: <span class="en">Identity and Access Management</span>.)
+          <span class="markus-ref">Markus roll:</span> Implementera <span class="en">RBAC</span> i databas + API och skriva integrationstester med PostgreSQL som verifierar att varje kombination av roll × åtgärd beter sig som specificerat. Med hans erfarenhet av <span class="en">SQL, Express</span> och <span class="en">Passport.js</span> hänger alla bitarna ihop.
+        </p>
+      </div>
+      <div class="tags">
+        <span class="tag">PostgreSQL</span>
+        <span class="tag security">RBAC</span>
+        <span class="tag web">Express</span>
+        <span class="tag collab">Integration Test</span>
+      </div>
+    </div></div>
+  </article>
+</section>
+
+
+<!-- ═══════════════════════════ ADVANCED ═══════════════════════════ -->
+<section class="tier">
+  <div class="tier-header">
+    <span class="tier-badge advanced">Avancerad nivå</span>
+    <h2 class="tier-title">Systemövergripande &amp; AI-drivet</h2>
+  </div>
+  <p class="tier-subtitle">Komplexa scenarier som involverar automatisering, maskininlärning och realtidsövervakning. Representerar professionellt arbete nära produktionsmiljöer.</p>
+  <div class="hours-estimate">⏱ Typisk arbetsinsats: 30–120+ timmar per scenario</div>
+
+  <!-- A1: Automated Security Regression Suite -->
+  <article class="concept">
+    <div class="concept-header" onclick="toggle(this)">
+      <div class="concept-icon" style="background:#fb718511;">🔄</div>
+      <div class="concept-meta">
+        <div class="concept-title"><span class="en">Automated Security Regression Suite</span></div>
+        <div class="concept-brief">En testsvit som bevakar alla kända sårbarheter — automatiskt</div>
+      </div>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="concept-body"><div class="concept-inner">
+      <div class="orientation">
+        <div class="orientation-label">📖 Orientering</div>
+        <p>
+          En <span class="en">regression suite</span> är en samling tester som körs automatiskt vid varje kodändring. Tanken: varje gång ett säkerhetsproblem upptäcks och fixas, skrivs ett test som garanterar att det <em>aldrig kommer tillbaka</em>. Sviten växer över tid och blir organisationens säkerhetsminne.
+        </p>
+      </div>
+      <p>
+        <strong>Scenario:</strong> Ni bygger en levande testsvit som täcker OWASP Top 10: <span class="en">injection</span>, <span class="en">broken authentication</span>, <span class="en">sensitive data exposure</span>, <span class="en">XSS</span>, m.fl. Varje gång en ny sårbarhet rapporteras i branschen, lägger ni till ett test.
+      </p>
+      <div class="synergy-box">
+        <div class="synergy-label">↗ Samarbetsmodell</div>
+        <p>
+          <strong>Din roll:</strong> Omvärldsbevaka — vilka nya <span class="en">attack vectors</span> dyker upp? Vilka bör testas? Du håller svitens "kravkatalog" uppdaterad.
+          <span class="markus-ref">Markus roll:</span> Bygga testramverket, implementera varje nytt test, och sätta upp <span class="en">CI/CD-integration</span> så att sviten körs automatiskt. Ett pågående samarbete snarare än ett enskilt projekt — med tydlig arbetsdelning och automatiserad feedback.
+        </p>
+      </div>
+      <div class="tags">
+        <span class="tag security">OWASP Top 10</span>
+        <span class="tag web">CI/CD</span>
+        <span class="tag collab">Regression Suite</span>
+        <span class="tag collab">Pågående</span>
+      </div>
+    </div></div>
+  </article>
+
+  <!-- A2: ML Anomaly Detection Pipeline -->
+  <article class="concept">
+    <div class="concept-header" onclick="toggle(this)">
+      <div class="concept-icon" style="background:#fb718511;">🤖</div>
+      <div class="concept-meta">
+        <div class="concept-title"><span class="en">ML-driven Anomaly Detection Pipeline</span></div>
+        <div class="concept-brief">Maskininlärning som identifierar avvikande beteenden i loggar</div>
+      </div>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="concept-body"><div class="concept-inner">
+      <div class="orientation">
+        <div class="orientation-label">📖 Orientering</div>
+        <p>
+          <span class="en">Anomaly detection</span> med maskininlärning innebär att en modell lär sig vad "normalt" beteende ser ut — och larmar när något avviker. Det kräver att man definierar vad som är normalt, vilken data modellen ska tränas på, och vilken <span class="en">false positive rate</span> som är acceptabel. Det sista är ett säkerhetsbeslut, inte ett tekniskt sådant.
+        </p>
+      </div>
+      <p>
+        <strong>Scenario:</strong> Ni bygger en pipeline som tar in loggdata (nätverkstrafik, inloggningsförsök, API-anrop), tränar en modell att känna igen mönster, och flaggar avvikelser. Hela arbetet kan ske lokalt om datan är känslig.
+      </p>
+      <div class="synergy-box">
+        <div class="synergy-label">↗ Samarbetsmodell</div>
+        <p>
+          <strong>Din roll:</strong> Definiera vilken typ av avvikelser som är intressanta, vilken <span class="en">false positive</span>-nivå som är acceptabel, och vilken data som är säker att använda (med hänsyn till GDPR och eventuell anonymisering).
+          <span class="markus-ref">Markus roll:</span> Bygga pipeline i Python med <span class="en">Pandas</span> för databearbetning, <span class="en">Scikit-learn</span> eller <span class="en">TensorFlow</span> för modellträning, och automatiserade tester som verifierar att modellen uppfyller överenskomna <span class="en">precision/recall</span>-trösklar. Hans medvetenhet om datasanitisering och lokala arbetsflöden gör det möjligt att hantera känslig data utan att den lämnar den egna miljön.
+        </p>
+      </div>
+      <div class="tags">
+        <span class="tag python">TensorFlow</span>
+        <span class="tag python">Scikit-learn</span>
+        <span class="tag python">Pandas</span>
+        <span class="tag security">GDPR</span>
+        <span class="tag collab">Lokal pipeline</span>
+      </div>
+    </div></div>
+  </article>
+
+  <!-- A3: Load & Resilience Under Attack Simulation -->
+  <article class="concept">
+    <div class="concept-header" onclick="toggle(this)">
+      <div class="concept-icon" style="background:#fb718511;">💥</div>
+      <div class="concept-meta">
+        <div class="concept-title"><span class="en">Load &amp; Resilience Testing</span> under attacksimulering</div>
+        <div class="concept-brief">Hur beter sig systemet under simulerad belastning och attack?</div>
+      </div>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="concept-body"><div class="concept-inner">
+      <div class="orientation">
+        <div class="orientation-label">📖 Orientering</div>
+        <p>
+          <span class="en">Load tests</span> simulerar hög trafik — men i en säkerhetskontext handlar det inte bara om prestanda utan om <span class="en">resilience</span>: klarar systemet en DDoS-liknande belastning? Fortsätter <span class="en">rate limiting</span> att fungera? Degraderas säkerhetsfunktioner under stress?
+        </p>
+      </div>
+      <p>
+        <strong>Scenario:</strong> Ni simulerar tusentals samtidiga inloggningsförsök mot ett system. Ni definierar i förväg: <em>"Systemet ska aldrig ge åtkomst till fler än X samtiliga sessioner per användare"</em>, <em>"Svarstiden ska inte överstiga 2 sekunder"</em>, <em>"Rate limiting ska aktiveras efter Y anrop/minut"</em>.
+      </p>
+      <div class="synergy-box">
+        <div class="synergy-label">↗ Samarbetsmodell</div>
+        <p>
+          <strong>Din roll:</strong> Definiera tröskelvärden och acceptabla beteenden utifrån <span class="en">Availability</span>-aspekten av CIA-triaden och din förståelse för DDoS/brute-force-attackmönster.
+          <span class="markus-ref">Markus roll:</span> Skriva lastgenereringsscripts (Python eller Node.js), implementera <span class="en">rate limiting middleware</span>, och bygga <span class="en">performance tests</span> med definierade trösklar. Visualisering av resultat med <span class="en">D3.js</span> eller <span class="en">Matplotlib</span> kan ge tydliga rapporter att dela med beslutsfattare.
+        </p>
+      </div>
+      <div class="tags">
+        <span class="tag python">Python</span>
+        <span class="tag web">Node.js</span>
+        <span class="tag python">D3.js / Matplotlib</span>
+        <span class="tag security">DDoS</span>
+        <span class="tag collab">Load Test</span>
+      </div>
+    </div></div>
+  </article>
+
+</section>
+
+
+<!-- CLOSING SECTION -->
+<section class="intro" style="border-color: var(--accent-purple); margin-top: 0.5rem;">
+  <p>
+    <strong>Sammanfattning:</strong> Testbaserat samarbete handlar inte om att kunna allt själv. Det handlar om att kunna definiera <em>vad</em> som ska gälla (din domänkunskap inom säkerhet) och lita på att implementationen verifieras automatiskt (utvecklarens tester). Ju tydligare kraven formuleras som tester, desto mer oberoende kan varje person arbeta — och desto högre kvalitet levereras.
+  </p>
+  <p>
+    Du har redan de grundläggande verktygen: förståelse för <span class="en">frameworks</span>, <span class="en">controls</span>, <span class="en">attack vectors</span> och etiska principer.
+    <span class="markus-ref">Markus</span> har de kompletterande verktygen: Python, JavaScript, databashantering, testramverk, och maskininlärning. Tillsammans bildar det en naturlig arbetsdelning.
+  </p>
+</section>
+
+<footer>
+  <p>Skapad som synergidokumentation · mars 2026</p>
+  <div class="links">
+    <a href="index.html">← Huvudsida: Synergipotential</a>
+    <a href="https://MarkusIsaksson1982.github.io" target="_blank" rel="noopener">Markus portfolio</a>
+    <a href="https://www.freecodecamp.org/fccfb1888e4-715c-408f-9fcb-887123f4d08b" target="_blank" rel="noopener">Verifiera certifikat</a>
+  </div>
+</footer>
+
+</div>
+
+<script>
+function toggle(header) {
+  const card = header.closest('.concept');
+  card.classList.toggle('open');
+}
+</script>
+</body>
+</html>
