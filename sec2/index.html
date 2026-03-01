@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synergi: Google Cybersecurity Foundations × Markus Full-Stack & AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap');
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        .title-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+        .accordion-open .accordion-content {
+            max-height: 800px;
+        }
+        .cyber-glow {
+            box-shadow: 0 0 15px rgba(34, 211, 238, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-200">
+    <!-- Navbar -->
+    <nav class="border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-md fixed w-full z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-shield-halved text-cyan-400 text-2xl"></i>
+                <span class="title-font text-2xl font-semibold tracking-tight">Synergi<span class="text-cyan-400">.</span></span>
+            </div>
+            <div class="flex items-center gap-8 text-sm">
+                <a href="#koncept" class="hover:text-cyan-400 transition-colors">Koncept</a>
+                <a href="#synergi" class="hover:text-cyan-400 transition-colors">Synergi med Markus</a>
+                <a href="#meriter" class="hover:text-cyan-400 transition-colors">Mina meriter</a>
+                <a href="#next" class="hover:text-cyan-400 transition-colors">Nästa steg</a>
+            </div>
+            <a href="https://markusisaksson1982.github.io" target="_blank"
+               class="flex items-center gap-2 px-5 py-2 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 rounded-full text-sm font-medium transition-all">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                <span>Till Markus portfolio</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="min-h-screen flex items-center pt-20 bg-gradient-to-br from-zinc-950 via-zinc-900 to-black relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(at_top_right,#22d3ee_0%,transparent_50%)] opacity-20"></div>
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-zinc-900 border border-cyan-500/30 rounded-full text-cyan-400 text-sm mb-6">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Google Cybersecurity Professional Certificate – Modul 1 slutförd</span>
+                </div>
+                <h1 class="title-font text-6xl md:text-7xl font-semibold leading-none tracking-tighter mb-6">
+                    Grattis till din<br>första <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">cybersäkerhetsresa</span>!
+                </h1>
+                <p class="text-xl text-zinc-400 max-w-lg">
+                    Du har nu grunderna i cybersäkerhet – roller, färdigheter, terminologi och varför det spelar roll för organisationer. 
+                    Låt oss visa hur detta kan växa till verkliga professionella lösningar tillsammans med min full-stack, Python- och AI-kompetens.
+                </p>
+                <div class="mt-10 flex items-center gap-4">
+                    <a href="#koncept" 
+                       class="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-2xl flex items-center gap-3 transition-all">
+                        <span>Utforska gemensamma koncept</span>
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </a>
+                    <a href="https://www.coursera.org/learn/foundations-of-cybersecurity" target="_blank"
+                       class="px-6 py-4 border border-zinc-700 hover:border-zinc-500 rounded-2xl flex items-center gap-2 text-sm">
+                        <i class="fa-solid fa-external-link-alt"></i>
+                        <span>Din kurs</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hidden md:flex justify-end">
+                <div class="bg-zinc-900/70 border border-zinc-700 rounded-3xl p-8 max-w-xs cyber-glow">
+                    <div class="text-cyan-400 text-5xl mb-4">🔒</div>
+                    <p class="text-lg font-medium">“Det här är början på något stort – vi kan automatisera, bygga säkra webbgränssnitt och översätta säkerhetsprinciper till AI-driven kod.”</p>
+                    <div class="mt-6 text-sm text-zinc-500">— Markus Isaksson</div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center">
+            <div class="text-xs tracking-widest text-zinc-500 mb-2">SCROLLA FÖR ATT UTFORSKA</div>
+            <i class="fa-solid fa-chevron-down text-cyan-400 animate-bounce"></i>
+        </div>
+    </header>
+
+    <!-- Koncept section -->
+    <section id="koncept" class="py-24 bg-zinc-900">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="px-4 py-2 bg-emerald-500/10 text-emerald-400 text-xs font-mono tracking-widest rounded-full">MODUL 1 – GRUNDERNA</span>
+                <h2 class="title-font text-5xl font-semibold mt-4">Koncept du redan känner igen</h2>
+                <p class="text-zinc-400 mt-4 max-w-md mx-auto">
+                    Klicka på varje kort för att se professionella tillämpningar och hur jag kan bidra med kod, AI och praktisk säkerhet.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Card 1 -->
+                <div onclick="toggleAccordion(this)" class="group bg-zinc-950 border border-zinc-800 rounded-3xl p-8 hover:border-cyan-400/50 transition-all cursor-pointer">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="text-3xl">🛡️</span>
+                                <h3 class="text-2xl font-semibold">Cybersäkerhetens kärna & roller</h3>
+                            </div>
+                            <p class="text-zinc-400">Entry-level analyst, core skills (analytiskt tänkande, kommunikation, tekniska grundkunskaper).</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-down text-cyan-400 transition-transform group-hover:rotate-180"></i>
+                    </div>
+                    <div class="accordion-content mt-8 text-sm text-zinc-300 leading-relaxed border-t border-zinc-800 pt-8">
+                        <strong class="block text-emerald-400 mb-3">Professionellt:</strong>
+                        <ul class="list-disc list-inside space-y-2 mb-8">
+                            <li>Övervaka system och svara på incidenter i ett SOC-team</li>
+                            <li>Skapa säkerhetsmedvetenhet i hela organisationen</li>
+                            <li>Delta i riskbedömningar och compliance-arbeten</li>
+                        </ul>
+                        
+                        <strong class="block text-cyan-400 mb-3">Synergi med Markus:</strong>
+                        <p class="mb-4">
+                            Jag har <span class="font-medium text-white">"Information Security"</span> och <span class="font-medium text-white">"Information Security & QA"</span> från freeCodeCamp – pen-testing, cryptography, network security med Python. 
+                            Vi kan tillsammans bygga <strong>Python-skript</strong> som automatiskt parsar loggar eller simulerar attacker för träning.
+                        </p>
+                        <p class="text-xs italic border-l-2 border-cyan-400 pl-4">
+                            "Det här vore kul att få dina perspektiv på, Markus – hur skulle du automatisera en daily security report med Python?"
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div onclick="toggleAccordion(this)" class="group bg-zinc-950 border border-zinc-800 rounded-3xl p-8 hover:border-cyan-400/50 transition-all cursor-pointer">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="text-3xl">🔄</span>
+                                <h3 class="text-2xl font-semibold">CIA-triad & grundläggande terminologi</h3>
+                            </div>
+                            <p class="text-zinc-400">Confidentiality, Integrity, Availability + threat, vulnerability, risk.</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-down text-cyan-400 transition-transform group-hover:rotate-180"></i>
+                    </div>
+                    <div class="accordion-content mt-8 text-sm text-zinc-300 leading-relaxed border-t border-zinc-800 pt-8">
+                        <strong class="block text-emerald-400 mb-3">Professionellt:</strong>
+                        <p class="mb-6">Designa system där data aldrig läcker (confidentiality), inte ändras oavsiktligt (integrity) och alltid är tillgänglig (availability) – t.ex. i sjukvård, banker eller offentlig sektor.</p>
+                        
+                        <strong class="block text-cyan-400 mb-3">Synergi med Markus:</strong>
+                        <p>
+                            Min <strong>Python</strong>-kunskap (Scientific Computing, Data Analysis, Machine Learning) + InfoSec-cert gör att jag kan skriva kod som <strong>saniterar data</strong> manuellt eller automatiskt innan AI-träning. 
+                            Allt körs lokalt (ingen cloud) för att följa GDPR och kommande AI Act. 
+                        </p>
+                        <div class="my-6 bg-black p-4 rounded-2xl font-mono text-xs overflow-auto">
+                            <span class="text-emerald-400"># Exempel: Enkel data-sanitizer</span><br>
+                            import re<br>
+                            def sanitize_pii(text):<br>
+                              return re.sub(r'\b\d{6}-\d{4}\b', '[PERSONNUMMER]', text)
+                        </div>
+                        <p class="text-xs italic border-l-2 border-cyan-400 pl-4">
+                            "Markus, hur skulle du prompta en LLM så att den alltid respekterar CIA-principerna vid datahantering?"
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div onclick="toggleAccordion(this)" class="group bg-zinc-950 border border-zinc-800 rounded-3xl p-8 hover:border-cyan-400/50 transition-all cursor-pointer">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="text-3xl">🛠️</span>
+                                <h3 class="text-2xl font-semibold">Hot, risker & kontroller</h3>
+                            </div>
+                            <p class="text-zinc-400">Phishing, social engineering, malware, security controls & frameworks (NIST, CISSP-domäner).</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-down text-cyan-400 transition-transform group-hover:rotate-180"></i>
+                    </div>
+                    <div class="accordion-content mt-8 text-sm text-zinc-300 leading-relaxed border-t border-zinc-800 pt-8">
+                        <strong class="block text-emerald-400 mb-3">Professionellt:</strong>
+                        <p class="mb-6">Bygga phishing-träningskampanjer, implementera multi-factor authentication och monitorera med SIEM-verktyg.</p>
+                        
+                        <strong class="block text-cyan-400 mb-3">Synergi med Markus:</strong>
+                        <p>
+                            Jag kan skapa <strong>HTML/CSS/JavaScript</strong>-baserade interaktiva säkerhetsdashboards eller simuleringsverktyg (t.ex. en live phishing-demo i webbläsaren). 
+                            Kombinerat med min pen-testing-kunskap kan vi testa och säkra webbapplikationer från grunden.
+                        </p>
+                        <p class="text-xs italic border-l-2 border-cyan-400 pl-4 mt-6">
+                            "Låt oss bolla idéer – jag har redan byggt React-komponenter som visualiserar realtids-hot i mina micro-projects."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div onclick="toggleAccordion(this)" class="group bg-zinc-950 border border-zinc-800 rounded-3xl p-8 hover:border-cyan-400/50 transition-all cursor-pointer">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="text-3xl">💻</span>
+                                <h3 class="text-2xl font-semibold">Verktyg & programmeringsspråk</h3>
+                            </div>
+                            <p class="text-zinc-400">Python, Linux-kommandon, SQL, SIEM – grunderna du mötte i modul 4.</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-down text-cyan-400 transition-transform group-hover:rotate-180"></i>
+                    </div>
+                    <div class="accordion-content mt-8 text-sm text-zinc-300 leading-relaxed border-t border-zinc-800 pt-8">
+                        <strong class="block text-emerald-400 mb-3">Professionellt:</strong>
+                        <p class="mb-6">Skriva enkla scripts för logganalys eller automatisering av säkerhetsuppgifter.</p>
+                        
+                        <strong class="block text-cyan-400 mb-3">Synergi med Markus:</strong>
+                        <p>
+                            Python är ett av mina starkaste språk (3 600+ timmar dokumenterad kodning, inklusive Scientific Computing with Python, Data Analysis with Python och Machine Learning with Python). 
+                            Jag översätter säkerhetsprinciper till AI: jag promptar stora språkmodeller med min InfoSec-bakgrund för att aldrig läcka känslig data, och kodar automatiserade pipelines som körs lokalt.
+                        </p>
+                        <p class="text-xs italic border-l-2 border-cyan-400 pl-4 mt-6">
+                            "Jag håller mig uppdaterad om GDPR, NIS2, AI Act och aktuell politik – vi kan diskutera hur det påverkar praktisk implementation."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Synergi section -->
+    <section id="synergi" class="py-24">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-12">
+                <div class="md:col-span-5">
+                    <h2 class="title-font text-5xl font-semibold mb-6">Varför just vi två?</h2>
+                    <div class="space-y-8 text-zinc-400">
+                        <div class="flex gap-6">
+                            <div class="text-4xl text-cyan-400">🐍</div>
+                            <div>
+                                <div class="font-semibold text-white">Python i världsklass</div>
+                                <p>Från enkel data-sanitization till ML-baserad anomaly detection – allt jag redan gör dagligen.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="text-4xl text-cyan-400">🌐</div>
+                            <div>
+                                <div class="font-semibold text-white">HTML / CSS / JavaScript</div>
+                                <p>Full responsiv webbutveckling, React, vanilla JS – säkra dashboards och utbildningsverktyg på 5 minuter.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="text-4xl text-cyan-400">🔐</div>
+                            <div>
+                                <div class="font-semibold text-white">Informationssäkerhet</div>
+                                <p>Dedikerade freeCodeCamp-certifikat i både "Information Security" och "Information Security & QA".</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-7 bg-zinc-950 border border-zinc-800 rounded-3xl p-10">
+                    <h3 class="text-xl font-semibold mb-8 flex items-center gap-3">
+                        <span class="text-cyan-400">💡</span>
+                        Konkreta synergier vi kan starta imorgon
+                    </h3>
+                    <div class="space-y-6 text-sm">
+                        <div class="flex gap-4">
+                            <div class="w-6 h-6 bg-cyan-400/10 text-cyan-400 flex items-center justify-center rounded text-xs font-mono">01</div>
+                            <div>
+                                <strong>Automatiserad data-sanitization</strong><br>
+                                <span class="text-zinc-500">Python + Pandas + regex + lokal LLM – 100 % GDPR-säker</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-6 h-6 bg-cyan-400/10 text-cyan-400 flex items-center justify-center rounded text-xs font-mono">02</div>
+                            <div>
+                                <strong>Säker webb-träningsplattform</strong><br>
+                                <span class="text-zinc-500">HTML/CSS/JS/React med inbyggd phishing-simulator och realtidsfeedback</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-6 h-6 bg-cyan-400/10 text-cyan-400 flex items-center justify-center rounded text-xs font-mono">03</div>
+                            <div>
+                                <strong>AI-driven threat intelligence</strong><br>
+                                <span class="text-zinc-500">Jag promptar och kodar så att modellen aldrig ser känslig data – allt lokalt</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meriter -->
+    <section id="meriter" class="py-24 bg-zinc-900">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="title-font text-5xl font-semibold text-center mb-16">Mina mest relevanta meriter för dig</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-zinc-950 border border-zinc-700 rounded-3xl p-8">
+                    <div class="text-cyan-400 mb-6 text-4xl">🐍 Python</div>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check mt-1 text-emerald-400"></i> Scientific Computing with Python</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check mt-1 text-emerald-400"></i> Data Analysis with Python (Pandas, NumPy)</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check mt-1 text-emerald-400"></i> Machine Learning with Python (TensorFlow, scikit-learn)</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check mt-1 text-emerald-400"></i> 1000+ timmar ren Python-kodning</li>
+                    </ul>
+                </div>
+                <div class="bg-zinc-950 border border-zinc-700 rounded-3xl p-8">
+                    <div class="text-cyan-400 mb-6 text-4xl">🌐 Webb</div>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check mt-1 text-emerald-400"></i> Responsive Web Design (HTML, CSS Grid, Flexbox)</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check mt-1 text-emerald-400"></i> JavaScript Algorithms & Data Structures</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check mt-1 text-emerald-400"></i> Front End Libraries (React 18, Redux)</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check mt-1 text-emerald-400"></i> Live micro-projects med zero dependencies</li>
+                    </ul>
+                </div>
+                <div class="bg-zinc-950 border border-zinc-700 rounded-3xl p-8">
+                    <div class="text-cyan-400 mb-6 text-4xl">🔐 InfoSec</div>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check mt-1 text-emerald-400"></i> Information Security (pen-testing, crypto, TCP/IP)</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check mt-1 text-emerald-400"></i> Information Security & QA (HelmetJS, testing, Passport.js)</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check mt-1 text-emerald-400"></i> Ethical hacking & security headers</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check mt-1 text-emerald-400"></i> Löpande koll på lagstiftning & politik</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next steps -->
+    <section id="next" class="py-24">
+        <div class="max-w-4xl mx-auto text-center px-6">
+            <h2 class="title-font text-5xl font-semibold mb-6">Redo att börja samarbeta?</h2>
+            <p class="text-xl text-zinc-400 mb-10">
+                Skicka ett meddelande på LinkedIn eller maila markus@isaksson.dev – låt oss bolla en liten proof-of-concept tillsammans. 
+                Jag lovar att det blir både roligt och extremt värdefullt för båda våra CV:n.
+            </p>
+            <div class="inline-flex items-center gap-8 text-sm">
+                <a href="https://markusisaksson1982.github.io" target="_blank" class="flex items-center gap-2 hover:text-cyan-400">
+                    <i class="fa-solid fa-globe"></i>
+                    <span>markusisaksson1982.github.io</span>
+                </a>
+                <span class="text-zinc-700">•</span>
+                <span class="text-cyan-400">markus@isaksson.dev</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-12 text-center text-xs text-zinc-600 border-t border-zinc-900">
+        <p>Byggd med ❤️ av Markus Isaksson • 2026 • Enbart för att visa potentialen i ett samarbete</p>
+    </footer>
+
+    <script>
+        function toggleAccordion(el) {
+            const content = el.querySelector('.accordion-content');
+            const isOpen = el.classList.contains('accordion-open');
+            
+            // Close all others
+            document.querySelectorAll('.accordion-open').forEach(open => {
+                if (open !== el) {
+                    open.classList.remove('accordion-open');
+                    open.querySelector('.accordion-content').style.maxHeight = '0';
+                }
+            });
+            
+            if (isOpen) {
+                el.classList.remove('accordion-open');
+                content.style.maxHeight = '0';
+            } else {
+                el.classList.add('accordion-open');
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
+        }
+
+        // Tailwind script already loaded via CDN
+        // Auto-open first accordion after load
+        window.onload = () => {
+            const first = document.querySelector('.group');
+            if (first) {
+                first.classList.add('accordion-open');
+                const content = first.querySelector('.accordion-content');
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
+        }
+    </script>
+</body>
+</html>
