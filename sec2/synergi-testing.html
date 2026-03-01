@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synergi: Mjukvarutestning × Google Cybersecurity</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap');
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        .title-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+        .accordion-open .accordion-content {
+            max-height: 900px;
+        }
+        .cyber-glow {
+            box-shadow: 0 0 15px rgba(34, 211, 238, 0.3);
+        }
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 14px 20px;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-200">
+    <!-- Navbar -->
+    <nav class="border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-md fixed w-full z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-vial text-emerald-400 text-2xl"></i>
+                <span class="title-font text-2xl font-semibold tracking-tight">TestSynergi<span class="text-emerald-400">.</span></span>
+            </div>
+            <div class="flex items-center gap-8 text-sm">
+                <a href="#tabell" class="hover:text-emerald-400 transition-colors">Testtyper</a>
+                <a href="#nivaer" class="hover:text-emerald-400 transition-colors">Nivåer</a>
+                <a href="#synergi" class="hover:text-emerald-400 transition-colors">Vårt samarbete</a>
+                <a href="#meriter" class="hover:text-emerald-400 transition-colors">Mina meriter</a>
+            </div>
+            <a href="https://markusisaksson1982.github.io" target="_blank"
+               class="flex items-center gap-2 px-5 py-2 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 rounded-full text-sm font-medium transition-all">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                <span>Till Markus portfolio</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="min-h-screen flex items-center pt-20 bg-gradient-to-br from-zinc-950 via-zinc-900 to-black relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(at_top_right,#10b981_0%,transparent_50%)] opacity-20"></div>
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-zinc-900 border border-emerald-500/30 rounded-full text-emerald-400 text-sm mb-6">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Google Cybersecurity Professional Certificate – Modul 1 slutförd</span>
+                </div>
+                <h1 class="title-font text-6xl md:text-7xl font-semibold leading-none tracking-tighter mb-6">
+                    Säker kod behöver<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">bra tester</span>
+                </h1>
+                <p class="text-xl text-zinc-400 max-w-lg">
+                    Du har redan grunderna i cybersäkerhet. Låt oss visa hur din kunskap om hot, risker och kontroller kan kombineras med professionell mjukvarutestning – så att vi tillsammans bygger system som inte bara fungerar, utan också är säkra.
+                </p>
+                <div class="mt-10 flex items-center gap-4">
+                    <a href="#nivaer" 
+                       class="px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-black font-semibold rounded-2xl flex items-center gap-3 transition-all">
+                        <span>Utforska testnivåerna</span>
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hidden md:flex justify-end">
+                <div class="bg-zinc-900/70 border border-zinc-700 rounded-3xl p-8 max-w-xs cyber-glow">
+                    <div class="text-emerald-400 text-5xl mb-4">🧪</div>
+                    <p class="text-lg font-medium">“En gång vi har kommit överens om vilka testfall som gäller – särskilt ur ett säkerhetsperspektiv – kan jag köra och underhålla testerna helt självständigt.”</p>
+                    <div class="mt-6 text-sm text-zinc-500">— Markus Isaksson</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Testtyper tabell -->
+    <section id="tabell" class="py-20 bg-zinc-900">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="px-4 py-2 bg-emerald-500/10 text-emerald-400 text-xs font-mono tracking-widest rounded-full">POPULÄR VETENSKAPLIG ÖVERSIKT</span>
+                <h2 class="title-font text-5xl font-semibold mt-4">Alla viktiga testtyper du bör känna till</h2>
+            </div>
+            
+            <div class="overflow-x-auto rounded-3xl border border-zinc-800">
+                <table class="w-full text-left bg-zinc-950">
+                    <thead>
+                        <tr class="border-b border-zinc-800 bg-zinc-900">
+                            <th class="text-emerald-400 font-medium">Level</th>
+                            <th class="text-emerald-400 font-medium">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-zinc-800">
+                        <tr>
+                            <td class="font-medium">Unit Tests</td>
+                            <td>Smallest components (pure funcs)</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Integration</td>
+                            <td>DB + service together</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Contract Test</td>
+                            <td>API contracts (e.g., OpenAPI)</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">E2E Test</td>
+                            <td>Simulate real user flow</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Load Test</td>
+                            <td>Simulate concurrent users</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Smoke Tests</td>
+                            <td>Check if key services are alive and responding</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Load &amp; Performance Tests</td>
+                            <td>Simulate high traffic and usage</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-center text-xs text-zinc-500 mt-6">Källa: Populär översikt från Computer Science &amp; Software Engineering (2026)</p>
+        </div>
+    </section>
+
+    <!-- Nivåer -->
+    <section id="nivaer" class="py-24">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="title-font text-5xl font-semibold">Tre nivåer för verkliga projekt</h2>
+                <p class="text-zinc-400 mt-4 max-w-lg mx-auto">
+                    Varje nivå innehåller kort orientering (saker som sällan behandlas djupt i grundkursen i cybersäkerhet), hur din kunskap om hot och risker blir ovärderlig, och hur vi kan samarbeta.
+                </p>
+            </div>
+
+            <!-- Basic -->
+            <div class="mb-20">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="px-5 py-1 bg-emerald-500/10 text-emerald-400 rounded-full text-sm font-medium">BASIC</div>
+                    <h3 class="text-3xl font-semibold">Grundläggande testning</h3>
+                    <span class="ml-auto text-sm text-zinc-500">4–12 arbetstimmar per uppgift</span>
+                </div>
+                <div onclick="toggleAccordion(this)" class="group bg-zinc-950 border border-zinc-800 rounded-3xl p-8 hover:border-emerald-400/50 transition-all cursor-pointer">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="text-4xl">🧩</span>
+                                <h4 class="text-2xl font-medium">Unit Tests + Smoke Tests</h4>
+                            </div>
+                            <p class="text-zinc-400">Minsta beståndsdelar (enkla funktioner) + snabba “röktester” för att se att systemet lever.</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-down text-emerald-400 transition-transform group-hover:rotate-180"></i>
+                    </div>
+                    <div class="accordion-content mt-8 text-sm text-zinc-300 leading-relaxed border-t border-zinc-800 pt-8">
+                        <strong class="block text-emerald-400 mb-3">Kort orientering för dig:</strong>
+                        <p class="mb-6">Unit tests kollar att en enskild funktion gör exakt det den ska – utan att involvera databas eller nätverk. Smoke tests är som en “quick health check” innan du kör större tester.</p>
+                        
+                        <strong class="block text-emerald-400 mb-3">Professionellt + säkerhetssynergi:</strong>
+                        <p class="mb-4">I ett bank- eller vårdsystem kan unit tests säkerställa att krypteringsfunktioner aldrig läcker data. Du kan bidra med realistiska hotscenarier (t.ex. “tänk om någon skickar malicious input här?”).</p>
+                        
+                        <strong class="block text-cyan-400 mb-3">Hur vi jobbar:</strong>
+                        <p>Du och jag kommer överens om 5–10 kritiska testfall baserat på din kunskap om CIA-triad och vanliga sårbarheter. Sedan skriver och kör jag alla tester (Python pytest eller JavaScript Jest) helt självständigt. Du behöver bara granska resultatet.</p>
+                        
+                        <div class="text-xs italic border-l-2 border-emerald-400 pl-4 mt-6">
+                            “Det här vore spännande att bolla med dig – vilka unit-scenarier skulle du prioritera för en inloggningsmodul?”
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Intermediate -->
+            <div class="mb-20">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="px-5 py-1 bg-cyan-500/10 text-cyan-400 rounded-full text-sm font-medium">INTERMEDIATE</div>
+                    <h3 class="text-3xl font-semibold">Mellannivå-testning</h3>
+                    <span class="ml-auto text-sm text-zinc-500">12–35 arbetstimmar per uppgift</span>
+                </div>
+                <div onclick="toggleAccordion(this)" class="group bg-zinc-950 border border-zinc-800 rounded-3xl p-8 hover:border-emerald-400/50 transition-all cursor-pointer">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="text-4xl">🔗</span>
+                                <h4 class="text-2xl font-medium">Integration + Contract + E2E Tests</h4>
+                            </div>
+                            <p class="text-zinc-400">Databas + tjänst tillsammans • API-kontrakt • Hela användarflöden.</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-down text-emerald-400 transition-transform group-hover:rotate-180"></i>
+                    </div>
+                    <div class="accordion-content mt-8 text-sm text-zinc-300 leading-relaxed border-t border-zinc-800 pt-8">
+                        <strong class="block text-emerald-400 mb-3">Kort orientering för dig:</strong>
+                        <p class="mb-6">Integration testar att olika delar pratar med varandra. Contract Test säkerställer att API:er inte ändras oväntat. E2E simulerar riktiga användare (t.ex. “logga in → betala → få kvitto”).</p>
+                        
+                        <strong class="block text-emerald-400 mb-3">Professionellt + säkerhetssynergi:</strong>
+                        <p class="mb-4">Här blir din kunskap om nätverkssäkerhet, autentisering och compliance guld värd. Vi kan testa “vad händer om en attackerare försöker injecta data mellan tjänsterna?”</p>
+                        
+                        <strong class="block text-cyan-400 mb-3">Hur vi jobbar:</strong>
+                        <p>Du definierar säkerhetskritiska användarflöden och edge-cases. Jag bygger automatiserade tester (Playwright för E2E, pytest + requests för API). När testfallen är godkända kör och underhåller jag allt självständigt – du får regelbundna rapporter.</p>
+                        
+                        <div class="text-xs italic border-l-2 border-emerald-400 pl-4 mt-6">
+                            “Låt oss ta ett exempel från din kurs: hur skulle du vilja testa en E2E-flow för MFA-inloggning?”
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced -->
+            <div>
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="px-5 py-1 bg-rose-500/10 text-rose-400 rounded-full text-sm font-medium">ADVANCED</div>
+                    <h3 class="text-3xl font-semibold">Avancerad testning</h3>
+                    <span class="ml-auto text-sm text-zinc-500">25–80+ arbetstimmar per uppgift</span>
+                </div>
+                <div onclick="toggleAccordion(this)" class="group bg-zinc-950 border border-zinc-800 rounded-3xl p-8 hover:border-emerald-400/50 transition-all cursor-pointer">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="text-4xl">🚀</span>
+                                <h4 class="text-2xl font-medium">Load + Load &amp; Performance Tests</h4>
+                            </div>
+                            <p class="text-zinc-400">Simulera många samtidiga användare och extrem belastning.</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-down text-emerald-400 transition-transform group-hover:rotate-180"></i>
+                    </div>
+                    <div class="accordion-content mt-8 text-sm text-zinc-300 leading-relaxed border-t border-zinc-800 pt-8">
+                        <strong class="block text-emerald-400 mb-3">Kort orientering för dig:</strong>
+                        <p class="mb-6">Load tests kollar hur systemet hanterar 1000+ användare samtidigt. Performance tests mäter svarstider och resurser under stress.</p>
+                        
+                        <strong class="block text-emerald-400 mb-3">Professionellt + säkerhetssynergi:</strong>
+                        <p class="mb-4">DDoS-liknande belastning är en verklig hotbild. Du kan bidra med kunskap om vilka tjänster som är mest kritiska ur ett tillgänglighetsperspektiv (Availability i CIA-triad).</p>
+                        
+                        <strong class="block text-cyan-400 mb-3">Hur vi jobbar:</strong>
+                        <p>Du pekar ut de viktigaste “bottlenecks” utifrån din riskkunskap. Jag sätter upp tester med Locust eller k6 (Python/JS). Allt körs lokalt eller i kontrollerade miljöer – jag hanterar exekvering, analys och rapportering självständigt efter att vi enats om scenarierna.</p>
+                        
+                        <div class="text-xs italic border-l-2 border-emerald-400 pl-4 mt-6">
+                            “Vilka belastningsscenarier från verkliga incidenter du lärt dig skulle du vilja simulera här?”
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Synergi -->
+    <section id="synergi" class="py-24 bg-zinc-900">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-12 items-center">
+                <div class="md:col-span-5">
+                    <h2 class="title-font text-5xl font-semibold mb-6">Så här kan vi jobba tillsammans</h2>
+                    <div class="space-y-8">
+                        <div class="flex gap-6">
+                            <div class="w-10 h-10 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0">✅</div>
+                            <div>
+                                <div class="font-semibold text-white mb-1">Definiera testfall tillsammans</div>
+                                <p class="text-zinc-400 text-sm">Du bidrar med säkerhetsperspektiv – jag översätter till kod.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="w-10 h-10 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0">🤖</div>
+                            <div>
+                                <div class="font-semibold text-white mb-1">Jag kör allt självständigt</div>
+                                <p class="text-zinc-400 text-sm">När testfallen är klara hanterar jag kod, exekvering, CI/CD och rapporter.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="w-10 h-10 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0">📈</div>
+                            <div>
+                                <div class="font-semibold text-white mb-1">Du får insikt utan att koda</div>
+                                <p class="text-zinc-400 text-sm">Perfekta för dig som vill växa från analyst till säkerhetsarkitekt.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-7 bg-zinc-950 border border-zinc-800 rounded-3xl p-10">
+                    <h3 class="text-xl font-semibold mb-6 flex items-center gap-3">
+                        <span class="text-emerald-400">🔄</span>
+                        Exempel på gemensamt projekt
+                    </h3>
+                    <p class="text-zinc-300">
+                        Bygg en mini “secure login portal” där vi testar allt från unit-nivå (lösenordshashning) till E2E (hela inloggningsflödet med MFA) och load (simulera 500 attacker samtidigt). 
+                        Du definierar hotscenarier, jag skriver och kör testerna – resultatet blir en rapport som du kan använda i din fortsatta Coursera-resa.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meriter -->
+    <section id="meriter" class="py-24">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="title-font text-5xl font-semibold text-center mb-16">Mina mest relevanta meriter för testning + säkerhet</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-zinc-950 border border-zinc-700 rounded-3xl p-8">
+                    <div class="text-emerald-400 mb-6 text-4xl">🧪</div>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check mt-1 text-emerald-400"></i> Information Security &amp; QA (freeCodeCamp)</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check mt-1 text-emerald-400"></i> pytest, Jest, Playwright, Locust</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check mt-1 text-emerald-400"></i> Automatiserade testpipelines</li>
+                    </ul>
+                </div>
+                <div class="bg-zinc-950 border border-zinc-700 rounded-3xl p-8">
+                    <div class="text-emerald-400 mb-6 text-4xl">🐍</div>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check mt-1 text-emerald-400"></i> Python (Scientific + Data + ML)</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check mt-1 text-emerald-400"></i> Testdriven utveckling (TDD)</li>
+                    </ul>
+                </div>
+                <div class="bg-zinc-950 border border-zinc-700 rounded-3xl p-8">
+                    <div class="text-emerald-400 mb-6 text-4xl">🌐</div>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check mt-1 text-emerald-400"></i> JavaScript Algorithms &amp; Data Structures</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check mt-1 text-emerald-400"></i> React + modern frontend-testing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-24 bg-black">
+        <div class="max-w-4xl mx-auto text-center px-6">
+            <h2 class="title-font text-5xl font-semibold mb-6">Redo att testa något tillsammans?</h2>
+            <p class="text-xl text-zinc-400 mb-10">
+                Skriv ett meddelande – vi kan börja med ett litet proof-of-concept på 2–3 timmar. 
+                Din cybersecurity-kunskap + mina tester = extremt stark kombination för framtida jobb.
+            </p>
+            <a href="https://markusisaksson1982.github.io" target="_blank"
+               class="inline-flex items-center gap-3 px-8 py-4 border border-emerald-500 hover:bg-emerald-500 hover:text-black rounded-2xl font-medium transition-all">
+                <span>Kontakta Markus</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-black py-12 text-center text-xs text-zinc-600 border-t border-zinc-900">
+        <p>Byggd av Markus Isaksson • Mars 2026 • Endast för att visa potentialen i ett samarbete</p>
+    </footer>
+
+    <script>
+        function toggleAccordion(el) {
+            const content = el.querySelector('.accordion-content');
+            const isOpen = el.classList.contains('accordion-open');
+            
+            document.querySelectorAll('.accordion-open').forEach(open => {
+                if (open !== el) {
+                    open.classList.remove('accordion-open');
+                    open.querySelector('.accordion-content').style.maxHeight = '0';
+                }
+            });
+            
+            if (isOpen) {
+                el.classList.remove('accordion-open');
+                content.style.maxHeight = '0';
+            } else {
+                el.classList.add('accordion-open');
+                content.style.maxHeight = content.scrollHeight + 40 + 'px';
+            }
+        }
+
+        window.onload = () => {
+            const first = document.querySelector('.group');
+            if (first) {
+                first.classList.add('accordion-open');
+                const content = first.querySelector('.accordion-content');
+                content.style.maxHeight = content.scrollHeight + 40 + 'px';
+            }
+        }
+    </script>
+</body>
+</html>
