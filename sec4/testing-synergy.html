@@ -1,285 +1,231 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8" />
-  <title>Testning som samarbetsyta – Cybersecurity & Utveckling</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    :root {
-      --bg: #0f172a;
-      --card: #020617;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --accent: #38bdf8;
-      --accent-soft: #0ea5e9;
-      --border: #1e293b;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Säkerhetsdriven Utveckling: Testning som Samarbetsplattform</title>
+    <style>
+        :root {
+            --primary-color: #2e7d32; /* Grön ton för "godkända tester" */
+            --secondary-color: #388e3c;
+            --accent-color: #ffb300;
+            --bg-color: #f4f9f5;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --code-bg: #2d2d2d;
+        }
 
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Arial, sans-serif;
-      background: #020617;
-      color: var(--text);
-      line-height: 1.6;
-    }
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
 
-    header, main, footer {
-      max-width: 1100px;
-      margin: auto;
-      padding: 1.5rem;
-    }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
 
-    header h1 {
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
 
-    header p {
-      color: var(--muted);
-      max-width: 900px;
-    }
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
 
-    section {
-      margin-top: 2.5rem;
-      padding: 1.5rem;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-    }
+        .intro-text {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto;
+        }
 
-    section h2 {
-      margin-top: 0;
-      color: var(--accent-soft);
-    }
+        .concept-section {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary-color);
+        }
 
-    details {
-      margin-top: 1rem;
-      padding: 0.75rem 1rem;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: #020617;
-    }
+        /* Expandable Sections */
+        .module-concept {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
 
-    details summary {
-      cursor: pointer;
-      font-weight: 600;
-      color: var(--accent);
-    }
+        details summary {
+            padding: 20px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            background-color: #fcfcfc;
+        }
 
-    ul {
-      padding-left: 1.2rem;
-    }
+        details summary::-webkit-details-marker {
+            display: none;
+        }
 
-    li {
-      margin-bottom: 0.4rem;
-    }
+        details summary::after {
+            content: '▼';
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            transition: transform 0.3s ease;
+        }
 
-    .note {
-      margin-top: 0.75rem;
-      padding: 0.75rem 1rem;
-      border-left: 4px solid var(--accent);
-      background: #020617;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
+        details[open] summary::after {
+            transform: rotate(180deg);
+        }
 
-    .hours {
-      margin-top: 0.5rem;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
+        .details-content {
+            padding: 20px;
+            border-top: 1px solid #eee;
+        }
 
-    code {
-      background: #020617;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 0.1rem 0.3rem;
-      font-size: 0.9em;
-    }
+        h3 {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
 
-    footer {
-      border-top: 1px solid var(--border);
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-  </style>
+        .time-estimate {
+            display: inline-block;
+            background-color: #fff3e0;
+            color: #e65100;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .synergy-box {
+            background-color: #e8f5e9;
+            border-left: 5px solid var(--primary-color);
+            padding: 15px 20px;
+            margin-top: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .synergy-box p {
+            margin: 0;
+            font-style: italic;
+            color: #1b5e20;
+        }
+
+        .synergy-box strong {
+            color: #000;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-  <h1>Testning som samarbetsyta</h1>
-  <p>
-    Denna sida utgår från en förenklad (“popular science”) bild av
-    <strong>olika typer av testning i mjukvaruutveckling</strong>
-    och visar hur testning kan fungera som ett gemensamt kontrakt
-    mellan utveckling och cybersecurity.
-  </p>
-  <p>
-    Grundidén är att så länge <em>relevanta testscenarier definieras och godkänns i förväg</em>,
-    kan jag arbeta relativt självständigt med implementation, automation och analys,
-    medan du bidrar med säkerhets- och riskperspektiv.
-  </p>
-</header>
+<div class="container">
+    <header>
+        <h1>Autonom Utveckling via Testdriven Design</h1>
+        <p class="intro-text">
+            Inom mjukvaruutveckling finns ett talesätt: <em>"Testen är kontraktet"</em>. För dig som fokuserar på cybersäkerhet är det avgörande att system fungerar exakt som förväntat under press. Om vi på förhand kan definiera <strong>vilka</strong> säkerhetsscenarier som måste passera, kan jag arbeta i stort sett helt oberoende med att bygga logiken och koden för att uppfylla det kontraktet.
+        </p>
+    </header>
 
-<main>
-
-<section>
-  <h2>Övergripande tanke: Testning som “överenskommelse”</h2>
-
-  <details>
-    <summary>Varför testning är en naturlig brygga mot cybersecurity</summary>
-    <p>
-      I cybersecurity talar man ofta om <em>controls</em>, <em>verification</em> och <em>assurance</em>.
-      I utveckling motsvaras detta i hög grad av <strong>tester</strong>.
-    </p>
-    <ul>
-      <li>Tester definierar vad som är “acceptabelt beteende”</li>
-      <li>Misslyckade tester fungerar som tidiga varningssignaler</li>
-      <li>Testscenarier kan mappa direkt mot risk- och hotmodeller</li>
-    </ul>
-    <div class="note">
-      För dig med cybersecurity-bakgrund kan detta ses som
-      ett mer praktiskt och operativt sätt att arbeta med samma principer
-      som CIA-triaden och riskanalys.
+    <div class="concept-section">
+        <h2>Hur vi kan samarbeta asynkront</h2>
+        <p>
+            Konceptet är enkelt: Du tar på dig hatten som <em>Security Analyst / Product Owner</em> och definierar säkerhetskrav. Vi översätter dessa till test-scenarier. Därefter tar jag vid, skriver automatiserade testskript och utvecklar <strong>Python</strong> eller <strong>JS/HTML/CSS</strong>-lösningar tills alla tester lyser grönt. Detta minimerar behovet av micromanagement och maximerar vår gemensamma output.
+        </p>
+        <p>Här är en nedbrytning av hur det kan se ut i praktiken, från grundläggande till avancerade professionella scenarier.</p>
     </div>
-  </details>
 
-</section>
+    <details class="module-concept">
+        <summary>Nivå 1: Basic (Unit Tests & Smoke Tests)</summary>
+        <div class="details-content">
+            <span class="time-estimate">Tidsestimat: 4 till 16 arbetstimmar</span>
+            
+            <h3>Konceptuell Orientering</h3>
+            <ul>
+                <li><strong>Unit Tests:</strong> Testar de absolut minsta byggstenarna i koden (pure functions). Till exempel: Om du skickar in "password123", spottar funktionen ut rätt krypterad hash?</li>
+                <li><strong>Smoke Tests:</strong> Ett snabbt yttre test ("ryker det om maskinen när vi slår på den?"). Verifierar att de viktigaste tjänsterna är uppkopplade och svarar på anrop.</li>
+            </ul>
 
-<section>
-  <h2>Basic – Grundläggande tester i vardagsnära system</h2>
+            <h3>Professionellt Scenario: Säker Inloggningsvalidering</h3>
+            <p>Du identifierar att ett internt system behöver en ny funktion för att tvätta (sanitize) användardata så att inga illvilliga tecken kan orsaka en SQL Injection.</p>
 
-  <details>
-    <summary>Unit Tests & Smoke Tests</summary>
-    <p>
-      Detta är den lägsta nivån, ofta nära själva koden.
-    </p>
-    <ul>
-      <li><strong>Unit Tests</strong> – testar små, isolerade funktioner (<code>pure functions</code>)</li>
-      <li><strong>Smoke Tests</strong> – “är systemet uppe överhuvudtaget?”</li>
-    </ul>
-    <div class="note">
-      <strong>Cybersecurity-orientering:</strong><br/>
-      Dessa tester adresserar inte attacker direkt, men minskar risken för
-      oavsiktliga fel som kan leda till sårbarheter.
-    </div>
-    <div class="hours">
-      Typisk arbetsinsats: <strong>lägre spann</strong> (timmar → någon dag)
-    </div>
-  </details>
+            <div class="synergy-box">
+                <p><strong>Synergy Potential:</strong> Du definierar en lista på "onda inputs" (t.ex. <code>' OR 1=1--</code>). Utifrån detta bygger Markus en svit av <strong>Unit Tests</strong> i Python. Markus kan därefter helt autonomt skriva koden som hanterar datasaneringen. Arbetet är klart när koden automatiskt stoppar varje hot du definierat, och ett <strong>Smoke Test</strong> bekräftar att tjänsten fortfarande går att starta.</p>
+            </div>
+        </div>
+    </details>
 
-  <details>
-    <summary>Exempel på samarbete</summary>
-    <ul>
-      <li>Du bidrar med krav som: “funktionen får aldrig exponera X”</li>
-      <li>Jag implementerar unit tests i t.ex. Python eller JavaScript</li>
-      <li>Tester körs lokalt som en del av utvecklingsflödet</li>
-    </ul>
-  </details>
+    <details class="module-concept">
+        <summary>Nivå 2: Intermediate (Integration & Contract Tests)</summary>
+        <div class="details-content">
+            <span class="time-estimate">Tidsestimat: 16 till 40 arbetstimmar</span>
+            
+            <h3>Konceptuell Orientering</h3>
+            <ul>
+                <li><strong>Integration Tests:</strong> Säkerställer att olika delar av systemet (t.ex. databasen och webbservern) kommunicerar säkert tillsammans.</li>
+                <li><strong>Contract Tests:</strong> Kontrollerar att ett API-kontrakt (t.ex. OpenAPI/Swagger) upprätthålls. Om vi lovar att aldrig skicka PII (Personal Identifiable Information) via API:et, säkerställer testet att det aldrig händer.</li>
+            </ul>
 
-</section>
+            <h3>Professionellt Scenario: Integration mot AI-tjänst med Datasanering</h3>
+            <p>Företaget vill använda en extern AI-modell (cloud-tjänst), men du ser risker med att känslig data kan läcka ut. Vi behöver en "mellanhand" som tvättar datan innan den skickas via API:et.</p>
 
-<section>
-  <h2>Intermediate – Systembeteende & realistiska scenarier</h2>
+            <div class="synergy-box">
+                <p><strong>Synergy Potential:</strong> Du och Markus kommer överens om ett <em>API Contract</em> – vilka datafält får skickas och i vilket format. Markus bygger sedan upp arkitekturen (gärna med fokus på local runtimes där möjligt för extra säkerhet) och skriver <strong>Integration Tests</strong> för att verifiera att hela datakedjan hänger ihop, samtidigt som säkerhetspolicyn bevaras.</p>
+            </div>
+        </div>
+    </details>
 
-  <details>
-    <summary>Integration Tests & Contract Tests</summary>
-    <p>
-      Här börjar flera komponenter samverka:
-    </p>
-    <ul>
-      <li><strong>Integration Tests</strong> – t.ex. <code>DB + service</code></li>
-      <li><strong>Contract Tests</strong> – API-kontrakt (<code>OpenAPI</code>, schemas)</li>
-    </ul>
-    <div class="note">
-      <strong>Cybersecurity-orientering:</strong><br/>
-      Contract tests är särskilt relevanta ur säkerhetssynpunkt –
-      de definierar exakt vad som får skickas in och ut ur ett system.
-    </div>
-    <div class="hours">
-      Typisk arbetsinsats: <strong>mellanläge</strong> (några dagar → 1–2 veckor)
-    </div>
-  </details>
+    <details class="module-concept">
+        <summary>Nivå 3: Advanced (E2E, Load & Performance Tests)</summary>
+        <div class="details-content">
+            <span class="time-estimate">Tidsestimat: 40 till 120+ arbetstimmar</span>
+            
+            <h3>Konceptuell Orientering</h3>
+            <ul>
+                <li><strong>E2E Test (End-to-End):</strong> Simulerar en hel användarresa, från att öppna webbläsaren till att klicka på knappar och verifiera att rätt data hamnar säkert i databasen.</li>
+                <li><strong>Load & Performance Tests:</strong> Simulerar tung trafik (många concurrent users) för att se hur systemet beter sig under stress.</li>
+            </ul>
 
-  <details>
-    <summary>Hur jag kan arbeta relativt självständigt</summary>
-    <ul>
-      <li>Vi enas om kontrakt och riskantaganden i förväg</li>
-      <li>Jag kodar tester, mockar tjänster och automatiserar körningar</li>
-      <li>Avvikelser rapporteras som konkreta testresultat, inte vaga risker</li>
-    </ul>
-    <div class="note">
-      Detta passar särskilt bra när säkerhetskrav finns,
-      men inte behöver tolkas om från grunden vid varje ändring.
-    </div>
-  </details>
+            <h3>Professionellt Scenario: Resiliens och Incidentrespons under Belastning</h3>
+            <p>Hur beter sig er nylanserade portal om den utsätts för en massiv trafikvåg (likt en DoS/DDoS-attack)? Fallerar systemet säkert ("fail closed") eller öppnar det upp sårbarheter när minnet tar slut?</p>
 
-</section>
+            <div class="synergy-box">
+                <p><strong>Synergy Potential:</strong> Här kan vi bygga väldigt intressanta simuleringar. Du specificerar tröskelvärden och incident-parametrar utifrån aktuella hotbilder. Markus skriver komplexa <strong>Load Test</strong>-skript som belastar systemet artificiellt, samt automatiserade <strong>E2E-tester</strong> som säkerställer att inloggningsspärrar och larmfunktioner (Alerts) aktiveras precis som de ska när tröskelvärdena passeras. Detta är ett projekt som kräver djup teknisk förståelse för både nätverk och kodstruktur.</p>
+            </div>
+        </div>
+    </details>
 
-<section>
-  <h2>Advanced – Belastning, missbruk och “worst case”-scenarier</h2>
-
-  <details>
-    <summary>E2E, Load & Performance Tests</summary>
-    <p>
-      Den högsta nivån handlar om att simulera verkliga – och ibland fientliga – användarmönster.
-    </p>
-    <ul>
-      <li><strong>E2E Tests</strong> – realistiska användarflöden</li>
-      <li><strong>Load Tests</strong> – många samtidiga användare</li>
-      <li><strong>Performance Tests</strong> – stress, latens, flaskhalsar</li>
-    </ul>
-    <div class="note">
-      <strong>Cybersecurity-orientering:</strong><br/>
-      Här börjar gränsen mot DoS-liknande scenarier, resursutarmning
-      och tillgänglighetsrisker bli tydlig.
-    </div>
-    <div class="hours">
-      Typisk arbetsinsats: <strong>högre spann</strong> (veckor → längre uppdrag)
-    </div>
-  </details>
-
-  <details>
-    <summary>AI-relaterade och regulatoriska aspekter</summary>
-    <ul>
-      <li>Testning av dataflöden innan AI-bearbetning</li>
-      <li>Simulering av “felaktig” eller känslig input</li>
-      <li>Validering av att lokala workflows används där så krävs</li>
-    </ul>
-    <div class="note">
-      Här möts cybersecurity, utveckling och lagstiftning tydligt –
-      tester fungerar som bevis för att rimliga skyddsåtgärder finns.
-    </div>
-  </details>
-
-</section>
-
-<section>
-  <h2>Sammanfattande samarbetsmodell</h2>
-
-  <details>
-    <summary>Kort version</summary>
-    <ul>
-      <li>Du bidrar med riskmedvetenhet och scenarier</li>
-      <li>Vi definierar tester som gemensam referens</li>
-      <li>Jag implementerar, automatiserar och analyserar</li>
-      <li>Resultat kommuniceras via testutfall, inte antaganden</li>
-    </ul>
-  </details>
-
-</section>
-
-</main>
-
-<footer>
-  <p>
-    Detta dokument är avsett som ett konkret exempel på hur
-    cybersecurity-kunskap och praktisk utveckling kan mötas
-    i verkliga arbetsuppgifter – med tydliga gränssnitt,
-    ansvar och förväntningar.
-  </p>
-</footer>
+</div>
 
 </body>
 </html>
