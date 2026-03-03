@@ -207,6 +207,8 @@
     body[data-view="harper"]   .view-extra-harper    { display:block; }
 
     /* ── RECRUITER EXTRAS ── */
+
+    /* Skills Snapshot */
     .skills-snapshot { margin:2rem 0 3rem; }
     .skills-snapshot h3 {
       font-family:'DM Serif Display',serif; font-size:1.5rem; color:var(--forest);
@@ -229,6 +231,7 @@
       background:var(--cloud); color:var(--forest); border:1px solid var(--mist);
     }
 
+    /* Value prop */
     .value-prop {
       margin:3rem 0; background:linear-gradient(135deg, var(--forest), var(--pine));
       border-radius:20px; padding:2.5rem; color:#fff; position:relative; overflow:hidden;
@@ -247,6 +250,7 @@
     .value-text strong { display:block; font-size:.9rem; color:var(--gold-light); margin-bottom:.2rem; }
     .value-text span { font-size:.82rem; color:rgba(200,217,208,.85); line-height:1.5; }
 
+    /* Recruiter contact strip */
     .recruiter-cta {
       margin:3rem 0; padding:1.75rem 2rem; border-radius:14px;
       background:var(--cloud); border:1.5px solid var(--mist);
@@ -266,6 +270,7 @@
     .cta-link--secondary:hover { border-color:var(--sage); transform:translateY(-1px); }
 
     /* ── LUCAS / CREATIVE EXTRAS ── */
+
     .creative-hero-tag {
       display:inline-block; background:linear-gradient(135deg,var(--gold),var(--gold-light));
       color:var(--forest); font-size:.75rem; font-weight:700; letter-spacing:.1em;
@@ -333,6 +338,65 @@
     body[data-view="lucas"] .cert-card:hover { border-color:var(--gold); box-shadow:0 12px 32px rgba(184,150,62,.15); }
     body[data-view="lucas"] .cert-icon { background:linear-gradient(135deg,#fffbf0,#fff3d6); border-color:rgba(184,150,62,.3); }
 
+    /* ── VIDEO SHOWCASE (Lucas / Creative) ── */
+    .video-showcase {
+      max-width:900px; margin:0 auto 3rem; text-align:center;
+    }
+    .video-showcase-label {
+      display:inline-flex; align-items:center; gap:.5rem;
+      background:linear-gradient(135deg, var(--gold), var(--gold-light));
+      color:var(--forest); font-size:.72rem; font-weight:700; letter-spacing:.1em;
+      text-transform:uppercase; padding:.4rem 1.2rem; border-radius:9999px; margin-bottom:1.5rem;
+    }
+    .video-showcase-label::before { content:'▶'; font-size:.65rem; }
+    .video-showcase h2 {
+      font-family:'DM Serif Display',serif;
+      font-size:clamp(1.8rem,4.5vw,2.8rem); line-height:1.15;
+      color:var(--forest); margin-bottom:1rem;
+    }
+    .video-showcase-desc {
+      font-size:1rem; line-height:1.75; color:var(--stone);
+      max-width:600px; margin:0 auto 2rem;
+    }
+    .video-showcase-desc em { color:var(--gold); font-style:normal; font-weight:600; }
+    .video-wrapper {
+      position:relative; width:100%; max-width:900px; margin:0 auto;
+      padding-bottom:56.25%; /* 16:9 */
+      border-radius:16px; overflow:hidden;
+      box-shadow:0 20px 60px rgba(26,58,42,.18), 0 0 0 1.5px rgba(184,150,62,.25);
+      background:#000;
+    }
+    .video-wrapper iframe {
+      position:absolute; top:0; left:0; width:100%; height:100%; border:0;
+    }
+    .video-meta {
+      display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap;
+      margin-top:1rem; font-size:.78rem; color:var(--sage); font-weight:500;
+    }
+    .video-meta span { display:inline-flex; align-items:center; gap:.35rem; }
+
+    /* Creative summary cards (compact) */
+    .creative-summary-grid {
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+      gap:1.25rem; margin-top:2rem;
+    }
+    .creative-summary-card {
+      background:#fff; border-radius:14px; padding:1.4rem;
+      border:1.5px solid rgba(184,150,62,.18); transition:all .25s;
+      text-align:left;
+    }
+    .creative-summary-card:hover {
+      transform:translateY(-3px); box-shadow:0 10px 28px rgba(184,150,62,.12);
+      border-color:var(--gold-light);
+    }
+    .creative-summary-card .cs-icon { font-size:1.6rem; margin-bottom:.6rem; }
+    .creative-summary-card h4 {
+      font-size:.9rem; font-weight:700; color:var(--forest); margin-bottom:.35rem;
+    }
+    .creative-summary-card p {
+      font-size:.82rem; color:var(--stone); line-height:1.55;
+    }
+
     /* ── PROJECT CARDS ── */
     .projects-grid { margin-top:1.25rem; }
     .project-card {
@@ -372,55 +436,6 @@
     }
     .note-block a { color:var(--pine); }
 
-    /* ── VIDEO BLOCK (CREATIVE ONLY) ── */
-    .creative-video-wrapper {
-      max-width:1280px;
-      margin:0 auto 4rem;
-      border-radius:24px;
-      overflow:hidden;
-      box-shadow:0 25px 50px -12px rgba(26,58,42,.4);
-      border:6px solid var(--gold);
-      background:var(--forest);
-    }
-    .creative-video-wrapper iframe {
-      width:100%;
-      height:auto;
-      aspect-ratio:16/9;
-      display:block;
-    }
-    .creative-video-header {
-      text-align:center;
-      margin-bottom:2rem;
-    }
-    .creative-video-badge {
-      display:inline-flex;
-      align-items:center;
-      gap:.6rem;
-      background:linear-gradient(135deg, var(--gold), var(--gold-light));
-      color:var(--forest);
-      font-size:.85rem;
-      font-weight:700;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      padding:.5rem 1.5rem;
-      border-radius:9999px;
-      margin-bottom:1rem;
-    }
-    .creative-video-title {
-      font-family:'DM Serif Display',serif;
-      font-size:clamp(2.2rem, 5vw, 3.2rem);
-      line-height:1.05;
-      color:var(--forest);
-      margin-bottom:.75rem;
-    }
-    .creative-video-subtitle {
-      font-size:1.1rem;
-      color:var(--stone);
-      max-width:620px;
-      margin:0 auto;
-      line-height:1.65;
-    }
-
     /* ── REVEAL ANIMATION ── */
     .reveal { opacity:0; transform:translateY(24px); transition:opacity .55s ease, transform .55s ease; }
     .reveal.visible { opacity:1; transform:none; }
@@ -445,7 +460,7 @@
 </head>
 <body data-view="default">
 
-<!-- ── NAV ── (unchanged) -->
+<!-- ── NAV ── -->
 <nav class="perspective-nav">
   <button class="perspective-btn active" onclick="setView('default')">For Recruiters / HR</button>
   <button class="perspective-btn" onclick="setView('lucas')">For Design &amp; Creative Reviewers</button>
@@ -453,7 +468,7 @@
   <button class="perspective-btn" onclick="setView('harper')">For Research &amp; Verification Specialists</button>
 </nav>
 
-<!-- ── HERO ── (unchanged) -->
+<!-- ── HERO ── -->
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-content">
@@ -474,7 +489,7 @@
   <div class="scroll-cue"><span></span></div>
 </section>
 
-<!-- ── STATS ── (unchanged) -->
+<!-- ── STATS ── -->
 <div class="stats">
   <div class="stat"><div class="stat-number">3,600+</div><div class="stat-label">Hours of Coursework</div></div>
   <div class="stat"><div class="stat-number">16</div><div class="stat-label">Certifications Earned</div></div>
@@ -483,16 +498,16 @@
 </div>
 
 <!-- ══════════════════════════════════════════
-     RECRUITER / HR EXTRAS (unchanged)
+     RECRUITER / HR EXTRAS
 ══════════════════════════════════════════ -->
 <section class="section view-extra view-extra-default" style="padding-bottom:0">
-  <!-- ... all recruiter content exactly as provided in the document ... -->
   <div class="reveal">
     <div class="section-eyebrow">Overview for Hiring Managers</div>
     <h2 class="section-title">Why Markus?</h2>
     <p class="section-intro">A self-taught developer who has invested 3,600+ documented, publicly verifiable hours across the full web development stack — front-end, back-end, data, and machine learning.</p>
   </div>
 
+  <!-- Value prop banner -->
   <div class="reveal">
     <div class="value-prop">
       <h3>What you're getting</h3>
@@ -508,103 +523,465 @@
     </div>
   </div>
 
+  <!-- Skills Snapshot -->
   <div class="reveal skills-snapshot">
     <h3>Skills at a Glance</h3>
     <div class="skill-groups">
-      <!-- all skill groups unchanged -->
+      <div class="skill-group">
+        <div class="skill-group-label">Frontend</div>
+        <div class="skill-group-tags">
+          <span class="skill-group-tag">HTML</span><span class="skill-group-tag">CSS</span>
+          <span class="skill-group-tag">JavaScript</span><span class="skill-group-tag">React</span>
+          <span class="skill-group-tag">Redux</span><span class="skill-group-tag">SASS</span>
+          <span class="skill-group-tag">Flexbox</span><span class="skill-group-tag">CSS Grid</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Backend &amp; APIs</div>
+        <div class="skill-group-tags">
+          <span class="skill-group-tag">Node.js</span><span class="skill-group-tag">Express</span>
+          <span class="skill-group-tag">REST APIs</span><span class="skill-group-tag">MongoDB</span>
+          <span class="skill-group-tag">PostgreSQL</span><span class="skill-group-tag">SQL</span>
+          <span class="skill-group-tag">Bash</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Data &amp; ML</div>
+        <div class="skill-group-tags">
+          <span class="skill-group-tag">Python</span><span class="skill-group-tag">NumPy</span>
+          <span class="skill-group-tag">Pandas</span><span class="skill-group-tag">TensorFlow</span>
+          <span class="skill-group-tag">Scikit-learn</span><span class="skill-group-tag">D3.js</span>
+          <span class="skill-group-tag">Matplotlib</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Security &amp; Quality</div>
+        <div class="skill-group-tags">
+          <span class="skill-group-tag">HelmetJS</span><span class="skill-group-tag">Passport.js</span>
+          <span class="skill-group-tag">Chai / Mocha</span><span class="skill-group-tag">Cryptography</span>
+          <span class="skill-group-tag">Pen-testing</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Additional</div>
+        <div class="skill-group-tags">
+          <span class="skill-group-tag">C#</span><span class="skill-group-tag">.NET</span>
+          <span class="skill-group-tag">OOP</span><span class="skill-group-tag">Git</span>
+          <span class="skill-group-tag">Technical English B1</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Maths &amp; Logic</div>
+        <div class="skill-group-tags">
+          <span class="skill-group-tag">Linear Algebra</span><span class="skill-group-tag">Matrices</span>
+          <span class="skill-group-tag">Applied Math</span><span class="skill-group-tag">Big-O</span>
+          <span class="skill-group-tag">Algorithms</span>
+        </div>
+      </div>
     </div>
   </div>
 
+  <!-- CTA -->
   <div class="reveal">
     <div class="recruiter-cta">
-      <!-- recruiter cta unchanged -->
+      <div>
+        <p>Ready to connect?</p>
+        <span>All certifications are publicly verifiable — no guesswork needed.</span>
+      </div>
+      <div class="cta-links">
+        <a href="https://www.linkedin.com/in/markus-isaksson-08273a127/" target="_blank" class="cta-link cta-link--primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://www.freecodecamp.org/fccfb1888e4-715c-408f-9fcb-887123f4d08b" target="_blank" class="cta-link cta-link--secondary">Verify on freeCodeCamp ↗</a>
+      </div>
     </div>
   </div>
 </section>
-
-<!-- ══════════════════════════════════════════
-     LUCAS / CREATIVE EXTRAS — VIDEO ADDED AT TOP
-══════════════════════════════════════════ -->
+<!-- LUCAS / CREATIVE EXTRAS -->
 <section class="section view-extra view-extra-lucas" style="padding-bottom:0">
-  
-  <!-- HIGHLIGHTED YOUTUBE VIDEO AT THE VERY TOP OF CREATIVE SECTION -->
+
+  <!-- VIDEO SHOWCASE (hero of this view) -->
   <div class="reveal">
-    <div class="creative-video-wrapper">
-      <iframe 
-        src="https://www.youtube.com/embed/d6WgrZVGAFI?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=d6WgrZVGAFI&amp;modestbranding=1&amp;rel=0" 
-        title="Pixels to Production: My Creative Full-Stack Story" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        referrerpolicy="strict-origin-when-cross-origin" 
-        allowfullscreen>
-      </iframe>
+    <div class="video-showcase">
+      <div class="video-showcase-label">Creative Showreel</div>
+      <h2>Pixels to Production:<br>A Creative Full-Stack Story</h2>
+      <p class="video-showcase-desc">
+        3,600+ hours distilled into one visual narrative — from responsive craft and data-driven art to AI-powered interfaces.
+        <em>This is the process, unfiltered.</em>
+      </p>
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/d6WgrZVGAFI?rel=0"
+          title="Creative Showreel — Markus Isaksson"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-meta">
+        <span>YouTube</span>
+        <span>HD 16:9</span>
+        <span>Sound on recommended</span>
+      </div>
     </div>
   </div>
 
-  <!-- Playful header right under the video -->
-  <div class="reveal creative-video-header">
-    <div class="creative-video-badge">
-      <span style="font-size:1.1rem;">🎥</span> 
-      NEW CREATIVE SHOWREEL
-    </div>
-    <h2 class="creative-video-title">“Pixels to Production:<br>My Creative Full-Stack Story”</h2>
-    <p class="creative-video-subtitle">
-      3-minute journey through 3,600+ hours of deliberate creative practice.<br>
-      Watch how raw learning became responsive beauty, data-driven art, and AI-powered interfaces.<br>
-      <strong style="color:var(--gold);">No fluff — just the real process.</strong>
-    </p>
-  </div>
-
-  <!-- Everything else in Lucas section stays exactly as you provided -->
+  <!-- CREATIVE SUMMARY (concise, not full breakdown) -->
   <div class="reveal">
     <div class="creative-hero-tag">Design &amp; Creative Perspective</div>
     <h2 class="section-title" style="color:var(--forest)">Craft, Curiosity<br>&amp; Creative Depth</h2>
-    <p class="section-intro">This isn't a checklist of courses. It's a deliberate creative journey — building the aesthetic intuition, interactive vocabulary, and visual engineering skills to bring ideas to life on screen.</p>
-  </div>
-
-  <!-- creative-intro, toolkit, journey etc. all unchanged -->
-  <div class="reveal">
-    <div class="creative-intro">
-      <h3>The Story Behind the Skills</h3>
-      <p>Over 3,600 documented hours, Markus built an end-to-end creative toolkit: responsive layouts that breathe, D3-powered visualisations that make data speak, React components that feel alive, and Python ML models that can power truly adaptive interfaces. Every layer of this portfolio page — the typography, the grid, the perspective-switching interactions — is a direct application of that learning.</p>
-    </div>
+    <p class="section-intro">Not a checklist of courses — a deliberate creative journey, building the aesthetic intuition and interactive vocabulary to bring ideas to life on screen. Watch the showreel above, then explore the highlights below.</p>
   </div>
 
   <div class="reveal">
-    <div class="creative-toolkit">
-      <h3>Creative Toolkit Highlights</h3>
-      <div class="toolkit-grid">
-        <!-- all toolkit cards unchanged -->
+    <div class="creative-summary-grid">
+      <div class="creative-summary-card">
+        <div class="cs-icon">🎨</div>
+        <h4>Visual Interface Craft</h4>
+        <p>Responsive layouts that breathe, component systems built from the ground up, and design-system thinking baked into every pixel.</p>
+      </div>
+      <div class="creative-summary-card">
+        <div class="cs-icon">📊</div>
+        <h4>Data as Visual Narrative</h4>
+        <p>D3.js, SVG, and data-driven documents — turning raw numbers into compelling, interactive visual stories.</p>
+      </div>
+      <div class="creative-summary-card">
+        <div class="cs-icon">⚡</div>
+        <h4>Dynamic Interaction</h4>
+        <p>React, Redux, and modern JavaScript for fluid, state-driven experiences that feel instant and alive.</p>
+      </div>
+      <div class="creative-summary-card">
+        <div class="cs-icon">🤖</div>
+        <h4>AI-Powered Interfaces</h4>
+        <p>TensorFlow and ML foundations opening the door to truly adaptive UIs that learn and respond intelligently.</p>
+      </div>
+      <div class="creative-summary-card">
+        <div class="cs-icon">🔐</div>
+        <h4>Trust by Design</h4>
+        <p>Security and quality assurance designed in — making digital experiences both beautiful and trustworthy.</p>
+      </div>
+      <div class="creative-summary-card">
+        <div class="cs-icon">🌐</div>
+        <h4>Full-Stack Canvas</h4>
+        <p>PostgreSQL to Node.js to React front-ends — the entire creative canvas is accessible, not just the surface layer.</p>
       </div>
     </div>
   </div>
 
-  <div class="reveal">
-    <div class="journey">
-      <h3>The Creative Journey</h3>
-      <div class="journey-track">
-        <!-- all journey items unchanged -->
-      </div>
-    </div>
-  </div>
 </section>
+
 
 <!-- ══════════════════════════════════════════
-     SHARED: CERTIFICATIONS (unchanged)
-     + Benjamin & Harper extras (unchanged)
+     SHARED: CERTIFICATIONS
 ══════════════════════════════════════════ -->
 <section class="section" id="certifications">
-  <!-- All certification content, Benjamin projects, Harper verification log — exactly as in the original document you provided -->
-  <!-- ... (full unchanged block) ... -->
+  <div class="reveal">
+    <div class="section-eyebrow">Credentials — All Publicly Verifiable on freeCodeCamp</div>
+    <h2 class="section-title">Certifications &amp;<br>Achievements</h2>
+    <p class="section-intro">16 certifications across 3,600+ hours of structured, hands-on learning. Select a perspective above to see tailored insights for each credential.</p>
+  </div>
+
+  <!-- LEGACY -->
+  <div class="reveal">
+    <h3 class="cert-group-title">Legacy Certifications · ~300 hrs each</h3>
+    <div class="cert-grid">
+
+      <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/responsive-web-design" target="_blank" class="cert-card">
+        <div class="cert-top">
+          <div class="cert-icon">🌐</div>
+          <div class="cert-info"><h4>Responsive Web Design</h4><div class="cert-hours">~300 hrs</div></div>
+        </div>
+        <div class="skill-tags"><span class="skill-tag">HTML</span><span class="skill-tag">CSS</span><span class="skill-tag">Flexbox</span><span class="skill-tag">CSS Grid</span><span class="skill-tag">Media Queries</span></div>
+        <div class="insight insight-lucas">The creative foundation for beautiful, adaptive user interfaces — this very portfolio is a living example.</div>
+        <div class="insight insight-benjamin">Mastery of layout algorithms, constraint-based systems, and responsive design principles.</div>
+        <div class="insight insight-harper">Publicly verifiable starting point of structured web development journey (link active Feb 2026).</div>
+      </a>
+
+      <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/javascript-algorithms-and-data-structures" target="_blank" class="cert-card">
+        <div class="cert-top">
+          <div class="cert-icon">⚡</div>
+          <div class="cert-info"><h4>JS Algorithms &amp; Data Structures</h4><div class="cert-hours">~300 hrs</div></div>
+        </div>
+        <div class="skill-tags"><span class="skill-tag">JavaScript</span><span class="skill-tag">ES6+</span><span class="skill-tag">Algorithms</span><span class="skill-tag">Data Structures</span><span class="skill-tag">Recursion</span></div>
+        <div class="insight insight-lucas">Powers dynamic, engaging, and interactive web experiences.</div>
+        <div class="insight insight-benjamin">Core CS foundations: Big-O, recursion, sorting, searching, trees, graphs.</div>
+        <div class="insight insight-harper">Verifiable algorithmic thinking and data organisation mastery.</div>
+      </a>
+
+      <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/front-end-development-libraries" target="_blank" class="cert-card">
+        <div class="cert-top">
+          <div class="cert-icon">⚛️</div>
+          <div class="cert-info"><h4>Front End Development Libraries</h4><div class="cert-hours">~300 hrs</div></div>
+        </div>
+        <div class="skill-tags"><span class="skill-tag">React</span><span class="skill-tag">Redux</span><span class="skill-tag">Bootstrap</span><span class="skill-tag">jQuery</span><span class="skill-tag">SASS</span></div>
+        <div class="insight insight-lucas">Enables modern, component-based, visually rich front-end applications.</div>
+        <div class="insight insight-benjamin">State management, component architecture, and declarative UI patterns.</div>
+        <div class="insight insight-harper">Official certification of production-ready frontend tooling proficiency.</div>
+      </a>
+
+      <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/data-visualization" target="_blank" class="cert-card">
+        <div class="cert-top">
+          <div class="cert-icon">📊</div>
+          <div class="cert-info"><h4>Data Visualisation</h4><div class="cert-hours">~300 hrs</div></div>
+        </div>
+        <div class="skill-tags"><span class="skill-tag">D3.js</span><span class="skill-tag">JSON APIs</span><span class="skill-tag">SVG</span><span class="skill-tag">Data-Driven Documents</span></div>
+        <div class="insight insight-lucas">Transforms raw numbers into compelling visual narratives — data becomes art.</div>
+        <div class="insight insight-benjamin">Data-binding, scales, and rendering pipelines for complex datasets.</div>
+        <div class="insight insight-harper">Verifiable skills in turning data into meaningful visual insight.</div>
+      </a>
+
+      <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/relational-database-v8" target="_blank" class="cert-card">
+        <div class="cert-top">
+          <div class="cert-icon">🗄️</div>
+          <div class="cert-info"><h4>Relational Database</h4><div class="cert-hours">~300 hrs</div></div>
+        </div>
+        <div class="skill-tags"><span class="skill-tag">PostgreSQL</span><span class="skill-tag">SQL</span><span class="skill-tag">Bash</span><span class="skill-tag">Git</span><span class="skill-tag">Relational Design</span></div>
+        <div class="insight insight-lucas">Beautifully structured data behind every great application.</div>
+        <div class="insight insight-benjamin">Normalisation, joins, transactions, ACID principles, indexing.</div>
+        <div class="insight insight-harper">Public proof of backend data architecture competence.</div>
+      </a>
+
+      <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/back-end-development-and-apis" target="_blank" class="cert-card">
+        <div class="cert-top">
+          <div class="cert-icon">🔧</div>
+          <div class="cert-info"><h4>Back End Development and APIs</h4><div class="cert-hours">~300 hrs</div></div>
+        </div>
+        <div class="skill-tags"><span class="skill-tag">Node.js</span><span class="skill-tag">Express</span><span class="skill-tag">MongoDB</span><span class="skill-tag">REST APIs</span><span class="skill-tag">Mongoose</span></div>
+        <div class="insight insight-lucas">The invisible magic that makes front-end applications actually come alive.</div>
+        <div class="insight insight-benjamin">Server architecture, routing, middleware, and authentication patterns.</div>
+        <div class="insight insight-harper">Verifiable full-stack backend mastery via public certification.</div>
+      </a>
+
+      <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/information-security-and-quality-assurance" target="_blank" class="cert-card">
+        <div class="cert-top">
+          <div class="cert-icon">🔒</div>
+          <div class="cert-info"><h4>Information Security &amp; QA</h4><div class="cert-hours">~300 hrs</div></div>
+        </div>
+        <div class="skill-tags"><span class="skill-tag">HelmetJS</span><span class="skill-tag">Chai</span><span class="skill-tag">Mocha</span><span class="skill-tag">Passport.js</span></div>
+        <div class="insight insight-lucas">Security and testing make beautiful experiences genuinely trustworthy.</div>
+        <div class="insight insight-benjamin">Testing frameworks, security headers, authentication flows, and QA pipelines.</div>
+        <div class="insight insight-harper">Publicly documented quality and security engineering practices.</div>
+      </a>
+
+      <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/scientific-computing-with-python-v7" target="_blank" class="cert-card">
+        <div class="cert-top">
+          <div class="cert-icon">🐍</div>
+          <div class="cert-info"><h4>Scientific Computing with Python</h4><div class="cert-hours">~300 hrs</div></div>
+        </div>
+        <div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">Algorithms</span><span class="skill-tag">OOP</span><span class="skill-tag">File I/O</span></div>
+        <div class="insight insight-lucas">Python as a creative problem-solving tool beyond the browser.</div>
+        <div class="insight insight-benjamin">Algorithmic thinking, software engineering principles, and OOP design.</div>
+        <div class="insight insight-harper">Verifiable Python foundation with public certification.</div>
+      </a>
+
+      <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/data-analysis-with-python-v7" target="_blank" class="cert-card">
+        <div class="cert-top">
+          <div class="cert-icon">📈</div>
+          <div class="cert-info"><h4>Data Analysis with Python</h4><div class="cert-hours">~300 hrs</div></div>
+        </div>
+        <div class="skill-tags"><span class="skill-tag">NumPy</span><span class="skill-tag">Pandas</span><span class="skill-tag">Matplotlib</span><span class="skill-tag">Seaborn</span></div>
+        <div class="insight insight-lucas">Turning datasets into stories anyone can understand and act on.</div>
+        <div class="insight insight-benjamin">Vectorised operations, data frames, and statistical analysis pipelines.</div>
+        <div class="insight insight-harper">Official certification of data analysis proficiency.</div>
+      </a>
+
+      <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/information-security-v7" target="_blank" class="cert-card">
+        <div class="cert-top">
+          <div class="cert-icon">🛡️</div>
+          <div class="cert-info"><h4>Information Security</h4><div class="cert-hours">~300 hrs</div></div>
+        </div>
+        <div class="skill-tags"><span class="skill-tag">Python Pen-Testing</span><span class="skill-tag">TCP/IP</span><span class="skill-tag">Cryptography</span><span class="skill-tag">Network Security</span></div>
+        <div class="insight insight-lucas">Protecting the digital world with precision and elegance.</div>
+        <div class="insight insight-benjamin">Low-level networking, encryption algorithms, and ethical hacking.</div>
+        <div class="insight insight-harper">Public verification of advanced security knowledge.</div>
+      </a>
+
+      <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/machine-learning-with-python-v7" target="_blank" class="cert-card">
+        <div class="cert-top">
+          <div class="cert-icon">🤖</div>
+          <div class="cert-info"><h4>Machine Learning with Python</h4><div class="cert-hours">~300 hrs</div></div>
+        </div>
+        <div class="skill-tags"><span class="skill-tag">TensorFlow</span><span class="skill-tag">Neural Networks</span><span class="skill-tag">Scikit-learn</span><span class="skill-tag">Keras</span></div>
+        <div class="insight insight-lucas">The future of intelligent, adaptive user experiences starts here.</div>
+        <div class="insight insight-benjamin">Supervised/unsupervised learning, backpropagation, model evaluation.</div>
+        <div class="insight insight-harper">Verifiable ML engineering foundation with public certification.</div>
+      </a>
+
+      <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/college-algebra-with-python-v8" target="_blank" class="cert-card">
+        <div class="cert-top">
+          <div class="cert-icon">🧮</div>
+          <div class="cert-info"><h4>College Algebra with Python</h4><div class="cert-hours">~300 hrs</div></div>
+        </div>
+        <div class="skill-tags"><span class="skill-tag">Linear Algebra</span><span class="skill-tag">Functions</span><span class="skill-tag">Matrices</span><span class="skill-tag">Applied Math</span></div>
+        <div class="insight insight-lucas">Math made beautiful through code — the creative logic beneath the surface.</div>
+        <div class="insight insight-benjamin">Symbolic and numerical computation with proof-based thinking.</div>
+        <div class="insight insight-harper">Public proof of advanced mathematical competence.</div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- NEW CURRICULUM -->
+  <div class="reveal">
+    <h3 class="cert-group-title">New Curriculum Certifications</h3>
+    <div class="cert-grid">
+
+      <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/full-stack" target="_blank" class="cert-card">
+        <div class="cert-top">
+          <div class="cert-icon cert-icon--text">FS</div>
+          <div class="cert-info"><h4>Certified Full Stack Developer (Beta)</h4><div class="cert-hours">~1,800 hrs · All available checkpoints complete</div></div>
+        </div>
+        <div class="skill-tags"><span class="skill-tag">Modern Full Stack</span><span class="skill-tag">All Sections Complete</span></div>
+        <div class="insight insight-lucas">Culmination of creative, end-to-end digital craftsmanship — the whole canvas, not just one layer.</div>
+        <div class="insight insight-benjamin">Complete architectural mastery across all stack layers — beta capstone.</div>
+        <div class="insight insight-harper">Beta capstone — all currently available new-curriculum checkpoints passed.</div>
+      </a>
+
+      <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/a2-english-for-developers" target="_blank" class="cert-card">
+        <div class="cert-top">
+          <div class="cert-icon">🅰️</div>
+          <div class="cert-info"><h4>A2 English for Developers (Beta)</h4><div class="cert-hours">~100 hrs</div></div>
+        </div>
+        <div class="skill-tags"><span class="skill-tag">Technical English A2</span></div>
+        <div class="insight insight-lucas">Clear communication of creative ideas across languages and cultures.</div>
+        <div class="insight insight-benjamin">Precise technical documentation and communication skills.</div>
+        <div class="insight insight-harper">Verifiable English proficiency for technical developers.</div>
+      </a>
+
+      <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/b1-english-for-developers" target="_blank" class="cert-card">
+        <div class="cert-top">
+          <div class="cert-icon">🅱️</div>
+          <div class="cert-info"><h4>B1 English for Developers (Beta)</h4><div class="cert-hours">~150 hrs</div></div>
+        </div>
+        <div class="skill-tags"><span class="skill-tag">Technical English B1</span></div>
+        <div class="insight insight-lucas">Confident storytelling and communication in international tech contexts.</div>
+        <div class="insight insight-benjamin">Advanced technical discussion and documentation writing.</div>
+        <div class="insight insight-harper">Publicly certified B1 level English for professional technical contexts.</div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ADDITIONAL -->
+  <div class="reveal">
+    <h3 class="cert-group-title">Additional Certifications</h3>
+    <div class="cert-grid">
+
+      <a href="https://www.freecodecamp.org/certification/fccfb1888e4-715c-408f-9fcb-887123f4d08b/foundational-c-sharp-with-microsoft" target="_blank" class="cert-card">
+        <div class="cert-top">
+          <div class="cert-icon">🟣</div>
+          <div class="cert-info"><h4>Foundational C# with Microsoft</h4><div class="cert-hours">~50 hrs · Official Microsoft + freeCodeCamp</div></div>
+        </div>
+        <div class="skill-tags"><span class="skill-tag">C#</span><span class="skill-tag">.NET Basics</span><span class="skill-tag">OOP</span></div>
+        <div class="insight insight-lucas">Expanding the creative toolkit across languages and ecosystems.</div>
+        <div class="insight insight-benjamin">Strongly-typed, enterprise-grade language fundamentals.</div>
+        <div class="insight insight-harper">Official Microsoft-endorsed certification through freeCodeCamp partnership.</div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- Shared notes -->
+  <div class="reveal">
+    <div class="note-block">
+      <strong>Summary of Effort:</strong> 3,600+ conservative hours from legacy certifications alone, with substantial additional progress on the new freeCodeCamp curriculum. All certification links are publicly accessible and active as of February 2026.
+    </div>
+    <div class="note-block">
+      <strong>Curriculum Transition Note (Feb 2026):</strong> freeCodeCamp is in an ongoing transition to a new curriculum. All currently available sections of the new curriculum have been completed, reflected in the Full Stack Developer beta certification above.
+    </div>
+  </div>
+  
+  <!-- Benjamin/Harper extras (placeholders preserved) -->
+  <div class="view-extra view-extra-benjamin">
+    <div class="reveal">
+      <h3 class="cert-group-title" style="color:var(--pine); margin-top:3rem;">Technical Blueprint (Benjamin Lens)</h3>
+      <p class="section-intro">Structured skill matrix, data structures &amp; logic depth.</p>
+      <table style="width:100%; border-collapse:collapse; font-size:.9rem; margin-bottom:1.5rem;">
+        <tr style="background:var(--forest); color:#fff;">
+          <th style="padding:1rem; text-align:left; border-radius:8px 0 0 0;">Category</th>
+          <th style="padding:1rem; text-align:left;">Key Concepts Demonstrated</th>
+        </tr>
+        <tr style="background:#fff;"><td style="padding:1rem; border-bottom:1px solid #eee; font-weight:600;">Frontend</td><td style="padding:1rem; border-bottom:1px solid #eee;">React state, Redux, CSS Grid as constraint solvers, responsive systems</td></tr>
+        <tr style="background:var(--cloud);"><td style="padding:1rem; border-bottom:1px solid #eee; font-weight:600;">Backend</td><td style="padding:1rem; border-bottom:1px solid #eee;">Node.js event loop, Express middleware chains, REST API design</td></tr>
+        <tr style="background:#fff;"><td style="padding:1rem; border-bottom:1px solid #eee; font-weight:600;">Data</td><td style="padding:1rem; border-bottom:1px solid #eee;">PostgreSQL normalisation, vectorised Pandas ops, D3 data binding</td></tr>
+        <tr style="background:var(--cloud);"><td style="padding:1rem; border-bottom:1px solid #eee; font-weight:600;">ML</td><td style="padding:1rem; border-bottom:1px solid #eee;">Backpropagation, supervised/unsupervised learning, TensorFlow model eval</td></tr>
+        <tr style="background:#fff;"><td style="padding:1rem; font-weight:600;">Security</td><td style="padding:1rem;">Argon2id hashing, JWT sessions, RBAC, ethical pen-testing, Cryptography</td></tr>
+      </table>
+      <div class="note-block">
+        <strong>Machine-readable:</strong> All data is also available as structured JSON at <a href="https://MarkusIsaksson1982.github.io/data/portfolio.json" target="_blank">/data/portfolio.json</a> for programmatic ingestion.
+      </div>
+
+      <!-- Projects Grid -->
+      <h3 class="cert-group-title" style="color:var(--pine); margin-top:3rem;">Live Micro-Projects</h3>
+      <div class="cert-grid projects-grid">
+
+        <article class="project-card micro-project" data-complexity="1">
+          <div class="project-header">
+            <span class="badge">MP1 • Vanilla JS</span>
+            <span class="tech-stack">HTML5 • CSS Grid • Vanilla JS • WCAG AA</span>
+          </div>
+          <h3>FCC Certification Explorer &amp; Tracker</h3>
+          <p>16 real certifications • 3,600+ hours • Real-time filters, persistent personal notes, full accessibility. Zero dependencies. Built with deliberate multi-model AI orchestration (Claude Sonnet 4.6 architecture + Grok orchestration).</p>
+          <div class="project-links">
+            <a href="micro-projects/mp1-fcc-explorer/" target="_blank" class="live-btn">Live Demo ↗</a>
+            <a href="micro-projects/mp1-fcc-explorer/README.md" target="_blank" class="source-btn">Source + AI Log</a>
+          </div>
+        </article>
+
+        <article class="project-card micro-project" data-complexity="2">
+          <div class="project-header">
+            <span class="badge">MP2 • Dynamic JS</span>
+            <span class="tech-stack">Vanilla JS • Reducer • Real-time Sync • Validation</span>
+          </div>
+          <h3>Dynamic Survey Builder with Live Preview</h3>
+          <p>Build, preview, validate and export surveys. Full CRUD on nested state, named drafts, selective DOM reconciliation. Zero dependencies. Builds directly on MP1 skills with algorithmic depth.</p>
+          <div class="project-links">
+            <a href="micro-projects/mp2-survey-builder/" target="_blank" class="live-btn">Live Demo ↗</a>
+            <a href="micro-projects/mp2-survey-builder/README.md" target="_blank" class="source-btn">Source + Full AI Log</a>
+          </div>
+        </article>
+<article class="project-card micro-project" data-complexity="3">
+  <div class="project-header">
+    <span class="badge">MP3 • React</span>
+    <span class="tech-stack">React 18 • Context • React.memo • Custom Hooks</span>
+  </div>
+  <h3>React FCC Certification Explorer</h3>
+  <p>Identical feature set to MP1 — but re-architected in React 18. Deliberate comparison: vanilla fundamentals vs React idioms. React.memo, Context split, performance strategy, custom hooks. Visual parity with MP1/MP2.</p>
+  <div class="project-links">
+    <a href="micro-projects/mp3-react-explorer/" target="_blank" class="live-btn">Live Demo ↗</a>
+    <a href="micro-projects/mp3-react-explorer/README.md" target="_blank" class="source-btn">Source + AI Log</a>
+  </div>
+</article>
+      </div>
+    </div>
+  </div>
+
+  <div class="view-extra view-extra-harper">
+    <div class="reveal">
+      <h3 class="cert-group-title" style="color:var(--sage); margin-top:3rem;">Evidence &amp; Verification Log (Harper Lens)</h3>
+      <p class="section-intro">All links verified active as of February 20, 2026. Full public profile: <a href="https://www.freecodecamp.org/fccfb1888e4-715c-408f-9fcb-887123f4d08b" target="_blank" style="color:var(--pine);">freeCodeCamp Profile ↗</a></p>
+      <div class="note-block">
+        <strong>FCC ID:</strong> <code>fccfb1888e4-715c-408f-9fcb-887123f4d08b</code> — append to any certification URL above to verify directly. All 16 certification links follow the pattern <code>freecodecamp.org/certification/{id}/{slug}</code>.
+      </div>
+    </div>
+  </div>
+
 </section>
 
-<!-- ── FOOTER ── (unchanged) -->
+<!-- ── FOOTER ── -->
 <footer>
-  <!-- footer unchanged -->
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/markus-isaksson-08273a127/" target="_blank">LinkedIn</a>
+    <a href="https://www.freecodecamp.org/fccfb1888e4-715c-408f-9fcb-887123f4d08b" target="_blank">freeCodeCamp Profile</a>
+    <a href="https://github.com/MarkusIsaksson1982" target="_blank">GitHub</a>
+    <a href="https://MarkusIsaksson1982.github.io/data/portfolio.json" target="_blank">portfolio.json ↗</a>
+  </div>
+  <div class="footer-copy">Last updated February 2026 · Multi-perspective portfolio · Open data for AI ingestion</div>
 </footer>
 
 <script>
-  // Reveal on scroll (unchanged)
+  // Reveal on scroll
   const obs = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
@@ -615,7 +992,7 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-  // View switching (unchanged)
+  // View switching
   function setView(view) {
     document.body.setAttribute('data-view', view);
     document.querySelectorAll('.perspective-btn').forEach(btn => btn.classList.remove('active'));
@@ -625,7 +1002,7 @@
     }
   }
 
-  // Auto-apply from URL param
+  // Auto-apply from URL param e.g. ?view=lucas
   const p = new URLSearchParams(window.location.search).get('view');
   if (['lucas','benjamin','harper'].includes(p)) setView(p);
 </script>
