@@ -1,0 +1,95 @@
+.page {
+  display: grid;
+  gap: var(--sp-5);
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  align-items: end;
+}
+
+.header h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+}
+
+.header p {
+  color: var(--color-text-2);
+  margin-top: var(--sp-1);
+}
+
+.headerActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.primaryButton,
+.secondaryButton {
+  border-radius: var(--r-md);
+  font-weight: 700;
+  padding: var(--sp-2) var(--sp-4);
+}
+
+.primaryButton {
+  border: 1px solid transparent;
+  background: var(--color-accent);
+  color: var(--color-text-inv);
+}
+
+.primaryButton:hover {
+  background: var(--color-accent-h);
+}
+
+.secondaryButton {
+  border: 1px solid var(--color-border-2);
+  background: var(--color-surface);
+  color: var(--color-text-2);
+}
+
+.createPanel {
+  display: grid;
+  gap: var(--sp-4);
+  padding: var(--sp-4);
+}
+
+.createPanel h3 {
+  margin: 0;
+  font-family: var(--font-display);
+}
+
+.list {
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.emptyState {
+  padding: var(--sp-6);
+  text-align: center;
+}
+
+.emptyState h3 {
+  margin: 0 0 var(--sp-2);
+  font-family: var(--font-display);
+}
+
+.emptyState p {
+  color: var(--color-text-muted);
+}
+
+.loading {
+  color: var(--color-text-2);
+}
+
+.error {
+  margin: 0;
+  border: 1px solid color-mix(in srgb, #ef4444 28%, transparent);
+  border-radius: var(--r-md);
+  background: color-mix(in srgb, #fef2f2 80%, var(--color-surface));
+  color: #b42318;
+  padding: var(--sp-2) var(--sp-3);
+}

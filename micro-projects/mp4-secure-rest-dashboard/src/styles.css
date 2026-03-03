@@ -1,0 +1,20 @@
+body {
+  background:
+    radial-gradient(circle at 12% 16%, color-mix(in srgb, var(--color-accent-sub) 48%, transparent), transparent 44%),
+    radial-gradient(circle at 88% 12%, color-mix(in srgb, var(--color-surface-2) 60%, transparent), transparent 40%),
+    var(--color-bg);
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+
+p {
+  margin-block: 0;
+}

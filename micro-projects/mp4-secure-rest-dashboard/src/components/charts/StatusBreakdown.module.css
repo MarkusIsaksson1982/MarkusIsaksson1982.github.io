@@ -1,0 +1,67 @@
+.wrapper {
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.svg {
+  width: min(100%, 260px);
+  margin-inline: auto;
+}
+
+.track {
+  fill: none;
+  stroke: var(--color-border);
+  stroke-width: 24;
+}
+
+.segment {
+  fill: none;
+  stroke-width: 24;
+  transition: stroke-dasharray var(--t-smooth);
+}
+
+.totalLabel {
+  fill: var(--color-text-primary);
+  font-size: 1.35rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.subLabel {
+  fill: var(--color-text-muted);
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+}
+
+.legend {
+  list-style: none;
+  display: grid;
+  gap: var(--sp-2);
+  margin: 0;
+  padding: 0;
+}
+
+.legend li {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--sp-2);
+  color: var(--color-text-2);
+  font-size: var(--text-sm);
+}
+
+.swatch {
+  display: inline-block;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: var(--r-sm);
+}
+
+.legend strong {
+  color: var(--color-text-primary);
+}
+
+.empty {
+  margin: 0;
+  color: var(--color-text-muted);
+}

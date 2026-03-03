@@ -1,0 +1,21 @@
+.toggle {
+  border: 1px solid var(--color-border-2);
+  border-radius: var(--r-full);
+  background: var(--color-surface);
+  color: var(--color-text-2);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  min-width: 5.5rem;
+  padding: var(--sp-2) var(--sp-3);
+  transition: background-color var(--t-fast), border-color var(--t-fast), color var(--t-fast);
+}
+
+.toggle:hover {
+  border-color: var(--color-accent);
+  color: var(--color-text-primary);
+}
+
+.mode {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
