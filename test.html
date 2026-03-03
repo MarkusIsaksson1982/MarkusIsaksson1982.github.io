@@ -203,6 +203,7 @@
     .view-extra { display:none; }
     body[data-view="default"]  .view-extra-default  { display:block; }
     body[data-view="lucas"]    .view-extra-lucas     { display:block; }
+    body[data-view="lucas"] #certifications { display:none; }
     body[data-view="benjamin"] .view-extra-benjamin  { display:block; }
     body[data-view="harper"]   .view-extra-harper    { display:block; }
 
@@ -599,7 +600,7 @@
   </div>
 </section>
 <!-- LUCAS / CREATIVE EXTRAS -->
-<section class="section view-extra view-extra-lucas" style="padding-bottom:0">
+<section class="section view-extra view-extra-lucas" id="lucas-section" style="padding-bottom:0">
 
   <!-- VIDEO SHOWCASE (hero of this view) -->
   <div class="reveal">
@@ -634,38 +635,81 @@
     <p class="section-intro">Not a checklist of courses — a deliberate creative journey, building the aesthetic intuition and interactive vocabulary to bring ideas to life on screen. Watch the showreel above, then explore the highlights below.</p>
   </div>
 
+  <!-- CREATIVE MERIT NARRATIVES -->
   <div class="reveal">
-    <div class="creative-summary-grid">
-      <div class="creative-summary-card">
-        <div class="cs-icon">🎨</div>
-        <h4>Visual Interface Craft</h4>
-        <p>Responsive layouts that breathe, component systems built from the ground up, and design-system thinking baked into every pixel.</p>
+    <div class="creative-intro" style="margin-top:2.5rem;">
+      <h3>The Shape of the Work</h3>
+      <p>Sixteen certified chapters. 3,600+ hours of deliberate practice. But numbers only tell you the weight — not the texture. Here’s what those hours actually built, told for the people who care about craft.</p>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <div class="journey" style="margin-top:1rem;">
+      <h3>Where the Craft Lives</h3>
+      <div class="journey-track">
+        <div class="journey-item">
+          <div class="journey-dot"></div>
+          <h4>The Canvas — Responsive Web Design</h4>
+          <p>Every creative project starts with the surface you’re given. 300 hours of learning how screens breathe — how whitespace creates meaning, how a layout shifts from a phone held on a commute to a widescreen in a studio. This portfolio page is a living artifact of that training: the grid, the typography, the way everything reflows without breaking character.</p>
+          <div class="j-tags"><span class="j-tag">HTML</span><span class="j-tag">CSS</span><span class="j-tag">Grid</span><span class="j-tag">Flexbox</span><span class="j-tag">Adaptive Layout</span></div>
+        </div>
+        <div class="journey-item">
+          <div class="journey-dot"></div>
+          <h4>The Engine Room — JavaScript &amp; Algorithms</h4>
+          <p>Beautiful things that don’t move are posters. Beautiful things that respond to you are experiences. 300 hours of algorithms, recursion, and data structures aren’t visible to the viewer — but they’re the reason an interaction feels instant, a filter feels effortless, and a transition lands exactly right.</p>
+          <div class="j-tags"><span class="j-tag">JavaScript</span><span class="j-tag">ES6+</span><span class="j-tag">Algorithms</span><span class="j-tag">Recursion</span></div>
+        </div>
+        <div class="journey-item">
+          <div class="journey-dot"></div>
+          <h4>The Component Era — React, Redux &amp; Front End Libraries</h4>
+          <p>Modern creative work lives in components: reusable, composable, maintainable. React changed how interfaces are imagined. Redux changed how state is reasoned about. Together they let you build living systems, not static pages — where every piece knows its role and the whole is greater than its parts.</p>
+          <div class="j-tags"><span class="j-tag">React</span><span class="j-tag">Redux</span><span class="j-tag">SASS</span><span class="j-tag">Bootstrap</span><span class="j-tag">Component Architecture</span></div>
+        </div>
+        <div class="journey-item">
+          <div class="journey-dot"></div>
+          <h4>Data as Art — D3.js &amp; Visual Storytelling</h4>
+          <p>Numbers become shapes. Shapes become stories. D3 is where analytical thinking and visual instinct fully merge — 300 hours of learning to bind raw data to SVG, to let a dataset choose its own visual form. This is the certification that turns a developer into a visual narrator.</p>
+          <div class="j-tags"><span class="j-tag">D3.js</span><span class="j-tag">SVG</span><span class="j-tag">JSON APIs</span><span class="j-tag">Data-Driven Documents</span></div>
+        </div>
+        <div class="journey-item">
+          <div class="journey-dot"></div>
+          <h4>The Invisible Architecture — Back End, Databases &amp; APIs</h4>
+          <p>A creative front-end that can’t talk to the world is a sketch that never leaves the notebook. Node.js, Express, PostgreSQL, MongoDB — these are the hidden layers that let ideas persist, connect, and scale. Knowing this side means never being blocked by what’s behind the curtain.</p>
+          <div class="j-tags"><span class="j-tag">Node.js</span><span class="j-tag">Express</span><span class="j-tag">PostgreSQL</span><span class="j-tag">MongoDB</span><span class="j-tag">REST APIs</span></div>
+        </div>
+        <div class="journey-item">
+          <div class="journey-dot"></div>
+          <h4>Trust by Design — Security, QA &amp; Information Security</h4>
+          <p>Beautiful experiences that aren’t trustworthy are liabilities. Two dedicated security certifications — from helmet headers and auth flows to Python pen-testing and cryptography — mean that security thinking is woven into the creative process, not bolted on afterwards.</p>
+          <div class="j-tags"><span class="j-tag">HelmetJS</span><span class="j-tag">Passport.js</span><span class="j-tag">Pen-Testing</span><span class="j-tag">Cryptography</span></div>
+        </div>
+        <div class="journey-item">
+          <div class="journey-dot"></div>
+          <h4>The Scientific Layer — Python, Data Analysis &amp; Applied Maths</h4>
+          <p>Creative intuition sharpened by analytical precision. Python, NumPy, Pandas, and college algebra aren’t typical design credentials — but they’re the reason data visualisations here are mathematically honest, not just aesthetically pleasing. The craft goes deeper than the surface.</p>
+          <div class="j-tags"><span class="j-tag">Python</span><span class="j-tag">NumPy</span><span class="j-tag">Pandas</span><span class="j-tag">Linear Algebra</span><span class="j-tag">Matplotlib</span></div>
+        </div>
+        <div class="journey-item">
+          <div class="journey-dot"></div>
+          <h4>The Intelligent Frontier — Machine Learning &amp; Neural Networks</h4>
+          <p>The next chapter of creative interfaces isn’t just responsive — it’s adaptive. TensorFlow, Keras, and ML fundamentals open a door that most designers can only knock on: interfaces that learn from behaviour, personalise in real time, and evolve beyond what was explicitly designed.</p>
+          <div class="j-tags"><span class="j-tag">TensorFlow</span><span class="j-tag">Keras</span><span class="j-tag">Neural Networks</span><span class="j-tag">Scikit-learn</span></div>
+        </div>
+        <div class="journey-item">
+          <div class="journey-dot"></div>
+          <h4>The Capstone — Certified Full Stack Developer</h4>
+          <p>Every thread pulled together into one verified credential. The full-stack beta certification isn’t just a badge — it’s proof that this creative journey covers every layer of the modern web, from the pixel the viewer sees to the server response they never will.</p>
+          <div class="j-tags"><span class="j-tag">Full Stack</span><span class="j-tag">End-to-End</span><span class="j-tag">All Checkpoints Complete</span></div>
+        </div>
       </div>
-      <div class="creative-summary-card">
-        <div class="cs-icon">📊</div>
-        <h4>Data as Visual Narrative</h4>
-        <p>D3.js, SVG, and data-driven documents — turning raw numbers into compelling, interactive visual stories.</p>
-      </div>
-      <div class="creative-summary-card">
-        <div class="cs-icon">⚡</div>
-        <h4>Dynamic Interaction</h4>
-        <p>React, Redux, and modern JavaScript for fluid, state-driven experiences that feel instant and alive.</p>
-      </div>
-      <div class="creative-summary-card">
-        <div class="cs-icon">🤖</div>
-        <h4>AI-Powered Interfaces</h4>
-        <p>TensorFlow and ML foundations opening the door to truly adaptive UIs that learn and respond intelligently.</p>
-      </div>
-      <div class="creative-summary-card">
-        <div class="cs-icon">🔐</div>
-        <h4>Trust by Design</h4>
-        <p>Security and quality assurance designed in — making digital experiences both beautiful and trustworthy.</p>
-      </div>
-      <div class="creative-summary-card">
-        <div class="cs-icon">🌐</div>
-        <h4>Full-Stack Canvas</h4>
-        <p>PostgreSQL to Node.js to React front-ends — the entire creative canvas is accessible, not just the surface layer.</p>
-      </div>
+    </div>
+  </div>
+
+  <!-- Closing note -->
+  <div class="reveal">
+    <div class="note-block" style="border-left-color:var(--gold); margin-top:2rem;">
+      <strong>16 certifications. 3,600+ hours. Every one publicly verifiable.</strong><br>
+      For the full credential breakdown, switch to the <em>Recruiters / HR</em> or <em>Research &amp; Verification</em> perspective above. This view is about the creative story those credentials tell.
     </div>
   </div>
 
@@ -998,7 +1042,8 @@
     document.querySelectorAll('.perspective-btn').forEach(btn => btn.classList.remove('active'));
     document.querySelectorAll('.perspective-btn')[['default','lucas','benjamin','harper'].indexOf(view)].classList.add('active');
     if (view !== 'default') {
-      setTimeout(() => document.getElementById('certifications').scrollIntoView({ behavior:'smooth', block:'start' }), 100);
+      var target = view === 'lucas' ? 'lucas-section' : 'certifications';
+      setTimeout(() => document.getElementById(target).scrollIntoView({ behavior:'smooth', block:'start' }), 100);
     }
   }
 
