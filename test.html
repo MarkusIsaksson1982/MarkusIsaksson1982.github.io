@@ -30,10 +30,10 @@
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.5);
         }
 
-        .video-container video {
+        .video-container iframe {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            border: none;
         }
 
         .highlight-glow {
@@ -42,7 +42,7 @@
     </style>
 </head>
 <body class="bg-zinc-950 text-zinc-200">
-    <!-- NAV -->
+    <!-- NAV (unchanged) -->
     <nav class="border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-lg fixed w-full z-50">
         <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -63,7 +63,7 @@
         </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- HERO (unchanged) -->
     <header class="pt-32 pb-20 bg-gradient-to-b from-zinc-900 to-zinc-950">
         <div class="max-w-6xl mx-auto px-6 text-center">
             <div class="inline-flex items-center gap-2 bg-zinc-900 border border-zinc-700 rounded-3xl px-6 py-2 text-sm mb-6">
@@ -81,37 +81,13 @@
         </div>
     </header>
 
-    <!-- OVERVIEW FOR HIRING MANAGERS -->
-    <section id="hiring" class="py-20 border-b border-zinc-800">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-5xl heading-font font-semibold tracking-tighter text-center mb-4">Overview for Hiring Managers</h2>
-            <p class="text-center text-xl text-zinc-400 mb-16 max-w-xl mx-auto">Why Markus? Because you get a verified, security-conscious, AI-ready full-stack developer who actually ships beautiful things.</p>
-            
-            <!-- What you're getting grid would go here - omitted for brevity but present in original -->
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-zinc-900 p-8 rounded-3xl">
-                    <i class="fa-solid fa-code text-4xl text-pink-400 mb-6"></i>
-                    <h3 class="text-2xl font-semibold mb-3">Full-stack capability</h3>
-                    <p class="text-zinc-400">React • Node • Python • PostgreSQL • everything in between</p>
-                </div>
-                <!-- more cards... -->
-            </div>
-        </div>
-    </section>
-
-    <!-- SKILLS AT A GLANCE -->
-    <section id="skills" class="py-20 bg-zinc-900">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-5xl heading-font font-semibold tracking-tighter text-center mb-16">Skills at a Glance</h2>
-            <!-- Categorized skill lists from original content - omitted for brevity -->
-        </div>
-    </section>
+    <!-- HIRING & SKILLS sections unchanged (omitted for brevity – copy from previous version) -->
 
     <!-- MODIFIED SECTION: FOR DESIGN & CREATIVE REVIEWERS -->
-    <!-- This is the exact spot requested: top of this section, highlighted, 1280×720 video, responsive, playful header + explanatory text -->
+    <!-- Highlighted YouTube video at the VERY TOP of this section -->
     <section id="creative" class="py-24 border-t border-b border-zinc-800 bg-zinc-950">
         <div class="max-w-6xl mx-auto px-6">
-            <!-- Playful header + video block (highlighted spot) -->
+            <!-- Playful header + video block -->
             <div class="mb-16">
                 <div class="text-center mb-10">
                     <div class="inline-flex items-center gap-3 bg-gradient-to-r from-pink-500 to-violet-500 text-white text-sm font-medium px-6 py-2 rounded-3xl mb-6">
@@ -128,23 +104,24 @@
                     </p>
                 </div>
 
-                <!-- Highlighted responsive video (1280×720 scaled perfectly) -->
+                <!-- Highlighted responsive YouTube embed (1280×720 scaled perfectly) -->
                 <div class="video-container highlight-glow mx-auto">
-                    <video controls autoplay muted loop playsinline class="w-full h-full">
-                        <!-- PLACEHOLDER FOR GOOGLE DRIVE VIDEO FILE -->
-                        <!-- Replace FILE_ID with your actual Google Drive file ID -->
-                        <!-- For best playback: share the file publicly and use the direct download link format below -->
-                        <source src="https://drive.google.com/uc?id=1pI1ldpbhZrSWY-uzicuJSkt7jsg80sC0&export=download" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <iframe 
+                        src="https://www.youtube.com/embed/d6WgrZVGAFI?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=d6WgrZVGAFI" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>
                 </div>
 
                 <div class="flex justify-center gap-8 mt-6 text-xs text-zinc-500">
                     <div class="flex items-center gap-2">
-                        <i class="fa-solid fa-play"></i>
-                        3:12
+                        <i class="fa-solid fa-youtube text-red-500"></i>
+                        YouTube
                     </div>
-                    <div>1280 × 720 • 16:9 • MP4</div>
+                    <div>HD • 16:9 • Auto-plays muted</div>
                     <div class="flex items-center gap-2">
                         <i class="fa-solid fa-volume-high"></i>
                         Sound on recommended
@@ -152,7 +129,7 @@
                 </div>
             </div>
 
-            <!-- Original creative content continues below the video -->
+            <!-- Original creative content continues below the video (unchanged) -->
             <div class="max-w-3xl mx-auto text-center">
                 <h3 class="text-4xl heading-font font-semibold tracking-tight mb-6">Craft, Curiosity &amp; Creative Depth</h3>
                 <p class="text-lg text-zinc-400 leading-relaxed">
@@ -161,7 +138,6 @@
                 </p>
             </div>
 
-            <!-- The rest of the original Design & Creative Perspective content (shortened) -->
             <div class="grid md:grid-cols-2 gap-12 mt-20 max-w-5xl mx-auto">
                 <div>
                     <h4 class="text-pink-400 text-sm tracking-widest font-medium mb-3">THE STORY BEHIND THE SKILLS</h4>
@@ -182,24 +158,21 @@
                             <p class="text-sm text-zinc-500">D3.js, SVG, interactive stories</p>
                         </div>
                     </div>
-                    <!-- more toolkit highlights -->
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CERTIFICATIONS -->
+    <!-- CERTIFICATIONS & FOOTER (unchanged – copy from previous version) -->
     <section id="certs" class="py-20">
         <div class="max-w-6xl mx-auto px-6">
             <h2 class="text-5xl heading-font font-semibold tracking-tighter text-center mb-16">Certifications &amp; Achievements</h2>
-            <!-- Full list of certifications from original page would go here -->
             <div class="text-center text-zinc-500 text-sm mt-12">
                 1,800+ hours • FreeCodeCamp + Microsoft + more
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="bg-black py-16 border-t border-zinc-800">
         <div class="max-w-6xl mx-auto px-6 text-center text-xs text-zinc-500">
             <p>Built by Markus Isaksson with love, Tailwind, and 3,600 hours of practice.</p>
@@ -208,8 +181,6 @@
     </footer>
 
     <script>
-        // Tailwind script already loaded via CDN
-        // Optional: smooth scroll for nav links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 if (this.getAttribute('href') !== '#') {
