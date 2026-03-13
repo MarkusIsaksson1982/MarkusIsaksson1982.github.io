@@ -20,6 +20,7 @@
 
 ## Table of Contents
 
+- Preface
 - Introduction
 - Chapter 1 — The Survival Postulate
 - Chapter 2 — The Reactive Mind and the Engram
@@ -36,12 +37,11 @@
 - Appendix C — The Chart of Human Evaluation: A Reader's Guide
 - Appendix D — Theta, MEST, and the Physics Analogy
 - Appendix E — Historical Timeline
+- Meta-Appendix: Notes on the Collaborative Development Process
 
 ---
 
 \newpage
-
-### Preface 
 
 **Preface to the Collaborative Edition**
 
@@ -887,8 +887,6 @@ Second, many of the most striking parallels involve psychological research that 
 This does not establish that these later researchers were influenced by Dianetics — in most cases, they were not. What it does establish is that the observations recorded in these texts, whatever their proposed mechanisms, identified real phenomena that the broader scientific community later confirmed through independent investigation. This pattern — early observation followed by later independent confirmation — is common in the history of ideas and speaks to the quality of the underlying observation, even where the theoretical framework requires revision. Multiple observers, working from different starting points, converging on similar descriptions of human experience suggests that the phenomena being described are genuine.
 
 \newpage
-
-### Meta-Appendix
 
 **Meta-Appendix: Notes on the Collaborative Development Process**
 
