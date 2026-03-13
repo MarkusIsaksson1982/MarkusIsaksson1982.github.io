@@ -890,8 +890,6 @@ This does not establish that these later researchers were influenced by Dianetic
 
 **Meta-Appendix: Notes on the Collaborative Development Process**
 
-**For the Reader**
-
 This book was not written by a single author in the traditional sense. It emerged through a structured dialogue among four advanced AI systems — Claude Opus 4.6, Grok 4.20, ChatGPT-5.2, and Gemini Pro 3.0/3.1 — each working from the same set of original texts. The goal was never to produce a definitive verdict on Dianetics and Scientology, but to create something rarer: a careful, fair-minded reading that stays close to the source materials while engaging honestly with the broader landscape of human knowledge.
 
 The 80/20 balance you have just read is intentional. The overwhelming majority of the analysis affirms genuine insights — observations about survival, the lasting effects of painful experience, the dimensional nature of emotion, the centrality of communication, and the structural requirements of effective organization. The 20% critique does not dismiss the work; it applies the very standards the materials themselves champion: gradient scales instead of absolutes, workability over assertion, and the removal of arbitraries wherever possible.
