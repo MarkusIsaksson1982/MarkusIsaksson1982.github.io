@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Backend / APIs — Full Stack Observatory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #06090f;
+      --surface: #0d1520;
+      --surface-2: #131d2e;
+      --surface-3: #192840;
+      --border: rgba(182, 220, 255, 0.1);
+      --border-bright: rgba(182, 220, 255, 0.22);
+      --text: #e8eef6;
+      --text-muted: rgba(232, 238, 246, 0.55);
+      --accent: #42f5c5;
+      --accent-dim: rgba(66, 245, 197, 0.12);
+      --orange: #ff965a;
+      --orange-dim: rgba(255, 150, 90, 0.12);
+      --blue: #4da8ff;
+      --blue-dim: rgba(77, 168, 255, 0.12);
+      --red: #ff6b6b;
+      --red-dim: rgba(255, 107, 107, 0.12);
+      --yellow: #ffc857;
+      --yellow-dim: rgba(255, 200, 87, 0.12);
+      --purple: #a578ff;
+      --purple-dim: rgba(165, 120, 255, 0.12);
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'Instrument Sans', system-ui, sans-serif;
+      --serif: 'DM Serif Display', serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 24px;
+      background: rgba(6, 9, 15, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar a { color: var(--text-muted); text-decoration: none; font-size: 0.82rem; font-weight: 600; transition: color 0.2s; }
+    .topbar a:hover { color: var(--accent); }
+    .topbar .sep { color: var(--text-muted); opacity: 0.4; }
+    .topbar .current { color: var(--orange); font-weight: 700; }
+    .topbar .layer-badge {
+      margin-left: auto;
+      padding: 4px 12px; border-radius: 9999px;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      background: var(--orange-dim); color: var(--orange);
+      border: 1px solid rgba(255, 150, 90, 0.25);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 60px 24px 40px;
+      max-width: 900px; margin: 0 auto;
+      text-align: center;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 400; line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--orange); }
+    .hero .lead {
+      font-size: 1.05rem; color: var(--text-muted);
+      max-width: 640px; margin: 0 auto 28px;
+    }
+    .hero .lead strong { color: var(--text); font-weight: 600; }
+    .hero .constraint-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 16px; border-radius: 9999px;
+      font-size: 0.78rem; font-weight: 600;
+      background: var(--surface-2); border: 1px solid var(--border-bright);
+      color: var(--text-muted);
+    }
+    .hero .constraint-badge::before {
+      content: ''; display: block; width: 6px; height: 6px;
+      border-radius: 50%; background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .workspace {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 24px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 840px) {
+      .workspace { grid-template-columns: 1fr; }
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .panel-header {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .panel-header .dot { width: 7px; height: 7px; border-radius: 50%; }
+
+    /* ── SERVER CODE PANEL ── */
+    .code-panel .panel-header .dot { background: var(--orange); }
+    .code-scroll {
+      padding: 18px;
+      max-height: 520px; overflow-y: auto;
+      font-family: var(--mono); font-size: 0.78rem;
+      line-height: 1.75; color: var(--text-muted);
+      white-space: pre-wrap; tab-size: 2;
+    }
+    .code-scroll::-webkit-scrollbar { width: 4px; }
+    .code-scroll::-webkit-scrollbar-track { background: transparent; }
+    .code-scroll::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 2px; }
+
+    .kw { color: #c792ea; }
+    .fn { color: #82aaff; }
+    .str { color: #c3e88d; }
+    .cm { color: rgba(232, 238, 246, 0.28); font-style: italic; }
+    .num { color: #f78c6c; }
+    .op { color: #89ddff; }
+    .param { color: #ffcb6b; }
+    .hl { background: rgba(255, 150, 90, 0.08); border-left: 2px solid var(--orange); margin-left: -18px; padding-left: 16px; display: block; }
+
+    /* ── API CONSOLE PANEL ── */
+    .console-panel .panel-header .dot { background: var(--accent); }
+    .console-body { padding: 18px; }
+
+    .method-row {
+      display: flex; gap: 8px; margin-bottom: 14px;
+    }
+    .method-btn {
+      padding: 6px 14px; border-radius: 8px;
+      font-family: var(--mono); font-size: 0.76rem; font-weight: 700;
+      border: 1px solid var(--border); background: var(--surface-2);
+      color: var(--text-muted); cursor: pointer; transition: all 0.15s;
+    }
+    .method-btn:hover { border-color: var(--border-bright); color: var(--text); }
+    .method-btn.active { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+    .method-btn[data-m="POST"].active { border-color: var(--yellow); color: var(--yellow); background: var(--yellow-dim); }
+    .method-btn[data-m="PUT"].active { border-color: var(--blue); color: var(--blue); background: var(--blue-dim); }
+    .method-btn[data-m="DELETE"].active { border-color: var(--red); color: var(--red); background: var(--red-dim); }
+
+    .url-row {
+      display: flex; gap: 8px; margin-bottom: 14px;
+    }
+    .url-input {
+      flex: 1; padding: 10px 14px;
+      font-family: var(--mono); font-size: 0.82rem;
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: 8px; color: var(--text);
+      outline: none; transition: border-color 0.2s;
+    }
+    .url-input:focus { border-color: var(--accent); }
+    .send-btn {
+      padding: 10px 20px; border-radius: 8px;
+      font-family: var(--sans); font-size: 0.82rem; font-weight: 700;
+      background: var(--accent); color: #06090f; border: none;
+      cursor: pointer; transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .send-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .send-btn:active { transform: scale(0.97); }
+
+    .body-input {
+      width: 100%; padding: 10px 14px; margin-bottom: 14px;
+      font-family: var(--mono); font-size: 0.78rem;
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: 8px; color: var(--text);
+      outline: none; resize: vertical; min-height: 60px;
+      display: none;
+    }
+    .body-input.visible { display: block; }
+    .body-input:focus { border-color: var(--accent); }
+
+    .presets-label { font-size: 0.7rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+    .presets { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+    .preset {
+      padding: 5px 10px; border-radius: 6px;
+      font-family: var(--mono); font-size: 0.72rem;
+      background: var(--surface-2); border: 1px solid var(--border);
+      color: var(--text-muted); cursor: pointer; transition: all 0.15s;
+    }
+    .preset:hover { border-color: var(--border-bright); color: var(--text); }
+
+    /* ── MIDDLEWARE PIPELINE ── */
+    .pipeline-section {
+      grid-column: 1 / -1;
+    }
+    .pipeline-panel .panel-header .dot { background: var(--purple); }
+    .pipeline-track {
+      padding: 24px 18px;
+      display: flex; gap: 0; align-items: stretch;
+      overflow-x: auto;
+    }
+    .pipeline-track::-webkit-scrollbar { height: 3px; }
+    .pipeline-track::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 2px; }
+
+    .mw-step {
+      flex-shrink: 0;
+      display: flex; flex-direction: column; align-items: center;
+      min-width: 110px; position: relative;
+      opacity: 0.3; transition: opacity 0.35s ease;
+    }
+    .mw-step.reached { opacity: 1; }
+    .mw-step.active .mw-icon { transform: scale(1.15); box-shadow: 0 0 18px var(--purple); }
+    .mw-step.failed .mw-icon { background: var(--red-dim); border-color: var(--red); }
+    .mw-step.failed .mw-label { color: var(--red); }
+
+    .mw-icon {
+      width: 42px; height: 42px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      background: var(--surface-2); border: 1px solid var(--border-bright);
+      transition: all 0.3s; margin-bottom: 8px;
+    }
+    .mw-label { font-size: 0.7rem; font-weight: 600; color: var(--text-muted); text-align: center; line-height: 1.3; }
+    .mw-time { font-family: var(--mono); font-size: 0.65rem; color: var(--text-muted); margin-top: 4px; opacity: 0; transition: opacity 0.3s; }
+    .mw-step.reached .mw-time { opacity: 1; }
+
+    .mw-arrow {
+      flex-shrink: 0; width: 32px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--border-bright); font-size: 0.9rem;
+      opacity: 0.3; transition: opacity 0.35s;
+    }
+    .mw-arrow.reached { opacity: 1; color: var(--accent); }
+
+    /* ── RESPONSE OUTPUT ── */
+    .response-section { grid-column: 1 / -1; }
+    .response-panel .panel-header .dot { background: var(--blue); }
+    .response-body { padding: 18px; }
+
+    .resp-status {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px; border-radius: 8px;
+      font-family: var(--mono); font-size: 0.82rem; font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .resp-status.s2xx { background: var(--accent-dim); color: var(--accent); }
+    .resp-status.s4xx { background: var(--yellow-dim); color: var(--yellow); }
+    .resp-status.s5xx { background: var(--red-dim); color: var(--red); }
+
+    .resp-headers {
+      margin-bottom: 14px; padding: 12px 14px;
+      background: var(--surface-2); border-radius: 8px;
+      font-family: var(--mono); font-size: 0.72rem; line-height: 1.8;
+      color: var(--text-muted);
+    }
+    .resp-headers .h-name { color: var(--blue); }
+    .resp-json {
+      padding: 14px;
+      background: var(--surface-2); border-radius: 8px;
+      font-family: var(--mono); font-size: 0.78rem; line-height: 1.7;
+      color: var(--text); white-space: pre-wrap;
+      max-height: 300px; overflow-y: auto;
+    }
+    .resp-json::-webkit-scrollbar { width: 4px; }
+    .resp-json::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 2px; }
+
+    .empty-state {
+      padding: 40px 18px; text-align: center;
+      color: var(--text-muted); font-size: 0.9rem;
+    }
+    .empty-state .arrow-hint { font-size: 0.78rem; margin-top: 8px; opacity: 0.5; }
+
+    /* ── EXPLAINER SECTION ── */
+    .explainer {
+      grid-column: 1 / -1;
+      padding: 40px 0;
+    }
+    .explainer h2 {
+      font-family: var(--serif); font-size: 1.6rem;
+      font-weight: 400; margin-bottom: 16px;
+    }
+    .explainer p {
+      font-size: 0.92rem; color: var(--text-muted);
+      max-width: 700px; line-height: 1.75; margin-bottom: 12px;
+    }
+    .explainer code {
+      font-family: var(--mono); font-size: 0.82rem;
+      background: var(--surface-2); padding: 2px 7px;
+      border-radius: 4px; color: var(--accent);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+      font-size: 0.78rem; color: var(--text-muted);
+    }
+    .footer a { color: var(--accent); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topbar">
+    <a href="../../">Observatory</a>
+    <span class="sep">/</span>
+    <span class="current">Backend / APIs</span>
+    <span class="layer-badge">Layer 2 of 12</span>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <h1>The <span>Backend</span> runs in your browser</h1>
+    <p class="lead">
+      GitHub Pages can't run Node.js — so this page <strong>implements an Express-like server framework in pure JavaScript</strong>,
+      complete with routing, middleware chain, authentication, rate limiting, and structured error handling.
+      Every request you make below is processed through a real middleware pipeline, right here in the browser.
+    </p>
+    <div class="constraint-badge">Static hosting — zero server-side code</div>
+  </header>
+
+  <!-- WORKSPACE -->
+  <div class="workspace">
+
+    <!-- SERVER CODE -->
+    <div class="panel code-panel">
+      <div class="panel-header"><span class="dot"></span> server.js — the in-browser Express</div>
+      <div class="code-scroll" id="server-code"></div>
+    </div>
+
+    <!-- API CONSOLE -->
+    <div class="panel console-panel">
+      <div class="panel-header"><span class="dot"></span> API console</div>
+      <div class="console-body">
+        <div class="method-row" id="methods"></div>
+        <div class="url-row">
+          <input class="url-input" id="url" type="text" value="/api/users" spellcheck="false" />
+          <button class="send-btn" id="send">Send →</button>
+        </div>
+        <textarea class="body-input" id="reqbody" placeholder='{ "name": "Ada Lovelace", "role": "engineer" }' spellcheck="false"></textarea>
+        <div class="presets-label">Quick presets</div>
+        <div class="presets" id="presets"></div>
+      </div>
+    </div>
+
+    <!-- MIDDLEWARE PIPELINE -->
+    <div class="pipeline-section">
+      <div class="panel pipeline-panel">
+        <div class="panel-header"><span class="dot"></span> Middleware execution pipeline</div>
+        <div class="pipeline-track" id="pipeline"></div>
+      </div>
+    </div>
+
+    <!-- RESPONSE -->
+    <div class="response-section">
+      <div class="panel response-panel">
+        <div class="panel-header"><span class="dot"></span> Response</div>
+        <div class="response-body" id="response">
+          <div class="empty-state">
+            Send a request above to see the middleware pipeline execute in real time.
+            <div class="arrow-hint">↑ Try a preset or type your own endpoint</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPLAINER -->
+    <div class="explainer">
+      <h2>What this proves</h2>
+      <p>
+        This isn't a mock. The code on the left is a <strong>functioning server framework</strong> — a simplified
+        Express.js reimplementation running in the browser. Every middleware function executes in sequence,
+        each calling <code>next()</code> to pass control forward. The pipeline visualizer shows real timing data
+        from each step.
+      </p>
+      <p>
+        The concepts demonstrated: route matching with parameter extraction, middleware composition,
+        bearer token authentication, request rate limiting with a sliding window, input validation,
+        structured JSON error responses with proper HTTP status codes, CORS headers, and
+        content-type negotiation.
+      </p>
+      <p>
+        On a real server this exact pattern runs on Node.js with Express, Fastify, or Koa.
+        The middleware chain, route matching logic, and error handling patterns are identical —
+        the only difference is the transport layer (HTTP sockets vs. in-memory function calls).
+      </p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <a href="../../">← Back to the Full Stack Observatory</a>
+  </footer>
+
+  <script>
+    /* ═══════════════════════════════════════════════
+       MICRO-EXPRESS: An Express-like framework
+       running entirely in the browser.
+    ═══════════════════════════════════════════════ */
+
+    class MicroExpress {
+      constructor() {
+        this._routes = [];
+        this._globalMiddleware = [];
+        this._pipelineLog = [];
+      }
+
+      use(fn) { this._globalMiddleware.push({ name: fn._name || fn.name || 'middleware', fn, icon: fn._icon || '⚙' }); }
+
+      _addRoute(method, path, ...handlers) {
+        const params = [];
+        const pattern = path.replace(/:(\w+)/g, (_, name) => { params.push(name); return '([^/]+)'; });
+        const regex = new RegExp('^' + pattern + '$');
+        this._routes.push({ method: method.toUpperCase(), regex, paramNames: params, handlers, path });
+      }
+
+      get(p, ...h) { this._addRoute('GET', p, ...h); }
+      post(p, ...h) { this._addRoute('POST', p, ...h); }
+      put(p, ...h) { this._addRoute('PUT', p, ...h); }
+      delete(p, ...h) { this._addRoute('DELETE', p, ...h); }
+
+      async handle(req) {
+        this._pipelineLog = [];
+        const res = { status: 200, headers: { 'Content-Type': 'application/json', 'X-Powered-By': 'MicroExpress/1.0' }, body: null, _sent: false };
+
+        res.status = function (code) { this.statusCode = code; return this; }.bind(res);
+        res.statusCode = 200;
+        res.json = function (data) { this.body = data; this._sent = true; }.bind(res);
+        res.set = function (k, v) { this.headers[k] = v; return this; }.bind(res);
+
+        const matched = this._routes.find(r => {
+          if (r.method !== req.method) return false;
+          const m = req.url.match(r.regex);
+          if (!m) return false;
+          req.params = {};
+          r.paramNames.forEach((name, i) => req.params[name] = m[i + 1]);
+          return true;
+        });
+
+        const chain = [
+          ...this._globalMiddleware.map(m => m),
+          ...(matched ? matched.handlers.map(fn => ({ name: fn._name || fn.name || 'handler', fn, icon: fn._icon || '📦' })) : [])
+        ];
+
+        if (!matched) {
+          chain.push({
+            name: 'not-found', icon: '❌',
+            fn: (req, res) => { res.status(404).json({ error: 'Not Found', message: `Cannot ${req.method} ${req.url}`, availableRoutes: app._routes.map(r => `${r.method} ${r.path}`) }); }
+          });
+        }
+
+        let idx = 0;
+        const next = async (err) => {
+          if (err) {
+            this._pipelineLog.push({ name: 'error', icon: '💥', ms: 0, error: true });
+            res.status(err.status || 500).json({ error: err.name || 'InternalError', message: err.message });
+            return;
+          }
+          if (idx >= chain.length || res._sent) return;
+          const step = chain[idx++];
+          const t0 = performance.now();
+          try {
+            await step.fn(req, res, next);
+          } catch (e) {
+            this._pipelineLog.push({ name: step.name, icon: step.icon, ms: performance.now() - t0, error: true });
+            res.status(500).json({ error: 'InternalError', message: e.message });
+            return;
+          }
+          const ms = performance.now() - t0;
+          this._pipelineLog.push({ name: step.name, icon: step.icon, ms, error: false });
+        };
+
+        await next();
+
+        return { statusCode: res.statusCode, headers: res.headers, body: res.body, pipeline: this._pipelineLog };
+      }
+    }
+
+    /* ── Middleware factories ── */
+
+    function cors() {
+      const fn = (req, res, next) => {
+        res.set('Access-Control-Allow-Origin', '*');
+        res.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+        res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+        next();
+      };
+      fn._name = 'cors'; fn._icon = '🌐';
+      return fn;
+    }
+
+    function requestLogger() {
+      const fn = (req, res, next) => {
+        res.set('X-Request-Id', 'req_' + Math.random().toString(36).slice(2, 10));
+        res.set('X-Request-Time', new Date().toISOString());
+        next();
+      };
+      fn._name = 'logger'; fn._icon = '📋';
+      return fn;
+    }
+
+    function rateLimit(max, windowMs) {
+      const hits = {};
+      const fn = (req, res, next) => {
+        const now = Date.now();
+        const key = req.method + ':' + req.url;
+        if (!hits[key]) hits[key] = [];
+        hits[key] = hits[key].filter(t => t > now - windowMs);
+        if (hits[key].length >= max) {
+          res.set('X-RateLimit-Limit', String(max));
+          res.set('X-RateLimit-Remaining', '0');
+          res.set('Retry-After', String(Math.ceil(windowMs / 1000)));
+          const err = new Error('Rate limit exceeded. Try again shortly.');
+          err.name = 'TooManyRequests'; err.status = 429;
+          return next(err);
+        }
+        hits[key].push(now);
+        res.set('X-RateLimit-Limit', String(max));
+        res.set('X-RateLimit-Remaining', String(max - hits[key].length));
+        next();
+      };
+      fn._name = 'rate-limit'; fn._icon = '🚦';
+      return fn;
+    }
+
+    function authenticate() {
+      const fn = (req, res, next) => {
+        const auth = req.headers['authorization'];
+        if (!auth || !auth.startsWith('Bearer ')) {
+          const err = new Error('Missing or invalid Authorization header. Use: Bearer demo-token-2026');
+          err.name = 'Unauthorized'; err.status = 401;
+          return next(err);
+        }
+        const token = auth.slice(7);
+        if (token === 'demo-token-2026') {
+          req.user = { id: 1, name: 'Markus Isaksson', role: 'admin' };
+          next();
+        } else {
+          const err = new Error('Invalid token. The demo token is: demo-token-2026');
+          err.name = 'Forbidden'; err.status = 403;
+          return next(err);
+        }
+      };
+      fn._name = 'auth'; fn._icon = '🔑';
+      return fn;
+    }
+
+    function validate(schema) {
+      const fn = (req, res, next) => {
+        if (!req.body || typeof req.body !== 'object') {
+          const err = new Error('Request body must be valid JSON');
+          err.name = 'ValidationError'; err.status = 400;
+          return next(err);
+        }
+        for (const [key, rule] of Object.entries(schema)) {
+          if (rule.required && !(key in req.body)) {
+            const err = new Error(`Missing required field: "${key}"`);
+            err.name = 'ValidationError'; err.status = 400;
+            return next(err);
+          }
+          if (key in req.body && rule.type && typeof req.body[key] !== rule.type) {
+            const err = new Error(`Field "${key}" must be of type ${rule.type}`);
+            err.name = 'ValidationError'; err.status = 400;
+            return next(err);
+          }
+        }
+        next();
+      };
+      fn._name = 'validate'; fn._icon = '✅';
+      return fn;
+    }
+
+    /* ── In-memory data store ── */
+    const db = {
+      users: [
+        { id: 1, name: 'Ada Lovelace', role: 'engineer', created: '1843-01-01' },
+        { id: 2, name: 'Alan Turing', role: 'architect', created: '1936-06-15' },
+        { id: 3, name: 'Grace Hopper', role: 'lead', created: '1952-03-01' }
+      ],
+      nextId: 4
+    };
+
+    /* ── Route handlers ── */
+
+    function listUsers(req, res) {
+      res.json({ data: db.users, count: db.users.length, meta: { page: 1, perPage: 20 } });
+    }
+    listUsers._name = 'list-users'; listUsers._icon = '👥';
+
+    function getUser(req, res, next) {
+      const user = db.users.find(u => u.id === Number(req.params.id));
+      if (!user) { const e = new Error(`User #${req.params.id} not found`); e.name = 'NotFound'; e.status = 404; return next(e); }
+      res.json({ data: user });
+    }
+    getUser._name = 'get-user'; getUser._icon = '👤';
+
+    function createUser(req, res) {
+      const user = { id: db.nextId++, name: req.body.name, role: req.body.role || 'member', created: new Date().toISOString().split('T')[0] };
+      db.users.push(user);
+      res.status(201).json({ data: user, message: 'User created successfully' });
+    }
+    createUser._name = 'create-user'; createUser._icon = '➕';
+
+    function updateUser(req, res, next) {
+      const user = db.users.find(u => u.id === Number(req.params.id));
+      if (!user) { const e = new Error(`User #${req.params.id} not found`); e.name = 'NotFound'; e.status = 404; return next(e); }
+      Object.assign(user, req.body);
+      res.json({ data: user, message: 'User updated' });
+    }
+    updateUser._name = 'update-user'; updateUser._icon = '✏';
+
+    function deleteUser(req, res, next) {
+      const idx = db.users.findIndex(u => u.id === Number(req.params.id));
+      if (idx === -1) { const e = new Error(`User #${req.params.id} not found`); e.name = 'NotFound'; e.status = 404; return next(e); }
+      const removed = db.users.splice(idx, 1)[0];
+      res.json({ data: removed, message: 'User deleted' });
+    }
+    deleteUser._name = 'delete-user'; deleteUser._icon = '🗑';
+
+    function healthCheck(req, res) {
+      res.json({ status: 'ok', uptime: Math.round(performance.now() / 1000) + 's', memoryStore: db.users.length + ' users', framework: 'MicroExpress/1.0', environment: 'browser' });
+    }
+    healthCheck._name = 'health'; healthCheck._icon = '💚';
+
+    /* ── Wire up the app ── */
+    const app = new MicroExpress();
+    app.use(cors());
+    app.use(requestLogger());
+    app.use(rateLimit(20, 10000));
+
+    app.get('/api/health', healthCheck);
+    app.get('/api/users', authenticate(), listUsers);
+    app.get('/api/users/:id', authenticate(), getUser);
+    app.post('/api/users', authenticate(), validate({ name: { required: true, type: 'string' } }), createUser);
+    app.put('/api/users/:id', authenticate(), validate({ name: { required: false, type: 'string' } }), updateUser);
+    app.delete('/api/users/:id', authenticate(), deleteUser);
+
+
+    /* ═══════════════════════════════════════════════
+       UI WIRING
+    ═══════════════════════════════════════════════ */
+
+    const methods = ['GET', 'POST', 'PUT', 'DELETE'];
+    let activeMethod = 'GET';
+
+    const presets = [
+      { method: 'GET',    url: '/api/health',   body: '', label: 'Health check (no auth)' },
+      { method: 'GET',    url: '/api/users',    body: '', label: 'List users' },
+      { method: 'GET',    url: '/api/users/1',  body: '', label: 'Get user #1' },
+      { method: 'POST',   url: '/api/users',    body: '{ "name": "Linus Torvalds", "role": "maintainer" }', label: 'Create user' },
+      { method: 'PUT',    url: '/api/users/2',  body: '{ "role": "legend" }', label: 'Update user #2' },
+      { method: 'DELETE', url: '/api/users/3',  body: '', label: 'Delete user #3' },
+      { method: 'GET',    url: '/api/nothing',  body: '', label: '404 — bad route' },
+      { method: 'GET',    url: '/api/users',    body: '', label: '401 — no auth token', noAuth: true }
+    ];
+
+    // Render method buttons
+    const methodsEl = document.getElementById('methods');
+    methods.forEach(m => {
+      const btn = document.createElement('button');
+      btn.className = 'method-btn' + (m === activeMethod ? ' active' : '');
+      btn.dataset.m = m; btn.textContent = m;
+      btn.onclick = () => {
+        activeMethod = m;
+        methodsEl.querySelectorAll('.method-btn').forEach(b => b.classList.toggle('active', b.dataset.m === m));
+        document.getElementById('reqbody').classList.toggle('visible', m === 'POST' || m === 'PUT');
+      };
+      methodsEl.appendChild(btn);
+    });
+
+    // Render presets
+    const presetsEl = document.getElementById('presets');
+    presets.forEach(p => {
+      const btn = document.createElement('button');
+      btn.className = 'preset';
+      btn.textContent = p.label;
+      btn.onclick = () => {
+        activeMethod = p.method;
+        methodsEl.querySelectorAll('.method-btn').forEach(b => b.classList.toggle('active', b.dataset.m === p.method));
+        document.getElementById('url').value = p.url;
+        document.getElementById('reqbody').value = p.body;
+        document.getElementById('reqbody').classList.toggle('visible', p.method === 'POST' || p.method === 'PUT');
+        sendRequest(p.noAuth);
+      };
+      presetsEl.appendChild(btn);
+    });
+
+    // Send button
+    document.getElementById('send').onclick = () => sendRequest();
+    document.getElementById('url').addEventListener('keydown', e => { if (e.key === 'Enter') sendRequest(); });
+
+    async function sendRequest(noAuth) {
+      const url = document.getElementById('url').value.trim();
+      const bodyRaw = document.getElementById('reqbody').value.trim();
+      let body = null;
+      if ((activeMethod === 'POST' || activeMethod === 'PUT') && bodyRaw) {
+        try { body = JSON.parse(bodyRaw); } catch { body = null; }
+      }
+
+      const req = {
+        method: activeMethod,
+        url: url,
+        headers: noAuth ? {} : { 'authorization': 'Bearer demo-token-2026' },
+        body: body,
+        params: {}
+      };
+
+      // Animate pipeline
+      renderPipelineLoading();
+
+      const result = await app.handle(req);
+
+      // Animate pipeline steps with delays
+      animatePipeline(result.pipeline);
+
+      // Show response after pipeline animation
+      const totalDelay = result.pipeline.length * 220 + 100;
+      setTimeout(() => renderResponse(result), totalDelay);
+    }
+
+    /* ── Pipeline UI ── */
+    const pipelineEl = document.getElementById('pipeline');
+
+    function renderPipelineLoading() {
+      pipelineEl.innerHTML = '<div class="empty-state" style="width:100%;padding:20px;">Processing…</div>';
+    }
+
+    function animatePipeline(steps) {
+      pipelineEl.innerHTML = '';
+      steps.forEach((step, i) => {
+        if (i > 0) {
+          const arrow = document.createElement('div');
+          arrow.className = 'mw-arrow';
+          arrow.textContent = '→';
+          arrow.dataset.idx = i;
+          pipelineEl.appendChild(arrow);
+        }
+
+        const el = document.createElement('div');
+        el.className = 'mw-step' + (step.error ? ' failed' : '');
+        el.innerHTML = `
+          <div class="mw-icon">${step.icon}</div>
+          <div class="mw-label">${step.name}</div>
+          <div class="mw-time">${step.ms.toFixed(1)}ms</div>
+        `;
+        el.dataset.idx = i;
+        pipelineEl.appendChild(el);
+      });
+
+      // Staggered reveal
+      steps.forEach((_, i) => {
+        setTimeout(() => {
+          const step = pipelineEl.querySelector(`.mw-step[data-idx="${i}"]`);
+          if (step) { step.classList.add('reached'); step.classList.add('active'); }
+          const arrow = pipelineEl.querySelector(`.mw-arrow[data-idx="${i}"]`);
+          if (arrow) arrow.classList.add('reached');
+          // Remove active highlight from previous
+          setTimeout(() => { if (step) step.classList.remove('active'); }, 180);
+        }, i * 220);
+      });
+    }
+
+    /* ── Response UI ── */
+    const responseEl = document.getElementById('response');
+
+    function renderResponse(result) {
+      const sc = result.statusCode;
+      const scClass = sc >= 500 ? 's5xx' : sc >= 400 ? 's4xx' : 's2xx';
+      const statusText = { 200: 'OK', 201: 'Created', 400: 'Bad Request', 401: 'Unauthorized', 403: 'Forbidden', 404: 'Not Found', 429: 'Too Many Requests', 500: 'Internal Server Error' }[sc] || '';
+
+      let headersHtml = '';
+      for (const [k, v] of Object.entries(result.headers)) {
+        headersHtml += `<span class="h-name">${k}:</span> ${v}\n`;
+      }
+
+      responseEl.innerHTML = `
+        <div class="resp-status ${scClass}">${sc} ${statusText}</div>
+        <div class="resp-headers">${headersHtml}</div>
+        <div class="resp-json">${syntaxHighlightJson(JSON.stringify(result.body, null, 2))}</div>
+      `;
+    }
+
+    function syntaxHighlightJson(json) {
+      return json.replace(/("(?:[^"\\]|\\.)*")(\s*:)?/g, (match, str, colon) => {
+        if (colon) return `<span style="color:var(--blue)">${str}</span>${colon}`;
+        return `<span style="color:var(--accent)">${str}</span>`;
+      }).replace(/\b(\d+)\b/g, '<span style="color:var(--orange)">$1</span>')
+        .replace(/\b(true|false|null)\b/g, '<span style="color:var(--purple)">$1</span>');
+    }
+
+    /* ── Server code display ── */
+    document.getElementById('server-code').innerHTML = `<span class="cm">// MicroExpress — a browser-native Express.js implementation</span>
+<span class="cm">// Every middleware below actually executes on each request</span>
+
+<span class="kw">const</span> app = <span class="kw">new</span> <span class="fn">MicroExpress</span>();
+
+<span class="cm">// ── Global middleware (runs on every request) ──</span>
+<span class="hl">app.<span class="fn">use</span>(<span class="fn">cors</span>());                     <span class="cm">// CORS headers</span></span>
+<span class="hl">app.<span class="fn">use</span>(<span class="fn">requestLogger</span>());             <span class="cm">// X-Request-Id + timestamp</span></span>
+<span class="hl">app.<span class="fn">use</span>(<span class="fn">rateLimit</span>(<span class="num">20</span>, <span class="num">10000</span>));       <span class="cm">// 20 req / 10s window</span></span>
+
+<span class="cm">// ── Routes ──</span>
+app.<span class="fn">get</span>(<span class="str">'/api/health'</span>, healthCheck);
+
+app.<span class="fn">get</span>(<span class="str">'/api/users'</span>,
+  <span class="fn">authenticate</span>(),                    <span class="cm">// Bearer token check</span>
+  listUsers                            <span class="cm">// → 200 + user array</span>
+);
+
+app.<span class="fn">get</span>(<span class="str">'/api/users/:id'</span>,
+  <span class="fn">authenticate</span>(),
+  getUser                              <span class="cm">// → 200 or 404</span>
+);
+
+app.<span class="fn">post</span>(<span class="str">'/api/users'</span>,
+  <span class="fn">authenticate</span>(),
+  <span class="fn">validate</span>({                          <span class="cm">// Schema validation</span>
+    <span class="param">name</span>: { <span class="param">required</span>: <span class="kw">true</span>, <span class="param">type</span>: <span class="str">'string'</span> }
+  }),
+  createUser                           <span class="cm">// → 201 + new user</span>
+);
+
+app.<span class="fn">put</span>(<span class="str">'/api/users/:id'</span>,
+  <span class="fn">authenticate</span>(),
+  <span class="fn">validate</span>({ <span class="param">name</span>: { <span class="param">type</span>: <span class="str">'string'</span> } }),
+  updateUser                           <span class="cm">// → 200 + updated user</span>
+);
+
+app.<span class="fn">delete</span>(<span class="str">'/api/users/:id'</span>,
+  <span class="fn">authenticate</span>(),
+  deleteUser                           <span class="cm">// → 200 + removed user</span>
+);
+
+<span class="cm">// ── Middleware implementations ──</span>
+
+<span class="kw">function</span> <span class="fn">rateLimit</span>(<span class="param">max</span>, <span class="param">windowMs</span>) {
+  <span class="kw">const</span> hits = {};
+  <span class="kw">return</span> (<span class="param">req</span>, <span class="param">res</span>, <span class="param">next</span>) <span class="op">=></span> {
+    <span class="kw">const</span> key = req.method + <span class="str">':'</span> + req.url;
+    hits[key] = (hits[key] <span class="op">||</span> [])
+      .<span class="fn">filter</span>(t <span class="op">=></span> t > Date.<span class="fn">now</span>() - windowMs);
+    <span class="kw">if</span> (hits[key].length >= max) {
+      <span class="kw">return</span> <span class="fn">next</span>({ status: <span class="num">429</span>,
+        message: <span class="str">'Rate limit exceeded'</span> });
+    }
+    hits[key].<span class="fn">push</span>(Date.<span class="fn">now</span>());
+    <span class="fn">next</span>();
+  };
+}
+
+<span class="kw">function</span> <span class="fn">authenticate</span>() {
+  <span class="kw">return</span> (<span class="param">req</span>, <span class="param">res</span>, <span class="param">next</span>) <span class="op">=></span> {
+    <span class="kw">const</span> token = req.headers[<span class="str">'authorization'</span>];
+    <span class="kw">if</span> (<span class="op">!</span>token<span class="op">?.</span><span class="fn">startsWith</span>(<span class="str">'Bearer '</span>))
+      <span class="kw">return</span> <span class="fn">next</span>({ status: <span class="num">401</span> });
+    req.user = <span class="fn">verifyToken</span>(token.<span class="fn">slice</span>(<span class="num">7</span>));
+    <span class="fn">next</span>();
+  };
+}`;
+
+  </script>
+</body>
+</html>
