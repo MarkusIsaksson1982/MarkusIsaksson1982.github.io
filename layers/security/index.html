@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security — Full Stack Observatory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #06090f;
+      --surface: #0d1520;
+      --surface-2: #131d2e;
+      --surface-3: #192840;
+      --border: rgba(182, 220, 255, 0.1);
+      --border-bright: rgba(182, 220, 255, 0.22);
+      --text: #e8eef6;
+      --text-muted: rgba(232, 238, 246, 0.55);
+      --accent: #7a8cff;
+      --accent-dim: rgba(122, 140, 255, 0.12);
+      --accent-glow: rgba(122, 140, 255, 0.3);
+      --orange: #ff965a;
+      --orange-dim: rgba(255, 150, 90, 0.12);
+      --blue: #4da8ff;
+      --blue-dim: rgba(77, 168, 255, 0.12);
+      --red: #ff6b6b;
+      --red-dim: rgba(255, 107, 107, 0.12);
+      --yellow: #ffc857;
+      --yellow-dim: rgba(255, 200, 87, 0.12);
+      --purple: #a578ff;
+      --purple-dim: rgba(165, 120, 255, 0.12);
+      --green: #42f5c5;
+      --green-dim: rgba(66, 245, 197, 0.12);
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'Instrument Sans', system-ui, sans-serif;
+      --serif: 'DM Serif Display', serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 24px;
+      background: rgba(6, 9, 15, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar a { color: var(--text-muted); text-decoration: none; font-size: 0.82rem; font-weight: 600; transition: color 0.2s; }
+    .topbar a:hover { color: var(--accent); }
+    .topbar .sep { color: var(--text-muted); opacity: 0.4; }
+    .topbar .current { color: var(--accent); font-weight: 700; }
+    .topbar .layer-badge {
+      margin-left: auto;
+      padding: 4px 12px; border-radius: 9999px;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      background: var(--accent-dim); color: var(--accent);
+      border: 1px solid rgba(122, 140, 255, 0.25);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 60px 24px 40px;
+      max-width: 900px; margin: 0 auto;
+      text-align: center;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 400; line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero .lead {
+      font-size: 1.05rem; color: var(--text-muted);
+      max-width: 640px; margin: 0 auto 28px;
+    }
+    .hero .lead strong { color: var(--text); font-weight: 600; }
+    .hero .constraint-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 16px; border-radius: 9999px;
+      font-size: 0.78rem; font-weight: 600;
+      background: var(--surface-2); border: 1px solid var(--border-bright);
+      color: var(--text-muted);
+    }
+    .hero .constraint-badge::before {
+      content: ''; display: block; width: 6px; height: 6px;
+      border-radius: 50%; background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    /* ── WORKSPACE ── */
+    .workspace {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 24px 60px;
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .panel-header {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .panel-header .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+    .panel-body { padding: 20px 18px; }
+
+    /* ── HEADER TABLE ── */
+    .header-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    .header-table th {
+      text-align: left; padding: 10px 12px;
+      font-family: var(--mono); font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--text-muted);
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-table td {
+      padding: 12px; border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .header-table tr:last-child td { border-bottom: none; }
+    .header-table tr:hover { background: rgba(122, 140, 255, 0.03); }
+    .h-name { font-family: var(--mono); font-weight: 700; color: var(--accent); font-size: 0.8rem; white-space: nowrap; }
+    .h-purpose { color: var(--text-muted); font-size: 0.82rem; line-height: 1.55; }
+    .h-recommended {
+      font-family: var(--mono); font-size: 0.72rem;
+      background: var(--surface-3); padding: 4px 8px; border-radius: 4px;
+      color: var(--green); display: inline-block; max-width: 260px;
+      word-break: break-all;
+    }
+    .h-status { text-align: center; font-size: 0.9rem; }
+    .status-good { color: var(--green); }
+    .status-warn { color: var(--yellow); }
+    .status-dep { color: var(--text-muted); font-size: 0.68rem; font-weight: 600; }
+
+    /* ── ANALYZER ── */
+    .analyzer-area { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--border); }
+    .analyzer-label { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+    .analyzer-input {
+      width: 100%; min-height: 100px; padding: 12px;
+      font-family: var(--mono); font-size: 0.78rem; line-height: 1.6;
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: 8px; color: var(--text);
+      outline: none; resize: vertical;
+    }
+    .analyzer-input:focus { border-color: var(--accent); }
+    .analyze-btn {
+      margin-top: 10px; padding: 10px 22px; border-radius: 8px;
+      font-family: var(--sans); font-size: 0.82rem; font-weight: 700;
+      background: var(--accent); color: #06090f; border: none;
+      cursor: pointer; transition: all 0.15s;
+    }
+    .analyze-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+    .analysis-results { margin-top: 16px; }
+    .ar-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 12px; border-radius: 6px;
+      font-family: var(--mono); font-size: 0.78rem;
+      margin-bottom: 4px;
+    }
+    .ar-found { background: var(--green-dim); color: var(--green); }
+    .ar-missing { background: var(--red-dim); color: var(--red); }
+    .ar-icon { font-size: 0.9rem; flex-shrink: 0; }
+    .ar-name { font-weight: 700; }
+
+    /* ── XSS DEMO ── */
+    .xss-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+    @media (max-width: 700px) { .xss-grid { grid-template-columns: 1fr; } }
+
+    .xss-col { display: flex; flex-direction: column; gap: 10px; }
+    .xss-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+    .xss-label-vuln { color: var(--red); }
+    .xss-label-safe { color: var(--green); }
+
+    .xss-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 3px 10px; border-radius: 6px;
+      font-family: var(--mono); font-size: 0.68rem; font-weight: 700;
+    }
+    .badge-vuln { background: var(--red-dim); color: var(--red); border: 1px solid rgba(255, 107, 107, 0.25); }
+    .badge-safe { background: var(--green-dim); color: var(--green); border: 1px solid rgba(66, 245, 197, 0.25); }
+
+    .xss-input {
+      width: 100%; padding: 10px 12px;
+      font-family: var(--mono); font-size: 0.8rem;
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: 8px; color: var(--text); outline: none;
+    }
+    .xss-input:focus { border-color: var(--accent); }
+
+    .xss-output {
+      min-height: 80px; padding: 14px;
+      border-radius: 8px; font-size: 0.85rem;
+      background: var(--surface-2); line-height: 1.6;
+      word-break: break-word;
+    }
+    .xss-output-vuln { border: 2px solid rgba(255, 107, 107, 0.3); }
+    .xss-output-safe { border: 2px solid rgba(66, 245, 197, 0.3); }
+
+    .xss-presets { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .xss-preset {
+      padding: 5px 10px; border-radius: 6px;
+      font-family: var(--mono); font-size: 0.7rem;
+      background: var(--surface-2); border: 1px solid var(--border);
+      color: var(--text-muted); cursor: pointer; transition: all 0.15s;
+    }
+    .xss-preset:hover { border-color: var(--accent); color: var(--accent); }
+
+    .xss-toast {
+      position: fixed; top: 20px; right: 20px; z-index: 200;
+      padding: 14px 20px; border-radius: 10px;
+      font-family: var(--mono); font-size: 0.82rem; font-weight: 700;
+      background: var(--red); color: #fff;
+      box-shadow: 0 8px 32px rgba(255, 107, 107, 0.3);
+      opacity: 0; transform: translateY(-10px);
+      transition: all 0.3s ease; pointer-events: none;
+    }
+    .xss-toast.visible { opacity: 1; transform: translateY(0); }
+
+    .xss-explain {
+      margin-top: 16px; padding: 14px;
+      background: var(--surface-2); border-radius: 8px;
+      font-size: 0.85rem; color: var(--text-muted); line-height: 1.7;
+    }
+    .xss-explain code {
+      font-family: var(--mono); font-size: 0.78rem;
+      background: var(--surface-3); padding: 2px 6px;
+      border-radius: 4px; color: var(--accent);
+    }
+
+    /* ── CORS SIMULATOR ── */
+    .cors-layout {
+      display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px;
+      align-items: start;
+    }
+    @media (max-width: 800px) {
+      .cors-layout { grid-template-columns: 1fr; }
+      .cors-arrow-col { display: flex; justify-content: center; padding: 8px 0; }
+    }
+
+    .cors-card {
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: 10px; padding: 16px;
+    }
+    .cors-card-title {
+      font-family: var(--mono); font-size: 0.78rem; font-weight: 700;
+      color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;
+      margin-bottom: 14px;
+    }
+    .cors-field { margin-bottom: 12px; }
+    .cors-field label {
+      display: block; font-size: 0.75rem; font-weight: 600;
+      color: var(--text-muted); margin-bottom: 4px;
+    }
+    .cors-select, .cors-check-label {
+      font-family: var(--mono); font-size: 0.8rem;
+    }
+    .cors-select {
+      width: 100%; padding: 8px 10px;
+      background: var(--surface-3); border: 1px solid var(--border);
+      border-radius: 6px; color: var(--text); outline: none;
+      appearance: auto;
+    }
+    .cors-select:focus { border-color: var(--accent); }
+    .cors-check-label {
+      display: flex; align-items: center; gap: 8px;
+      color: var(--text); cursor: pointer; font-size: 0.82rem;
+    }
+    .cors-check-label input { accent-color: var(--accent); width: 16px; height: 16px; }
+
+    .cors-arrow-col {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding-top: 40px; gap: 6px;
+    }
+    .cors-arrow-line {
+      width: 48px; height: 3px; border-radius: 2px;
+      transition: background 0.3s;
+    }
+    .cors-arrow-line.allowed { background: var(--green); }
+    .cors-arrow-line.blocked { background: var(--red); }
+
+    .cors-shield {
+      width: 36px; height: 36px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; transition: all 0.3s;
+      border: 2px solid;
+    }
+    .cors-shield.allowed { background: var(--green-dim); border-color: var(--green); color: var(--green); }
+    .cors-shield.blocked { background: var(--red-dim); border-color: var(--red); color: var(--red); }
+
+    .cors-verdict {
+      font-family: var(--mono); font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; transition: color 0.3s;
+    }
+    .cors-verdict.allowed { color: var(--green); }
+    .cors-verdict.blocked { color: var(--red); }
+
+    .cors-response-headers {
+      margin-top: 14px; padding: 12px;
+      background: var(--surface-3); border-radius: 8px;
+      font-family: var(--mono); font-size: 0.72rem; line-height: 1.8;
+      color: var(--text-muted);
+    }
+    .crh-name { color: var(--blue); }
+    .crh-val { color: var(--text); }
+    .crh-blocked { color: var(--red); opacity: 0.6; text-decoration: line-through; }
+
+    .cors-preflight {
+      margin-top: 12px; padding: 10px 12px;
+      border-radius: 8px; font-size: 0.78rem;
+    }
+    .cors-preflight.needed { background: var(--yellow-dim); color: var(--yellow); border-left: 3px solid var(--yellow); }
+    .cors-preflight.not-needed { background: var(--surface-3); color: var(--text-muted); }
+
+    /* ── EXPLAINER ── */
+    .explainer {
+      margin-top: 40px;
+      padding: 40px 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+    .explainer h2 {
+      font-family: var(--serif); font-size: 1.6rem;
+      font-weight: 400; margin-bottom: 20px;
+      color: var(--accent);
+    }
+    .explainer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .explainer-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+    }
+    .explainer-card h3 {
+      font-family: var(--mono); font-size: 0.85rem; font-weight: 700;
+      color: var(--text); margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .explainer-card h3::before { content: '✓'; color: var(--accent); font-weight: bold; }
+    .explainer-card p {
+      font-size: 0.88rem; color: var(--text-muted); line-height: 1.7;
+    }
+    .explainer-card code {
+      font-family: var(--mono); font-size: 0.78rem;
+      background: var(--surface-3); padding: 2px 6px;
+      border-radius: 4px; color: var(--accent);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+      font-size: 0.78rem; color: var(--text-muted);
+    }
+    .footer a { color: var(--accent); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+
+    /* Responsive table */
+    @media (max-width: 700px) {
+      .header-table, .header-table thead, .header-table tbody, .header-table th, .header-table td, .header-table tr {
+        display: block;
+      }
+      .header-table thead { display: none; }
+      .header-table td { padding: 8px 12px; border-bottom: none; }
+      .header-table tr { margin-bottom: 12px; background: var(--surface-2); border-radius: 8px; padding: 8px; border-bottom: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="topbar">
+    <a href="../../">Observatory</a>
+    <span class="sep">/</span>
+    <span class="current">Security</span>
+    <span class="layer-badge">Layer 8 of 12</span>
+  </nav>
+
+  <header class="hero">
+    <h1>Web <span>security</span>, hands-on</h1>
+    <p class="lead">
+      Security isn't a feature you bolt on at the end — it's a <strong>set of constraints woven into every layer</strong>.
+      This page lets you analyze headers, test XSS payloads safely, and simulate CORS negotiations.
+      Every tool below uses real logic, not mockups.
+    </p>
+    <div class="constraint-badge">Interactive security labs — safe to experiment</div>
+  </header>
+
+  <!-- XSS toast (global) -->
+  <div class="xss-toast" id="xssToast">XSS payload intercepted — this would execute on a vulnerable page</div>
+
+  <div class="workspace">
+
+    <!-- ═══════════════════════════════════
+         1. SECURITY HEADER ANALYZER
+    ═══════════════════════════════════ -->
+    <div class="panel">
+      <div class="panel-header"><span class="dot"></span> Security header analyzer</div>
+      <div class="panel-body">
+        <table class="header-table">
+          <thead>
+            <tr>
+              <th>Header</th>
+              <th>Purpose</th>
+              <th>Recommended</th>
+              <th style="text-align:center">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="h-name">Content-Security-Policy</span></td>
+              <td class="h-purpose">Controls which resources the browser is allowed to load. The single most effective defense against XSS — it allowlists script sources, blocking injected scripts even if they reach the DOM.</td>
+              <td><span class="h-recommended">default-src 'self'; script-src 'self'</span></td>
+              <td class="h-status"><span class="status-good">✓</span></td>
+            </tr>
+            <tr>
+              <td><span class="h-name">Strict-Transport-Security</span></td>
+              <td class="h-purpose">Forces browsers to connect only over HTTPS for a specified duration. Prevents protocol downgrade attacks and cookie hijacking over HTTP.</td>
+              <td><span class="h-recommended">max-age=63072000; includeSubDomains; preload</span></td>
+              <td class="h-status"><span class="status-good">✓</span></td>
+            </tr>
+            <tr>
+              <td><span class="h-name">X-Content-Type-Options</span></td>
+              <td class="h-purpose">Prevents MIME-type sniffing. Without it, browsers may reinterpret a file's type, potentially executing a CSS file as JavaScript.</td>
+              <td><span class="h-recommended">nosniff</span></td>
+              <td class="h-status"><span class="status-good">✓</span></td>
+            </tr>
+            <tr>
+              <td><span class="h-name">X-Frame-Options</span></td>
+              <td class="h-purpose">Prevents your page from being embedded in an iframe on another origin. Blocks clickjacking attacks where a malicious site overlays your UI.</td>
+              <td><span class="h-recommended">DENY</span></td>
+              <td class="h-status"><span class="status-good">✓</span></td>
+            </tr>
+            <tr>
+              <td><span class="h-name">Referrer-Policy</span></td>
+              <td class="h-purpose">Controls how much URL information is sent in the Referer header when navigating away. Balances analytics needs with user privacy.</td>
+              <td><span class="h-recommended">strict-origin-when-cross-origin</span></td>
+              <td class="h-status"><span class="status-good">✓</span></td>
+            </tr>
+            <tr>
+              <td><span class="h-name">Permissions-Policy</span></td>
+              <td class="h-purpose">Controls which browser features (camera, microphone, geolocation, payment) the page and its iframes can access. Limits the attack surface of embedded content.</td>
+              <td><span class="h-recommended">camera=(), microphone=(), geolocation=()</span></td>
+              <td class="h-status"><span class="status-good">✓</span></td>
+            </tr>
+            <tr>
+              <td><span class="h-name">X-XSS-Protection</span></td>
+              <td class="h-purpose">Legacy header that activated the browser's built-in XSS filter. Modern browsers have removed this filter because it introduced its own vulnerabilities. Now recommended to set to <code style="font-family:var(--mono);font-size:.72rem;background:var(--surface-3);padding:1px 4px;border-radius:3px;color:var(--yellow)">0</code> to explicitly disable, or omit entirely.</td>
+              <td><span class="h-recommended" style="color:var(--yellow)">0</span></td>
+              <td class="h-status"><span class="status-warn">⚠</span><br><span class="status-dep">deprecated</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Analyzer input -->
+        <div class="analyzer-area">
+          <div class="analyzer-label">Paste HTTP response headers to analyze</div>
+          <textarea class="analyzer-input" id="headerInput" spellcheck="false">HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=31536000
+Cache-Control: no-cache
+Server: nginx/1.24.0</textarea>
+          <button class="analyze-btn" id="analyzeBtn">Analyze headers</button>
+          <div class="analysis-results" id="analysisResults"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════
+         2. XSS DEFENSE DEMO
+    ═══════════════════════════════════ -->
+    <div class="panel">
+      <div class="panel-header"><span class="dot"></span> XSS defense demo</div>
+      <div class="panel-body">
+        <div style="margin-bottom:12px;">
+          <label style="font-size:0.82rem;color:var(--text-muted);">Type or paste HTML/script content:</label>
+          <input class="xss-input" id="xssInput" type="text" value='Try typing <b>bold</b> or click a preset below' spellcheck="false" />
+        </div>
+
+        <div class="xss-grid">
+          <!-- Vulnerable side -->
+          <div class="xss-col">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span class="xss-label xss-label-vuln">Unescaped output</span>
+              <span class="xss-badge badge-vuln">VULNERABLE</span>
+            </div>
+            <div class="xss-output xss-output-vuln" id="xssVuln"></div>
+          </div>
+          <!-- Safe side -->
+          <div class="xss-col">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span class="xss-label xss-label-safe">Escaped output</span>
+              <span class="xss-badge badge-safe">SAFE</span>
+            </div>
+            <div class="xss-output xss-output-safe" id="xssSafe"></div>
+          </div>
+        </div>
+
+        <div class="xss-presets">
+          <button class="xss-preset" data-payload="&lt;b&gt;bold&lt;/b&gt; and &lt;i&gt;italic&lt;/i&gt;">HTML tags</button>
+          <button class="xss-preset" data-payload="&lt;img src=x onerror=alert('XSS')&gt;">img onerror</button>
+          <button class="xss-preset" data-payload='&lt;div onmouseover="alert(1)"&gt;hover me&lt;/div&gt;'>Event handler</button>
+          <button class="xss-preset" data-payload='&lt;style&gt;body{background:red}&lt;/style&gt;'>CSS injection</button>
+          <button class="xss-preset" data-payload="&lt;script&gt;document.cookie&lt;/script&gt;">Script tag</button>
+        </div>
+
+        <div class="xss-explain">
+          <p><strong style="color:var(--text)">Why the left side is dangerous:</strong> Inserting user input as <code>innerHTML</code> allows the browser to parse and execute any HTML, including event handlers like <code>onerror</code>, <code>onmouseover</code>, and injected <code>&lt;style&gt;</code> blocks. The <code>&lt;script&gt;</code> tag doesn't execute via <code>innerHTML</code> (a browser safety measure), but event-based payloads do.</p>
+          <p style="margin-top:10px"><strong style="color:var(--text)">Why the right side is safe:</strong> Escaping replaces <code>&lt;</code> with <code>&amp;lt;</code>, <code>&gt;</code> with <code>&amp;gt;</code>, and <code>"</code> with <code>&amp;quot;</code> — the browser renders them as visible text, never as executable markup. This is called <strong>output encoding</strong> and is the primary defense against stored and reflected XSS.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════
+         3. CORS EXPLAINER
+    ═══════════════════════════════════ -->
+    <div class="panel">
+      <div class="panel-header"><span class="dot"></span> CORS request simulator</div>
+      <div class="panel-body">
+
+        <div class="cors-layout">
+          <!-- Browser request -->
+          <div class="cors-card">
+            <div class="cors-card-title">Browser request</div>
+            <div class="cors-field">
+              <label>Origin</label>
+              <select class="cors-select" id="corsOrigin">
+                <option value="https://your-app.com">https://your-app.com</option>
+                <option value="http://localhost:3000">http://localhost:3000</option>
+                <option value="https://evil.com">https://evil.com</option>
+              </select>
+            </div>
+            <div class="cors-field">
+              <label>Method</label>
+              <select class="cors-select" id="corsMethod">
+                <option>GET</option>
+                <option>POST</option>
+                <option>PUT</option>
+                <option>DELETE</option>
+                <option>OPTIONS</option>
+              </select>
+            </div>
+            <div class="cors-field">
+              <label class="cors-check-label">
+                <input type="checkbox" id="corsCreds" />
+                Include credentials (cookies)
+              </label>
+            </div>
+          </div>
+
+          <!-- Arrow -->
+          <div class="cors-arrow-col">
+            <div class="cors-arrow-line" id="corsArrow"></div>
+            <div class="cors-shield" id="corsShield">🛡</div>
+            <div class="cors-verdict" id="corsVerdict">—</div>
+          </div>
+
+          <!-- Server response -->
+          <div class="cors-card">
+            <div class="cors-card-title">Server response</div>
+            <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:10px;">
+              Allowlist: <span style="font-family:var(--mono);color:var(--accent)">your-app.com</span>, <span style="font-family:var(--mono);color:var(--accent)">localhost:3000</span>
+            </div>
+            <div class="cors-response-headers" id="corsHeaders">
+              <em style="color:var(--text-muted)">Select options and the headers will appear here</em>
+            </div>
+            <div id="corsPreflight"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════
+         4. WHAT THIS PROVES
+    ═══════════════════════════════════ -->
+    <div class="explainer">
+      <h2>What this proves</h2>
+      <div class="explainer-grid">
+        <div class="explainer-card">
+          <h3>Security headers</h3>
+          <p>Defense-in-depth at the HTTP layer. Headers like <code>Content-Security-Policy</code>, <code>Strict-Transport-Security</code>, and <code>X-Frame-Options</code> form a perimeter that mitigates entire categories of attacks — even when application code has vulnerabilities.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>Input validation & output encoding</h3>
+          <p>The XSS demo shows the fundamental principle: <strong>never trust user input</strong>. Escaping output (<code>&amp;lt;</code> for <code>&lt;</code>) renders payloads as visible text instead of executable code. This is the single most important XSS defense.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>CORS mechanics</h3>
+          <p>Cross-Origin Resource Sharing isn't a wall — it's a protocol the browser enforces. The simulator shows how <code>Access-Control-Allow-Origin</code> headers, preflight requests, and credential handling interact to control cross-origin access.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>Content Security Policy</h3>
+          <p><code>CSP</code> is the most powerful security header. A strict policy like <code>script-src 'self'</code> blocks all inline scripts and scripts from other domains — even if an attacker manages to inject HTML into the page, the scripts won't execute.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>Defense-in-depth</h3>
+          <p>No single control prevents all attacks. Security headers protect the transport layer. Output encoding protects the rendering layer. CSP protects the execution layer. CORS protects the data layer. Layered defenses mean a failure in one doesn't compromise the system.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>Backed by certifications</h3>
+          <p>This layer is supported by two freeCodeCamp <code>Information Security</code> certifications covering HelmetJS, pen-testing with Python, TCP/IP fundamentals, cryptography, and network security — 600+ hours of structured security training.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <a href="../../">← Back to the Full Stack Observatory</a>
+  </footer>
+
+  <script>
+    /* ═══════════════════════════════════════════════
+       1. HEADER ANALYZER
+    ═══════════════════════════════════════════════ */
+
+    const KNOWN_HEADERS = [
+      { name: 'Content-Security-Policy', key: 'content-security-policy', critical: true },
+      { name: 'Strict-Transport-Security', key: 'strict-transport-security', critical: true },
+      { name: 'X-Content-Type-Options', key: 'x-content-type-options', critical: true },
+      { name: 'X-Frame-Options', key: 'x-frame-options', critical: true },
+      { name: 'Referrer-Policy', key: 'referrer-policy', critical: false },
+      { name: 'Permissions-Policy', key: 'permissions-policy', critical: false },
+    ];
+
+    document.getElementById('analyzeBtn').addEventListener('click', () => {
+      const raw = document.getElementById('headerInput').value;
+      const lines = raw.split('\n').map(l => l.trim()).filter(Boolean);
+
+      const found = new Map();
+      lines.forEach(line => {
+        const colonIdx = line.indexOf(':');
+        if (colonIdx > 0) {
+          const name = line.substring(0, colonIdx).trim().toLowerCase();
+          const value = line.substring(colonIdx + 1).trim();
+          found.set(name, value);
+        }
+      });
+
+      const resultsEl = document.getElementById('analysisResults');
+      let html = '';
+
+      KNOWN_HEADERS.forEach(h => {
+        const present = found.has(h.key);
+        const cls = present ? 'ar-found' : 'ar-missing';
+        const icon = present ? '✓' : '✗';
+        const label = present ? `Present: ${found.get(h.key)}` : `Missing${h.critical ? ' (critical)' : ''}`;
+        html += `<div class="ar-item ${cls}"><span class="ar-icon">${icon}</span><span class="ar-name">${h.name}</span><span style="margin-left:auto;font-size:0.72rem;opacity:0.8">${label}</span></div>`;
+      });
+
+      // Check for server header leak
+      if (found.has('server')) {
+        html += `<div class="ar-item" style="background:var(--yellow-dim);color:var(--yellow)"><span class="ar-icon">⚠</span><span class="ar-name">Server</span><span style="margin-left:auto;font-size:0.72rem;opacity:0.8">Leaking server version: ${found.get('server')} — consider removing</span></div>`;
+      }
+
+      const presentCount = KNOWN_HEADERS.filter(h => found.has(h.key)).length;
+      const score = Math.round((presentCount / KNOWN_HEADERS.length) * 100);
+      const scoreColor = score >= 80 ? 'var(--green)' : score >= 50 ? 'var(--yellow)' : 'var(--red)';
+      html = `<div style="margin-bottom:12px;font-family:var(--mono);font-size:0.82rem;">Score: <strong style="color:${scoreColor}">${score}%</strong> (${presentCount}/${KNOWN_HEADERS.length} security headers present)</div>` + html;
+
+      resultsEl.innerHTML = html;
+    });
+
+
+    /* ═══════════════════════════════════════════════
+       2. XSS DEFENSE DEMO
+    ═══════════════════════════════════════════════ */
+
+    const xssInput = document.getElementById('xssInput');
+    const xssVuln = document.getElementById('xssVuln');
+    const xssSafe = document.getElementById('xssSafe');
+    const xssToast = document.getElementById('xssToast');
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // Patterns that would actually execute via innerHTML (event handlers, not <script>)
+    const DANGEROUS_PATTERNS = [
+      /onerror\s*=/i,
+      /onload\s*=/i,
+      /onmouseover\s*=/i,
+      /onclick\s*=/i,
+      /onfocus\s*=/i,
+      /onblur\s*=/i,
+      /<script/i,
+      /<style/i,
+    ];
+
+    function updateXss() {
+      const val = xssInput.value;
+
+      // Safe side: always escaped
+      xssSafe.textContent = val;
+
+      // Vulnerable side: render as HTML but intercept dangerous patterns
+      const isDangerous = DANGEROUS_PATTERNS.some(p => p.test(val));
+
+      if (isDangerous) {
+        // Show the rendered HTML but strip actually dangerous event handlers
+        // to prevent real execution while still showing the vulnerability visually
+        const sanitizedForDisplay = val
+          .replace(/<script[\s\S]*?<\/script>/gi, '<span style="color:var(--red);font-family:var(--mono);font-size:0.75rem;background:var(--red-dim);padding:2px 6px;border-radius:4px;">[script blocked by innerHTML — but event handlers still execute]</span>')
+          .replace(/on(\w+)\s*=\s*["'][^"']*["']/gi, 'data-blocked-$1="intercepted"');
+
+        xssVuln.innerHTML = sanitizedForDisplay;
+
+        // Show toast warning
+        showToast();
+      } else {
+        xssVuln.innerHTML = val;
+      }
+    }
+
+    let toastTimer;
+    function showToast() {
+      clearTimeout(toastTimer);
+      xssToast.classList.add('visible');
+      toastTimer = setTimeout(() => xssToast.classList.remove('visible'), 2500);
+    }
+
+    xssInput.addEventListener('input', updateXss);
+
+    // Presets
+    document.querySelectorAll('.xss-preset').forEach(btn => {
+      btn.addEventListener('click', () => {
+        // The data-payload is HTML-escaped in the attribute, we need to unescape it for the input
+        const tmp = document.createElement('textarea');
+        tmp.innerHTML = btn.dataset.payload;
+        xssInput.value = tmp.value;
+        updateXss();
+      });
+    });
+
+    // Initial render
+    updateXss();
+
+
+    /* ═══════════════════════════════════════════════
+       3. CORS SIMULATOR
+    ═══════════════════════════════════════════════ */
+
+    const CORS_ALLOWLIST = ['https://your-app.com', 'http://localhost:3000'];
+    const SIMPLE_METHODS = ['GET', 'HEAD', 'POST'];
+
+    const corsOrigin = document.getElementById('corsOrigin');
+    const corsMethod = document.getElementById('corsMethod');
+    const corsCreds = document.getElementById('corsCreds');
+    const corsArrow = document.getElementById('corsArrow');
+    const corsShield = document.getElementById('corsShield');
+    const corsVerdict = document.getElementById('corsVerdict');
+    const corsHeaders = document.getElementById('corsHeaders');
+    const corsPreflight = document.getElementById('corsPreflight');
+
+    function updateCors() {
+      const origin = corsOrigin.value;
+      const method = corsMethod.value;
+      const creds = corsCreds.checked;
+
+      const allowed = CORS_ALLOWLIST.includes(origin);
+      const needsPreflight = !SIMPLE_METHODS.includes(method) || (method === 'OPTIONS');
+
+      // Arrow + shield
+      const state = allowed ? 'allowed' : 'blocked';
+      corsArrow.className = 'cors-arrow-line ' + state;
+      corsShield.className = 'cors-shield ' + state;
+      corsShield.textContent = allowed ? '✓' : '✗';
+      corsVerdict.className = 'cors-verdict ' + state;
+      corsVerdict.textContent = allowed ? 'ALLOWED' : 'BLOCKED';
+
+      // Response headers
+      let headersHtml = '';
+      if (allowed) {
+        const originVal = creds ? origin : (CORS_ALLOWLIST.length === 1 ? origin : origin);
+        headersHtml += `<span class="crh-name">Access-Control-Allow-Origin:</span> <span class="crh-val">${originVal}</span>\n`;
+        headersHtml += `<span class="crh-name">Access-Control-Allow-Methods:</span> <span class="crh-val">GET, POST, PUT, DELETE</span>\n`;
+        headersHtml += `<span class="crh-name">Access-Control-Allow-Headers:</span> <span class="crh-val">Content-Type, Authorization</span>\n`;
+
+        if (creds) {
+          headersHtml += `<span class="crh-name">Access-Control-Allow-Credentials:</span> <span class="crh-val">true</span>\n`;
+          headersHtml += `<span style="display:block;margin-top:8px;font-size:0.68rem;color:var(--yellow);">Note: When credentials are included, the server cannot use wildcard (*) for Allow-Origin — it must echo the exact origin.</span>`;
+        }
+        headersHtml += `<span class="crh-name">Access-Control-Max-Age:</span> <span class="crh-val">86400</span>`;
+      } else {
+        headersHtml += `<span class="crh-blocked">Access-Control-Allow-Origin: (not set — origin not in allowlist)</span>\n`;
+        headersHtml += `<span style="display:block;margin-top:8px;font-size:0.7rem;color:var(--red);">The browser will block the response. The request may still reach the server, but JavaScript cannot read the response.</span>`;
+      }
+      corsHeaders.innerHTML = headersHtml;
+
+      // Preflight
+      if (needsPreflight) {
+        corsPreflight.className = 'cors-preflight needed';
+        corsPreflight.innerHTML = `<strong>Preflight required:</strong> ${method === 'OPTIONS' ? 'This IS the preflight request. The browser sends OPTIONS before the actual request to check CORS policy.' : `The browser will send an OPTIONS preflight before the ${method} request because ${method} is not a "simple" method (GET/HEAD/POST).`}`;
+      } else {
+        corsPreflight.className = 'cors-preflight not-needed';
+        corsPreflight.textContent = `No preflight needed — ${method} is a simple method.`;
+      }
+    }
+
+    corsOrigin.addEventListener('change', updateCors);
+    corsMethod.addEventListener('change', updateCors);
+    corsCreds.addEventListener('change', updateCors);
+
+    // Initial render
+    updateCors();
+  </script>
+</body>
+</html>
