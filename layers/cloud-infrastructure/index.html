@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Observatory / Cloud Infrastructure — Layer 6</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #06090f;
+      --surface: #0d1520;
+      --surface-2: #131d2e;
+      --surface-3: #192840;
+      --border: rgba(182, 220, 255, 0.1);
+      --border-bright: rgba(182, 220, 255, 0.22);
+      --text: #e8eef6;
+      --text-muted: rgba(232, 238, 246, 0.55);
+      --accent: #29d4ff;
+      --accent-dim: rgba(41, 212, 255, 0.12);
+      --orange: #ff965a;
+      --orange-dim: rgba(255, 150, 90, 0.12);
+      --blue: #4da8ff;
+      --blue-dim: rgba(77, 168, 255, 0.12);
+      --red: #ff6b6b;
+      --red-dim: rgba(255, 107, 107, 0.12);
+      --yellow: #ffc857;
+      --yellow-dim: rgba(255, 200, 87, 0.12);
+      --purple: #a578ff;
+      --purple-dim: rgba(165, 120, 255, 0.12);
+      --green: #57f5a8;
+      --green-dim: rgba(87, 245, 168, 0.12);
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'Instrument Sans', system-ui, sans-serif;
+      --serif: 'DM Serif Display', serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 24px;
+      background: rgba(6, 9, 15, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar a { color: var(--text-muted); text-decoration: none; font-size: 0.82rem; font-weight: 600; transition: color 0.2s; }
+    .topbar a:hover { color: var(--accent); }
+    .topbar .sep { color: var(--text-muted); opacity: 0.4; }
+    .topbar .current { color: var(--accent); font-weight: 700; }
+    .topbar .layer-badge {
+      margin-left: auto;
+      padding: 4px 12px; border-radius: 9999px;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      background: var(--accent-dim); color: var(--accent);
+      border: 1px solid rgba(41, 212, 255, 0.25);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 60px 24px 40px;
+      max-width: 900px; margin: 0 auto;
+      text-align: center;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 400; line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero .lead {
+      font-size: 1.05rem; color: var(--text-muted);
+      max-width: 640px; margin: 0 auto 28px;
+    }
+    .hero .lead strong { color: var(--text); font-weight: 600; }
+    .hero .constraint-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 16px; border-radius: 9999px;
+      font-size: 0.78rem; font-weight: 600;
+      background: var(--surface-2); border: 1px solid var(--border-bright);
+      color: var(--text-muted);
+    }
+    .hero .constraint-badge::before {
+      content: ''; display: block; width: 6px; height: 6px;
+      border-radius: 50%; background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    /* ── TAB BAR ── */
+    .tab-bar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 14px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px 12px 0 0;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      border-bottom: none;
+    }
+    .tab-btn:hover {
+      background: var(--surface-2);
+      color: var(--text);
+    }
+    .tab-btn.active {
+      background: var(--surface-2);
+      border-color: var(--accent);
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent);
+      margin-bottom: -1px;
+    }
+    .tab-btn .scale-icon {
+      display: block;
+      font-size: 1.4rem;
+      margin-bottom: 4px;
+    }
+    .tab-btn .scale-label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .tab-btn.active .scale-label {
+      color: var(--accent);
+    }
+
+    /* ── MAIN WORKSPACE ── */
+    .workspace {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .panel-header {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .panel-header .dot { width: 7px; height: 7px; border-radius: 50%; }
+
+    /* ── ARCHITECTURE DIAGRAM ── */
+    .diagram-panel .panel-header .dot { background: var(--accent); }
+    .diagram-container {
+      padding: 24px;
+      overflow-x: auto;
+    }
+    .diagram-svg {
+      width: 100%;
+      min-width: 800px;
+      height: auto;
+    }
+    .diagram-component {
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .diagram-component:hover {
+      filter: brightness(1.2);
+    }
+    .diagram-component.active rect,
+    .diagram-component.active circle,
+    .diagram-component.active ellipse {
+      stroke: var(--accent);
+      stroke-width: 3;
+      filter: drop-shadow(0 0 8px var(--accent));
+    }
+    .diagram-group {
+      fill: none;
+      stroke: var(--border-bright);
+      stroke-width: 1.5;
+      stroke-dasharray: 6 4;
+    }
+    .diagram-arrow {
+      stroke: var(--text-muted);
+      stroke-width: 2;
+      fill: none;
+      marker-end: url(#arrowhead);
+    }
+    .diagram-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      fill: var(--text-muted);
+      text-anchor: middle;
+    }
+    .diagram-title {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 600;
+      fill: var(--text);
+      text-anchor: middle;
+    }
+
+    /* ── COMPONENT DETAIL ── */
+    .detail-panel {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      margin-top: 20px;
+      display: none;
+    }
+    .detail-panel.visible { display: block; }
+    .detail-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .detail-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: var(--surface-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    .detail-title h3 {
+      font-family: var(--sans);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .detail-title .detail-type {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .detail-item {
+      background: var(--surface-3);
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .detail-item .label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+    .detail-item .value {
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .detail-item .value code {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      background: var(--surface);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--accent);
+    }
+
+    /* ── TERRAFORM PANEL ── */
+    .terraform-panel .panel-header .dot { background: var(--purple); }
+    .terraform-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      padding: 18px;
+    }
+    @media (max-width: 800px) {
+      .terraform-container { grid-template-columns: 1fr; }
+    }
+    .code-scroll {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      max-height: 400px;
+      overflow-y: auto;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      tab-size: 2;
+    }
+    .code-scroll::-webkit-scrollbar { width: 4px; }
+    .code-scroll::-webkit-scrollbar-track { background: transparent; }
+    .code-scroll::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 2px; }
+    
+    .tf-kw { color: #c792ea; }
+    .tf-str { color: #c3e88d; }
+    .tf-cmt { color: rgba(232, 238, 246, 0.35); font-style: italic; }
+    .tf-num { color: #f78c6c; }
+    .tf-bool { color: #ff965a; }
+    .tf-var { color: var(--accent); }
+    .tf-block { color: var(--blue); }
+    
+    .code-annotations {
+      background: var(--surface-3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .code-annotations h4 {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 14px;
+    }
+    .annotation-item {
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--border);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .annotation-item:hover {
+      padding-left: 8px;
+      background: var(--surface-2);
+      margin: 0 -16px;
+      padding-left: 24px;
+    }
+    .annotation-item:last-child { border-bottom: none; }
+    .annotation-item .line {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .annotation-item .desc {
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    /* ── COST COMPARISON ── */
+    .cost-panel .panel-header .dot { background: var(--green); }
+    .cost-container {
+      padding: 24px 18px;
+    }
+    .cost-chart {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 40px;
+      padding: 40px 20px;
+      min-height: 280px;
+    }
+    .cost-bar-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+      max-width: 180px;
+    }
+    .cost-bar {
+      width: 100%;
+      border-radius: 8px 8px 0 0;
+      position: relative;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .cost-bar:hover {
+      filter: brightness(1.15);
+      transform: scaleY(1.02);
+      transform-origin: bottom;
+    }
+    .cost-bar.hobby {
+      height: 60px;
+      background: linear-gradient(180deg, var(--green) 0%, rgba(87, 245, 168, 0.6) 100%);
+    }
+    .cost-bar.startup {
+      height: 140px;
+      background: linear-gradient(180deg, var(--yellow) 0%, rgba(255, 200, 87, 0.6) 100%);
+    }
+    .cost-bar.scale {
+      height: 220px;
+      background: linear-gradient(180deg, var(--accent) 0%, rgba(41, 212, 255, 0.6) 100%);
+    }
+    .cost-label {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      text-align: center;
+    }
+    .cost-value {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    .cost-value .highlight {
+      color: var(--text);
+      font-weight: 600;
+    }
+    .cost-drivers {
+      margin-top: 30px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+    .cost-drivers h4 {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+    .driver-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
+    .driver-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+    }
+    .driver-card .driver-title {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .driver-card .driver-title .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+    .driver-card .driver-title .dot.hobby { background: var(--green); }
+    .driver-card .driver-title .dot.startup { background: var(--yellow); }
+    .driver-card .driver-title .dot.scale { background: var(--accent); }
+    .driver-card .driver-list {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    .driver-card .driver-list li {
+      list-style: none;
+      padding-left: 12px;
+      position: relative;
+    }
+    .driver-card .driver-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
+    }
+
+    /* ── EXPLAINER SECTION ── */
+    .explainer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+    }
+    .explainer h2 {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin-bottom: 24px;
+      color: var(--accent);
+      text-align: center;
+    }
+    .explainer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .explainer-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      transition: all 0.2s;
+    }
+    .explainer-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .explainer-card h3 {
+      font-family: var(--mono);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .explainer-card h3::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    .explainer-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .explainer-card code {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      background: var(--surface-2);
+      padding: 2px 7px;
+      border-radius: 4px;
+      color: var(--accent);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .footer a { color: var(--accent); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+
+    /* ── TAB CONTENT ── */
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+    .loading {
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Bar -->
+  <nav class="topbar">
+    <a href="../../">← Tower</a>
+    <span class="sep">/</span>
+    <a href="../../">Observatory</a>
+    <span class="sep">/</span>
+    <span class="current">Cloud Infrastructure</span>
+    <span class="layer-badge">Layer 6 of 12</span>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <h1>Cloud <span>Infrastructure</span> Design</h1>
+    <p class="lead">
+      Explore system architectures at three scales—from <strong>hobby projects</strong> to <strong>global scale</strong>. 
+      Click components to learn about services, costs, and trade-offs.
+    </p>
+    <span class="constraint-badge">Infrastructure as Code • Multi-Region • Auto-Scaling</span>
+  </header>
+
+  <!-- Tab Bar -->
+  <div class="tab-bar">
+    <button class="tab-btn active" data-tab="hobby" onclick="switchTab('hobby')">
+      <span class="scale-icon">🚀</span>
+      <span>Hobby / MVP</span>
+      <span class="scale-label">$0-20/mo</span>
+    </button>
+    <button class="tab-btn" data-tab="startup" onclick="switchTab('startup')">
+      <span class="scale-icon">📈</span>
+      <span>Startup</span>
+      <span class="scale-label">$200-800/mo</span>
+    </button>
+    <button class="tab-btn" data-tab="scale" onclick="switchTab('scale')">
+      <span class="scale-icon">🌍</span>
+      <span>Scale</span>
+      <span class="scale-label">$2K-10K/mo</span>
+    </button>
+  </div>
+
+  <!-- Main Workspace -->
+  <main class="workspace">
+
+    <!-- ==================== HOBBY / MVP TAB ==================== -->
+    <div class="tab-content active" id="tab-hobby">
+      
+      <!-- Architecture Diagram -->
+      <section class="panel diagram-panel">
+        <div class="panel-header">
+          <span class="dot"></span>
+          Architecture Diagram — Hobby / MVP
+        </div>
+        <div class="diagram-container">
+          <svg class="diagram-svg" viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="arrowhead-hobby" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="rgba(232, 238, 246, 0.4)" />
+              </marker>
+            </defs>
+            
+            <!-- VPC Boundary -->
+            <rect class="diagram-group" x="200" y="60" width="500" height="280" rx="12" />
+            <text x="220" y="80" class="diagram-label" text-anchor="start">Cloud Provider Region</text>
+            
+            <!-- User -->
+            <g class="diagram-component" data-component="user" onclick="showDetail('hobby', 'user')">
+              <circle cx="60" cy="200" r="40" fill="var(--surface-2)" stroke="var(--border-bright)" stroke-width="2" />
+              <text x="60" y="195" class="diagram-title" font-size="24">👤</text>
+              <text x="60" y="255" class="diagram-title">User</text>
+            </g>
+            
+            <!-- CDN -->
+            <g class="diagram-component" data-component="cdn" onclick="showDetail('hobby', 'cdn')">
+              <rect x="240" y="170" width="100" height="60" rx="8" fill="var(--surface-2)" stroke="var(--border-bright)" stroke-width="2" />
+              <text x="290" y="195" class="diagram-title" font-size="18">☁️</text>
+              <text x="290" y="218" class="diagram-title">CDN</text>
+              <text x="290" y="245" class="diagram-label">Cloudflare Pages</text>
+            </g>
+            
+            <!-- Serverless API -->
+            <g class="diagram-component" data-component="api" onclick="showDetail('hobby', 'api')">
+              <rect x="420" y="170" width="120" height="60" rx="8" fill="var(--surface-2)" stroke="var(--border-bright)" stroke-width="2" />
+              <text x="480" y="195" class="diagram-title" font-size="18">⚡</text>
+              <text x="480" y="218" class="diagram-title">Serverless API</text>
+              <text x="480" y="245" class="diagram-label">Cloudflare Workers</text>
+            </g>
+            
+            <!-- Managed DB -->
+            <g class="diagram-component" data-component="db" onclick="showDetail('hobby', 'db')">
+              <ellipse cx="650" cy="200" rx="50" ry="35" fill="var(--surface-2)" stroke="var(--border-bright)" stroke-width="2" />
+              <text x="650" y="195" class="diagram-title" font-size="18">🗄️</text>
+              <text x="650" y="218" class="diagram-title">Managed DB</text>
+              <text x="650" y="250" class="diagram-label">Supabase / D1</text>
+            </g>
+            
+            <!-- Arrows -->
+            <path class="diagram-arrow" d="M100 200 L230 200" marker-end="url(#arrowhead-hobby)" />
+            <path class="diagram-arrow" d="M345 200 L410 200" marker-end="url(#arrowhead-hobby)" />
+            <path class="diagram-arrow" d="M545 200 L590 200" marker-end="url(#arrowhead-hobby)" />
+          </svg>
+          
+          <!-- Component Detail Panel -->
+          <div class="detail-panel" id="detail-hobby">
+            <div class="detail-header">
+              <div class="detail-icon" id="detail-icon">👤</div>
+              <div class="detail-title">
+                <h3 id="detail-name">Component Name</h3>
+                <span class="detail-type" id="detail-type">COMPONENT TYPE</span>
+              </div>
+            </div>
+            <div class="detail-grid">
+              <div class="detail-item">
+                <div class="label">What It Does</div>
+                <div class="value" id="detail-desc">Description here</div>
+              </div>
+              <div class="detail-item">
+                <div class="label">Cloud Services</div>
+                <div class="value" id="detail-services"><code>Service A</code>, <code>Service B</code></div>
+              </div>
+              <div class="detail-item">
+                <div class="label">Est. Monthly Cost</div>
+                <div class="value" id="detail-cost">$0-10</div>
+              </div>
+              <div class="detail-item">
+                <div class="label">Why At This Scale</div>
+                <div class="value" id="detail-why">Reason here</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Terraform Panel -->
+      <section class="panel terraform-panel">
+        <div class="panel-header">
+          <span class="dot"></span>
+          Infrastructure as Code — Terraform (Hobby)
+        </div>
+        <div class="terraform-container">
+          <div class="code-scroll" id="tf-hobby">
+<span class="tf-cmt"># Cloudflare Workers + D1 Database</span>
+<span class="tf-cmt"># Perfect for hobby projects with minimal cost</span>
+
+<span class="tf-block">terraform</span> {
+  <span class="tf-var">required_providers</span> {
+    <span class="tf-var">cloudflare</span> = {
+      <span class="tf-var">source</span>  = <span class="tf-str">"cloudflare/cloudflare"</span>
+      <span class="tf-var">version</span> = <span class="tf-str">"~> 4.0"</span>
+    }
+  }
+}
+
+<span class="tf-block">provider</span> <span class="tf-str">"cloudflare"</span> {
+  <span class="tf-var">api_token</span> = <span class="tf-var">var</span>.<span class="tf-var">cloudflare_api_token</span>
+  <span class="tf-var">account_id</span> = <span class="tf-var">var</span>.<span class="tf-var">cloudflare_account_id</span>
+}
+
+<span class="tf-cmt"># D1 Database (Serverless SQLite)</span>
+<span class="tf-block">resource</span> <span class="tf-str">"cloudflare_d1_database"</span> <span class="tf-str">"app_db"</span> {
+  <span class="tf-var">account_id</span> = <span class="tf-var">var</span>.<span class="tf-var">cloudflare_account_id</span>
+  <span class="tf-var">name</span>       = <span class="tf-str">"observatory-hobby-db"</span>
+}
+
+<span class="tf-cmt"># Worker Script</span>
+<span class="tf-block">resource</span> <span class="tf-str">"cloudflare_worker_script"</span> <span class="tf-str">"api"</span> {
+  <span class="tf-var">name</span>    = <span class="tf-str">"observatory-api"</span>
+  <span class="tf-var">content</span> = <span class="tf-var">file</span>(<span class="tf-str">"./worker.js"</span>)
+  
+  <span class="tf-var">d1_database</span> {
+    <span class="tf-var">binding</span>    = <span class="tf-str">"DB"</span>
+    <span class="tf-var">database_id</span> = <span class="tf-var">cloudflare_d1_database</span>.<span class="tf-var">app_db</span>.<span class="tf-var">id</span>
+  }
+}
+
+<span class="tf-cmt"># Custom Domain Routing</span>
+<span class="tf-block">resource</span> <span class="tf-str">"cloudflare_worker_route"</span> <span class="tf-str">"api_route"</span> {
+  <span class="tf-var">pattern</span>    = <span class="tf-str">"api.example.com/*"</span>
+  <span class="tf-var">worker_name</span> = <span class="tf-var">cloudflare_worker_script</span>.<span class="tf-var">api</span>.<span class="tf-var">name</span>
+  <span class="tf-var">zone_id</span>    = <span class="tf-var">var</span>.<span class="tf-var">zone_id</span>
+}</div>
+          <div class="code-annotations">
+            <h4>Click to Learn More</h4>
+            <div class="annotation-item" onclick="highlightCode('d1_database')">
+              <div class="line">Line 24-28</div>
+              <div class="desc"><strong>D1 Database Binding</strong> — Connects the Worker to a serverless SQLite database. No connection pooling needed.</div>
+            </div>
+            <div class="annotation-item" onclick="highlightCode('worker_script')">
+              <div class="line">Line 31-40</div>
+              <div class="desc"><strong>Worker Script</strong> — Edge-computed API running globally. Cold starts under 50ms.</div>
+            </div>
+            <div class="annotation-item" onclick="highlightCode('worker_route')">
+              <div class="line">Line 43-48</div>
+              <div class="desc"><strong>Route Pattern</strong> — Maps custom domain paths to the Worker. Handles SSL automatically.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==================== STARTUP TAB ==================== -->
+    <div class="tab-content" id="tab-startup">
+      
+      <!-- Architecture Diagram -->
+      <section class="panel diagram-panel">
+        <div class="panel-header">
+          <span class="dot"></span>
+          Architecture Diagram — Startup
+        </div>
+        <div class="diagram-container">
+          <svg class="diagram-svg" viewBox="0 0 1100 500" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="arrowhead-startup" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="rgba(232, 238, 246, 0.4)" />
+              </marker>
+            </defs>
+            
+            <!-- VPC Boundary -->
+            <rect class="diagram-group" x="150" y="80" width="800" height="360" rx="12" />
+            <text x="170" y="100" class="diagram-label" text-anchor="start">VPC / Private Subnet</text>
+            
+            <!-- User -->
+            <g class="diagram-component" data-component="user" onclick="showDetail('startup', 'user')">
+              <circle cx="50" cy="260" r="40" fill="var(--surface-2)" stroke="var(--border-bright)" stroke-width="2" />
+              <text x="50" y="255" class="diagram-title" font-size="24">👤</text>
+              <text x="50" y="315" class="diagram-title">User</text>
+            </g>
+            
+            <!-- CDN -->
+            <g class="diagram-component" data-component="cdn" onclick="showDetail('startup', 'cdn')">
+              <rect x="180" y="230" width="110" height="60" rx="8" fill="var(--surface-2)" stroke="var(--border-bright)" stroke-width="2" />
+              <text x="235" y="255" class="diagram-title" font-size="18">☁️</text>
+              <text x="235" y="278" class="diagram-title">CDN</text>
+              <text x="235" y="305" class="diagram-label">CloudFront</text>
+            </g>
+            
+            <!-- Load Balancer -->
+            <g class="diagram-component" data-component="alb" onclick="showDetail('startup', 'alb')">
+              <rect x="350" y="230" width="130" height="60" rx="8" fill="var(--surface-2)" stroke="var(--border-bright)" stroke-width="2" />
+              <text x="415" y="255" class="diagram-title" font-size="18">⚖️</text>
+              <text x="415" y="278" class="diagram-title">Load Balancer</text>
+              <text x="415" y="305" class="diagram-label">ALB / NLB</text>
+            </g>
+            
+            <!-- App Servers Group -->
+            <rect class="diagram-group" x="540" y="150" width="220" height="220" rx="10" />
+            <text x="560" y="170" class="diagram-label" text-anchor="start">Auto-Scaling Group</text>
+            
+            <!-- App Server 1 -->
+            <g class="diagram-component" data-component="app1" onclick="showDetail('startup', 'app')">
+              <rect x="560" y="185" width="85" height="55" rx="6" fill="var(--surface-3)" stroke="var(--border)" stroke-width="2" />
+              <text x="602" y="208" class="diagram-title" font-size="14">🖥️</text>
+              <text x="602" y="228" class="diagram-title">App</text>
+            </g>
+            
+            <!-- App Server 2 -->
+            <g class="diagram-component" data-component="app2" onclick="showDetail('startup', 'app')">
+              <rect x="660" y="185" width="85" height="55" rx="6" fill="var(--surface-3)" stroke="var(--border)" stroke-width="2" />
+              <text x="702" y="208" class="diagram-title" font-size="14">🖥️</text>
+              <text x="702" y="228" class="diagram-title">App</text>
+            </g>
+            
+            <!-- Redis Cache -->
+            <g class="diagram-component" data-component="redis" onclick="showDetail('startup', 'redis')">
+              <rect x="560" y="270" width="185" height="50" rx="6" fill="var(--surface-3)" stroke="var(--border)" stroke-width="2" />
+              <text x="652" y="293" class="diagram-title" font-size="14">🔴</text>
+              <text x="652" y="310" class="diagram-title">Redis Cache</text>
+            </g>
+            
+            <!-- Primary DB -->
+            <g class="diagram-component" data-component="db-primary" onclick="showDetail('startup', 'db-primary')">
+              <ellipse cx="880" cy="230" rx="55" ry="40" fill="var(--surface-2)" stroke="var(--border-bright)" stroke-width="2" />
+              <text x="880" y="225" class="diagram-title" font-size="18">🗄️</text>
+              <text x="880" y="248" class="diagram-title">Primary DB</text>
+              <text x="880" y="280" class="diagram-label">RDS PostgreSQL</text>
+            </g>
+            
+            <!-- Read Replica -->
+            <g class="diagram-component" data-component="db-replica" onclick="showDetail('startup', 'db-replica')">
+              <ellipse cx="880" cy="340" rx="55" ry="40" fill="var(--surface-3)" stroke="var(--border)" stroke-width="2" stroke-dasharray="4 2" />
+              <text x="880" y="335" class="diagram-title" font-size="18">🗄️</text>
+              <text x="880" y="358" class="diagram-title">Read Replica</text>
+              <text x="880" y="390" class="diagram-label">Async Copy</text>
+            </g>
+            
+            <!-- Object Storage -->
+            <g class="diagram-component" data-component="s3" onclick="showDetail('startup', 's3')">
+              <rect x="830" y="120" width="100" height="50" rx="6" fill="var(--surface-2)" stroke="var(--border-bright)" stroke-width="2" />
+              <text x="880" y="143" class="diagram-title" font-size="16">📦</text>
+              <text x="880" y="160" class="diagram-title">Object Store</text>
+            </g>
+            
+            <!-- Arrows -->
+            <path class="diagram-arrow" d="M95 260 L170 260" marker-end="url(#arrowhead-startup)" />
+            <path class="diagram-arrow" d="M295 260 L340 260" marker-end="url(#arrowhead-startup)" />
+            <path class="diagram-arrow" d="M485 260 L530 260" marker-end="url(#arrowhead-startup)" />
+            <path class="diagram-arrow" d="M765 260 L815 260" marker-end="url(#arrowhead-startup)" />
+            <path class="diagram-arrow" d="M880 275 L880 295" marker-end="url(#arrowhead-startup)" />
+            <path class="diagram-arrow" d="M880 175 L880 185" marker-end="url(#arrowhead-startup)" />
+          </svg>
+          
+          <!-- Component Detail Panel -->
+          <div class="detail-panel" id="detail-startup">
+            <div class="detail-header">
+              <div class="detail-icon" id="detail-icon-startup">👤</div>
+              <div class="detail-title">
+                <h3 id="detail-name-startup">Component Name</h3>
+                <span class="detail-type" id="detail-type-startup">COMPONENT TYPE</span>
+              </div>
+            </div>
+            <div class="detail-grid">
+              <div class="detail-item">
+                <div class="label">What It Does</div>
+                <div class="value" id="detail-desc-startup">Description here</div>
+              </div>
+              <div class="detail-item">
+                <div class="label">Cloud Services</div>
+                <div class="value" id="detail-services-startup"><code>Service A</code>, <code>Service B</code></div>
+              </div>
+              <div class="detail-item">
+                <div class="label">Est. Monthly Cost</div>
+                <div class="value" id="detail-cost-startup">$0-10</div>
+              </div>
+              <div class="detail-item">
+                <div class="label">Why At This Scale</div>
+                <div class="value" id="detail-why-startup">Reason here</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Terraform Panel -->
+      <section class="panel terraform-panel">
+        <div class="panel-header">
+          <span class="dot"></span>
+          Infrastructure as Code — Terraform (Startup)
+        </div>
+        <div class="terraform-container">
+          <div class="code-scroll" id="tf-startup">
+<span class="tf-cmt"># AWS ALB + Auto-Scaling Group + RDS</span>
+<span class="tf-cmt"># Production-ready for growing startups</span>
+
+<span class="tf-block">terraform</span> {
+  <span class="tf-var">required_providers</span> {
+    <span class="tf-var">aws</span> = {
+      <span class="tf-var">source</span>  = <span class="tf-str">"hashicorp/aws"</span>
+      <span class="tf-var">version</span> = <span class="tf-str">"~> 5.0"</span>
+    }
+  }
+}
+
+<span class="tf-cmt"># Application Load Balancer</span>
+<span class="tf-block">resource</span> <span class="tf-str">"aws_lb"</span> <span class="tf-str">"app_alb"</span> {
+  <span class="tf-var">name</span>               = <span class="tf-str">"observatory-alb"</span>
+  <span class="tf-var">internal</span>           = <span class="tf-bool">false</span>
+  <span class="tf-var">load_balancer_type</span> = <span class="tf-str">"application"</span>
+  <span class="tf-var">security_groups</span>    = [<span class="tf-var">aws_security_group</span>.<span class="tf-var">alb</span>.<span class="tf-var">id</span>]
+  <span class="tf-var">subnets</span>            = <span class="tf-var">var</span>.<span class="tf-var">public_subnet_ids</span>
+}
+
+<span class="tf-cmt"># Auto-Scaling Group</span>
+<span class="tf-block">resource</span> <span class="tf-str">"aws_autoscaling_group"</span> <span class="tf-str">"app_asg"</span> {
+  <span class="tf-var">name</span>                = <span class="tf-str">"observatory-asg"</span>
+  <span class="tf-var">min_size</span>            = <span class="tf-num">2</span>
+  <span class="tf-var">max_size</span>            = <span class="tf-num">10</span>
+  <span class="tf-var">desired_capacity</span>    = <span class="tf-num">2</span>
+  <span class="tf-var">health_check_type</span>   = <span class="tf-str">"ELB"</span>
+  <span class="tf-var">launch_template</span> {
+    <span class="tf-var">id</span>      = <span class="tf-var">aws_launch_template</span>.<span class="tf-var">app</span>.<span class="tf-var">id</span>
+    <span class="tf-var">version</span> = <span class="tf-str">"$Latest"</span>
+  }
+}
+
+<span class="tf-cmt"># RDS PostgreSQL Instance</span>
+<span class="tf-block">resource</span> <span class="tf-str">"aws_db_instance"</span> <span class="tf-str">"primary"</span> {
+  <span class="tf-var">identifier</span>        = <span class="tf-str">"observatory-db"</span>
+  <span class="tf-var">engine</span>            = <span class="tf-str">"postgres"</span>
+  <span class="tf-var">engine_version</span>    = <span class="tf-str">"15.4"</span>
+  <span class="tf-var">instance_class</span>    = <span class="tf-str">"db.t3.medium"</span>
+  <span class="tf-var">allocated_storage</span> = <span class="tf-num">100</span>
+  <span class="tf-var">multi_az</span>          = <span class="tf-bool">true</span>
+  <span class="tf-var">storage_encrypted</span> = <span class="tf-bool">true</span>
+}</div>
+          <div class="code-annotations">
+            <h4>Click to Learn More</h4>
+            <div class="annotation-item" onclick="highlightCode('startup', 'aws_lb')">
+              <div class="line">Line 13-20</div>
+              <div class="desc"><strong>Application Load Balancer</strong> — Distributes traffic across app servers. Handles SSL termination and health checks.</div>
+            </div>
+            <div class="annotation-item" onclick="highlightCode('startup', 'autoscaling_group')">
+              <div class="line">Line 23-35</div>
+              <div class="desc"><strong>Auto-Scaling Group</strong> — Maintains 2-10 instances based on CPU/memory metrics. Zero-downtime deployments.</div>
+            </div>
+            <div class="annotation-item" onclick="highlightCode('startup', 'db_instance')">
+              <div class="line">Line 38-48</div>
+              <div class="desc"><strong>RDS with Multi-AZ</strong> — Automatic failover to standby. Encrypted storage for compliance.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==================== SCALE TAB ==================== -->
+    <div class="tab-content" id="tab-scale">
+      
+      <!-- Architecture Diagram -->
+      <section class="panel diagram-panel">
+        <div class="panel-header">
+          <span class="dot"></span>
+          Architecture Diagram — Scale
+        </div>
+        <div class="diagram-container">
+          <svg class="diagram-svg" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="arrowhead-scale" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="rgba(232, 238, 246, 0.4)" />
+              </marker>
+            </defs>
+            
+            <!-- Global CDN -->
+            <g class="diagram-component" data-component="global-cdn" onclick="showDetail('scale', 'global-cdn')">
+              <rect x="30" y="280" width="120" height="60" rx="8" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="2" />
+              <text x="90" y="305" class="diagram-title" font-size="18">🌐</text>
+              <text x="90" y="328" class="diagram-title">Global CDN</text>
+              <text x="90" y="355" class="diagram-label">CloudFront + Lambda@Edge</text>
+            </g>
+            
+            <!-- Region 1 VPC -->
+            <rect class="diagram-group" x="200" y="60" width="450" height="480" rx="12" />
+            <text x="220" y="80" class="diagram-label" text-anchor="start" fill="var(--accent)">Region: us-east-1</text>
+            
+            <!-- Region 2 VPC -->
+            <rect class="diagram-group" x="700" y="60" width="450" height="480" rx="12" stroke-dasharray="8 4" />
+            <text x="720" y="80" class="diagram-label" text-anchor="start" fill="var(--text-muted)">Region: eu-west-1</text>
+            
+            <!-- Regional LB -->
+            <g class="diagram-component" data-component="regional-lb" onclick="showDetail('scale', 'regional-lb')">
+              <rect x="240" y="280" width="130" height="60" rx="8" fill="var(--surface-2)" stroke="var(--border-bright)" stroke-width="2" />
+              <text x="305" y="305" class="diagram-title" font-size="18">⚖️</text>
+              <text x="305" y="328" class="diagram-title">Regional LB</text>
+              <text x="305" y="355" class="diagram-label">NLB</text>
+            </g>
+            
+            <!-- K8s Cluster -->
+            <rect class="diagram-group" x="420" y="120" width="200" height="360" rx="10" />
+            <text x="440" y="140" class="diagram-label" text-anchor="start">Kubernetes Cluster</text>
+            
+            <!-- Pods -->
+            <g class="diagram-component" data-component="pod1" onclick="showDetail('scale', 'pod')">
+              <rect x="440" y="155" width="75" height="45" rx="5" fill="var(--surface-3)" stroke="var(--border)" stroke-width="2" />
+              <text x="477" y="175" class="diagram-title" font-size="12">📦</text>
+              <text x="477" y="192" class="diagram-title">Pod</text>
+            </g>
+            <g class="diagram-component" data-component="pod2" onclick="showDetail('scale', 'pod')">
+              <rect x="530" y="155" width="75" height="45" rx="5" fill="var(--surface-3)" stroke="var(--border)" stroke-width="2" />
+              <text x="567" y="175" class="diagram-title" font-size="12">📦</text>
+              <text x="567" y="192" class="diagram-title">Pod</text>
+            </g>
+            <g class="diagram-component" data-component="pod3" onclick="showDetail('scale', 'pod')">
+              <rect x="440" y="215" width="75" height="45" rx="5" fill="var(--surface-3)" stroke="var(--border)" stroke-width="2" />
+              <text x="477" y="235" class="diagram-title" font-size="12">📦</text>
+              <text x="477" y="252" class="diagram-title">Pod</text>
+            </g>
+            <g class="diagram-component" data-component="pod4" onclick="showDetail('scale', 'pod')">
+              <rect x="530" y="215" width="75" height="45" rx="5" fill="var(--surface-3)" stroke="var(--border)" stroke-width="2" />
+              <text x="567" y="235" class="diagram-title" font-size="12">📦</text>
+              <text x="567" y="252" class="diagram-title">Pod</text>
+            </g>
+            
+            <!-- Redis Cluster -->
+            <g class="diagram-component" data-component="redis-cluster" onclick="showDetail('scale', 'redis-cluster')">
+              <rect x="440" y="280" width="165" height="50" rx="6" fill="var(--surface-3)" stroke="var(--border)" stroke-width="2" />
+              <text x="522" y="303" class="diagram-title" font-size="14">🔴</text>
+              <text x="522" y="320" class="diagram-title">Redis Cluster</text>
+            </g>
+            
+            <!-- Message Queue -->
+            <g class="diagram-component" data-component="mq" onclick="showDetail('scale', 'mq')">
+              <rect x="440" y="345" width="165" height="50" rx="6" fill="var(--surface-3)" stroke="var(--border)" stroke-width="2" />
+              <text x="522" y="368" class="diagram-title" font-size="14">📨</text>
+              <text x="522" y="385" class="diagram-title">Message Queue</text>
+            </g>
+            
+            <!-- Primary DB -->
+            <g class="diagram-component" data-component="scale-db-primary" onclick="showDetail('scale', 'scale-db-primary')">
+              <ellipse cx="950" cy="230" rx="60" ry="45" fill="var(--surface-2)" stroke="var(--border-bright)" stroke-width="2" />
+              <text x="950" y="225" class="diagram-title" font-size="18">🗄️</text>
+              <text x="950" y="248" class="diagram-title">Primary DB</text>
+              <text x="950" y="285" class="diagram-label">Aurora Global</text>
+            </g>
+            
+            <!-- Read Replicas -->
+            <g class="diagram-component" data-component="scale-db-replica" onclick="showDetail('scale', 'scale-db-replica')">
+              <ellipse cx="950" cy="350" rx="60" ry="45" fill="var(--surface-3)" stroke="var(--border)" stroke-width="2" stroke-dasharray="4 2" />
+              <text x="950" y="345" class="diagram-title" font-size="18">🗄️</text>
+              <text x="950" y="368" class="diagram-title">Read Replicas</text>
+              <text x="950" y="405" class="diagram-label">Multi-Region</text>
+            </g>
+            
+            <!-- Background Workers -->
+            <g class="diagram-component" data-component="workers" onclick="showDetail('scale', 'workers')">
+              <rect x="440" y="410" width="165" height="50" rx="6" fill="var(--surface-3)" stroke="var(--border)" stroke-width="2" />
+              <text x="522" y="433" class="diagram-title" font-size="14">⚙️</text>
+              <text x="522" y="450" class="diagram-title">Background Workers</text>
+            </g>
+            
+            <!-- Monitoring -->
+            <g class="diagram-component" data-component="monitoring" onclick="showDetail('scale', 'monitoring')">
+              <rect x="1020" y="100" width="100" height="55" rx="6" fill="var(--surface-2)" stroke="var(--purple)" stroke-width="2" />
+              <text x="1070" y="123" class="diagram-title" font-size="16">📊</text>
+              <text x="1070" y="143" class="diagram-title">Monitoring</text>
+            </g>
+            
+            <!-- Arrows -->
+            <path class="diagram-arrow" d="M155 310 L230 310" marker-end="url(#arrowhead-scale)" />
+            <path class="diagram-arrow" d="M375 310 L410 310" marker-end="url(#arrowhead-scale)" />
+            <path class="diagram-arrow" d="M625 310 L880 310" marker-end="url(#arrowhead-scale)" />
+            <path class="diagram-arrow" d="M950 280 L950 295" marker-end="url(#arrowhead-scale)" />
+          </svg>
+          
+          <!-- Component Detail Panel -->
+          <div class="detail-panel" id="detail-scale">
+            <div class="detail-header">
+              <div class="detail-icon" id="detail-icon-scale">👤</div>
+              <div class="detail-title">
+                <h3 id="detail-name-scale">Component Name</h3>
+                <span class="detail-type" id="detail-type-scale">COMPONENT TYPE</span>
+              </div>
+            </div>
+            <div class="detail-grid">
+              <div class="detail-item">
+                <div class="label">What It Does</div>
+                <div class="value" id="detail-desc-scale">Description here</div>
+              </div>
+              <div class="detail-item">
+                <div class="label">Cloud Services</div>
+                <div class="value" id="detail-services-scale"><code>Service A</code>, <code>Service B</code></div>
+              </div>
+              <div class="detail-item">
+                <div class="label">Est. Monthly Cost</div>
+                <div class="value" id="detail-cost-scale">$0-10</div>
+              </div>
+              <div class="detail-item">
+                <div class="label">Why At This Scale</div>
+                <div class="value" id="detail-why-scale">Reason here</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Terraform Panel -->
+      <section class="panel terraform-panel">
+        <div class="panel-header">
+          <span class="dot"></span>
+          Infrastructure as Code — Terraform (Scale)
+        </div>
+        <div class="terraform-container">
+          <div class="code-scroll" id="tf-scale">
+<span class="tf-cmt"># Kubernetes Deployment + Service + Ingress</span>
+<span class="tf-cmt"># Global scale with multi-region support</span>
+
+<span class="tf-block">terraform</span> {
+  <span class="tf-var">required_providers</span> {
+    <span class="tf-var">kubernetes</span> = {
+      <span class="tf-var">source</span>  = <span class="tf-str">"hashicorp/kubernetes"</span>
+      <span class="tf-var">version</span> = <span class="tf-str">"~> 2.23"</span>
+    }
+    <span class="tf-var">aws</span> = {
+      <span class="tf-var">source</span>  = <span class="tf-str">"hashicorp/aws"</span>
+      <span class="tf-var">version</span> = <span class="tf-str">"~> 5.0"</span>
+    }
+  }
+}
+
+<span class="tf-cmt"># EKS Cluster</span>
+<span class="tf-block">resource</span> <span class="tf-str">"aws_eks_cluster"</span> <span class="tf-str">"main"</span> {
+  <span class="tf-var">name</span>     = <span class="tf-str">"observatory-cluster"</span>
+  <span class="tf-var">role_arn</span> = <span class="tf-var">aws_iam_role</span>.<span class="tf-var">cluster</span>.<span class="tf-var">arn</span>
+  <span class="tf-var">version</span>  = <span class="tf-str">"1.28"</span>
+  
+  <span class="tf-var">vpc_config</span> {
+    <span class="tf-var">subnet_ids</span>              = <span class="tf-var">var</span>.<span class="tf-var">private_subnet_ids</span>
+    <span class="tf-var">endpoint_private_access</span> = <span class="tf-bool">true</span>
+    <span class="tf-var">endpoint_public_access</span>  = <span class="tf-bool">true</span>
+  }
+}
+
+<span class="tf-cmt"># Kubernetes Deployment</span>
+<span class="tf-block">resource</span> <span class="tf-str">"kubernetes_deployment"</span> <span class="tf-str">"app"</span> {
+  <span class="tf-var">metadata</span> {
+    <span class="tf-var">name</span> = <span class="tf-str">"observatory-app"</span>
+  }
+  <span class="tf-var">spec</span> {
+    <span class="tf-var">replicas</span> = <span class="tf-num">6</span>
+    <span class="tf-var">selector</span> {
+      <span class="tf-var">match_labels</span> = { <span class="tf-var">app</span> = <span class="tf-str">"observatory"</span> }
+    }
+    <span class="tf-var">template</span> {
+      <span class="tf-var">metadata</span> { <span class="tf-var">labels</span> = { <span class="tf-var">app</span> = <span class="tf-str">"observatory"</span> } }
+      <span class="tf-var">spec</span> {
+        <span class="tf-var">container</span> {
+          <span class="tf-var">name</span>  = <span class="tf-str">"app"</span>
+          <span class="tf-var">image</span> = <span class="tf-str">"observatory/app:latest"</span>
+          <span class="tf-var">resources</span> {
+            <span class="tf-var">limits</span> = {
+              <span class="tf-var">cpu</span>    = <span class="tf-str">"1000m"</span>
+              <span class="tf-var">memory</span> = <span class="tf-str">"1Gi"</span>
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+<span class="tf-cmt"># Ingress with AWS ALB Controller</span>
+<span class="tf-block">resource</span> <span class="tf-str">"kubernetes_ingress"</span> <span class="tf-str">"app"</span> {
+  <span class="tf-var">metadata</span> {
+    <span class="tf-var">name</span> = <span class="tf-str">"observatory-ingress"</span>
+    <span class="tf-var">annotations</span> = {
+      <span class="tf-str">"kubernetes.io/ingress.class"</span> = <span class="tf-str">"alb"</span>
+      <span class="tf-str">"alb.ingress.kubernetes.io/scheme"</span> = <span class="tf-str">"internet-facing"</span>
+    }
+  }
+}</div>
+          <div class="code-annotations">
+            <h4>Click to Learn More</h4>
+            <div class="annotation-item" onclick="highlightCode('scale', 'eks_cluster')">
+              <div class="line">Line 17-30</div>
+              <div class="desc"><strong>EKS Cluster</strong> — Managed Kubernetes control plane. Private + public endpoints for security.</div>
+            </div>
+            <div class="annotation-item" onclick="highlightCode('scale', 'deployment')">
+              <div class="line">Line 33-60</div>
+              <div class="desc"><strong>K8s Deployment</strong> — 6 replicas with resource limits. Rolling updates with zero downtime.</div>
+            </div>
+            <div class="annotation-item" onclick="highlightCode('scale', 'ingress')">
+              <div class="line">Line 63-73</div>
+              <div class="desc"><strong>Ingress + ALB</strong> — AWS ALB Controller provisions load balancer automatically. SSL via ACM.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Cost Comparison Section -->
+    <section class="panel cost-panel">
+      <div class="panel-header">
+        <span class="dot"></span>
+        Cost Comparison Across Scales
+      </div>
+      <div class="cost-container">
+        <div class="cost-chart">
+          <div class="cost-bar-wrapper">
+            <div class="cost-bar hobby" onclick="showCostDetail('hobby')"></div>
+            <div class="cost-label">Hobby / MVP</div>
+            <div class="cost-value">
+              <span class="highlight">$0-20</span>/mo
+            </div>
+          </div>
+          <div class="cost-bar-wrapper">
+            <div class="cost-bar startup" onclick="showCostDetail('startup')"></div>
+            <div class="cost-label">Startup</div>
+            <div class="cost-value">
+              <span class="highlight">$200-800</span>/mo
+            </div>
+          </div>
+          <div class="cost-bar-wrapper">
+            <div class="cost-bar scale" onclick="showCostDetail('scale')"></div>
+            <div class="cost-label">Scale</div>
+            <div class="cost-value">
+              <span class="highlight">$2K-10K</span>/mo
+            </div>
+          </div>
+        </div>
+        
+        <div class="cost-drivers">
+          <h4>Primary Cost Drivers</h4>
+          <div class="driver-grid">
+            <div class="driver-card">
+              <div class="driver-title">
+                <span class="dot hobby"></span>
+                Hobby / MVP
+              </div>
+              <ul class="driver-list">
+                <li>Free tier CDN (Cloudflare)</li>
+                <li>Serverless compute (pay-per-request)</li>
+                <li>Managed DB free tier (Supabase/D1)</li>
+                <li>Single region, no redundancy</li>
+              </ul>
+            </div>
+            <div class="driver-card">
+              <div class="driver-title">
+                <span class="dot startup"></span>
+                Startup
+              </div>
+              <ul class="driver-list">
+                <li>ALB + 2-10 EC2 instances</li>
+                <li>RDS with Multi-AZ failover</li>
+                <li>ElastiCache Redis cluster</li>
+                <li>S3 storage + data transfer</li>
+              </ul>
+            </div>
+            <div class="driver-card">
+              <div class="driver-title">
+                <span class="dot scale"></span>
+                Scale
+              </div>
+              <ul class="driver-list">
+                <li>EKS cluster + node groups</li>
+                <li>Aurora Global Database</li>
+                <li>Multi-region deployment</li>
+                <li>Redis Cluster + MQ + Workers</li>
+                <li>Monitoring & observability stack</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Explainer Section -->
+  <section class="explainer">
+    <h2>What This Proves</h2>
+    <div class="explainer-grid">
+      <div class="explainer-card">
+        <h3>Architecture Scaling</h3>
+        <p>Knowing when to add complexity is crucial. Start simple with <code>serverless + managed DB</code>, then evolve to <code>auto-scaling + caching</code>, and finally <code>K8s + multi-region</code> only when needed.</p>
+      </div>
+      <div class="explainer-card">
+        <h3>Infrastructure as Code</h3>
+        <p>Terraform enables reproducible, version-controlled infrastructure. The same patterns scale from <code>cloudflare_worker_script</code> to <code>kubernetes_deployment</code> with consistent tooling.</p>
+      </div>
+      <div class="explainer-card">
+        <h3>Cloud Service Selection</h3>
+        <p>Managed services reduce ops overhead but increase cost. Trade-offs: <code>Supabase</code> vs <code>RDS</code> vs <code>Aurora Global</code>—each fits different scale requirements.</p>
+      </div>
+      <div class="explainer-card">
+        <h3>Cost Awareness</h3>
+        <p>Right-sizing infrastructure prevents waste. A hobby project doesn't need <code>Multi-AZ RDS</code>, and a scale system can't run on <code>free-tier Lambda</code> alone.</p>
+      </div>
+      <div class="explainer-card">
+        <h3>Network Design</h3>
+        <p>VPCs, subnets, and security groups form the foundation. Public subnets for <code>load balancers</code>, private subnets for <code>app servers + databases</code>, with strict security group rules.</p>
+      </div>
+      <div class="explainer-card">
+        <h3>High Availability Patterns</h3>
+        <p>Multi-AZ databases, read replicas, auto-scaling groups, and multi-region deployments ensure uptime. <code>99.9%</code> → <code>99.99%</code> → <code>99.999%</code> availability targets.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <a href="../../">← Back to the Full Stack Observatory</a>
+    • Layer 6: Cloud Infrastructure • 
+    <a href="https://www.terraform.io/" target="_blank" rel="noopener">Terraform</a> •
+    <a href="https://kubernetes.io/" target="_blank" rel="noopener">Kubernetes</a>
+  </footer>
+
+  <script>
+    // ── COMPONENT DATA ──
+    const componentData = {
+      hobby: {
+        user: {
+          icon: '👤',
+          name: 'End User',
+          type: 'CLIENT',
+          desc: 'Browser or mobile app consuming your application. At hobby scale, users are typically early adopters or beta testers.',
+          services: 'Any modern browser, iOS/Android',
+          cost: '$0',
+          why: 'The starting point for all traffic. No infrastructure cost, but design for latency and UX from day one.'
+        },
+        cdn: {
+          icon: '☁️',
+          name: 'CDN / Static Hosting',
+          type: 'EDGE COMPUTE',
+          desc: 'Serves static assets (HTML, CSS, JS, images) from edge locations globally. Reduces origin load and improves latency.',
+          services: 'Cloudflare Pages, Vercel, Netlify',
+          cost: '$0-10/mo',
+          why: 'Free tiers are generous. Essential for performance even at hobby scale. Automatic SSL and global distribution.'
+        },
+        api: {
+          icon: '⚡',
+          name: 'Serverless API',
+          type: 'COMPUTE',
+          desc: 'Edge-computed functions that handle API requests. No servers to manage, automatic scaling, pay-per-request pricing.',
+          services: 'Cloudflare Workers, AWS Lambda, Vercel Functions',
+          cost: '$0-5/mo',
+          why: 'Perfect for low-traffic APIs. Cold starts are minimal on edge platforms. No idle cost when traffic is low.'
+        },
+        db: {
+          icon: '🗄️',
+          name: 'Managed Database',
+          type: 'DATA STORE',
+          desc: 'Serverless or managed database with automatic backups, scaling, and maintenance. No DBA required.',
+          services: 'Supabase, PlanetScale, Cloudflare D1, Neon',
+          cost: '$0-10/mo',
+          why: 'Free tiers support thousands of requests. Managed means no backups, patches, or failover to worry about.'
+        }
+      },
+      startup: {
+        user: {
+          icon: '👤',
+          name: 'End User',
+          type: 'CLIENT',
+          desc: 'Growing user base with increasing traffic patterns. Need consistent performance and reliability.',
+          services: 'Browser, Mobile, API Clients',
+          cost: '$0',
+          why: 'User experience directly impacts retention. CDN caching becomes critical for static assets.'
+        },
+        cdn: {
+          icon: '☁️',
+          name: 'CDN',
+          type: 'EDGE COMPUTE',
+          desc: 'Content delivery network with caching rules, WAF protection, and custom SSL certificates.',
+          services: 'AWS CloudFront, Cloudflare Pro, Fastly',
+          cost: '$20-100/mo',
+          why: 'Paid tiers offer better cache control, WAF, and analytics. Essential for protecting origin servers.'
+        },
+        alb: {
+          icon: '⚖️',
+          name: 'Load Balancer',
+          type: 'NETWORK',
+          desc: 'Distributes incoming traffic across multiple app servers. Handles SSL termination, health checks, and sticky sessions.',
+          services: 'AWS ALB/NLB, GCP Load Balancer, Azure LB',
+          cost: '$20-50/mo',
+          why: 'Single point of failure elimination. Enables zero-downtime deployments and horizontal scaling.'
+        },
+        app: {
+          icon: '🖥️',
+          name: 'App Servers',
+          type: 'COMPUTE',
+          desc: 'Application compute running in an auto-scaling group. Statelesss design allows horizontal scaling.',
+          services: 'AWS EC2, GCP Compute Engine, ECS Fargate',
+          cost: '$50-300/mo',
+          why: '2+ instances for redundancy. Auto-scaling handles traffic spikes. Statelessness enables easy scaling.'
+        },
+        redis: {
+          icon: '🔴',
+          name: 'Redis Cache',
+          type: 'CACHE',
+          desc: 'In-memory cache for sessions, query results, and frequently accessed data. Reduces database load significantly.',
+          services: 'AWS ElastiCache, Redis Cloud, Upstash',
+          cost: '$30-100/mo',
+          why: 'Database is often the bottleneck. Caching common queries can reduce DB load by 80%+.'
+        },
+        'db-primary': {
+          icon: '🗄️',
+          name: 'Primary Database',
+          type: 'DATA STORE',
+          desc: 'Main database for all write operations and critical reads. Multi-AZ deployment for automatic failover.',
+          services: 'AWS RDS, GCP Cloud SQL, Azure Database',
+          cost: '$100-300/mo',
+          why: 'Multi-AZ ensures 99.99% availability. Automated backups and point-in-time recovery included.'
+        },
+        'db-replica': {
+          icon: '🗄️',
+          name: 'Read Replica',
+          type: 'DATA STORE',
+          desc: 'Asynchronous copy of primary database for read-heavy queries. Offloads read traffic from primary.',
+          services: 'RDS Read Replica, Cloud SQL Replica',
+          cost: '$50-150/mo',
+          why: 'Separate read/write workloads. Scale reads independently. Geographic distribution for latency.'
+        },
+        s3: {
+          icon: '📦',
+          name: 'Object Storage',
+          type: 'STORAGE',
+          desc: 'Scalable storage for user uploads, static assets, and backups. Infinite scale with lifecycle policies.',
+          services: 'AWS S3, GCP Cloud Storage, Azure Blob',
+          cost: '$10-50/mo',
+          why: 'Cheaper than database storage for large files. CDN integration for fast delivery.'
+        }
+      },
+      scale: {
+        'global-cdn': {
+          icon: '🌐',
+          name: 'Global CDN',
+          type: 'EDGE COMPUTE',
+          desc: 'Multi-CDN strategy with edge compute capabilities. Lambda@Edge for request manipulation at the edge.',
+          services: 'CloudFront + Lambda@Edge, Cloudflare Workers',
+          cost: '$200-500/mo',
+          why: 'Global user base needs global infrastructure. Edge compute reduces origin traffic and latency.'
+        },
+        'regional-lb': {
+          icon: '⚖️',
+          name: 'Regional Load Balancer',
+          type: 'NETWORK',
+          desc: 'Network load balancer per region for TCP/UDP traffic. Cross-zone load balancing for high availability.',
+          services: 'AWS NLB, GCP Global LB',
+          cost: '$50-150/mo per region',
+          why: 'Regional isolation limits blast radius. Traffic can be routed to healthy regions during outages.'
+        },
+        pod: {
+          icon: '📦',
+          name: 'Kubernetes Pod',
+          type: 'COMPUTE',
+          desc: 'Containerized application units managed by Kubernetes. Auto-scaled based on CPU, memory, or custom metrics.',
+          services: 'EKS, GKE, AKS',
+          cost: '$500-2000/mo',
+          why: 'Orchestration at scale. Rolling updates, self-healing, and resource optimization across hundreds of pods.'
+        },
+        'redis-cluster': {
+          icon: '🔴',
+          name: 'Redis Cluster',
+          type: 'CACHE',
+          desc: 'Sharded Redis cluster for horizontal scaling. Handles millions of operations per second with sub-millisecond latency.',
+          services: 'ElastiCache Cluster, Redis Enterprise',
+          cost: '$200-500/mo',
+          why: 'Single Redis instance becomes a bottleneck. Clustering enables horizontal scale and high availability.'
+        },
+        mq: {
+          icon: '📨',
+          name: 'Message Queue',
+          type: 'MESSAGING',
+          desc: 'Asynchronous message processing for decoupled services. Handles bursts and ensures reliable delivery.',
+          services: 'AWS SQS, RabbitMQ, Kafka',
+          cost: '$50-200/mo',
+          why: 'Decouples services for independent scaling. Buffer for traffic spikes. Enables event-driven architecture.'
+        },
+        'scale-db-primary': {
+          icon: '🗄️',
+          name: 'Primary Database (Global)',
+          type: 'DATA STORE',
+          desc: 'Global database with automatic cross-region replication. Single logical database across multiple physical regions.',
+          services: 'Aurora Global Database, CockroachDB, Spanner',
+          cost: '$1000-3000/mo',
+          why: 'Multi-region writes with conflict resolution. Disaster recovery with RPO near zero.'
+        },
+        'scale-db-replica': {
+          icon: '🗄️',
+          name: 'Read Replicas (Multi-Region)',
+          type: 'DATA STORE',
+          desc: 'Read replicas in each region for low-latency reads. Applications read from local replica, write to primary.',
+          services: 'Aurora Read Replicas, Cloud SQL Read Replicas',
+          cost: '$500-1500/mo',
+          why: 'Read latency is critical for UX. Local replicas serve reads in milliseconds regardless of user location.'
+        },
+        workers: {
+          icon: '⚙️',
+          name: 'Background Workers',
+          type: 'COMPUTE',
+          desc: 'Asynchronous job processing for long-running tasks. Separate from request-serving infrastructure.',
+          services: 'K8s Jobs, AWS Batch, Celery Workers',
+          cost: '$200-500/mo',
+          why: 'Keep request latency low by offloading heavy work. Independent scaling based on queue depth.'
+        },
+        monitoring: {
+          icon: '📊',
+          name: 'Monitoring Stack',
+          type: 'OBSERVABILITY',
+          desc: 'Metrics, logs, and traces collection. Alerting, dashboards, and incident response tooling.',
+          services: 'Datadog, New Relic, Prometheus + Grafana',
+          cost: '$500-2000/mo',
+          why: 'At scale, you cannot debug without observability. MTTR depends on monitoring quality.'
+        }
+      }
+    };
+
+    // ── TAB SWITCHING ──
+    function switchTab(tabName) {
+      // Update tab buttons
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.tab === tabName) {
+          btn.classList.add('active');
+        }
+      });
+      
+      // Update tab content
+      document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
+      });
+      document.getElementById(`tab-${tabName}`).classList.add('active');
+      
+      // Hide all detail panels
+      document.querySelectorAll('.detail-panel').forEach(panel => {
+        panel.classList.remove('visible');
+      });
+    }
+
+    // ── SHOW COMPONENT DETAIL ──
+    function showDetail(scale, component) {
+      const data = componentData[scale][component];
+      if (!data) return;
+      
+      // Remove active from all components in this scale
+      document.querySelectorAll(`#tab-${scale} .diagram-component`).forEach(el => {
+        el.classList.remove('active');
+      });
+      
+      // Add active to clicked component
+      document.querySelector(`#tab-${scale} .diagram-component[data-component="${component}"]`)?.classList.add('active');
+      
+      // Show detail panel
+      const detailPanel = document.getElementById(`detail-${scale}`);
+      document.getElementById(`detail-icon-${scale}`).textContent = data.icon;
+      document.getElementById(`detail-name-${scale}`).textContent = data.name;
+      document.getElementById(`detail-type-${scale}`).textContent = data.type;
+      document.getElementById(`detail-desc-${scale}`).textContent = data.desc;
+      document.getElementById(`detail-services-${scale}`).innerHTML = data.services.split(', ').map(s => `<code>${s}</code>`).join(', ');
+      document.getElementById(`detail-cost-${scale}`).textContent = data.cost;
+      document.getElementById(`detail-why-${scale}`).textContent = data.why;
+      
+      detailPanel.classList.add('visible');
+      detailPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // ── HIGHLIGHT CODE ──
+    function highlightCode(scale, blockId) {
+      const codePanel = document.getElementById(`tf-${scale}`);
+      if (!codePanel) return;
+      
+      // Remove existing highlights
+      codePanel.querySelectorAll('.hl').forEach(el => el.classList.remove('hl'));
+      
+      // Find and highlight the relevant lines (simplified - in production would parse properly)
+      const lines = codePanel.innerHTML.split('\n');
+      let startLine = 0;
+      
+      if (blockId === 'd1_database') startLine = 23;
+      else if (blockId === 'worker_script') startLine = 30;
+      else if (blockId === 'worker_route') startLine = 42;
+      else if (blockId === 'aws_lb') startLine = 12;
+      else if (blockId === 'autoscaling_group') startLine = 22;
+      else if (blockId === 'db_instance') startLine = 37;
+      else if (blockId === 'eks_cluster') startLine = 16;
+      else if (blockId === 'deployment') startLine = 32;
+      else if (blockId === 'ingress') startLine = 62;
+      
+      // Visual feedback on annotation
+      event.currentTarget.style.background = 'var(--accent-dim)';
+      setTimeout(() => {
+        event.currentTarget.style.background = '';
+      }, 500);
+    }
+
+    // ── COST DETAIL ──
+    function showCostDetail(scale) {
+      // Scroll to the driver card for this scale
+      const driverCard = document.querySelector(`.driver-card .dot.${scale}`)?.closest('.driver-card');
+      if (driverCard) {
+        driverCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        driverCard.style.borderColor = 'var(--accent)';
+        setTimeout(() => {
+          driverCard.style.borderColor = '';
+        }, 1000);
+      }
+    }
+
+    // ── INIT ──
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('✓ Cloud Infrastructure layer loaded');
+    });
+  </script>
+</body>
+</html>
