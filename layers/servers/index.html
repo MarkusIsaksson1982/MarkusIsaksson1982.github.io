@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Markus Isaksson — The Full Stack Observatory</title>
+  <meta name="description" content="An interactive exploration of what full-stack actually means — 12 layers, each with a working proof. By Markus Isaksson." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg-0: #04070d;
+      --bg-1: #09111c;
+      --bg-2: #132235;
+      --text: #eef4ff;
+      --text-muted: rgba(238, 244, 255, 0.65);
+      --panel: rgba(11, 18, 30, 0.72);
+      --panel-border: rgba(182, 220, 255, 0.14);
+      --gold: #b8963e;
+      --gold-light: #ddc07a;
+      --accent: #42f5c5;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 100%; height: 100%;
+      overflow: hidden;
+      font-family: 'Instrument Sans', 'Segoe UI', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(67, 130, 255, 0.14), transparent 26%),
+        radial-gradient(circle at 80% 85%, rgba(0, 235, 194, 0.1), transparent 24%),
+        linear-gradient(180deg, var(--bg-2), var(--bg-1) 35%, var(--bg-0));
+    }
+
+    canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: grab; }
+
+    /* ── HUD PANELS ── */
+    .hud { position: absolute; inset: 0; pointer-events: none; }
+
+    .panel {
+      pointer-events: auto;
+      border: 1px solid var(--panel-border);
+      border-radius: 14px;
+      background: var(--panel);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Top-left: title + framing */
+    .hud-top {
+      position: absolute; top: 18px; left: 18px;
+      max-width: min(420px, calc(100vw - 36px));
+      padding: 16px 18px;
+    }
+    .hud-top h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+      font-weight: 400; letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+    .hud-top .tagline {
+      font-size: 0.82rem; line-height: 1.5;
+      color: var(--text-muted);
+    }
+    .hud-top .tagline em {
+      font-style: normal; color: var(--accent);
+    }
+    .hud-top .meta-links {
+      margin-top: 10px;
+      display: flex; gap: 8px; flex-wrap: wrap;
+    }
+    .meta-link {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 5px 12px; border-radius: 9999px;
+      font-size: 0.76rem; font-weight: 600;
+      text-decoration: none; transition: all 0.2s;
+      border: 1px solid rgba(182, 220, 255, 0.2);
+      color: var(--text-muted);
+    }
+    .meta-link:hover {
+      border-color: var(--gold-light); color: var(--gold-light);
+      transform: translateY(-1px);
+    }
+    .meta-link--accent {
+      background: rgba(66, 245, 197, 0.1);
+      border-color: rgba(66, 245, 197, 0.3);
+      color: var(--accent);
+    }
+    .meta-link--accent:hover {
+      background: rgba(66, 245, 197, 0.18);
+    }
+
+    /* Bottom bar: hover status + legend */
+    .hud-bottom {
+      position: absolute; left: 18px; right: 18px; bottom: 18px;
+      padding: 12px 16px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; flex-wrap: wrap;
+    }
+    .status-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2px; }
+    .status-name { font-size: 0.92rem; font-weight: 600; color: var(--text); transition: color 0.2s; }
+    .status-name.has-page { color: var(--accent); }
+    .legend { font-size: 0.78rem; color: var(--text-muted); text-align: right; line-height: 1.5; }
+    .legend .key { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; vertical-align: middle; }
+    .legend .key--live { background: var(--accent); box-shadow: 0 0 6px var(--accent); }
+    .legend .key--soon { background: rgba(238, 244, 255, 0.25); }
+
+    /* Layer info tooltip (appears on hover) */
+    .layer-tooltip {
+      position: absolute; bottom: 80px; left: 50%; transform: translateX(-50%);
+      padding: 10px 20px; border-radius: 12px;
+      background: var(--panel); border: 1px solid var(--panel-border);
+      backdrop-filter: blur(14px);
+      font-size: 0.85rem; color: var(--text);
+      white-space: nowrap; text-align: center;
+      opacity: 0; transition: opacity 0.25s, transform 0.25s;
+      pointer-events: none;
+    }
+    .layer-tooltip.visible {
+      opacity: 1; transform: translateX(-50%) translateY(-4px);
+    }
+    .layer-tooltip .tt-name { font-weight: 700; }
+    .layer-tooltip .tt-status { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+    .layer-tooltip .tt-status.live { color: var(--accent); }
+
+    @media (max-width: 600px) {
+      .hud-top { max-width: calc(100vw - 36px); padding: 12px 14px; }
+      .hud-top h1 { font-size: 1.05rem; }
+      .hud-bottom { flex-direction: column; align-items: flex-start; }
+      .legend { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="hud">
+
+      <div class="hud-top panel">
+        <h1>The Full Stack Observatory</h1>
+        <p class="tagline">
+          Not just frontend + backend.<br />
+          <em>12 layers. Each one demonstrated.</em>
+        </p>
+        <div class="meta-links">
+          <a href="portfolio/" class="meta-link meta-link--accent">Credentials &amp; Certifications ↗</a>
+          <a href="https://www.linkedin.com/in/markus-isaksson-08273a127/" target="_blank" class="meta-link">LinkedIn</a>
+          <a href="https://github.com/MarkusIsaksson1982" target="_blank" class="meta-link">GitHub</a>
+        </div>
+      </div>
+
+      <div class="layer-tooltip" id="tooltip">
+        <div class="tt-name" id="tt-name"></div>
+        <div class="tt-status" id="tt-status"></div>
+      </div>
+
+      <div class="hud-bottom panel">
+        <div>
+          <div class="status-label">Active Layer</div>
+          <div class="status-name" id="status-name">Drag to explore the stack</div>
+        </div>
+        <div class="legend">
+          <span class="key key--live"></span> Live demo
+          <span style="margin-left:8px"></span>
+          <span class="key key--soon"></span> Coming soon
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script type="module">
+    import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js";
+
+    const statusEl = document.getElementById("status-name");
+    const tooltipEl = document.getElementById("tooltip");
+    const ttNameEl = document.getElementById("tt-name");
+    const ttStatusEl = document.getElementById("tt-status");
+
+    const layers = [
+      { label: "Frontend",                lines: ["Frontend"],                slug: "frontend",               color: "#ff6b6b", live: true,  desc: "Portfolio, micro-projects, 3,600+ hrs" },
+      { label: "Backend / APIs",          lines: ["Backend", "/ APIs"],       slug: "backend-apis",           color: "#ff965a", live: true,  desc: "Service Worker mock server — click to explore" },
+      { label: "Database",                lines: ["Database"],                slug: "database",               color: "#ffc857", live: true,  desc: "In-browser SQL console with sql.js" },
+      { label: "Servers",                 lines: ["Servers"],                 slug: "servers",                color: "#9be564", live: true,  desc: "Annotated nginx, PM2 & systemd configs" },
+      { label: "Networking",              lines: ["Networking"],              slug: "networking",             color: "#42d392", live: true,  desc: "TCP handshake, teardown & full lifecycle visualizer" },
+      { label: "Cloud Infrastructure",    lines: ["Cloud", "Infrastructure"], slug: "cloud-infrastructure",   color: "#29d4ff", live: false, desc: "Architecture diagrams + Terraform samples" },
+      { label: "CI/CD Pipelines",         lines: ["CI/CD", "Pipelines"],     slug: "ci-cd-pipelines",        color: "#4da8ff", live: true,  desc: "Live GitHub Actions — this site deploys itself" },
+      { label: "Security",               lines: ["Security"],                slug: "security",               color: "#7a8cff", live: false, desc: "CSP analyzer + XSS sandbox" },
+      { label: "Containers",             lines: ["Containers"],              slug: "containers",             color: "#a578ff", live: false, desc: "Docker concept visualizer" },
+      { label: "CDN",                    lines: ["CDN"],                     slug: "cdn",                    color: "#ff6bd6", live: false, desc: "Cache strategy simulator" },
+      { label: "Monitoring & Logging",   lines: ["Monitoring", "& Logging"], slug: "monitoring-logging",     color: "#ff7fab", live: false, desc: "Live Performance API dashboard" },
+      { label: "Backups & Recovery",     lines: ["Backups", "& Recovery"],   slug: "backups-recovery",       color: "#ffd166", live: false, desc: "DR planning tool" }
+    ];
+
+    window.navigateToLayer = function (slug) {
+      const layer = layers.find(l => l.slug === slug);
+      if (!layer) return;
+      if (layer.live) {
+        if (slug === "frontend") {
+          window.location.href = "portfolio/";
+        } else if (slug === "ci-cd-pipelines") {
+          window.open("https://github.com/MarkusIsaksson1982/MarkusIsaksson1982.github.io/actions", "_blank");
+        } else {
+          window.location.href = "layers/" + slug + "/";
+        }
+      } else {
+        showTooltipMessage(layer.label, "Coming soon — in development");
+      }
+    };
+
+    function showTooltipMessage(name, msg) {
+      ttNameEl.textContent = name;
+      ttStatusEl.textContent = msg;
+      ttStatusEl.className = "tt-status";
+      tooltipEl.classList.add("visible");
+      clearTimeout(showTooltipMessage._timer);
+      showTooltipMessage._timer = setTimeout(() => tooltipEl.classList.remove("visible"), 2200);
+    }
+
+    /* ── Three.js setup (from Codex base, refined) ── */
+    const app = document.getElementById("app");
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor(0x000000, 0);
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    app.prepend(renderer.domElement);
+
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.Fog(0x06090f, 34, 60);
+
+    const camera = new THREE.PerspectiveCamera(58, window.innerWidth / window.innerHeight, 0.1, 120);
+    scene.add(camera);
+
+    const towerRoot = new THREE.Group();
+    const towerGroup = new THREE.Group();
+    towerRoot.add(towerGroup);
+    scene.add(towerRoot);
+
+    scene.add(new THREE.AmbientLight(0xffffff, 1.55));
+    const keyLight = new THREE.DirectionalLight(0xd7e8ff, 1.4);
+    keyLight.position.set(5, 8, 14);
+    scene.add(keyLight);
+    const fillLight = new THREE.PointLight(0x35f0d0, 34, 80, 2);
+    fillLight.position.set(-9, -6, 14);
+    scene.add(fillLight);
+    const rimLight = new THREE.PointLight(0x6d83ff, 30, 80, 2);
+    rimLight.position.set(10, 7, -8);
+    scene.add(rimLight);
+
+    const raycaster = new THREE.Raycaster();
+    const pointer = new THREE.Vector2();
+    const interactiveDiscs = [];
+    const clock = new THREE.Clock();
+
+    const discRadius = 1.28;
+    const discThickness = 0.46;
+    const discSpacing = 2.75;
+    const baseTilt = -0.18;
+    const autoSpin = 0.0024;
+
+    let hoveredDisc = null;
+    let targetRotationX = baseTilt;
+    let targetRotationY = 0.38;
+
+    const dragState = { active: false, moved: false, pointerId: null, startX: 0, startY: 0, startRotationX: baseTilt, startRotationY: 0.38 };
+
+    function createDiscTexture(layer) {
+      const canvas = document.createElement("canvas");
+      const size = 1024;
+      canvas.width = size; canvas.height = size;
+      const ctx = canvas.getContext("2d");
+      const baseColor = new THREE.Color(layer.color);
+      const edgeColor = baseColor.clone().lerp(new THREE.Color("#ffffff"), 0.28);
+      const shadowColor = baseColor.clone().multiplyScalar(0.24);
+
+      ctx.clearRect(0, 0, size, size);
+      const glow = ctx.createRadialGradient(size * 0.5, size * 0.36, size * 0.08, size * 0.5, size * 0.5, size * 0.56);
+      glow.addColorStop(0, "rgba(255,255,255,0.25)");
+      glow.addColorStop(0.18, "#" + edgeColor.getHexString());
+      glow.addColorStop(0.58, "#" + baseColor.getHexString());
+      glow.addColorStop(1, "#" + shadowColor.getHexString());
+      ctx.beginPath(); ctx.arc(size * 0.5, size * 0.5, size * 0.47, 0, Math.PI * 2);
+      ctx.fillStyle = glow; ctx.fill();
+
+      ctx.beginPath(); ctx.arc(size * 0.5, size * 0.5, size * 0.445, 0, Math.PI * 2);
+      ctx.strokeStyle = "rgba(255,255,255,0.74)"; ctx.lineWidth = size * 0.018; ctx.stroke();
+
+      ctx.beginPath(); ctx.arc(size * 0.5, size * 0.5, size * 0.39, 0, Math.PI * 2);
+      ctx.strokeStyle = "rgba(255,255,255,0.16)"; ctx.lineWidth = size * 0.01; ctx.stroke();
+
+      const fontSize = layer.lines.length === 1 ? 110 : 88;
+      const lineHeight = fontSize * 1.08;
+      const startY = size * 0.5 - ((layer.lines.length - 1) * lineHeight) / 2;
+
+      ctx.fillStyle = "#f6fbff"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+      ctx.shadowColor = "rgba(255,255,255,0.34)"; ctx.shadowBlur = 20;
+      ctx.font = `700 ${fontSize}px "Instrument Sans", "Segoe UI", sans-serif`;
+      layer.lines.forEach((line, i) => ctx.fillText(line, size * 0.5, startY + i * lineHeight));
+
+      ctx.shadowBlur = 0;
+
+      /* Live indicator dot */
+      if (layer.live) {
+        ctx.fillStyle = "#42f5c5";
+        ctx.shadowColor = "#42f5c5"; ctx.shadowBlur = 14;
+        ctx.beginPath(); ctx.arc(size * 0.5, size * 0.77, 12, 0, Math.PI * 2); ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.colorSpace = THREE.SRGBColorSpace;
+      texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
+      return texture;
+    }
+
+    function buildTower() {
+      const discGeometry = new THREE.CylinderGeometry(discRadius, discRadius, discThickness, 64, 1, false);
+      const edgeGeometry = new THREE.EdgesGeometry(discGeometry, 15);
+      const topOffset = ((layers.length - 1) * discSpacing) / 2;
+
+      layers.forEach((layer, index) => {
+        const color = new THREE.Color(layer.color);
+        const texture = createDiscTexture(layer);
+
+        const sideMaterial = new THREE.MeshStandardMaterial({
+          color: color.clone().multiplyScalar(0.78),
+          emissive: color.clone(), emissiveIntensity: 0.05,
+          roughness: 0.42, metalness: 0.22
+        });
+        const frontMaterial = new THREE.MeshStandardMaterial({
+          color: new THREE.Color("#ffffff"), map: texture,
+          emissive: color.clone(), emissiveIntensity: 0.1,
+          roughness: 0.24, metalness: 0.12
+        });
+        const backMaterial = new THREE.MeshStandardMaterial({
+          color: new THREE.Color("#ffffff"), map: texture,
+          emissive: color.clone(), emissiveIntensity: 0.08,
+          roughness: 0.32, metalness: 0.08
+        });
+
+        const disc = new THREE.Mesh(discGeometry, [sideMaterial, frontMaterial, backMaterial]);
+        disc.rotation.x = Math.PI / 2;
+        disc.position.y = topOffset - index * discSpacing;
+        disc.userData = { layer, edgeMaterial: null, materials: [sideMaterial, frontMaterial, backMaterial] };
+
+        const edgeMaterial = new THREE.LineBasicMaterial({
+          color: color.clone().lerp(new THREE.Color("#ffffff"), 0.3),
+          transparent: true, opacity: 0.22
+        });
+        const edges = new THREE.LineSegments(edgeGeometry, edgeMaterial);
+        edges.renderOrder = 2;
+        disc.add(edges);
+        disc.userData.edgeMaterial = edgeMaterial;
+
+        towerGroup.add(disc);
+        interactiveDiscs.push(disc);
+      });
+    }
+
+    function setHoveredDisc(nextDisc) {
+      if (hoveredDisc === nextDisc) return;
+      if (hoveredDisc) {
+        const { edgeMaterial, materials } = hoveredDisc.userData;
+        edgeMaterial.opacity = 0.22;
+        materials[0].emissiveIntensity = 0.05;
+        materials[1].emissiveIntensity = 0.1;
+        materials[2].emissiveIntensity = 0.08;
+      }
+      hoveredDisc = nextDisc;
+      if (hoveredDisc) {
+        const { layer, edgeMaterial, materials } = hoveredDisc.userData;
+        edgeMaterial.opacity = 0.95;
+        materials[0].emissiveIntensity = 0.22;
+        materials[1].emissiveIntensity = 0.38;
+        materials[2].emissiveIntensity = 0.18;
+        statusEl.textContent = layer.label;
+        statusEl.className = "status-name" + (layer.live ? " has-page" : "");
+
+        ttNameEl.textContent = layer.label;
+        ttStatusEl.textContent = layer.live ? layer.desc : "Coming soon";
+        ttStatusEl.className = "tt-status" + (layer.live ? " live" : "");
+        tooltipEl.classList.add("visible");
+      } else {
+        statusEl.textContent = "Drag to explore the stack";
+        statusEl.className = "status-name";
+        tooltipEl.classList.remove("visible");
+      }
+      renderer.domElement.style.cursor = dragState.active ? "grabbing" : hoveredDisc ? "pointer" : "grab";
+    }
+
+    function setPointerFromEvent(e) {
+      const r = renderer.domElement.getBoundingClientRect();
+      pointer.x = ((e.clientX - r.left) / r.width) * 2 - 1;
+      pointer.y = -((e.clientY - r.top) / r.height) * 2 + 1;
+    }
+
+    function updateHover(e) {
+      if (dragState.active) { setHoveredDisc(null); return; }
+      setPointerFromEvent(e);
+      raycaster.setFromCamera(pointer, camera);
+      const hits = raycaster.intersectObjects(interactiveDiscs, false);
+      setHoveredDisc(hits.length ? hits[0].object : null);
+    }
+
+    function onPointerDown(e) {
+      dragState.active = true; dragState.moved = false;
+      dragState.pointerId = e.pointerId;
+      dragState.startX = e.clientX; dragState.startY = e.clientY;
+      dragState.startRotationX = targetRotationX; dragState.startRotationY = targetRotationY;
+      renderer.domElement.style.cursor = "grabbing";
+      renderer.domElement.setPointerCapture(e.pointerId);
+    }
+
+    function onPointerMove(e) {
+      if (!dragState.active || dragState.pointerId !== e.pointerId) { updateHover(e); return; }
+      const dx = e.clientX - dragState.startX;
+      const dy = e.clientY - dragState.startY;
+      dragState.moved = dragState.moved || Math.abs(dx) > 5 || Math.abs(dy) > 5;
+      targetRotationY = dragState.startRotationY + dx * 0.01;
+      targetRotationX = THREE.MathUtils.clamp(dragState.startRotationX + dy * 0.008, -0.62, 0.48);
+      setHoveredDisc(null);
+    }
+
+    function onPointerUp(e) {
+      if (dragState.pointerId !== e.pointerId) return;
+      renderer.domElement.releasePointerCapture(e.pointerId);
+      const wasClick = !dragState.moved;
+      dragState.active = false; dragState.pointerId = null;
+      updateHover(e);
+      if (wasClick && hoveredDisc) window.navigateToLayer(hoveredDisc.userData.layer.slug);
+    }
+
+    function onPointerCancel(e) {
+      if (dragState.pointerId !== e.pointerId) return;
+      dragState.active = false; dragState.pointerId = null;
+      renderer.domElement.style.cursor = hoveredDisc ? "pointer" : "grab";
+    }
+
+    function resize() {
+      const w = window.innerWidth, h = window.innerHeight, a = w / h;
+      camera.aspect = a; camera.updateProjectionMatrix();
+      const towerH = discRadius * 2 + discSpacing * (layers.length - 1);
+      const towerW = discRadius * 2.7;
+      const vFov = THREE.MathUtils.degToRad(camera.fov);
+      const hFov = 2 * Math.atan(Math.tan(vFov / 2) * a);
+      const fitH = towerH / 2 / Math.tan(vFov / 2);
+      const fitW = towerW / 2 / Math.tan(hFov / 2);
+      const pad = a < 0.8 ? 8 : 6;
+      camera.position.set(0, 0, Math.max(fitH, fitW) + pad);
+      renderer.setSize(w, h);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    }
+
+    function animate() {
+      const t = clock.getElapsedTime();
+      if (!dragState.active) targetRotationY += autoSpin;
+      towerRoot.rotation.x = THREE.MathUtils.lerp(towerRoot.rotation.x, targetRotationX, 0.12);
+      towerRoot.rotation.y = THREE.MathUtils.lerp(towerRoot.rotation.y, targetRotationY, 0.12);
+      towerRoot.position.y = Math.sin(t * 0.65) * 0.2;
+      towerRoot.position.z = Math.cos(t * 0.55) * 0.12;
+      renderer.render(scene, camera);
+    }
+
+    buildTower();
+    resize();
+    towerRoot.rotation.x = targetRotationX;
+    towerRoot.rotation.y = targetRotationY;
+
+    const cv = renderer.domElement;
+    cv.addEventListener("pointerdown", onPointerDown);
+    cv.addEventListener("pointermove", onPointerMove);
+    cv.addEventListener("pointerup", onPointerUp);
+    cv.addEventListener("pointercancel", onPointerCancel);
+    cv.addEventListener("pointerleave", () => { if (!dragState.active) setHoveredDisc(null); });
+    window.addEventListener("resize", resize);
+    renderer.setAnimationLoop(animate);
+  </script>
+</body>
+</html>
