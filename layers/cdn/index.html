@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CDN — Cache Strategy Simulator | Full Stack Observatory</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #06090f;
+      --surface: #0d1520;
+      --surface-2: #131d2e;
+      --surface-3: #192840;
+      --border: rgba(182, 220, 255, 0.1);
+      --border-bright: rgba(182, 220, 255, 0.22);
+      --text: #e8eef6;
+      --text-muted: rgba(232, 238, 246, 0.55);
+      --accent: #42f5c5;
+      --accent-dim: rgba(66, 245, 197, 0.12);
+      --orange: #ff965a;
+      --orange-dim: rgba(255, 150, 90, 0.12);
+      --blue: #4da8ff;
+      --blue-dim: rgba(77, 168, 255, 0.12);
+      --red: #ff6b6b;
+      --red-dim: rgba(255, 107, 107, 0.12);
+      --yellow: #ffc857;
+      --yellow-dim: rgba(255, 200, 87, 0.12);
+      --purple: #a578ff;
+      --purple-dim: rgba(165, 120, 255, 0.12);
+      /* Layer 10: CDN - Pink */
+      --cdn: #ff6bd6;
+      --cdn-dim: rgba(255, 107, 214, 0.12);
+      --cdn-glow: rgba(255, 107, 214, 0.4);
+      --green: #42d392;
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'Instrument Sans', system-ui, sans-serif;
+      --serif: 'DM Serif Display', serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 24px;
+      background: rgba(6, 9, 15, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar a { color: var(--text-muted); text-decoration: none; font-size: 0.82rem; font-weight: 600; transition: color 0.2s; }
+    .topbar a:hover { color: var(--cdn); }
+    .topbar .sep { color: var(--text-muted); opacity: 0.4; }
+    .topbar .current { color: var(--cdn); font-weight: 700; }
+    .topbar .layer-badge {
+      margin-left: auto;
+      padding: 4px 12px; border-radius: 9999px;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      background: var(--cdn-dim); color: var(--cdn);
+      border: 1px solid rgba(255, 107, 214, 0.25);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 60px 24px 40px;
+      max-width: 900px; margin: 0 auto;
+      text-align: center;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 400; line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--cdn); }
+    .hero .lead {
+      font-size: 1.05rem; color: var(--text-muted);
+      max-width: 640px; margin: 0 auto 28px;
+    }
+    .hero .lead strong { color: var(--text); font-weight: 600; }
+    .hero .constraint-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 16px; border-radius: 9999px;
+      font-size: 0.78rem; font-weight: 600;
+      background: var(--surface-2); border: 1px solid var(--border-bright);
+      color: var(--text-muted);
+    }
+    .hero .constraint-badge::before {
+      content: ''; display: block; width: 6px; height: 6px;
+      border-radius: 50%; background: var(--cdn);
+      box-shadow: 0 0 8px var(--cdn);
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .workspace {
+      max-width: 1400px; margin: 0 auto;
+      padding: 0 24px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 980px) {
+      .workspace { grid-template-columns: 1fr; }
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .panel-header {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .panel-header .dot { width: 7px; height: 7px; border-radius: 50%; }
+
+    /* ── CACHE SIMULATOR PANEL ── */
+    .sim-panel { grid-column: 1 / -1; }
+    .sim-panel .panel-header .dot { background: var(--cdn); }
+    .sim-body {
+      padding: 30px;
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    /* Network Visualization */
+    .network-viz {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+      min-height: 200px;
+    }
+
+    .node {
+      width: 200px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      transition: all 0.3s;
+    }
+    .node.active {
+      border-color: var(--cdn);
+      box-shadow: 0 0 20px var(--cdn-glow);
+    }
+    .node-icon {
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+      margin: 0 auto 12px;
+      background: var(--surface-3);
+      border: 2px solid var(--border);
+      transition: all 0.3s;
+    }
+    .node.active .node-icon {
+      border-color: var(--cdn);
+      background: var(--cdn-dim);
+    }
+    .node-label {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .node-sub {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    /* Connection Lines */
+    .connection-zone {
+      flex: 1;
+      height: 100px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .conn-line {
+      position: absolute;
+      height: 2px;
+      background: var(--border);
+      width: 100%;
+    }
+    .conn-line.active {
+      background: linear-gradient(90deg, var(--cdn), var(--accent));
+      animation: dataFlow 1s linear infinite;
+    }
+    @keyframes dataFlow {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+
+    /* Animated Request Packet */
+    .packet {
+      position: absolute;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      background: var(--cdn-dim);
+      border: 1px solid var(--cdn);
+      color: var(--cdn);
+      opacity: 0;
+      transition: all 0.3s;
+      white-space: nowrap;
+      z-index: 10;
+    }
+    .packet.visible { opacity: 1; }
+    .packet.animating {
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Cache Status Badge */
+    .cache-badge {
+      position: absolute;
+      top: -10px; right: -10px;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.3s;
+    }
+    .cache-badge.miss {
+      background: var(--red-dim);
+      color: var(--red);
+      border: 1px solid var(--red);
+      opacity: 1;
+      transform: scale(1);
+    }
+    .cache-badge.hit {
+      background: rgba(66, 211, 146, 0.2);
+      color: var(--green);
+      border: 1px solid var(--green);
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* CDN Cache Storage */
+    .cdn-storage {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      min-height: 60px;
+    }
+    .cdn-storage-label {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .cached-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+    }
+    .cached-item {
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      background: var(--surface-3);
+      color: var(--cdn);
+      border: 1px solid var(--cdn);
+      animation: popIn 0.3s ease;
+    }
+    @keyframes popIn {
+      0% { transform: scale(0); }
+      80% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    /* Resource Buttons */
+    .resources-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      padding: 20px;
+      background: var(--surface-2);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    .resource-btn {
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: var(--surface-3);
+      border: 1px solid var(--border);
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .resource-btn:hover:not(:disabled) {
+      border-color: var(--cdn);
+      color: var(--cdn);
+      transform: translateY(-2px);
+    }
+    .resource-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .resource-btn.cached {
+      background: rgba(66, 211, 146, 0.1);
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    /* Stats */
+    .stats-bar {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      padding: 16px;
+      background: var(--surface-2);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-value {
+      font-family: var(--mono);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--cdn);
+    }
+    .stat-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── HEADER BUILDER PANEL ── */
+    .builder-panel .panel-header .dot { background: var(--yellow); }
+    .builder-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .control-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    select, input[type="range"] {
+      width: 100%;
+      padding: 10px 14px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      outline: none;
+    }
+    select:focus, input[type="range"]:focus {
+      border-color: var(--cdn);
+    }
+    .range-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .toggles-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .toggle-btn {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .toggle-btn:hover {
+      border-color: var(--border-bright);
+      color: var(--text);
+    }
+    .toggle-btn.active {
+      background: var(--cdn-dim);
+      border-color: var(--cdn);
+      color: var(--cdn);
+    }
+
+    /* Header Preview */
+    .header-preview {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--cdn);
+      word-break: break-all;
+      line-height: 1.6;
+    }
+
+    .explanation-box {
+      background: var(--surface-2);
+      border-left: 3px solid var(--cdn);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 16px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Presets */
+    .presets-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .preset-btn {
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .preset-btn:hover {
+      border-color: var(--cdn);
+      color: var(--cdn);
+    }
+
+    /* ── SITE CDN PANEL ── */
+    .site-panel .panel-header .dot { background: var(--blue); }
+    .site-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .info-block {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .info-block h4 {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-family: var(--mono);
+      font-size: 0.8rem;
+    }
+    .header-row:last-child { border-bottom: none; }
+    .header-name { color: var(--blue); }
+    .header-value { color: var(--text); text-align: right; }
+
+    /* Latency Chart */
+    .latency-chart {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .latency-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .latency-label {
+      width: 100px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .latency-bar-container {
+      flex: 1;
+      height: 24px;
+      background: var(--surface-3);
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+    }
+    .latency-bar {
+      height: 100%;
+      border-radius: 6px;
+      transition: width 0.5s ease;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 8px;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .latency-bar.without {
+      background: var(--red-dim);
+      border: 1px solid var(--red);
+      color: var(--red);
+    }
+    .latency-bar.with {
+      background: rgba(66, 211, 146, 0.2);
+      border: 1px solid var(--green);
+      color: var(--green);
+    }
+    .latency-legend {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 12px;
+      font-size: 0.75rem;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .legend-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+
+    /* ── EXPLAINER SECTION ── */
+    .explainer {
+      grid-column: 1 / -1;
+      padding: 40px 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+    .explainer h2 {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin-bottom: 20px;
+      color: var(--cdn);
+    }
+    .explainer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .explainer-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+    }
+    .explainer-card h3 {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .explainer-card h3::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: bold;
+    }
+    .explainer-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .explainer-card code {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      background: var(--surface-3);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--cdn);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .footer a { color: var(--cdn); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .network-viz { flex-direction: column; gap: 30px; }
+      .connection-zone { width: 2px; height: 60px; }
+      .conn-line { width: 2px; height: 100%; }
+      .node { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <nav class="topbar">
+    <a href="../../">← Tower</a>
+    <span class="sep">/</span>
+    <a href="../../">Observatory</a>
+    <span class="sep">/</span>
+    <span class="current">CDN</span>
+    <span class="layer-badge">Layer 10 of 12</span>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <h1>CDN <span>Cache Strategy</span> Simulator</h1>
+    <p class="lead">
+      Content Delivery Networks reduce latency, offload origin servers, and improve global availability. 
+      <strong>Simulate cache behavior</strong> in real-time and learn how <code>Cache-Control</code> headers govern the web's performance layer.
+    </p>
+    <span class="constraint-badge">Edge Caching • Cache-Control • Hit/Miss Ratio</span>
+  </header>
+
+  <!-- Main Workspace -->
+  <main class="workspace">
+
+    <!-- Cache Simulator Panel -->
+    <section class="panel sim-panel">
+      <div class="panel-header">
+        <span class="dot"></span>
+        Cache Simulator
+      </div>
+      <div class="sim-body">
+        
+        <!-- Network Visualization -->
+        <div class="network-viz">
+          <!-- User Node -->
+          <div class="node" id="userNode">
+            <div class="node-icon">💻</div>
+            <div class="node-label">USER</div>
+            <div class="node-sub">Browser / Client</div>
+          </div>
+
+          <!-- Connection to CDN -->
+          <div class="connection-zone" id="userToCdn">
+            <div class="conn-line"></div>
+            <div class="packet" id="packetUserCdn">REQUEST</div>
+          </div>
+
+          <!-- CDN Node -->
+          <div class="node" id="cdnNode">
+            <div class="cache-badge" id="cacheBadge">MISS</div>
+            <div class="node-icon">🌐</div>
+            <div class="node-label">CDN EDGE</div>
+            <div class="node-sub">Fastly / Cloudflare</div>
+            <div class="cdn-storage">
+              <div class="cdn-storage-label">Cached Resources</div>
+              <div class="cached-items" id="cachedItems">
+                <span style="color: var(--text-muted); font-size: 0.75rem;">Empty</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Connection to Origin -->
+          <div class="connection-zone" id="cdnToOrigin">
+            <div class="conn-line"></div>
+            <div class="packet" id="packetCdnOrigin">FETCH</div>
+          </div>
+
+          <!-- Origin Node -->
+          <div class="node" id="originNode">
+            <div class="node-icon">🖥️</div>
+            <div class="node-label">ORIGIN</div>
+            <div class="node-sub">GitHub Pages</div>
+          </div>
+        </div>
+
+        <!-- Resource Buttons -->
+        <div class="resources-row">
+          <button class="resource-btn" onclick="requestResource('index.html', 'text')" id="btn-index">
+            <span>📄</span> index.html
+          </button>
+          <button class="resource-btn" onclick="requestResource('style.css', 'style')" id="btn-style">
+            <span>🎨</span> style.css
+          </button>
+          <button class="resource-btn" onclick="requestResource('app.js', 'script')" id="btn-app">
+            <span>⚡</span> app.js
+          </button>
+          <button class="resource-btn" onclick="requestResource('hero.jpg', 'image')" id="btn-hero">
+            <span>🖼️</span> hero.jpg
+          </button>
+          <button class="resource-btn" onclick="requestResource('api/data.json', 'data')" id="btn-api">
+            <span>📊</span> api/data.json
+          </button>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-bar">
+          <div class="stat-item">
+            <div class="stat-value" id="hitCount">0</div>
+            <div class="stat-label">Cache Hits</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="missCount">0</div>
+            <div class="stat-label">Cache Misses</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="hitRate">0%</div>
+            <div class="stat-label">Hit Rate</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="avgTime">0ms</div>
+            <div class="stat-label">Avg Response</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Cache-Control Header Builder Panel -->
+    <section class="panel builder-panel">
+      <div class="panel-header">
+        <span class="dot"></span>
+        Cache-Control Header Builder
+      </div>
+      <div class="builder-body">
+        
+        <div class="control-group">
+          <label class="control-label">Access</label>
+          <div class="toggles-row">
+            <button class="toggle-btn active" id="togglePublic" onclick="setAccess('public')">public</button>
+            <button class="toggle-btn" id="togglePrivate" onclick="setAccess('private')">private</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Max-Age: <span id="maxAgeVal">86400</span> seconds (<span id="maxAgeHuman">1 day</span>)</label>
+          <input type="range" id="maxAgeRange" min="0" max="31536000" step="3600" value="86400" oninput="updateMaxAge(this.value)">
+          <div class="range-labels">
+            <span>0 (no cache)</span>
+            <span>1 hour</span>
+            <span>1 day</span>
+            <span>1 week</span>
+            <span>1 year</span>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Directives</label>
+          <div class="toggles-row">
+            <button class="toggle-btn" id="toggleNoCache" onclick="toggleDirective('no-cache')">no-cache</button>
+            <button class="toggle-btn" id="toggleNoStore" onclick="toggleDirective('no-store')">no-store</button>
+            <button class="toggle-btn" id="toggleMustRevalidate" onclick="toggleDirective('must-revalidate')">must-revalidate</button>
+            <button class="toggle-btn" id="toggleImmutable" onclick="toggleDirective('immutable')">immutable</button>
+            <button class="toggle-btn" id="toggleStaleWhileRevalidate" onclick="toggleDirective('stale-while-revalidate')">stale-while-revalidate</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Presets</label>
+          <div class="presets-row">
+            <button class="preset-btn" onclick="applyPreset('immutable')">Static assets (immutable)</button>
+            <button class="preset-btn" onclick="applyPreset('html')">HTML pages (revalidate)</button>
+            <button class="preset-btn" onclick="applyPreset('api')">API responses (no-store)</button>
+            <button class="preset-btn" onclick="applyPreset('images')">Images (long cache)</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Generated Header</label>
+          <div class="header-preview" id="headerPreview">public, max-age=86400</div>
+        </div>
+
+        <div class="explanation-box" id="explanation">
+          Resources can be cached by any cache (CDN, browser, proxy) for 1 day. After expiration, the cache must revalidate with the origin before serving.
+        </div>
+
+      </div>
+    </section>
+
+    <!-- This Site's CDN Panel -->
+    <section class="panel site-panel">
+      <div class="panel-header">
+        <span class="dot"></span>
+        This Site's CDN: GitHub Pages + Fastly
+      </div>
+      <div class="site-body">
+        
+        <div class="info-block">
+          <h4>Actual Response Headers</h4>
+          <div class="header-row">
+            <span class="header-name">Cache-Control</span>
+            <span class="header-value">max-age=600</span>
+          </div>
+          <div class="header-row">
+            <span class="header-name">ETag</span>
+            <span class="header-value">W/"60b7-..."</span>
+          </div>
+          <div class="header-row">
+            <span class="header-name">Vary</span>
+            <span class="header-value">Accept-Encoding</span>
+          </div>
+          <div class="header-row">
+            <span class="header-name">X-Cache</span>
+            <span class="header-value">HIT / MISS</span>
+          </div>
+          <div class="header-row">
+            <span class="header-name">X-Served-By</span>
+            <span class="header-value">cache-fra19123-FRA</span>
+          </div>
+          <div class="header-row">
+            <span class="header-name">Content-Encoding</span>
+            <span class="header-value">gzip / brotli</span>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <h4>Latency Comparison: CDN vs Direct Origin</h4>
+          <div class="latency-chart">
+            <div class="latency-row">
+              <span class="latency-label">San Francisco</span>
+              <div class="latency-bar-container">
+                <div class="latency-bar without" style="width: 100%">180ms (direct)</div>
+              </div>
+              <div class="latency-bar-container">
+                <div class="latency-bar with" style="width: 15%">15ms (CDN)</div>
+              </div>
+            </div>
+            <div class="latency-row">
+              <span class="latency-label">London</span>
+              <div class="latency-bar-container">
+                <div class="latency-bar without" style="width: 95%">165ms (direct)</div>
+              </div>
+              <div class="latency-bar-container">
+                <div class="latency-bar with" style="width: 12%">12ms (CDN)</div>
+              </div>
+            </div>
+            <div class="latency-row">
+              <span class="latency-label">Tokyo</span>
+              <div class="latency-bar-container">
+                <div class="latency-bar without" style="width: 110%">220ms (direct)</div>
+              </div>
+              <div class="latency-bar-container">
+                <div class="latency-bar with" style="width: 18%">18ms (CDN)</div>
+              </div>
+            </div>
+            <div class="latency-row">
+              <span class="latency-label">Sydney</span>
+              <div class="latency-bar-container">
+                <div class="latency-bar without" style="width: 125%">250ms (direct)</div>
+              </div>
+              <div class="latency-bar-container">
+                <div class="latency-bar with" style="width: 20%">20ms (CDN)</div>
+              </div>
+            </div>
+          </div>
+          <div class="latency-legend">
+            <div class="legend-item">
+              <div class="legend-dot" style="background: var(--red)"></div>
+              <span>Direct to Origin (California)</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background: var(--green)"></div>
+              <span>Via CDN Edge</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Explainer Section -->
+    <section class="explainer">
+      <h2>What This Proves</h2>
+      <div class="explainer-grid">
+        <div class="explainer-card">
+          <h3>Cache Hit/Miss Mechanics</h3>
+          <p>First request: <code>MISS</code> — CDN fetches from origin, stores copy, serves to user (~200-300ms). Subsequent requests: <code>HIT</code> — served directly from edge node (~10-20ms). Cache eviction occurs based on TTL, LRU policy, or manual purge.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>Cache-Control Directives</h3>
+          <p><code>public</code>: CDN may cache. <code>private</code>: browser only. <code>no-store</code>: never cache. <code>immutable</code>: never revalidate (for versioned assets). <code>stale-while-revalidate</code>: serve stale while fetching fresh.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>CDN Edge Network Topology</h3>
+          <p>Global anycast network routes users to nearest PoP (Point of Presence). Origin shield reduces origin load. Tiered caching: L1 (edge) → L2 (shield) → Origin. This site uses Fastly's 200+ edge locations.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>Cache Invalidation Strategies</h3>
+          <p>Hard purges (immediate removal), soft purges (mark stale), surrogate keys (tag-based purging), or time-based TTL. "Cache busting" via filename hashing: <code>app.a3f2b1.js</code> enables infinite caching.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>Content Hashing for Cache Busting</h3>
+          <p>Versioned filenames based on content hash ensure changed files get new URLs, while unchanged files remain cached forever. Combined with <code>immutable</code> directive, eliminates revalidation overhead entirely.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>Real-World CDN Awareness</h3>
+          <p>GitHub Pages serves via Fastly's CDN. Response headers reveal cache status (<code>X-Cache: HIT/MISS</code>), serving POP (<code>cache-fra19123-FRA</code>), and compression. Understanding these headers is essential for debugging performance.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <a href="../../">← Back to the Full Stack Observatory</a> 
+    • Layer 10: CDN • Cache Strategy Simulator • 
+    <a href="https://docs.fastly.com/" target="_blank" rel="noopener">Fastly Docs</a>
+  </footer>
+
+  <script>
+    // ── CACHE SIMULATOR STATE ──
+    const cache = new Set();
+    let hits = 0;
+    let misses = 0;
+    let totalTime = 0;
+    let requestCount = 0;
+    let isAnimating = false;
+
+    const resourceTypes = {
+      'index.html': { icon: '📄', size: '12KB' },
+      'style.css': { icon: '🎨', size: '8KB' },
+      'app.js': { icon: '⚡', size: '45KB' },
+      'hero.jpg': { icon: '🖼️', size: '120KB' },
+      'api/data.json': { icon: '📊', size: '2KB' }
+    };
+
+    async function requestResource(name, type) {
+      if (isAnimating) return;
+      isAnimating = true;
+
+      const isCached = cache.has(name);
+      const btn = document.getElementById(`btn-${name.split('.')[0].replace('/', '-')}`);
+      
+      // Reset visuals
+      document.querySelectorAll('.node').forEach(n => n.classList.remove('active'));
+      document.querySelectorAll('.conn-line').forEach(l => l.classList.remove('active'));
+      document.getElementById('cacheBadge').className = 'cache-badge';
+      
+      if (isCached) {
+        // CACHE HIT
+        hits++;
+        const responseTime = Math.floor(Math.random() * 10) + 10; // 10-20ms
+        
+        // Animate: User -> CDN -> User
+        document.getElementById('userNode').classList.add('active');
+        document.getElementById('cdnNode').classList.add('active');
+        
+        const packet = document.getElementById('packetUserCdn');
+        packet.textContent = 'HIT';
+        packet.classList.add('visible');
+        
+        await animatePacket(packet, '0%', '50%');
+        
+        // Show hit badge
+        const badge = document.getElementById('cacheBadge');
+        badge.textContent = 'HIT';
+        badge.classList.add('hit');
+        
+        await delay(300);
+        
+        packet.classList.remove('visible');
+        document.getElementById('userNode').classList.remove('active');
+        
+        updateStats(responseTime);
+        showToast(`${name} served from cache in ${responseTime}ms`);
+        
+      } else {
+        // CACHE MISS
+        misses++;
+        const responseTime = Math.floor(Math.random() * 100) + 200; // 200-300ms
+        
+        // Step 1: User -> CDN
+        document.getElementById('userNode').classList.add('active');
+        document.getElementById('cdnNode').classList.add('active');
+        document.querySelector('#userToCdn .conn-line').classList.add('active');
+        
+        const packet1 = document.getElementById('packetUserCdn');
+        packet1.textContent = 'REQUEST';
+        packet1.classList.add('visible');
+        await animatePacket(packet1, '0%', '50%');
+        
+        // Show miss badge
+        const badge = document.getElementById('cacheBadge');
+        badge.textContent = 'MISS';
+        badge.classList.add('miss');
+        
+        await delay(200);
+        packet1.classList.remove('visible');
+        
+        // Step 2: CDN -> Origin
+        document.getElementById('originNode').classList.add('active');
+        document.querySelector('#cdnToOrigin .conn-line').classList.add('active');
+        
+        const packet2 = document.getElementById('packetCdnOrigin');
+        packet2.textContent = 'FETCH';
+        packet2.classList.add('visible');
+        await animatePacket(packet2, '0%', '100%');
+        
+        await delay(200);
+        
+        // Step 3: Origin -> CDN (cache fill)
+        packet2.textContent = 'STORE';
+        await animatePacket(packet2, '100%', '0%');
+        packet2.classList.remove('visible');
+        
+        // Add to cache
+        cache.add(name);
+        btn.classList.add('cached');
+        updateCachedDisplay();
+        
+        await delay(200);
+        
+        // Step 4: CDN -> User
+        packet1.textContent = 'RESPONSE';
+        packet1.classList.add('visible');
+        await animatePacket(packet1, '50%', '0%');
+        packet1.classList.remove('visible');
+        
+        document.getElementById('originNode').classList.remove('active');
+        document.getElementById('cdnNode').classList.remove('active');
+        document.getElementById('userNode').classList.remove('active');
+        
+        updateStats(responseTime);
+        showToast(`${name} fetched from origin in ${responseTime}ms (now cached)`);
+      }
+      
+      document.querySelectorAll('.conn-line').forEach(l => l.classList.remove('active'));
+      isAnimating = false;
+    }
+
+    function animatePacket(element, start, end) {
+      return new Promise(resolve => {
+        element.style.left = start;
+        element.classList.add('animating');
+        element.offsetHeight; // Force reflow
+        element.style.left = end;
+        
+        setTimeout(() => {
+          element.classList.remove('animating');
+          resolve();
+        }, 800);
+      });
+    }
+
+    function updateCachedDisplay() {
+      const container = document.getElementById('cachedItems');
+      if (cache.size === 0) {
+        container.innerHTML = '<span style="color: var(--text-muted); font-size: 0.75rem;">Empty</span>';
+        return;
+      }
+      
+      container.innerHTML = Array.from(cache).map(item => {
+        const info = resourceTypes[item];
+        return `<div class="cached-item">${info.icon} ${item}</div>`;
+      }).join('');
+    }
+
+    function updateStats(time) {
+      totalTime += time;
+      requestCount++;
+      
+      document.getElementById('hitCount').textContent = hits;
+      document.getElementById('missCount').textContent = misses;
+      document.getElementById('hitRate').textContent = 
+        requestCount > 0 ? Math.round((hits / requestCount) * 100) + '%' : '0%';
+      document.getElementById('avgTime').textContent = 
+        requestCount > 0 ? Math.round(totalTime / requestCount) + 'ms' : '0ms';
+    }
+
+    function showToast(message) {
+      // Simple console log for now, could be expanded to UI toast
+      console.log(message);
+    }
+
+    function delay(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    // ── HEADER BUILDER STATE ──
+    let access = 'public';
+    let maxAge = 86400;
+    let directives = new Set();
+
+    const explanations = {
+      public: 'Resources can be cached by any cache (CDN, browser, proxy).',
+      private: 'Resources can only be cached by the browser, not shared caches.',
+      'no-cache': 'Cache must revalidate with origin before serving, even if fresh.',
+      'no-store': 'Never store this response in any cache. Maximum privacy.',
+      'must-revalidate': 'Once expired, must revalidate. Never serve stale content.',
+      immutable: 'Content will never change during its freshness lifetime. No revalidation needed.',
+      'stale-while-revalidate': 'Serve stale content while fetching fresh in background.'
+    };
+
+    function setAccess(value) {
+      access = value;
+      document.getElementById('togglePublic').classList.toggle('active', value === 'public');
+      document.getElementById('togglePrivate').classList.toggle('active', value === 'private');
+      updateHeader();
+    }
+
+    function updateMaxAge(value) {
+      maxAge = parseInt(value);
+      document.getElementById('maxAgeVal').textContent = maxAge;
+      document.getElementById('maxAgeHuman').textContent = humanTime(maxAge);
+      updateHeader();
+    }
+
+    function humanTime(seconds) {
+      if (seconds === 0) return 'no caching';
+      if (seconds < 3600) return Math.round(seconds / 60) + ' minutes';
+      if (seconds < 86400) return Math.round(seconds / 3600) + ' hours';
+      if (seconds < 604800) return Math.round(seconds / 86400) + ' days';
+      if (seconds < 31536000) return Math.round(seconds / 604800) + ' weeks';
+      return '1 year';
+    }
+
+    function toggleDirective(name) {
+      const btn = document.getElementById(`toggle${name.replace(/-/g, '')}`);
+      if (directives.has(name)) {
+        directives.delete(name);
+        btn.classList.remove('active');
+      } else {
+        directives.add(name);
+        btn.classList.add('active');
+      }
+      updateHeader();
+    }
+
+    function updateHeader() {
+      const parts = [access];
+      
+      if (!directives.has('no-store')) {
+        parts.push(`max-age=${maxAge}`);
+      }
+      
+      directives.forEach(d => parts.push(d));
+      
+      const header = parts.join(', ');
+      document.getElementById('headerPreview').textContent = header;
+      
+      // Update explanation
+      let exp = explanations[access] + ' ';
+      if (directives.has('no-store')) {
+        exp = explanations['no-store'];
+      } else if (directives.has('no-cache')) {
+        exp += explanations['no-cache'];
+      } else if (directives.has('immutable')) {
+        exp += explanations.immutable;
+      } else if (directives.has('must-revalidate')) {
+        exp += explanations['must-revalidate'];
+      } else if (directives.has('stale-while-revalidate')) {
+        exp += explanations['stale-while-revalidate'];
+      } else {
+        exp += `Cached for ${humanTime(maxAge)}.`;
+      }
+      
+      document.getElementById('explanation').textContent = exp;
+    }
+
+    function applyPreset(name) {
+      directives.clear();
+      document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+      
+      switch(name) {
+        case 'immutable':
+          access = 'public';
+          maxAge = 31536000;
+          directives.add('immutable');
+          document.getElementById('toggleImmutable').classList.add('active');
+          break;
+        case 'html':
+          access = 'public';
+          maxAge = 0;
+          directives.add('must-revalidate');
+          document.getElementById('toggleMustRevalidate').classList.add('active');
+          break;
+        case 'api':
+          access = 'private';
+          maxAge = 0;
+          directives.add('no-store');
+          document.getElementById('toggleNoStore').classList.add('active');
+          break;
+        case 'images':
+          access = 'public';
+          maxAge = 2592000; // 30 days
+          break;
+      }
+      
+      document.getElementById('togglePublic').classList.toggle('active', access === 'public');
+      document.getElementById('togglePrivate').classList.toggle('active', access === 'private');
+      document.getElementById('maxAgeRange').value = maxAge;
+      updateMaxAge(maxAge);
+    }
+
+    // Initialize
+    updateHeader();
+  </script>
+</body>
+</html>
