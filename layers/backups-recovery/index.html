@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layer 12: Backups & Recovery — The Full Stack Observatory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #06090f;
+      --surface: #0d1520;
+      --surface-2: #131d2e;
+      --surface-3: #192840;
+      --border: rgba(182, 220, 255, 0.1);
+      --border-bright: rgba(182, 220, 255, 0.22);
+      --text: #e8eef6;
+      --text-muted: rgba(232, 238, 246, 0.55);
+      --accent: #ffd166;
+      --accent-dim: rgba(255, 209, 102, 0.12);
+      --orange: #ff965a;
+      --orange-dim: rgba(255, 150, 90, 0.12);
+      --blue: #4da8ff;
+      --blue-dim: rgba(77, 168, 255, 0.12);
+      --red: #ff6b6b;
+      --red-dim: rgba(255, 107, 107, 0.12);
+      --yellow: #ffc857;
+      --yellow-dim: rgba(255, 200, 87, 0.12);
+      --purple: #a578ff;
+      --purple-dim: rgba(165, 120, 255, 0.12);
+      --green: #4ade80;
+      --green-dim: rgba(74, 222, 128, 0.12);
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'Instrument Sans', system-ui, sans-serif;
+      --serif: 'DM Serif Display', serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Topbar */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      background: rgba(6, 9, 15, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      font-size: 0.875rem;
+    }
+
+    .topbar a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .topbar a:hover {
+      color: var(--text);
+    }
+
+    .topbar .separator {
+      color: var(--text-muted);
+      opacity: 0.5;
+    }
+
+    .topbar .current {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .topbar .layer-badge {
+      margin-left: auto;
+      padding: 0.25rem 0.75rem;
+      background: var(--accent-dim);
+      border: 1px solid rgba(255, 209, 102, 0.25);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero .lead {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .constraint-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .constraint-badge .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    /* Main Content */
+    .main-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
+
+    /* Panel */
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .panel-header .dot {
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .panel-header label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+    }
+
+    /* System Profile Section */
+    .profile-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .preset-selector {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .preset-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25rem;
+      padding: 1rem 1.25rem;
+      background: var(--surface-2);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: left;
+    }
+
+    .preset-btn:hover {
+      border-color: var(--border-bright);
+      background: var(--surface-3);
+    }
+
+    .preset-btn.active {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    .preset-btn .name {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .preset-btn .criticality {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .preset-btn .criticality.low { color: var(--green); }
+    .preset-btn .criticality.medium { color: var(--yellow); }
+    .preset-btn .criticality.high { color: var(--red); }
+
+    .manual-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .control-group label {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .control-group input[type="range"] {
+      width: 100%;
+      height: 6px;
+      background: var(--surface-3);
+      border-radius: 3px;
+      appearance: none;
+      cursor: pointer;
+    }
+
+    .control-group input[type="range"]::-webkit-slider-thumb {
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      background: var(--accent);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .control-group .value-display {
+      font-family: var(--mono);
+      font-size: 0.875rem;
+      color: var(--accent);
+    }
+
+    .control-group input[type="text"],
+    .control-group select {
+      padding: 0.625rem 1rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 0.875rem;
+    }
+
+    .control-group input[type="text"]:focus,
+    .control-group select:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    /* Profile Summary Card */
+    .profile-summary {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+    }
+
+    .profile-summary h4 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+
+    .summary-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .summary-item .label {
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .summary-item .value {
+      font-family: var(--mono);
+      font-size: 0.9375rem;
+      color: var(--text);
+    }
+
+    /* Backup Strategy Builder */
+    .backup-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+
+    .backup-card {
+      position: relative;
+      background: var(--surface-2);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      cursor: pointer;
+      transition: all 0.25s;
+      opacity: 0.6;
+    }
+
+    .backup-card:hover {
+      border-color: var(--border-bright);
+      opacity: 0.8;
+    }
+
+    .backup-card.active {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+      opacity: 1;
+    }
+
+    .backup-card .checkmark {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 24px;
+      height: 24px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .backup-card.active .checkmark {
+      opacity: 1;
+    }
+
+    .backup-card .checkmark svg {
+      width: 14px;
+      height: 14px;
+      color: var(--bg);
+    }
+
+    .backup-card .method-name {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .backup-card .frequency {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .backup-card .metrics {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .backup-card .metric {
+      display: flex;
+      flex-direction: column;
+      gap: 0.125rem;
+    }
+
+    .backup-card .metric .label {
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .backup-card .metric .value {
+      font-family: var(--mono);
+      font-size: 0.8125rem;
+    }
+
+    .backup-card .description {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .cost-tier {
+      color: var(--yellow);
+    }
+
+    /* RPO/RTO Calculator */
+    .calculator-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .metric-card {
+      background: var(--surface-2);
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .metric-card.green {
+      border-color: rgba(74, 222, 128, 0.4);
+      background: var(--green-dim);
+    }
+
+    .metric-card.yellow {
+      border-color: rgba(255, 200, 87, 0.4);
+      background: var(--yellow-dim);
+    }
+
+    .metric-card.red {
+      border-color: rgba(255, 107, 107, 0.4);
+      background: var(--red-dim);
+    }
+
+    .metric-card .metric-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .metric-card .metric-value {
+      font-family: var(--mono);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .metric-card .metric-unit {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .metric-card .status {
+      margin-top: 1rem;
+      padding: 0.375rem 0.75rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .metric-card.green .status {
+      background: rgba(74, 222, 128, 0.2);
+      color: var(--green);
+    }
+
+    .metric-card.yellow .status {
+      background: rgba(255, 200, 87, 0.2);
+      color: var(--yellow);
+    }
+
+    .metric-card.red .status {
+      background: rgba(255, 107, 107, 0.2);
+      color: var(--red);
+    }
+
+    /* Timeline Visualization */
+    .timeline-container {
+      margin-top: 1.5rem;
+    }
+
+    .timeline-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .timeline {
+      position: relative;
+      height: 40px;
+      background: var(--surface-3);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .timeline-segment {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.625rem;
+      font-weight: 600;
+      color: var(--bg);
+      transition: all 0.3s;
+    }
+
+    .timeline-segment.full { background: var(--accent); }
+    .timeline-segment.incremental { background: var(--blue); }
+    .timeline-segment.differential { background: var(--purple); }
+    .timeline-segment.transaction { background: var(--green); }
+    .timeline-segment.snapshot { background: var(--orange); }
+    .timeline-segment.replication { background: linear-gradient(90deg, var(--green), var(--blue)); }
+    .timeline-segment.gap { background: var(--red-dim); color: var(--red); }
+
+    .timeline-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+    }
+
+    /* Recovery Runbook */
+    .runbook-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .runbook-step {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      transition: all 0.2s;
+    }
+
+    .runbook-step:hover {
+      border-color: var(--border-bright);
+    }
+
+    .step-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(255, 209, 102, 0.3);
+      border-radius: 50%;
+      font-family: var(--mono);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .step-content {
+      flex: 1;
+    }
+
+    .step-content .action {
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .step-content .detail {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+
+    .step-content .time {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-top: 0.5rem;
+    }
+
+    .runbook-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .runbook-total .label {
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .runbook-total .value {
+      font-family: var(--mono);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    /* Explainer Section */
+    .explainer-section {
+      margin-top: 3rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .explainer-section h2 {
+      font-family: var(--serif);
+      font-size: 1.75rem;
+      font-weight: 400;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .explainer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .explainer-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      transition: all 0.2s;
+    }
+
+    .explainer-card:hover {
+      border-color: var(--border-bright);
+      transform: translateY(-2px);
+    }
+
+    .explainer-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .explainer-card h3::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .explainer-card p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .explainer-card code {
+      font-family: var(--mono);
+      font-size: 0.8125rem;
+      background: var(--accent-dim);
+      padding: 0.125rem 0.375rem;
+      border-radius: 4px;
+      color: var(--accent);
+    }
+
+    /* Footer */
+    footer {
+      padding: 2rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .topbar {
+        padding: 1rem;
+      }
+
+      .hero {
+        padding: 2rem 1rem;
+      }
+
+      .main-content {
+        padding: 0 1rem 3rem;
+      }
+
+      .panel {
+        padding: 1rem;
+      }
+
+      .backup-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Topbar -->
+  <nav class="topbar">
+    <a href="../../">Observatory</a>
+    <span class="separator">/</span>
+    <span class="current">Backups & Recovery</span>
+    <span class="layer-badge">Layer 12 of 12</span>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Designing for <span>When Things Break</span></h1>
+    <p class="lead">Every system will fail. The question isn't if — it's how quickly you can recover. Build your backup strategy and see the trade-offs play out in real-time.</p>
+    <div class="constraint-badge">
+      <span class="dot"></span>
+      <span>Disaster Recovery Planning Tool</span>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- System Profile -->
+    <section class="panel">
+      <div class="panel-header">
+        <span class="dot"></span>
+        <label>System Profile</label>
+      </div>
+      <div class="profile-section">
+        <div class="preset-selector">
+          <button class="preset-btn" data-preset="blog">
+            <span class="name">Personal Blog</span>
+            <span class="criticality low">Low Criticality</span>
+          </button>
+          <button class="preset-btn" data-preset="ecommerce">
+            <span class="name">E-commerce Store</span>
+            <span class="criticality medium">Medium Criticality</span>
+          </button>
+          <button class="preset-btn" data-preset="financial">
+            <span class="name">Financial Platform</span>
+            <span class="criticality high">High Criticality</span>
+          </button>
+        </div>
+        <div class="manual-controls">
+          <div class="control-group">
+            <label>Estimated Data Size</label>
+            <input type="range" id="dataSize" min="1" max="1000" value="50">
+            <span class="value-display" id="dataSizeValue">50 GB</span>
+          </div>
+          <div class="control-group">
+            <label>Acceptable Downtime</label>
+            <select id="downtime">
+              <option value="24">24 hours</option>
+              <option value="4">4 hours</option>
+              <option value="1">1 hour</option>
+              <option value="0.25">15 minutes</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <label>Data Change Rate</label>
+            <input type="range" id="changeRate" min="1" max="100" value="10">
+            <span class="value-display" id="changeRateValue">10 GB/day</span>
+          </div>
+          <div class="control-group">
+            <label>Compliance Requirements</label>
+            <select id="compliance">
+              <option value="none">None</option>
+              <option value="basic">Basic (GDPR)</option>
+              <option value="pci">PCI-DSS</option>
+              <option value="hipaa">HIPAA</option>
+              <option value="sox">SOX</option>
+            </select>
+          </div>
+        </div>
+        <div class="profile-summary">
+          <h4>Selected Profile</h4>
+          <div class="summary-grid">
+            <div class="summary-item">
+              <span class="label">System Type</span>
+              <span class="value" id="summaryType">Custom</span>
+            </div>
+            <div class="summary-item">
+              <span class="label">Data Size</span>
+              <span class="value" id="summarySize">50 GB</span>
+            </div>
+            <div class="summary-item">
+              <span class="label">Max Downtime</span>
+              <span class="value" id="summaryDowntime">24 hours</span>
+            </div>
+            <div class="summary-item">
+              <span class="label">Change Rate</span>
+              <span class="value" id="summaryChange">10 GB/day</span>
+            </div>
+            <div class="summary-item">
+              <span class="label">Compliance</span>
+              <span class="value" id="summaryCompliance">None</span>
+            </div>
+            <div class="summary-item">
+              <span class="label">Criticality</span>
+              <span class="value" id="summaryCriticality">Medium</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Backup Strategy Builder -->
+    <section class="panel">
+      <div class="panel-header">
+        <span class="dot"></span>
+        <label>Backup Strategy Builder</label>
+      </div>
+      <div class="backup-grid">
+        <div class="backup-card" data-method="full">
+          <div class="checkmark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <div class="method-name">Full Backup</div>
+          <div class="frequency">Weekly</div>
+          <div class="metrics">
+            <div class="metric">
+              <span class="label">Size</span>
+              <span class="value" id="fullSize">50 GB</span>
+            </div>
+            <div class="metric">
+              <span class="label">Cost</span>
+              <span class="value cost-tier">$$</span>
+            </div>
+          </div>
+          <div class="description">Complete copy of all data. Slow but self-contained. Foundation for other backup types.</div>
+        </div>
+
+        <div class="backup-card" data-method="incremental">
+          <div class="checkmark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <div class="method-name">Incremental Backup</div>
+          <div class="frequency">Daily</div>
+          <div class="metrics">
+            <div class="metric">
+              <span class="label">Size</span>
+              <span class="value" id="incrementalSize">10 GB</span>
+            </div>
+            <div class="metric">
+              <span class="label">Cost</span>
+              <span class="value cost-tier">$</span>
+            </div>
+          </div>
+          <div class="description">Only changes since last backup. Fast and small, but requires full chain for recovery.</div>
+        </div>
+
+        <div class="backup-card" data-method="differential">
+          <div class="checkmark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <div class="method-name">Differential Backup</div>
+          <div class="frequency">Daily</div>
+          <div class="metrics">
+            <div class="metric">
+              <span class="label">Size</span>
+              <span class="value" id="differentialSize">30 GB</span>
+            </div>
+            <div class="metric">
+              <span class="label">Cost</span>
+              <span class="value cost-tier">$$</span>
+            </div>
+          </div>
+          <div class="description">Changes since last full backup. Larger than incremental but simpler recovery.</div>
+        </div>
+
+        <div class="backup-card" data-method="transaction">
+          <div class="checkmark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <div class="method-name">Transaction Log Backup</div>
+          <div class="frequency">Hourly</div>
+          <div class="metrics">
+            <div class="metric">
+              <span class="label">Size</span>
+              <span class="value" id="transactionSize">0.5 GB</span>
+            </div>
+            <div class="metric">
+              <span class="label">Cost</span>
+              <span class="value cost-tier">$</span>
+            </div>
+          </div>
+          <div class="description">Point-in-time recovery capability. Essential for databases. Near-zero data loss.</div>
+        </div>
+
+        <div class="backup-card" data-method="snapshot">
+          <div class="checkmark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <div class="method-name">Snapshot</div>
+          <div class="frequency">Every 4 hours</div>
+          <div class="metrics">
+            <div class="metric">
+              <span class="label">Size</span>
+              <span class="value" id="snapshotSize">50 GB</span>
+            </div>
+            <div class="metric">
+              <span class="label">Cost</span>
+              <span class="value cost-tier">$$$</span>
+            </div>
+          </div>
+          <div class="description">Instant point-in-time copy. Near-instant restore. Storage-intensive but fast.</div>
+        </div>
+
+        <div class="backup-card" data-method="replication">
+          <div class="checkmark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <div class="method-name">Geographic Replication</div>
+          <div class="frequency">Continuous</div>
+          <div class="metrics">
+            <div class="metric">
+              <span class="label">Size</span>
+              <span class="value" id="replicationSize">50 GB</span>
+            </div>
+            <div class="metric">
+              <span class="label">Cost</span>
+              <span class="value cost-tier">$$$$</span>
+            </div>
+          </div>
+          <div class="description">Real-time copy to remote region. Best RPO/RTO. Protects against regional disasters.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RPO/RTO Calculator -->
+    <section class="panel">
+      <div class="panel-header">
+        <span class="dot"></span>
+        <label>RPO/RTO Calculator</label>
+      </div>
+      <div class="calculator-section">
+        <div class="metric-card" id="rpoCard">
+          <div class="metric-label">Recovery Point Objective (RPO)</div>
+          <div class="metric-value" id="rpoValue">--</div>
+          <div class="metric-unit">Maximum data loss window</div>
+          <div class="status" id="rpoStatus">Select backup methods</div>
+        </div>
+        <div class="metric-card" id="rtoCard">
+          <div class="metric-label">Recovery Time Objective (RTO)</div>
+          <div class="metric-value" id="rtoValue">--</div>
+          <div class="metric-unit">Estimated recovery time</div>
+          <div class="status" id="rtoStatus">Select backup methods</div>
+        </div>
+      </div>
+
+      <!-- Timeline Visualization -->
+      <div class="timeline-container">
+        <div class="timeline-label">One Week Backup Timeline</div>
+        <div class="timeline" id="timeline">
+          <div class="timeline-segment gap" style="flex: 1;">No backups selected</div>
+        </div>
+        <div class="timeline-legend" id="timelineLegend"></div>
+      </div>
+    </section>
+
+    <!-- Recovery Runbook -->
+    <section class="panel">
+      <div class="panel-header">
+        <span class="dot"></span>
+        <label>Recovery Runbook</label>
+      </div>
+      <div class="runbook-steps" id="runbookSteps">
+        <div class="runbook-step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <div class="action">Select backup methods to generate runbook</div>
+            <div class="detail">Your personalized recovery steps will appear here based on your backup strategy.</div>
+          </div>
+        </div>
+      </div>
+      <div class="runbook-total" id="runbookTotal" style="display: none;">
+        <span class="label">Total Estimated Recovery Time</span>
+        <span class="value" id="totalRecoveryTime">--</span>
+      </div>
+    </section>
+
+    <!-- Explainer Section -->
+    <section class="explainer-section">
+      <h2>What This Proves</h2>
+      <div class="explainer-grid">
+        <div class="explainer-card">
+          <h3>RPO/RTO Concepts</h3>
+          <p>Recovery Point Objective (RPO) defines how much data you can afford to lose — it's measured in time. Recovery Time Objective (RTO) defines how long you can be down. Together, they form the foundation of business continuity planning. A system with <code>RPO = 1 hour</code> and <code>RTO = 4 hours</code> means you could lose up to an hour of data and be offline for up to four hours during recovery.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>Backup Strategy Design</h3>
+          <p>Full backups are complete but slow and storage-heavy. Incremental backups are fast but require a complete chain. Differential backups split the difference. Transaction logs enable point-in-time recovery. The right mix depends on your <code>RPO/RTO requirements</code>, budget, and recovery complexity tolerance. Most production systems combine multiple methods.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>Disaster Recovery Planning</h3>
+          <p>A runbook transforms abstract strategy into concrete action. When disaster strikes at 3 AM, you don't want to be making decisions — you want to be executing a tested procedure. Each step should have clear ownership, estimated time, and verification criteria. The goal is to make recovery as routine as possible, even in crisis conditions.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>Cost vs. Data-Loss Trade-offs</h3>
+          <p>Better RPO/RTO costs more — it's that simple. Geographic replication with near-zero RPO might cost <code>10x</code> what a weekly full backup costs. The question isn't whether you can afford better backups, but whether the cost of downtime and data loss exceeds the cost of protection. For e-commerce, an hour of downtime might cost more than a year of premium backup infrastructure.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>Compliance Awareness</h3>
+          <p>Different regulations impose different requirements. HIPAA demands <code>encrypted backups</code> with specific retention periods. PCI-DSS requires quarterly testing of restore procedures. GDPR gives you 72 hours to report breaches — your RTO must account for detection time too. Your backup strategy isn't just technical; it's a compliance artifact that auditors will examine.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>Operational Maturity</h3>
+          <p>Thinking about failure before it happens is the mark of a mature engineering organization. Junior teams assume systems work; senior teams plan for when they don't. The act of designing a backup strategy forces you to understand your data flows, dependencies, and true business requirements. It's not paranoia — it's professionalism that pays dividends when (not if) disaster strikes.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <a href="../../">← Back to the Full Stack Observatory</a>
+  </footer>
+
+  <script>
+    // State management
+    const state = {
+      preset: null,
+      dataSize: 50,
+      downtime: 24,
+      changeRate: 10,
+      compliance: 'none',
+      activeBackups: new Set()
+    };
+
+    // Preset configurations
+    const presets = {
+      blog: {
+        dataSize: 1,
+        downtime: 24,
+        changeRate: 0.1,
+        compliance: 'none',
+        criticality: 'Low',
+        name: 'Personal Blog'
+      },
+      ecommerce: {
+        dataSize: 50,
+        downtime: 4,
+        changeRate: 10,
+        compliance: 'basic',
+        criticality: 'Medium',
+        name: 'E-commerce Store'
+      },
+      financial: {
+        dataSize: 500,
+        downtime: 1,
+        changeRate: 50,
+        compliance: 'sox',
+        criticality: 'High',
+        name: 'Financial Platform'
+      }
+    };
+
+    // Backup method configurations
+    const backupMethods = {
+      full: {
+        rpoHours: 168, // 1 week
+        baseRtoMinutes: 60, // per GB
+        rtoMultiplier: 1,
+        timelineSlots: 1,
+        timelineType: 'full',
+        frequency: 'Weekly'
+      },
+      incremental: {
+        rpoHours: 24,
+        baseRtoMinutes: 5,
+        rtoMultiplier: 0.1,
+        timelineSlots: 6,
+        timelineType: 'incremental',
+        frequency: 'Daily'
+      },
+      differential: {
+        rpoHours: 24,
+        baseRtoMinutes: 15,
+        rtoMultiplier: 0.3,
+        timelineSlots: 6,
+        timelineType: 'differential',
+        frequency: 'Daily'
+      },
+      transaction: {
+        rpoHours: 1,
+        baseRtoMinutes: 2,
+        rtoMultiplier: 0.01,
+        timelineSlots: 168,
+        timelineType: 'transaction',
+        frequency: 'Hourly'
+      },
+      snapshot: {
+        rpoHours: 4,
+        baseRtoMinutes: 1,
+        rtoMultiplier: 0.05,
+        timelineSlots: 42,
+        timelineType: 'snapshot',
+        frequency: 'Every 4 hours'
+      },
+      replication: {
+        rpoHours: 0,
+        baseRtoMinutes: 5,
+        rtoMultiplier: 0,
+        timelineSlots: 168,
+        timelineType: 'replication',
+        frequency: 'Continuous'
+      }
+    };
+
+    // DOM elements
+    const elements = {
+      presetBtns: document.querySelectorAll('.preset-btn'),
+      dataSizeInput: document.getElementById('dataSize'),
+      dataSizeValue: document.getElementById('dataSizeValue'),
+      downtimeSelect: document.getElementById('downtime'),
+      changeRateInput: document.getElementById('changeRate'),
+      changeRateValue: document.getElementById('changeRateValue'),
+      complianceSelect: document.getElementById('compliance'),
+      backupCards: document.querySelectorAll('.backup-card'),
+      summaryType: document.getElementById('summaryType'),
+      summarySize: document.getElementById('summarySize'),
+      summaryDowntime: document.getElementById('summaryDowntime'),
+      summaryChange: document.getElementById('summaryChange'),
+      summaryCompliance: document.getElementById('summaryCompliance'),
+      summaryCriticality: document.getElementById('summaryCriticality'),
+      rpoCard: document.getElementById('rpoCard'),
+      rpoValue: document.getElementById('rpoValue'),
+      rpoStatus: document.getElementById('rpoStatus'),
+      rtoCard: document.getElementById('rtoCard'),
+      rtoValue: document.getElementById('rtoValue'),
+      rtoStatus: document.getElementById('rtoStatus'),
+      timeline: document.getElementById('timeline'),
+      timelineLegend: document.getElementById('timelineLegend'),
+      runbookSteps: document.getElementById('runbookSteps'),
+      runbookTotal: document.getElementById('runbookTotal'),
+      totalRecoveryTime: document.getElementById('totalRecoveryTime'),
+      // Backup size displays
+      fullSize: document.getElementById('fullSize'),
+      incrementalSize: document.getElementById('incrementalSize'),
+      differentialSize: document.getElementById('differentialSize'),
+      transactionSize: document.getElementById('transactionSize'),
+      snapshotSize: document.getElementById('snapshotSize'),
+      replicationSize: document.getElementById('replicationSize')
+    };
+
+    // Initialize
+    function init() {
+      // Preset buttons
+      elements.presetBtns.forEach(btn => {
+        btn.addEventListener('click', () => selectPreset(btn.dataset.preset));
+      });
+
+      // Manual controls
+      elements.dataSizeInput.addEventListener('input', (e) => {
+        state.dataSize = parseInt(e.target.value);
+        state.preset = null;
+        updatePresetButtons();
+        updateUI();
+      });
+
+      elements.downtimeSelect.addEventListener('change', (e) => {
+        state.downtime = parseFloat(e.target.value);
+        state.preset = null;
+        updatePresetButtons();
+        updateUI();
+      });
+
+      elements.changeRateInput.addEventListener('input', (e) => {
+        state.changeRate = parseInt(e.target.value);
+        state.preset = null;
+        updatePresetButtons();
+        updateUI();
+      });
+
+      elements.complianceSelect.addEventListener('change', (e) => {
+        state.compliance = e.target.value;
+        state.preset = null;
+        updatePresetButtons();
+        updateUI();
+      });
+
+      // Backup cards
+      elements.backupCards.forEach(card => {
+        card.addEventListener('click', () => toggleBackup(card.dataset.method));
+      });
+
+      // Initial UI update
+      updateUI();
+    }
+
+    function selectPreset(presetName) {
+      const preset = presets[presetName];
+      state.preset = presetName;
+      state.dataSize = preset.dataSize;
+      state.downtime = preset.downtime;
+      state.changeRate = preset.changeRate;
+      state.compliance = preset.compliance;
+
+      // Update inputs
+      elements.dataSizeInput.value = preset.dataSize;
+      elements.downtimeSelect.value = preset.downtime;
+      elements.changeRateInput.value = preset.changeRate;
+      elements.complianceSelect.value = preset.compliance;
+
+      updatePresetButtons();
+      updateUI();
+    }
+
+    function updatePresetButtons() {
+      elements.presetBtns.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.preset === state.preset);
+      });
+    }
+
+    function toggleBackup(method) {
+      if (state.activeBackups.has(method)) {
+        state.activeBackups.delete(method);
+      } else {
+        state.activeBackups.add(method);
+      }
+      updateUI();
+    }
+
+    function updateUI() {
+      updateSummary();
+      updateBackupSizes();
+      updateMetrics();
+      updateTimeline();
+      updateRunbook();
+    }
+
+    function updateSummary() {
+      let type, criticality;
+      
+      if (state.preset) {
+        type = presets[state.preset].name;
+        criticality = presets[state.preset].criticality;
+      } else {
+        type = 'Custom';
+        if (state.dataSize <= 10 && state.downtime >= 24) {
+          criticality = 'Low';
+        } else if (state.dataSize >= 200 || state.downtime <= 1) {
+          criticality = 'High';
+        } else {
+          criticality = 'Medium';
+        }
+      }
+
+      elements.summaryType.textContent = type;
+      elements.summarySize.textContent = formatSize(state.dataSize);
+      elements.summaryDowntime.textContent = formatDowntime(state.downtime);
+      elements.summaryChange.textContent = `${formatSize(state.changeRate)}/day`;
+      elements.summaryCompliance.textContent = formatCompliance(state.compliance);
+      elements.summaryCriticality.textContent = criticality;
+
+      elements.dataSizeValue.textContent = formatSize(state.dataSize);
+      elements.changeRateValue.textContent = `${formatSize(state.changeRate)}/day`;
+    }
+
+    function updateBackupSizes() {
+      elements.fullSize.textContent = formatSize(state.dataSize);
+      elements.incrementalSize.textContent = formatSize(state.changeRate);
+      elements.differentialSize.textContent = formatSize(state.changeRate * 3);
+      elements.transactionSize.textContent = formatSize(state.changeRate / 24);
+      elements.snapshotSize.textContent = formatSize(state.dataSize);
+      elements.replicationSize.textContent = formatSize(state.dataSize);
+    }
+
+    function updateMetrics() {
+      if (state.activeBackups.size === 0) {
+        elements.rpoValue.textContent = '--';
+        elements.rtoValue.textContent = '--';
+        elements.rpoStatus.textContent = 'Select backup methods';
+        elements.rtoStatus.textContent = 'Select backup methods';
+        elements.rpoCard.className = 'metric-card';
+        elements.rtoCard.className = 'metric-card';
+        return;
+      }
+
+      // Calculate RPO (best case from active backups)
+      let rpo = Infinity;
+      state.activeBackups.forEach(method => {
+        const methodRpo = backupMethods[method].rpoHours;
+        if (methodRpo < rpo) rpo = methodRpo;
+      });
+
+      // Calculate RTO
+      let rtoMinutes = 0;
+      
+      // Always need to restore base backup if full or snapshot is active
+      if (state.activeBackups.has('full')) {
+        rtoMinutes += backupMethods.full.baseRtoMinutes * state.dataSize * 0.02; // 1.2 min per GB
+      }
+      
+      if (state.activeBackups.has('snapshot') && !state.activeBackups.has('full')) {
+        rtoMinutes += backupMethods.snapshot.baseRtoMinutes * state.dataSize * 0.01; // 0.5 min per GB
+      }
+      
+      // Add incremental/differential restore time
+      if (state.activeBackups.has('incremental') && state.activeBackups.has('full')) {
+        rtoMinutes += 15 + (state.changeRate * 0.5); // Base + per GB
+      }
+      
+      if (state.activeBackups.has('differential') && state.activeBackups.has('full')) {
+        rtoMinutes += 10 + (state.changeRate * 1.5); // Larger but simpler
+      }
+      
+      // Transaction log replay
+      if (state.activeBackups.has('transaction')) {
+        rtoMinutes += 5 + (state.changeRate * 0.1);
+      }
+      
+      // Replication is near-instant
+      if (state.activeBackups.has('replication')) {
+        rtoMinutes = Math.max(rtoMinutes, 5); // Minimum 5 min for DNS/network switch
+      }
+      
+      // Add verification time
+      rtoMinutes += 10;
+
+      // Update RPO display
+      elements.rpoValue.textContent = formatRPO(rpo);
+      elements.rpoStatus.textContent = getRPOStatus(rpo);
+      elements.rpoCard.className = `metric-card ${getRPOColor(rpo)}`;
+
+      // Update RTO display
+      elements.rtoValue.textContent = formatRTO(rtoMinutes);
+      elements.rtoStatus.textContent = getRTOStatus(rtoMinutes);
+      elements.rtoCard.className = `metric-card ${getRTOColor(rtoMinutes / 60)}`;
+    }
+
+    function updateTimeline() {
+      if (state.activeBackups.size === 0) {
+        elements.timeline.innerHTML = '<div class="timeline-segment gap" style="flex: 1;">No backups selected</div>';
+        elements.timelineLegend.innerHTML = '';
+        return;
+      }
+
+      // Build timeline segments (168 hours in a week)
+      const segments = [];
+      const usedMethods = new Set();
+      const legendItems = [];
+
+      // Geographic replication is continuous
+      if (state.activeBackups.has('replication')) {
+        segments.push({ type: 'replication', flex: 168, label: 'Continuous Replication' });
+        usedMethods.add('replication');
+      } else if (state.activeBackups.has('transaction')) {
+        // Hourly transaction logs
+        for (let i = 0; i < 168; i++) {
+          segments.push({ type: 'transaction', flex: 1, label: '' });
+        }
+        usedMethods.add('transaction');
+      } else if (state.activeBackups.has('snapshot')) {
+        // Every 4 hours
+        for (let i = 0; i < 42; i++) {
+          segments.push({ type: 'snapshot', flex: 4, label: '' });
+        }
+        usedMethods.add('snapshot');
+      } else if (state.activeBackups.has('incremental') || state.activeBackups.has('differential')) {
+        // Daily
+        const type = state.activeBackups.has('incremental') ? 'incremental' : 'differential';
+        // Weekly full backup + 6 daily
+        segments.push({ type: 'full', flex: 24, label: 'Full' });
+        usedMethods.add('full');
+        for (let i = 0; i < 6; i++) {
+          segments.push({ type, flex: 24, label: '' });
+        }
+        usedMethods.add(type);
+      } else if (state.activeBackups.has('full')) {
+        segments.push({ type: 'full', flex: 24, label: 'Full' });
+        segments.push({ type: 'gap', flex: 144, label: 'Gap (6 days)' });
+        usedMethods.add('full');
+      }
+
+      // Render timeline
+      elements.timeline.innerHTML = segments.map(seg => 
+        `<div class="timeline-segment ${seg.type}" style="flex: ${seg.flex};">${seg.label}</div>`
+      ).join('');
+
+      // Render legend
+      const legendColors = {
+        full: 'var(--accent)',
+        incremental: 'var(--blue)',
+        differential: 'var(--purple)',
+        transaction: 'var(--green)',
+        snapshot: 'var(--orange)',
+        replication: 'linear-gradient(90deg, var(--green), var(--blue))',
+        gap: 'var(--red)'
+      };
+
+      const legendNames = {
+        full: 'Full Backup',
+        incremental: 'Incremental',
+        differential: 'Differential',
+        transaction: 'Transaction Log',
+        snapshot: 'Snapshot',
+        replication: 'Geo Replication',
+        gap: 'RPO Gap'
+      };
+
+      usedMethods.forEach(method => {
+        legendItems.push(`
+          <div class="legend-item">
+            <div class="legend-dot" style="background: ${legendColors[method]};"></div>
+            <span>${legendNames[method]}</span>
+          </div>
+        `);
+      });
+
+      elements.timelineLegend.innerHTML = legendItems.join('');
+    }
+
+    function updateRunbook() {
+      if (state.activeBackups.size === 0) {
+        elements.runbookSteps.innerHTML = `
+          <div class="runbook-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <div class="action">Select backup methods to generate runbook</div>
+              <div class="detail">Your personalized recovery steps will appear here based on your backup strategy.</div>
+            </div>
+          </div>
+        `;
+        elements.runbookTotal.style.display = 'none';
+        return;
+      }
+
+      const steps = [];
+      let totalMinutes = 0;
+
+      // Step 1: Identify failure
+      steps.push({
+        action: 'Identify failure point and scope',
+        detail: 'Determine what failed, when it failed, and the extent of data affected.',
+        time: '5 min'
+      });
+      totalMinutes += 5;
+
+      // Step 2: Stop writes
+      steps.push({
+        action: 'Stop all write operations',
+        detail: 'Prevent further data corruption by putting the system in read-only mode.',
+        time: '2 min'
+      });
+      totalMinutes += 2;
+
+      // Step 3: Restore base backup
+      if (state.activeBackups.has('replication')) {
+        steps.push({
+          action: 'Failover to replica region',
+          detail: 'Activate the secondary region with the replicated data.',
+          time: `${Math.max(5, Math.round(state.dataSize * 0.01))} min`
+        });
+        totalMinutes += Math.max(5, Math.round(state.dataSize * 0.01));
+      } else if (state.activeBackups.has('snapshot')) {
+        const restoreTime = Math.max(10, Math.round(state.dataSize * 0.02));
+        steps.push({
+          action: `Restore latest snapshot (${formatSize(state.dataSize)})`,
+          detail: 'Mount the most recent snapshot to the recovery environment.',
+          time: `${restoreTime} min`
+        });
+        totalMinutes += restoreTime;
+      } else if (state.activeBackups.has('full')) {
+        const restoreTime = Math.round(state.dataSize * 1.2);
+        steps.push({
+          action: `Restore latest full backup (${formatSize(state.dataSize)})`,
+          detail: 'Copy the complete backup to the recovery environment.',
+          time: `${restoreTime} min`
+        });
+        totalMinutes += restoreTime;
+      }
+
+      // Step 4: Apply incremental/differential
+      if (state.activeBackups.has('incremental') && state.activeBackups.has('full')) {
+        const applyTime = Math.round(state.changeRate * 0.5 * 6);
+        steps.push({
+          action: 'Apply incremental backups since last full',
+          detail: `Up to 6 daily incrementals, each approximately ${formatSize(state.changeRate)}.`,
+          time: `${applyTime} min`
+        });
+        totalMinutes += applyTime;
+      }
+
+      if (state.activeBackups.has('differential') && state.activeBackups.has('full')) {
+        const applyTime = Math.round(state.changeRate * 1.5);
+        steps.push({
+          action: 'Apply latest differential backup',
+          detail: `Single differential of approximately ${formatSize(state.changeRate * 3)}.`,
+          time: `${applyTime} min`
+        });
+        totalMinutes += applyTime;
+      }
+
+      // Step 5: Apply transaction logs
+      if (state.activeBackups.has('transaction')) {
+        const replayTime = Math.round(state.changeRate * 0.1);
+        steps.push({
+          action: 'Replay transaction logs to point-in-time',
+          detail: 'Apply hourly logs to recover to the most recent consistent state before failure.',
+          time: `${replayTime} min`
+        });
+        totalMinutes += replayTime;
+      }
+
+      // Step 6: Verify integrity
+      steps.push({
+        action: 'Verify data integrity',
+        detail: 'Run checksums, consistency checks, and sample data validation.',
+        time: '10 min'
+      });
+      totalMinutes += 10;
+
+      // Step 7: Restore traffic
+      steps.push({
+        action: 'Switch DNS / restore traffic',
+        detail: 'Update DNS records or load balancer to route traffic to the recovered system.',
+        time: '5 min'
+      });
+      totalMinutes += 5;
+
+      // Render steps
+      elements.runbookSteps.innerHTML = steps.map((step, i) => `
+        <div class="runbook-step">
+          <div class="step-number">${i + 1}</div>
+          <div class="step-content">
+            <div class="action">${step.action}</div>
+            <div class="detail">${step.detail}</div>
+            <div class="time">Estimated: ${step.time}</div>
+          </div>
+        </div>
+      `).join('');
+
+      elements.runbookTotal.style.display = 'flex';
+      elements.totalRecoveryTime.textContent = formatRTO(totalMinutes);
+    }
+
+    // Helper functions
+    function formatSize(gb) {
+      if (gb < 1) return `${Math.round(gb * 1000)} MB`;
+      if (gb >= 1000) return `${(gb / 1000).toFixed(1)} TB`;
+      return `${Math.round(gb)} GB`;
+    }
+
+    function formatDowntime(hours) {
+      if (hours < 1) return `${hours * 60} minutes`;
+      if (hours === 1) return '1 hour';
+      return `${hours} hours`;
+    }
+
+    function formatCompliance(compliance) {
+      const names = {
+        none: 'None',
+        basic: 'Basic (GDPR)',
+        pci: 'PCI-DSS',
+        hipaa: 'HIPAA',
+        sox: 'SOX'
+      };
+      return names[compliance] || compliance;
+    }
+
+    function formatRPO(hours) {
+      if (hours === 0) return '< 1 min';
+      if (hours < 1) return `${Math.round(hours * 60)} min`;
+      if (hours === 1) return '1 hour';
+      if (hours <= 24) return `${Math.round(hours)} hours`;
+      return `${Math.round(hours / 24)} days`;
+    }
+
+    function formatRTO(minutes) {
+      if (minutes < 60) return `${Math.round(minutes)} min`;
+      const hours = minutes / 60;
+      if (hours < 24) return `${hours.toFixed(1)} hours`;
+      return `${(hours / 24).toFixed(1)} days`;
+    }
+
+    function getRPOStatus(rpo) {
+      if (rpo === 0) return 'Near-zero data loss';
+      if (rpo <= 1) return 'Excellent - Minimal data loss';
+      if (rpo <= 4) return 'Good - Low data loss';
+      if (rpo <= 24) return 'Acceptable - Up to 1 day data loss';
+      return 'Risk - Significant data loss possible';
+    }
+
+    function getRTOStatus(rtoMinutes) {
+      const hours = rtoMinutes / 60;
+      if (hours <= 1) return 'Excellent - Fast recovery';
+      if (hours <= 4) return 'Good - Reasonable recovery time';
+      return 'Risk - Extended downtime expected';
+    }
+
+    function getRPOColor(hours) {
+      if (hours <= 1) return 'green';
+      if (hours <= 24) return 'yellow';
+      return 'red';
+    }
+
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
