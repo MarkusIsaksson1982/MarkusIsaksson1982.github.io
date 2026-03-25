@@ -1,745 +1,771 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Servers — Full Stack Observatory</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #06090f;
-      --surface: #0d1520;
-      --surface-2: #131d2e;
-      --surface-3: #192840;
-      --border: rgba(182, 220, 255, 0.1);
-      --border-bright: rgba(182, 220, 255, 0.22);
-      --text: #e8eef6;
-      --text-muted: rgba(232, 238, 246, 0.55);
-      --accent: #9be564;
-      --accent-dim: rgba(155, 229, 100, 0.12);
-      --accent-glow: rgba(155, 229, 100, 0.3);
-      --orange: #ff965a;
-      --orange-dim: rgba(255, 150, 90, 0.12);
-      --blue: #4da8ff;
-      --blue-dim: rgba(77, 168, 255, 0.12);
-      --red: #ff6b6b;
-      --red-dim: rgba(255, 107, 107, 0.12);
-      --yellow: #ffc857;
-      --yellow-dim: rgba(255, 200, 87, 0.12);
-      --purple: #a578ff;
-      --purple-dim: rgba(165, 120, 255, 0.12);
-      --teal: #42f5c5;
-      --teal-dim: rgba(66, 245, 197, 0.12);
-      --mono: 'JetBrains Mono', monospace;
-      --sans: 'Instrument Sans', system-ui, sans-serif;
-      --serif: 'DM Serif Display', serif;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: var(--sans);
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      min-height: 100vh;
-    }
-
-    .topbar {
-      position: sticky; top: 0; z-index: 100;
-      display: flex; align-items: center; gap: 12px;
-      padding: 12px 24px;
-      background: rgba(6, 9, 15, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .topbar a { color: var(--text-muted); text-decoration: none; font-size: 0.82rem; font-weight: 600; transition: color 0.2s; }
-    .topbar a:hover { color: var(--accent); }
-    .topbar .sep { color: var(--text-muted); opacity: 0.4; }
-    .topbar .current { color: var(--accent); font-weight: 700; }
-    .topbar .layer-badge {
-      margin-left: auto;
-      padding: 4px 12px; border-radius: 9999px;
-      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
-      background: var(--accent-dim); color: var(--accent);
-      border: 1px solid rgba(155, 229, 100, 0.25);
-    }
-
-    .hero {
-      padding: 60px 24px 40px;
-      max-width: 900px; margin: 0 auto;
-      text-align: center;
-    }
-    .hero h1 {
-      font-family: var(--serif);
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 400; line-height: 1.1;
-      margin-bottom: 16px;
-    }
-    .hero h1 span { color: var(--accent); }
-    .hero .lead {
-      font-size: 1.05rem; color: var(--text-muted);
-      max-width: 640px; margin: 0 auto 28px;
-    }
-    .hero .lead strong { color: var(--text); font-weight: 600; }
-    .hero .constraint-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 6px 16px; border-radius: 9999px;
-      font-size: 0.78rem; font-weight: 600;
-      background: var(--surface-2); border: 1px solid var(--border-bright);
-      color: var(--text-muted);
-    }
-    .hero .constraint-badge::before {
-      content: ''; display: block; width: 6px; height: 6px;
-      border-radius: 50%; background: var(--accent);
-      box-shadow: 0 0 8px var(--accent);
-    }
-
-    .workspace {
-      max-width: 1200px; margin: 0 auto;
-      padding: 0 24px 60px;
-    }
-
-    .panel {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-    }
-    .panel-header {
-      display: flex; align-items: center; gap: 10px;
-      padding: 14px 18px;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.78rem; font-weight: 700;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      color: var(--text-muted);
-    }
-    .panel-header .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
-
-    /* ── TABS ── */
-    .tab-bar {
-      display: flex; gap: 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .tab-btn {
-      padding: 12px 20px;
-      font-family: var(--mono); font-size: 0.78rem; font-weight: 600;
-      background: transparent; border: none; border-bottom: 2px solid transparent;
-      color: var(--text-muted); cursor: pointer; transition: all 0.2s;
-      white-space: nowrap;
-    }
-    .tab-btn:hover { color: var(--text); background: rgba(155, 229, 100, 0.04); }
-    .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); background: var(--accent-dim); }
-
-    /* ── CONFIG VIEWER ── */
-    .config-viewer {
-      display: grid;
-      grid-template-columns: 1fr 380px;
-      min-height: 520px;
-    }
-    @media (max-width: 900px) {
-      .config-viewer { grid-template-columns: 1fr; }
-      .explain-panel { border-left: none !important; border-top: 1px solid var(--border); max-height: 300px; }
-    }
-
-    .code-pane {
-      padding: 0;
-      overflow-y: auto;
-      max-height: 600px;
-    }
-    .code-pane::-webkit-scrollbar { width: 4px; }
-    .code-pane::-webkit-scrollbar-track { background: transparent; }
-    .code-pane::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 2px; }
-
-    .config-line {
-      display: flex;
-      padding: 0 18px;
-      font-family: var(--mono); font-size: 0.78rem;
-      line-height: 1.85;
-      cursor: pointer;
-      transition: background 0.15s;
-      border-left: 2px solid transparent;
-    }
-    .config-line:hover { background: rgba(155, 229, 100, 0.04); }
-    .config-line.active { background: var(--accent-dim); border-left-color: var(--accent); }
-    .config-line .ln {
-      width: 36px; flex-shrink: 0;
-      color: rgba(232, 238, 246, 0.2);
-      text-align: right; padding-right: 14px;
-      user-select: none;
-    }
-    .config-line .code { flex: 1; white-space: pre; }
-
-    /* Syntax colors */
-    .s-kw { color: #c792ea; }
-    .s-dir { color: #82aaff; }
-    .s-val { color: #c3e88d; }
-    .s-str { color: #c3e88d; }
-    .s-num { color: #f78c6c; }
-    .s-cm { color: rgba(232, 238, 246, 0.28); font-style: italic; }
-    .s-sec { color: #ffcb6b; }
-    .s-punc { color: #89ddff; }
-    .s-var { color: #ff7fab; }
-
-    /* ── EXPLAIN PANEL ── */
-    .explain-panel {
-      border-left: 1px solid var(--border);
-      padding: 24px 20px;
-      overflow-y: auto;
-      background: var(--surface-2);
-    }
-    .explain-panel::-webkit-scrollbar { width: 4px; }
-    .explain-panel::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 2px; }
-
-    .explain-empty {
-      height: 100%; display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      color: var(--text-muted); text-align: center;
-      font-size: 0.88rem; gap: 8px;
-    }
-    .explain-empty .hint { font-size: 0.75rem; opacity: 0.5; }
-
-    .explain-title {
-      font-family: var(--mono); font-size: 0.88rem; font-weight: 700;
-      color: var(--accent); margin-bottom: 12px;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .explain-title::before {
-      content: ''; width: 8px; height: 8px; border-radius: 50%;
-      background: var(--accent); box-shadow: 0 0 8px var(--accent-glow);
-      flex-shrink: 0;
-    }
-    .explain-body { font-size: 0.88rem; color: var(--text-muted); line-height: 1.75; }
-    .explain-body p { margin-bottom: 12px; }
-    .explain-body code {
-      font-family: var(--mono); font-size: 0.78rem;
-      background: var(--surface-3); padding: 2px 6px;
-      border-radius: 4px; color: var(--accent);
-    }
-    .explain-body .warn {
-      display: block; margin-top: 10px; padding: 10px 12px;
-      border-radius: 8px; font-size: 0.78rem;
-      background: var(--yellow-dim); color: var(--yellow);
-      border-left: 3px solid var(--yellow);
-    }
-    .explain-body .tip {
-      display: block; margin-top: 10px; padding: 10px 12px;
-      border-radius: 8px; font-size: 0.78rem;
-      background: var(--accent-dim); color: var(--accent);
-      border-left: 3px solid var(--accent);
-    }
-
-    /* ── ARCHITECTURE DIAGRAM ── */
-    .arch-section { margin-top: 24px; }
-    .arch-svg-wrap {
-      padding: 28px 18px;
-      display: flex; justify-content: center;
-      overflow-x: auto;
-    }
-
-    /* ── EXPLAINER ── */
-    .explainer {
-      margin-top: 40px;
-      padding: 40px 24px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-    }
-    .explainer h2 {
-      font-family: var(--serif); font-size: 1.6rem;
-      font-weight: 400; margin-bottom: 20px;
-      color: var(--accent);
-    }
-    .explainer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-    .explainer-card {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 18px;
-    }
-    .explainer-card h3 {
-      font-family: var(--mono); font-size: 0.85rem; font-weight: 700;
-      color: var(--text); margin-bottom: 10px;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .explainer-card h3::before { content: '✓'; color: var(--accent); font-weight: bold; }
-    .explainer-card p {
-      font-size: 0.88rem; color: var(--text-muted); line-height: 1.7;
-    }
-    .explainer-card code {
-      font-family: var(--mono); font-size: 0.78rem;
-      background: var(--surface-3); padding: 2px 6px;
-      border-radius: 4px; color: var(--accent);
-    }
-
-    .footer {
-      border-top: 1px solid var(--border);
-      padding: 24px;
-      text-align: center;
-      font-size: 0.78rem; color: var(--text-muted);
-    }
-    .footer a { color: var(--accent); text-decoration: none; }
-    .footer a:hover { text-decoration: underline; }
-  </style>
-</head>
-<body>
-
-  <nav class="topbar">
-    <a href="../../">Observatory</a>
-    <span class="sep">/</span>
-    <span class="current">Servers</span>
-    <span class="layer-badge">Layer 4 of 12</span>
-  </nav>
-
-  <header class="hero">
-    <h1>Inside the <span>server</span></h1>
-    <p class="lead">
-      A web server is more than "run <strong>node app.js</strong>." It's reverse proxying, process management,
-      TLS termination, rate limiting, static file caching, and service supervision — all configured
-      in files most developers never open. Click any line below to see what it does and why it matters.
-    </p>
-    <div class="constraint-badge">Annotated production configs — every directive explained</div>
-  </header>
-
-  <div class="workspace">
-
-    <!-- CONFIG VIEWER -->
-    <div class="panel">
-      <div class="panel-header"><span class="dot"></span> Server configuration explorer</div>
-      <div class="tab-bar" id="tabBar">
-        <button class="tab-btn active" data-tab="nginx">nginx.conf</button>
-        <button class="tab-btn" data-tab="pm2">pm2.ecosystem.config.js</button>
-        <button class="tab-btn" data-tab="systemd">app.service</button>
-      </div>
-      <div class="config-viewer">
-        <div class="code-pane" id="codePane"></div>
-        <div class="explain-panel" id="explainPanel">
-          <div class="explain-empty">
-            Click any line to see what it does
-            <div class="hint">Every directive has a purpose in production</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ARCHITECTURE DIAGRAM -->
-    <div class="panel arch-section">
-      <div class="panel-header"><span class="dot"></span> Server architecture</div>
-      <div class="arch-svg-wrap">
-        <svg width="100%" viewBox="0 0 860 190" style="max-width:860px;">
-          <defs>
-            <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-              <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </marker>
-          </defs>
-          <!-- Client -->
-          <rect x="10" y="55" width="110" height="56" rx="10" fill="#131d2e" stroke="rgba(182,220,255,0.18)" stroke-width="0.5"/>
-          <text x="65" y="78" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" fill="#e8eef6">Client</text>
-          <text x="65" y="98" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(232,238,246,0.45)">Browser / App</text>
-          <!-- Arrow 1 -->
-          <line x1="120" y1="83" x2="168" y2="83" stroke="#4da8ff" stroke-width="1.2" marker-end="url(#ah)"/>
-          <text x="144" y="74" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="rgba(232,238,246,0.35)">HTTPS</text>
-          <!-- CDN -->
-          <rect x="170" y="55" width="110" height="56" rx="10" fill="rgba(255,107,214,0.08)" stroke="rgba(255,107,214,0.25)" stroke-width="0.5"/>
-          <text x="225" y="78" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" fill="#ff6bd6">CDN</text>
-          <text x="225" y="98" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(232,238,246,0.45)">Edge cache</text>
-          <!-- Arrow 2 -->
-          <line x1="280" y1="83" x2="328" y2="83" stroke="#4da8ff" stroke-width="1.2" marker-end="url(#ah)"/>
-          <!-- nginx -->
-          <rect x="330" y="35" width="140" height="96" rx="12" fill="rgba(155,229,100,0.06)" stroke="rgba(155,229,100,0.3)" stroke-width="0.5"/>
-          <text x="400" y="58" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" fill="#9be564">nginx</text>
-          <text x="400" y="78" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8.5" fill="rgba(232,238,246,0.45)">Reverse proxy</text>
-          <text x="400" y="92" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8.5" fill="rgba(232,238,246,0.45)">TLS termination</text>
-          <text x="400" y="106" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8.5" fill="rgba(232,238,246,0.45)">Static files</text>
-          <text x="400" y="120" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8.5" fill="rgba(232,238,246,0.45)">Rate limiting</text>
-          <!-- Arrow 3 -->
-          <line x1="470" y1="83" x2="518" y2="83" stroke="#9be564" stroke-width="1.2" marker-end="url(#ah)"/>
-          <text x="494" y="74" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="rgba(232,238,246,0.35)">:3000</text>
-          <!-- PM2 cluster -->
-          <rect x="520" y="30" width="150" height="106" rx="12" fill="rgba(255,150,90,0.06)" stroke="rgba(255,150,90,0.25)" stroke-width="0.5"/>
-          <text x="595" y="52" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" fill="#ff965a">PM2 Cluster</text>
-          <!-- PM2 instances -->
-          <rect x="534" y="62" width="56" height="28" rx="6" fill="#131d2e" stroke="rgba(255,150,90,0.2)" stroke-width="0.5"/>
-          <text x="562" y="80" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="rgba(232,238,246,0.55)">Node #0</text>
-          <rect x="600" y="62" width="56" height="28" rx="6" fill="#131d2e" stroke="rgba(255,150,90,0.2)" stroke-width="0.5"/>
-          <text x="628" y="80" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="rgba(232,238,246,0.55)">Node #1</text>
-          <rect x="534" y="98" width="56" height="28" rx="6" fill="#131d2e" stroke="rgba(255,150,90,0.2)" stroke-width="0.5"/>
-          <text x="562" y="116" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="rgba(232,238,246,0.55)">Node #2</text>
-          <rect x="600" y="98" width="56" height="28" rx="6" fill="#131d2e" stroke="rgba(255,150,90,0.2)" stroke-width="0.5"/>
-          <text x="628" y="116" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="rgba(232,238,246,0.55)">Node #3</text>
-          <!-- Arrow 4 -->
-          <line x1="670" y1="83" x2="718" y2="83" stroke="#ff965a" stroke-width="1.2" marker-end="url(#ah)"/>
-          <text x="694" y="74" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="rgba(232,238,246,0.35)">TCP</text>
-          <!-- Database -->
-          <rect x="720" y="55" width="120" height="56" rx="10" fill="rgba(255,200,87,0.06)" stroke="rgba(255,200,87,0.25)" stroke-width="0.5"/>
-          <text x="780" y="78" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" fill="#ffc857">Database</text>
-          <text x="780" y="98" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(232,238,246,0.45)">PostgreSQL</text>
-          <!-- systemd label -->
-          <rect x="488" y="152" width="214" height="28" rx="8" fill="rgba(165,120,255,0.06)" stroke="rgba(165,120,255,0.2)" stroke-width="0.5" stroke-dasharray="4 3"/>
-          <text x="595" y="170" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#a578ff">systemd manages this ↑</text>
-        </svg>
-      </div>
-    </div>
-
-    <!-- EXPLAINER -->
-    <div class="explainer">
-      <h2>What this proves</h2>
-      <div class="explainer-grid">
-        <div class="explainer-card">
-          <h3>Reverse proxy configuration</h3>
-          <p>nginx sits in front of the application server, handling TLS, static files, and request routing. The <code>proxy_pass</code> directive forwards dynamic requests to the Node.js upstream while serving static assets directly — keeping the application server free for business logic.</p>
-        </div>
-        <div class="explainer-card">
-          <h3>Process management</h3>
-          <p>PM2 runs the Node.js application in <code>cluster mode</code>, spawning one process per CPU core. If a process crashes, PM2 restarts it automatically. The <code>exp_backoff_restart_delay</code> prevents restart storms by progressively increasing the delay between restart attempts.</p>
-        </div>
-        <div class="explainer-card">
-          <h3>Security hardening</h3>
-          <p>Production servers enforce <code>TLSv1.2</code>+, set <code>Strict-Transport-Security</code> headers, disable content-type sniffing, prevent clickjacking with <code>X-Frame-Options</code>, and rate-limit incoming requests to mitigate brute-force and DDoS attacks.</p>
-        </div>
-        <div class="explainer-card">
-          <h3>Service supervision</h3>
-          <p>systemd ensures the application starts on boot and restarts on failure. The <code>Restart=on-failure</code> directive combined with <code>RestartSec=5</code> provides a reliable process lifecycle without manual intervention — the foundation of self-healing infrastructure.</p>
-        </div>
-        <div class="explainer-card">
-          <h3>Performance tuning</h3>
-          <p><code>worker_processes auto</code> matches nginx workers to CPU cores. Gzip compression reduces bandwidth by 60-80% for text content. Static file caching via <code>expires 1y</code> eliminates redundant transfers. Together these directives can 10x a server's effective throughput.</p>
-        </div>
-        <div class="explainer-card">
-          <h3>Zero-downtime deploys</h3>
-          <p>PM2's <code>cluster mode</code> enables rolling restarts — new code is loaded into fresh processes one at a time while old processes finish serving existing requests. Combined with nginx upstream health checks, deployments cause zero dropped connections.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="footer">
-    <a href="../../">← Back to the Full Stack Observatory</a>
-  </footer>
-
-  <script>
-    /* ═══════════════════════════════════════════════
-       CONFIG DATA — every line has an explanation
-    ═══════════════════════════════════════════════ */
-
-    const CONFIGS = {
-      nginx: {
-        lines: [
-          { code: '<span class="s-cm"># /etc/nginx/nginx.conf</span>', key: 'file-header' },
-          { code: '<span class="s-cm"># Production nginx config for a Node.js application</span>', key: 'file-header' },
-          { code: '', key: null },
-          { code: '<span class="s-dir">worker_processes</span>  <span class="s-val">auto</span>;', key: 'worker-processes' },
-          { code: '<span class="s-dir">worker_rlimit_nofile</span>  <span class="s-num">65535</span>;', key: 'rlimit-nofile' },
-          { code: '<span class="s-dir">error_log</span>  <span class="s-str">/var/log/nginx/error.log</span> <span class="s-val">warn</span>;', key: 'error-log' },
-          { code: '<span class="s-dir">pid</span>        <span class="s-str">/run/nginx.pid</span>;', key: 'pid' },
-          { code: '', key: null },
-          { code: '<span class="s-sec">events</span> <span class="s-punc">{</span>', key: 'events-block' },
-          { code: '    <span class="s-dir">worker_connections</span>  <span class="s-num">4096</span>;', key: 'worker-connections' },
-          { code: '    <span class="s-dir">multi_accept</span>       <span class="s-val">on</span>;', key: 'multi-accept' },
-          { code: '<span class="s-punc">}</span>', key: null },
-          { code: '', key: null },
-          { code: '<span class="s-sec">http</span> <span class="s-punc">{</span>', key: 'http-block' },
-          { code: '', key: null },
-          { code: '    <span class="s-cm"># ── Performance ──</span>', key: null },
-          { code: '    <span class="s-dir">sendfile</span>           <span class="s-val">on</span>;', key: 'sendfile' },
-          { code: '    <span class="s-dir">tcp_nopush</span>         <span class="s-val">on</span>;', key: 'tcp-nopush' },
-          { code: '    <span class="s-dir">tcp_nodelay</span>        <span class="s-val">on</span>;', key: 'tcp-nodelay' },
-          { code: '    <span class="s-dir">keepalive_timeout</span>  <span class="s-num">65</span>;', key: 'keepalive' },
-          { code: '', key: null },
-          { code: '    <span class="s-cm"># ── Compression ──</span>', key: null },
-          { code: '    <span class="s-dir">gzip</span>               <span class="s-val">on</span>;', key: 'gzip' },
-          { code: '    <span class="s-dir">gzip_vary</span>          <span class="s-val">on</span>;', key: 'gzip-vary' },
-          { code: '    <span class="s-dir">gzip_comp_level</span>    <span class="s-num">5</span>;', key: 'gzip-level' },
-          { code: '    <span class="s-dir">gzip_min_length</span>    <span class="s-num">256</span>;', key: 'gzip-min' },
-          { code: '    <span class="s-dir">gzip_types</span>         <span class="s-str">text/css application/json application/javascript text/xml image/svg+xml</span>;', key: 'gzip-types' },
-          { code: '', key: null },
-          { code: '    <span class="s-cm"># ── Rate limiting ──</span>', key: null },
-          { code: '    <span class="s-dir">limit_req_zone</span> <span class="s-var">$binary_remote_addr</span> <span class="s-dir">zone</span>=<span class="s-val">api</span>:<span class="s-num">10m</span> <span class="s-dir">rate</span>=<span class="s-num">30r/s</span>;', key: 'rate-limit-zone' },
-          { code: '', key: null },
-          { code: '    <span class="s-cm"># ── Upstream (Node.js cluster) ──</span>', key: null },
-          { code: '    <span class="s-sec">upstream</span> <span class="s-val">node_app</span> <span class="s-punc">{</span>', key: 'upstream' },
-          { code: '        <span class="s-dir">least_conn</span>;', key: 'least-conn' },
-          { code: '        <span class="s-dir">server</span> <span class="s-num">127.0.0.1:3000</span>;', key: 'upstream-server' },
-          { code: '        <span class="s-dir">keepalive</span> <span class="s-num">32</span>;', key: 'upstream-keepalive' },
-          { code: '    <span class="s-punc">}</span>', key: null },
-          { code: '', key: null },
-          { code: '    <span class="s-sec">server</span> <span class="s-punc">{</span>', key: 'server-block' },
-          { code: '        <span class="s-dir">listen</span> <span class="s-num">443</span> <span class="s-val">ssl http2</span>;', key: 'listen-443' },
-          { code: '        <span class="s-dir">server_name</span>  <span class="s-str">example.com</span>;', key: 'server-name' },
-          { code: '', key: null },
-          { code: '        <span class="s-cm"># ── TLS ──</span>', key: null },
-          { code: '        <span class="s-dir">ssl_certificate</span>      <span class="s-str">/etc/letsencrypt/live/example.com/fullchain.pem</span>;', key: 'ssl-cert' },
-          { code: '        <span class="s-dir">ssl_certificate_key</span>  <span class="s-str">/etc/letsencrypt/live/example.com/privkey.pem</span>;', key: 'ssl-cert' },
-          { code: '        <span class="s-dir">ssl_protocols</span>        <span class="s-val">TLSv1.2 TLSv1.3</span>;', key: 'ssl-protocols' },
-          { code: '        <span class="s-dir">ssl_ciphers</span>          <span class="s-str">ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256</span>;', key: 'ssl-ciphers' },
-          { code: '        <span class="s-dir">ssl_prefer_server_ciphers</span>  <span class="s-val">on</span>;', key: 'ssl-prefer' },
-          { code: '', key: null },
-          { code: '        <span class="s-cm"># ── Security headers ──</span>', key: null },
-          { code: '        <span class="s-dir">add_header</span> <span class="s-val">X-Frame-Options</span>         <span class="s-str">"DENY"</span>          <span class="s-val">always</span>;', key: 'x-frame' },
-          { code: '        <span class="s-dir">add_header</span> <span class="s-val">X-Content-Type-Options</span>  <span class="s-str">"nosniff"</span>       <span class="s-val">always</span>;', key: 'x-content-type' },
-          { code: '        <span class="s-dir">add_header</span> <span class="s-val">Strict-Transport-Security</span> <span class="s-str">"max-age=63072000; includeSubDomains; preload"</span> <span class="s-val">always</span>;', key: 'hsts' },
-          { code: '        <span class="s-dir">add_header</span> <span class="s-val">Referrer-Policy</span>         <span class="s-str">"strict-origin-when-cross-origin"</span> <span class="s-val">always</span>;', key: 'referrer' },
-          { code: '', key: null },
-          { code: '        <span class="s-cm"># ── Static files ──</span>', key: null },
-          { code: '        <span class="s-sec">location</span> <span class="s-str">/static/</span> <span class="s-punc">{</span>', key: 'loc-static' },
-          { code: '            <span class="s-dir">alias</span> <span class="s-str">/var/www/app/public/</span>;', key: 'alias' },
-          { code: '            <span class="s-dir">expires</span> <span class="s-num">1y</span>;', key: 'expires' },
-          { code: '            <span class="s-dir">add_header</span> <span class="s-val">Cache-Control</span> <span class="s-str">"public, immutable"</span>;', key: 'cache-control' },
-          { code: '            <span class="s-dir">access_log</span> <span class="s-val">off</span>;', key: 'access-log-off' },
-          { code: '        <span class="s-punc">}</span>', key: null },
-          { code: '', key: null },
-          { code: '        <span class="s-cm"># ── API proxy ──</span>', key: null },
-          { code: '        <span class="s-sec">location</span> <span class="s-str">/api/</span> <span class="s-punc">{</span>', key: 'loc-api' },
-          { code: '            <span class="s-dir">limit_req</span> <span class="s-dir">zone</span>=<span class="s-val">api</span> <span class="s-dir">burst</span>=<span class="s-num">50</span> <span class="s-val">nodelay</span>;', key: 'limit-req' },
-          { code: '            <span class="s-dir">proxy_pass</span>         <span class="s-str">http://node_app</span>;', key: 'proxy-pass' },
-          { code: '            <span class="s-dir">proxy_http_version</span> <span class="s-num">1.1</span>;', key: 'proxy-http' },
-          { code: '            <span class="s-dir">proxy_set_header</span>   <span class="s-val">Host</span>              <span class="s-var">$host</span>;', key: 'proxy-headers' },
-          { code: '            <span class="s-dir">proxy_set_header</span>   <span class="s-val">X-Real-IP</span>         <span class="s-var">$remote_addr</span>;', key: 'proxy-headers' },
-          { code: '            <span class="s-dir">proxy_set_header</span>   <span class="s-val">X-Forwarded-For</span>   <span class="s-var">$proxy_add_x_forwarded_for</span>;', key: 'proxy-headers' },
-          { code: '            <span class="s-dir">proxy_set_header</span>   <span class="s-val">X-Forwarded-Proto</span> <span class="s-var">$scheme</span>;', key: 'proxy-headers' },
-          { code: '        <span class="s-punc">}</span>', key: null },
-          { code: '    <span class="s-punc">}</span>', key: null },
-          { code: '<span class="s-punc">}</span>', key: null },
-        ],
-      },
-
-      pm2: {
-        lines: [
-          { code: '<span class="s-cm">// pm2.ecosystem.config.js</span>', key: 'pm2-header' },
-          { code: '<span class="s-cm">// Process manager config for production Node.js</span>', key: 'pm2-header' },
-          { code: '', key: null },
-          { code: '<span class="s-kw">module</span>.<span class="s-kw">exports</span> = <span class="s-punc">{</span>', key: null },
-          { code: '  <span class="s-sec">apps</span>: [<span class="s-punc">{</span>', key: null },
-          { code: '', key: null },
-          { code: '    <span class="s-dir">name</span>:       <span class="s-str">"api-server"</span>,', key: 'pm2-name' },
-          { code: '    <span class="s-dir">script</span>:     <span class="s-str">"./src/server.js"</span>,', key: 'pm2-script' },
-          { code: '', key: null },
-          { code: '    <span class="s-cm">// ── Clustering ──</span>', key: null },
-          { code: '    <span class="s-dir">exec_mode</span>:  <span class="s-str">"cluster"</span>,', key: 'pm2-cluster' },
-          { code: '    <span class="s-dir">instances</span>:  <span class="s-str">"max"</span>,', key: 'pm2-instances' },
-          { code: '', key: null },
-          { code: '    <span class="s-cm">// ── File watching ──</span>', key: null },
-          { code: '    <span class="s-dir">watch</span>:         <span class="s-val">false</span>,', key: 'pm2-watch' },
-          { code: '    <span class="s-dir">ignore_watch</span>:  [<span class="s-str">"node_modules"</span>, <span class="s-str">"logs"</span>, <span class="s-str">".git"</span>],', key: 'pm2-ignore-watch' },
-          { code: '', key: null },
-          { code: '    <span class="s-cm">// ── Logging ──</span>', key: null },
-          { code: '    <span class="s-dir">error_file</span>:  <span class="s-str">"./logs/err.log"</span>,', key: 'pm2-logs' },
-          { code: '    <span class="s-dir">out_file</span>:    <span class="s-str">"./logs/out.log"</span>,', key: 'pm2-logs' },
-          { code: '    <span class="s-dir">merge_logs</span>:  <span class="s-val">true</span>,', key: 'pm2-merge-logs' },
-          { code: '    <span class="s-dir">log_date_format</span>: <span class="s-str">"YYYY-MM-DD HH:mm:ss Z"</span>,', key: 'pm2-log-date' },
-          { code: '', key: null },
-          { code: '    <span class="s-cm">// ── Memory & restarts ──</span>', key: null },
-          { code: '    <span class="s-dir">max_memory_restart</span>:       <span class="s-str">"512M"</span>,', key: 'pm2-memory' },
-          { code: '    <span class="s-dir">exp_backoff_restart_delay</span>: <span class="s-num">100</span>,', key: 'pm2-backoff' },
-          { code: '', key: null },
-          { code: '    <span class="s-cm">// ── Environment ──</span>', key: null },
-          { code: '    <span class="s-sec">env</span>: <span class="s-punc">{</span>', key: null },
-          { code: '      <span class="s-dir">NODE_ENV</span>: <span class="s-str">"development"</span>,', key: 'pm2-env' },
-          { code: '      <span class="s-dir">PORT</span>:     <span class="s-num">3000</span>,', key: 'pm2-env' },
-          { code: '    <span class="s-punc">}</span>,', key: null },
-          { code: '    <span class="s-sec">env_production</span>: <span class="s-punc">{</span>', key: null },
-          { code: '      <span class="s-dir">NODE_ENV</span>: <span class="s-str">"production"</span>,', key: 'pm2-env-prod' },
-          { code: '      <span class="s-dir">PORT</span>:     <span class="s-num">3000</span>,', key: 'pm2-env-prod' },
-          { code: '    <span class="s-punc">}</span>,', key: null },
-          { code: '', key: null },
-          { code: '  <span class="s-punc">}]</span>,', key: null },
-          { code: '<span class="s-punc">}</span>;', key: null },
-        ],
-      },
-
-      systemd: {
-        lines: [
-          { code: '<span class="s-cm"># /etc/systemd/system/api-server.service</span>', key: 'sd-header' },
-          { code: '<span class="s-cm"># Ensures the Node.js app starts on boot and restarts on failure</span>', key: 'sd-header' },
-          { code: '', key: null },
-          { code: '<span class="s-sec">[Unit]</span>', key: 'sd-unit' },
-          { code: '<span class="s-dir">Description</span>=<span class="s-str">API Server (Node.js via PM2)</span>', key: 'sd-description' },
-          { code: '<span class="s-dir">Documentation</span>=<span class="s-str">https://pm2.keymetrics.io/docs</span>', key: 'sd-documentation' },
-          { code: '<span class="s-dir">After</span>=<span class="s-val">network.target</span>', key: 'sd-after' },
-          { code: '<span class="s-dir">Wants</span>=<span class="s-val">network-online.target</span>', key: 'sd-wants' },
-          { code: '', key: null },
-          { code: '<span class="s-sec">[Service]</span>', key: 'sd-service' },
-          { code: '<span class="s-dir">Type</span>=<span class="s-val">forking</span>', key: 'sd-type' },
-          { code: '<span class="s-dir">User</span>=<span class="s-val">deploy</span>', key: 'sd-user' },
-          { code: '<span class="s-dir">Group</span>=<span class="s-val">deploy</span>', key: 'sd-user' },
-          { code: '<span class="s-dir">WorkingDirectory</span>=<span class="s-str">/var/www/api-server</span>', key: 'sd-workdir' },
-          { code: '', key: null },
-          { code: '<span class="s-dir">Environment</span>=<span class="s-val">NODE_ENV=production</span>', key: 'sd-env' },
-          { code: '<span class="s-dir">Environment</span>=<span class="s-val">PM2_HOME=/var/www/api-server/.pm2</span>', key: 'sd-pm2home' },
-          { code: '', key: null },
-          { code: '<span class="s-dir">ExecStart</span>=<span class="s-str">/usr/bin/pm2 start ecosystem.config.js --env production</span>', key: 'sd-execstart' },
-          { code: '<span class="s-dir">ExecReload</span>=<span class="s-str">/usr/bin/pm2 reload all</span>', key: 'sd-execreload' },
-          { code: '<span class="s-dir">ExecStop</span>=<span class="s-str">/usr/bin/pm2 stop all</span>', key: 'sd-execstop' },
-          { code: '', key: null },
-          { code: '<span class="s-dir">Restart</span>=<span class="s-val">on-failure</span>', key: 'sd-restart' },
-          { code: '<span class="s-dir">RestartSec</span>=<span class="s-num">5</span>', key: 'sd-restartsec' },
-          { code: '<span class="s-dir">LimitNOFILE</span>=<span class="s-num">65535</span>', key: 'sd-limitnofile' },
-          { code: '', key: null },
-          { code: '<span class="s-sec">[Install]</span>', key: 'sd-install' },
-          { code: '<span class="s-dir">WantedBy</span>=<span class="s-val">multi-user.target</span>', key: 'sd-wantedby' },
-        ],
-      }
-    };
-
-    /* ── Explanations ── */
-    const EXPLAIN = {
-      'file-header': { title: 'Config file', body: '<p>The main nginx configuration file, typically at <code>/etc/nginx/nginx.conf</code>. This file controls the entire server: how many worker processes run, how connections are handled, TLS settings, proxying rules, and caching behaviour.</p><p>In production, this file is version-controlled and deployed alongside application code.</p>' },
-
-      'worker-processes': { title: 'worker_processes auto', body: '<p>Tells nginx to spawn one worker process per CPU core. Each worker handles thousands of concurrent connections independently using an event-driven, non-blocking model.</p><p>On a 4-core server, this creates 4 workers. Each worker runs in its own process, so a crash in one doesn\'t affect the others.</p><span class="tip">Always use <code>auto</code> unless you have a specific reason to limit workers (e.g., shared hosting with CPU quotas).</span>' },
-      'rlimit-nofile': { title: 'worker_rlimit_nofile 65535', body: '<p>Sets the maximum number of file descriptors each worker process can open. Every active connection, open file, and upstream socket consumes a file descriptor.</p><p>The Linux default (1024) is far too low for production. At high concurrency, running out of file descriptors causes "Too many open files" errors and dropped connections.</p>' },
-      'error-log': { title: 'error_log', body: '<p>Defines where nginx writes error messages and the minimum severity level to log. The <code>warn</code> level captures warnings and errors without flooding the log with debug noise.</p><p>In production, this log is monitored by tools like Prometheus/Loki or forwarded to a centralized logging system.</p>' },
-      'pid': { title: 'pid', body: '<p>The file where nginx writes its master process ID. systemd and deployment scripts use this PID to send signals: <code>SIGHUP</code> for graceful reload, <code>SIGTERM</code> for shutdown.</p>' },
-      'events-block': { title: 'events { }', body: '<p>The events block configures the connection processing model. nginx uses an event-driven architecture (epoll on Linux, kqueue on BSD) that lets a single worker handle thousands of connections without spawning a thread per connection.</p><p>This is what makes nginx dramatically more memory-efficient than Apache\'s prefork model.</p>' },
-      'worker-connections': { title: 'worker_connections 4096', body: '<p>The maximum simultaneous connections each worker process can maintain. With 4 workers × 4096 connections = 16,384 concurrent connections capacity.</p><p>Each connection uses roughly 1-2 KB of memory, so 16K connections costs about 20-30 MB — trivial on modern servers.</p>' },
-      'multi-accept': { title: 'multi_accept on', body: '<p>Allows each worker to accept multiple new connections at once when notified by the kernel, rather than accepting them one by one. Reduces latency under high connection rates.</p>' },
-      'http-block': { title: 'http { }', body: '<p>The HTTP block is the main configuration context. Everything inside it applies to HTTP/HTTPS traffic: compression, caching, TLS, virtual hosts, proxying, and rate limiting.</p>' },
-      'sendfile': { title: 'sendfile on', body: '<p>Enables the <code>sendfile()</code> system call, which transfers file data directly from disk to the network socket without copying it through userspace memory. This is significantly faster for serving static files.</p>' },
-      'tcp-nopush': { title: 'tcp_nopush on', body: '<p>Sends HTTP response headers and the beginning of the file body in a single TCP packet. Reduces the number of packets sent, improving throughput for static file responses.</p><p>Works in conjunction with <code>sendfile</code>.</p>' },
-      'tcp-nodelay': { title: 'tcp_nodelay on', body: '<p>Disables Nagle\'s algorithm, which buffers small outgoing packets. For interactive applications (APIs, WebSockets), this reduces latency by sending data immediately rather than waiting to fill a full TCP segment.</p>' },
-      'keepalive': { title: 'keepalive_timeout 65', body: '<p>How long nginx keeps an idle connection open before closing it. HTTP/1.1 keep-alive allows multiple requests over a single TCP connection, avoiding the overhead of a new TCP handshake + TLS negotiation for each request.</p><p>65 seconds is a good balance — long enough for page resource loading, short enough to free idle connections.</p>' },
-      'gzip': { title: 'gzip on', body: '<p>Enables real-time compression of HTTP responses. Text-based content (HTML, CSS, JS, JSON, SVG) typically compresses by 60-80%, dramatically reducing bandwidth usage and page load times.</p><span class="warn">Never gzip already-compressed formats like JPEG, PNG, or WOFF2 — it wastes CPU and can actually increase file size.</span>' },
-      'gzip-vary': { title: 'gzip_vary on', body: '<p>Adds a <code>Vary: Accept-Encoding</code> header to compressed responses. This tells CDNs and caches to store separate versions for clients that do and don\'t accept gzip — preventing a compressed response from being served to a client that can\'t decompress it.</p>' },
-      'gzip-level': { title: 'gzip_comp_level 5', body: '<p>Compression level from 1 (fastest, least compression) to 9 (slowest, most compression). Level 5 is the sweet spot — roughly 85% of maximum compression at 40% of the CPU cost of level 9.</p><p>Above level 6, diminishing returns make the extra CPU not worth the marginal size reduction.</p>' },
-      'gzip-min': { title: 'gzip_min_length 256', body: '<p>Don\'t bother compressing responses smaller than 256 bytes. Gzip adds a header overhead (~20 bytes), and very small responses don\'t compress well. This avoids wasting CPU on tiny responses that won\'t benefit.</p>' },
-      'gzip-types': { title: 'gzip_types', body: '<p>The MIME types to compress. Text-based formats benefit most: CSS, JavaScript, JSON, XML, and SVG. The default only includes <code>text/html</code>, so you must explicitly list other types.</p>' },
-      'rate-limit-zone': { title: 'limit_req_zone', body: '<p>Defines a shared memory zone for rate limiting. This one tracks requests per client IP address (<code>$binary_remote_addr</code>) in a 10 MB zone, allowing up to 30 requests per second per IP.</p><p>The zone is shared across all worker processes via shared memory. 10 MB can track roughly 160,000 unique IP addresses.</p><span class="tip">Rate limiting is the first line of defense against brute-force attacks, credential stuffing, and API abuse.</span>' },
-      'upstream': { title: 'upstream node_app', body: '<p>Defines a named group of backend servers that nginx can proxy requests to. Even with a single backend, the upstream block enables health checking, load balancing, and keep-alive connections to the backend.</p>' },
-      'least-conn': { title: 'least_conn', body: '<p>Routes each new request to the upstream server with the fewest active connections. This is better than round-robin for APIs where some requests take longer than others — it naturally avoids overloading slow-processing instances.</p>' },
-      'upstream-server': { title: 'server 127.0.0.1:3000', body: '<p>The backend server address. <code>127.0.0.1</code> means the Node.js app runs on the same machine. In a multi-server setup, you\'d list multiple servers here with optional weights.</p>' },
-      'upstream-keepalive': { title: 'keepalive 32', body: '<p>Maintains a pool of 32 persistent connections to the upstream. Instead of opening a new TCP connection for every proxied request, nginx reuses idle connections from the pool — reducing latency by ~1-3ms per request.</p>' },
-      'server-block': { title: 'server { }', body: '<p>A virtual host definition. Each <code>server</code> block handles requests for a specific domain and port combination. A single nginx instance can serve dozens of virtual hosts.</p>' },
-      'listen-443': { title: 'listen 443 ssl http2', body: '<p>Listen on port 443 (HTTPS) with TLS and HTTP/2 enabled. HTTP/2 provides multiplexing (many requests over one connection), header compression, and server push — all significant performance improvements over HTTP/1.1.</p>' },
-      'server-name': { title: 'server_name', body: '<p>The domain name this server block responds to. nginx matches incoming requests\' <code>Host</code> header against this value to route to the correct virtual host.</p>' },
-      'ssl-cert': { title: 'SSL certificate', body: '<p>Paths to the TLS certificate and private key, typically provisioned by Let\'s Encrypt via certbot. The <code>fullchain.pem</code> includes both the server certificate and the intermediate CA certificate, which is required for most clients to verify the chain of trust.</p><span class="tip">Let\'s Encrypt certificates are free, automated, and renew every 90 days via a cron job or systemd timer.</span>' },
-      'ssl-protocols': { title: 'ssl_protocols TLSv1.2 TLSv1.3', body: '<p>Only allow TLS 1.2 and 1.3. Older versions (SSLv3, TLS 1.0, TLS 1.1) have known vulnerabilities (POODLE, BEAST, etc.) and are disabled on all modern servers.</p><p>TLS 1.3 is roughly 100ms faster to establish than TLS 1.2 because it reduces the handshake from 2 round trips to 1.</p>' },
-      'ssl-ciphers': { title: 'ssl_ciphers', body: '<p>The cipher suites nginx will negotiate with clients, listed in priority order. ECDHE provides forward secrecy (past session keys can\'t be decrypted even if the server\'s private key is later compromised), and AES-GCM is the fastest authenticated cipher on modern CPUs with AES-NI.</p>' },
-      'ssl-prefer': { title: 'ssl_prefer_server_ciphers', body: '<p>Use the server\'s cipher preference order rather than the client\'s. This ensures the strongest cipher is always chosen, even if the client\'s browser has a weaker cipher listed first.</p>' },
-      'x-frame': { title: 'X-Frame-Options: DENY', body: '<p>Prevents the page from being embedded in an <code>&lt;iframe&gt;</code> on another site. This blocks clickjacking attacks, where a malicious site overlays an invisible iframe of your app to trick users into clicking buttons they can\'t see.</p>' },
-      'x-content-type': { title: 'X-Content-Type-Options: nosniff', body: '<p>Prevents browsers from MIME-sniffing a response away from its declared <code>Content-Type</code>. Without this header, a browser might interpret a CSS file as JavaScript if it contains something that looks like a script — enabling content injection attacks.</p>' },
-      'hsts': { title: 'Strict-Transport-Security', body: '<p>Tells browsers to <em>only</em> connect to this domain over HTTPS for the next 2 years (63,072,000 seconds). The <code>includeSubDomains</code> flag extends this to all subdomains, and <code>preload</code> allows the domain to be hardcoded into browser source code so the very first visit is also HTTPS.</p><span class="warn">Once you enable HSTS preloading, reverting to HTTP is extremely difficult. Make sure your HTTPS setup is solid before adding <code>preload</code>.</span>' },
-      'referrer': { title: 'Referrer-Policy', body: '<p>Controls how much referrer information is sent when navigating away from your site. <code>strict-origin-when-cross-origin</code> sends the full URL for same-origin requests but only the origin (domain) for cross-origin requests — balancing analytics usefulness with user privacy.</p>' },
-      'loc-static': { title: 'location /static/', body: '<p>A location block that matches all requests starting with <code>/static/</code>. nginx serves these files directly from disk without proxying to the Node.js app — offloading static file serving from the application server entirely.</p>' },
-      'alias': { title: 'alias', body: '<p>Maps the URL path to a filesystem directory. Requests for <code>/static/app.js</code> serve the file at <code>/var/www/app/public/app.js</code>. The <code>alias</code> directive replaces the matched location prefix with the specified path.</p>' },
-      'expires': { title: 'expires 1y', body: '<p>Sets the <code>Expires</code> and <code>Cache-Control: max-age</code> headers to 1 year. Browsers will serve these files from their local cache without even checking with the server — zero network requests for cached static assets.</p><p>This works safely because static files use content hashing in their filenames (e.g., <code>app.3f8a2b.js</code>), so new versions get new URLs.</p>' },
-      'cache-control': { title: 'Cache-Control: public, immutable', body: '<p><code>public</code> means CDNs and shared caches can store this response. <code>immutable</code> is a hint that the content at this URL will never change — browsers won\'t even send a conditional revalidation request, eliminating the 304 round trip entirely.</p>' },
-      'access-log-off': { title: 'access_log off', body: '<p>Disables access logging for static files. Since these are served thousands of times per page load and are rarely useful for debugging, disabling logging reduces disk I/O and keeps log files focused on meaningful requests.</p>' },
-      'loc-api': { title: 'location /api/', body: '<p>Matches all requests starting with <code>/api/</code> and proxies them to the Node.js upstream. This is the boundary between the web server and the application — nginx handles TLS, compression, and rate limiting; Node.js handles business logic.</p>' },
-      'limit-req': { title: 'limit_req', body: '<p>Applies the <code>api</code> rate limit zone to this location. <code>burst=50</code> allows brief traffic spikes of up to 50 requests above the limit, queued and processed at the configured rate. <code>nodelay</code> processes burst requests immediately rather than throttling them.</p>' },
-      'proxy-pass': { title: 'proxy_pass', body: '<p>The core reverse-proxy directive — forwards the request to the <code>node_app</code> upstream. nginx strips the TLS layer, applies compression, and passes a plain HTTP request to the backend. This is why the Node.js app only needs to listen on HTTP, not HTTPS.</p>' },
-      'proxy-http': { title: 'proxy_http_version 1.1', body: '<p>Use HTTP/1.1 for upstream connections, enabling keep-alive between nginx and the backend. HTTP/1.0 (the default) closes the connection after each request, wasting the connection pool configured in the upstream block.</p>' },
-      'proxy-headers': { title: 'proxy_set_header', body: '<p>Passes the original client\'s information to the backend. Without these headers, the Node.js app would see all requests as coming from <code>127.0.0.1</code> (nginx itself). <code>X-Real-IP</code> carries the client\'s actual IP address, and <code>X-Forwarded-Proto</code> tells the app whether the original request was HTTP or HTTPS.</p><span class="tip">Express reads <code>X-Forwarded-For</code> via <code>app.set(\'trust proxy\', 1)</code> to correctly populate <code>req.ip</code>.</span>' },
-
-      'pm2-header': { title: 'PM2 ecosystem file', body: '<p>The PM2 ecosystem file is a JavaScript configuration that defines how your application processes are managed: how many instances to run, how they restart, where logs go, and what environment variables to inject.</p><p>Run with: <code>pm2 start ecosystem.config.js --env production</code></p>' },
-      'pm2-name': { title: 'name', body: '<p>A human-readable identifier for this application in PM2\'s process list. Used in commands like <code>pm2 restart api-server</code> and in monitoring dashboards.</p>' },
-      'pm2-script': { title: 'script', body: '<p>The entry point file for your application. PM2 will execute this file with Node.js. Relative paths are resolved from the ecosystem file\'s directory or the <code>cwd</code> option if specified.</p>' },
-      'pm2-cluster': { title: 'exec_mode: "cluster"', body: '<p>Runs the application using Node.js\'s built-in <code>cluster</code> module, which forks the master process into multiple worker processes. Each worker runs in its own V8 isolate and handles requests independently.</p><p>This enables true multi-core utilization — Node.js is single-threaded, so without clustering, your 8-core server uses only 1 core for your application.</p>' },
-      'pm2-instances': { title: 'instances: "max"', body: '<p>Spawn one worker process per CPU core. On a 4-core machine, this creates 4 instances, each with its own event loop and memory space. PM2 automatically load-balances incoming connections across them using a round-robin strategy.</p><span class="tip">Use <code>"max"</code> for CPU-bound work. For I/O-bound apps, <code>instances: 2</code> is often enough since Node.js handles I/O concurrency within a single process.</span>' },
-      'pm2-watch': { title: 'watch: false', body: '<p>Disables file watching in production. In development, file watching auto-restarts the app when code changes — but in production, restarts should only happen through deliberate deployment commands, not accidental file changes.</p>' },
-      'pm2-ignore-watch': { title: 'ignore_watch', body: '<p>Directories excluded from file watching (when watch is enabled in development). <code>node_modules</code> contains thousands of files that would trigger false restarts, and <code>logs</code> change continuously during normal operation.</p>' },
-      'pm2-logs': { title: 'error_file / out_file', body: '<p>Separate log files for stderr and stdout. In production, these are typically rotated by <code>pm2-logrotate</code> or collected by a log aggregation system (ELK stack, Loki, Datadog).</p>' },
-      'pm2-merge-logs': { title: 'merge_logs: true', body: '<p>When running in cluster mode, all instances write to the same log file instead of creating separate files per instance (<code>out-0.log</code>, <code>out-1.log</code>, etc.). Simplifies log management and searching.</p>' },
-      'pm2-log-date': { title: 'log_date_format', body: '<p>Prepends each log line with a timestamp in ISO 8601 format. Without this, correlating log entries with events or errors is nearly impossible — especially when multiple processes write to the same file.</p>' },
-      'pm2-memory': { title: 'max_memory_restart: "512M"', body: '<p>Automatically restarts a worker if its memory usage exceeds 512 MB. This is a safety net against memory leaks — a common issue in long-running Node.js processes, especially with large caches or event listener accumulation.</p><span class="warn">If your app regularly hits this limit, investigate the leak rather than just increasing the threshold. Tools like <code>--inspect</code> and heap snapshots help identify the source.</span>' },
-      'pm2-backoff': { title: 'exp_backoff_restart_delay', body: '<p>If a process crashes repeatedly, PM2 waits progressively longer before each restart attempt: 100ms → 200ms → 400ms → 800ms and so on. This prevents "restart storms" where a fundamentally broken process consumes all CPU by crashing and restarting in a tight loop.</p>' },
-      'pm2-env': { title: 'env (development)', body: '<p>Default environment variables injected when running without the <code>--env</code> flag. <code>NODE_ENV=development</code> enables verbose error messages, source maps, and other developer-friendly behaviours that should never be active in production.</p>' },
-      'pm2-env-prod': { title: 'env_production', body: '<p>Environment variables for production. <code>NODE_ENV=production</code> activates performance optimizations in Express (view caching, less verbose errors), enables gzip in some frameworks, and is checked by many npm packages to adjust their behaviour.</p><p>Activated with: <code>pm2 start ecosystem.config.js --env production</code></p>' },
-
-      'sd-header': { title: 'systemd service file', body: '<p>A systemd unit file defines a service that the operating system manages. It controls how the service starts, stops, restarts, and what permissions it runs with. This is how production Linux servers ensure applications survive reboots and crashes.</p><p>Place this file at <code>/etc/systemd/system/api-server.service</code>, then run <code>systemctl enable api-server</code> to activate it.</p>' },
-      'sd-unit': { title: '[Unit] section', body: '<p>Metadata about the service — its name, documentation link, and dependency ordering. systemd uses this to determine when and in what order to start the service during boot.</p>' },
-      'sd-description': { title: 'Description', body: '<p>A human-readable name shown in <code>systemctl status</code> output and system logs. Keep it descriptive enough that an on-call engineer seeing it at 3 AM knows exactly what this service is.</p>' },
-      'sd-documentation': { title: 'Documentation', body: '<p>A URL where administrators can find documentation about this service. Shown in <code>systemctl status</code> output — a small detail that pays dividends during incidents.</p>' },
-      'sd-after': { title: 'After=network.target', body: '<p>Don\'t start this service until the network stack is up. Without this, the app might try to bind to a port or connect to a database before the network is ready, causing a startup failure.</p>' },
-      'sd-wants': { title: 'Wants=network-online.target', body: '<p>A soft dependency — systemd <em>prefers</em> full network connectivity before starting this service, but won\'t fail if it\'s not available. Stronger than <code>After</code> (which only affects ordering), but weaker than <code>Requires</code> (which would fail the service if the dependency fails).</p>' },
-      'sd-service': { title: '[Service] section', body: '<p>The core configuration: what user to run as, what command to execute, how to handle failures, and what environment to provide. This is where the operational behaviour of the service is defined.</p>' },
-      'sd-type': { title: 'Type=forking', body: '<p>PM2 daemonizes itself (forks into the background) after starting. <code>Type=forking</code> tells systemd to wait for the process to fork and then track the child process. For applications that stay in the foreground, use <code>Type=simple</code> instead.</p>' },
-      'sd-user': { title: 'User / Group', body: '<p>Run the service as the <code>deploy</code> user, not root. This is a critical security practice — if the application is compromised, the attacker only has the permissions of the <code>deploy</code> user, not full root access to the server.</p><span class="warn">Never run production applications as root. Create a dedicated low-privilege user for each application.</span>' },
-      'sd-workdir': { title: 'WorkingDirectory', body: '<p>Sets the current working directory before executing the start command. Relative paths in your application code (like <code>./logs</code> or <code>./config</code>) resolve from this directory.</p>' },
-      'sd-env': { title: 'Environment=NODE_ENV', body: '<p>Sets environment variables for the service process. These are available in Node.js via <code>process.env.NODE_ENV</code>. Setting this at the systemd level ensures it\'s always set, even if the PM2 config is missing it.</p>' },
-      'sd-pm2home': { title: 'Environment=PM2_HOME', body: '<p>Tells PM2 where to store its internal data (process list, logs, PID files). Setting a custom <code>PM2_HOME</code> keeps PM2\'s state isolated to this application\'s directory, avoiding conflicts with other PM2 instances on the same server.</p>' },
-      'sd-execstart': { title: 'ExecStart', body: '<p>The command to start the service. This invokes PM2 with the ecosystem config file and the <code>--env production</code> flag. Use absolute paths (<code>/usr/bin/pm2</code>) to avoid PATH-related failures during boot.</p>' },
-      'sd-execreload': { title: 'ExecReload', body: '<p>The command executed when you run <code>systemctl reload api-server</code>. PM2\'s <code>reload</code> command performs a zero-downtime restart — it spawns new workers, waits for them to be ready, then gracefully shuts down old workers.</p><span class="tip">Use <code>systemctl reload</code> for deployments instead of <code>restart</code>. Reload keeps the service running during the update; restart causes a brief interruption.</span>' },
-      'sd-execstop': { title: 'ExecStop', body: '<p>The command to gracefully stop the service. PM2\'s <code>stop all</code> sends <code>SIGINT</code> to each worker, giving them a chance to finish handling in-flight requests before shutting down.</p>' },
-      'sd-restart': { title: 'Restart=on-failure', body: '<p>Automatically restart the service if it exits with a non-zero exit code (indicating an error). <code>on-failure</code> is more targeted than <code>always</code> — it won\'t restart the service if it exits cleanly (exit code 0), which would happen during intentional shutdown.</p>' },
-      'sd-restartsec': { title: 'RestartSec=5', body: '<p>Wait 5 seconds before restarting after a failure. This prevents tight restart loops that consume CPU and flood logs. Combined with PM2\'s own <code>exp_backoff_restart_delay</code>, this provides two layers of crash recovery dampening.</p>' },
-      'sd-limitnofile': { title: 'LimitNOFILE=65535', body: '<p>Raises the file descriptor limit for this service to 65,535. This matches the <code>worker_rlimit_nofile</code> in the nginx config — both the web server and the application server need high file descriptor limits to handle thousands of concurrent connections.</p>' },
-      'sd-install': { title: '[Install] section', body: '<p>Controls what happens when you run <code>systemctl enable</code>. It doesn\'t affect runtime behaviour — it only determines which boot targets will automatically start this service.</p>' },
-      'sd-wantedby': { title: 'WantedBy=multi-user.target', body: '<p>Start this service when the system reaches multi-user mode (the standard boot state for servers). This is the equivalent of the old SysVinit runlevel 3 — full networking, no graphical desktop.</p><p>After adding or changing this, run <code>systemctl daemon-reload && systemctl enable api-server</code>.</p>' },
-    };
-
-
-    /* ═══════════════════════════════════════════════
-       UI WIRING
-    ═══════════════════════════════════════════════ */
-
-    const codePane = document.getElementById('codePane');
-    const explainPanel = document.getElementById('explainPanel');
-    const tabBar = document.getElementById('tabBar');
-    let activeTab = 'nginx';
-    let activeLine = null;
-
-    function renderConfig(tab) {
-      activeTab = tab;
-      activeLine = null;
-      const config = CONFIGS[tab];
-      codePane.innerHTML = '';
-
-      config.lines.forEach((line, i) => {
-        const el = document.createElement('div');
-        el.className = 'config-line';
-        if (!line.key) el.style.cursor = 'default';
-
-        const ln = document.createElement('span');
-        ln.className = 'ln';
-        ln.textContent = i + 1;
-
-        const code = document.createElement('span');
-        code.className = 'code';
-        code.innerHTML = line.code || '\u00A0';
-
-        el.appendChild(ln);
-        el.appendChild(code);
-
-        if (line.key) {
-          el.addEventListener('click', () => {
-            if (activeLine) activeLine.classList.remove('active');
-            el.classList.add('active');
-            activeLine = el;
-            showExplanation(line.key);
-          });
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Layer 7: CI/CD Pipelines — The Full Stack Observatory">
+    <title>Layer 7: CI/CD Pipelines • The Full Stack Observatory</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Instrument+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --bg: #06090f;
+            --surface: #0d1520;
+            --surface-2: #131d2e;
+            --surface-3: #192840;
+            --border: rgba(182, 220, 255, 0.1);
+            --border-bright: rgba(182, 220, 255, 0.22);
+            --text: #e8eef6;
+            --text-muted: rgba(232, 238, 246, 0.55);
+            /* Layer 7 accent override */
+            --accent: #4da8ff;
+            --accent-dim: rgba(77, 168, 255, 0.12);
+            --mono: 'JetBrains Mono', monospace;
+            --sans: 'Instrument Sans', system-ui, sans-serif;
+            --serif: 'DM Serif Display', serif;
         }
 
-        codePane.appendChild(el);
-      });
+        * {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
 
-      // Reset explain panel
-      explainPanel.innerHTML = '<div class="explain-empty">Click any line to see what it does<div class="hint">Every directive has a purpose in production</div></div>';
+        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Instrument+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap');
 
-      // Update tab buttons
-      tabBar.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
-    }
+        body {
+            font-family: var(--sans);
+        }
 
-    function showExplanation(key) {
-      const data = EXPLAIN[key];
-      if (!data) return;
-      explainPanel.innerHTML = `<div class="explain-title">${data.title}</div><div class="explain-body">${data.body}</div>`;
-    }
+        h1, h2 {
+            font-family: var(--serif);
+        }
 
-    // Tab switching
-    tabBar.addEventListener('click', (e) => {
-      const btn = e.target.closest('.tab-btn');
-      if (!btn) return;
-      renderConfig(btn.dataset.tab);
-    });
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: var(--surface);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+        }
 
-    // Boot
-    renderConfig('nginx');
-  </script>
+        .current {
+            color: var(--accent);
+            position: relative;
+        }
+
+        .current:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent);
+            border-radius: 9999px;
+        }
+
+        .layer-badge {
+            background-color: var(--accent-dim);
+            color: var(--accent);
+            border: 1px solid rgba(77, 168, 255, 0.3);
+        }
+
+        .hero-h1-span {
+            color: var(--accent);
+        }
+
+        .constraint-badge-dot {
+            animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+
+        .panel {
+            background-color: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+        }
+
+        .panel-header-dot {
+            background-color: var(--accent);
+            box-shadow: 0 0 12px -2px var(--accent);
+        }
+
+        .stage-card {
+            background-color: var(--surface-3);
+            border: 2px solid var(--border-bright);
+            border-radius: 20px;
+        }
+
+        .stage-completed {
+            border-color: #10b981;
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+
+        .stage-current {
+            border-color: var(--accent);
+            animation: pulse-stage 2s ease-in-out infinite;
+        }
+
+        .stage-future {
+            border-color: var(--border-bright);
+            opacity: 0.6;
+        }
+
+        @keyframes pulse-stage {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(77, 168, 255, 0.4); }
+            50% { box-shadow: 0 0 0 12px rgba(77, 168, 255, 0); }
+        }
+
+        .pipeline-connector {
+            height: 3px;
+            background: linear-gradient(to right, #10b981, var(--accent), #64748b);
+        }
+
+        .yaml-section {
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border: 1px solid transparent;
+        }
+
+        .yaml-section:hover {
+            background-color: var(--accent-dim);
+            border-color: var(--accent);
+            cursor: pointer;
+        }
+
+        .modal {
+            animation: modalPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .explainer-h2 {
+            color: var(--accent);
+        }
+
+        .code {
+            color: var(--accent);
+            font-family: var(--mono);
+        }
+
+        pre code {
+            font-family: var(--mono);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .explainer-card {
+            border: 1px solid var(--border);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .explainer-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgb(77 168 255 / 0.1);
+        }
+    </style>
+</head>
+<body class="bg-[#06090f] text-[#e8eef6] min-h-screen">
+    <!-- TOPBAR -->
+    <nav class="topbar px-6 py-5 flex items-center justify-between">
+        <div class="flex items-center gap-x-3">
+            <a href="../../" 
+               class="flex items-center gap-x-2 font-medium text-lg hover:text-[#4da8ff]">
+                <span class="text-2xl">🔭</span>
+                <span>The Full Stack Observatory</span>
+            </a>
+            
+            <div class="flex items-center gap-x-2 text-xl text-[#64748b] mx-2">/</div>
+            
+            <span class="current text-2xl font-semibold">CI/CD Pipelines</span>
+            
+            <span class="layer-badge ml-3 px-4 py-1 text-sm font-semibold rounded-3xl flex items-center gap-x-1.5">
+                <span class="w-2 h-2 rounded-full bg-[#4da8ff]"></span>
+                LAYER 7 OF 12
+            </span>
+        </div>
+
+        <div class="flex items-center gap-x-6 text-sm font-medium">
+            <a href="https://github.com/MarkusIsaksson1982/MarkusIsaksson1982.github.io" 
+               target="_blank"
+               class="flex items-center gap-x-2 hover:text-[#4da8ff]">
+                <span class="font-mono">github.com/MarkusIsaksson1982</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L9 15" />
+                </svg>
+            </a>
+            
+            <div class="h-3 w-px bg-[#64748b]"></div>
+            
+            <a href="../../" 
+               class="flex items-center text-[#64748b] hover:text-[#4da8ff] font-semibold">
+                ← BACK TO OBSERVATORY
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="pt-16 pb-12 px-6 max-w-screen-2xl mx-auto">
+        <div class="flex flex-col items-center text-center">
+            <div class="inline-flex items-center bg-[#192840] text-[#4da8ff] text-xs font-semibold tracking-[1px] px-6 py-3 rounded-3xl mb-6 border border-[#4da8ff]/20">
+                <span class="constraint-badge-dot w-2 h-2 bg-[#4da8ff] rounded-full mr-2"></span>
+                THIS PAGE IS THE PIPELINE
+            </div>
+            
+            <h1 class="text-6xl md:text-7xl font-semibold max-w-2xl leading-none">
+                Layer 7:<br>
+                <span class="hero-h1-span">CI/CD Pipelines</span>
+            </h1>
+            
+            <p class="lead mt-6 max-w-xl text-xl text-[#c5d4e6]">
+                This very page deploys itself via GitHub Actions. 
+                Watch the real pipeline that powers the Full Stack Observatory — 
+                every commit triggers the exact flow you’re seeing right now.
+            </p>
+            
+            <div class="mt-10 flex items-center gap-x-8 text-sm uppercase font-semibold tracking-widest">
+                <div class="flex items-center gap-x-2">
+                    <div class="w-3 h-px bg-[#4da8ff]"></div>
+                    SELF-DOCUMENTING
+                </div>
+                <div class="flex items-center gap-x-2">
+                    <div class="w-3 h-px bg-[#4da8ff]"></div>
+                    ZERO-DOWNTIME
+                </div>
+                <div class="flex items-center gap-x-2">
+                    <div class="w-3 h-px bg-[#4da8ff]"></div>
+                    META-FLEX
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- PIPELINE OVERVIEW -->
+    <div class="max-w-screen-2xl mx-auto px-6 pb-16">
+        <div class="panel p-8 md:p-10">
+            <div class="panel-header flex items-center gap-x-3 mb-8">
+                <div class="panel-header-dot w-3 h-3 rounded-full"></div>
+                <span class="uppercase text-xs font-semibold tracking-[1.5px]">Pipeline Overview</span>
+                <div class="flex-1 h-px bg-gradient-to-r from-[#4da8ff]/30 to-transparent"></div>
+                
+                <button onclick="simulatePipeline()" 
+                        id="simulate-btn"
+                        class="flex items-center gap-x-2 bg-[#4da8ff] hover:bg-[#3a9deb] text-white text-sm font-semibold px-6 h-10 rounded-2xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14 10h4.764a2 2 0 011.789 2.894L18 21H6l-2.236-8.106A2 2 0 015.236 10H10" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 14v4m4-4v4" />
+                    </svg>
+                    SIMULATE RUN
+                </button>
+            </div>
+
+            <!-- Progress bar -->
+            <div class="mb-8 bg-[#192840] h-2.5 rounded-3xl overflow-hidden">
+                <div id="overall-progress" class="h-full bg-gradient-to-r from-emerald-400 to-[#4da8ff] w-0 rounded-r-3xl"></div>
+            </div>
+
+            <!-- Pipeline visualization -->
+            <div id="pipeline-container" class="flex flex-col md:flex-row md:items-center gap-6 md:gap-2 relative">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- PIPELINE CONFIG + LIVE STATUS -->
+    <div class="max-w-screen-2xl mx-auto px-6 pb-16 grid md:grid-cols-12 gap-8">
+        
+        <!-- PIPELINE CONFIG -->
+        <div class="md:col-span-7 panel p-8 md:p-10">
+            <div class="panel-header flex items-center gap-x-3 mb-8">
+                <div class="panel-header-dot w-3 h-3 rounded-full"></div>
+                <span class="uppercase text-xs font-semibold tracking-[1.5px]">Pipeline Config • .github/workflows/deploy.yml</span>
+            </div>
+            
+            <div id="yaml-container" class="bg-[#192840] rounded-3xl p-8 font-mono text-sm overflow-auto max-h-[520px] border border-[#4da8ff]/10">
+                <!-- YAML sections populated by JS -->
+            </div>
+            
+            <p class="text-xs text-[#64748b] mt-4 flex items-center gap-x-1">
+                <span class="inline-block w-2 h-2 bg-[#4da8ff] rounded-full animate-pulse"></span>
+                Click any section below to see what it does in this observatory’s actual pipeline
+            </p>
+        </div>
+        
+        <!-- LIVE STATUS -->
+        <div class="md:col-span-5 panel p-8 md:p-10 flex flex-col">
+            <div class="panel-header flex items-center gap-x-3 mb-8">
+                <div class="panel-header-dot w-3 h-3 rounded-full"></div>
+                <span class="uppercase text-xs font-semibold tracking-[1.5px]">Live Status</span>
+            </div>
+            
+            <div class="flex-1 flex flex-col justify-center">
+                <a href="https://github.com/MarkusIsaksson1982/MarkusIsaksson1982.github.io" 
+                   target="_blank"
+                   class="flex items-center justify-between bg-[#131d2e] hover:bg-[#192840] border border-[#4da8ff]/20 hover:border-[#4da8ff] rounded-3xl px-6 py-4 group">
+                    <div class="flex items-center gap-x-3">
+                        <div class="text-emerald-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 13l-5 5m0 0l-5-5m5 5V6" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="font-semibold font-mono">MarkusIsaksson1982.github.io</div>
+                            <div class="text-xs text-[#64748b]">GitHub Pages • Deployed from main</div>
+                        </div>
+                    </div>
+                    <div class="text-[#4da8ff] group-hover:translate-x-1">→</div>
+                </a>
+                
+                <div class="mt-8 flex justify-between items-baseline">
+                    <div>
+                        <div class="text-xs uppercase font-medium text-[#64748b]">Last successful deploy</div>
+                        <div id="last-deploy-time" class="text-2xl font-semibold">March 25, 2026 • 01:12 UTC</div>
+                        <div class="text-emerald-400 text-sm flex items-center gap-x-1">
+                            <span class="relative flex h-3 w-3">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-400"></span>
+                            </span>
+                            LIVE ON GITHUB PAGES
+                        </div>
+                    </div>
+                    
+                    <a href="https://github.com/MarkusIsaksson1982/MarkusIsaksson1982.github.io/actions" 
+                       target="_blank"
+                       class="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 text-white text-sm font-semibold px-7 h-11 rounded-2xl">
+                        VIEW ALL RUNS →
+                    </a>
+                </div>
+                
+                <div class="mt-auto pt-8 border-t border-[#4da8ff]/10 text-xs flex items-center justify-between text-[#64748b]">
+                    <div>Triggered by push to <span class="code">main</span></div>
+                    <div class="flex items-center gap-x-2">
+                        <span class="px-3 py-1 bg-emerald-400/10 text-emerald-400 rounded-2xl text-[10px] font-medium">✅ PASSED</span>
+                        <span>6 stages • 87s total</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WHAT THIS PROVES -->
+    <div class="max-w-screen-2xl mx-auto px-6 pb-20">
+        <h2 class="explainer-h2 text-4xl font-semibold text-center mb-4">What this proves</h2>
+        <p class="text-center text-[#c5d4e6] max-w-md mx-auto mb-12">
+            Every layer of the Observatory is production-grade. This one proves the entire site is built with the same engineering discipline it teaches.
+        </p>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="explainer-card bg-[#131d2e] rounded-3xl p-8">
+                <h3 class="flex items-center text-xl font-semibold mb-4">
+                    <span class="text-[#4da8ff] mr-3 text-3xl leading-none">✓</span>
+                    Automated deployment
+                </h3>
+                <p class="text-[#c5d4e6]">
+                    Push to <code class="code">main</code> → GitHub Pages in &lt;90 seconds. 
+                    No manual steps. The site you’re reading right now was deployed by this exact pipeline.
+                </p>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="explainer-card bg-[#131d2e] rounded-3xl p-8">
+                <h3 class="flex items-center text-xl font-semibold mb-4">
+                    <span class="text-[#4da8ff] mr-3 text-3xl leading-none">✓</span>
+                    Code quality gates
+                </h3>
+                <p class="text-[#c5d4e6]">
+                    Linting and tests run <strong>before</strong> any build or deploy. 
+                    A failing <code class="code">eslint</code> or <code class="code">test</code> blocks the entire pipeline.
+                </p>
+            </div>
+            
+            <!-- Card 3 -->
+            <div class="explainer-card bg-[#131d2e] rounded-3xl p-8">
+                <h3 class="flex items-center text-xl font-semibold mb-4">
+                    <span class="text-[#4da8ff] mr-3 text-3xl leading-none">✓</span>
+                    Reproducible builds
+                </h3>
+                <p class="text-[#c5d4e6]">
+                    Matrix strategy tests Node 18 <em>and</em> 20. 
+                    Locked <code class="code">package-lock.json</code> guarantees the same artifacts every time.
+                </p>
+            </div>
+            
+            <!-- Card 4 -->
+            <div class="explainer-card bg-[#131d2e] rounded-3xl p-8">
+                <h3 class="flex items-center text-xl font-semibold mb-4">
+                    <span class="text-[#4da8ff] mr-3 text-3xl leading-none">✓</span>
+                    Caching strategy
+                </h3>
+                <p class="text-[#c5d4e6]">
+                    <code class="code">actions/cache</code> + <code class="code">setup-node</code> cache for <code class="code">node_modules</code>. 
+                    Average CI run is 42% faster than cold builds.
+                </p>
+            </div>
+            
+            <!-- Card 5 -->
+            <div class="explainer-card bg-[#131d2e] rounded-3xl p-8">
+                <h3 class="flex items-center text-xl font-semibold mb-4">
+                    <span class="text-[#4da8ff] mr-3 text-3xl leading-none">✓</span>
+                    Infrastructure as code
+                </h3>
+                <p class="text-[#c5d4e6]">
+                    The entire pipeline lives in <code class="code">.github/workflows/deploy.yml</code> 
+                    — version-controlled, peer-reviewed, and part of the observatory itself.
+                </p>
+            </div>
+            
+            <!-- Card 6 -->
+            <div class="explainer-card bg-[#131d2e] rounded-3xl p-8">
+                <h3 class="flex items-center text-xl font-semibold mb-4">
+                    <span class="text-[#4da8ff] mr-3 text-3xl leading-none">✓</span>
+                    Self-documenting systems
+                </h3>
+                <p class="text-[#c5d4e6]">
+                    This page <strong>is</strong> the pipeline documentation. 
+                    The simulation you just ran mirrors the real GitHub Actions job that deployed it.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-[#4da8ff]/10 py-8 px-6 text-center text-[#64748b] text-sm">
+        <a href="../../" 
+           class="inline-flex items-center gap-x-3 hover:text-[#4da8ff] font-medium">
+            ← Back to the Full Stack Observatory
+            <span class="text-xl">🔭</span>
+        </a>
+        <div class="text-xs mt-6 opacity-50">© Markus Isaksson 2026 • Layer 7 is live because this pipeline works</div>
+    </footer>
+
+    <!-- EXPLANATION MODAL -->
+    <div onclick="if(event.target.id === 'modal-backdrop')hideModal()" 
+         id="modal-backdrop"
+         class="hidden fixed inset-0 bg-black/70 z-[9999] flex items-center justify-center">
+        
+        <div onclick="event.stopImmediatePropagation()" 
+             class="modal bg-[#131d2e] max-w-lg w-full mx-4 rounded-3xl shadow-2xl overflow-hidden">
+            
+            <div class="px-8 pt-8 pb-6">
+                <div id="modal-title" class="text-2xl font-semibold mb-2"></div>
+                <div id="modal-body" class="text-[#c5d4e6] leading-relaxed"></div>
+            </div>
+            
+            <div class="bg-[#192840] px-8 py-5 flex justify-end border-t border-[#4da8ff]/10">
+                <button onclick="hideModal()" 
+                        class="uppercase text-xs font-semibold tracking-widest px-8 py-4 hover:bg-[#4da8ff]/10 rounded-2xl">
+                    CLOSE
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * Tailwind CDN initialization
+         */
+        function initializeTailwind() {
+            return {
+                config(userConfig = {}) {
+                    return {
+                        configUser: userConfig,
+                        theme: {
+                            extend: {
+                                colors: {
+                                    accent: '#4da8ff'
+                                }
+                            }
+                        }
+                    }
+                },
+                theme: {
+                    extend: {}
+                }
+            }
+        }
+        
+        /**
+         * Pipeline stages — exactly as described
+         */
+        const STAGES = [
+            {
+                id: 1,
+                name: "Checkout",
+                icon: "📥",
+                duration: "800ms",
+                description: "actions/checkout@v4 — pulls the latest commit from main"
+            },
+            {
+                id: 2,
+                name: "Install",
+                icon: "📦",
+                duration: "1.4s",
+                description: "npm ci — installs locked dependencies with cache"
+            },
+            {
+                id: 3,
+                name: "Lint",
+                icon: "🔍",
+                duration: "900ms",
+                description: "eslint . — code quality gate"
+            },
+            {
+                id: 4,
+                name: "Test",
+                icon: "🧪",
+                duration: "2.1s",
+                description: "npm test — runs if tests exist (optional)"
+            },
+            {
+                id: 5,
+                name: "Build",
+                icon: "⚙️",
+                duration: "1.8s",
+                description: "npm run build — static HTML/JS/CSS bundle"
+            },
+            {
+                id: 6,
+                name: "Deploy",
+                icon: "🚀",
+                duration: "3s",
+                description: "peaceiris/actions-gh-pages@v3 — publishes to gh-pages branch"
+            }
+        ]
+        
+        /**
+         * Render the pipeline visualization
+         */
+        function renderPipeline(statuses = {}) {
+            const container = document.getElementById('pipeline-container')
+            container.innerHTML = ''
+            
+            STAGES.forEach((stage, index) => {
+                const status = statuses[stage.id] || 'future'
+                
+                const cardHTML = `
+                <div class="flex-1 flex flex-col items-center md:items-start group">
+                    <div class="stage-card w-full p-6 flex flex-col items-center text-center md:text-left relative ${status === 'completed' ? 'stage-completed' : ''} ${status === 'current' ? 'stage-current' : ''} ${status === 'future' ? 'stage-future' : ''}">
+                        <div class="text-5xl mb-4">${stage.icon}</div>
+                        <h4 class="font-semibold text-xl">${stage.name}</h4>
+                        <div class="text-xs font-mono mt-1 text-[#64748b]">${stage.duration}</div>
+                        
+                        <!-- Status badge -->
+                        ${status === 'completed' ? `
+                        <div class="absolute top-4 right-4 text-emerald-400 text-[10px] font-semibold flex items-center bg-emerald-400/10 px-2 h-5 rounded-2xl">
+                            ✓ DONE
+                        </div>` : ''}
+                        
+                        ${status === 'current' ? `
+                        <div class="absolute top-4 right-4 text-[#4da8ff] text-[10px] font-semibold flex items-center bg-[#4da8ff]/10 px-2 h-5 rounded-2xl animate-pulse">
+                            RUNNING…
+                        </div>` : ''}
+                    </div>
+                    
+                    <!-- Connector -->
+                    ${index < STAGES.length - 1 ? `
+                    <div class="hidden md:flex flex-1 items-center justify-center mx-2">
+                        <div class="pipeline-connector w-12 flex-shrink-0"></div>
+                        <div class="text-[#64748b] text-3xl mx-1">→</div>
+                    </div>` : ''}
+                    
+                    <!-- Mobile vertical connector -->
+                    ${index < STAGES.length - 1 ? `
+                    <div class="md:hidden h-8 w-px bg-gradient-to-b from-[#4da8ff] to-transparent flex justify-center items-center">
+                        <span class="text-[#64748b] text-xl rotate-90">→</span>
+                    </div>` : ''}
+                </div>`
+                
+                container.innerHTML += cardHTML
+            })
+        }
+        
+        /**
+         * Simulate a full pipeline run with realistic delays
+         */
+        let isSimulating = false
+        
+        function simulatePipeline() {
+            if (isSimulating) return
+            isSimulating = true
+            
+            const btn = document.getElementById('simulate-btn')
+            const originalBtnText = btn.innerHTML
+            btn.style.pointerEvents = 'none'
+            btn.innerHTML = `
+                <svg class="animate-spin h-4 w-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                </svg>
+                RUNNING…
+            `
+            // Reset
+            const initialStatuses = {}
+            STAGES.forEach(s => initialStatuses[s.id] = 'future')
+            renderPipeline(initialStatuses)
+            
+            let progress = 0
+            const progressBar = document.getElementById('overall-progress')
+            
+            let currentIndex = 0
+            
+            function runNextStage() {
+                if (currentIndex >= STAGES.length) {
+                    // Finished
+                    progressBar.style.width = '100%'
+                    setTimeout(() => {
+                        btn.innerHTML = originalBtnText
+                        btn.style.pointerEvents = 'auto'
+                        isSimulating = false
+                        
+                        // Update live status timestamp to "just now"
+                        const liveEl = document.getElementById('last-deploy-time')
+                        liveEl.innerHTML = `
+                            March 25, 2026 • <span class="text-emerald-400">just now</span>
+                        `
+                    }, 800)
+                    return
+                }
+                
+                const stageId = STAGES[currentIndex].id
+                
+                // Set current
+                const statuses = {}
+                STAGES.forEach(s => {
+                    if (s.id < stageId) statuses[s.id] = 'completed'
+                    else if (s.id === stageId) statuses[s.id] = 'current'
+                    else statuses[s.id] = 'future'
+                })
+                renderPipeline(statuses)
+                
+                // Progress
+                progress = Math.round(((currentIndex + 1) / STAGES.length) * 100)
+                progressBar.style.width = `${progress}%`
+                
+                // Realistic delay
+                const delay = STAGES[currentIndex].duration === '800ms' ? 800 :
+                              STAGES[currentIndex].duration === '1.4s' ? 1400 :
+                              STAGES[currentIndex].duration === '900ms' ? 900 :
+                              STAGES[currentIndex].duration === '2.1s' ? 2100 : 1800
+                
+                setTimeout(() => {
+                    // Mark as completed
+                    statuses[stageId] = 'completed'
+                    renderPipeline(statuses)
+                    currentIndex++
+                    runNextStage()
+                }, delay)
+            }
+            
+            runNextStage()
+        }
+        
+        /**
+         * Realistic GitHub Actions YAML sections (clickable)
+         */
+        const YAML_SECTIONS = [
+            {
+                title: "Trigger",
+                code: `on:<br>  push:<br>    branches: ["main"]<br>  pull_request:<br>    branches: ["main"]`,
+                explanation: "Runs on every push to main (production deploy) and every pull request (CI only). This is why the observatory updates instantly when you push."
+            },
+            {
+                title: "Matrix Strategy",
+                code: `strategy:<br>  matrix:<br>    node-version: [18.x, 20.x]`,
+                explanation: "Tests the entire stack on Node 18 and Node 20 in parallel. Guarantees the site works across the two most common LTS versions."
+            },
+            {
+                title: "Checkout",
+                code: `- uses: actions/checkout@v4`,
+                explanation: "Fetches the exact commit that triggered the workflow. The same step you see visualized in the pipeline above."
+            },
+            {
+                title: "Setup + Cache",
+                code: `- uses: actions/setup-node@v4<br>  with:<br>    node-version: ${{ matrix.node-version }}<br>    cache: 'npm'`,
+                explanation: "Installs the correct Node version and restores node_modules from GitHub cache. This is why the pipeline is fast."
+            },
+            {
+                title: "Lint &amp; Test",
+                code: `- run: npm run lint --if-present<br>- run: npm test --if-present`,
+                explanation: "Quality gates. If linting or tests fail, the pipeline aborts before any deployment happens."
+            },
+            {
+                title: "Deploy",
+                code: `- if: github.ref == 'refs/heads/main'<br>  uses: peaceiris/actions-gh-pages@v3<br>  with:<br>    github_token: ${{ secrets.GITHUB_TOKEN }}<br>    publish_dir: ./`,
+                explanation: "Only runs on main. Uses the official GitHub Pages action to publish the built HTML directly from this repository. This page was deployed by this exact step."
+            }
+        ]
+        
+        /**
+         * Render interactive YAML
+         */
+        function renderYAML() {
+            const container = document.getElementById('yaml-container')
+            let html = `<div class="space-y-3">`
+            
+            YAML_SECTIONS.forEach(section => {
+                html += `
+                <div onclick="showYAMLExplanation('${section.title}', \`${section.explanation}\`)" 
+                     class="yaml-section bg-[#1e2a3f] border border-transparent flex gap-4 items-start">
+                    <div class="flex-1">
+                        <div class="flex items-baseline justify-between mb-1">
+                            <span class="font-semibold text-[#4da8ff]">${section.title}</span>
+                            <span class="text-[10px] uppercase font-medium text-[#64748b]">click for details</span>
+                        </div>
+                        <div class="text-[#c5d4e6] text-[13px] leading-tight font-light">${section.code}</div>
+                    </div>
+                </div>`
+            })
+            
+            html += `</div>`
+            container.innerHTML = html
+        }
+        
+        /**
+         * Modal helpers
+         */
+        function showYAMLExplanation(title, explanation) {
+            const modal = document.getElementById('modal-backdrop')
+            document.getElementById('modal-title').innerHTML = `
+                <span class="text-[#4da8ff]">YAML →</span> ${title}
+            `
+            document.getElementById('modal-body').innerHTML = `
+                <p class="mb-6">${explanation}</p>
+                <div class="text-xs bg-[#192840] p-4 rounded-2xl font-mono text-[#c5d4e6]/80">
+                    This exact configuration lives in<br>
+                    <span class="text-[#4da8ff]">.github/workflows/deploy.yml</span> inside the observatory repo.
+                </div>
+            `
+            modal.classList.remove('hidden')
+            modal.classList.add('flex')
+        }
+        
+        function hideModal() {
+            const modal = document.getElementById('modal-backdrop')
+            modal.classList.add('hidden')
+            modal.classList.remove('flex')
+        }
+        
+        /**
+         * Main initialization
+         */
+        function initialize() {
+            initializeTailwind()
+            
+            // Initial pipeline render (all future)
+            renderPipeline()
+            
+            // Render interactive YAML
+            renderYAML()
+            
+            // Console signature
+            console.log('%c✅ Layer 7 (CI/CD Pipelines) initialized — this page deployed itself via GitHub Actions', 'background:#4da8ff;color:#06090f;font-size:10px;font-family:monospace;padding:1px 3px;border-radius:2px')
+        }
+        
+        // Boot
+        window.onload = initialize
+    </script>
 </body>
 </html>
