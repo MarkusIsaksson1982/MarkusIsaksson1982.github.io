@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layer 9: Containers | The Full Stack Observatory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #06090f;
+      --surface: #0d1520;
+      --surface-2: #131d2e;
+      --surface-3: #192840;
+      --border: rgba(182, 220, 255, 0.1);
+      --border-bright: rgba(182, 220, 255, 0.22);
+      --text: #e8eef6;
+      --text-muted: rgba(232, 238, 246, 0.55);
+      --accent: #a578ff;
+      --accent-dim: rgba(165, 120, 255, 0.12);
+      --orange: #ff965a;
+      --orange-dim: rgba(255, 150, 90, 0.12);
+      --blue: #4da8ff;
+      --blue-dim: rgba(77, 168, 255, 0.12);
+      --red: #ff6b6b;
+      --red-dim: rgba(255, 107, 107, 0.12);
+      --yellow: #ffc857;
+      --yellow-dim: rgba(255, 200, 87, 0.12);
+      --purple: #a578ff;
+      --purple-dim: rgba(165, 120, 255, 0.12);
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'Instrument Sans', system-ui, sans-serif;
+      --serif: 'DM Serif Display', serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* --- TOP BAR --- */
+    .topbar {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 24px;
+      background: rgba(6, 9, 15, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar a { color: var(--text-muted); text-decoration: none; font-size: 0.82rem; font-weight: 600; }
+    .topbar .sep { color: var(--text-muted); opacity: 0.4; }
+    .topbar .current { color: var(--purple); font-weight: 700; }
+    .topbar .layer-badge {
+      margin-left: auto;
+      padding: 4px 12px; border-radius: 9999px;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      background: var(--purple-dim); color: var(--purple);
+      border: 1px solid rgba(165, 120, 255, 0.25);
+    }
+
+    /* --- HERO --- */
+    .hero {
+      padding: 80px 24px 60px;
+      max-width: 900px; margin: 0 auto;
+      text-align: center;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 400; line-height: 1.1; margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--purple); }
+    .hero .lead {
+      font-size: 1.1rem; color: var(--text-muted);
+      max-width: 600px; margin: 0 auto 32px;
+    }
+    .constraint-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px; border-radius: 9999px;
+      background: var(--surface-2); border: 1px solid var(--border-bright);
+      font-size: 0.8rem; font-weight: 600; color: var(--text-muted);
+    }
+    .constraint-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--purple); box-shadow: 0 0 10px var(--purple); }
+
+    /* --- WORKSPACE --- */
+    .workspace {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 24px 80px;
+      display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px;
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+    .panel-header {
+      padding: 14px 20px; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.75rem; font-weight: 700; color: var(--text-muted);
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .panel-header .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--purple); }
+
+    /* --- DOCKERFILE BUILDER --- */
+    .dockerfile-editor {
+      padding: 20px; font-family: var(--mono); font-size: 0.9rem;
+      background: #090e16; flex: 1;
+    }
+    .df-line {
+      display: grid; grid-template-columns: 30px 1fr;
+      padding: 4px 8px; border-radius: 4px;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .df-line:hover { background: var(--surface-2); }
+    .df-line.active { background: var(--purple-dim); color: var(--text); }
+    .ln { color: rgba(232, 238, 246, 0.2); user-select: none; }
+    .kw { color: var(--purple); font-weight: 700; }
+    .str { color: var(--blue); }
+    .comment { color: var(--text-muted); font-style: italic; opacity: 0.6; }
+
+    .explainer-panel { padding: 24px; }
+    .explainer-content h3 { font-family: var(--mono); color: var(--purple); margin-bottom: 12px; font-size: 1rem; }
+    .explainer-content p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 16px; }
+    .layer-preview {
+      background: var(--surface-2); padding: 12px; border-radius: 8px;
+      border-left: 3px solid var(--purple); font-size: 0.85rem;
+    }
+
+    /* --- LAYER VISUALIZATION --- */
+    .layer-stack {
+      display: flex; flex-direction: column-reverse; gap: 8px;
+      padding: 40px 20px; align-items: center;
+    }
+    .layer-block {
+      width: 100%; max-width: 400px;
+      padding: 16px; border-radius: 8px;
+      border: 1px solid var(--border-bright);
+      background: var(--surface-2);
+      position: relative; overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .layer-block.cached { opacity: 0.5; transform: scale(0.98); }
+    .layer-block.rebuilding { border-color: var(--purple); box-shadow: 0 0 20px var(--purple-dim); }
+    .layer-meta { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 0.7rem; margin-bottom: 4px; }
+    .layer-instruction { font-weight: 700; font-size: 0.85rem; }
+    .layer-badge-small {
+      font-size: 0.6rem; padding: 2px 6px; border-radius: 4px;
+      background: var(--surface-3); color: var(--text-muted);
+    }
+    .progress-bar {
+      position: absolute; bottom: 0; left: 0; height: 3px;
+      background: var(--purple); width: 0%;
+    }
+    .rebuilding .progress-bar { animation: buildProgress 2s forwards; }
+    @keyframes buildProgress { to { width: 100%; } }
+
+    /* --- VM VS CONTAINER --- */
+    .arch-comparison {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 30px;
+    }
+    .arch-stack { display: flex; flex-direction: column-reverse; gap: 4px; }
+    .stack-block {
+      padding: 12px; text-align: center; border-radius: 4px;
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+      background: var(--surface-2); border: 1px solid var(--border);
+    }
+    .stack-block.shared { background: var(--purple-dim); border-color: var(--purple); color: var(--purple); }
+    .stack-block.guest-os { background: #333; color: #888; border-style: dashed; }
+    .stack-title { text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px; font-weight: 700; }
+
+    /* --- DOCKER COMPOSE --- */
+    .compose-display {
+      padding: 24px; font-family: var(--mono); font-size: 0.85rem;
+      background: #090e16; line-height: 1.8;
+    }
+    .compose-block {
+      cursor: pointer; padding: 4px 8px; border-radius: 4px;
+      transition: background 0.2s;
+    }
+    .compose-block:hover { background: var(--surface-2); }
+    .compose-block.active { background: var(--purple-dim); box-shadow: inset 2px 0 0 var(--purple); }
+
+    /* --- EXPLAINER CARDS --- */
+    .explainer-section {
+      max-width: 1200px; margin: 0 auto; padding: 80px 24px;
+      border-top: 1px solid var(--border);
+    }
+    .explainer-section h2 {
+      font-family: var(--serif); font-size: 2.2rem; margin-bottom: 40px; color: var(--purple);
+    }
+    .explainer-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;
+    }
+    .explainer-card {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 32px; border-radius: 16px;
+    }
+    .explainer-card h3 {
+      font-size: 1.1rem; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+    }
+    .explainer-card h3::before {
+      content: '✓'; color: var(--purple); font-weight: 900;
+    }
+    .explainer-card p { color: var(--text-muted); font-size: 0.95rem; }
+    .explainer-card code {
+      font-family: var(--mono); background: var(--surface-2);
+      padding: 2px 6px; border-radius: 4px; color: var(--purple);
+    }
+
+    /* --- FOOTER --- */
+    .footer {
+      border-top: 1px solid var(--border); padding: 40px 24px;
+      text-align: center;
+    }
+    .footer a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .footer a:hover { color: var(--purple); }
+
+    @media (max-width: 900px) {
+      .workspace { grid-template-columns: 1fr; }
+      .arch-comparison { gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="topbar">
+    <a href="../../">Observatory</a>
+    <span class="sep">/</span>
+    <span class="current">Containers</span>
+    <div class="layer-badge">Layer 9 of 12</div>
+  </nav>
+
+  <header class="hero">
+    <h1>Immutable <span>Infrastructure</span></h1>
+    <p class="lead">Containerization abstracts the environment from the code, ensuring "it works on my machine" works everywhere, every time.</p>
+    <div class="constraint-badge">
+      <div class="dot"></div>
+      Process Isolation & Layer Caching
+    </div>
+  </header>
+
+  <main class="workspace">
+    
+    <section class="panel">
+      <div class="panel-header"><div class="dot"></div> Dockerfile Builder</div>
+      <div class="dockerfile-editor" id="dockerfile">
+        <div class="df-line active" onclick="showDfInfo('from')"><span class="ln">1</span> <div><span class="kw">FROM</span> node:20-alpine <span class="kw">AS</span> base</div></div>
+        <div class="df-line" onclick="showDfInfo('workdir')"><span class="ln">2</span> <div><span class="kw">WORKDIR</span> /app</div></div>
+        <div class="df-line" onclick="showDfInfo('copy-deps')"><span class="ln">3</span> <div><span class="kw">COPY</span> package*.json ./</div></div>
+        <div class="df-line" onclick="showDfInfo('run')"><span class="ln">4</span> <div><span class="kw">RUN</span> npm install --production</div></div>
+        <div class="df-line" onclick="showDfInfo('copy-source')"><span class="ln">5</span> <div><span class="kw">COPY</span> . .</div></div>
+        <div class="df-line" onclick="showDfInfo('expose')"><span class="ln">6</span> <div><span class="kw">EXPOSE</span> 3000</div></div>
+        <div class="df-line" onclick="showDfInfo('cmd')"><span class="ln">7</span> <div><span class="kw">CMD</span> [<span class="str">"node"</span>, <span class="str">"src/index.js"</span>]</div></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header"><div class="dot"></div> Instruction Insight</div>
+      <div class="explainer-panel" id="df-insight">
+        <div class="explainer-content">
+          <h3>FROM node:20-alpine</h3>
+          <p>The foundation. Multi-stage builds often start with a lightweight "Alpine" linux base to minimize security surface area and image size.</p>
+          <div class="layer-preview">
+            <strong>Resulting Layer:</strong> Root filesystem with Node.js runtime (~50MB)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <div class="dot"></div> Build Layer Stack
+        <button onclick="simulateBuild()" style="margin-left: auto; background: var(--purple); border: none; padding: 4px 12px; border-radius: 4px; color: var(--bg); font-weight: 700; cursor: pointer; font-size: 0.7rem;">Change App Code</button>
+      </div>
+      <div class="layer-stack" id="stack-container">
+        <div class="layer-block" id="layer-base">
+          <div class="layer-meta"><span>Layer 1</span> <span>~50 MB</span></div>
+          <div class="layer-instruction">node:20-alpine</div>
+          <div class="layer-badge-small">Base Image</div>
+        </div>
+        <div class="layer-block" id="layer-deps">
+          <div class="layer-meta"><span>Layer 2</span> <span>~120 MB</span></div>
+          <div class="layer-instruction">npm install</div>
+          <div class="layer-badge-small">Dependencies</div>
+        </div>
+        <div class="layer-block" id="layer-code">
+          <div class="layer-meta"><span>Layer 3</span> <span>~2.4 MB</span></div>
+          <div class="layer-instruction">COPY . .</div>
+          <div class="layer-badge-small">App Source</div>
+          <div class="progress-bar"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header"><div class="dot"></div> Virtualization Models</div>
+      <div class="arch-comparison">
+        <div class="arch-stack">
+          <div class="stack-title">Virtual Machine</div>
+          <div class="stack-block">Hardware</div>
+          <div class="stack-block">Hypervisor</div>
+          <div class="stack-block guest-os">Guest OS</div>
+          <div class="stack-block">Bins/Libs</div>
+          <div class="stack-block">App</div>
+        </div>
+        <div class="arch-stack">
+          <div class="stack-title">Container</div>
+          <div class="stack-block">Hardware</div>
+          <div class="stack-block shared">Host OS / Kernel</div>
+          <div class="stack-block shared">Container Runtime</div>
+          <div class="stack-block">Bins/Libs</div>
+          <div class="stack-block">App</div>
+        </div>
+      </div>
+      <div style="padding: 0 30px 30px; font-size: 0.85rem; color: var(--text-muted); text-align: center;">
+        Containers share the <strong>Host OS Kernel</strong>, making them lightweight and fast to start compared to the bulky Guest OS overhead of VMs.
+      </div>
+    </section>
+
+    <section class="panel" style="grid-column: 1 / -1;">
+      <div class="panel-header"><div class="dot"></div> Multi-Service Orchestration (docker-compose.yml)</div>
+      <div style="display: grid; grid-template-columns: 1.2fr 1fr;">
+        <div class="compose-display">
+          <div class="compose-block active" onclick="showComposeInfo('web')">
+<span class="kw">services:</span>
+  <span class="kw">web:</span>
+    <span class="kw">build:</span> .
+    <span class="kw">ports:</span> [<span class="str">"3000:3000"</span>]
+    <span class="kw">depends_on:</span> [db, cache]
+    <span class="kw">environment:</span>
+      - DB_URL=postgres://db:5432</div>
+          <div class="compose-block" onclick="showComposeInfo('db')">
+  <span class="kw">db:</span>
+    <span class="kw">image:</span> postgres:15-alpine
+    <span class="kw">volumes:</span>
+      - pgdata:/var/lib/postgresql/data</div>
+          <div class="compose-block" onclick="showComposeInfo('cache')">
+  <span class="kw">cache:</span>
+    <span class="kw">image:</span> redis:alpine
+    <span class="kw">restart:</span> always</div>
+        </div>
+        <div class="explainer-panel" id="compose-insight" style="border-left: 1px solid var(--border);">
+          <div class="explainer-content">
+            <h3>Service: Web</h3>
+            <p>The main application service. <code>depends_on</code> ensures the database and cache containers start before the app, while <code>ports</code> maps the internal traffic to your host.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="explainer-section">
+    <h2>Why Containers Matter</h2>
+    <div class="explainer-grid">
+      <div class="explainer-card">
+        <h3>Layer Caching</h3>
+        <p>By ordering commands from "least likely to change" to "most likely," Docker reuses cached layers. A code change only rebuilds the final 2MB layer, not the 120MB <code>npm install</code>.</p>
+      </div>
+      <div class="explainer-card">
+        <h3>Multi-stage Builds</h3>
+        <p>Use one large image to compile assets, then <code>COPY --from=build</code> into a tiny production image. This keeps <code>node_modules</code> and compilers out of production.</p>
+      </div>
+      <div class="explainer-card">
+        <h3>Shared Kernel</h3>
+        <p>Containers use <code>namespaces</code> (isolation) and <code>cgroups</code> (resource limits) within the host kernel. This allows hundreds of containers on one machine.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <a href="../../">← Back to the Full Stack Observatory</a>
+  </footer>
+
+  <script>
+    const dfData = {
+      from: {
+        title: "FROM node:20-alpine",
+        text: "The Base Image. Choosing 'Alpine' versions reduces image size from ~1GB to ~100MB by removing unnecessary OS utilities. This reduces the attack surface for hackers.",
+        result: "Base OS and Runtime Layer (~50MB)"
+      },
+      workdir: {
+        title: "WORKDIR /app",
+        text: "Sets the directory for all subsequent commands. It ensures we aren't polluting the root directory of the container and provides a consistent path for the app.",
+        result: "Metadata Layer (0 bytes)"
+      },
+      'copy-deps': {
+        title: "COPY package*.json ./",
+        text: "The most important optimization step. We copy ONLY the dependency manifests first. If these haven't changed, Docker will skip the expensive 'npm install' step entirely.",
+        result: "Filesystem Layer (small)"
+      },
+      run: {
+        title: "RUN npm install",
+        text: "The heavy lifting. This layer contains all external libraries. By placing it before the source code COPY, we ensure it only runs when we add new packages.",
+        result: "Dependencies Layer (~120MB)"
+      },
+      'copy-source': {
+        title: "COPY . .",
+        text: "Moving the actual source code into the image. Since code changes every time you save, this layer is rarely cached during development.",
+        result: "Application Source Layer (~2MB)"
+      },
+      expose: {
+        title: "EXPOSE 3000",
+        text: "A documentation instruction. It tells the runtime that the container intends to listen on this port, though you still need to map it in your runtime config.",
+        result: "Network Metadata (0 bytes)"
+      },
+      cmd: {
+        title: "CMD [\"node\", ...]",
+        text: "The final command. Unlike RUN (which happens during build), CMD is what the container runs when it starts up. There can only be one CMD.",
+        result: "Runtime Instruction"
+      }
+    };
+
+    const composeData = {
+      web: {
+        title: "Service: Web",
+        text: "The core application. It uses a relative build path ('.') and maps port 3000. Environment variables connect it to the 'db' service by name via Docker's internal DNS."
+      },
+      db: {
+        title: "Service: Database",
+        text: "A PostgreSQL instance. Notice the 'volumes' block: this ensures that even if the container is destroyed, your data persists on the host machine."
+      },
+      cache: {
+        title: "Service: Redis",
+        text: "An in-memory store. 'restart: always' ensures that if the cache crashes or the machine reboots, Docker will automatically bring this service back up."
+      }
+    };
+
+    function showDfInfo(key) {
+      const info = dfData[key];
+      document.querySelectorAll('.df-line').forEach(l => l.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+      
+      document.getElementById('df-insight').innerHTML = `
+        <div class="explainer-content">
+          <h3>${info.title}</h3>
+          <p>${info.text}</p>
+          <div class="layer-preview">
+            <strong>Resulting Layer:</strong> ${info.result}
+          </div>
+        </div>
+      `;
+    }
+
+    function showComposeInfo(key) {
+      const info = composeData[key];
+      document.querySelectorAll('.compose-block').forEach(l => l.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+      
+      document.getElementById('compose-insight').innerHTML = `
+        <div class="explainer-content">
+          <h3>${info.title}</h3>
+          <p>${info.text}</p>
+        </div>
+      `;
+    }
+
+    function simulateBuild() {
+      const base = document.getElementById('layer-base');
+      const deps = document.getElementById('layer-deps');
+      const code = document.getElementById('layer-code');
+
+      // Gray out cached layers
+      base.classList.add('cached');
+      deps.classList.add('cached');
+      
+      // Highlight rebuilding layer
+      code.classList.remove('cached');
+      code.classList.add('rebuilding');
+
+      // Show caching badges
+      base.querySelector('.layer-badge-small').innerText = "Using Cache ✓";
+      deps.querySelector('.layer-badge-small').innerText = "Using Cache ✓";
+      code.querySelector('.layer-badge-small').innerText = "Rebuilding...";
+
+      setTimeout(() => {
+        code.classList.remove('rebuilding');
+        code.querySelector('.layer-badge-small').innerText = "App Source (New)";
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
