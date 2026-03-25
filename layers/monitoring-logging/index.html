@@ -1,0 +1,1751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Layer 11: Monitoring and Logging - a live self-observing dashboard built with browser Performance APIs." />
+  <title>Monitoring &amp; Logging - The Full Stack Observatory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #06090f;
+      --surface: #0d1520;
+      --surface-2: #131d2e;
+      --surface-3: #192840;
+      --border: rgba(182, 220, 255, 0.1);
+      --border-bright: rgba(182, 220, 255, 0.22);
+      --text: #e8eef6;
+      --text-muted: rgba(232, 238, 246, 0.55);
+      --accent: #ff7fab;
+      --accent-dim: rgba(255, 127, 171, 0.12);
+      --orange: #ff965a;
+      --orange-dim: rgba(255, 150, 90, 0.12);
+      --blue: #4da8ff;
+      --blue-dim: rgba(77, 168, 255, 0.12);
+      --red: #ff6b6b;
+      --red-dim: rgba(255, 107, 107, 0.12);
+      --yellow: #ffc857;
+      --yellow-dim: rgba(255, 200, 87, 0.12);
+      --purple: #a578ff;
+      --purple-dim: rgba(165, 120, 255, 0.12);
+      --green: #42f5c5;
+      --green-dim: rgba(66, 245, 197, 0.12);
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'Instrument Sans', system-ui, sans-serif;
+      --serif: 'DM Serif Display', serif;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: var(--sans);
+      color: var(--text);
+      line-height: 1.6;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(255, 127, 171, 0.16), transparent 24%),
+        radial-gradient(circle at 85% 14%, rgba(77, 168, 255, 0.12), transparent 20%),
+        radial-gradient(circle at 76% 78%, rgba(255, 150, 90, 0.09), transparent 24%),
+        linear-gradient(180deg, #05080d 0%, #070c14 38%, #06090f 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.65), transparent 90%);
+      opacity: 0.35;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    code,
+    .code {
+      font-family: var(--mono);
+      color: var(--accent);
+      background: rgba(255, 127, 171, 0.08);
+      padding: 0.1rem 0.35rem;
+      border-radius: 0.4rem;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 24px;
+      background: rgba(6, 9, 15, 0.82);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+    }
+
+    .topbar a {
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: color 0.2s ease;
+    }
+
+    .topbar a:hover {
+      color: var(--accent);
+    }
+
+    .topbar .sep {
+      color: var(--text-muted);
+      opacity: 0.4;
+    }
+
+    .topbar .current {
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .topbar .layer-badge {
+      margin-left: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid rgba(255, 127, 171, 0.26);
+    }
+
+    .topbar .layer-badge::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 14px rgba(255, 127, 171, 0.55);
+    }
+
+    .hero {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 68px 24px 42px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.3rem, 7vw, 5.1rem);
+      line-height: 0.96;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+      text-wrap: balance;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero .lead {
+      max-width: 760px;
+      margin: 0 auto 26px;
+      font-size: 1.08rem;
+      color: var(--text-muted);
+      text-wrap: pretty;
+    }
+
+    .hero .constraint-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border-bright);
+      background: rgba(19, 29, 46, 0.82);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      box-shadow: var(--shadow);
+    }
+
+    .constraint-badge .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 14px rgba(255, 127, 171, 0.5);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.25);
+        opacity: 0.75;
+      }
+    }
+
+    .workspace {
+      max-width: 1460px;
+      margin: 0 auto;
+      padding: 0 24px 72px;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(13, 21, 32, 0.96), rgba(10, 17, 27, 0.96));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .panel + .panel {
+      margin-top: 24px;
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 18px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.015);
+    }
+
+    .panel-header .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(255, 127, 171, 0.45);
+    }
+
+    .panel-header .header-meta {
+      margin-left: auto;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .panel-body {
+      padding: 20px 18px 18px;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .metric-card {
+      position: relative;
+      min-height: 140px;
+      padding: 18px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.018), transparent 48%),
+        var(--surface-2);
+      overflow: hidden;
+    }
+
+    .metric-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -30px -48px auto;
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.07;
+      filter: blur(18px);
+    }
+
+    .metric-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+    }
+
+    .metric-reading {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 14px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .metric-number {
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .metric-unit {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .metric-detail {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      max-width: 22ch;
+    }
+
+    .metric-ok {
+      color: var(--green);
+      border-color: rgba(66, 245, 197, 0.2);
+      background:
+        linear-gradient(180deg, rgba(66, 245, 197, 0.06), transparent 40%),
+        var(--surface-2);
+    }
+
+    .metric-warn {
+      color: var(--yellow);
+      border-color: rgba(255, 200, 87, 0.2);
+      background:
+        linear-gradient(180deg, rgba(255, 200, 87, 0.06), transparent 40%),
+        var(--surface-2);
+    }
+
+    .metric-bad {
+      color: var(--red);
+      border-color: rgba(255, 107, 107, 0.2);
+      background:
+        linear-gradient(180deg, rgba(255, 107, 107, 0.07), transparent 40%),
+        var(--surface-2);
+    }
+
+    .observability-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.95fr) minmax(320px, 0.95fr);
+      gap: 24px;
+      align-items: start;
+      margin-top: 24px;
+    }
+
+    .waterfall-panel .panel-body {
+      padding-top: 18px;
+    }
+
+    .waterfall-intro {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .waterfall-intro p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      max-width: 58ch;
+    }
+
+    .waterfall-shell {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow-x: auto;
+      background: rgba(8, 13, 20, 0.88);
+    }
+
+    .waterfall-shell::-webkit-scrollbar,
+    .logger-stream::-webkit-scrollbar {
+      height: 10px;
+      width: 10px;
+    }
+
+    .waterfall-shell::-webkit-scrollbar-thumb,
+    .logger-stream::-webkit-scrollbar-thumb {
+      background: rgba(182, 220, 255, 0.18);
+      border-radius: 999px;
+    }
+
+    .waterfall-table {
+      min-width: 1080px;
+      padding: 10px 12px 14px;
+    }
+
+    .waterfall-axis,
+    .waterfall-row {
+      display: grid;
+      grid-template-columns: 220px 88px 96px minmax(0, 1fr) 96px;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .waterfall-axis {
+      padding: 6px 10px 10px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 8px;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .axis-timeline,
+    .resource-timeline {
+      position: relative;
+      min-height: 28px;
+      border-radius: 10px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.012), rgba(255, 255, 255, 0.006)),
+        var(--surface-2);
+      border: 1px solid rgba(182, 220, 255, 0.06);
+      overflow: hidden;
+    }
+
+    .axis-timeline {
+      height: 34px;
+    }
+
+    .axis-mark,
+    .timeline-mark {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: rgba(182, 220, 255, 0.12);
+    }
+
+    .axis-mark span {
+      position: absolute;
+      top: 7px;
+      left: 8px;
+      font-size: 0.68rem;
+      color: rgba(232, 238, 246, 0.6);
+      white-space: nowrap;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .waterfall-row {
+      padding: 8px 10px;
+      border-radius: 12px;
+      transition: background 0.18s ease, border-color 0.18s ease;
+    }
+
+    .waterfall-row:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .resource-name {
+      min-width: 0;
+      font-size: 0.9rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .resource-subtle,
+    .resource-start,
+    .resource-size {
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .resource-type {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 66px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .type-script {
+      color: var(--blue);
+      background: var(--blue-dim);
+      border-color: rgba(77, 168, 255, 0.18);
+    }
+
+    .type-css {
+      color: var(--purple);
+      background: var(--purple-dim);
+      border-color: rgba(165, 120, 255, 0.18);
+    }
+
+    .type-font {
+      color: var(--green);
+      background: var(--green-dim);
+      border-color: rgba(66, 245, 197, 0.18);
+    }
+
+    .type-image {
+      color: var(--orange);
+      background: var(--orange-dim);
+      border-color: rgba(255, 150, 90, 0.18);
+    }
+
+    .type-fetch {
+      color: var(--yellow);
+      background: var(--yellow-dim);
+      border-color: rgba(255, 200, 87, 0.18);
+    }
+
+    .type-other {
+      color: var(--text-muted);
+      background: rgba(232, 238, 246, 0.06);
+      border-color: rgba(232, 238, 246, 0.08);
+    }
+
+    .resource-bar {
+      position: absolute;
+      top: 5px;
+      bottom: 5px;
+      border-radius: 999px;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06), 0 0 16px rgba(0, 0, 0, 0.18);
+      min-width: 4px;
+    }
+
+    .resource-bar.script {
+      background: linear-gradient(90deg, rgba(77, 168, 255, 0.3), rgba(77, 168, 255, 0.92));
+    }
+
+    .resource-bar.css {
+      background: linear-gradient(90deg, rgba(165, 120, 255, 0.3), rgba(165, 120, 255, 0.92));
+    }
+
+    .resource-bar.font {
+      background: linear-gradient(90deg, rgba(66, 245, 197, 0.3), rgba(66, 245, 197, 0.92));
+    }
+
+    .resource-bar.image {
+      background: linear-gradient(90deg, rgba(255, 150, 90, 0.3), rgba(255, 150, 90, 0.92));
+    }
+
+    .resource-bar.fetch {
+      background: linear-gradient(90deg, rgba(255, 200, 87, 0.3), rgba(255, 200, 87, 0.92));
+    }
+
+    .resource-bar.other {
+      background: linear-gradient(90deg, rgba(232, 238, 246, 0.18), rgba(232, 238, 246, 0.42));
+    }
+
+    .resource-bar-label {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: rgba(6, 9, 15, 0.78);
+      font-weight: 700;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .waterfall-empty {
+      padding: 32px 20px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    .alert-panel {
+      position: sticky;
+      top: 92px;
+    }
+
+    .alert-meta {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .alert-summary {
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255, 127, 171, 0.08), transparent 56%), var(--surface-2);
+    }
+
+    .alert-summary-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .alert-summary-value {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      font-size: 1.7rem;
+      line-height: 1;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .alert-summary-value span {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      font-family: var(--mono);
+    }
+
+    .alert-refresh {
+      border: 1px solid rgba(255, 127, 171, 0.24);
+      background: var(--accent-dim);
+      color: var(--accent);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.15s ease, filter 0.15s ease, border-color 0.15s ease;
+    }
+
+    .alert-refresh:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+      border-color: rgba(255, 127, 171, 0.35);
+    }
+
+    .alert-refresh:active {
+      transform: translateY(0);
+    }
+
+    .alert-refresh:focus-visible {
+      outline: 2px solid rgba(255, 127, 171, 0.4);
+      outline-offset: 2px;
+    }
+
+    .alert-rule {
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(19, 29, 46, 0.82);
+    }
+
+    .alert-rule + .alert-rule {
+      margin-top: 12px;
+    }
+
+    .alert-rule-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .alert-name {
+      font-size: 0.96rem;
+      font-weight: 700;
+    }
+
+    .alert-condition {
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    .alert-status {
+      flex-shrink: 0;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+    }
+
+    .alert-status.ok {
+      color: var(--green);
+      background: var(--green-dim);
+      border-color: rgba(66, 245, 197, 0.18);
+    }
+
+    .alert-status.firing {
+      color: var(--red);
+      background: var(--red-dim);
+      border-color: rgba(255, 107, 107, 0.18);
+    }
+
+    .alert-value {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: var(--text);
+      margin-bottom: 6px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .alert-detail {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .logger-stream {
+      height: 390px;
+      overflow-y: auto;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background:
+        radial-gradient(circle at top right, rgba(77, 168, 255, 0.08), transparent 22%),
+        linear-gradient(180deg, rgba(2, 4, 8, 0.98), rgba(5, 8, 13, 0.98));
+      padding: 16px;
+      font-family: var(--mono);
+    }
+
+    .logger-empty {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .log-entry {
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(182, 220, 255, 0.08);
+      background: rgba(255, 255, 255, 0.025);
+      margin-bottom: 10px;
+      animation: log-slide-in 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    @keyframes log-slide-in {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .log-entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .log-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .log-level {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 62px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+    }
+
+    .log-info .log-level {
+      color: var(--green);
+      background: var(--green-dim);
+      border-color: rgba(66, 245, 197, 0.18);
+    }
+
+    .log-warn .log-level {
+      color: var(--yellow);
+      background: var(--yellow-dim);
+      border-color: rgba(255, 200, 87, 0.18);
+    }
+
+    .log-debug .log-level {
+      color: rgba(232, 238, 246, 0.72);
+      background: rgba(232, 238, 246, 0.06);
+      border-color: rgba(232, 238, 246, 0.08);
+    }
+
+    .log-timestamp {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .log-entry pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 0.76rem;
+      line-height: 1.6;
+      color: #d9e5f4;
+    }
+
+    .explainer {
+      margin-top: 38px;
+      padding-top: 12px;
+    }
+
+    .explainer h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 400;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    .explainer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .explainer-card {
+      padding: 20px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(180deg, rgba(255, 127, 171, 0.04), transparent 55%),
+        var(--surface);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .explainer-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 127, 171, 0.24);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.26);
+    }
+
+    .explainer-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .explainer-card h3::before {
+      content: "✓";
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .explainer-card p {
+      color: var(--text-muted);
+      font-size: 0.94rem;
+    }
+
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 24px 44px;
+      text-align: center;
+    }
+
+    .footer a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .footer a:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 1180px) {
+      .metrics-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .observability-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .alert-panel {
+        position: static;
+      }
+
+      .explainer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 820px) {
+      .topbar {
+        flex-wrap: wrap;
+        padding: 14px 18px;
+      }
+
+      .topbar .layer-badge {
+        margin-left: 0;
+      }
+
+      .hero {
+        padding: 56px 20px 34px;
+      }
+
+      .workspace {
+        padding: 0 18px 58px;
+      }
+
+      .metrics-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .alert-meta {
+        grid-template-columns: 1fr;
+      }
+
+      .explainer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .panel-body {
+        padding: 18px 16px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <a href="../../">Observatory</a>
+    <span class="sep">/</span>
+    <span class="current">Monitoring &amp; Logging</span>
+    <span class="layer-badge">Layer 11 of 12</span>
+  </nav>
+
+  <header class="hero">
+    <h1>This page is <span>watching itself</span></h1>
+    <p class="lead">
+      A live observability layer built directly into the browser. Navigation Timing, Resource Timing,
+      font readiness, runtime errors, and user clicks all feed the dashboard you are looking at right now.
+    </p>
+    <div class="constraint-badge">
+      <span class="dot"></span>
+      Live browser telemetry only. No mocked metrics.
+    </div>
+  </header>
+
+  <main class="workspace">
+    <section class="panel">
+      <div class="panel-header">
+        <span class="dot"></span>
+        Page Health
+        <span class="header-meta" id="health-header-meta">Gathering navigation timing...</span>
+      </div>
+      <div class="panel-body">
+        <div class="metrics-grid">
+          <article class="metric-card" id="metric-dom">
+            <span class="metric-label">DOM Content Loaded</span>
+            <div class="metric-reading">
+              <span class="metric-number" id="metric-dom-number">--</span>
+              <span class="metric-unit" id="metric-dom-unit">ms</span>
+            </div>
+            <p class="metric-detail" id="metric-dom-detail">Parser, markup, and deferred scripts.</p>
+          </article>
+
+          <article class="metric-card" id="metric-load">
+            <span class="metric-label">Full Page Load</span>
+            <div class="metric-reading">
+              <span class="metric-number" id="metric-load-number">--</span>
+              <span class="metric-unit" id="metric-load-unit">ms</span>
+            </div>
+            <p class="metric-detail" id="metric-load-detail">Waiting for the final load event.</p>
+          </article>
+
+          <article class="metric-card" id="metric-resources">
+            <span class="metric-label">Resources Loaded</span>
+            <div class="metric-reading">
+              <span class="metric-number" id="metric-resources-number">--</span>
+              <span class="metric-unit" id="metric-resources-unit">count</span>
+            </div>
+            <p class="metric-detail" id="metric-resources-detail">Resource Timing entries observed.</p>
+          </article>
+
+          <article class="metric-card" id="metric-transfer">
+            <span class="metric-label">Transfer Size</span>
+            <div class="metric-reading">
+              <span class="metric-number" id="metric-transfer-number">--</span>
+              <span class="metric-unit" id="metric-transfer-unit">KB</span>
+            </div>
+            <p class="metric-detail" id="metric-transfer-detail">Summed from transferSize across resources.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="observability-grid">
+      <section class="panel waterfall-panel">
+        <div class="panel-header">
+          <span class="dot"></span>
+          Resource Waterfall
+          <span class="header-meta" id="waterfall-meta">Reading PerformanceResourceTiming entries...</span>
+        </div>
+        <div class="panel-body">
+          <div class="waterfall-intro">
+            <p>
+              Every bar below is positioned from real <code>startTime</code> and <code>duration</code> values, sorted exactly
+              the way DevTools would line them up on a network timeline.
+            </p>
+          </div>
+          <div class="waterfall-shell">
+            <div class="waterfall-table" id="waterfall-table">
+              <div class="waterfall-empty">Waiting for resource timing data...</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="panel alert-panel">
+        <div class="panel-header">
+          <span class="dot"></span>
+          Alerting Rules
+          <span class="header-meta" id="alert-last-evaluated">Never evaluated</span>
+        </div>
+        <div class="panel-body">
+          <div class="alert-meta">
+            <div class="alert-summary">
+              <div class="alert-summary-label">Current Rule State</div>
+              <div class="alert-summary-value" id="alert-summary-value">
+                0 <span>firing rules</span>
+              </div>
+            </div>
+            <button class="alert-refresh" id="evaluate-alerts" type="button">Evaluate now</button>
+          </div>
+
+          <div id="alert-rules">
+            <div class="alert-rule">
+              <div class="alert-rule-top">
+                <div>
+                  <div class="alert-name">Page load &gt; 3s</div>
+                  <div class="alert-condition">loadEventEnd &gt; 3000 ms</div>
+                </div>
+                <span class="alert-status ok">OK</span>
+              </div>
+              <div class="alert-value">Collecting current page load...</div>
+              <div class="alert-detail">Evaluates when navigation timing is available.</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <section class="panel">
+      <div class="panel-header">
+        <span class="dot"></span>
+        Console Logger
+        <span class="header-meta">Structured lifecycle events from this page</span>
+      </div>
+      <div class="panel-body">
+        <div class="logger-stream" id="logger-stream">
+          <div class="logger-empty">Booting structured logger...</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="explainer">
+      <h2>What this proves</h2>
+      <div class="explainer-grid">
+        <div class="explainer-card">
+          <h3>Real-time observability</h3>
+          <p>The numbers above come from live browser telemetry, refreshed from <code>performance</code> and session events rather than static screenshots or mocked JSON.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>Performance API mastery</h3>
+          <p>Navigation Timing and Resource Timing expose <code>domContentLoadedEventEnd</code>, <code>loadEventEnd</code>, <code>startTime</code>, <code>duration</code>, and <code>transferSize</code> for real diagnostics.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>Structured logging patterns</h3>
+          <p>The terminal stream writes JSON entries with <code>timestamp</code>, <code>level</code>, <code>message</code>, and optional <code>meta</code> payloads the same way production apps do.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>Alerting and threshold monitoring</h3>
+          <p>Alert rules evaluate real runtime values against clear thresholds, turning browser measurements into operational signals instead of passive charts.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>Dashboard design</h3>
+          <p>Information hierarchy matters: metrics first, timeline center-stage, logs below, and rule status alongside. Visual encoding carries meaning before the visitor reads prose.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>Production debugging mindset</h3>
+          <p>This layer treats the page like a system under observation. Instrumentation, event capture, rule evaluation, and resource triage are all part of operating software responsibly.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a href="../../">&larr; Back to the Full Stack Observatory</a>
+  </footer>
+
+  <script>
+    (function () {
+      const LOG_LIMIT = 120;
+      const LOG_RESOURCE_LIMIT = 10;
+      const state = {
+        errorCount: 0,
+        resourceLogsSeen: 0,
+        lastEvaluatedLabel: "Never evaluated",
+        resourceSeenKeys: new Set()
+      };
+
+      const elements = {
+        healthHeaderMeta: document.getElementById("health-header-meta"),
+        waterfallMeta: document.getElementById("waterfall-meta"),
+        waterfallTable: document.getElementById("waterfall-table"),
+        loggerStream: document.getElementById("logger-stream"),
+        alertRules: document.getElementById("alert-rules"),
+        alertSummaryValue: document.getElementById("alert-summary-value"),
+        alertLastEvaluated: document.getElementById("alert-last-evaluated"),
+        evaluateAlerts: document.getElementById("evaluate-alerts"),
+        metricDom: createMetricRefs("dom"),
+        metricLoad: createMetricRefs("load"),
+        metricResources: createMetricRefs("resources"),
+        metricTransfer: createMetricRefs("transfer")
+      };
+
+      let bootstrapInterval = null;
+      let domReadyLogged = false;
+      let loadLogged = false;
+      let fontsLogged = false;
+
+      function createMetricRefs(key) {
+        return {
+          card: document.getElementById("metric-" + key),
+          number: document.getElementById("metric-" + key + "-number"),
+          unit: document.getElementById("metric-" + key + "-unit"),
+          detail: document.getElementById("metric-" + key + "-detail")
+        };
+      }
+
+      function getNavigationMetrics() {
+        const navEntry = performance.getEntriesByType("navigation")[0];
+        if (navEntry) {
+          const domMs = navEntry.domContentLoadedEventEnd || navEntry.domContentLoadedEventStart || performance.now();
+          const loadMs = navEntry.loadEventEnd || performance.now();
+          return { domMs: domMs, loadMs: loadMs };
+        }
+
+        const timing = performance.timing;
+        if (timing && timing.navigationStart) {
+          const domMs = timing.domContentLoadedEventEnd
+            ? timing.domContentLoadedEventEnd - timing.navigationStart
+            : performance.now();
+          const loadMs = timing.loadEventEnd
+            ? timing.loadEventEnd - timing.navigationStart
+            : performance.now();
+          return { domMs: domMs, loadMs: loadMs };
+        }
+
+        return { domMs: performance.now(), loadMs: performance.now() };
+      }
+
+      function getResourceEntries() {
+        return performance
+          .getEntriesByType("resource")
+          .filter(function (entry) { return entry && entry.name; })
+          .sort(function (a, b) { return a.startTime - b.startTime; });
+      }
+
+      function getMetricsSnapshot() {
+        const navigation = getNavigationMetrics();
+        const resources = getResourceEntries();
+        const transferBytes = resources.reduce(function (sum, entry) {
+          return sum + (entry.transferSize || 0);
+        }, 0);
+        const largestResource = resources.reduce(function (currentLargest, entry) {
+          if (!currentLargest || (entry.transferSize || 0) > (currentLargest.transferSize || 0)) {
+            return entry;
+          }
+          return currentLargest;
+        }, null);
+
+        return {
+          domMs: navigation.domMs,
+          loadMs: navigation.loadMs,
+          resourceCount: resources.length,
+          transferBytes: transferBytes,
+          resources: resources,
+          largestResource: largestResource
+        };
+      }
+
+      function formatDuration(ms) {
+        if (!isFinite(ms) || ms < 0) {
+          return "--";
+        }
+        if (ms >= 1000) {
+          return (ms / 1000).toFixed(2) + " s";
+        }
+        return Math.round(ms) + " ms";
+      }
+
+      function formatDurationCompact(ms) {
+        if (!isFinite(ms) || ms < 0) {
+          return "--";
+        }
+        return Math.round(ms) + " ms";
+      }
+
+      function formatTransferKilobytes(bytes) {
+        return Math.round((bytes || 0) / 1024).toString();
+      }
+
+      function formatBytes(bytes) {
+        const safeBytes = bytes || 0;
+        if (safeBytes >= 1024 * 1024) {
+          return (safeBytes / (1024 * 1024)).toFixed(2) + " MB";
+        }
+        if (safeBytes >= 1024) {
+          return (safeBytes / 1024).toFixed(1) + " KB";
+        }
+        return safeBytes + " B";
+      }
+
+      function getMetricTone(value, thresholds) {
+        if (value <= thresholds.good) {
+          return "metric-ok";
+        }
+        if (value <= thresholds.warn) {
+          return "metric-warn";
+        }
+        return "metric-bad";
+      }
+
+      function setMetric(refs, value, unit, detail, tone) {
+        refs.number.textContent = value;
+        refs.unit.textContent = unit;
+        refs.detail.textContent = detail;
+        refs.card.classList.remove("metric-ok", "metric-warn", "metric-bad");
+        refs.card.classList.add(tone);
+      }
+
+      function updateMetricCards(snapshot) {
+        setMetric(
+          elements.metricDom,
+          Math.round(snapshot.domMs),
+          "ms",
+          snapshot.domMs < 500 ? "Fast parser completion." : snapshot.domMs < 1500 ? "Acceptable DOM readiness." : "Slow DOM readiness threshold exceeded.",
+          getMetricTone(snapshot.domMs, { good: 500, warn: 1500 })
+        );
+
+        setMetric(
+          elements.metricLoad,
+          Math.round(snapshot.loadMs),
+          "ms",
+          snapshot.loadMs < 1000 ? "Load event completed quickly." : snapshot.loadMs < 3000 ? "Moderate load completion." : "Load time is in alert territory.",
+          getMetricTone(snapshot.loadMs, { good: 1000, warn: 3000 })
+        );
+
+        setMetric(
+          elements.metricResources,
+          snapshot.resourceCount,
+          "count",
+          snapshot.resourceCount < 16 ? "Lean resource footprint." : snapshot.resourceCount < 32 ? "Moderate dependency surface." : "Heavy page dependency graph.",
+          getMetricTone(snapshot.resourceCount, { good: 16, warn: 32 })
+        );
+
+        setMetric(
+          elements.metricTransfer,
+          formatTransferKilobytes(snapshot.transferBytes),
+          "KB",
+          snapshot.transferBytes < 300 * 1024 ? "Light transfer volume." : snapshot.transferBytes < 1024 * 1024 ? "Moderate payload size." : "Large transfer size observed.",
+          getMetricTone(snapshot.transferBytes, { good: 300 * 1024, warn: 1024 * 1024 })
+        );
+
+        elements.healthHeaderMeta.textContent =
+          formatDuration(snapshot.domMs) +
+          " DOM ready / " +
+          formatDuration(snapshot.loadMs) +
+          " full load";
+      }
+
+      function shortResourceName(url) {
+        try {
+          const parsed = new URL(url, window.location.href);
+          const segments = parsed.pathname.split("/").filter(Boolean);
+          const lastSegment = segments[segments.length - 1] || parsed.hostname;
+          if (lastSegment === "css2" && parsed.hostname.indexOf("fonts.googleapis.com") > -1) {
+            return "fonts.css";
+          }
+          return lastSegment;
+        } catch (error) {
+          return url.split("/").pop() || url;
+        }
+      }
+
+      function classifyResource(entry) {
+        const url = entry.name.toLowerCase();
+        const initiator = (entry.initiatorType || "").toLowerCase();
+
+        if (initiator === "script" || /\.m?js(\?|$)/.test(url)) {
+          return "script";
+        }
+        if (initiator === "css" || initiator === "link" || /\.css(\?|$)/.test(url) || url.indexOf("fonts.googleapis.com") > -1) {
+          return "css";
+        }
+        if (initiator === "font" || /\.(woff2?|ttf|otf)(\?|$)/.test(url) || url.indexOf("fonts.gstatic.com") > -1) {
+          return "font";
+        }
+        if (initiator === "img" || /\.(png|jpe?g|gif|webp|svg|avif)(\?|$)/.test(url)) {
+          return "image";
+        }
+        if (initiator === "fetch" || initiator === "xmlhttprequest" || initiator === "beacon") {
+          return "fetch";
+        }
+        return "other";
+      }
+
+      function chooseAxisStep(maxTime) {
+        const desiredMarks = 7;
+        const roughStep = maxTime / desiredMarks;
+        const steps = [25, 50, 100, 200, 250, 500, 1000, 2000, 5000];
+        for (let index = 0; index < steps.length; index += 1) {
+          if (roughStep <= steps[index]) {
+            return steps[index];
+          }
+        }
+        return Math.ceil(roughStep / 5000) * 5000;
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      function renderWaterfall(resources) {
+        if (!resources.length) {
+          elements.waterfallTable.innerHTML = '<div class="waterfall-empty">No resource timing entries were captured for this view.</div>';
+          elements.waterfallMeta.textContent = "0 resources observed";
+          return;
+        }
+
+        const normalized = resources.map(function (entry) {
+          const type = classifyResource(entry);
+          const duration = Math.max(entry.duration || 0, 1);
+          return {
+            entry: entry,
+            type: type,
+            name: shortResourceName(entry.name),
+            startTime: entry.startTime,
+            duration: duration,
+            endTime: entry.startTime + duration,
+            transferSize: entry.transferSize || 0
+          };
+        });
+
+        const maxTime = normalized.reduce(function (currentMax, item) {
+          return Math.max(currentMax, item.endTime);
+        }, 0);
+        const axisStep = chooseAxisStep(maxTime || 100);
+        const axisMax = Math.max(axisStep, Math.ceil((maxTime || axisStep) / axisStep) * axisStep);
+
+        const axisMarks = [];
+        for (let tick = 0; tick <= axisMax; tick += axisStep) {
+          const left = (tick / axisMax) * 100;
+          axisMarks.push('<div class="axis-mark" style="left:' + left + '%"><span>' + Math.round(tick) + ' ms</span></div>');
+        }
+
+        const rows = normalized.map(function (resource) {
+          const left = (resource.startTime / axisMax) * 100;
+          const minBarMs = axisMax * 0.012;
+          const width = (Math.max(resource.duration, minBarMs) / axisMax) * 100;
+          const timelineMarks = axisMarks.map(function (mark) {
+            return mark.replace("axis-mark", "timeline-mark").replace(/<span>.*?<\/span>/, "");
+          }).join("");
+          const durationLabel = resource.duration >= 42 ? formatDurationCompact(resource.duration) : "";
+
+          return [
+            '<div class="waterfall-row" title="' + escapeHtml(resource.entry.name) + '">',
+            '<div class="resource-name">' + escapeHtml(resource.name) + '</div>',
+            '<div><span class="resource-type type-' + resource.type + '">' + resource.type + '</span></div>',
+            '<div class="resource-start">+' + Math.round(resource.startTime) + ' ms</div>',
+            '<div class="resource-timeline">',
+            timelineMarks,
+            '<div class="resource-bar ' + resource.type + '" style="left:' + left + '%;width:' + width + '%;">',
+            durationLabel ? '<span class="resource-bar-label">' + durationLabel + '</span>' : '',
+            '</div>',
+            '</div>',
+            '<div class="resource-size">' + escapeHtml(formatBytes(resource.transferSize)) + '</div>',
+            '</div>'
+          ].join("");
+        }).join("");
+
+        elements.waterfallTable.innerHTML = [
+          '<div class="waterfall-axis">',
+          '<div>Name</div>',
+          '<div>Type</div>',
+          '<div>Start</div>',
+          '<div class="axis-timeline">' + axisMarks.join("") + '</div>',
+          '<div>Size</div>',
+          '</div>',
+          rows
+        ].join("");
+
+        const transferBytes = normalized.reduce(function (sum, item) {
+          return sum + item.transferSize;
+        }, 0);
+        elements.waterfallMeta.textContent =
+          normalized.length + " resources across " + Math.round(axisMax) + " ms | " + formatBytes(transferBytes) + " transfer";
+      }
+
+      function getAlertRules(snapshot) {
+        const largest = snapshot.largestResource;
+        const largestSize = largest ? (largest.transferSize || 0) : 0;
+
+        return [
+          {
+            name: "Page load > 3s",
+            condition: "loadEventEnd > 3000 ms",
+            currentValue: formatDuration(snapshot.loadMs),
+            detail: document.readyState === "complete" ? "Based on the page load event." : "Still tracking until load completes.",
+            firing: snapshot.loadMs > 3000
+          },
+          {
+            name: "Resource > 1MB",
+            condition: "max transferSize > 1 MB",
+            currentValue: largest ? formatBytes(largestSize) + " (" + shortResourceName(largest.name) + ")" : "0 B",
+            detail: largest ? "Largest captured resource in this session." : "No resource timing entries captured yet.",
+            firing: largestSize > 1024 * 1024
+          },
+          {
+            name: "Error count > 0",
+            condition: "runtime errors > 0",
+            currentValue: state.errorCount + " error" + (state.errorCount === 1 ? "" : "s"),
+            detail: "Includes runtime errors and unhandled promise rejections.",
+            firing: state.errorCount > 0
+          }
+        ];
+      }
+
+      function renderAlertRules(snapshot) {
+        const rules = getAlertRules(snapshot);
+        const firingCount = rules.filter(function (rule) { return rule.firing; }).length;
+
+        elements.alertSummaryValue.innerHTML = firingCount + ' <span>' + (firingCount === 1 ? 'firing rule' : 'firing rules') + '</span>';
+        elements.alertRules.innerHTML = rules.map(function (rule) {
+          return [
+            '<div class="alert-rule">',
+            '<div class="alert-rule-top">',
+            '<div>',
+            '<div class="alert-name">' + escapeHtml(rule.name) + '</div>',
+            '<div class="alert-condition">' + escapeHtml(rule.condition) + '</div>',
+            '</div>',
+            '<span class="alert-status ' + (rule.firing ? 'firing' : 'ok') + '">' + (rule.firing ? 'FIRING' : 'OK') + '</span>',
+            '</div>',
+            '<div class="alert-value">' + escapeHtml(rule.currentValue) + '</div>',
+            '<div class="alert-detail">' + escapeHtml(rule.detail) + '</div>',
+            '</div>'
+          ].join("");
+        }).join("");
+
+        state.lastEvaluatedLabel = new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit"
+        });
+        elements.alertLastEvaluated.textContent = "Evaluated " + state.lastEvaluatedLabel;
+      }
+
+      function renderLogEntry(entry) {
+        const stream = elements.loggerStream;
+        const placeholder = stream.querySelector(".logger-empty");
+        if (placeholder) {
+          placeholder.remove();
+        }
+
+        if (stream.children.length >= LOG_LIMIT) {
+          stream.removeChild(stream.firstElementChild);
+        }
+
+        const entryElement = document.createElement("div");
+        entryElement.className = "log-entry log-" + entry.level.toLowerCase();
+
+        const metaRow = document.createElement("div");
+        metaRow.className = "log-meta-row";
+
+        const level = document.createElement("span");
+        level.className = "log-level";
+        level.textContent = entry.level;
+
+        const timestamp = document.createElement("span");
+        timestamp.className = "log-timestamp";
+        timestamp.textContent = entry.timestamp;
+
+        metaRow.appendChild(level);
+        metaRow.appendChild(timestamp);
+
+        const pre = document.createElement("pre");
+        pre.textContent = JSON.stringify(entry, null, 2);
+
+        entryElement.appendChild(metaRow);
+        entryElement.appendChild(pre);
+        stream.appendChild(entryElement);
+        stream.scrollTop = stream.scrollHeight;
+      }
+
+      function addLog(level, message, meta) {
+        const entry = {
+          timestamp: new Date().toISOString(),
+          level: level,
+          message: message
+        };
+
+        if (meta && Object.keys(meta).length) {
+          entry.meta = meta;
+        }
+
+        renderLogEntry(entry);
+      }
+
+      function describeElement(target) {
+        if (!target || !target.tagName) {
+          return "unknown";
+        }
+
+        const tag = target.tagName.toLowerCase();
+        const id = target.id ? "#" + target.id : "";
+        const classes = target.classList && target.classList.length
+          ? "." + Array.prototype.slice.call(target.classList, 0, 2).join(".")
+          : "";
+        return tag + id + classes;
+      }
+
+      function refreshDashboard() {
+        const snapshot = getMetricsSnapshot();
+        updateMetricCards(snapshot);
+        renderWaterfall(snapshot.resources);
+        renderAlertRules(snapshot);
+      }
+
+      function logDomReady() {
+        if (domReadyLogged) {
+          return;
+        }
+        domReadyLogged = true;
+        const snapshot = getMetricsSnapshot();
+        addLog("INFO", "DOM ready", {
+          domContentLoaded: formatDuration(snapshot.domMs),
+          readyState: document.readyState
+        });
+        refreshDashboard();
+      }
+
+      function logFullLoad() {
+        if (loadLogged) {
+          return;
+        }
+        loadLogged = true;
+        const snapshot = getMetricsSnapshot();
+        addLog("INFO", "Full load complete", {
+          fullPageLoad: formatDuration(snapshot.loadMs),
+          resources: snapshot.resourceCount,
+          transferSize: formatBytes(snapshot.transferBytes)
+        });
+        refreshDashboard();
+        if (bootstrapInterval) {
+          clearInterval(bootstrapInterval);
+        }
+      }
+
+      function maybeLogFontsReady() {
+        if (fontsLogged) {
+          return;
+        }
+        fontsLogged = true;
+        let count = 0;
+        let families = [];
+
+        if (document.fonts) {
+          try {
+            count = document.fonts.size || 0;
+            document.fonts.forEach(function (fontFace) {
+              families.push(fontFace.family.replace(/"/g, ""));
+            });
+          } catch (error) {
+            families = [];
+          }
+        }
+
+        const uniqueFamilies = families.filter(function (family, index) {
+          return families.indexOf(family) === index;
+        });
+
+        addLog("INFO", "Fonts loaded", {
+          count: count,
+          families: uniqueFamilies.slice(0, 6)
+        });
+      }
+
+      addLog("DEBUG", "Page load start", {
+        timeOrigin: new Date(performance.timeOrigin).toISOString(),
+        path: window.location.pathname
+      });
+
+      if ("PerformanceObserver" in window) {
+        try {
+          const resourceObserver = new PerformanceObserver(function (list) {
+            list.getEntries().forEach(function (entry) {
+              if (state.resourceLogsSeen >= LOG_RESOURCE_LIMIT) {
+                return;
+              }
+
+              const key = entry.name + "|" + entry.startTime;
+              if (state.resourceSeenKeys.has(key)) {
+                return;
+              }
+              state.resourceSeenKeys.add(key);
+
+              state.resourceLogsSeen += 1;
+              addLog("DEBUG", "Resource loaded", {
+                name: shortResourceName(entry.name),
+                type: classifyResource(entry),
+                startTime: formatDurationCompact(entry.startTime),
+                duration: formatDurationCompact(entry.duration),
+                transferSize: formatBytes(entry.transferSize || 0)
+              });
+            });
+            refreshDashboard();
+          });
+
+          resourceObserver.observe({ type: "resource", buffered: true });
+        } catch (error) {
+          addLog("WARN", "PerformanceObserver setup failed", {
+            message: error && error.message ? error.message : "Unknown observer error"
+          });
+        }
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", logDomReady, { once: true });
+      } else {
+        logDomReady();
+      }
+
+      if (document.readyState === "complete") {
+        logFullLoad();
+      } else {
+        window.addEventListener("load", logFullLoad, { once: true });
+      }
+
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(function () {
+          maybeLogFontsReady();
+          refreshDashboard();
+        });
+      } else {
+        addLog("WARN", "Font loading API unavailable", {});
+      }
+
+      document.addEventListener("click", function (event) {
+        const target = event.target && event.target.nodeType === 1 ? event.target : event.target.parentElement;
+        addLog("INFO", "User click", {
+          x: event.clientX,
+          y: event.clientY,
+          target: describeElement(target)
+        });
+      });
+
+      window.addEventListener("error", function (event) {
+        state.errorCount += 1;
+
+        if (event.target && event.target !== window && (event.target.src || event.target.href)) {
+          addLog("WARN", "Resource failed to load", {
+            target: describeElement(event.target),
+            source: shortResourceName(event.target.currentSrc || event.target.src || event.target.href)
+          });
+        } else {
+          addLog("WARN", "Runtime error", {
+            message: event.message || "Unknown error",
+            source: shortResourceName(event.filename || window.location.href),
+            line: event.lineno || 0,
+            column: event.colno || 0
+          });
+        }
+
+        refreshDashboard();
+      }, true);
+
+      window.addEventListener("unhandledrejection", function (event) {
+        state.errorCount += 1;
+        addLog("WARN", "Unhandled promise rejection", {
+          reason: event.reason && event.reason.message ? event.reason.message : String(event.reason)
+        });
+        refreshDashboard();
+      });
+
+      elements.evaluateAlerts.addEventListener("click", function () {
+        refreshDashboard();
+      });
+
+      bootstrapInterval = window.setInterval(function () {
+        refreshDashboard();
+        if (document.readyState === "complete") {
+          clearInterval(bootstrapInterval);
+        }
+      }, 700);
+
+      refreshDashboard();
+    })();
+  </script>
+</body>
+</html>
