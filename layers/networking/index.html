@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Networking — TCP Handshake Visualizer — Full Stack Observatory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #06090f;
+      --surface: #0d1520;
+      --surface-2: #131d2e;
+      --surface-3: #192840;
+      --border: rgba(182, 220, 255, 0.1);
+      --border-bright: rgba(182, 220, 255, 0.22);
+      --text: #e8eef6;
+      --text-muted: rgba(232, 238, 246, 0.55);
+      --accent: #42d392;
+      --accent-dim: rgba(66, 211, 146, 0.12);
+      --accent-glow: rgba(66, 211, 146, 0.35);
+      --syn: #ff965a;
+      --syn-dim: rgba(255, 150, 90, 0.12);
+      --ack: #4da8ff;
+      --ack-dim: rgba(77, 168, 255, 0.12);
+      --fin: #ff6b6b;
+      --fin-dim: rgba(255, 107, 107, 0.12);
+      --synack: #a578ff;
+      --synack-dim: rgba(165, 120, 255, 0.12);
+      --yellow: #ffc857;
+      --yellow-dim: rgba(255, 200, 87, 0.12);
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'Instrument Sans', system-ui, sans-serif;
+      --serif: 'DM Serif Display', serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 24px;
+      background: rgba(6, 9, 15, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar a { color: var(--text-muted); text-decoration: none; font-size: 0.82rem; font-weight: 600; transition: color 0.2s; }
+    .topbar a:hover { color: var(--accent); }
+    .topbar .sep { color: var(--text-muted); opacity: 0.4; }
+    .topbar .current { color: var(--accent); font-weight: 700; }
+    .topbar .layer-badge {
+      margin-left: auto;
+      padding: 4px 12px; border-radius: 9999px;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      background: var(--accent-dim); color: var(--accent);
+      border: 1px solid rgba(66, 211, 146, 0.25);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 60px 24px 40px;
+      max-width: 900px; margin: 0 auto;
+      text-align: center;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 400; line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero .lead {
+      font-size: 1.05rem; color: var(--text-muted);
+      max-width: 640px; margin: 0 auto 28px;
+    }
+    .hero .lead strong { color: var(--text); font-weight: 600; }
+    .hero .constraint-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 16px; border-radius: 9999px;
+      font-size: 0.78rem; font-weight: 600;
+      background: var(--surface-2); border: 1px solid var(--border-bright);
+      color: var(--text-muted);
+    }
+    .hero .constraint-badge::before {
+      content: ''; display: block; width: 6px; height: 6px;
+      border-radius: 50%; background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .workspace {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 24px 60px;
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .panel-header {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .panel-header .dot { width: 7px; height: 7px; border-radius: 50%; }
+    .panel-header .dot.green { background: var(--accent); }
+    .panel-header .dot.orange { background: var(--syn); }
+    .panel-header .dot.blue { background: var(--ack); }
+    .panel-header .dot.purple { background: var(--synack); }
+
+    /* ── CONTROLS ── */
+    .controls {
+      display: flex; align-items: center; gap: 10px;
+      padding: 18px;
+      flex-wrap: wrap;
+    }
+    .ctrl-btn {
+      padding: 8px 18px; border-radius: 8px;
+      font-family: var(--sans); font-size: 0.82rem; font-weight: 700;
+      border: 1px solid var(--border); background: var(--surface-2);
+      color: var(--text-muted); cursor: pointer; transition: all 0.15s;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .ctrl-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .ctrl-btn.primary { background: var(--accent); color: #06090f; border-color: var(--accent); }
+    .ctrl-btn.primary:hover { filter: brightness(1.15); transform: translateY(-1px); }
+    .ctrl-btn.primary:active { transform: scale(0.97); }
+    .ctrl-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none !important; filter: none !important; }
+
+    .speed-group {
+      display: flex; align-items: center; gap: 6px;
+      margin-left: auto;
+    }
+    .speed-label { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+    .speed-btn {
+      padding: 4px 10px; border-radius: 6px;
+      font-family: var(--mono); font-size: 0.72rem; font-weight: 600;
+      border: 1px solid var(--border); background: var(--surface-2);
+      color: var(--text-muted); cursor: pointer; transition: all 0.15s;
+    }
+    .speed-btn:hover { border-color: var(--border-bright); color: var(--text); }
+    .speed-btn.active { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+
+    .scenario-group {
+      display: flex; gap: 6px;
+    }
+    .scenario-btn {
+      padding: 6px 14px; border-radius: 8px;
+      font-family: var(--sans); font-size: 0.78rem; font-weight: 600;
+      border: 1px solid var(--border); background: var(--surface-2);
+      color: var(--text-muted); cursor: pointer; transition: all 0.15s;
+    }
+    .scenario-btn:hover { border-color: var(--border-bright); color: var(--text); }
+    .scenario-btn.active { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+
+    /* ── VISUALIZATION AREA ── */
+    .viz-container {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      gap: 0;
+      min-height: 440px;
+      position: relative;
+    }
+
+    /* Endpoint boxes */
+    .endpoint {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 28px 18px;
+      position: relative; z-index: 2;
+    }
+    .endpoint-icon {
+      width: 64px; height: 64px; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      background: var(--surface-2); border: 2px solid var(--border-bright);
+      margin-bottom: 12px;
+      transition: all 0.4s;
+    }
+    .endpoint.client .endpoint-icon { border-color: var(--ack); }
+    .endpoint.server .endpoint-icon { border-color: var(--syn); }
+    .endpoint-label {
+      font-family: var(--mono); font-size: 0.85rem; font-weight: 700;
+      color: var(--text); margin-bottom: 4px;
+    }
+    .endpoint-state {
+      font-family: var(--mono); font-size: 0.72rem;
+      color: var(--text-muted); transition: color 0.3s;
+      padding: 3px 10px; border-radius: 6px;
+      background: var(--surface-2); border: 1px solid var(--border);
+      min-width: 120px; text-align: center;
+    }
+    .endpoint-state.active { color: var(--accent); border-color: var(--accent); background: var(--accent-dim); }
+    .endpoint-state.closed { color: var(--fin); border-color: var(--fin); background: var(--fin-dim); }
+    .endpoint-state.established { color: var(--accent); border-color: var(--accent); background: var(--accent-dim); }
+    .endpoint-port {
+      font-family: var(--mono); font-size: 0.68rem; color: var(--text-muted); margin-top: 6px;
+    }
+
+    /* Wire area (middle) */
+    .wire-area {
+      position: relative;
+      display: flex; flex-direction: column;
+      justify-content: center;
+      padding: 20px 0;
+    }
+    .wire {
+      position: absolute;
+      left: 0; right: 0;
+      top: 50%; height: 2px;
+      background: var(--border-bright);
+      transform: translateY(-0.5px);
+    }
+    .wire::before, .wire::after {
+      content: '';
+      position: absolute; top: -3px;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--border-bright);
+    }
+    .wire::before { left: -4px; }
+    .wire::after { right: -4px; }
+
+    /* Packet arrows */
+    .packet-lane {
+      position: relative;
+      width: 100%;
+      flex: 1;
+      min-height: 56px;
+      display: flex;
+      align-items: center;
+    }
+    .packet {
+      position: absolute;
+      display: flex; align-items: center;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+    }
+    .packet.visible { opacity: 1; }
+    .packet.sent-to-right { left: 0; }
+    .packet.sent-to-left { right: 0; }
+
+    .packet-arrow {
+      flex-shrink: 0;
+      height: 3px; border-radius: 2px;
+      position: relative;
+      transition: width 0.6s linear;
+    }
+    .packet.sent-to-right .packet-arrow { background: linear-gradient(90deg, transparent, var(--current-color)); }
+    .packet.sent-to-left .packet-arrow { background: linear-gradient(270deg, transparent, var(--current-color)); }
+
+    .packet-arrow::after {
+      content: '';
+      position: absolute; top: 50%;
+      width: 0; height: 0;
+      border-style: solid;
+      transform: translateY(-50%);
+    }
+    .packet.sent-to-right .packet-arrow::after {
+      right: -8px; top: -5px;
+      border-width: 5.5px 0 5.5px 9px;
+      border-color: transparent transparent transparent var(--current-color);
+    }
+    .packet.sent-to-left .packet-arrow::after {
+      left: -8px; top: -5px;
+      border-width: 5.5px 9px 5.5px 0;
+      border-color: transparent var(--current-color) transparent transparent;
+    }
+
+    .packet-label {
+      font-family: var(--mono); font-size: 0.72rem; font-weight: 700;
+      padding: 4px 10px; border-radius: 6px;
+      border: 1px solid;
+      background: var(--surface);
+      position: absolute;
+      top: -22px;
+    }
+    .packet.sent-to-right .packet-label { left: 50%; transform: translateX(-50%); }
+    .packet.sent-to-left .packet-label { right: 50%; transform: translateX(50%); }
+
+    .packet-flags {
+      font-family: var(--mono); font-size: 0.62rem;
+      color: var(--text-muted);
+      position: absolute;
+      bottom: -18px;
+    }
+    .packet.sent-to-right .packet-flags { left: 50%; transform: translateX(-50%); }
+    .packet.sent-to-left .packet-flags { right: 50%; transform: translateX(50%); }
+
+    /* Flag colors */
+    .flag-syn { color: var(--syn); border-color: var(--syn); background: var(--syn-dim); }
+    .flag-synack { color: var(--synack); border-color: var(--synack); background: var(--synack-dim); }
+    .flag-ack { color: var(--ack); border-color: var(--ack); background: var(--ack-dim); }
+    .flag-fin { color: var(--fin); border-color: var(--fin); background: var(--fin-dim); }
+
+    .arrow-syn { --current-color: var(--syn); }
+    .arrow-synack { --current-color: var(--synack); }
+    .arrow-ack { --current-color: var(--ack); }
+    .arrow-fin { --current-color: var(--fin); }
+
+    /* Multiple packet lanes */
+    .packet-lanes {
+      position: relative;
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 10px 0;
+    }
+    .lane {
+      position: relative;
+      height: 48px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* State diagram strip */
+    .state-strip {
+      display: flex; gap: 4px;
+      padding: 14px 18px;
+      overflow-x: auto;
+      border-top: 1px solid var(--border);
+      align-items: center;
+      justify-content: center;
+    }
+    .state-node {
+      flex-shrink: 0;
+      padding: 6px 14px; border-radius: 8px;
+      font-family: var(--mono); font-size: 0.7rem; font-weight: 600;
+      background: var(--surface-2); border: 1px solid var(--border);
+      color: var(--text-muted);
+      transition: all 0.35s;
+      text-align: center;
+      min-width: 100px;
+    }
+    .state-node.reached { color: var(--accent); border-color: var(--accent); background: var(--accent-dim); }
+    .state-node.active { color: var(--text); border-color: var(--accent); box-shadow: 0 0 12px var(--accent-glow); }
+    .state-node.closed-state { color: var(--text-muted); }
+    .state-arrow {
+      flex-shrink: 0;
+      color: var(--border-bright); font-size: 0.8rem;
+      transition: color 0.35s;
+    }
+    .state-arrow.reached { color: var(--accent); }
+
+    /* ── PACKET LOG ── */
+    .log-section { margin-top: 20px; }
+    .log-body {
+      padding: 18px;
+      max-height: 320px; overflow-y: auto;
+    }
+    .log-body::-webkit-scrollbar { width: 4px; }
+    .log-body::-webkit-scrollbar-track { background: transparent; }
+    .log-body::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 2px; }
+
+    .log-entry {
+      display: grid;
+      grid-template-columns: 28px 1fr auto;
+      gap: 10px;
+      align-items: start;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all 0.3s ease;
+    }
+    .log-entry.visible { opacity: 1; transform: translateY(0); }
+    .log-entry:last-child { border-bottom: none; }
+
+    .log-num {
+      font-family: var(--mono); font-size: 0.7rem; font-weight: 700;
+      color: var(--text-muted); text-align: right;
+      padding-top: 2px;
+    }
+    .log-detail {
+      font-family: var(--mono); font-size: 0.78rem;
+    }
+    .log-detail .flag-tag {
+      display: inline-block;
+      padding: 1px 7px; border-radius: 4px;
+      font-size: 0.7rem; font-weight: 700;
+      margin-right: 6px;
+    }
+    .log-detail .seq-info {
+      color: var(--text-muted); font-size: 0.72rem;
+    }
+    .log-detail .direction {
+      color: var(--text-muted); font-size: 0.72rem;
+      margin-left: 4px;
+    }
+    .log-time {
+      font-family: var(--mono); font-size: 0.68rem;
+      color: var(--text-muted); white-space: nowrap;
+    }
+    .log-empty {
+      text-align: center; color: var(--text-muted);
+      font-size: 0.88rem; padding: 30px 0;
+    }
+
+    /* ── SEQ/ACK TRACKER ── */
+    .tracker-section { margin-top: 20px; }
+    .tracker-body { padding: 18px; }
+    .tracker-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 600px) {
+      .tracker-grid { grid-template-columns: 1fr; }
+    }
+    .tracker-col h4 {
+      font-family: var(--mono); font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      color: var(--text-muted); margin-bottom: 10px;
+    }
+    .tracker-row {
+      display: flex; justify-content: space-between;
+      padding: 6px 10px; border-radius: 6px;
+      font-family: var(--mono); font-size: 0.78rem;
+      background: var(--surface-2);
+      margin-bottom: 4px;
+      transition: all 0.3s;
+    }
+    .tracker-row .label { color: var(--text-muted); }
+    .tracker-row .value { color: var(--text); font-weight: 600; }
+    .tracker-row.highlight { background: var(--accent-dim); border: 1px solid rgba(66, 211, 146, 0.2); }
+
+    /* ── EXPLAINER ── */
+    .explainer {
+      margin-top: 40px;
+      padding: 40px 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+    .explainer h2 {
+      font-family: var(--serif); font-size: 1.6rem;
+      font-weight: 400; margin-bottom: 20px;
+      color: var(--accent);
+    }
+    .explainer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .explainer-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+    }
+    .explainer-card h3 {
+      font-family: var(--mono); font-size: 0.85rem; font-weight: 700;
+      color: var(--text); margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .explainer-card h3::before { content: '✓'; color: var(--accent); font-weight: bold; }
+    .explainer-card p {
+      font-size: 0.88rem; color: var(--text-muted); line-height: 1.7;
+    }
+    .explainer-card code {
+      font-family: var(--mono); font-size: 0.78rem;
+      background: var(--surface-3); padding: 2px 6px;
+      border-radius: 4px; color: var(--accent);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+      font-size: 0.78rem; color: var(--text-muted);
+    }
+    .footer a { color: var(--accent); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 840px) {
+      .viz-container { grid-template-columns: 1fr; min-height: auto; }
+      .endpoint { padding: 18px; flex-direction: row; gap: 12px; }
+      .endpoint-icon { width: 48px; height: 48px; font-size: 1.2rem; margin-bottom: 0; }
+      .wire-area { min-height: 260px; padding: 10px 40px; }
+      .controls { flex-direction: column; align-items: stretch; }
+      .speed-group { margin-left: 0; justify-content: center; }
+      .scenario-group { justify-content: center; }
+      .state-strip { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="topbar">
+    <a href="../../">Observatory</a>
+    <span class="sep">/</span>
+    <span class="current">Networking</span>
+    <span class="layer-badge">Layer 5 of 12</span>
+  </nav>
+
+  <header class="hero">
+    <h1>The <span>TCP Handshake</span>, visualized</h1>
+    <p class="lead">
+      Every reliable connection on the internet begins with a <strong>three-way handshake</strong> and ends with
+      a <strong>graceful four-way teardown</strong>. Watch the packets flow, inspect the flags, and follow the state transitions in real time.
+    </p>
+    <div class="constraint-badge">Layer 5 — Session / Transport</div>
+  </header>
+
+  <div class="workspace">
+
+    <!-- CONTROLS -->
+    <div class="panel" style="margin-bottom: 20px;">
+      <div class="panel-header"><span class="dot green"></span> Controls</div>
+      <div class="controls">
+        <div class="scenario-group">
+          <button class="scenario-btn active" data-scenario="handshake">3-Way Handshake</button>
+          <button class="scenario-btn" data-scenario="termination">4-Way Teardown</button>
+          <button class="scenario-btn" data-scenario="full">Full Lifecycle</button>
+        </div>
+        <button class="ctrl-btn primary" id="playBtn">▶ Play</button>
+        <button class="ctrl-btn" id="stepBtn">⏭ Step</button>
+        <button class="ctrl-btn" id="resetBtn">↺ Reset</button>
+        <div class="speed-group">
+          <span class="speed-label">Speed</span>
+          <button class="speed-btn" data-speed="2000">0.5×</button>
+          <button class="speed-btn active" data-speed="1000">1×</button>
+          <button class="speed-btn" data-speed="500">2×</button>
+          <button class="speed-btn" data-speed="250">4×</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- VISUALIZATION -->
+    <div class="panel">
+      <div class="panel-header"><span class="dot green"></span> Packet flow</div>
+      <div class="viz-container">
+        <div class="endpoint client">
+          <div class="endpoint-icon">💻</div>
+          <div class="endpoint-label">Client</div>
+          <div class="endpoint-state" id="clientState">CLOSED</div>
+          <div class="endpoint-port">Port 52430 →</div>
+        </div>
+        <div class="wire-area">
+          <div class="wire"></div>
+          <div class="packet-lanes" id="packetLanes">
+            <!-- Packets injected by JS -->
+          </div>
+        </div>
+        <div class="endpoint server">
+          <div class="endpoint-icon">🖥️</div>
+          <div class="endpoint-label">Server</div>
+          <div class="endpoint-state" id="serverState">LISTEN</div>
+          <div class="endpoint-port">← Port 443</div>
+        </div>
+      </div>
+      <div class="state-strip" id="stateStrip">
+        <!-- State nodes injected by JS -->
+      </div>
+    </div>
+
+    <!-- LOG + TRACKER -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+      <div class="panel log-section">
+        <div class="panel-header"><span class="dot blue"></span> Packet log</div>
+        <div class="log-body" id="logBody">
+          <div class="log-empty" id="logEmpty">Press Play or Step to begin</div>
+        </div>
+      </div>
+      <div class="panel tracker-section">
+        <div class="panel-header"><span class="dot orange"></span> Sequence / Ack tracker</div>
+        <div class="tracker-body">
+          <div class="tracker-grid">
+            <div class="tracker-col">
+              <h4>Client → Server</h4>
+              <div class="tracker-row" id="csSeq"><span class="label">SEQ</span><span class="value" id="csSeqVal">—</span></div>
+              <div class="tracker-row" id="csAck"><span class="label">ACK</span><span class="value" id="csAckVal">—</span></div>
+              <div class="tracker-row" id="csFlags"><span class="label">Flags</span><span class="value" id="csFlagsVal">—</span></div>
+            </div>
+            <div class="tracker-col">
+              <h4>Server → Client</h4>
+              <div class="tracker-row" id="scSeq"><span class="label">SEQ</span><span class="value" id="scSeqVal">—</span></div>
+              <div class="tracker-row" id="scAck"><span class="label">ACK</span><span class="value" id="scAckVal">—</span></div>
+              <div class="tracker-row" id="scFlags"><span class="label">Flags</span><span class="value" id="scFlagsVal">—</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPLAINER -->
+    <div class="explainer">
+      <h2>What this proves</h2>
+      <div class="explainer-grid">
+        <div class="explainer-card">
+          <h3>Three-Way Handshake</h3>
+          <p>TCP establishes connections using <code>SYN</code>, <code>SYN-ACK</code>, and <code>ACK</code>. The client sends a synchronize request with an initial sequence number, the server acknowledges and sends its own, then the client confirms.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>Sequence Numbers</h3>
+          <p>Every byte in a TCP stream is numbered. The <code>SEQ</code> field marks the first byte being sent, and <code>ACK</code> confirms the next byte expected from the other side. This ensures ordered, reliable delivery.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>State Machine</h3>
+          <p>TCP endpoints track connection state: <code>CLOSED → SYN_SENT → ESTABLISHED</code> on the client side, <code>LISTEN → SYN_RCVD → ESTABLISHED</code> on the server. Each transition is triggered by a specific packet.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>Graceful Teardown</h3>
+          <p>Closing requires four packets: each side sends <code>FIN</code> independently and receives <code>ACK</code>. This allows half-close — one side can stop sending while still receiving data.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>TCP Flags</h3>
+          <p><code>SYN</code> initiates a connection. <code>ACK</code> acknowledges received data. <code>FIN</code> signals the sender is done. <code>RST</code> aborts immediately. Flags are bit fields in the TCP header — a single packet can carry multiple flags.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>Why This Matters</h3>
+          <p>Every HTTP request, database query, and API call travels over a TCP connection. Understanding the handshake explains latency (1 extra RTT before data flows), connection pooling, and why <code>TIME_WAIT</code> exists.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <a href="../../">← Back to the Full Stack Observatory</a>
+    &nbsp;•&nbsp; Layer 5: Networking &nbsp;•&nbsp; TCP Handshake Visualizer
+  </footer>
+
+  <script>
+    /* ═══════════════════════════════════════════════
+       TCP HANDSHAKE VISUALIZER — ENGINE
+    ═══════════════════════════════════════════════ */
+
+    // ── Scenarios ──
+    const SCENARIOS = {
+      handshake: {
+        label: '3-Way Handshake',
+        steps: [
+          { dir: 'right', flags: ['SYN'],        flagClass: 'flag-syn',    arrowClass: 'arrow-syn',    label: 'SYN',           clientSeq: 1000, clientAck: null,   serverSeq: null, serverAck: null,   clientState: 'SYN_SENT',  serverState: 'LISTEN',    stateLabel: 'SYN →' },
+          { dir: 'left',  flags: ['SYN','ACK'],   flagClass: 'flag-synack', arrowClass: 'arrow-synack', label: 'SYN-ACK',      clientSeq: null, clientAck: null,   serverSeq: 5000, serverAck: 1001,   clientState: 'SYN_SENT',  serverState: 'SYN_RCVD',  stateLabel: '← SYN-ACK' },
+          { dir: 'right', flags: ['ACK'],         flagClass: 'flag-ack',    arrowClass: 'arrow-ack',    label: 'ACK',          clientSeq: 1001, clientAck: 5001,   serverSeq: null, serverAck: null,   clientState: 'ESTABLISHED', serverState: 'ESTABLISHED', stateLabel: 'ACK →' },
+        ],
+        clientStates: ['CLOSED', 'SYN_SENT', 'ESTABLISHED'],
+        serverStates: ['LISTEN', 'SYN_RCVD', 'ESTABLISHED']
+      },
+      termination: {
+        label: '4-Way Teardown',
+        steps: [
+          { dir: 'right', flags: ['FIN','ACK'],   flagClass: 'flag-fin',    arrowClass: 'arrow-fin',    label: 'FIN-ACK',      clientSeq: 1001, clientAck: 5001,   serverSeq: null, serverAck: null,   clientState: 'FIN_WAIT_1', serverState: 'ESTABLISHED', stateLabel: 'FIN →' },
+          { dir: 'left',  flags: ['ACK'],         flagClass: 'flag-ack',    arrowClass: 'arrow-ack',    label: 'ACK',          clientSeq: null, clientAck: null,   serverSeq: 5001, serverAck: 1002,   clientState: 'FIN_WAIT_2', serverState: 'CLOSE_WAIT',  stateLabel: '← ACK' },
+          { dir: 'left',  flags: ['FIN','ACK'],   flagClass: 'flag-fin',    arrowClass: 'arrow-fin',    label: 'FIN-ACK',      clientSeq: null, clientAck: null,   serverSeq: 5001, serverAck: 1002,   clientState: 'FIN_WAIT_2', serverState: 'LAST_ACK',    stateLabel: '← FIN' },
+          { dir: 'right', flags: ['ACK'],         flagClass: 'flag-ack',    arrowClass: 'arrow-ack',    label: 'ACK',          clientSeq: 1002, clientAck: 5002,   serverSeq: null, serverAck: null,   clientState: 'TIME_WAIT',  serverState: 'CLOSED',      stateLabel: 'ACK →' },
+        ],
+        clientStates: ['ESTABLISHED', 'FIN_WAIT_1', 'FIN_WAIT_2', 'TIME_WAIT', 'CLOSED'],
+        serverStates: ['ESTABLISHED', 'CLOSE_WAIT', 'LAST_ACK', 'CLOSED']
+      },
+      full: {
+        label: 'Full Lifecycle',
+        steps: [
+          // Handshake
+          { dir: 'right', flags: ['SYN'],        flagClass: 'flag-syn',    arrowClass: 'arrow-syn',    label: 'SYN',           clientSeq: 1000, clientAck: null,   serverSeq: null, serverAck: null,   clientState: 'SYN_SENT',    serverState: 'LISTEN',      stateLabel: 'SYN →' },
+          { dir: 'left',  flags: ['SYN','ACK'],   flagClass: 'flag-synack', arrowClass: 'arrow-synack', label: 'SYN-ACK',      clientSeq: null, clientAck: null,   serverSeq: 5000, serverAck: 1001,   clientState: 'SYN_SENT',    serverState: 'SYN_RCVD',    stateLabel: '← SYN-ACK' },
+          { dir: 'right', flags: ['ACK'],         flagClass: 'flag-ack',    arrowClass: 'arrow-ack',    label: 'ACK',          clientSeq: 1001, clientAck: 5001,   serverSeq: null, serverAck: null,   clientState: 'ESTABLISHED', serverState: 'ESTABLISHED', stateLabel: 'ACK →' },
+          // Teardown
+          { dir: 'right', flags: ['FIN','ACK'],   flagClass: 'flag-fin',    arrowClass: 'arrow-fin',    label: 'FIN-ACK',      clientSeq: 1001, clientAck: 5001,   serverSeq: null, serverAck: null,   clientState: 'FIN_WAIT_1',  serverState: 'ESTABLISHED', stateLabel: 'FIN →' },
+          { dir: 'left',  flags: ['ACK'],         flagClass: 'flag-ack',    arrowClass: 'arrow-ack',    label: 'ACK',          clientSeq: null, clientAck: null,   serverSeq: 5001, serverAck: 1002,   clientState: 'FIN_WAIT_2',  serverState: 'CLOSE_WAIT',  stateLabel: '← ACK' },
+          { dir: 'left',  flags: ['FIN','ACK'],   flagClass: 'flag-fin',    arrowClass: 'arrow-fin',    label: 'FIN-ACK',      clientSeq: null, clientAck: null,   serverSeq: 5001, serverAck: 1002,   clientState: 'FIN_WAIT_2',  serverState: 'LAST_ACK',    stateLabel: '← FIN' },
+          { dir: 'right', flags: ['ACK'],         flagClass: 'flag-ack',    arrowClass: 'arrow-ack',    label: 'ACK',          clientSeq: 1002, clientAck: 5002,   serverSeq: null, serverAck: null,   clientState: 'TIME_WAIT',   serverState: 'CLOSED',      stateLabel: 'ACK →' },
+        ],
+        clientStates: ['CLOSED', 'SYN_SENT', 'ESTABLISHED', 'FIN_WAIT_1', 'FIN_WAIT_2', 'TIME_WAIT', 'CLOSED'],
+        serverStates: ['LISTEN', 'SYN_RCVD', 'ESTABLISHED', 'CLOSE_WAIT', 'LAST_ACK', 'CLOSED']
+      }
+    };
+
+    // ── State ──
+    let currentScenario = 'handshake';
+    let speed = 1000;
+    let currentStep = -1;
+    let playing = false;
+    let playTimer = null;
+    let t0 = 0;
+
+    // ── DOM refs ──
+    const packetLanes  = document.getElementById('packetLanes');
+    const stateStrip   = document.getElementById('stateStrip');
+    const logBody      = document.getElementById('logBody');
+    const logEmpty     = document.getElementById('logEmpty');
+    const clientState  = document.getElementById('clientState');
+    const serverState  = document.getElementById('serverState');
+    const playBtn      = document.getElementById('playBtn');
+    const stepBtn      = document.getElementById('stepBtn');
+    const resetBtn     = document.getElementById('resetBtn');
+
+    const csSeqVal   = document.getElementById('csSeqVal');
+    const csAckVal   = document.getElementById('csAckVal');
+    const csFlagsVal = document.getElementById('csFlagsVal');
+    const scSeqVal   = document.getElementById('scSeqVal');
+    const scAckVal   = document.getElementById('scAckVal');
+    const scFlagsVal = document.getElementById('scFlagsVal');
+
+    // ── Scenario buttons ──
+    document.querySelectorAll('.scenario-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (playing) stopPlay();
+        document.querySelectorAll('.scenario-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentScenario = btn.dataset.scenario;
+        reset();
+      });
+    });
+
+    // ── Speed buttons ──
+    document.querySelectorAll('.speed-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        speed = parseInt(btn.dataset.speed);
+      });
+    });
+
+    // ── Controls ──
+    playBtn.addEventListener('click', () => {
+      if (playing) { stopPlay(); return; }
+      playing = true;
+      playBtn.textContent = '⏸ Pause';
+      if (currentStep >= SCENARIOS[currentScenario].steps.length - 1) reset();
+      playNext();
+    });
+
+    stepBtn.addEventListener('click', () => {
+      if (playing) stopPlay();
+      advanceStep();
+    });
+
+    resetBtn.addEventListener('click', () => {
+      if (playing) stopPlay();
+      reset();
+    });
+
+    // ── Engine ──
+    function playNext() {
+      if (!playing) return;
+      const scenario = SCENARIOS[currentScenario];
+      if (currentStep >= scenario.steps.length - 1) { stopPlay(); return; }
+      advanceStep();
+      playTimer = setTimeout(playNext, speed);
+    }
+
+    function stopPlay() {
+      playing = false;
+      clearTimeout(playTimer);
+      playBtn.textContent = '▶ Play';
+    }
+
+    function reset() {
+      currentStep = -1;
+      t0 = performance.now();
+      playing = false;
+      clearTimeout(playTimer);
+      playBtn.textContent = '▶ Play';
+
+      // Clear packets
+      packetLanes.innerHTML = '';
+
+      // Reset states
+      const scenario = SCENARIOS[currentScenario];
+      clientState.textContent = scenario.clientStates[0];
+      clientState.className = 'endpoint-state';
+      serverState.textContent = scenario.serverStates[0];
+      serverState.className = 'endpoint-state';
+
+      // Build state strip
+      buildStateStrip(scenario);
+
+      // Clear log
+      logBody.innerHTML = '';
+      logBody.appendChild(logEmpty);
+      logEmpty.style.display = '';
+
+      // Reset tracker
+      csSeqVal.textContent = '—'; csAckVal.textContent = '—'; csFlagsVal.textContent = '—';
+      scSeqVal.textContent = '—'; scAckVal.textContent = '—'; scFlagsVal.textContent = '—';
+      document.querySelectorAll('.tracker-row').forEach(r => r.classList.remove('highlight'));
+    }
+
+    function buildStateStrip(scenario) {
+      stateStrip.innerHTML = '';
+      const maxStates = Math.max(scenario.clientStates.length, scenario.serverStates.length);
+      // Show unique combined states
+      const allStates = [];
+      const seen = new Set();
+      for (let i = 0; i < maxStates; i++) {
+        const cs = scenario.clientStates[i];
+        const ss = scenario.serverStates[i];
+        if (cs && !seen.has('c:' + cs)) { allStates.push({ text: cs, key: 'c:' + cs }); seen.add('c:' + cs); }
+        if (ss && !seen.has('s:' + ss)) { allStates.push({ text: ss, key: 's:' + ss }); seen.add('s:' + ss); }
+      }
+      allStates.forEach((s, i) => {
+        if (i > 0) {
+          const arrow = document.createElement('span');
+          arrow.className = 'state-arrow';
+          arrow.textContent = '→';
+          arrow.dataset.idx = i;
+          stateStrip.appendChild(arrow);
+        }
+        const node = document.createElement('div');
+        node.className = 'state-node';
+        node.textContent = s.text;
+        node.dataset.state = s.text;
+        node.dataset.idx = i;
+        stateStrip.appendChild(node);
+      });
+    }
+
+    function advanceStep() {
+      const scenario = SCENARIOS[currentScenario];
+      currentStep++;
+      if (currentStep >= scenario.steps.length) { stopPlay(); return; }
+
+      const step = scenario.steps[currentStep];
+      const stepIdx = currentStep;
+
+      // Create packet element
+      const lane = document.createElement('div');
+      lane.className = 'lane';
+
+      const packet = document.createElement('div');
+      packet.className = `packet ${step.dir === 'right' ? 'sent-to-right' : 'sent-to-left'} ${step.arrowClass}`;
+
+      const label = document.createElement('span');
+      label.className = `packet-label ${step.flagClass}`;
+      label.textContent = step.label;
+
+      const arrow = document.createElement('div');
+      arrow.className = 'packet-arrow';
+      arrow.style.width = '0px';
+
+      const flags = document.createElement('span');
+      flags.className = 'packet-flags';
+      flags.textContent = `SEQ=${step.dir === 'right' ? (step.clientSeq || '—') : (step.serverSeq || '—')}  ACK=${step.dir === 'right' ? (step.clientAck || '—') : (step.serverAck || '—')}`;
+
+      packet.appendChild(label);
+      packet.appendChild(arrow);
+      packet.appendChild(flags);
+      lane.appendChild(packet);
+      packetLanes.appendChild(lane);
+
+      // Animate: show → grow arrow → done
+      requestAnimationFrame(() => {
+        packet.classList.add('visible');
+        requestAnimationFrame(() => {
+          arrow.style.width = '100%';
+        });
+      });
+
+      // Update endpoint states
+      clientState.textContent = step.clientState;
+      clientState.className = 'endpoint-state' + (step.clientState === 'ESTABLISHED' ? ' established' : step.clientState === 'CLOSED' ? ' closed' : ' active');
+      serverState.textContent = step.serverState;
+      serverState.className = 'endpoint-state' + (step.serverState === 'ESTABLISHED' ? ' established' : step.serverState === 'CLOSED' ? ' closed' : ' active');
+
+      // Update state strip highlight
+      updateStateStrip(step.clientState, step.serverState, stepIdx);
+
+      // Update tracker
+      if (step.dir === 'right') {
+        if (step.clientSeq != null) csSeqVal.textContent = step.clientSeq;
+        if (step.clientAck != null) csAckVal.textContent = step.clientAck;
+        csFlagsVal.textContent = step.flags.join('+');
+        highlightRow('csSeq'); highlightRow('csAck'); highlightRow('csFlags');
+      } else {
+        if (step.serverSeq != null) scSeqVal.textContent = step.serverSeq;
+        if (step.serverAck != null) scAckVal.textContent = step.serverAck;
+        scFlagsVal.textContent = step.flags.join('+');
+        highlightRow('scSeq'); highlightRow('scAck'); highlightRow('scFlags');
+      }
+
+      // Add log entry
+      addLogEntry(stepIdx + 1, step);
+    }
+
+    function updateStateStrip(clientStateName, serverStateName, stepIdx) {
+      const nodes = stateStrip.querySelectorAll('.state-node');
+      const arrows = stateStrip.querySelectorAll('.state-arrow');
+      nodes.forEach(n => {
+        n.classList.remove('active');
+        if (n.dataset.state === clientStateName || n.dataset.state === serverStateName) {
+          n.classList.add('reached');
+          n.classList.add('active');
+        }
+      });
+      arrows.forEach(a => {
+        if (parseInt(a.dataset.idx) <= stepIdx + 1) a.classList.add('reached');
+      });
+    }
+
+    function highlightRow(id) {
+      document.querySelectorAll('.tracker-row').forEach(r => r.classList.remove('highlight'));
+      const el = document.getElementById(id);
+      if (el) { el.classList.add('highlight'); setTimeout(() => el.classList.remove('highlight'), speed * 0.8); }
+    }
+
+    function addLogEntry(num, step) {
+      if (logEmpty) logEmpty.style.display = 'none';
+      const entry = document.createElement('div');
+      entry.className = 'log-entry';
+
+      const dirArrow = step.dir === 'right' ? 'Client → Server' : 'Server → Client';
+      const elapsed = ((performance.now() - t0) / 1000).toFixed(3);
+
+      entry.innerHTML = `
+        <span class="log-num">#${num}</span>
+        <div class="log-detail">
+          <span class="flag-tag ${step.flagClass}">${step.label}</span>
+          <span class="seq-info">SEQ ${step.dir === 'right' ? (step.clientSeq || '—') : (step.serverSeq || '—')} · ACK ${step.dir === 'right' ? (step.clientAck || '—') : (step.serverAck || '—')}</span>
+          <span class="direction">[${dirArrow}]</span>
+        </div>
+        <span class="log-time">${elapsed}s</span>
+      `;
+
+      logBody.appendChild(entry);
+      requestAnimationFrame(() => entry.classList.add('visible'));
+      logBody.scrollTop = logBody.scrollHeight;
+    }
+
+    // ── Boot ──
+    reset();
+  </script>
+</body>
+</html>
