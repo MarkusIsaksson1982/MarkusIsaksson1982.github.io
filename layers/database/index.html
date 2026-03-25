@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Observatory / Database — Layer 3</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  
+  <!-- sql.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.js"></script>
+  
+  <style>
+    :root {
+      --bg: #06090f;
+      --surface: #0d1520;
+      --surface-2: #131d2e;
+      --surface-3: #192840;
+      --border: rgba(182, 220, 255, 0.1);
+      --border-bright: rgba(182, 220, 255, 0.22);
+      --text: #e8eef6;
+      --text-muted: rgba(232, 238, 246, 0.55);
+      --accent: #42f5c5;
+      --accent-dim: rgba(66, 245, 197, 0.12);
+      --orange: #ff965a;
+      --orange-dim: rgba(255, 150, 90, 0.12);
+      --blue: #4da8ff;
+      --blue-dim: rgba(77, 168, 255, 0.12);
+      --red: #ff6b6b;
+      --red-dim: rgba(255, 107, 107, 0.12);
+      --yellow: #ffc857;
+      --yellow-dim: rgba(255, 200, 87, 0.12);
+      --purple: #a578ff;
+      --purple-dim: rgba(165, 120, 255, 0.12);
+      --amber: #ffc857;
+      --amber-dim: rgba(255, 200, 87, 0.12);
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'Instrument Sans', system-ui, sans-serif;
+      --serif: 'DM Serif Display', serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 24px;
+      background: rgba(6, 9, 15, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar a { color: var(--text-muted); text-decoration: none; font-size: 0.82rem; font-weight: 600; transition: color 0.2s; }
+    .topbar a:hover { color: var(--amber); }
+    .topbar .sep { color: var(--text-muted); opacity: 0.4; }
+    .topbar .current { color: var(--amber); font-weight: 700; }
+    .topbar .layer-badge {
+      margin-left: auto;
+      padding: 4px 12px; border-radius: 9999px;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      background: var(--amber-dim); color: var(--amber);
+      border: 1px solid rgba(255, 200, 87, 0.25);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 60px 24px 40px;
+      max-width: 900px; margin: 0 auto;
+      text-align: center;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 400; line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--amber); }
+    .hero .lead {
+      font-size: 1.05rem; color: var(--text-muted);
+      max-width: 640px; margin: 0 auto 28px;
+    }
+    .hero .lead strong { color: var(--text); font-weight: 600; }
+    .hero .constraint-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 16px; border-radius: 9999px;
+      font-size: 0.78rem; font-weight: 600;
+      background: var(--surface-2); border: 1px solid var(--border-bright);
+      color: var(--text-muted);
+    }
+    .hero .constraint-badge::before {
+      content: ''; display: block; width: 6px; height: 6px;
+      border-radius: 50%; background: var(--amber);
+      box-shadow: 0 0 8px var(--amber);
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .workspace {
+      max-width: 1400px; margin: 0 auto;
+      padding: 0 24px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 980px) {
+      .workspace { grid-template-columns: 1fr; }
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 500px;
+    }
+    .panel-header {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .panel-header .dot { width: 7px; height: 7px; border-radius: 50%; }
+
+    /* ── SCHEMA EXPLORER ── */
+    .schema-panel .panel-header .dot { background: var(--amber); }
+    .schema-scroll {
+      padding: 18px;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .schema-scroll::-webkit-scrollbar { width: 4px; }
+    .schema-scroll::-webkit-scrollbar-track { background: transparent; }
+    .schema-scroll::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 2px; }
+
+    .table-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      border-left: 3px solid transparent;
+    }
+    .table-card:hover { border-color: var(--border-bright); transform: translateX(2px); }
+    .table-card.active { border-left-color: var(--amber); background: var(--amber-dim); }
+    
+    .table-name {
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--amber);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .table-name::before {
+      content: '▦';
+      font-size: 0.8em;
+      opacity: 0.7;
+    }
+    
+    .column-list { list-style: none; }
+    .column-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 4px 0;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      border-bottom: 1px dashed var(--border);
+    }
+    .column-item:last-child { border-bottom: none; }
+    .col-name { color: var(--text); font-weight: 500; }
+    .col-type { color: var(--blue); }
+    .col-constraint { 
+      color: var(--text-muted); 
+      font-size: 0.7rem; 
+      margin-left: 8px;
+    }
+    .col-pk { color: var(--accent); }
+    .col-fk { color: var(--purple); }
+    .col-check { color: var(--orange); }
+    
+    .relationship-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: var(--surface-3);
+      color: var(--purple);
+      margin-left: 4px;
+    }
+
+    .selected-table-data {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .selected-table-data h4 {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .data-preview {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      background: var(--surface-3);
+      border-radius: 8px;
+      padding: 12px;
+      max-height: 200px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+    }
+
+    /* ── SQL CONSOLE ── */
+    .console-panel .panel-header .dot { background: var(--accent); }
+    .console-body { padding: 18px; flex: 1; display: flex; flex-direction: column; }
+
+    .sql-textarea {
+      width: 100%;
+      min-height: 140px;
+      padding: 14px;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      outline: none;
+      resize: vertical;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .sql-textarea:focus { border-color: var(--amber); }
+
+    .console-controls {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .run-btn {
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 700;
+      background: var(--amber);
+      color: #06090f;
+      border: none;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .run-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .run-btn:active { transform: scale(0.97); }
+    .run-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .reset-btn {
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      background: var(--surface-2);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .reset-btn:hover { border-color: var(--red); color: var(--red); }
+
+    .presets-label { 
+      font-size: 0.7rem; 
+      font-weight: 700; 
+      color: var(--text-muted); 
+      text-transform: uppercase; 
+      letter-spacing: 0.06em; 
+      margin-bottom: 8px; 
+    }
+    .presets { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 6px; 
+      margin-bottom: 18px; 
+    }
+    .preset {
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .preset:hover { border-color: var(--amber); color: var(--amber); }
+
+    .results-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 200px;
+    }
+    .results-meta {
+      display: flex;
+      gap: 16px;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .results-meta .ok { color: var(--accent); }
+    .results-meta .err { color: var(--red); }
+    .results-meta .time { color: var(--blue); }
+
+    .results-table {
+      flex: 1;
+      overflow-x: auto;
+      overflow-y: auto;
+    }
+    .results-table table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+    }
+    .results-table th {
+      position: sticky;
+      top: 0;
+      background: var(--surface-3);
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 0.68rem;
+    }
+    .results-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+    .results-table tr:hover { background: var(--surface-2); }
+    .results-table tr:last-child td { border-bottom: none; }
+    .results-table .null { color: var(--text-muted); font-style: italic; }
+
+    .error-message {
+      background: var(--red-dim);
+      border: 1px solid var(--red);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--red);
+      display: none;
+    }
+    .error-message.visible { display: block; }
+
+    .empty-state {
+      padding: 40px 18px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+    }
+    .empty-state .hint { font-size: 0.78rem; margin-top: 8px; opacity: 0.5; }
+
+    /* ── EXPLAINER SECTION ── */
+    .explainer {
+      grid-column: 1 / -1;
+      padding: 40px 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      margin: 0 24px 60px;
+    }
+    .explainer h2 {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin-bottom: 20px;
+      color: var(--amber);
+    }
+    .explainer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .explainer-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+    }
+    .explainer-card h3 {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .explainer-card h3::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: bold;
+    }
+    .explainer-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .explainer-card code {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      background: var(--surface-3);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--amber);
+    }
+    .wasm-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: var(--purple-dim);
+      border: 1px solid var(--purple);
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--purple);
+      margin-top: 12px;
+    }
+    .wasm-badge::before {
+      content: '⚡';
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .footer a { color: var(--amber); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+
+    /* ── UTILS ── */
+    .hidden { display: none !important; }
+    .loading { opacity: 0.6; pointer-events: none; }
+  </style>
+</head>
+<body>
+  <!-- Top Bar -->
+  <nav class="topbar">
+    <a href="../../">← Tower</a>
+    <span class="sep">/</span>
+    <a href="../../">Observatory</a>
+    <span class="sep">/</span>
+    <span class="current">Database</span>
+    <span class="layer-badge">Layer 3 of 12</span>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <h1>Interactive <span>SQLite Database</span></h1>
+    <p class="lead">
+      A fully normalized schema running <strong>real SQLite via WebAssembly</strong> in your browser. 
+      Explore tables, write SQL, and see results instantly—no server required.
+    </p>
+    <span class="constraint-badge">Foreign Keys • CHECK Constraints • 3NF Design</span>
+  </header>
+
+  <!-- Main Workspace -->
+  <main class="workspace">
+    
+    <!-- Schema Explorer Panel -->
+    <section class="panel schema-panel">
+      <div class="panel-header">
+        <span class="dot"></span>
+        Schema Explorer
+      </div>
+      <div class="schema-scroll" id="schemaContainer">
+        <!-- Tables rendered by JS -->
+        <div style="text-align:center;color:var(--text-muted);padding:40px;">
+          Loading schema...
+        </div>
+      </div>
+    </section>
+
+    <!-- SQL Console Panel -->
+    <section class="panel console-panel">
+      <div class="panel-header">
+        <span class="dot"></span>
+        SQL Console
+      </div>
+      <div class="console-body">
+        <textarea class="sql-textarea" id="sqlInput" placeholder="Write your SQL query here...&#10;&#10;Try: SELECT * FROM users WHERE role = 'admin';&#10;&#10;Press Ctrl+Enter or Cmd+Enter to run.">-- Welcome to the Observatory Database!&#10;-- Try one of the preset queries below, or write your own.&#10;&#10;SELECT * FROM users LIMIT 5;</textarea>
+        
+        <div class="console-controls">
+          <button class="run-btn" id="runBtn" disabled>▶ Run Query</button>
+          <button class="reset-btn" id="resetBtn">↻ Reset Database</button>
+        </div>
+
+        <div class="presets-label">Preset Queries</div>
+        <div class="presets" id="presets">
+          <button class="preset" data-query="SELECT * FROM users ORDER BY created_at DESC;">All users</button>
+          <button class="preset" data-query="SELECT p.id, p.name, p.status, u.name as owner FROM projects p JOIN users u ON p.owner_id = u.id WHERE p.status = 'active';">Active projects with owner</button>
+          <button class="preset" data-query="SELECT t.title, t.priority, p.name as project, u.name as assignee FROM tasks t JOIN projects p ON t.project_id = p.id LEFT JOIN users u ON t.assignee_id = u.id ORDER BY t.priority DESC, t.status;">Tasks by priority</button>
+          <button class="preset" data-query="SELECT t.title, t.status, p.name as project, DATE(t.created_at) as created FROM tasks t JOIN projects p ON t.project_id = p.id WHERE t.status != 'done' AND DATE(t.created_at) &lt; DATE('now', '-7 days') ORDER BY t.created_at;">Overdue tasks</button>
+          <button class="preset" data-query="SELECT u.name, u.role, COUNT(t.id) as task_count FROM users u LEFT JOIN tasks t ON u.id = t.assignee_id GROUP BY u.id ORDER BY task_count DESC;">User task counts</button>
+          <button class="preset" data-query="CREATE INDEX IF NOT EXISTS idx_tasks_priority ON tasks(priority);&#10;CREATE INDEX IF NOT EXISTS idx_projects_status ON projects(status);&#10;SELECT name FROM sqlite_master WHERE type='index' AND name LIKE 'idx_%';">Create index</button>
+          <button class="preset" data-query="INSERT INTO users (name, email, role, created_at) VALUES ('Nova Chen', 'nova@observatory.dev', 'contributor', datetime('now'));&#10;SELECT * FROM users WHERE email = 'nova@observatory.dev';">INSERT new user</button>
+          <button class="preset" data-query="SELECT u.name as user_name, COUNT(t.id) as total_tasks, AVG(t.priority) as avg_priority, GROUP_CONCAT(DISTINCT p.name) as projects FROM users u LEFT JOIN tasks t ON u.id = t.assignee_id LEFT JOIN projects p ON t.project_id = p.id WHERE u.role != 'member' GROUP BY u.id HAVING total_tasks &gt; 0 ORDER BY avg_priority DESC;">Complex join with aggregation</button>
+        </div>
+
+        <div class="results-area">
+          <div class="results-meta" id="resultsMeta">
+            <span class="ok hidden" id="rowCount">0 rows</span>
+            <span class="err hidden" id="errorMsg"></span>
+            <span class="time hidden" id="execTime">0ms</span>
+          </div>
+          <div class="error-message" id="errorMessage"></div>
+          <div class="results-table" id="resultsTable">
+            <div class="empty-state">
+              <div>
+                <div>Run a query to see results</div>
+                <div class="hint">Click a preset or write your own SQL above</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Explainer Section -->
+    <section class="explainer">
+      <h2>What This Proves</h2>
+      <div class="explainer-grid">
+        <div class="explainer-card">
+          <h3>Normalized Schema (3NF)</h3>
+          <p>Tables are decomposed to eliminate redundancy: <code>users</code>, <code>projects</code>, and <code>tasks</code> each store atomic data with clear ownership relationships.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>Foreign Key Constraints</h3>
+          <p><code>projects.owner_id</code> and <code>tasks.project_id/assignee_id</code> reference parent tables, ensuring referential integrity at the database level.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>CHECK Constraints</h3>
+          <p>Business rules enforced in-schema: <code>status IN ('active','archived','draft')</code> and <code>priority BETWEEN 1 AND 5</code> prevent invalid data.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>Strategic Indexing</h3>
+          <p>Queries can be accelerated with indexes on frequently filtered columns like <code>priority</code> and <code>status</code>—created on-demand via SQL.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>JOIN Operations</h3>
+          <p>Relational power: combine data across tables with <code>INNER JOIN</code>, <code>LEFT JOIN</code>, and aggregate with <code>GROUP BY</code> for analytics.</p>
+        </div>
+        <div class="explainer-card">
+          <h3>Real SQLite + WASM</h3>
+          <p>This isn't a mockup—<code>sql.js</code> compiles SQLite to WebAssembly, running the full engine client-side with zero server dependency.</p>
+          <span class="wasm-badge">WebAssembly Powered</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <a href="../../">← Back to Observatory Tower</a> 
+    • Layer 3: Database • Built with sql.js • 
+    <a href="https://github.com/kripken/sql.js" target="_blank" rel="noopener">sql.js on GitHub</a>
+  </footer>
+
+  <script>
+    // ── CONFIG ──
+    const SQL_WASM_URL = 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/';
+    
+    // ── STATE ──
+    let SQL = null;
+    let db = null;
+    let schemaInfo = {};
+
+    // ── SCHEMA DEFINITION ──
+    const SCHEMA = `
+      PRAGMA foreign_keys = ON;
+      
+      CREATE TABLE users (
+        id INTEGER PRIMARY KEY,
+        name TEXT NOT NULL,
+        email TEXT UNIQUE,
+        role TEXT DEFAULT 'member',
+        created_at TEXT
+      );
+      
+      CREATE TABLE projects (
+        id INTEGER PRIMARY KEY,
+        name TEXT NOT NULL,
+        owner_id INTEGER REFERENCES users(id),
+        status TEXT CHECK(status IN ('active','archived','draft')),
+        created_at TEXT
+      );
+      
+      CREATE TABLE tasks (
+        id INTEGER PRIMARY KEY,
+        title TEXT NOT NULL,
+        project_id INTEGER REFERENCES projects(id),
+        assignee_id INTEGER REFERENCES users(id),
+        priority INTEGER CHECK(priority BETWEEN 1 AND 5),
+        status TEXT DEFAULT 'todo',
+        created_at TEXT
+      );
+    `;
+
+    // ── SEED DATA ──
+    const SEED_USERS = [
+      [1, 'Alex Rivera', 'alex@observatory.dev', 'admin', '2024-01-15T09:00:00Z'],
+      [2, 'Sam Chen', 'sam@observatory.dev', 'maintainer', '2024-02-03T14:30:00Z'],
+      [3, 'Jordan Lee', 'jordan@observatory.dev', 'member', '2024-02-20T11:15:00Z'],
+      [4, 'Taylor Kim', 'taylor@observatory.dev', 'contributor', '2024-03-01T08:45:00Z'],
+      [5, 'Morgan Blake', 'morgan@observatory.dev', 'member', '2024-03-10T16:20:00Z']
+    ];
+
+    const SEED_PROJECTS = [
+      [1, 'Observatory Core', 1, 'active', '2024-01-20T10:00:00Z'],
+      [2, 'Data Pipeline', 2, 'active', '2024-02-10T13:00:00Z'],
+      [3, 'UI Redesign', 1, 'draft', '2024-03-05T09:30:00Z'],
+      [4, 'Archive Migration', 3, 'archived', '2024-01-05T15:00:00Z']
+    ];
+
+    const SEED_TASKS = [
+      [1, 'Implement auth middleware', 1, 2, 5, 'done', '2024-02-01T10:00:00Z'],
+      [2, 'Design database schema', 1, 1, 4, 'done', '2024-01-22T14:00:00Z'],
+      [3, 'Build API endpoints', 1, 2, 4, 'in_progress', '2024-02-15T09:00:00Z'],
+      [4, 'Write integration tests', 1, 4, 3, 'todo', '2024-03-01T11:00:00Z'],
+      [5, 'Set up CI/CD pipeline', 2, 1, 5, 'in_progress', '2024-02-12T08:30:00Z'],
+      [6, 'Optimize query performance', 2, 2, 4, 'todo', '2024-02-28T15:00:00Z'],
+      [7, 'Create data validation layer', 2, 3, 3, 'todo', '2024-03-08T10:00:00Z'],
+      [8, 'Prototype new dashboard', 3, 4, 2, 'draft', '2024-03-06T13:00:00Z'],
+      [9, 'Gather user feedback', 3, 5, 1, 'todo', '2024-03-12T09:00:00Z'],
+      [10, 'Export legacy data', 4, 3, 5, 'done', '2024-01-10T16:00:00Z'],
+      [11, 'Verify data integrity', 4, 1, 4, 'done', '2024-01-18T11:00:00Z'],
+      [12, 'Document migration process', 4, 2, 2, 'archived', '2024-01-25T14:00:00Z']
+    ];
+
+    // ── INITIALIZATION ──
+    async function initDB() {
+      try {
+        // Load sql.js
+        SQL = await initSqlJs({ locateFile: file => SQL_WASM_URL + file });
+        
+        // Create in-memory database
+        db = new SQL.Database();
+        
+        // Create schema
+        db.run(SCHEMA);
+        
+        // Seed data
+        seedData();
+        
+        // Load schema info for explorer
+        loadSchemaInfo();
+        
+        // Render schema explorer
+        renderSchemaExplorer();
+        
+        // Enable run button
+        document.getElementById('runBtn').disabled = false;
+        
+        // Setup event listeners
+        setupEventListeners();
+        
+        console.log('✓ Database initialized');
+      } catch (err) {
+        console.error('✗ Failed to initialize database:', err);
+        document.getElementById('schemaContainer').innerHTML = 
+          `<div style="color:var(--red);padding:20px;text-align:center;">
+            Failed to load SQLite. Please check your connection and refresh.
+          </div>`;
+      }
+    }
+
+    function seedData() {
+      const stmt = db.prepare('INSERT INTO users VALUES (?,?,?,?,?)');
+      SEED_USERS.forEach(user => stmt.run(user));
+      stmt.free();
+
+      const projStmt = db.prepare('INSERT INTO projects VALUES (?,?,?,?,?)');
+      SEED_PROJECTS.forEach(proj => projStmt.run(proj));
+      projStmt.free();
+
+      const taskStmt = db.prepare('INSERT INTO tasks VALUES (?,?,?,?,?,?,?)');
+      SEED_TASKS.forEach(task => taskStmt.run(task));
+      taskStmt.free();
+    }
+
+    function loadSchemaInfo() {
+      // Get table info using PRAGMA
+      const tables = ['users', 'projects', 'tasks'];
+      tables.forEach(table => {
+        try {
+          const result = db.exec(`PRAGMA table_info(${table})`);
+          if (result[0] && result[0].columns) {
+            schemaInfo[table] = result[0].values.map(row => ({
+              cid: row[0],
+              name: row[1],
+              type: row[2],
+              notnull: row[3],
+              dflt_value: row[4],
+              pk: row[5]
+            }));
+          }
+        } catch (e) {
+          console.warn(`Could not load schema for ${table}:`, e);
+        }
+      });
+      
+      // Add foreign key info
+      schemaInfo.projects = schemaInfo.projects?.map(col => {
+        if (col.name === 'owner_id') {
+          return { ...col, fk: 'users(id)' };
+        }
+        return col;
+      });
+      
+      schemaInfo.tasks = schemaInfo.tasks?.map(col => {
+        if (col.name === 'project_id') return { ...col, fk: 'projects(id)' };
+        if (col.name === 'assignee_id') return { ...col, fk: 'users(id)' };
+        return col;
+      });
+    }
+
+    function renderSchemaExplorer() {
+      const container = document.getElementById('schemaContainer');
+      if (!container) return;
+
+      const tables = [
+        {
+          name: 'users',
+          columns: schemaInfo.users || [],
+          constraints: [
+            { col: 'id', type: 'pk', label: 'PRIMARY KEY' },
+            { col: 'email', type: 'unique', label: 'UNIQUE' },
+            { col: 'role', type: 'default', label: "DEFAULT 'member'" }
+          ]
+        },
+        {
+          name: 'projects',
+          columns: schemaInfo.projects || [],
+          constraints: [
+            { col: 'id', type: 'pk', label: 'PRIMARY KEY' },
+            { col: 'owner_id', type: 'fk', label: '→ users(id)', ref: 'users' },
+            { col: 'status', type: 'check', label: "CHECK (active/archived/draft)" }
+          ]
+        },
+        {
+          name: 'tasks',
+          columns: schemaInfo.tasks || [],
+          constraints: [
+            { col: 'id', type: 'pk', label: 'PRIMARY KEY' },
+            { col: 'project_id', type: 'fk', label: '→ projects(id)', ref: 'projects' },
+            { col: 'assignee_id', type: 'fk', label: '→ users(id)', ref: 'users' },
+            { col: 'priority', type: 'check', label: 'CHECK (1–5)' },
+            { col: 'status', type: 'default', label: "DEFAULT 'todo'" }
+          ]
+        }
+      ];
+
+      container.innerHTML = tables.map(table => `
+        <div class="table-card" data-table="${table.name}" onclick="selectTable('${table.name}')">
+          <div class="table-name">${table.name}</div>
+          <ul class="column-list">
+            ${table.columns.map(col => `
+              <li class="column-item">
+                <span class="col-name">${col.name}${col.pk ? '<span class="col-constraint col-pk">★</span>' : ''}</span>
+                <span>
+                  <span class="col-type">${col.type}</span>
+                  ${col.notnull ? '<span class="col-constraint">NOT NULL</span>' : ''}
+                  ${col.fk ? `<span class="relationship-badge">${col.fk}</span>` : ''}
+                  ${col.name === 'priority' ? '<span class="col-constraint col-check">1–5</span>' : ''}
+                  ${col.name === 'status' && table.name !== 'users' ? '<span class="col-constraint col-check">enum</span>' : ''}
+                </span>
+              </li>
+            `).join('')}
+          </ul>
+          ${table.constraints.filter(c => !['pk','fk','check','default'].includes(c.type) || !table.columns.find(col => col.name === c.col)).map(c => 
+            `<div style="font-size:0.7rem;color:var(--text-muted);margin-top:6px;">${c.label}</div>`
+          ).join('')}
+        </div>
+      `).join('');
+    }
+
+    // ── INTERACTIVITY ──
+    function selectTable(tableName) {
+      // Highlight active
+      document.querySelectorAll('.table-card').forEach(c => c.classList.remove('active'));
+      document.querySelector(`.table-card[data-table="${tableName}"]`)?.classList.add('active');
+      
+      // Show preview data
+      try {
+        const result = db.exec(`SELECT * FROM ${tableName} LIMIT 5`);
+        const container = document.getElementById('schemaContainer');
+        let previewHtml = `<div class="selected-table-data"><h4>Sample Data from "${tableName}"</h4><div class="data-preview">`;
+        
+        if (result[0] && result[0].values.length > 0) {
+          const cols = result[0].columns;
+          const rows = result[0].values.slice(0, 3);
+          previewHtml += rows.map(row => {
+            const obj = {};
+            cols.forEach((col, i) => obj[col] = row[i]);
+            return JSON.stringify(obj, null, 2);
+          }).join('\n\n');
+        } else {
+          previewHtml += '(no data)';
+        }
+        previewHtml += '</div></div>';
+        
+        // Remove existing preview if any
+        const existing = container.querySelector('.selected-table-data');
+        if (existing) existing.remove();
+        
+        // Append preview
+        container.insertAdjacentHTML('beforeend', previewHtml);
+      } catch (e) {
+        console.warn('Preview error:', e);
+      }
+    }
+
+    function setupEventListeners() {
+      // Run query button
+      document.getElementById('runBtn').addEventListener('click', executeQuery);
+      
+      // Keyboard shortcut: Ctrl+Enter or Cmd+Enter
+      document.getElementById('sqlInput').addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+          e.preventDefault();
+          executeQuery();
+        }
+      });
+      
+      // Reset database
+      document.getElementById('resetBtn').addEventListener('click', () => {
+        if (confirm('Reset database to initial seed state?')) {
+          db.close();
+          db = new SQL.Database();
+          db.run(SCHEMA);
+          seedData();
+          loadSchemaInfo();
+          renderSchemaExplorer();
+          showResults(null, 0, 0, 'Database reset successfully.');
+        }
+      });
+      
+      // Preset queries
+      document.querySelectorAll('.preset').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.getElementById('sqlInput').value = btn.dataset.query;
+          executeQuery();
+        });
+      });
+    }
+
+    function executeQuery() {
+      const sql = document.getElementById('sqlInput').value.trim();
+      const runBtn = document.getElementById('runBtn');
+      const resultsMeta = document.getElementById('resultsMeta');
+      const errorMsg = document.getElementById('errorMsg');
+      const execTime = document.getElementById('execTime');
+      const rowCount = document.getElementById('rowCount');
+      const errorMessage = document.getElementById('errorMessage');
+      const resultsTable = document.getElementById('resultsTable');
+      
+      if (!sql) {
+        showError('Please enter a SQL query.');
+        return;
+      }
+      
+      // UI loading state
+      runBtn.disabled = true;
+      runBtn.textContent = 'Running...';
+      errorMsg.classList.add('hidden');
+      errorMessage.classList.remove('visible');
+      resultsMeta.classList.add('hidden');
+      
+      const startTime = performance.now();
+      
+      try {
+        // Execute all statements (split by semicolon)
+        const statements = sql.split(';').map(s => s.trim()).filter(s => s);
+        let lastResult = null;
+        let totalRows = 0;
+        
+        for (const stmt of statements) {
+          if (!stmt) continue;
+          const result = db.exec(stmt);
+          if (result && result[0] && result[0].values) {
+            lastResult = result[0];
+            totalRows += result[0].values.length;
+          }
+        }
+        
+        const endTime = performance.now();
+        const duration = Math.round(endTime - startTime);
+        
+        if (lastResult) {
+          renderResults(lastResult, totalRows, duration);
+        } else {
+          showResults(null, 0, duration, 'Query executed successfully. (No result set)');
+        }
+        
+        // Refresh schema explorer after DDL statements
+        const sqlUpper = sql.toUpperCase();
+        if (sqlUpper.includes('CREATE') || sqlUpper.includes('ALTER') || sqlUpper.includes('DROP') || sqlUpper.includes('INSERT') || sqlUpper.includes('UPDATE') || sqlUpper.includes('DELETE')) {
+          loadSchemaInfo();
+          renderSchemaExplorer();
+        }
+        
+      } catch (err) {
+        const endTime = performance.now();
+        const duration = Math.round(endTime - startTime);
+        showError(err.message || 'An error occurred while executing the query.', duration);
+      } finally {
+        runBtn.disabled = false;
+        runBtn.textContent = '▶ Run Query';
+      }
+    }
+
+    function renderResults(result, rowCount, execTimeMs) {
+      const resultsMeta = document.getElementById('resultsMeta');
+      const errorMsg = document.getElementById('errorMsg');
+      const execTimeEl = document.getElementById('execTime');
+      const rowCountEl = document.getElementById('rowCount');
+      const errorMessage = document.getElementById('errorMessage');
+      const resultsTable = document.getElementById('resultsTable');
+      
+      // Hide error
+      errorMsg.classList.add('hidden');
+      errorMessage.classList.remove('visible');
+      
+      // Show meta
+      resultsMeta.classList.remove('hidden');
+      execTimeEl.textContent = `${execTimeMs}ms`;
+      execTimeEl.classList.remove('hidden');
+      rowCountEl.textContent = `${rowCount} row${rowCount !== 1 ? 's' : ''}`;
+      rowCountEl.classList.remove('hidden');
+      
+      // Render table
+      if (result && result.columns && result.values) {
+        let html = '<table><thead><tr>';
+        result.columns.forEach(col => {
+          html += `<th>${escapeHtml(col)}</th>`;
+        });
+        html += '</tr></thead><tbody>';
+        
+        result.values.forEach(row => {
+          html += '<tr>';
+          row.forEach(val => {
+            if (val === null || val === undefined) {
+              html += '<td class="null">NULL</td>';
+            } else {
+              html += `<td>${escapeHtml(String(val))}</td>`;
+            }
+          });
+          html += '</tr>';
+        });
+        
+        html += '</tbody></table>';
+        resultsTable.innerHTML = html;
+      } else {
+        resultsTable.innerHTML = '<div class="empty-state">No data returned</div>';
+      }
+    }
+
+    function showResults(data, rows, time, message) {
+      const resultsMeta = document.getElementById('resultsMeta');
+      const errorMsg = document.getElementById('errorMsg');
+      const execTimeEl = document.getElementById('execTime');
+      const rowCountEl = document.getElementById('rowCount');
+      const errorMessage = document.getElementById('errorMessage');
+      const resultsTable = document.getElementById('resultsTable');
+      
+      resultsMeta.classList.remove('hidden');
+      errorMsg.classList.add('hidden');
+      errorMessage.classList.remove('visible');
+      
+      execTimeEl.textContent = `${time}ms`;
+      execTimeEl.classList.remove('hidden');
+      rowCountEl.textContent = message || `${rows} row${rows !== 1 ? 's' : ''}`;
+      rowCountEl.classList.remove('hidden');
+      
+      if (message && !data) {
+        resultsTable.innerHTML = `<div class="empty-state">${escapeHtml(message)}</div>`;
+      }
+    }
+
+    function showError(message, time = 0) {
+      const resultsMeta = document.getElementById('resultsMeta');
+      const errorMsg = document.getElementById('errorMsg');
+      const execTimeEl = document.getElementById('execTime');
+      const rowCountEl = document.getElementById('rowCount');
+      const errorMessage = document.getElementById('errorMessage');
+      const resultsTable = document.getElementById('resultsTable');
+      
+      resultsMeta.classList.remove('hidden');
+      errorMsg.textContent = message;
+      errorMsg.classList.remove('hidden');
+      errorMsg.classList.add('err');
+      
+      if (time > 0) {
+        execTimeEl.textContent = `${time}ms`;
+        execTimeEl.classList.remove('hidden');
+      }
+      rowCountEl.classList.add('hidden');
+      
+      errorMessage.textContent = message;
+      errorMessage.classList.add('visible');
+      
+      resultsTable.innerHTML = '<div class="empty-state" style="color:var(--red)">Query failed</div>';
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    // ── BOOT ──
+    document.addEventListener('DOMContentLoaded', initDB);
+  </script>
+</body>
+</html>
