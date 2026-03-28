@@ -164,9 +164,7 @@
           <div class="status-name" id="status-name">Drag to explore the stack</div>
         </div>
         <div class="legend">
-          <span class="key key--live"></span> Live demo
-          <span style="margin-left:8px"></span>
-          <span class="key key--soon"></span> Coming soon
+          <span class="key key--live"></span> 12 / 12 layers live
         </div>
       </div>
 
@@ -182,18 +180,18 @@
     const ttStatusEl = document.getElementById("tt-status");
 
     const layers = [
-      { label: "Frontend",                lines: ["Frontend"],                slug: "frontend",               color: "#ff6b6b", live: true,  desc: "Portfolio, micro-projects, 3,600+ hrs" },
-      { label: "Backend / APIs",          lines: ["Backend", "/ APIs"],       slug: "backend-apis",           color: "#ff965a", live: true,  desc: "Service Worker mock server — click to explore" },
-      { label: "Database",                lines: ["Database"],                slug: "database",               color: "#ffc857", live: true,  desc: "In-browser SQL console with sql.js" },
-      { label: "Servers",                 lines: ["Servers"],                 slug: "servers",                color: "#9be564", live: true,  desc: "Annotated nginx, PM2 & systemd configs" },
+      { label: "Frontend",                lines: ["Frontend"],                slug: "frontend",               color: "#ff6b6b", live: true,  desc: "16 certifications, 3,600+ hours verified" },
+      { label: "Backend / APIs",          lines: ["Backend", "/ APIs"],       slug: "backend-apis",           color: "#ff965a", live: true,  desc: "Express-style middleware pipeline + REST API" },
+      { label: "Database",                lines: ["Database"],                slug: "database",               color: "#ffc857", live: true,  desc: "Live SQL console — normalized schema via WebAssembly" },
+      { label: "Servers",                 lines: ["Servers"],                 slug: "servers",                color: "#9be564", live: true,  desc: "Annotated nginx, PM2 & systemd production configs" },
       { label: "Networking",              lines: ["Networking"],              slug: "networking",             color: "#42d392", live: true,  desc: "TCP handshake, teardown & full lifecycle visualizer" },
-      { label: "Cloud Infrastructure",    lines: ["Cloud", "Infrastructure"], slug: "cloud-infrastructure",   color: "#29d4ff", live: true,  desc: "3 architecture scales with diagrams + Terraform" },
-      { label: "CI/CD Pipelines",         lines: ["CI/CD", "Pipelines"],     slug: "ci-cd-pipelines",        color: "#4da8ff", live: true,  desc: "Pipeline simulator — this site deploys itself" },
+      { label: "Cloud Infrastructure",    lines: ["Cloud", "Infrastructure"], slug: "cloud-infrastructure",   color: "#29d4ff", live: true,  desc: "3 architecture scales with Terraform IaC" },
+      { label: "CI/CD Pipelines",         lines: ["CI/CD", "Pipelines"],     slug: "ci-cd-pipelines",        color: "#4da8ff", live: true,  desc: "This site deploys itself — pipeline visualized" },
       { label: "Security",               lines: ["Security"],                slug: "security",               color: "#7a8cff", live: true,  desc: "Header analyzer, XSS sandbox & CORS simulator" },
       { label: "Containers",             lines: ["Containers"],              slug: "containers",             color: "#a578ff", live: true,  desc: "Dockerfile builder, layer caching & docker-compose" },
-      { label: "CDN",                    lines: ["CDN"],                     slug: "cdn",                    color: "#ff6bd6", live: true,  desc: "Cache simulator & Cache-Control header builder" },
+      { label: "CDN",                    lines: ["CDN"],                     slug: "cdn",                    color: "#ff6bd6", live: true,  desc: "Cache hit/miss simulator & Cache-Control builder" },
       { label: "Monitoring & Logging",   lines: ["Monitoring", "& Logging"], slug: "monitoring-logging",     color: "#ff7fab", live: true,  desc: "Live Performance API dashboard — monitors itself" },
-      { label: "Backups & Recovery",     lines: ["Backups", "& Recovery"],   slug: "backups-recovery",       color: "#ffd166", live: true,  desc: "Interactive DR planner with RPO/RTO calculator" }
+      { label: "Backups & Recovery",     lines: ["Backups", "& Recovery"],   slug: "backups-recovery",       color: "#ffd166", live: true,  desc: "DR planner with RPO/RTO calculator & runbook" }
     ];
 
     window.navigateToLayer = function (slug) {
