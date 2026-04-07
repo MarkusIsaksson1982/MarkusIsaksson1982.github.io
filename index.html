@@ -170,7 +170,48 @@
 
     </div>
   </div>
+  <section style="margin: 80px 0 40px; padding: 40px 20px; background: #0a1324; border-radius: 20px; text-align: center; max-width: 1280px; margin-left: auto; margin-right: auto;">
+      <h2 style="color: #fff; font-size: 2.1rem; margin-bottom: 8px;">See the Full Stack Observatory running live</h2>
+      <p style="color: #a3b8d0; max-width: 620px; margin: 0 auto 48px; font-size: 1.05rem;">
+        One command spins up the entire 12-layer system with real-time metrics in Prometheus &amp; Grafana.
+      </p>
 
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 28px; max-width: 1400px; margin: 0 auto;">
+        <div>
+          <img src="https://github.com/MarkusIsaksson1982/fullstack-observatory/raw/main/screenshots/01-terminal-compose.png" 
+               alt="Terminal showing npm run compose" 
+               style="width:100%; border-radius: 14px; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+          <p style="color:#94a3b8; margin-top: 12px; font-size: 0.95rem;">One-command full stack startup</p>
+        </div>
+        <div>
+          <img src="https://github.com/MarkusIsaksson1982/fullstack-observatory/raw/main/screenshots/02-grafana-dashboard.png" 
+               alt="Live Grafana dashboard" 
+               style="width:100%; border-radius: 14px; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+          <p style="color:#94a3b8; margin-top: 12px; font-size: 0.95rem;">Real-time Grafana metrics</p>
+        </div>
+        <div>
+          <img src="https://github.com/MarkusIsaksson1982/fullstack-observatory/raw/main/screenshots/03-prometheus-targets.png" 
+               alt="Prometheus targets" 
+               style="width:100%; border-radius: 14px; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+          <p style="color:#94a3b8; margin-top: 12px; font-size: 0.95rem;">Prometheus scraping the API</p>
+        </div>
+        <div>
+          <img src="https://github.com/MarkusIsaksson1982/fullstack-observatory/raw/main/screenshots/04-api-health.png" 
+               alt="Running API health check" 
+               style="width:100%; border-radius: 14px; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+          <p style="color:#94a3b8; margin-top: 12px; font-size: 0.95rem;">Healthy API behind Nginx</p>
+        </div>
+      </div>
+
+      <p style="margin-top: 52px; color: #64748b; font-size: 1.05rem;">
+        <strong>Try it yourself on your machine:</strong><br>
+        <code style="background:#1e2937; color:#42f5c5; padding:6px 14px; border-radius:8px; font-family:monospace; font-size:1.1rem;">
+          npm run compose
+        </code>
+      </p>
+    </section>
+
+  </div>
   <script type="module">
     import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js";
 
