@@ -321,7 +321,7 @@
                 <div class="mt-8 flex justify-between items-baseline">
                     <div>
                         <div class="text-xs uppercase font-medium text-[#64748b]">Last successful deploy</div>
-                        <div id="last-deploy-time" class="text-2xl font-semibold">March 25, 2026 • 01:12 UTC</div>
+                        <div id="last-deploy-time" class="text-2xl font-semibold"></div>
                         <div class="text-emerald-400 text-sm flex items-center gap-x-1">
                             <span class="relative flex h-3 w-3">
                                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -388,7 +388,7 @@
                     Reproducible builds
                 </h3>
                 <p class="text-[#c5d4e6]">
-                    Matrix strategy tests Node 18 <em>and</em> 20. 
+                    Matrix strategy tests Node 20 <em>and</em> 22. 
                     Locked <code class="code">package-lock.json</code> guarantees the same artifacts every time.
                 </p>
             </div>
@@ -586,6 +586,29 @@
          * Simulate a full pipeline run with realistic delays
          */
         let isSimulating = false
+
+        function parseDurationMs(duration) {
+            if (!duration) return 1000
+
+            const str = String(duration).trim()
+            if (str.endsWith('ms')) return parseInt(str, 10)
+            if (str.endsWith('s')) return Math.round(parseFloat(str) * 1000)
+            return parseInt(str, 10) || 1000
+        }
+
+        function renderLastDeployTime(justNow = false) {
+            const liveEl = document.getElementById('last-deploy-time')
+            const now = new Date()
+            const formatted = now.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            })
+
+            liveEl.innerHTML = justNow
+                ? `${formatted} • <span class="text-emerald-400">just now</span>`
+                : `${formatted} • <span class="text-emerald-400">live</span>`
+        }
         
         function simulatePipeline() {
             if (isSimulating) return
@@ -620,11 +643,7 @@
                         btn.style.pointerEvents = 'auto'
                         isSimulating = false
                         
-                        // Update live status timestamp to "just now"
-                        const liveEl = document.getElementById('last-deploy-time')
-                        liveEl.innerHTML = `
-                            March 25, 2026 • <span class="text-emerald-400">just now</span>
-                        `
+                        renderLastDeployTime(true)
                     }, 800)
                     return
                 }
@@ -645,10 +664,7 @@
                 progressBar.style.width = `${progress}%`
                 
                 // Realistic delay
-                const delay = STAGES[currentIndex].duration === '800ms' ? 800 :
-                              STAGES[currentIndex].duration === '1.4s' ? 1400 :
-                              STAGES[currentIndex].duration === '900ms' ? 900 :
-                              STAGES[currentIndex].duration === '2.1s' ? 2100 : 1800
+                const delay = parseDurationMs(STAGES[currentIndex].duration)
                 
                 setTimeout(() => {
                     // Mark as completed
@@ -673,8 +689,8 @@
             },
             {
                 title: "Matrix Strategy",
-                code: `strategy:<br>  matrix:<br>    node-version: [18.x, 20.x]`,
-                explanation: "Tests the entire stack on Node 18 and Node 20 in parallel. Guarantees the site works across the two most common LTS versions."
+                code: `strategy:<br>  matrix:<br>    node-version: [20.x, 22.x]`,
+                explanation: "Tests the entire stack on Node 20 and Node 22 in parallel. Guarantees the site works across the current supported runtime versions."
             },
             {
                 title: "Checkout",
@@ -756,6 +772,9 @@
             
             // Initial pipeline render (all future)
             renderPipeline()
+
+            // Populate live deploy timestamp without a hardcoded calendar date
+            renderLastDeployTime()
             
             // Render interactive YAML
             renderYAML()

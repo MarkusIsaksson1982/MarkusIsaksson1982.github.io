@@ -579,7 +579,7 @@
         </div>
         <div class="explainer-card">
           <h3>CHECK Constraints</h3>
-          <p>Business rules enforced in-schema: <code>status IN ('active','archived','draft')</code> and <code>priority BETWEEN 1 AND 5</code> prevent invalid data.</p>
+          <p>Business rules enforced in-schema: <code>projects.status IN ('active','archived','draft')</code>, <code>tasks.status IN ('todo','in_progress','done')</code>, and <code>priority BETWEEN 1 AND 5</code> prevent invalid data.</p>
         </div>
         <div class="explainer-card">
           <h3>Strategic Indexing</h3>
@@ -641,7 +641,7 @@
         project_id INTEGER REFERENCES projects(id),
         assignee_id INTEGER REFERENCES users(id),
         priority INTEGER CHECK(priority BETWEEN 1 AND 5),
-        status TEXT DEFAULT 'todo',
+        status TEXT DEFAULT 'todo' CHECK(status IN ('todo','in_progress','done')),
         created_at TEXT
       );
     `;
@@ -670,11 +670,11 @@
       [5, 'Set up CI/CD pipeline', 2, 1, 5, 'in_progress', '2024-02-12T08:30:00Z'],
       [6, 'Optimize query performance', 2, 2, 4, 'todo', '2024-02-28T15:00:00Z'],
       [7, 'Create data validation layer', 2, 3, 3, 'todo', '2024-03-08T10:00:00Z'],
-      [8, 'Prototype new dashboard', 3, 4, 2, 'draft', '2024-03-06T13:00:00Z'],
+      [8, 'Prototype new dashboard', 3, 4, 2, 'todo', '2024-03-06T13:00:00Z'],
       [9, 'Gather user feedback', 3, 5, 1, 'todo', '2024-03-12T09:00:00Z'],
       [10, 'Export legacy data', 4, 3, 5, 'done', '2024-01-10T16:00:00Z'],
       [11, 'Verify data integrity', 4, 1, 4, 'done', '2024-01-18T11:00:00Z'],
-      [12, 'Document migration process', 4, 2, 2, 'archived', '2024-01-25T14:00:00Z']
+      [12, 'Document migration process', 4, 2, 2, 'done', '2024-01-25T14:00:00Z']
     ];
 
     // ── INITIALIZATION ──

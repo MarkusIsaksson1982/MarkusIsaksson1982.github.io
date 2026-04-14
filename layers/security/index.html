@@ -733,8 +733,12 @@ Server: nginx/1.24.0</textarea>
       const isDangerous = DANGEROUS_PATTERNS.some(p => p.test(val));
 
       if (isDangerous) {
-        // Show the rendered HTML but strip actually dangerous event handlers
-        // to prevent real execution while still showing the vulnerability visually
+        // Show the rendered HTML. <script> tags are replaced with a visible label.
+        // Quoted event handlers (onerror="...") are neutralised via attribute renaming.
+        // IMPORTANT: unquoted handlers like onerror=alert(1) are NOT stripped and
+        // will still execute — this is intentional, to demonstrate the real risk
+        // of unescaped innerHTML. The safe column on the right uses textContent,
+        // which is immune to all of these vectors.
         const sanitizedForDisplay = val
           .replace(/<script[\s\S]*?<\/script>/gi, '<span style="color:var(--red);font-family:var(--mono);font-size:0.75rem;background:var(--red-dim);padding:2px 6px;border-radius:4px;">[script blocked by innerHTML — but event handlers still execute]</span>')
           .replace(/on(\w+)\s*=\s*["'][^"']*["']/gi, 'data-blocked-$1="intercepted"');
