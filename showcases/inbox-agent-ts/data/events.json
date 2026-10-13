@@ -1,0 +1,10 @@
+{"now":"2026-10-13T09:00:00Z","events":[
+ {"id":"ev1","kind":"email_received","at":"2026-10-09T08:12:00Z","person":"sara.lind@nordbyte.se","name":"Sara Lind","company":"Nordbyte","subject":"Pricing for 40 seats?"},
+ {"id":"ev2","kind":"crm_stage_changed","at":"2026-10-09T09:00:00Z","person":"sara.lind@nordbyte.se","company":"Nordbyte","stage":"Proposal"},
+ {"id":"ev3","kind":"email_sent","at":"2026-10-07T14:30:00Z","person":"jonas@kvarnhus.se","name":"Jonas Berg","company":"Kvarnhus","subject":"Follow-up after demo"},
+ {"id":"ev4","kind":"meeting_booked","at":"2026-10-10T11:00:00Z","person":"amira@solvik.io","name":"Amira Haddad","company":"Solvik","meetingAt":"2026-10-14T13:00:00Z"},
+ {"id":"ev5","kind":"email_received","at":"2026-10-13T07:40:00Z","person":"amira@solvik.io","company":"Solvik","subject":"Agenda for Tuesday"},
+ {"id":"ev6","kind":"email_sent","at":"2026-10-08T10:00:00Z","person":"per.olsson@lumen.se","name":"Per Olsson","company":"Lumen","subject":"Intro"},
+ {"id":"ev7","kind":"email_received","at":"2026-10-09T16:20:00Z","person":"per.olsson@lumen.se","company":"Lumen","subject":"Re: Intro"},
+ {"id":"ev8","kind":"email_sent","at":"2026-10-10T08:00:00Z","person":"per.olsson@lumen.se","company":"Lumen","subject":"Re: Re: Intro"},
+ {"id":"ev9","kind":"email_received","at":"2026-10-11T19:05:00Z","person":"Sara.Lind@nordbyte.se","company":"Nordbyte","subject":"Also: SSO?"}]}

@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>inbox-agent-ts</title>
+<style>
+:root{color-scheme:light dark;--bg:#fff;--fg:#111;--mut:#666;--line:#e5e5e5;--chip:#f3f4f6;--hi:#b91c1c;--med:#b45309;--lo:#166534}
+@media(prefers-color-scheme:dark){:root{--bg:#0b0b0c;--fg:#f5f5f5;--mut:#a1a1aa;--line:#27272a;--chip:#18181b}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:960px;margin:0 auto;padding:32px 16px 64px}
+header h1{margin:0 0 8px;font-size:28px;letter-spacing:-.02em}
+header p{margin:0 0 24px;color:var(--mut);max-width:70ch}
+h2{font-size:16px;margin:28px 0 10px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut)}
+.card{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:inherit}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);background:var(--chip)}
+tr:last-child td{border-bottom:0}
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:700;border:1px solid var(--line);background:var(--chip)}
+.badge.high{color:var(--hi)}.badge.medium{color:var(--med)}.badge.low{color:var(--lo)}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px}
+.mut{color:var(--mut)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.group{border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.group h3{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut)}
+ul{margin:0;padding-left:18px}
+li{margin:4px 0}
+#status{margin:12px 0;color:var(--mut)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>inbox-agent-ts</h1>
+<p>A background agent: email/CRM events -&gt; typed knowledge-graph memory -&gt; scheduled follow-ups, strict TypeScript.</p>
+</header>
+<main>
+<div id="status" role="status">Loading…</div>
+<h2>Follow-ups</h2>
+<div class="card">
+<table aria-label="follow-ups">
+<thead><tr><th>Person</th><th>Action</th><th>Priority</th><th>Due</th><th>Sources</th></tr></thead>
+<tbody id="rows"><tr><td colspan="5" class="mut">Loading…</td></tr></tbody>
+</table>
+</div>
+<h2>Memory graph</h2>
+<div id="graph" class="grid"></div>
+</main>
+</div>
+<script type="module">
+import { MemoryGraph } from './js/memory.js';
+import { planFollowUps } from './js/agent.js';
+
+const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+const rowsEl = document.getElementById('rows');
+const graphEl = document.getElementById('graph');
+const statusEl = document.getElementById('status');
+
+const first = (o, keys, fb='') => { for (const k of keys) { const v = o?.[k]; if (v !== undefined && v !== null && v !== '') return v; } return fb; };
+const asArr = (v) => Array.isArray(v) ? v : (v == null || v === '' ? [] : [v]);
+
+function ingestOne(g, ev) {
+  for (const m of ['ingest','ingestEvent','addEvent','add','remember','observe','insert','handleEvent','processEvent','learn']) {
+    if (typeof g?.[m] === 'function') { g[m](ev); return true; }
+  }
+  if (typeof g === 'function') { try { new g(ev); return true; } catch {} }
+  return false;
+}
+
+function listNodes(g) {
+  try {
+    for (const m of ['getNodes','getAllNodes','allNodes','nodesList','listNodes','toArray']) {
+      if (typeof g?.[m] === 'function') { const r = g[m](); if (Array.isArray(r)) return r; if (r && typeof r === 'object') return Object.values(r); }
+    }
+    if (Array.isArray(g?.nodes)) return g.nodes;
+    if (g?.nodes instanceof Map) return [...g.nodes.values()];
+    if (g?.store instanceof Map) return [...g.store.values()];
+    if (g?.byId instanceof Map) return [...g.byId.values()];
+    if (g?.nodes && typeof g.nodes === 'object') return Object.values(g.nodes);
+    if (typeof g?.toJSON === 'function') { const j = g.toJSON(); if (Array.isArray(j)) return j; if (Array.isArray(j?.nodes)) return j.nodes; }
+  } catch {}
+  return [];
+}
+
+function nodeId(n, i) { return String(first(n, ['id','key','nodeId','uid'], 'node-'+i)); }
+function nodeType(n) { return String(first(n, ['type','kind','labelType','entityType','nodeType'], 'unknown')); }
+function nodeLabel(n) { return String(first(n, ['label','name','title','value','text','email','displayName'], nodeId(n,0))); }
+
+function neighborsOf(g, n, id) {
+  try {
+    for (const m of ['neighbors','getNeighbors','adjacent','edgesFor','linksFor']) {
+      if (typeof g?.[m] === 'function') { const r = g[m](id); if (Array.isArray(r)) return r.map((x) => typeof x === 'object' ? String(first(x,['id','to','target','name','label'],JSON.stringify(x))) : String(x)); }
+    }
+    if (typeof g?.getEdges === 'function') {
+      const e = g.getEdges(id); if (Array.isArray(e)) return e.map((x) => String(first(x,['to','target','id'],JSON.stringify(x))));
+    }
+    const edges = g?.edges ?? g?.links;
+    if (Array.isArray(edges)) return edges.filter((e) => e?.from === id || e?.source === id || e?.a === id).map((e) => String(first(e,['to','target','b'],'')));
+    const nbs = n?.neighbors ?? n?.edges ?? n?.links ?? n?.connectedTo ?? n?.targets;
+    if (Array.isArray(nbs)) return nbs.map(String);
+  } catch {}
+  return [];
+}
+
+try {
+  const res = await fetch('./data/events.json', { headers: { accept: 'application/json' } });
+  if (!res.ok) throw new Error('fetch ' + res.status);
+  const data = await res.json();
+  const now = data?.now ?? new Date().toISOString();
+  const events = Array.isArray(data?.events) ? data.events : (Array.isArray(data) ? data : []);
+
+  const graph = new MemoryGraph();
+  let ingested = 0;
+  for (const ev of events) { try { ingestOne(graph, ev); ingested++; } catch {} }
+
+  let raw;
+  try { raw = await planFollowUps(events, { now }); }
+  catch { raw = await planFollowUps(events, now); }
+  const plans = Array.isArray(raw) ? raw : asArr(first(raw, ['followUps','followups','follow_ups','items','tasks','plans','scheduled'], []));
+
+  if (!plans.length) {
+    rowsEl.innerHTML = '<tr><td colspan="5" class="mut">' + esc('No follow-ups.') + '</td></tr>';
+  } else {
+    rowsEl.innerHTML = plans.map((f) => {
+      const person = first(f, ['person','who','contact','contactName','name','attendee','with'], '—');
+      const action = first(f, ['action','task','todo','summary','title','description'], '—');
+      const prio = String(first(f, ['priority','prio','urgency','level'], 'medium'));
+      const due = first(f, ['due','dueAt','dueDate','scheduledFor','runAt','at'], '—');
+      const src = asArr(first(f, ['sources','sourceIds','eventIds','refs','source','events'], [])).map(String);
+      return '<tr><td>' + esc(person) + '</td><td>' + esc(action) + '</td>' +
+        '<td><span class="badge ' + esc(prio.toLowerCase()) + '">' + esc(prio) + '</span></td>' +
+        '<td class="mono">' + esc(typeof due === 'object' ? JSON.stringify(due) : due) + '</td>' +
+        '<td class="mono mut">' + esc(src.join(', ') || '—') + '</td></tr>';
+    }).join('');
+  }
+
+  const nodes = listNodes(graph);
+  const byType = new Map();
+  nodes.forEach((n, i) => {
+    const t = nodeType(n);
+    if (!byType.has(t)) byType.set(t, []);
+    byType.get(t).push({ n, i });
+  });
+
+  graphEl.innerHTML = '';
+  if (!nodes.length) {
+    graphEl.innerHTML = '<div class="mut">' + esc('Graph is empty (ingested ' + ingested + ' events, no enumerable nodes).') + '</div>';
+  } else {
+    for (const [t, arr] of [...byType.entries()].sort()) {
+      const box = document.createElement('div');
+      box.className = 'group';
+      const h = document.createElement('h3');
+      h.textContent = t + ' (' + arr.length + ')';
+      box.appendChild(h);
+      const ul = document.createElement('ul');
+      for (const { n, i } of arr.slice(0, 40)) {
+        const id = nodeId(n, i);
+        const nb = neighborsOf(graph, n, (/^\d+$/.test(id) ? Number(id) : id));
+        const li = document.createElement('li');
+        const b = document.createElement('span');
+        b.className = 'mono';
+        b.textContent = nodeLabel(n) + ' [' + id + ']';
+        li.appendChild(b);
+        if (nb.length) {
+          const s = document.createElement('span');
+          s.className = 'mut mono';
+          s.textContent = ' → ' + nb.slice(0, 8).join(', ');
+          li.appendChild(s);
+        }
+        ul.appendChild(li);
+      }
+      box.appendChild(ul);
+      graphEl.appendChild(box);
+    }
+  }
+  statusEl.textContent = 'now=' + now + ' · events=' + events.length + ' · follow-ups=' + plans.length + ' · nodes=' + nodes.length;
+} catch (e) {
+  statusEl.textContent = 'Error: ' + (e?.message || e);
+  rowsEl.innerHTML = '<tr><td colspan="5" class="mut">Failed to load.</td></tr>';
+}
+</script>
+</body>
+</html>
