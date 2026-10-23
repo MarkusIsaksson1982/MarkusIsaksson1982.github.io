@@ -1,0 +1,29 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agent skills enablement kit – Markus Isaksson</title>
+<style>body{font:16px/1.5 system-ui,sans-serif;max-width:760px;margin:2rem auto;padding:0 1rem;color:#1d2433}code{background:#f1f3f7;padding:0 .25rem}table{border-collapse:collapse;font-size:.92rem}td,th{border:1px solid #d6dbe4;padding:.3rem .5rem;text-align:left}small{color:#555}</style>
+<h1>Agent skills enablement kit</h1>
+<p>A small, tool-agnostic kit for rolling out AI assistants, coding agents, Agent Skills and MCP connectors inside an organisation: the counting is deterministic Python, the teaching and the judgment stay with people. Part of <a href="https://github.com/MarkusIsaksson1982/grok-bot-local-first">grok-bot-local-first</a> (<code>lib/enablement/</code>), standard-library Python, MIT.</p>
+<h2>What is in it</h2>
+<ul>
+<li><b>Skill lint</b> for a shared library of Agent Skills (<code>SKILL.md</code>): name and folder, a description that says when to use the skill, referenced files present, no personal paths, no credentials. The same file format is read by several coding agents, so a clean skill can be shared across tools.</li>
+<li><b>Adoption KPIs</b> from a usage export: weekly active users, adoption rate, power users and a 0–4 maturity level per function, cost per active user, functions below target, spend out of line with usage.</li>
+<li><b>Governance intake</b>: plain rules sort proposed AI tools and MCP connectors into fast-track, Tech/Legal forum review or reject, and order the agenda.</li>
+<li><b>Playbook</b>: rollout waves, standards, a three-level output verification protocol, KPIs, governance.</li>
+<li><b>Workshops</b>: three hands-on 90-minute sessions for development teams (prompting and context, Agent Skills, AI in testing and review), one also in Swedish.</li>
+</ul>
+<h2>Example run (synthetic data)</h2>
+<table>
+<tr><th>action</th><th>result</th></tr>
+<tr><td><code>skill-lint</code></td><td>3 example skills: 2 clean, 1 with a non-portable name, no trigger, a missing file and a personal path</td></tr>
+<tr><td><code>adoption</code></td><td>2026-W42: overall 49 %; three functions below the 50 % target; one function flagged for spend out of line with usage</td></tr>
+<tr><td><code>intake</code></td><td>5 proposals: 1 fast-track, 3 to the forum (Legal items first), 1 rejected (restricted data, vendor outside the EU/EEA)</td></tr>
+</table>
+<h2>Architecture view: retrieval, skills and agents</h2>
+<p>For AI search and agent-driven flows over unstructured data, the kit adds a small strict-TypeScript module, <code>lib/enablement/ts/skill-router.ts</code>: <code>selectCards()</code> picks which Agent Skills and MCP tools to load for a request within a cost budget, and <code>packContext()</code> packs retrieved chunks into a context budget behind an interface that a vector or hybrid search can replace. <code>ARCHITECTURE.md</code> shows the full path: ingest and chunk → budgeted context → agent step → verification (schemas, grounding, secrets, trace evals) → human approval for anything that writes, spends or sends → adoption and cost KPIs.</p>
+<pre><code>cd lib/enablement/ts &amp;&amp; npm install &amp;&amp; npm test   # tsc --strict + node --test</code></pre>
+<h2>Run it</h2>
+<pre><code>python3 lib/enablement/enablement-kit.py --action skill-lint --dir path/to/skills
+python3 lib/enablement/enablement-kit.py --action adoption --events usage.csv --headcount headcount.json
+python3 lib/enablement/enablement-kit.py --action intake --proposals proposals.json
+python3 -m unittest discover -s tests</code></pre>
+<p><small>Built with AI coding agents; deterministic tests gate the code. Markus Isaksson · <a href="https://github.com/MarkusIsaksson1982">GitHub</a></small></p>
