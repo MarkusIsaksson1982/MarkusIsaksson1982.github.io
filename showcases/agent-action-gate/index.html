@@ -1,0 +1,11 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>agent-action-gate – Markus Isaksson</title>
+<style>body{font-family:system-ui,sans-serif;max-width:46rem;margin:2rem auto;padding:0 1rem;line-height:1.5}code{background:#f3f3f3;padding:0 .2rem}table{border-collapse:collapse}td,th{border:1px solid #ccc;padding:.3rem .5rem}</style></head><body>
+<h1>agent-action-gate</h1>
+<p>Strict-TypeScript gate between an LLM agent and a backend that acts on its behalf: schema + role + limit checks with typed errors, idempotent retries, human approval above a threshold, a hash-chained audit log, and an evaluation that counts <em>unsafe executes</em>. No runtime dependencies, synthetic data.</p>
+<h2>v0.2 – fullstack web-operations demo</h2>
+<p>A <code>node:http</code> JSON API and a framework-free TypeScript frontend. Agents propose SEO meta edits, ad-budget changes and CMS drafts; deterministic checks decide; large budgets wait for a human (an agent can never approve itself); agents may only save drafts. A <strong>tracking guard</strong> checks GA4-style events for consent, naming rules, limits and personal data before they are accepted, and Core Web Vitals (LCP, INP, CLS) are rated against Google's thresholds.</p>
+<table><tr><th>decision</th><th>HTTP</th></tr><tr><td>execute / duplicate</td><td>200</td></tr><tr><td>needs_approval</td><td>202</td></tr><tr><td>reject (typed errors)</td><td>422</td></tr></table>
+<p>10 node:test tests (gate, tracking guard, end-to-end API on a random port), <code>tsc --strict</code>. Run: <code>npm start</code>.</p>
+<p>Code: <a href="https://github.com/MarkusIsaksson1982/agent-action-gate">github.com/MarkusIsaksson1982/agent-action-gate</a></p>
+<p>Want a live demo? Email a task to <a href="mailto:markusisaksson@mail.grokbot.com">markusisaksson@mail.grokbot.com</a> (agent-run on purpose; I review everything)</p>
+</body></html>
